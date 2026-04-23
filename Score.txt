@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contracks Global — Find Your Speed</title>
+<meta name="description" content="Four free scorecards to find out which Contracks speed applies to you. 8 questions. Instant score. Written report.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+–navy: #0A1628;
+–navy-mid: #112240;
+–gold: #C5A050;
+–gold-light: #D4B470;
+–gold-pale: #FDF6E8;
+–white: #FFFFFF;
+–off-white: #F8F7F4;
+–grey: #888888;
+–dark: #0A1628;
+–green: #2D6A4F;
+–orange: #E07B39;
+–purple: #6C3483;
+–blue: #1A5276;
+–border: #E8E4DC;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+font-family: ‘DM Sans’, sans-serif;
+background: #FFFFFF;
+color: #0A1628;
+min-height: 100vh;
+overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 18px 48px;
+background: #0A1628;
+border-bottom: 3px solid #C5A050;
+position: sticky;
+top: 0;
+z-index: 100;
+}
+
+.nav-logo {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.2rem;
+font-weight: 700;
+color: #FFFFFF;
+text-decoration: none;
+letter-spacing: 0.02em;
+}
+
+.nav-logo span { color: #C5A050; }
+
+.nav-back {
+font-size: 0.85rem;
+color: rgba(255,255,255,0.6);
+text-decoration: none;
+transition: color 0.2s;
+}
+
+.nav-back:hover { color: #C5A050; }
+
+/* ── SCREENS ── */
+.screen { display: none; }
+.screen.active { display: block; }
+
+/* ── LANDING ── */
+.landing {
+max-width: 960px;
+margin: 0 auto;
+padding: 72px 48px;
+text-align: center;
+}
+
+.landing-eyebrow {
+font-size: 0.72rem;
+font-weight: 700;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: #C5A050;
+margin-bottom: 20px;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+}
+
+.landing-eyebrow::before,
+.landing-eyebrow::after {
+content: ‘’;
+display: block;
+width: 32px;
+height: 1px;
+background: #C5A050;
+}
+
+.landing h1 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(2.2rem, 4vw, 3.2rem);
+font-weight: 900;
+line-height: 1.1;
+letter-spacing: -0.02em;
+margin-bottom: 20px;
+color: #0A1628;
+}
+
+.landing h1 em {
+font-style: normal;
+color: #C5A050;
+}
+
+.landing-sub {
+font-size: 1.05rem;
+color: #555555;
+line-height: 1.75;
+font-weight: 300;
+max-width: 560px;
+margin: 0 auto 56px;
+}
+
+.speed-cards {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 16px;
+margin-bottom: 40px;
+}
+
+.speed-select-card {
+background: #FFFFFF;
+border: 1.5px solid #E8E4DC;
+border-radius: 8px;
+padding: 28px 24px 48px;
+cursor: pointer;
+transition: all 0.22s;
+text-align: left;
+position: relative;
+overflow: hidden;
+box-shadow: 0 2px 8px rgba(10,22,40,0.06);
+}
+
+.speed-select-card::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 4px;
+border-radius: 8px 8px 0 0;
+}
+
+.speed-select-card.s1::before { background: var(–green); }
+.speed-select-card.s2::before { background: var(–orange); }
+.speed-select-card.s3::before { background: var(–purple); }
+.speed-select-card.s4::before { background: var(–gold); }
+
+.speed-select-card:hover {
+transform: translateY(-3px);
+border-color: #C5A050;
+box-shadow: 0 8px 24px rgba(10,22,40,0.12);
+}
+
+.card-speed-num {
+font-size: 0.68rem;
+font-weight: 700;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+margin-bottom: 8px;
+}
+
+.speed-select-card.s1 .card-speed-num { color: var(–green); }
+.speed-select-card.s2 .card-speed-num { color: var(–orange); }
+.speed-select-card.s3 .card-speed-num { color: var(–purple); }
+.speed-select-card.s4 .card-speed-num { color: var(–gold); }
+
+.card-speed-name {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.4rem;
+font-weight: 700;
+margin-bottom: 8px;
+line-height: 1.1;
+color: #0A1628;
+}
+
+.card-speed-q {
+font-size: 0.88rem;
+color: #444444;
+line-height: 1.55;
+font-style: italic;
+margin-bottom: 16px;
+}
+
+.card-speed-desc {
+font-size: 0.8rem;
+color: #888888;
+line-height: 1.55;
+}
+
+.card-arrow {
+position: absolute;
+bottom: 18px;
+right: 22px;
+font-size: 1.1rem;
+color: #CCCCCC;
+transition: all 0.2s;
+}
+
+.speed-select-card:hover .card-arrow { color: #C5A050; transform: translateX(4px); }
+
+.landing-note {
+font-size: 0.8rem;
+color: #AAAAAA;
+font-style: italic;
+}
+
+/* ── QUIZ ── */
+.quiz-screen {
+max-width: 720px;
+margin: 0 auto;
+padding: 56px 48px;
+}
+
+.quiz-header { margin-bottom: 40px; }
+
+.quiz-speed-badge {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+padding: 5px 14px;
+border-radius: 20px;
+font-size: 0.7rem;
+font-weight: 700;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+margin-bottom: 16px;
+}
+
+.quiz-speed-badge.s1 { background: rgba(45,106,79,0.1); color: var(–green); border: 1px solid rgba(45,106,79,0.3); }
+.quiz-speed-badge.s2 { background: rgba(224,123,57,0.1); color: var(–orange); border: 1px solid rgba(224,123,57,0.3); }
+.quiz-speed-badge.s3 { background: rgba(108,52,131,0.1); color: var(–purple); border: 1px solid rgba(108,52,131,0.3); }
+.quiz-speed-badge.s4 { background: rgba(197,160,80,0.12); color: #8B6914; border: 1px solid rgba(197,160,80,0.4); }
+
+.quiz-header h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(1.4rem, 3vw, 2rem);
+font-weight: 700;
+line-height: 1.2;
+margin-bottom: 10px;
+color: #0A1628;
+}
+
+.quiz-header p {
+font-size: 0.9rem;
+color: #777777;
+line-height: 1.6;
+}
+
+/* Progress */
+.progress-bar {
+height: 4px;
+background: #F0EDE6;
+border-radius: 2px;
+margin-bottom: 40px;
+overflow: hidden;
+}
+
+.progress-fill {
+height: 100%;
+border-radius: 2px;
+transition: width 0.4s ease;
+background: #C5A050;
+}
+
+.progress-label {
+font-size: 0.72rem;
+color: #AAAAAA;
+margin-bottom: 8px;
+text-align: right;
+font-weight: 500;
+}
+
+/* Question */
+.question-block { display: none; }
+.question-block.active { display: block; animation: fadeUp 0.3s ease; }
+
+.question-num {
+font-size: 0.68rem;
+font-weight: 700;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: #C5A050;
+margin-bottom: 12px;
+}
+
+.question-text {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+font-weight: 700;
+line-height: 1.35;
+margin-bottom: 32px;
+color: #0A1628;
+}
+
+.answer-options {
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+.answer-btn {
+background: #FFFFFF;
+border: 1.5px solid #E8E4DC;
+border-radius: 6px;
+padding: 16px 20px;
+color: #0A1628;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 0.95rem;
+font-weight: 400;
+cursor: pointer;
+text-align: left;
+transition: all 0.18s;
+display: flex;
+align-items: center;
+gap: 14px;
+touch-action: manipulation;
+-webkit-tap-highlight-color: transparent;
+pointer-events: auto;
+width: 100%;
+box-shadow: 0 1px 4px rgba(10,22,40,0.05);
+}
+
+.answer-btn * { pointer-events: none; }
+
+.answer-btn:hover {
+border-color: #C5A050;
+background: #FDF6E8;
+box-shadow: 0 3px 12px rgba(10,22,40,0.1);
+}
+
+.answer-btn.selected {
+border-color: #C5A050;
+background: #FDF6E8;
+box-shadow: 0 3px 12px rgba(197,160,80,0.2);
+}
+
+.answer-score {
+width: 30px;
+height: 30px;
+border-radius: 50%;
+background: #F0EDE6;
+border: 1.5px solid #DDD9D0;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 0.8rem;
+font-weight: 700;
+color: #888888;
+flex-shrink: 0;
+transition: all 0.18s;
+}
+
+.answer-btn.selected .answer-score {
+background: #C5A050;
+border-color: #C5A050;
+color: #FFFFFF;
+}
+
+.quiz-nav {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-top: 36px;
+padding-top: 24px;
+border-top: 1px solid #F0EDE6;
+}
+
+.btn-next {
+background: #C5A050;
+color: #FFFFFF;
+border: none;
+padding: 14px 32px;
+border-radius: 4px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 0.95rem;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.2s;
+letter-spacing: 0.03em;
+box-shadow: 0 2px 8px rgba(197,160,80,0.3);
+}
+
+.btn-next:hover { background: #D4B470; }
+.btn-next:disabled { opacity: 0.35; cursor: not-allowed; box-shadow: none; }
+
+.btn-prev {
+background: transparent;
+border: 1.5px solid #E8E4DC;
+color: #888888;
+padding: 14px 22px;
+border-radius: 4px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 0.9rem;
+cursor: pointer;
+transition: all 0.2s;
+}
+
+.btn-prev:hover { border-color: #0A1628; color: #0A1628; }
+
+/* ── EMAIL CAPTURE ── */
+.email-screen {
+max-width: 520px;
+margin: 0 auto;
+padding: 72px 48px;
+text-align: center;
+}
+
+.score-reveal-box {
+background: #FDF6E8;
+border: 1.5px solid #E8D9B0;
+border-radius: 8px;
+padding: 36px;
+margin-bottom: 36px;
+}
+
+.score-teaser {
+font-family: ‘Playfair Display’, serif;
+font-size: 1rem;
+color: #888888;
+margin-bottom: 10px;
+}
+
+.score-blur {
+font-family: ‘Playfair Display’, serif;
+font-size: 3rem;
+font-weight: 900;
+color: #C5A050;
+filter: blur(8px);
+user-select: none;
+margin-bottom: 10px;
+letter-spacing: 0.1em;
+}
+
+.score-unlock {
+font-size: 0.82rem;
+color: #AAAAAA;
+font-style: italic;
+}
+
+.email-screen h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.7rem;
+font-weight: 700;
+margin-bottom: 12px;
+color: #0A1628;
+}
+
+.email-screen p {
+font-size: 0.9rem;
+color: #666666;
+line-height: 1.7;
+margin-bottom: 28px;
+}
+
+.email-form {
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+.email-form input {
+background: #FFFFFF;
+border: 1.5px solid #E8E4DC;
+border-radius: 4px;
+padding: 14px 16px;
+color: #0A1628;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 0.95rem;
+outline: none;
+transition: border-color 0.2s;
+width: 100%;
+}
+
+.email-form input::placeholder { color: #BBBBBB; }
+.email-form input:focus { border-color: #C5A050; }
+
+.btn-reveal {
+background: #0A1628;
+color: #FFFFFF;
+border: none;
+padding: 16px;
+border-radius: 4px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 1rem;
+font-weight: 600;
+cursor: pointer;
+transition: background 0.2s;
+margin-top: 6px;
+}
+
+.btn-reveal:hover { background: #112240; }
+
+.email-note {
+font-size: 0.72rem;
+color: #BBBBBB;
+margin-top: 12px;
+font-style: italic;
+}
+
+/* ── RESULTS ── */
+.results-screen {
+max-width: 720px;
+margin: 0 auto;
+padding: 56px 48px;
+}
+
+.result-header {
+text-align: center;
+margin-bottom: 44px;
+}
+
+.result-score-display {
+width: 110px;
+height: 110px;
+border-radius: 50%;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin: 0 auto 20px;
+border: 3px solid #C5A050;
+background: #FDF6E8;
+}
+
+.result-score-num {
+font-family: ‘Playfair Display’, serif;
+font-size: 2.6rem;
+font-weight: 900;
+color: #C5A050;
+line-height: 1;
+}
+
+.result-score-den {
+font-size: 0.75rem;
+color: #AAAAAA;
+}
+
+.result-header h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.8rem;
+font-weight: 700;
+margin-bottom: 12px;
+color: #0A1628;
+}
+
+.result-tier-badge {
+display: inline-block;
+padding: 6px 18px;
+border-radius: 20px;
+font-size: 0.76rem;
+font-weight: 700;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+margin-bottom: 18px;
+}
+
+.result-desc {
+font-size: 0.95rem;
+color: #555555;
+line-height: 1.75;
+font-weight: 300;
+max-width: 500px;
+margin: 0 auto;
+}
+
+.result-breakdown {
+background: #F8F7F4;
+border: 1px solid #E8E4DC;
+border-radius: 6px;
+padding: 28px;
+margin-bottom: 24px;
+}
+
+.result-breakdown h3 {
+font-family: ‘Playfair Display’, serif;
+font-size: 1rem;
+margin-bottom: 18px;
+color: #888888;
+font-weight: 400;
+}
+
+.breakdown-item {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 9px 0;
+border-bottom: 1px solid #F0EDE6;
+gap: 16px;
+}
+
+.breakdown-item:last-child { border-bottom: none; }
+
+.breakdown-q {
+font-size: 0.82rem;
+color: #555555;
+flex: 1;
+line-height: 1.4;
+}
+
+.breakdown-score {
+font-size: 0.82rem;
+font-weight: 600;
+flex-shrink: 0;
+width: 70px;
+text-align: right;
+}
+
+.breakdown-score.score-0 { color: #CCCCCC; }
+.breakdown-score.score-1 { color: var(–orange); }
+.breakdown-score.score-2 { color: var(–green); }
+
+.result-cta {
+background: #0A1628;
+border-radius: 8px;
+padding: 32px;
+text-align: center;
+margin-bottom: 20px;
+}
+
+.result-cta h3 {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.3rem;
+margin-bottom: 10px;
+color: #FFFFFF;
+}
+
+.result-cta p {
+font-size: 0.88rem;
+color: rgba(255,255,255,0.6);
+line-height: 1.65;
+margin-bottom: 22px;
+}
+
+.btn-book {
+display: inline-block;
+background: #C5A050;
+color: #FFFFFF;
+padding: 13px 28px;
+border-radius: 4px;
+font-weight: 600;
+font-size: 0.9rem;
+text-decoration: none;
+transition: background 0.2s;
+}
+
+.btn-book:hover { background: #D4B470; }
+
+.btn-restart {
+display: block;
+text-align: center;
+margin-top: 18px;
+font-size: 0.82rem;
+color: #AAAAAA;
+cursor: pointer;
+transition: color 0.2s;
+text-decoration: underline;
+background: none;
+border: none;
+font-family: ‘DM Sans’, sans-serif;
+width: 100%;
+}
+
+.btn-restart:hover { color: #0A1628; }
+
+/* ── FOOTER ── */
+footer {
+text-align: center;
+padding: 28px 48px;
+border-top: 1px solid #E8E4DC;
+margin-top: 40px;
+background: #F8F7F4;
+}
+
+.footer-manifesto {
+font-family: ‘Playfair Display’, serif;
+font-size: 0.88rem;
+color: #AAAAAA;
+font-style: italic;
+margin-bottom: 6px;
+}
+
+.footer-contact {
+font-size: 0.76rem;
+color: #BBBBBB;
+}
+
+.footer-contact a { color: #C5A050; text-decoration: none; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(14px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+nav { padding: 14px 20px; }
+.landing, .quiz-screen, .email-screen, .results-screen { padding: 36px 20px; }
+.speed-cards { grid-template-columns: 1fr; }
+.quiz-nav { flex-direction: column-reverse; gap: 10px; }
+.btn-next, .btn-prev { width: 100%; text-align: center; }
+}
+</style>
+
+</head>
+<body>
+<nav>
+  <a href="https://contracks.global" class="nav-logo">CONTRACKS<span>.</span>GLOBAL</a>
+  <a href="https://contracks.global" class="nav-back">← Back to site</a>
+</nav>
+
+<!-- SCREEN 1: LANDING -->
+
+<div id="screen-landing" class="screen active">
+  <div class="landing">
+    <div class="landing-eyebrow">Free Assessment</div>
+    <h1>Find out which speed<br>you're <em>at.</em></h1>
+    <p class="landing-sub">Eight questions. Instant score. A written report showing exactly where you are — and what to do next. Choose the scorecard that fits your situation.</p>
+
+```
+<div class="speed-cards">
+  <div class="speed-select-card s1" onclick="startScorecard(0)">
+    <div class="card-speed-num">Speed 1</div>
+    <div class="card-speed-name">START</div>
+    <div class="card-speed-q">"Is your venture commercially ready to launch?"</div>
+    <div class="card-speed-desc">For entrepreneurs, founders and companies with a new idea or direction. New ventures. New markets. Diaspora entrepreneurs.</div>
+    <span class="card-arrow">→</span>
+  </div>
+  <div class="speed-select-card s2" onclick="startScorecard(1)">
+    <div class="card-speed-num">Speed 2</div>
+    <div class="card-speed-name">RESOLVE</div>
+    <div class="card-speed-q">"Is your commercial structure costing you money?"</div>
+    <div class="card-speed-desc">For contractors, developers and project-driven companies. Something is broken — money leaking, claims stalled, procurement chaos.</div>
+    <span class="card-arrow">→</span>
+  </div>
+  <div class="speed-select-card s3" onclick="startScorecard(2)">
+    <div class="card-speed-num">Speed 3</div>
+    <div class="card-speed-name">RESHAPE</div>
+    <div class="card-speed-q">"Is your company ready for digital transformation?"</div>
+    <div class="card-speed-desc">For construction, fit-out and PM companies. Operations inefficiency. Ready to implement AI agents and digital workflows.</div>
+    <span class="card-arrow">→</span>
+  </div>
+  <div class="speed-select-card s4" onclick="startScorecard(3)">
+    <div class="card-speed-num">Speed 4</div>
+    <div class="card-speed-name">GROW</div>
+    <div class="card-speed-q">"Is your company ready to scale?"</div>
+    <div class="card-speed-desc">For companies expanding to new markets — Africa or Europe. Commercial side can't keep pace with growth ambitions.</div>
+    <span class="card-arrow">→</span>
+  </div>
+</div>
+<p class="landing-note">Free · 8 questions · 3 minutes · No commitment</p>
+```
+
+  </div>
+</div>
+
+<!-- SCREEN 2: QUIZ -->
+
+<div id="screen-quiz" class="screen">
+  <div class="quiz-screen">
+    <div class="quiz-header">
+      <div id="quiz-badge" class="quiz-speed-badge"></div>
+      <h2 id="quiz-title"></h2>
+      <p id="quiz-subtitle"></p>
+    </div>
+    <div class="progress-label"><span id="progress-text">Question 1 of 8</span></div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill" style="width:12.5%"></div>
+    </div>
+    <div id="questions-container"></div>
+    <div class="quiz-nav">
+      <button class="btn-prev" id="btn-prev" onclick="prevQuestion()">← Back</button>
+      <button class="btn-next" id="btn-next" onclick="nextQuestion()" disabled>Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 3: EMAIL CAPTURE -->
+
+<div id="screen-email" class="screen">
+  <div class="email-screen">
+    <div class="score-reveal-box">
+      <div class="score-teaser">Your score is ready</div>
+      <div class="score-blur" id="score-blur">••/16</div>
+      <div class="score-unlock">Enter your email to unlock your full report</div>
+    </div>
+    <h2>Your personalised report is waiting.</h2>
+    <p>We'll send your score, what it means for your business, and the specific next steps Contracks recommends — directly to your inbox.</p>
+    <form class="email-form" onsubmit="submitEmail(event)">
+      <input type="text" id="email-name" placeholder="Your name" required>
+      <input type="email" id="email-address" placeholder="Your email address" required>
+      <input type="text" id="email-company" placeholder="Company / Venture (optional)">
+      <button type="submit" class="btn-reveal">Reveal my score →</button>
+    </form>
+    <p class="email-note">We will send you your report and follow up once. No newsletters unless you ask.</p>
+  </div>
+</div>
+
+<!-- SCREEN 4: RESULTS -->
+
+<div id="screen-results" class="screen">
+  <div class="results-screen">
+    <div class="result-header">
+      <div class="result-score-display">
+        <div class="result-score-num" id="result-score-num">0</div>
+        <div class="result-score-den">out of 16</div>
+      </div>
+      <div class="result-tier-badge" id="result-tier-badge"></div>
+      <h2 id="result-heading"></h2>
+      <p class="result-desc" id="result-desc"></p>
+    </div>
+
+```
+<div class="result-breakdown">
+  <h3>Your answers at a glance</h3>
+  <div id="breakdown-list"></div>
+</div>
+
+<div class="result-cta" id="result-cta-box">
+  <h3 id="result-cta-title"></h3>
+  <p id="result-cta-desc"></p>
+  <a href="mailto:spoppeleer@contracks.global" class="btn-book" id="result-cta-btn">Book a discovery call →</a>
+</div>
+
+<button class="btn-restart" onclick="restart()">← Start a different scorecard</button>
+```
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-manifesto">Better contracts. Better business. Better society.</div>
+  <div class="footer-contact">
+    <a href="mailto:spoppeleer@contracks.global">spoppeleer@contracks.global</a> · +32 466 446 290
+  </div>
+</footer>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────
+
+const scorecards = [
+  {
+    id: 's1',
+    speed: 'Speed 1',
+    name: 'START',
+    title: 'Is your venture commercially ready to launch?',
+    subtitle: 'Rate yourself honestly. 0 = not yet, 1 = in progress, 2 = done.',
+    questions: [
+      'Do you have a clearly defined product or service you want to bring to market?',
+      'Have you validated demand — do real people want what you\'re building?',
+      'Do you have a commercial model — do you know how it makes money?',
+      'Have you identified your key suppliers or production partners?',
+      'Do you understand the legal and regulatory requirements in your target market?',
+      'Do you have a financing plan or access to the capital you need?',
+      'Have you structured any contracts or commercial agreements yet?',
+      'Do you have a clear operational plan for your first 90 days of trading?'
+    ],
+    tiers: [
+      {
+        range: [0, 7],
+        label: 'Foundations needed',
+        color: '#6C3483',
+        heading: 'The foundations need building first.',
+        desc: 'You have an idea — possibly a strong one. But the commercial structure to make it real isn\'t there yet. That\'s not a problem. It\'s exactly what Speed 1 — START is designed for. Venture Game takes you from here to investable in 90 days.',
+        ctaTitle: 'Start with the Venture Diagnostic',
+        ctaDesc: 'A structured half-day session to assess the viability of your idea, identify the key risks, and map the path forward. The starting point for most Speed 1 journeys.',
+        ctaBtn: 'Book your Venture Diagnostic →'
+      },
+      {
+        range: [8, 12],
+        label: 'Ready with gaps',
+        color: '#E07B39',
+        heading: 'You\'re closer than you think — but the gaps matter.',
+        desc: 'You have real foundations in place. But there are gaps — commercial, legal, procurement or operational — that will slow you down or cost you money if not addressed before launch. Venture Game Tier 2 is the right level for you.',
+        ctaTitle: 'Venture Game — Coached Programme',
+        ctaDesc: 'Course plus group coaching and 1-1 sessions. Your specific venture reviewed. The gaps closed before they become problems.',
+        ctaBtn: 'Book a discovery call →'
+      },
+      {
+        range: [13, 16],
+        label: 'Ready to move',
+        color: '#2D6A4F',
+        heading: 'You\'re ready. Let\'s move fast.',
+        desc: 'Your foundations are strong. The commercial model, procurement, legal and operational frameworks are in place. What you need now is execution support, financing introductions, and a commercial partner who has done this before.',
+        ctaTitle: 'Full Journey — Tier 3',
+        ctaDesc: 'Serguei Poppeleer personally. Business plan built. Investor readiness. Financing introductions. The full Contracks journey from here to funded.',
+        ctaBtn: 'Book a discovery call →'
+      }
+    ]
+  },
+  {
+    id: 's2',
+    speed: 'Speed 2',
+    name: 'RESOLVE',
+    title: 'Is your commercial structure costing you money?',
+    subtitle: 'Rate yourself honestly. 0 = not yet, 1 = in progress, 2 = done.',
+    questions: [
+      'Do you track all variations and claims on every active project?',
+      'Can you quantify the gap between what you invoiced and what you could have invoiced?',
+      'Are your subcontract terms back-to-back with your main contract obligations?',
+      'Do you have a documented procurement policy applied consistently across projects?',
+      'Are your commercial risks reviewed formally at each project milestone?',
+      'Do you have a clear escalation process for commercial disputes before they become claims?',
+      'Have you audited your subcontractor and supplier base against market benchmarks in the last 12 months?',
+      'Does your project team know which contract clauses are most commercially critical?'
+    ],
+    tiers: [
+      {
+        range: [0, 7],
+        label: 'Significant exposure',
+        color: '#C0392B',
+        heading: 'There is money leaving your business that you may not see.',
+        desc: 'The gaps in your commercial structure are real — and they compound over time. Variations untracked, subcontract terms misaligned, procurement unaudited. The Contract Diagnostic will show you exactly where and how much.',
+        ctaTitle: 'Start with the Contract Diagnostic',
+        ctaDesc: 'Fixed price. Five working days. Written risk register, identified exposures, prioritised recommendations. The starting point for most Resolve engagements.',
+        ctaBtn: 'Book your Contract Diagnostic →'
+      },
+      {
+        range: [8, 12],
+        label: 'Manageable with focus',
+        color: '#E07B39',
+        heading: 'The framework exists — but it isn\'t working consistently.',
+        desc: 'You have processes in place but they\'re not being applied consistently across projects. The exposure is manageable but growing. A Commercial Reset will lock the framework and stop the leakage.',
+        ctaTitle: 'Commercial Reset',
+        ctaDesc: 'An embedded mandate to fix the commercial infrastructure — contracts, procurement, governance. Leaves a structure that runs without us.',
+        ctaBtn: 'Book a discovery call →'
+      },
+      {
+        range: [13, 16],
+        label: 'Well structured',
+        color: '#2D6A4F',
+        heading: 'Your commercial structure is solid. Let\'s protect it as you scale.',
+        desc: 'You have strong commercial foundations. The risk is that growth will outpace the structure — more projects, more subcontractors, more complexity. A Commercial Director Retainer keeps the discipline in place as you grow.',
+        ctaTitle: 'Commercial Director Retainer',
+        ctaDesc: 'Monthly oversight. Available for key calls, contract reviews, flagging risks. Your commercial intelligence on demand.',
+        ctaBtn: 'Book a discovery call →'
+      }
+    ]
+  },
+  {
+    id: 's3',
+    speed: 'Speed 3',
+    name: 'RESHAPE',
+    title: 'Is your company ready for digital transformation?',
+    subtitle: 'Rate yourself honestly. 0 = not yet, 1 = in progress, 2 = done.',
+    questions: [
+      'Can any team member find any contract, spec or technical document in under 2 minutes?',
+      'Do you have a single source of truth for each active project — decisions, variations, obligations?',
+      'Are your procedures and quality standards accessible to field teams in real time?',
+      'Can you verify developer or client-provided information digitally before committing?',
+      'Do you track who owes what and by when across all active projects automatically?',
+      'If your operations manager left tomorrow, could the team function at full capacity within a week?',
+      'Do you have a defined process for capturing project knowledge so it isn\'t lost when people leave?',
+      'Have you identified the three biggest administrative bottlenecks that could be automated?'
+    ],
+    tiers: [
+      {
+        range: [0, 7],
+        label: 'Significant opportunity',
+        color: '#6C3483',
+        heading: 'There is significant time and margin being lost to avoidable admin.',
+        desc: 'The data exists — in emails, shared drives, people\'s heads. The problem is it isn\'t working for the team. An Operational Intelligence Diagnostic will map exactly where the time and money are leaking — and what an agent-based approach would recover.',
+        ctaTitle: 'Start with the Operational Intelligence Diagnostic',
+        ctaDesc: 'Map your data flows. Find where time and money leak. Written roadmap for agent implementation. The starting point for every Reshape engagement.',
+        ctaBtn: 'Book your Diagnostic →'
+      },
+      {
+        range: [8, 12],
+        label: 'Ready to transform',
+        color: '#E07B39',
+        heading: 'The foundations are there. Time to make them work smarter.',
+        desc: 'You have some structure in place but it isn\'t connected. Information is still siloed. Decisions are still made on incomplete data. Agent implementation will change that — without a six-figure IT project.',
+        ctaTitle: 'Agent Implementation',
+        ctaDesc: 'Build and deploy your first operational agent — Contract, Operations or Assessment. Team trained. Simple tools. Live within weeks.',
+        ctaBtn: 'Book a discovery call →'
+      },
+      {
+        range: [13, 16],
+        label: 'Digitally mature',
+        color: '#2D6A4F',
+        heading: 'You\'re ahead of the industry. Let\'s take it further.',
+        desc: 'Your digital foundations are strong. The next step is connecting them — contract intelligence, operational data, and AI-assisted decision making working as one system. The Reshape Retainer keeps this evolving.',
+        ctaTitle: 'Reshape Retainer',
+        ctaDesc: 'Ongoing digital operations support. Agent optimisation, workflow refinement, team coaching. Monthly mandate.',
+        ctaBtn: 'Book a discovery call →'
+      }
+    ]
+  },
+  {
+    id: 's4',
+    speed: 'Speed 4',
+    name: 'GROW',
+    title: 'Is your company ready to scale?',
+    subtitle: 'Rate yourself honestly. 0 = not yet, 1 = in progress, 2 = done.',
+    questions: [
+      'Does your commercial structure support doubling revenue without doubling headcount?',
+      'Do you have the contracts and procurement frameworks ready for a new market entry?',
+      'Is your operational model documented well enough to be replicated in a new location?',
+      'Do you have the financing relationships to support your growth ambitions?',
+      'Have you assessed the legal and regulatory requirements of your target market?',
+      'Do you have local partner or distributor agreements structured and in place?',
+      'Can your current team manage twice the subcontractor base commercially?',
+      'Do you have a commercial director or equivalent providing oversight across all growth activity?'
+    ],
+    tiers: [
+      {
+        range: [0, 7],
+        label: 'Not yet ready to scale',
+        color: '#C0392B',
+        heading: 'Scaling now would amplify the gaps, not the strengths.',
+        desc: 'The ambition is right but the commercial structure isn\'t ready for scale. Growth will expose every weakness faster than it creates value. The Market Entry Pack builds the framework before you commit capital.',
+        ctaTitle: 'Africa or Europe Entry Pack',
+        ctaDesc: 'Commercial, legal and operational framework for entering a specific market. Local partner structures, regulatory mapping, procurement checklist. Built before you commit.',
+        ctaBtn: 'Book a discovery call →'
+      },
+      {
+        range: [8, 12],
+        label: 'Ready with support',
+        color: '#E07B39',
+        heading: 'You can scale — with the right commercial partner alongside you.',
+        desc: 'The foundations are solid but the commercial capacity isn\'t there yet to manage scale without risk. A Fractional COO or Commercial Director Retainer gives you senior commercial leadership without the overhead.',
+        ctaTitle: 'Commercial Director Retainer',
+        ctaDesc: 'Monthly commercial oversight for companies growing faster than their commercial structure. Available for key calls, deal reviews, risk flagging. 3-month minimum.',
+        ctaBtn: 'Book a discovery call →'
+      },
+      {
+        range: [13, 16],
+        label: 'Ready to move',
+        color: '#2D6A4F',
+        heading: 'The structure is ready. The question is which market and how fast.',
+        desc: 'Your commercial foundations are built for scale. You have the frameworks, the partnerships and the financing relationships to move. What you need is a commercial partner with the network and experience to execute.',
+        ctaTitle: 'Fractional COO',
+        ctaDesc: 'Two days a week embedded. Month 1: diagnostic and quick wins. Months 2-3: systems independent, team trained. The most powerful way to scale without losing commercial control.',
+        ctaBtn: 'Book a discovery call →'
+      }
+    ]
+  }
+];
+
+// ── STATE ─────────────────────────────────────────────────────────────────
+let currentScorecard = 0;
+let currentQuestion = 0;
+let answers = new Array(8).fill(null);
+let userName = '';
+let userEmail = '';
+
+// ── FUNCTIONS ─────────────────────────────────────────────────────────────
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function startScorecard(index) {
+  currentScorecard = index;
+  currentQuestion = 0;
+  answers = new Array(8).fill(null);
+  const sc = scorecards[index];
+
+  // Set header
+  const badge = document.getElementById('quiz-badge');
+  badge.textContent = sc.speed + ' — ' + sc.name;
+  badge.className = 'quiz-speed-badge ' + sc.id;
+
+  document.getElementById('quiz-title').textContent = sc.title;
+  document.getElementById('quiz-subtitle').textContent = sc.subtitle;
+
+  // Progress bar class
+  document.querySelector('.progress-bar').className = 'progress-bar ' + sc.id;
+
+  // Build questions
+  buildQuestions(sc);
+  showQuestion(0);
+  showScreen('quiz');
+}
+
+function buildQuestions(sc) {
+  const container = document.getElementById('questions-container');
+  container.innerHTML = '';
+  sc.questions.forEach((q, qi) => {
+    const block = document.createElement('div');
+    block.className = 'question-block' + (qi === 0 ? ' active' : '');
+    block.id = 'q-' + qi;
+    block.innerHTML = `
+      <div class="question-num">Question ${qi + 1} of 8</div>
+      <div class="question-text">${q}</div>
+      <div class="answer-options">
+        ${[
+          { score: 0, label: 'Not yet — this isn\'t in place' },
+          { score: 1, label: 'In progress — partially done' },
+          { score: 2, label: 'Done — this is solid' }
+        ].map(opt => `
+          <button class="answer-btn" onclick="selectAnswer(${qi}, ${opt.score}, event.target)">
+            <span class="answer-score">${opt.score}</span>
+            <span>${opt.label}</span>
+          </button>
+        `).join('')}
+      </div>
+    `;
+    container.appendChild(block);
+  });
+}
+
+function showQuestion(index) {
+  document.querySelectorAll('.question-block').forEach(b => b.classList.remove('active'));
+  document.getElementById('q-' + index).classList.add('active');
+
+  const pct = ((index + 1) / 8) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = 'Question ' + (index + 1) + ' of 8';
+
+  const btnNext = document.getElementById('btn-next');
+  const btnPrev = document.getElementById('btn-prev');
+
+  btnNext.disabled = answers[index] === null;
+  btnNext.textContent = index === 7 ? 'See my score →' : 'Continue →';
+  btnPrev.style.visibility = index === 0 ? 'hidden' : 'visible';
+
+  // Restore selected state
+  if (answers[index] !== null) {
+    const btns = document.querySelectorAll('#q-' + index + ' .answer-btn');
+    btns.forEach(b => {
+      const score = parseInt(b.querySelector('.answer-score').textContent);
+      if (score === answers[index]) b.classList.add('selected');
+    });
+  }
+}
+
+function selectAnswer(qi, score, btn) {
+  // Walk up to the actual answer-btn element in case tap landed on child
+  while (btn && !btn.classList.contains('answer-btn')) {
+    btn = btn.parentElement;
+  }
+  if (!btn) return;
+  answers[qi] = score;
+  const btns = btn.closest('.answer-options').querySelectorAll('.answer-btn');
+  btns.forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  document.getElementById('btn-next').disabled = false;
+}
+
+function nextQuestion() {
+  if (answers[currentQuestion] === null) return;
+  if (currentQuestion < 7) {
+    currentQuestion++;
+    showQuestion(currentQuestion);
+  } else {
+    // Go to email screen
+    const total = answers.reduce((a, b) => a + b, 0);
+    document.getElementById('score-blur').textContent = total + '/16';
+    showScreen('email');
+  }
+}
+
+function prevQuestion() {
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    showQuestion(currentQuestion);
+  }
+}
+
+function submitEmail(e) {
+  e.preventDefault();
+  userName = document.getElementById('email-name').value;
+  userEmail = document.getElementById('email-address').value;
+  const company = document.getElementById('email-company').value;
+
+  // Send email notification (mailto fallback)
+  const sc = scorecards[currentScorecard];
+  const total = answers.reduce((a, b) => a + b, 0);
+  const tier = sc.tiers.find(t => total >= t.range[0] && total <= t.range[1]);
+
+  // Build mailto
+  const subject = encodeURIComponent('Contracks Scorecard — ' + sc.name + ' — ' + userName);
+  const body = encodeURIComponent(
+    'Name: ' + userName + '\n' +
+    'Email: ' + userEmail + '\n' +
+    'Company: ' + (company || 'Not provided') + '\n' +
+    'Scorecard: ' + sc.speed + ' — ' + sc.name + '\n' +
+    'Score: ' + total + '/16\n' +
+    'Tier: ' + tier.label + '\n\n' +
+    'Answers:\n' +
+    sc.questions.map((q, i) => (i+1) + '. ' + q + ' — ' + answers[i] + '/2').join('\n')
+  );
+
+  // Open mailto in background
+  const link = document.createElement('a');
+  link.href = 'mailto:spoppeleer@contracks.global?subject=' + subject + '&body=' + body;
+  link.style.display = 'none';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+  showResults();
+}
+
+function showResults() {
+  const sc = scorecards[currentScorecard];
+  const total = answers.reduce((a, b) => a + b, 0);
+  const tier = sc.tiers.find(t => total >= t.range[0] && total <= t.range[1]);
+
+  // Score circle
+  document.getElementById('result-score-num').textContent = total;
+
+  // Tier badge
+  const badge = document.getElementById('result-tier-badge');
+  badge.textContent = tier.label;
+  badge.style.background = tier.color + '22';
+  badge.style.color = tier.color;
+  badge.style.border = '1px solid ' + tier.color + '55';
+  badge.style.borderRadius = '20px';
+  badge.style.padding = '8px 20px';
+  badge.style.fontSize = '0.8rem';
+  badge.style.fontWeight = '700';
+  badge.style.letterSpacing = '0.1em';
+  badge.style.textTransform = 'uppercase';
+
+  // Score circle border
+  document.querySelector('.result-score-display').style.borderColor = tier.color;
+  document.querySelector('.result-score-num').style.color = tier.color;
+
+  document.getElementById('result-heading').textContent = tier.heading;
+  document.getElementById('result-desc').textContent = tier.desc;
+
+  // Breakdown
+  const breakdownList = document.getElementById('breakdown-list');
+  breakdownList.innerHTML = sc.questions.map((q, i) => `
+    <div class="breakdown-item">
+      <div class="breakdown-q">${q}</div>
+      <div class="breakdown-score score-${answers[i]}">${answers[i] === 2 ? '✓ Done' : answers[i] === 1 ? '~ Progress' : '✗ Not yet'}</div>
+    </div>
+  `).join('');
+
+  // CTA
+  document.getElementById('result-cta-title').textContent = tier.ctaTitle;
+  document.getElementById('result-cta-desc').textContent = tier.ctaDesc;
+  const ctaBtn = document.getElementById('result-cta-btn');
+  ctaBtn.textContent = tier.ctaBtn;
+  ctaBtn.href = 'mailto:spoppeleer@contracks.global?subject=' + encodeURIComponent('Discovery call — ' + userName + ' — ' + sc.name + ' ' + total + '/16');
+
+  showScreen('results');
+}
+
+function restart() {
+  showScreen('landing');
+}
+</script>
+
+</body>
+</html>
