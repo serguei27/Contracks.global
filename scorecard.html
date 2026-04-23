@@ -837,7 +837,7 @@ nav { padding: 14px 20px; }
 <div class="result-cta" id="result-cta-box">
   <h3 id="result-cta-title"></h3>
   <p id="result-cta-desc"></p>
-  <a href="mailto:spoppeleer@contracks.global" class="btn-book" id="result-cta-btn">Book a discovery call →</a>
+  <a href="https://calendly.com/contracks_global" target="_blank" class="btn-book" id="result-cta-btn">Book a discovery call →</a>
 </div>
 
 <button class="btn-restart" onclick="restart()">← Start a different scorecard</button>
@@ -1255,7 +1255,7 @@ function showResults() {
   document.getElementById('result-cta-desc').textContent = tier.ctaDesc;
   const ctaBtn = document.getElementById('result-cta-btn');
   ctaBtn.textContent = tier.ctaBtn;
-  ctaBtn.href = 'mailto:spoppeleer@contracks.global?subject=' + encodeURIComponent('Discovery call — ' + userName + ' — ' + sc.name + ' ' + total + '/16');
+  ctaBtn.href = 'https://calendly.com/contracks_global';
 
   showScreen('results');
 }
