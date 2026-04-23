@@ -1263,6 +1263,18 @@ function showResults() {
 function restart() {
   showScreen('landing');
 }
+
+// Auto-start if speed parameter in URL
+window.addEventListener('DOMContentLoaded', function() {
+  const params = new URLSearchParams(window.location.search);
+  const speed = params.get('speed');
+  if (speed) {
+    const index = parseInt(speed) - 1;
+    if (index >= 0 && index <= 3) {
+      startScorecard(index);
+    }
+  }
+});
 </script>
 
 </body>
