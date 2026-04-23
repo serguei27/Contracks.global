@@ -6,6 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contracks Global — Find Your Speed</title>
 <meta name="description" content="Four free scorecards to find out which Contracks speed applies to you. 8 questions. Instant score. Written report.">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -659,6 +661,10 @@ font-weight: 600;
 font-size: 0.9rem;
 text-decoration: none;
 transition: background 0.2s;
+border: none;
+cursor: pointer;
+font-family: ‘DM Sans’, sans-serif;
+letter-spacing: 0.03em;
 }
 
 .btn-book:hover { background: #D4B470; }
@@ -723,8 +729,8 @@ nav { padding: 14px 20px; }
 </head>
 <body>
 <nav>
-  <a href="https://contracks.global" class="nav-logo">CONTRACKS<span>.</span>GLOBAL</a>
-  <a href="https://contracks.global" class="nav-back">← Back to site</a>
+  <a href="https://contracks-global.netlify.app" class="nav-logo">CONTRACKS<span>.</span>GLOBAL</a>
+  <a href="https://contracks-global.netlify.app" class="nav-back">← Back to site</a>
 </nav>
 
 <!-- SCREEN 1: LANDING -->
@@ -837,7 +843,7 @@ nav { padding: 14px 20px; }
 <div class="result-cta" id="result-cta-box">
   <h3 id="result-cta-title"></h3>
   <p id="result-cta-desc"></p>
-  <a href="https://calendly.com/contracks_global" target="_blank" class="btn-book" id="result-cta-btn">Book a discovery call →</a>
+  <button onclick="Calendly.initPopupWidget({url:'https://calendly.com/contracks_global'});return false;" class="btn-book" id="result-cta-btn">Book a discovery call →</button>
 </div>
 
 <button class="btn-restart" onclick="restart()">← Start a different scorecard</button>
@@ -1255,7 +1261,6 @@ function showResults() {
   document.getElementById('result-cta-desc').textContent = tier.ctaDesc;
   const ctaBtn = document.getElementById('result-cta-btn');
   ctaBtn.textContent = tier.ctaBtn;
-  ctaBtn.href = 'https://calendly.com/contracks_global';
 
   showScreen('results');
 }
