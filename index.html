@@ -451,14 +451,33 @@ transition: all 0.2s;
 .sc-card:hover { background: rgba(197,160,80,0.06); border-color: rgba(197,160,80,0.2); transform: translateX(4px); }
 
 .sc-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; }
-.sc-card.green .sc-icon { background: rgba(45,106,79,0.2); color: #2D6A4F; }
-.sc-card.orange .sc-icon { background: rgba(224,123,57,0.2); color: #E07B39; }
-.sc-card.purple .sc-icon { background: rgba(108,52,131,0.2); color: #6C3483; }
-.sc-card.gold .sc-icon { background: rgba(197,160,80,0.2); color: #C5A050; }
+.sc-card.green .sc-icon { background: rgba(45,106,79,0.3); color: #4CAF50; }
+.sc-card.orange .sc-icon { background: rgba(224,123,57,0.3); color: #FF9A5C; }
+.sc-card.purple .sc-icon { background: rgba(108,52,131,0.3); color: #B07FD4; }
+.sc-card.gold .sc-icon { background: rgba(197,160,80,0.3); color: #C5A050; }
 
 .sc-text { flex: 1; }
-.sc-title { font-size: 0.9rem; font-weight: 500; margin-bottom: 3px; }
-.sc-sub { font-size: 0.78rem; color: rgba(255,255,255,0.45); }
+.sc-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 3px; color: #FFFFFF !important; }
+.sc-sub { font-size: 0.78rem; color: rgba(255,255,255,0.5) !important; }
+
+.sc-card {
+background: rgba(255,255,255,0.06) !important;
+border: 1px solid rgba(255,255,255,0.12) !important;
+border-radius: 3px;
+padding: 18px 20px;
+display: flex;
+align-items: center;
+gap: 16px;
+transition: all 0.2s;
+text-decoration: none;
+color: #FFFFFF !important;
+}
+
+.sc-card:hover {
+background: rgba(197,160,80,0.1) !important;
+border-color: rgba(197,160,80,0.4) !important;
+transform: translateX(4px);
+}
 .scorecard-cta-box { text-align: center; }
 .scorecard-cta-box h2 { font-size: clamp(1.6rem, 2.5vw, 2.2rem); margin-bottom: 16px; }
 .scorecard-cta-box p { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 32px; }
@@ -673,7 +692,8 @@ gap: 20px;
 @media (max-width: 1024px) {
 .hero-right { display: none; }
 nav { padding: 16px 24px; }
-.nav-links { display: none; }
+.nav-links { display: flex; gap: 16px; }
+.nav-links li:not(:last-child):not(:nth-last-child(2)):not(:nth-last-child(3)) { display: none; }
 section { padding: 72px 24px; }
 .about-grid, .scorecard-inner, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
 .speeds-grid { grid-template-columns: 1fr 1fr; }
