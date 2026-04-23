@@ -399,7 +399,7 @@ overflow: hidden;
 }
 
 .speed-card { background: #112240 !important; padding: 40px 32px; transition: background 0.3s; position: relative; overflow: hidden; }
-.speed-card::before { content: ‘’; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.speed-card::before { content: ‘’; position: absolute; top: 0; left: 0; right: 0; height: 5px; z-index: 1; }
 .speed-card.s1::before { background: #2D6A4F; }
 .speed-card.s2a::before { background: #E07B39; }
 .speed-card.s2b::before { background: #6C3483; }
@@ -744,7 +744,7 @@ h1 { font-size: 2.4rem; }
     <p class="hero-sub">Contracts. Procurement. Operations. Digital intelligence. We build from the inside — not advise from a distance. Europe · Africa · Gulf.</p>
     <div class="hero-actions">
       <a href="/scorecard.html" class="btn-primary">Take the free scorecard</a>
-      <button class="btn-ghost" onclick="Calendly.initPopupWidget({url:'https://calendly.com/contracks_global'});return false;">Book a discovery call →</button>
+      <a href="https://calendly.com/contracks_global" target="_blank" class="btn-ghost">Book a discovery call →</a>
     </div>
     <div class="hero-metrics">
       <div class="metric"><span class="metric-num">25+</span><span class="metric-label">Years experience</span></div>
@@ -862,28 +862,28 @@ h1 { font-size: 2.4rem; }
 <section class="scorecard-section" id="scorecard">
   <div class="scorecard-inner">
     <div class="scorecard-cards">
-      <a href="/scorecard.html" class="sc-card green" style="text-decoration:none;">
+      <a href="/scorecard.html?speed=1" class="sc-card green" style="text-decoration:none;">
         <div class="sc-icon">S1</div>
         <div class="sc-text">
           <div class="sc-title">Is your venture commercially ready to launch?</div>
           <div class="sc-sub">Speed 1 — START scorecard</div>
         </div>
       </a>
-      <a href="/scorecard.html" class="sc-card orange" style="text-decoration:none;">
+      <a href="/scorecard.html?speed=2" class="sc-card orange" style="text-decoration:none;">
         <div class="sc-icon">S2</div>
         <div class="sc-text">
           <div class="sc-title">Is your commercial structure costing you money?</div>
           <div class="sc-sub">Speed 2 — RESOLVE scorecard</div>
         </div>
       </a>
-      <a href="/scorecard.html" class="sc-card purple" style="text-decoration:none;">
+      <a href="/scorecard.html?speed=3" class="sc-card purple" style="text-decoration:none;">
         <div class="sc-icon">S3</div>
         <div class="sc-text">
           <div class="sc-title">Is your company ready for digital transformation?</div>
           <div class="sc-sub">Speed 3 — RESHAPE scorecard</div>
         </div>
       </a>
-      <a href="/scorecard.html" class="sc-card gold" style="text-decoration:none;">
+      <a href="/scorecard.html?speed=4" class="sc-card gold" style="text-decoration:none;">
         <div class="sc-icon">S4</div>
         <div class="sc-text">
           <div class="sc-title">Is your company ready to scale?</div>
@@ -990,7 +990,7 @@ h1 { font-size: 2.4rem; }
         <button type="submit" class="form-submit">Send message →</button>
       </form>
       <div class="form-divider"><span>or</span></div>
-      <button class="btn-calendly" onclick="Calendly.initPopupWidget({url:'https://calendly.com/contracks_global'});return false;">📅 Book a discovery call →</button>
+      <a href="https://calendly.com/contracks_global" target="_blank" class="btn-calendly">📅 Book a discovery call →</a>
     </div>
   </div>
 </section>
