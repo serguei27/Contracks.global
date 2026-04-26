@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Quote Card</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap');
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+width: 1200px;
+height: 628px;
+overflow: hidden;
+font-family: ‘Source Sans 3’, sans-serif;
+background: #0a0f1e;
+}
+
+.card {
+width: 1200px;
+height: 628px;
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+background: linear-gradient(135deg, #0a0f1e 0%, #0d1a2e 50%, #0a1628 100%);
+}
+
+/* Grid lines - blueprint feel */
+.grid {
+position: absolute;
+inset: 0;
+background-image:
+linear-gradient(rgba(255,180,0,0.04) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,180,0,0.04) 1px, transparent 1px);
+background-size: 60px 60px;
+}
+
+/* Accent diagonal bar */
+.diagonal {
+position: absolute;
+top: -100px;
+right: -50px;
+width: 3px;
+height: 900px;
+background: linear-gradient(180deg, transparent, #ffb400 30%, #ffb400 70%, transparent);
+transform: rotate(-20deg);
+opacity: 0.6;
+}
+
+.diagonal-2 {
+position: absolute;
+top: -100px;
+right: 40px;
+width: 1px;
+height: 900px;
+background: linear-gradient(180deg, transparent, rgba(255,180,0,0.3) 30%, rgba(255,180,0,0.3) 70%, transparent);
+transform: rotate(-20deg);
+}
+
+/* Corner marks */
+.corner {
+position: absolute;
+width: 40px;
+height: 40px;
+}
+.corner-tl { top: 30px; left: 30px; border-top: 2px solid #ffb400; border-left: 2px solid #ffb400; }
+.corner-tr { top: 30px; right: 30px; border-top: 2px solid #ffb400; border-right: 2px solid #ffb400; }
+.corner-bl { bottom: 30px; left: 30px; border-bottom: 2px solid #ffb400; border-left: 2px solid #ffb400; }
+.corner-br { bottom: 30px; right: 30px; border-bottom: 2px solid #ffb400; border-right: 2px solid #ffb400; }
+
+/* Data nodes - subtle circuit feel */
+.node {
+position: absolute;
+border-radius: 50%;
+background: #ffb400;
+opacity: 0.15;
+}
+.node-1 { width: 200px; height: 200px; top: -60px; left: -60px; }
+.node-2 { width: 120px; height: 120px; bottom: 40px; right: 200px; }
+.node-3 { width: 60px; height: 60px; top: 120px; right: 180px; opacity: 0.08; }
+
+/* Main content */
+.content {
+position: relative;
+z-index: 10;
+max-width: 880px;
+padding: 0 80px;
+text-align: left;
+}
+
+.label {
+font-family: ‘Source Sans 3’, sans-serif;
+font-size: 11px;
+font-weight: 600;
+letter-spacing: 4px;
+text-transform: uppercase;
+color: #ffb400;
+margin-bottom: 28px;
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.label::before {
+content: ‘’;
+display: inline-block;
+width: 32px;
+height: 1px;
+background: #ffb400;
+}
+
+.quote {
+font-family: ‘Playfair Display’, serif;
+font-size: 48px;
+font-weight: 700;
+line-height: 1.15;
+color: #ffffff;
+margin-bottom: 40px;
+letter-spacing: -0.5px;
+}
+
+.quote em {
+color: #ffb400;
+font-style: normal;
+}
+
+.divider {
+width: 60px;
+height: 2px;
+background: #ffb400;
+margin-bottom: 28px;
+}
+
+.attribution {
+font-size: 14px;
+font-weight: 300;
+color: rgba(255,255,255,0.5);
+letter-spacing: 1px;
+}
+
+.attribution strong {
+color: rgba(255,255,255,0.85);
+font-weight: 600;
+}
+
+/* Right side - schematic dots */
+.schematic {
+position: absolute;
+right: 80px;
+top: 50%;
+transform: translateY(-50%);
+display: flex;
+flex-direction: column;
+gap: 16px;
+opacity: 0.4;
+}
+
+.dot-row {
+display: flex;
+gap: 12px;
+align-items: center;
+}
+
+.dot {
+width: 6px;
+height: 6px;
+border-radius: 50%;
+background: #ffb400;
+}
+
+.dot.active {
+width: 10px;
+height: 10px;
+background: #ffb400;
+opacity: 1;
+box-shadow: 0 0 8px #ffb400;
+}
+
+.dot.dim {
+background: rgba(255,180,0,0.3);
+}
+
+.hline {
+width: 20px;
+height: 1px;
+background: rgba(255,180,0,0.4);
+}
+</style>
+
+</head>
+<body>
+<div class="card">
+  <div class="grid"></div>
+  <div class="diagonal"></div>
+  <div class="diagonal-2"></div>
+
+  <div class="node node-1"></div>
+  <div class="node node-2"></div>
+  <div class="node node-3"></div>
+
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="content">
+    <div class="label">EPC Forum Berlin 2026</div>
+    <div class="quote">
+      AI enables the tools.<br>
+      <em>People</em> still make<br>
+      the decisions that matter.
+    </div>
+    <div class="divider"></div>
+    <div class="attribution">
+      <strong>Serguei Poppeleer</strong> &nbsp;·&nbsp; Founder, Contracks Global &nbsp;·&nbsp; 25 years in EPC across 30+ countries
+    </div>
+  </div>
+
+  <div class="schematic">
+    <div class="dot-row"><div class="dot dim"></div><div class="hline"></div><div class="dot"></div></div>
+    <div class="dot-row"><div class="dot active"></div><div class="hline"></div><div class="dot dim"></div></div>
+    <div class="dot-row"><div class="dot"></div><div class="hline"></div><div class="dot active"></div></div>
+    <div class="dot-row"><div class="dot dim"></div><div class="hline"></div><div class="dot"></div></div>
+    <div class="dot-row"><div class="dot"></div><div class="hline"></div><div class="dot dim"></div></div>
+  </div>
+</div>
+</body>
+</html>
