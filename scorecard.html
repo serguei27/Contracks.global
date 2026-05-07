@@ -569,68 +569,143 @@ function initDonut(scores,cols,centerText,centerColor){
 function generatePDF(){
   if(!window.jspdf)return;
   const {jsPDF}=window.jspdf;
-  const doc=new jsPDF();
+  const doc=new jsPDF({unit:'mm',format:'a4'});
   const s=SC[si],o=ov(),bd=band(o),bnd=s.bands[bd];
   const date=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
-  // Header bar
-  doc.setFillColor(10,22,40);doc.rect(0,0,210,42,'F');
-  doc.setTextColor(197,160,80);doc.setFont('helvetica','bold');doc.setFontSize(15);doc.text('CONTRACKS GLOBAL',20,16);
-  doc.setTextColor(255,255,255);doc.setFont('helvetica','normal');doc.setFontSize(10);doc.text('Commercial Diagnostic Report — '+s.speed+' '+s.name,20,26);
-  doc.setTextColor(140,140,140);doc.setFontSize(8);doc.text(date+' · '+uname+' · '+uemail,20,35);
-  // Score block
-  let y=56;
-  doc.setFont('helvetica','bold');doc.setFontSize(36);doc.setTextColor(197,160,80);doc.text(o+'%',20,y);
-  doc.setFont('helvetica','normal');doc.setFontSize(11);doc.setTextColor(100,100,100);doc.text('Overall · '+bnd.lbl,58,y-6);
-  doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(140,140,140);doc.text(s.hook,58,y+2);
-  y+=14;
-  doc.setDrawColor(220,216,210);doc.setLineWidth(0.3);doc.line(20,y,190,y);y+=10;
-  // Categories
-  doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(10,22,40);doc.text('SCORE BY CATEGORY',20,y);y+=8;
+  const W=210,M=15,UW=W-M*2;
+  const NAVY=[10,22,40],GOLD=[197,160,80],LIGHT=[248,247,244],RULE=[220,216,208];
   const catCols=[[45,106,79],[224,123,57],[108,52,131],[197,160,80]];
+  const perfCol=p=>p>=70?[45,106,79]:p>=40?[224,123,57]:[192,57,43];
+  const bandCol=bd==='high'?[45,106,79]:bd==='medium'?[224,123,57]:[192,57,43];
+
+  // ── HEADER ────────────────────────────────────────────────────────────────
+  doc.setFillColor(...NAVY);doc.rect(0,0,W,40,'F');
+  doc.setFillColor(...GOLD);doc.rect(0,40,W,1.5,'F');
+  doc.setTextColor(...GOLD);doc.setFont('helvetica','bold');doc.setFontSize(14);
+  doc.text('CONTRACKS',M,15);
+  doc.setTextColor(255,255,255);doc.setFont('helvetica','normal');doc.setFontSize(14);
+  doc.text('.GLOBAL',M+33,15);
+  doc.setTextColor(200,200,200);doc.setFontSize(8);
+  doc.text('Commercial Diagnostic Report  ·  '+s.speed+' — '+s.name,M,24);
+  doc.setTextColor(150,150,150);doc.setFontSize(7.5);
+  doc.text(uname+(uemail?' · '+uemail:''),W-M,15,{align:'right'});
+  doc.text(date,W-M,22,{align:'right'});
+
+  // ── SCORE + DONUT ─────────────────────────────────────────────────────────
+  let y=50;
+  const cnv=document.getElementById('donut-chart');
+  if(cnv){
+    const img=cnv.toDataURL('image/png');
+    const sz=64;
+    doc.addImage(img,'PNG',M,y,sz,sz);
+    // Score right of donut
+    const rx=M+sz+10;
+    doc.setFont('helvetica','bold');doc.setFontSize(40);doc.setTextColor(...GOLD);
+    doc.text(o+'%',rx,y+27);
+    doc.setFont('helvetica','bold');doc.setFontSize(6.5);doc.setTextColor(160,160,160);
+    doc.text('OVERALL SCORE',rx,y+34);
+    // Band badge
+    doc.setFillColor(...bandCol);doc.roundedRect(rx,y+38,58,7,1.5,1.5,'F');
+    doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(6.5);
+    doc.text(bnd.lbl.toUpperCase(),rx+29,y+43.2,{align:'center'});
+    // Hook question italic
+    doc.setFont('helvetica','italic');doc.setFontSize(8.5);doc.setTextColor(90,90,90);
+    const hook=doc.splitTextToSize(s.hook,UW-sz-14);
+    doc.text(hook,rx,y+54);
+    y+=sz+10;
+  }
+
+  // ── CATEGORY CARDS ────────────────────────────────────────────────────────
+  y+=4;
+  doc.setFillColor(...RULE);doc.rect(M,y,UW,0.4,'F');y+=6;
+  doc.setFont('helvetica','bold');doc.setFontSize(6);doc.setTextColor(160,160,160);
+  doc.text('SCORE BY CATEGORY',M,y);y+=5;
+  const cW=(UW-5)/2,cH=21;
   s.cats.forEach((cat,ci)=>{
-    const p=catS(ci),gc=p>=70?[45,106,79]:p>=40?[224,123,57]:[192,57,43];
-    doc.setFillColor(...gc);doc.rect(20,y-3.5,3,5,'F');
-    doc.setFont('helvetica','normal');doc.setFontSize(10);doc.setTextColor(60,60,60);doc.text(cat.name,26,y);
-    doc.setFont('helvetica','bold');doc.setTextColor(...gc);doc.text(p+'%',80,y);
-    // mini bar
-    doc.setFillColor(230,228,220);doc.rect(95,y-3.5,80,5,'F');
-    doc.setFillColor(...gc);doc.rect(95,y-3.5,80*p/100,5,'F');
-    y+=8;
+    const p=catS(ci),pc=perfCol(p),cc=catCols[ci];
+    const cx=M+(ci%2)*(cW+5),cy2=y+Math.floor(ci/2)*(cH+4);
+    doc.setFillColor(...LIGHT);doc.roundedRect(cx,cy2,cW,cH,1.5,1.5,'F');
+    doc.setDrawColor(...RULE);doc.setLineWidth(0.25);doc.roundedRect(cx,cy2,cW,cH,1.5,1.5,'S');
+    doc.setFillColor(...cc);doc.roundedRect(cx,cy2,cW,1.8,1.5,1.5,'F');doc.rect(cx,cy2+0.8,cW,1,'F');
+    doc.setFont('helvetica','bold');doc.setFontSize(5.5);doc.setTextColor(...cc);
+    doc.text(cat.name.toUpperCase(),cx+4,cy2+7);
+    doc.setFont('helvetica','bold');doc.setFontSize(16);doc.setTextColor(...pc);
+    doc.text(p+'%',cx+4,cy2+16);
+    doc.setFillColor(...RULE);doc.rect(cx+4,cy2+18.5,cW-8,1.5,'F');
+    doc.setFillColor(...pc);doc.rect(cx+4,cy2+18.5,(cW-8)*p/100,1.5,'F');
   });
-  y+=4;doc.setDrawColor(220,216,210);doc.line(20,y,190,y);y+=10;
-  // Diagnosis
-  doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(10,22,40);doc.text('X-RAY DIAGNOSIS',20,y);y+=8;
-  doc.setFont('helvetica','bold');doc.setFontSize(11);doc.setTextColor(10,22,40);
-  const hlines=doc.splitTextToSize(bnd.h,170);doc.text(hlines,20,y);y+=hlines.length*6+4;
-  doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(80,80,80);
-  const blines=doc.splitTextToSize(bnd.b,170);doc.text(blines,20,y);y+=blines.length*5+8;
-  // Key gaps
+  y+=2*(cH+4)+4;
+
+  // ── X-RAY DIAGNOSIS ───────────────────────────────────────────────────────
+  doc.setFillColor(...RULE);doc.rect(M,y,UW,0.4,'F');y+=7;
+  // Gold left accent bar
+  doc.setFillColor(...GOLD);doc.rect(M,y,2.5,38,'F');
+  doc.setFont('helvetica','bold');doc.setFontSize(6);doc.setTextColor(160,160,160);
+  doc.text('X-RAY DIAGNOSIS',M+6,y+5);
+  doc.setFont('helvetica','bold');doc.setFontSize(10.5);doc.setTextColor(...NAVY);
+  const hl=doc.splitTextToSize((uname?uname+', ':'')+bnd.h,UW-10);
+  doc.text(hl,M+6,y+12);
+  doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(70,70,70);
+  const bl=doc.splitTextToSize(bnd.b,UW-10);
+  doc.text(bl,M+6,y+12+hl.length*5.2+3);
+  y+=12+hl.length*5.2+3+bl.length*4.8+8;
+
+  // ── KEY GAPS ──────────────────────────────────────────────────────────────
   const allqs=s.cats.flatMap(c=>c.qs);
   const gaps=allqs.filter((q,qi)=>Math.round(qs(qi,ans[qi])/4*100)<50);
-  if(gaps.length>0&&y<230){
-    doc.setDrawColor(220,216,210);doc.line(20,y,190,y);y+=10;
-    doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(10,22,40);doc.text('KEY GAPS IDENTIFIED',20,y);y+=8;
+  if(gaps.length>0&&y<220){
+    doc.setFillColor(...RULE);doc.rect(M,y,UW,0.4,'F');y+=7;
+    doc.setFont('helvetica','bold');doc.setFontSize(6);doc.setTextColor(160,160,160);
+    doc.text('KEY GAPS IDENTIFIED',M,y);y+=5;
     gaps.slice(0,4).forEach(q=>{
-      if(y>255)return;
-      doc.setFillColor(192,57,43);doc.circle(22,y-1.5,1.5,'F');
-      doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(60,60,60);
-      const gl=doc.splitTextToSize(q.t,160);doc.text(gl,27,y);y+=gl.length*5+3;
+      if(y>242)return;
+      doc.setFillColor(192,57,43);doc.circle(M+2,y-1,1.2,'F');
+      doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(55,55,55);
+      const gl=doc.splitTextToSize(q.t,UW-8);
+      doc.text(gl,M+7,y);y+=gl.length*4.5+3;
     });
+    // Qualifying context
+    if(q17!==null){
+      y+=3;
+      doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.setTextColor(150,150,150);
+      doc.text('Stage: '+s.q17[q17],M,y);y+=4.5;
+      if(q18.length>0) doc.text('Key challenges: '+q18.map(i=>s.q18[i]).join(' · '),M,y);
+    }
   }
-  // Next step box
-  const boxY=Math.min(Math.max(y+6,230),250);
-  doc.setFillColor(10,22,40);doc.rect(15,boxY,180,28,'F');
-  doc.setTextColor(197,160,80);doc.setFont('helvetica','bold');doc.setFontSize(10);doc.text('Next step',25,boxY+10);
-  doc.setTextColor(255,255,255);doc.setFont('helvetica','normal');doc.setFontSize(9);
-  const nxt=q20==='advisory'?'Book a discovery call: calendly.com/contracks_global':'Request resources: hello@contracks.global';
-  doc.text(nxt,25,boxY+19);
-  // Qualifying answers
-  doc.setTextColor(140,140,140);doc.setFontSize(7.5);
-  doc.text('Q17: '+(q17!==null?s.q17[q17]:'—'),15,boxY+33);
-  doc.text('Q18: '+q18.map(i=>s.q18[i]).join(', '),15,boxY+39);
-  // Footer
-  doc.setTextColor(160,160,160);doc.setFontSize(7.5);
-  doc.text('© Contracks Global · hello@contracks.global · contracks.global · Better contracts. Better business. Better society.',20,287);
+
+  // ── NEXT STEP BOX ─────────────────────────────────────────────────────────
+  const boxY=Math.min(y+8,248);
+  doc.setFillColor(...NAVY);doc.rect(M,boxY,UW,26,'F');
+  // Gold left accent
+  doc.setFillColor(...GOLD);doc.rect(M,boxY,3,26,'F');
+  doc.setTextColor(...GOLD);doc.setFont('helvetica','bold');doc.setFontSize(9.5);
+  doc.text('Your next step',M+8,boxY+9);
+  doc.setTextColor(210,210,210);doc.setFont('helvetica','normal');doc.setFontSize(8.5);
+  if(q20==='advisory'){
+    doc.text('Book a 30-minute discovery call — no pitch, just clarity.',M+8,boxY+16);
+    doc.setTextColor(...GOLD);doc.setFont('helvetica','bold');doc.setFontSize(8.5);
+    doc.text('→  calendly.com/contracks_global',M+8,boxY+22);
+    doc.link(M+8,boxY+17.5,82,5.5,{url:'https://calendly.com/contracks_global'});
+  } else {
+    doc.text('Request the resources package.',M+8,boxY+16);
+    doc.setTextColor(...GOLD);doc.setFont('helvetica','bold');doc.setFontSize(8.5);
+    doc.text('→  hello@contracks.global',M+8,boxY+22);
+    doc.link(M+8,boxY+17.5,55,5.5,{url:'mailto:hello@contracks.global'});
+  }
+
+  // ── FOOTER ────────────────────────────────────────────────────────────────
+  const fY=281;
+  doc.setFillColor(...GOLD);doc.rect(0,fY,W,0.7,'F');
+  doc.setFont('helvetica','normal');doc.setFontSize(7);doc.setTextColor(130,130,130);
+  doc.text('contracks.global',M,fY+5);
+  doc.link(M,fY+2,28,4.5,{url:'https://contracks.global'});
+  doc.text('·  hello@contracks.global',M+29,fY+5);
+  doc.link(M+34,fY+2,38,4.5,{url:'mailto:hello@contracks.global'});
+  doc.text('·  LinkedIn — Serguei Poppeleer',M+73,fY+5);
+  doc.link(M+78,fY+2,52,4.5,{url:'https://www.linkedin.com/in/serguei-poppeleer'});
+  doc.setTextColor(180,180,180);
+  doc.text('Better contracts. Better business. Better society.',W-M,fY+5,{align:'right'});
+
   doc.save('Contracks-'+s.name+'-Diagnostic-'+(uname.replace(/\s+/g,'')||'Report')+'.pdf');
 }
 
