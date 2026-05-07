@@ -1,0 +1,470 @@
+import { useState } from “react”;
+import { PieChart, Pie, Cell, ResponsiveContainer } from “recharts”;
+
+const NAVY = “#0D1B2A”;
+const GOLD = “#C9A84C”;
+const GOLD_DIM = “#C9A84C22”;
+const WHITE = “#F0EBE0”;
+const GREY = “#7A8FA3”;
+const CAT_COLORS = [”#4A8FD9”, “#9B59B6”, “#E67E22”, “#C0392B”];
+
+// negative: true = reverse scored (Never=4, Always=1)
+const categories = [
+{
+id: “foundation”, label: “Foundation”,
+sublabel: “Contractual setup and role clarity”,
+color: CAT_COLORS[0],
+questions: [
+{ text: “Do you have a signed, project-specific contract in place before work starts — on every project?”, negative: false },
+{ text: “Are commercial roles and responsibilities clearly defined and documented across your team?”, negative: false },
+{ text: “Do you still rely on verbal agreements or informal understandings for scope changes?”, negative: true },
+{ text: “Is your team typically briefed on contractual obligations after mobilisation has already started?”, negative: true },
+],
+},
+{
+id: “execution”, label: “Execution”,
+sublabel: “Day-to-day commercial discipline”,
+color: CAT_COLORS[1],
+questions: [
+{ text: “When a variation is identified on site, does your team raise and price it within 30 days?”, negative: false },
+{ text: “Do you maintain a live claims and variation register with owners and deadlines assigned?”, negative: false },
+{ text: “Do progress claims get submitted late or without full supporting documentation?”, negative: true },
+{ text: “Do you still rely on gut feel rather than live data to understand your commercial position?”, negative: true },
+],
+},
+{
+id: “results”, label: “Results”,
+sublabel: “Commercial outcomes and margin performance”,
+color: CAT_COLORS[2],
+questions: [
+{ text: “Do your projects consistently close within 5% of your target margin?”, negative: false },
+{ text: “Can you quantify the total value of open variations on your active projects right now?”, negative: false },
+{ text: “Do final accounts typically stay open for more than 6 months after project completion?”, negative: true },
+{ text: “Do you regularly discover commercial exposure only after disputes have escalated?”, negative: true },
+],
+},
+{
+id: “obstacles”, label: “Obstacles”,
+sublabel: “What’s blocking commercial progress”,
+color: CAT_COLORS[3],
+questions: [
+{ text: “Do you know the single biggest commercial risk on your active projects right now?”, negative: false },
+{ text: “Is commercial management involved from the pre-award phase on every project?”, negative: false },
+{ text: “Does your commercial team typically get brought in after disputes have already escalated?”, negative: true },
+{ text: “Do project managers make commercial decisions without involving the commercial function?”, negative: true },
+],
+},
+];
+
+const ANSWERS = [“Never”, “Sometimes”, “Usually”, “Always”];
+
+const BANDS = {
+low: {
+label: “LOW SCORE”, color: “#C0392B”,
+title: “You’re working hard — but commercial control is scattered.”,
+body: “Your effort is spread across activities that don’t consistently move the needle. This isn’t your fault — it’s predictable when the contractual framework isn’t locked in before the project pressure hits. Small changes in 3 core areas typically transform outcomes within one contract cycle.”,
+},
+medium: {
+label: “MEDIUM SCORE”, color: “#E67E22”,
+title: “Solid basics in place — but execution is inconsistent.”,
+body: “You’ve got the foundations, but unpredictable results follow. This pattern is incredibly common in growing EPC businesses — and it’s straightforward to solve once you have the right operating framework. Most clients at this level stabilise project margins within 90 days.”,
+},
+high: {
+label: “HIGH SCORE”, color: “#27AE60”,
+title: “Strong foundations — but one thing is capping your results.”,
+body: “You’ve built solid commercial infrastructure. Your weakest category is where the ceiling sits. This is where most mature EPC operators plateau. The good news: this is the most solvable piece, and it typically creates breakthrough results once properly addressed.”,
+},
+};
+
+const SCALE_OPTIONS = [
+“We manage 1–5 projects simultaneously”,
+“We manage 6–15 projects simultaneously”,
+“We manage 15+ projects simultaneously”,
+“We’re in project development / pre-award phase”,
+];
+
+const STRUGGLE_OPTIONS = [
+“Variation management and recovery”,
+“Contract setup and risk allocation”,
+“Dispute resolution and claims”,
+“Commercial team capability and capacity”,
+“Final account and margin recovery”,
+“Subcontractor commercial management”,
+];
+
+const OBSTACLE_OPTIONS = [
+“No time — too busy firefighting”,
+“No clear methodology or framework”,
+“No internal capacity or expertise”,
+“No buy-in from leadership or project teams”,
+];
+
+export default function ContrackScorecard() {
+const [screen, setScreen] = useState(0);
+const [name, setName] = useState(””);
+const [email, setEmail] = useState(””);
+const [scores, setScores] = useState({
+foundation: [null, null, null, null],
+execution: [null, null, null, null],
+results: [null, null, null, null],
+obstacles: [null, null, null, null],
+});
+const [scale, setScale] = useState(null);
+const [struggles, setStruggles] = useState([]);
+const [obstacle, setObstacle] = useState(null);
+const [solution, setSolution] = useState(null); // “diy” | “advisory”
+const [openText, setOpenText] = useState(””);
+const [wantsImprovement, setWantsImprovement] = useState(null);
+
+const cat = screen >= 1 && screen <= 4 ? categories[screen - 1] : null;
+
+const setAnswer = (catId, qi, val) =>
+setScores(p => ({ …p, [catId]: p[catId].map((v, i) => i === qi ? val : v) }));
+
+const qScore = (catId, qi, rawVal) => {
+if (rawVal === null) return 0;
+const neg = categories.find(c => c.id === catId).questions[qi].negative;
+return neg ? (5 - rawVal) : rawVal;
+};
+
+const catScore = (id) => {
+const total = scores[id].reduce((acc, v, i) => acc + qScore(id, i, v), 0);
+return Math.round((total / 16) * 100);
+};
+
+const overall = Math.round(
+[“foundation”, “execution”, “results”, “obstacles”].reduce((a, c) => a + catScore(c), 0) / 4
+);
+
+const band = overall >= 75 ? “high” : overall >= 45 ? “medium” : “low”;
+const weakest = […categories].sort((a, b) => catScore(a.id) - catScore(b.id))[0];
+const donutData = categories.map(c => ({ name: c.label, value: Math.max(catScore(c.id), 3), color: c.color }));
+
+const canNextCat = () => cat ? scores[cat.id].every(v => v !== null) : true;
+const canNext5 = () => scale !== null && struggles.length > 0 && struggles.length <= 2 && obstacle !== null;
+const canNext6 = () => solution !== null;
+
+const S = {
+wrap: { minHeight: “100vh”, background: `linear-gradient(160deg, ${NAVY} 0%, #15263a 55%, #080f18 100%)`, color: WHITE, fontFamily: “‘Georgia’,‘Times New Roman’,serif”, display: “flex”, flexDirection: “column”, alignItems: “center”, padding: “0 20px” },
+header: { width: “100%”, maxWidth: 660, padding: “20px 0 14px”, display: “flex”, alignItems: “center”, justifyContent: “space-between”, borderBottom: `1px solid ${GOLD}28` },
+pill: (color) => ({ display: “inline-block”, background: color + “18”, border: `1px solid ${color}44`, borderRadius: 3, padding: “3px 10px”, fontSize: 10, letterSpacing: “0.18em”, color }),
+card: { background: “#ffffff07”, border: “1px solid #ffffff12”, borderRadius: 8, padding: “18px 20px” },
+goldBtn: (off) => ({ background: off ? “#ffffff12” : GOLD, color: off ? GREY : NAVY, border: “none”, borderRadius: 4, padding: “14px 36px”, fontSize: 12, fontWeight: 700, letterSpacing: “0.12em”, cursor: off ? “not-allowed” : “pointer”, width: “100%”, fontFamily: “monospace”, marginTop: 14 }),
+ansBtn: (sel) => ({ background: sel ? GOLD : “#ffffff0d”, color: sel ? NAVY : WHITE, border: sel ? `1px solid ${GOLD}` : “1px solid #ffffff18”, borderRadius: 4, padding: “10px 12px”, fontSize: 13, cursor: “pointer”, fontWeight: sel ? 700 : 400, textAlign: “left”, fontFamily: “‘Georgia’,serif” }),
+bar: (on) => ({ flex: 1, height: 2, background: on ? GOLD : “#ffffff18”, borderRadius: 2 }),
+bigCard: (sel, color) => ({ flex: 1, background: sel ? color + “22” : “#ffffff0d”, color: WHITE, border: sel ? `2px solid ${color}` : “2px solid #ffffff18”, borderRadius: 8, padding: “18px 14px”, fontSize: 13, cursor: “pointer”, textAlign: “center”, fontFamily: “‘Georgia’,serif”, lineHeight: 1.5 }),
+};
+
+const resetAll = () => { setScreen(0); setScores({ foundation:[null,null,null,null], execution:[null,null,null,null], results:[null,null,null,null], obstacles:[null,null,null,null] }); setWantsImprovement(null); setSolution(null); setStruggles([]); setObstacle(null); setScale(null); setOpenText(””); setName(””); setEmail(””); };
+
+return (
+<div style={S.wrap}>
+{/* HEADER */}
+<div style={S.header}>
+<div style={{ display: “flex”, alignItems: “center”, gap: 10 }}>
+<div style={{ width: 7, height: 7, background: GOLD, borderRadius: “50%” }} />
+<span style={{ color: GOLD, fontSize: 11, letterSpacing: “0.18em”, fontFamily: “monospace”, fontWeight: 700 }}>CONTRACKS GLOBAL</span>
+</div>
+{screen > 0 && screen < 7 && (
+<span style={{ color: GREY, fontSize: 11, letterSpacing: “0.1em”, fontFamily: “monospace” }}>
+{screen <= 4 ? `Category ${screen} of 4` : “Qualifying”}
+</span>
+)}
+</div>
+
+```
+  {/* ── SCREEN 0: INTRO ── */}
+  {screen === 0 && (
+    <div style={{ maxWidth: 600, width: "100%", paddingTop: 52, textAlign: "center" }}>
+      <div style={{ ...S.pill(GOLD), marginBottom: 26 }}>COMMERCIAL MANAGEMENT DIAGNOSTIC</div>
+      <h1 style={{ fontSize: "clamp(24px,5vw,40px)", lineHeight: 1.25, margin: "0 0 14px", fontWeight: 400 }}>
+        Find out what's quietly limiting your project's commercial performance
+      </h1>
+      <p style={{ color: GREY, fontSize: 16, lineHeight: 1.75, marginBottom: 36 }}>Before it costs you another project cycle.</p>
+
+      <div style={{ ...S.card, textAlign: "left", marginBottom: 20 }}>
+        {[["🔲","4 categories · 20 questions"],["⏱","Under 5 minutes"],["📊","Instant percentage score per category"],["🔬","X-Ray diagnosis — not a sales pitch"]].map(([ic, tx]) => (
+          <div key={tx} style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 10 }}>
+            <span style={{ fontSize: 15 }}>{ic}</span>
+            <span style={{ fontSize: 13 }}>{tx}</span>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ ...S.card, textAlign: "left", marginBottom: 24 }}>
+        <p style={{ margin: "0 0 14px", fontSize: 12, color: GREY }}>Your results will be sent to you after completion.</p>
+        <input placeholder="Your name" value={name} onChange={e => setName(e.target.value)}
+          style={{ width: "100%", background: "#ffffff0d", border: "1px solid #ffffff22", borderRadius: 4, padding: "11px 13px", color: WHITE, fontSize: 13, marginBottom: 10, boxSizing: "border-box", fontFamily: "Georgia,serif" }} />
+        <input placeholder="Your email address" value={email} onChange={e => setEmail(e.target.value)}
+          style={{ width: "100%", background: "#ffffff0d", border: "1px solid #ffffff22", borderRadius: 4, padding: "11px 13px", color: WHITE, fontSize: 13, boxSizing: "border-box", fontFamily: "Georgia,serif" }} />
+      </div>
+
+      <button onClick={() => setScreen(1)} disabled={!name.trim() || !email.trim()} style={S.goldBtn(!name.trim() || !email.trim())}>
+        START ASSESSMENT →
+      </button>
+      <p style={{ color: GREY, fontSize: 11, marginTop: 16, letterSpacing: "0.05em" }}>
+        Serguei Poppeleer · 25 years · 30+ countries · EPC · Energy · Infrastructure
+      </p>
+    </div>
+  )}
+
+  {/* ── SCREENS 1-4: CATEGORY QUESTIONS ── */}
+  {screen >= 1 && screen <= 4 && cat && (
+    <div style={{ maxWidth: 640, width: "100%", paddingTop: 32 }}>
+      <div style={{ marginBottom: 24 }}>
+        <div style={{ ...S.pill(cat.color), marginBottom: 10 }}>{cat.label.toUpperCase()}</div>
+        <h2 style={{ fontSize: 18, fontWeight: 400, margin: 0 }}>{cat.sublabel}</h2>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+        {cat.questions.map((q, qi) => (
+          <div key={qi} style={S.card}>
+            <div style={{ display: "flex", gap: 10, marginBottom: 14, alignItems: "flex-start" }}>
+              <p style={{ margin: 0, fontSize: 13, lineHeight: 1.65, flex: 1 }}>
+                <span style={{ color: GREY, marginRight: 6 }}>{qi + 1 + (screen - 1) * 4}.</span>{q.text}
+              </p>
+              {q.negative && <span style={{ ...S.pill("#E74C3C"), flexShrink: 0, fontSize: 9 }}>↓</span>}
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 7 }}>
+              {ANSWERS.map((ans, ai) => {
+                const val = ai + 1;
+                const sel = scores[cat.id][qi] === val;
+                return <button key={ans} onClick={() => setAnswer(cat.id, qi, val)} style={S.ansBtn(sel)}>{val}. {ans}</button>;
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ display: "flex", gap: 5, marginTop: 24 }}>
+        {[1,2,3,4].map(s => <div key={s} style={S.bar(s <= screen)} />)}
+      </div>
+
+      <button onClick={() => setScreen(screen + 1)} disabled={!canNextCat()} style={{ ...S.goldBtn(!canNextCat()), marginBottom: 40 }}>
+        {screen < 4 ? "NEXT CATEGORY →" : "QUALIFYING QUESTIONS →"}
+      </button>
+    </div>
+  )}
+
+  {/* ── SCREEN 5: Q17 + Q18a + Q18b ── */}
+  {screen === 5 && (
+    <div style={{ maxWidth: 640, width: "100%", paddingTop: 32, paddingBottom: 40 }}>
+      <div style={{ ...S.pill(GOLD), marginBottom: 18 }}>QUALIFYING — ALMOST DONE</div>
+      <h2 style={{ fontSize: 18, fontWeight: 400, margin: "0 0 28px" }}>Three quick questions about your situation.</h2>
+
+      <div style={{ ...S.card, marginBottom: 18 }}>
+        <p style={{ margin: "0 0 14px", fontSize: 13, fontWeight: 600 }}>17. Which best describes your current situation?</p>
+        <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
+          {SCALE_OPTIONS.map((opt, i) => (
+            <button key={i} onClick={() => setScale(i)} style={{ ...S.ansBtn(scale === i), padding: "11px 13px" }}>{opt}</button>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ ...S.card, marginBottom: 18 }}>
+        <p style={{ margin: "0 0 4px", fontSize: 13, fontWeight: 600 }}>18. Top 2 commercial challenges to solve in the next 90 days?</p>
+        <p style={{ margin: "0 0 14px", fontSize: 11, color: GREY }}>Select up to 2.</p>
+        <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
+          {STRUGGLE_OPTIONS.map((opt, i) => {
+            const sel = struggles.includes(i);
+            return (
+              <button key={i} onClick={() => sel ? setStruggles(struggles.filter(x => x !== i)) : struggles.length < 2 && setStruggles([...struggles, i])}
+                style={{ ...S.ansBtn(sel), padding: "11px 13px" }}>{opt}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <div style={{ ...S.card, marginBottom: 18 }}>
+        <p style={{ margin: "0 0 14px", fontSize: 13, fontWeight: 600 }}>19. What's your biggest obstacle to solving this?</p>
+        <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
+          {OBSTACLE_OPTIONS.map((opt, i) => (
+            <button key={i} onClick={() => setObstacle(i)} style={{ ...S.ansBtn(obstacle === i), padding: "11px 13px" }}>{opt}</button>
+          ))}
+        </div>
+      </div>
+
+      <button onClick={() => setScreen(6)} disabled={!canNext5()} style={S.goldBtn(!canNext5())}>ALMOST THERE →</button>
+    </div>
+  )}
+
+  {/* ── SCREEN 6: Q20 binary + Q21 open text ── */}
+  {screen === 6 && (
+    <div style={{ maxWidth: 640, width: "100%", paddingTop: 32, paddingBottom: 40 }}>
+      <div style={{ ...S.pill(GOLD), marginBottom: 18 }}>FINAL QUESTION</div>
+      <h2 style={{ fontSize: 18, fontWeight: 400, margin: "0 0 28px" }}>One last thing.</h2>
+
+      {/* Q20 — binary */}
+      <div style={{ ...S.card, marginBottom: 22 }}>
+        <p style={{ margin: "0 0 18px", fontSize: 13, fontWeight: 600 }}>20. What type of support are you looking for?</p>
+        <div style={{ display: "flex", gap: 12 }}>
+          <button onClick={() => setSolution("diy")} style={S.bigCard(solution === "diy", GOLD)}>
+            <div style={{ fontSize: 20, marginBottom: 8 }}>📖</div>
+            <div style={{ fontWeight: 700, marginBottom: 6, fontSize: 14 }}>Self Study / DIY</div>
+            <div style={{ fontSize: 12, color: GREY }}>Tools and frameworks I can implement myself</div>
+          </button>
+          <button onClick={() => setSolution("advisory")} style={S.bigCard(solution === "advisory", GOLD)}>
+            <div style={{ fontSize: 20, marginBottom: 8 }}>🤝</div>
+            <div style={{ fontWeight: 700, marginBottom: 6, fontSize: 14 }}>Proven Method + Support</div>
+            <div style={{ fontSize: 12, color: GREY }}>An experienced partner working alongside our team</div>
+          </button>
+        </div>
+      </div>
+
+      {/* Q21 — open text */}
+      <div style={{ ...S.card, marginBottom: 22 }}>
+        <p style={{ margin: "0 0 4px", fontSize: 13, fontWeight: 600 }}>
+          Anything else you'd like me to know? <span style={{ color: GREY, fontWeight: 400 }}>(Optional)</span>
+        </p>
+        <p style={{ margin: "0 0 12px", fontSize: 11, color: GREY }}>Budget, timeline, urgency, specific projects — anything useful.</p>
+        <textarea value={openText} onChange={e => setOpenText(e.target.value)} placeholder="Type here..." rows={4}
+          style={{ width: "100%", background: "#ffffff0d", border: "1px solid #ffffff22", borderRadius: 4, padding: "11px 13px", color: WHITE, fontSize: 13, boxSizing: "border-box", fontFamily: "Georgia,serif", resize: "vertical" }} />
+      </div>
+
+      <button onClick={() => setScreen(7)} disabled={!canNext6()} style={S.goldBtn(!canNext6())}>SEE MY RESULTS →</button>
+    </div>
+  )}
+
+  {/* ── SCREEN 7: RESULTS ── */}
+  {screen === 7 && (
+    <div style={{ maxWidth: 640, width: "100%", paddingTop: 36, paddingBottom: 60 }}>
+
+      {/* Donut + scores */}
+      <div style={{ textAlign: "center", marginBottom: 28 }}>
+        <div style={{ ...S.pill(GOLD), marginBottom: 18 }}>YOUR COMMERCIAL MANAGEMENT SCORE</div>
+
+        <div style={{ position: "relative", width: 190, height: 190, margin: "0 auto 20px" }}>
+          <ResponsiveContainer width="100%" height="100%">
+            <PieChart>
+              <Pie data={donutData} cx="50%" cy="50%" innerRadius={60} outerRadius={85}
+                dataKey="value" startAngle={90} endAngle={-270} strokeWidth={0}>
+                {donutData.map((e, i) => <Cell key={i} fill={e.color} />)}
+              </Pie>
+            </PieChart>
+          </ResponsiveContainer>
+          <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", textAlign: "center" }}>
+            <div style={{ fontSize: 36, fontWeight: 700, lineHeight: 1 }}>{overall}%</div>
+            <div style={{ fontSize: 9, color: GREY, letterSpacing: "0.14em", marginTop: 4, fontFamily: "monospace" }}>OVERALL</div>
+          </div>
+        </div>
+
+        <div style={{ display: "flex", justifyContent: "center", gap: 14, marginBottom: 20, flexWrap: "wrap" }}>
+          {categories.map(c => (
+            <div key={c.id} style={{ display: "flex", alignItems: "center", gap: 5 }}>
+              <div style={{ width: 9, height: 9, background: c.color, borderRadius: "50%" }} />
+              <span style={{ fontSize: 11, color: GREY }}>{c.label}</span>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 24 }}>
+          {categories.map(c => {
+            const sc = catScore(c.id);
+            return (
+              <div key={c.id} style={{ background: "#ffffff06", border: `1px solid ${c.color}30`, borderRadius: 8, padding: "14px 16px", textAlign: "left" }}>
+                <div style={{ fontSize: 9, color: c.color, letterSpacing: "0.16em", marginBottom: 6, fontFamily: "monospace" }}>{c.label.toUpperCase()}</div>
+                <div style={{ fontSize: 26, fontWeight: 700 }}>{sc}%</div>
+                <div style={{ height: 3, background: "#ffffff12", borderRadius: 2, marginTop: 8 }}>
+                  <div style={{ height: "100%", width: `${sc}%`, background: c.color, borderRadius: 2 }} />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Band message */}
+      <div style={{ background: BANDS[band].color + "14", border: `1px solid ${BANDS[band].color}44`, borderRadius: 8, padding: "20px 22px", marginBottom: 20 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+          <div style={{ width: 8, height: 8, borderRadius: "50%", background: BANDS[band].color }} />
+          <span style={{ fontSize: 9, color: BANDS[band].color, letterSpacing: "0.18em", fontFamily: "monospace" }}>{BANDS[band].label}</span>
+        </div>
+        <h3 style={{ margin: "0 0 10px", fontSize: 17, fontWeight: 400, lineHeight: 1.4 }}>
+          {name ? `${name}, ` : ""}{BANDS[band].title}
+        </h3>
+        <p style={{ margin: "0 0 8px", color: GREY, fontSize: 13, lineHeight: 1.75 }}>{BANDS[band].body}</p>
+        <p style={{ margin: 0, fontSize: 12, color: GREY }}>
+          Focus area: <strong style={{ color: WHITE }}>{weakest.label} ({catScore(weakest.id)}%)</strong>
+        </p>
+      </div>
+
+      {/* X-Ray */}
+      <div style={{ borderLeft: `3px solid ${GOLD}`, background: GOLD_DIM, borderRadius: "0 4px 4px 0", padding: "13px 17px", marginBottom: 28 }}>
+        <p style={{ margin: 0, fontSize: 13, color: GREY, fontStyle: "italic", lineHeight: 1.75 }}>
+          "This assessment diagnoses — it doesn't fix. The gap you're looking at is real. The question is whether you address it deliberately, or let another project cycle confirm it."
+        </p>
+      </div>
+
+      {/* ── THE MAGIC QUESTION ── */}
+      {wantsImprovement === null && (
+        <div style={{ background: "#ffffff09", border: `2px solid ${GOLD}55`, borderRadius: 10, padding: "26px 22px", textAlign: "center", marginBottom: 20 }}>
+          <h3 style={{ margin: "0 0 8px", fontSize: 22, color: GOLD, fontWeight: 400 }}>
+            Would you like to improve your score?
+          </h3>
+          <p style={{ margin: "0 0 22px", color: GREY, fontSize: 13, lineHeight: 1.65 }}>
+            Your <strong style={{ color: WHITE }}>{weakest.label}</strong> score of{" "}
+            <strong style={{ color: WHITE }}>{catScore(weakest.id)}%</strong> is where the work starts.
+          </p>
+          <div style={{ display: "flex", gap: 12 }}>
+            <button onClick={() => setWantsImprovement(true)}
+              style={{ flex: 1, background: GOLD, color: NAVY, border: "none", borderRadius: 6, padding: "14px", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "monospace" }}>
+              Yes — let's look at this
+            </button>
+            <button onClick={() => setWantsImprovement(false)}
+              style={{ flex: 1, background: "transparent", color: GREY, border: "1px solid #ffffff22", borderRadius: 6, padding: "14px", fontSize: 13, cursor: "pointer", fontFamily: "monospace" }}>
+              Not right now
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* CTA: YES */}
+      {wantsImprovement === true && (
+        <div style={{ background: "#ffffff08", border: `1px solid ${GOLD}33`, borderRadius: 10, padding: "24px 22px", textAlign: "center", marginBottom: 20 }}>
+          {solution === "diy" ? (
+            <>
+              <h3 style={{ margin: "0 0 10px", fontSize: 17, color: GOLD, fontWeight: 400 }}>Here's where to start.</h3>
+              <p style={{ margin: "0 0 18px", color: GREY, fontSize: 13, lineHeight: 1.75 }}>
+                Your weakest area is <strong style={{ color: WHITE }}>{weakest.label}</strong>. There are specific frameworks that address exactly this. Serguei can point you to the right resources — no call needed.
+              </p>
+              <a href="mailto:serguei@contracks.global" style={{ display: "block", background: GOLD, color: NAVY, borderRadius: 4, padding: "13px", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textDecoration: "none", fontFamily: "monospace" }}>
+                GET THE RESOURCES → serguei@contracks.global
+              </a>
+            </>
+          ) : (
+            <>
+              <h3 style={{ margin: "0 0 10px", fontSize: 17, color: GOLD, fontWeight: 400 }}>A 30-minute conversation is all it takes.</h3>
+              <p style={{ margin: "0 0 18px", color: GREY, fontSize: 13, lineHeight: 1.75 }}>
+                Given your score in <strong style={{ color: WHITE }}>{weakest.label}</strong>, one focused conversation with Serguei would map the 2–3 moves that matter most. No pitch — just a clear-eyed look at what's actually happening.
+              </p>
+              <a href="mailto:serguei@contracks.global" style={{ display: "block", background: GOLD, color: NAVY, borderRadius: 4, padding: "13px", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textDecoration: "none", fontFamily: "monospace" }}>
+                BOOK A CONVERSATION → serguei@contracks.global
+              </a>
+            </>
+          )}
+        </div>
+      )}
+
+      {/* CTA: NOT RIGHT NOW */}
+      {wantsImprovement === false && (
+        <div style={{ background: "#ffffff06", border: "1px solid #ffffff15", borderRadius: 8, padding: "20px 22px", textAlign: "center", marginBottom: 20 }}>
+          <p style={{ margin: "0 0 10px", color: GREY, fontSize: 13, lineHeight: 1.7 }}>
+            No problem. When the time is right — <a href="mailto:serguei@contracks.global" style={{ color: GOLD }}>serguei@contracks.global</a>
+          </p>
+          <p style={{ margin: 0, color: GREY, fontSize: 12 }}>
+            Follow Serguei on LinkedIn for EPC commercial management field notes.
+          </p>
+        </div>
+      )}
+
+      <button onClick={resetAll} style={{ background: "none", border: "none", color: GREY, fontSize: 11, cursor: "pointer", letterSpacing: "0.08em", display: "block", margin: "16px auto 0" }}>
+        Retake assessment
+      </button>
+    </div>
+  )}
+</div>
+```
+
+);
+}
