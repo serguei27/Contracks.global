@@ -279,9 +279,9 @@ footer{text-align:center;padding:28px 48px;border-top:1px solid #E8E4DC;margin-t
     <!-- Score header -->
     <div class="rhead">
       <div style="font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#C5A050;margin-bottom:16px;">Your Commercial Score</div>
-      <!-- Donut -->
-      <div style="position:relative;width:260px;height:260px;margin:0 auto 24px;">
-        <canvas id="donut-chart" width="260" height="260" style="display:block;"></canvas>
+      <!-- Donut — center text drawn by Chart.js plugin -->
+      <div style="position:relative;width:220px;height:220px;margin:0 auto 8px;">
+        <canvas id="donut-chart" width="220" height="220" style="display:block;"></canvas>
       </div>
       <!-- 4 category cards -->
       <div id="cat-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;"></div>
@@ -520,22 +520,26 @@ let donutInst=null;
 
 const centerTextPlugin={
   id:'centerText',
-  beforeDraw(chart){
-    const{width,height,ctx}=chart;
+  afterDraw(chart){
+    const{ctx,chartArea}=chart;
+    if(!chartArea)return;
     const cfg=chart.config.options.plugins.centerText||{};
+    const cx=(chartArea.left+chartArea.right)/2;
+    const cy=(chartArea.top+chartArea.bottom)/2;
+    const r=Math.min(chartArea.right-chartArea.left,chartArea.bottom-chartArea.top)*0.5;
+    // React original: fontSize 36 on r≈95 → ratio 0.38
+    const fontSize=r*0.38;
     ctx.save();
-    // Main number
-    const fontSize=Math.min(width,height)*0.22;
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    // Score number — slightly above center
     ctx.font=`900 ${fontSize}px 'Playfair Display',serif`;
     ctx.fillStyle=cfg.color||'#C5A050';
-    ctx.textAlign='center';
-    ctx.textBaseline='middle';
-    ctx.fillText(cfg.text||'',width/2,height/2-fontSize*0.1);
-    // Sub label
+    ctx.fillText(cfg.text||'',cx,cy-fontSize*0.12);
+    // OVERALL label — well below number, small and clean
     ctx.font=`500 ${fontSize*0.22}px 'DM Sans',sans-serif`;
     ctx.fillStyle='#aaa';
-    ctx.letterSpacing='0.1em';
-    ctx.fillText('OVERALL',width/2,height/2+fontSize*0.55);
+    ctx.letterSpacing='2px';
+    ctx.fillText('OVERALL',cx,cy+fontSize*0.68);
     ctx.restore();
   }
 };
