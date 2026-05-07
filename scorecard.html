@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contracks Global — Find Your Speed</title>
+<meta name="description" content="Four scorecards to find out which Contracks speed applies to you. 21 questions. Instant score. Written report.">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#fff;color:#0A1628;min-height:100vh;overflow-x:hidden;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:#0A1628;border-bottom:3px solid #C5A050;position:sticky;top:0;z-index:100;}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:#fff;text-decoration:none;}
+.nav-logo span{color:#C5A050;}
+.nav-back{font-size:.85rem;color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s;}
+.nav-back:hover{color:#C5A050;}
+.screen{display:none;}.screen.active{display:block;}
+/* LANDING */
+.landing{max-width:960px;margin:0 auto;padding:72px 48px;text-align:center;}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#C5A050;margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:12px;}
+.eyebrow::before,.eyebrow::after{content:'';display:block;width:32px;height:1px;background:#C5A050;}
+.landing h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:900;line-height:1.1;letter-spacing:-.02em;margin-bottom:20px;}
+.landing h1 em{font-style:normal;color:#C5A050;}
+.landing-sub{font-size:1.05rem;color:#555;line-height:1.75;font-weight:300;max-width:560px;margin:0 auto 56px;}
+.speed-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:40px;}
+.scard{background:#fff;border:1.5px solid #E8E4DC;border-radius:8px;padding:28px 24px 48px;cursor:pointer;transition:all .22s;text-align:left;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(10,22,40,.06);}
+.scard::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:8px 8px 0 0;}
+.scard.s1::before{background:#2D6A4F;}.scard.s2::before{background:#E07B39;}.scard.s3::before{background:#6C3483;}.scard.s4::before{background:#C5A050;}
+.scard:hover{transform:translateY(-3px);border-color:#C5A050;box-shadow:0 8px 24px rgba(10,22,40,.12);}
+.snum{font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px;}
+.s1 .snum{color:#2D6A4F;}.s2 .snum{color:#E07B39;}.s3 .snum{color:#6C3483;}.s4 .snum{color:#C5A050;}
+.sname{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;margin-bottom:8px;color:#0A1628;}
+.sq{font-size:.88rem;color:#444;line-height:1.55;font-style:italic;margin-bottom:16px;}
+.sdesc{font-size:.8rem;color:#888;line-height:1.55;}
+.sarrow{position:absolute;bottom:18px;right:22px;font-size:1.1rem;color:#ccc;transition:all .2s;}
+.scard:hover .sarrow{color:#C5A050;transform:translateX(4px);}
+.land-note{font-size:.8rem;color:#aaa;font-style:italic;}
+/* INNER SCREENS */
+.inner{max-width:720px;margin:0 auto;padding:56px 48px;}
+.inner-sm{max-width:520px;margin:0 auto;padding:56px 48px;}
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;}
+.badge.s1{background:rgba(45,106,79,.1);color:#2D6A4F;border:1px solid rgba(45,106,79,.3);}
+.badge.s2{background:rgba(224,123,57,.1);color:#E07B39;border:1px solid rgba(224,123,57,.3);}
+.badge.s3{background:rgba(108,52,131,.1);color:#6C3483;border:1px solid rgba(108,52,131,.3);}
+.badge.s4{background:rgba(197,160,80,.12);color:#8B6914;border:1px solid rgba(197,160,80,.4);}
+/* PROGRESS */
+.cat-bars{display:flex;gap:4px;margin-bottom:6px;}
+.cbar{flex:1;height:5px;border-radius:3px;background:#F0EDE6;transition:background .3s;}
+.cbar.done{background:#C5A050;}.cbar.act{background:rgba(197,160,80,.45);}
+.cat-meta{display:flex;justify-content:space-between;font-size:.72rem;color:#aaa;margin-bottom:24px;}
+.pbar-bg{height:4px;background:#F0EDE6;border-radius:2px;margin-bottom:28px;overflow:hidden;}
+.pbar-fill{height:100%;border-radius:2px;background:#C5A050;transition:width .4s ease;}
+/* QUESTION */
+.qblock{display:none;animation:fu .3s ease;}.qblock.active{display:block;}
+.qnum{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C5A050;margin-bottom:10px;}
+.qtext{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2.5vw,1.4rem);font-weight:700;line-height:1.35;margin-bottom:28px;color:#0A1628;}
+.aopts{display:flex;flex-direction:column;gap:10px;}
+.abtn{background:#fff;border:1.5px solid #E8E4DC;border-radius:6px;padding:14px 20px;color:#0A1628;font-family:'DM Sans',sans-serif;font-size:.92rem;cursor:pointer;text-align:left;transition:all .18s;display:flex;align-items:center;gap:14px;width:100%;box-shadow:0 1px 4px rgba(10,22,40,.05);}
+.abtn *{pointer-events:none;}
+.abtn:hover,.abtn.sel{border-color:#C5A050;background:#FDF6E8;}
+.abtn.sel{box-shadow:0 3px 12px rgba(197,160,80,.2);}
+.adot{width:28px;height:28px;border-radius:50%;background:#F0EDE6;border:1.5px solid #DDD9D0;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#888;flex-shrink:0;transition:all .18s;}
+.abtn.sel .adot{background:#C5A050;border-color:#C5A050;color:#fff;}
+/* NAV BTNS */
+.qnav{display:flex;justify-content:space-between;align-items:center;margin-top:32px;padding-top:20px;border-top:1px solid #F0EDE6;}
+.bnext{background:#C5A050;color:#fff;border:none;padding:14px 32px;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:600;cursor:pointer;transition:all .2s;box-shadow:0 2px 8px rgba(197,160,80,.3);}
+.bnext:hover{background:#D4B470;}.bnext:disabled{opacity:.35;cursor:not-allowed;box-shadow:none;}
+.bprev{background:transparent;border:1.5px solid #E8E4DC;color:#888;padding:14px 22px;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:.9rem;cursor:pointer;transition:all .2s;}
+.bprev:hover{border-color:#0A1628;color:#0A1628;}
+/* QUALIFYING */
+.qsec{margin-bottom:28px;}
+.qlbl{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:6px;color:#0A1628;}
+.qsub{font-size:.8rem;color:#888;margin-bottom:14px;}
+.obtn{display:block;width:100%;background:#fff;border:1.5px solid #E8E4DC;border-radius:5px;padding:12px 16px;font-family:'DM Sans',sans-serif;font-size:.9rem;color:#0A1628;cursor:pointer;text-align:left;margin-bottom:8px;transition:all .18s;}
+.obtn:hover,.obtn.sel{border-color:#C5A050;background:#FDF6E8;font-weight:600;}
+.bgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.bbtn{background:#fff;border:2px solid #E8E4DC;border-radius:8px;padding:20px 16px;cursor:pointer;text-align:center;transition:all .18s;font-family:'DM Sans',sans-serif;line-height:1.5;}
+.bbtn:hover,.bbtn.sel{border-color:#C5A050;background:#FDF6E8;}
+.bico{font-size:22px;margin-bottom:8px;}
+.btit{font-weight:700;font-size:.95rem;margin-bottom:4px;color:#0A1628;}
+.bdsc{font-size:.78rem;color:#888;}
+.qtxt{width:100%;border:1.5px solid #E8E4DC;border-radius:5px;padding:14px 16px;font-family:'DM Sans',sans-serif;font-size:.9rem;color:#0A1628;resize:vertical;min-height:88px;transition:border-color .2s;outline:none;}
+.qtxt:focus{border-color:#C5A050;}
+/* EMAIL */
+.srbox{background:#FDF6E8;border:1.5px solid #E8D9B0;border-radius:8px;padding:36px;margin-bottom:36px;text-align:center;}
+.srtsr{font-family:'Playfair Display',serif;font-size:1rem;color:#888;margin-bottom:10px;}
+.srblur{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:#C5A050;filter:blur(8px);user-select:none;margin-bottom:10px;letter-spacing:.1em;}
+.srunl{font-size:.82rem;color:#aaa;font-style:italic;}
+.eh2{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;margin-bottom:12px;color:#0A1628;}
+.ep{font-size:.9rem;color:#666;line-height:1.7;margin-bottom:28px;}
+.eform{display:flex;flex-direction:column;gap:10px;}
+.eform input{background:#fff;border:1.5px solid #E8E4DC;border-radius:4px;padding:14px 16px;color:#0A1628;font-family:'DM Sans',sans-serif;font-size:.95rem;outline:none;transition:border-color .2s;}
+.eform input::placeholder{color:#bbb;}
+.eform input:focus{border-color:#C5A050;}
+.breveal{background:#0A1628;color:#fff;border:none;padding:16px;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;transition:background .2s;margin-top:6px;}
+.breveal:hover{background:#112240;}
+.enote{font-size:.72rem;color:#bbb;margin-top:12px;font-style:italic;text-align:center;}
+/* RESULTS */
+.rhead{text-align:center;margin-bottom:36px;}
+.rcircle{width:110px;height:110px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 20px;border:3px solid #C5A050;background:#FDF6E8;}
+.rnum{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:#C5A050;line-height:1;}
+.rden{font-size:.7rem;color:#aaa;}
+.rtbadge{display:inline-block;padding:6px 18px;border-radius:20px;font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;}
+.rheading{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;margin-bottom:12px;color:#0A1628;}
+.rdesc{font-size:.95rem;color:#555;line-height:1.75;font-weight:300;max-width:500px;margin:0 auto;}
+.catbk{background:#F8F7F4;border:1px solid #E8E4DC;border-radius:6px;padding:24px 28px;margin-bottom:16px;}
+.catbkh{font-family:'Playfair Display',serif;font-size:.95rem;margin-bottom:16px;color:#888;font-weight:400;}
+.crow{display:flex;align-items:center;gap:14px;padding:8px 0;border-bottom:1px solid #F0EDE6;}
+.crow:last-child{border-bottom:none;}
+.crname{font-size:.82rem;font-weight:600;width:90px;flex-shrink:0;}
+.crbarbg{flex:1;height:6px;background:#E8E4DC;border-radius:3px;overflow:hidden;}
+.crbarfill{height:100%;border-radius:3px;transition:width .6s ease;}
+.crpct{font-size:.82rem;font-weight:600;width:40px;text-align:right;flex-shrink:0;}
+.bklist{background:#F8F7F4;border:1px solid #E8E4DC;border-radius:6px;padding:24px 28px;margin-bottom:20px;}
+.bklh{font-family:'Playfair Display',serif;font-size:.95rem;margin-bottom:16px;color:#888;font-weight:400;}
+.bkrow{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid #F0EDE6;gap:14px;}
+.bkrow:last-child{border-bottom:none;}
+.bkq{font-size:.8rem;color:#555;flex:1;line-height:1.4;}
+.bksc{font-size:.78rem;font-weight:600;flex-shrink:0;width:72px;text-align:right;}
+.sch{color:#2D6A4F;}.scm{color:#E07B39;}.scl{color:#C0392B;}
+/* MAGIC */
+.mbox{background:#FDF6E8;border:2px solid rgba(197,160,80,.45);border-radius:8px;padding:32px;text-align:center;margin-bottom:20px;}
+.mq{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:#0A1628;margin-bottom:8px;}
+.msub{font-size:.88rem;color:#777;margin-bottom:24px;line-height:1.6;}
+.mbtns{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.myes{background:#0A1628;color:#fff;border:none;border-radius:4px;padding:14px;font-size:.9rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;}
+.myes:hover{background:#112240;}
+.mno{background:transparent;color:#888;border:1.5px solid #E8E4DC;border-radius:4px;padding:14px;font-size:.9rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.mno:hover{border-color:#0A1628;color:#0A1628;}
+.ctabox{background:#0A1628;border-radius:8px;padding:32px;text-align:center;margin-bottom:20px;}
+.ctabox h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:10px;color:#fff;}
+.ctabox p{font-size:.88rem;color:rgba(255,255,255,.6);line-height:1.65;margin-bottom:22px;}
+.bbook{display:inline-block;background:#C5A050;color:#fff;padding:13px 28px;border-radius:4px;font-weight:600;font-size:.9rem;text-decoration:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:.03em;transition:background .2s;}
+.bbook:hover{background:#D4B470;}
+.nurbox{background:#F8F7F4;border:1px solid #E8E4DC;border-radius:8px;padding:24px 28px;text-align:center;margin-bottom:20px;}
+.nurbox p{font-size:.9rem;color:#666;line-height:1.7;}
+.nurbox a{color:#C5A050;text-decoration:none;}
+.brestart{display:block;text-align:center;margin-top:16px;font-size:.82rem;color:#aaa;cursor:pointer;text-decoration:underline;background:none;border:none;font-family:'DM Sans',sans-serif;width:100%;}
+.brestart:hover{color:#0A1628;}
+footer{text-align:center;padding:28px 48px;border-top:1px solid #E8E4DC;margin-top:40px;background:#F8F7F4;}
+.fmani{font-family:'Playfair Display',serif;font-size:.88rem;color:#aaa;font-style:italic;margin-bottom:6px;}
+.fcon{font-size:.76rem;color:#bbb;}.fcon a{color:#C5A050;text-decoration:none;}
+@keyframes fu{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:640px){
+  nav{padding:14px 20px;}
+  .landing,.inner,.inner-sm{padding:36px 20px;}
+  .speed-cards{grid-template-columns:1fr;}
+  .qnav{flex-direction:column-reverse;gap:10px;}
+  .bnext,.bprev{width:100%;text-align:center;}
+  .bgrid,.mbtns{grid-template-columns:1fr;}
+  .crname{width:72px;}
+}
+.adot-yes{background:#E8F5E9;border-color:#2D6A4F;color:#2D6A4F;}
+.adot-no{background:#FFEBEE;border-color:#C0392B;color:#C0392B;}
+.abtn-yes.sel{border-color:#2D6A4F;background:#E8F5E9;box-shadow:0 3px 12px rgba(45,106,79,.2);}
+.abtn-yes.sel .adot-yes{background:#2D6A4F;color:#fff;}
+.abtn-no.sel{border-color:#C0392B;background:#FFEBEE;box-shadow:0 3px 12px rgba(192,57,43,.2);}
+.abtn-no.sel .adot-no{background:#C0392B;color:#fff;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="https://contracks.global" class="nav-logo">CONTRACKS<span>.</span>GLOBAL</a>
+  <a href="https://contracks.global" class="nav-back">← Back to site</a>
+</nav>
+
+<!-- LANDING -->
+
+<div id="screen-landing" class="screen active">
+  <div class="landing">
+    <div class="eyebrow">Free Assessment</div>
+    <h1>Find out which speed<br>you're <em>at.</em></h1>
+    <p class="landing-sub">21 questions. Instant score by category. A clear picture of exactly where you stand — and what to do next. Choose the scorecard that fits your situation.</p>
+    <div class="speed-cards">
+      <div class="scard s1" onclick="startScorecard(0)">
+        <div class="snum">Speed 1</div><div class="sname">START</div>
+        <div class="sq">"Is your venture commercially ready to launch?"</div>
+        <div class="sdesc">For entrepreneurs, founders and companies with a new idea or direction. New ventures. New markets. Diaspora entrepreneurs.</div>
+        <span class="sarrow">→</span>
+      </div>
+      <div class="scard s2" onclick="startScorecard(1)">
+        <div class="snum">Speed 2</div><div class="sname">RESOLVE</div>
+        <div class="sq">"Is your commercial structure costing you money?"</div>
+        <div class="sdesc">For contractors, developers and project-driven companies. Something is broken — money leaking, claims stalled, procurement chaos.</div>
+        <span class="sarrow">→</span>
+      </div>
+      <div class="scard s3" onclick="startScorecard(2)">
+        <div class="snum">Speed 3</div><div class="sname">RESHAPE</div>
+        <div class="sq">"Is your company ready for digital transformation?"</div>
+        <div class="sdesc">For construction, fit-out and PM companies. Operations inefficiency. Ready to implement AI agents and digital workflows.</div>
+        <span class="sarrow">→</span>
+      </div>
+      <div class="scard s4" onclick="startScorecard(3)">
+        <div class="snum">Speed 4</div><div class="sname">GROW</div>
+        <div class="sq">"Is your company ready to scale?"</div>
+        <div class="sdesc">For companies expanding to new markets — Africa or Europe. Commercial side can't keep pace with growth ambitions.</div>
+        <span class="sarrow">→</span>
+      </div>
+    </div>
+    <p class="land-note">Free · 21 questions · 5 minutes · No commitment</p>
+  </div>
+</div>
+
+<!-- QUIZ Q1-16 -->
+
+<div id="screen-quiz" class="screen">
+  <div class="inner">
+    <div style="margin-bottom:24px;">
+      <div id="quiz-badge" class="badge"></div>
+      <div id="quiz-title" style="font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:700;line-height:1.2;margin-bottom:6px;color:#0A1628;"></div>
+      <div id="quiz-sub" style="font-size:.9rem;color:#777;"></div>
+    </div>
+    <div class="cat-bars"><div class="cbar" id="cb0"></div><div class="cbar" id="cb1"></div><div class="cbar" id="cb2"></div><div class="cbar" id="cb3"></div></div>
+    <div class="cat-meta"><span id="cat-name" style="font-weight:600;color:#555;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;"></span><span id="prog-txt">Q 1 of 16</span></div>
+    <div class="pbar-bg"><div class="pbar-fill" id="pbar" style="width:6.25%"></div></div>
+    <div id="qcon"></div>
+    <div class="qnav">
+      <button class="bprev" id="bprev" onclick="prevQ()">← Back</button>
+      <button class="bnext" id="bnext" onclick="nextQ()" disabled>Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- QUALIFYING Q17-21 -->
+
+<div id="screen-qual" class="screen">
+  <div class="inner">
+    <div style="margin-bottom:32px;">
+      <div id="qual-badge" class="badge"></div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;margin-bottom:6px;">Almost done.</div>
+      <div style="font-size:.9rem;color:#777;">Four quick questions to personalise your results.</div>
+    </div>
+    <div class="qsec"><div class="qlbl" id="q17l"></div><div id="q17o"></div></div>
+    <div class="qsec"><div class="qlbl" id="q18l"></div><div class="qsub">Select up to 2.</div><div id="q18o"></div></div>
+    <div class="qsec"><div class="qlbl">Q19. What's your biggest obstacle to solving this?</div><div id="q19o"></div></div>
+    <div class="qsec">
+      <div class="qlbl">Q20. What type of support are you looking for?</div>
+      <div class="bgrid">
+        <button class="bbtn" id="bdiy" onclick="selQ20('diy')"><div class="bico">📖</div><div class="btit">Self Study / DIY</div><div class="bdsc">Tools and frameworks I implement myself</div></button>
+        <button class="bbtn" id="badv" onclick="selQ20('advisory')"><div class="bico">🤝</div><div class="btit">Guided / Embedded</div><div class="bdsc">An experienced partner working alongside us</div></button>
+      </div>
+    </div>
+    <div class="qsec">
+      <div class="qlbl">Anything else you'd like me to know? <span style="font-weight:400;color:#888;">(Optional)</span></div>
+      <div class="qsub">Budget, timeline, urgency, specific situation.</div>
+      <textarea class="qtxt" id="q21t" placeholder="Type here..."></textarea>
+    </div>
+    <div style="display:flex;gap:12px;margin-top:8px;">
+      <button class="bprev" onclick="ss('quiz');showQ(15);" style="flex-shrink:0;">← Back</button>
+      <button class="bnext" id="bqnext" onclick="goEmail()" disabled style="flex:1;">See my score →</button>
+    </div>
+  </div>
+</div>
+
+<!-- EMAIL -->
+
+<div id="screen-email" class="screen">
+  <div class="inner-sm" style="text-align:center;">
+    <div class="srbox"><div class="srtsr">Your score is ready</div><div class="srblur" id="sblur">••%</div><div class="srunl">Enter your details to unlock your full results</div></div>
+    <div class="eh2">Your personalised breakdown is waiting.</div>
+    <p class="ep">We'll show you your score by category, what it means, and the specific next step Contracks recommends — right now, on screen.</p>
+    <form class="eform" onsubmit="subEmail(event)">
+      <input type="text" id="ename" placeholder="Your name" required>
+      <input type="email" id="eemail" placeholder="Your email address" required>
+      <input type="text" id="eco" placeholder="Company / Venture (optional)">
+      <button type="submit" class="breveal">Reveal my results →</button>
+    </form>
+    <p class="enote">We'll follow up once. No newsletters unless you ask.</p>
+  </div>
+</div>
+
+<!-- RESULTS -->
+
+<div id="screen-results" class="screen">
+  <div class="inner">
+    <!-- Score header -->
+    <div class="rhead">
+      <div style="font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#C5A050;margin-bottom:16px;">Your Commercial Score</div>
+      <!-- Donut — center text drawn by Chart.js plugin -->
+      <div style="position:relative;width:220px;height:220px;margin:0 auto 8px;">
+        <canvas id="donut-chart" width="220" height="220" style="display:block;"></canvas>
+      </div>
+      <!-- 4 category cards -->
+      <div id="cat-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;"></div>
+      <!-- Band -->
+      <div class="rtbadge" id="rtbadge"></div>
+      <div class="rheading" id="rhead"></div>
+      <p class="rdesc" id="rdesc"></p>
+    </div>
+    <div class="bklist"><div class="bklh">Your answers at a glance</div><div id="bklist"></div></div>
+    <div class="mbox" id="mbox">
+      <div class="mq">Would you like to improve your score?</div>
+      <p class="msub" id="msub"></p>
+      <div class="mbtns"><button class="myes" onclick="setImp(true)">Yes — let's look at this</button><button class="mno" onclick="setImp(false)">Not right now</button></div>
+    </div>
+    <div id="ctaarea" style="display:none;"></div>
+    <button onclick="generatePDF()" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:#F8F7F4;border:1.5px solid #E8E4DC;border-radius:4px;padding:13px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:600;color:#555;cursor:pointer;margin-bottom:10px;transition:all .2s;" onmouseover="this.style.borderColor='#C5A050';this.style.color='#0A1628';" onmouseout="this.style.borderColor='#E8E4DC';this.style.color='#555';">⬇ Download PDF Report</button>
+    <button class="brestart" onclick="restart()">← Start a different scorecard</button>
+  </div>
+</div>
+
+<footer>
+  <div class="fmani">Better contracts. Better business. Better society.</div>
+  <div class="fcon"><a href="mailto:hello@contracks.global">hello@contracks.global</a> · +32 466 446 290</div>
+</footer>
+
+<script>
+// Yes/No scoring — no ANS array needed
+
+const SC=[
+{speed:'Speed 1',name:'START',id:'s1',col:'#2D6A4F',
+ framework:'Contracks Venture Launch Protocol',
+ hook:'How close are you to a commercially bulletproof launch?',
+ sub:'Answer honestly. Each question has a right answer. Find out where the gaps are.',
+ cats:[
+  {name:'Venture Architecture',qs:[
+   {t:'Is your legal entity and jurisdiction chosen and documented — not still under discussion?',neg:false},
+   {t:'Do you have a written commercial model showing how money flows from customer to bank account?',neg:false},
+   {t:'Are you still operating without a documented scope of what you are — and are not — selling?',neg:true},
+   {t:'Is your commercial model still based on assumptions rather than tested pricing with real buyers?',neg:true}]},
+  {name:'Market Validation',qs:[
+   {t:'Have at least 5 real potential customers confirmed they would pay for what you are building?',neg:false},
+   {t:'Can you articulate your competitive differentiation in one clear sentence — tested with real buyers?',neg:false},
+   {t:'Are you still building features or services without confirmed demand from paying customers?',neg:true},
+   {t:'Has your venture been operating for more than 6 months without any paying customers?',neg:true}]},
+  {name:'Financial Readiness',qs:[
+   {t:'Do you know your unit economics — what it costs to acquire and serve one customer?',neg:false},
+   {t:'Are you tracking your cash position against a financial model updated at least monthly?',neg:false},
+   {t:'Do you lack visibility of your runway — how many months of cash you have at current burn?',neg:true},
+   {t:'Are you still unable to articulate what financing you need and what it will be used for?',neg:true}]},
+  {name:'Execution Foundations',qs:[
+   {t:'Do you have at least one documented commercial agreement — with a supplier, partner, or early customer?',neg:false},
+   {t:'Have you mapped the legal and regulatory requirements for your target market?',neg:false},
+   {t:'Are key commercial decisions still made informally — without written records or sign-off?',neg:true},
+   {t:'Do you lack a structured operational plan for your first 90 days of trading?',neg:true}]}],
+ q17l:'Q17. Which best describes your venture\'s current scale?',
+ q17:['Pre-revenue concept — under EUR 500K projected year-1 revenue',
+      'Early commercial — EUR 500K to EUR 2M projected year-1 revenue',
+      'Funded or scaling — EUR 2M to EUR 10M projected year-1 revenue',
+      'Diaspora entrepreneur — building in Africa or a new market from abroad'],
+ q18l:'Q18. Top 2 commercial priorities for the next 90 days?',
+ q18:['Prove demand and sign first paying customers',
+      'Lock the commercial model and pricing structure',
+      'Secure financing or investment',
+      'Establish legal structure and first commercial agreements',
+      'Define the operational model for first 90 days of trading',
+      'Enter a new geographic market or sector'],
+ q19:['No time — still employed or managing other commitments',
+      'No methodology — don\'t know the right sequence to follow',
+      'No network — don\'t know the right people or how to access them',
+      'No capital — can\'t fund the next step'],
+ bands:{
+  low:{col:'#C0392B',lbl:'Foundations First',
+   h:'The idea is clear. The commercial structure is not there yet.',
+   b:'Before marketing, hiring, or fundraising — the commercial foundations need to be in place. The Contracks Venture Launch Protocol shows exactly which three to build first. Ventures that get this right in sequence move from concept to investable in 90 days.'},
+  medium:{col:'#E07B39',lbl:'Close — With Gaps',
+   h:'Three gaps will slow your launch if you don\'t close them now.',
+   b:'Real progress is visible. But commercial, legal, or financial gaps will cost you momentum — and potentially your first customers — if not addressed in the right sequence. This is the most common position at your stage. Targeted intervention closes the gap in 60 to 90 days.'},
+  high:{col:'#2D6A4F',lbl:'Launch-Ready',
+   h:'Your commercial foundations are built. Time to move fast.',
+   b:'Legal structure, commercial model, and operational foundations are in place. The Contracks Venture Launch Protocol shows you are in the top tier of launch readiness. What you need now is execution speed, financing introductions, and a commercial partner who has done this before.'}}},
+
+{speed:'Speed 2',name:'RESOLVE',id:'s2',col:'#E07B39',
+ framework:'Contracks Commercial Control Framework',
+ hook:'How close are you to a leakproof commercial structure?',
+ sub:'Answer honestly. Each question has a right answer. Find out where the gaps are.',
+ cats:[
+  {name:'Scope Lock',qs:[
+   {t:'Do you have a signed, project-specific contract in place before work starts — on every project?',neg:false},
+   {t:'Are commercial roles and responsibilities clearly defined and documented across your team before mobilisation?',neg:false},
+   {t:'Do you still rely on verbal agreements or informal understandings for scope changes on live projects?',neg:true},
+   {t:'Is your team typically briefed on contractual obligations after mobilisation has already started?',neg:true}]},
+  {name:'Variation Discipline',qs:[
+   {t:'When a variation is identified on site, does your team raise and price it within 30 days — consistently?',neg:false},
+   {t:'Do you maintain a live variation and change register with named owners and resolution deadlines?',neg:false},
+   {t:'Are scope changes currently being agreed via email or WhatsApp without a documented impact assessment?',neg:true},
+   {t:'Do progress claims get submitted late or without full supporting documentation on more than 20% of projects?',neg:true}]},
+  {name:'Margin Visibility',qs:[
+   {t:'Do your projects consistently close within 5% of your target margin?',neg:false},
+   {t:'Can you quantify the total value of open variations across your active projects right now — today?',neg:false},
+   {t:'Do final accounts typically stay open for more than 6 months after project completion?',neg:true},
+   {t:'Do you regularly discover commercial exposure only after disputes have already escalated?',neg:true}]},
+  {name:'Claims Readiness',qs:[
+   {t:'Do you know the single biggest commercial risk on each of your active projects right now?',neg:false},
+   {t:'Is commercial management involved from the pre-award phase on every project — not just after problems start?',neg:false},
+   {t:'Do project managers make commercial decisions without involving the commercial function?',neg:true},
+   {t:'Does your commercial team typically get brought in after disputes have already escalated?',neg:true}]}],
+ q17l:'Q17. Which best describes your current programme scale?',
+ q17:['1 to 5 projects simultaneously — total contract value under EUR 10M',
+      '6 to 15 projects simultaneously — EUR 10M to EUR 50M total programme value',
+      '15+ projects simultaneously — EUR 50M to EUR 500M total programme value',
+      'Major single project or programme — EUR 500M+'],
+ q18l:'Q18. Top 2 commercial priorities for the next 90 days?',
+ q18:['Recover untracked variations and close open final accounts',
+      'Tighten contract setup and risk allocation on new awards',
+      'Resolve live disputes or claims before they escalate further',
+      'Build commercial team capability and consistent process',
+      'Improve subcontractor commercial management and documentation',
+      'Get live margin visibility across the active project portfolio'],
+ q19:['No time — too busy managing live projects and escalations',
+      'No methodology — don\'t know what good looks like at our scale',
+      'No internal capacity — not enough experienced commercial resource',
+      'No leadership buy-in — project teams won\'t follow commercial process'],
+ bands:{
+  low:{col:'#C0392B',lbl:'Significant Exposure',
+   h:'Money is leaving your business that you may not see yet.',
+   b:'Variations are untracked. Subcontract terms are misaligned. Final accounts are open. The gaps are compounding. This is fixable — but it needs a clear-eyed diagnostic before the next project makes it harder. The Contracks Commercial Control Framework identifies the three highest-priority interventions.'},
+  medium:{col:'#E07B39',lbl:'Exposure Manageable — For Now',
+   h:'The framework exists. It is not applied consistently. That is where the money goes.',
+   b:'Processes are in place but not applied consistently across projects or teams. The gap between what your commercial framework says and what actually happens on site is where margin leaks. This is the most common position for growing EPC businesses — and the most fixable with the right operating discipline installed.'},
+  high:{col:'#2D6A4F',lbl:'Control Established',
+   h:'Your commercial structure is solid. Protect it as you scale.',
+   b:'Strong foundations are in place: contracts signed before mobilisation, variations tracked, margins monitored. The Contracks Commercial Control Framework shows you are operating above industry standard. Your focus now is protecting this structure as you scale — and closing the weakest pillar before the next growth phase exposes it.'}}},
+
+{speed:'Speed 3',name:'RESHAPE',id:'s3',col:'#6C3483',
+ framework:'Contracks Operational Intelligence Protocol',
+ hook:'How close are you to an operationally intelligent business?',
+ sub:'Answer honestly. Each question has a right answer. Find out where the gaps are.',
+ cats:[
+  {name:'Information Architecture',qs:[
+   {t:'Do you have one authoritative system of record for contracts, specifications, and project decisions — not email?',neg:false},
+   {t:'Can any team member find any critical project document or decision record in under 2 minutes?',neg:false},
+   {t:'Do team members still rely on WhatsApp threads or email chains to manage critical project information?',neg:true},
+   {t:'Are your key procedures and quality standards stored in people\'s heads rather than documented, accessible systems?',neg:true}]},
+  {name:'Workflow Intelligence',qs:[
+   {t:'Do you have digital workflows in active use that have measurably reduced manual administrative work?',neg:false},
+   {t:'Have you identified the 3 biggest administrative bottlenecks in your business that could be automated?',neg:false},
+   {t:'Are you still rebuilding project context from scratch each time a team member leaves or is replaced?',neg:true},
+   {t:'Has administrative overhead grown faster than your project volume in the last 12 months?',neg:true}]},
+  {name:'Field Integration',qs:[
+   {t:'Do project teams have real-time visibility of their commercial and operational position — without waiting for weekly reports?',neg:false},
+   {t:'Can you track non-billable administrative hours per project and per team — accurately and automatically?',neg:false},
+   {t:'Do disputes or costly errors regularly occur because information was in the wrong format or the wrong place?',neg:true},
+   {t:'Do project teams operate without real-time visibility of their commercial or operational position?',neg:true}]},
+  {name:'Change Readiness',qs:[
+   {t:'Is your team trained and genuinely willing to adopt new digital tools and workflows — not just tolerating them?',neg:false},
+   {t:'Do you have a clear business case or internal sponsor for operational intelligence investment?',neg:false},
+   {t:'Are critical workflows still dependent on one person who has not documented their process?',neg:true},
+   {t:'Do you lack a clear roadmap for digital transformation — don\'t know where to start or in what sequence?',neg:true}]}],
+ q17l:'Q17. Which best describes your current operational scale?',
+ q17:['Small team under 20 people, 1 to 5 concurrent projects',
+      'Mid-size 20 to 100 people, managing multiple concurrent projects',
+      'Large operation 100 to 500 people, complex multi-site or multi-country delivery',
+      'Enterprise 500+ people, significant digital infrastructure already in place'],
+ q18l:'Q18. Top 2 digital priorities for the next 90 days?',
+ q18:['Establish one system of record for documents and decisions',
+      'Automate variation and contract tracking workflows',
+      'Connect field and office data in real time',
+      'Reduce administrative overhead per project by at least 20%',
+      'Build a business case for AI-assisted procurement or contract workflows',
+      'Improve team adoption of existing digital tools'],
+ q19:['No time — operations too busy to implement new systems',
+      'No roadmap — don\'t know where to start or the right sequence',
+      'No internal capacity — no technical expertise to lead implementation',
+      'No budget or approved investment case'],
+ bands:{
+  low:{col:'#C0392B',lbl:'Significant Opportunity',
+   h:'Administrative overhead is a hidden cost centre. It does not have to be.',
+   b:'The data exists — in emails, shared drives, and people\'s heads. It just is not working for the team. An Operational Intelligence Diagnostic maps exactly where time and margin are leaking — and what targeted workflows would recover within 90 days.'},
+  medium:{col:'#E07B39',lbl:'Transition Ready',
+   h:'The structure exists. The intelligence is not connected yet.',
+   b:'Some digital infrastructure is in place but it is not working together. Information is still siloed. Workflows still depend on manual intervention. This is the most common position for construction and project-driven companies at your scale. Operational Intelligence implementation does not require a six-figure IT project.'},
+  high:{col:'#2D6A4F',lbl:'Operationally Intelligent',
+   h:'Your foundations are built. Agent-based workflows are your next level.',
+   b:'Your digital infrastructure is ahead of the industry. The Contracks Operational Intelligence Protocol shows strong information architecture, active digital workflows, and real-time visibility. The next level is not more software — it is AI-assisted workflows targeting the specific bottlenecks your weakest pillar reveals.'}}},
+
+{speed:'Speed 4',name:'GROW',id:'s4',col:'#C5A050',
+ framework:'Contracks Commercial Scale Protocol',
+ hook:'How close are you to a commercially scale-ready business?',
+ sub:'Answer honestly. Each question has a right answer. Find out where the gaps are.',
+ cats:[
+  {name:'Model Replicability',qs:[
+   {t:'Is your commercial model documented and replicable — can it run without your direct personal involvement on every deal?',neg:false},
+   {t:'Do you have procurement and contract frameworks that can scale to double your current activity without restructuring?',neg:false},
+   {t:'Are you still handling deals and contracts on a case-by-case basis with no standard templates or frameworks?',neg:true},
+   {t:'Is your operational model dependent on personal relationships rather than documented, transferable systems?',neg:true}]},
+  {name:'Market Entry Readiness',qs:[
+   {t:'Do you have verified local market intelligence for your primary target expansion geography — not assumptions?',neg:false},
+   {t:'Do you have at least one verified, qualified local partner in your primary target market — legally and commercially structured?',neg:false},
+   {t:'Are you attempting to enter a new market without a completed legal or regulatory assessment?',neg:true},
+   {t:'Does your current team lack the language capability or cultural context for your primary target market?',neg:true}]},
+  {name:'Commercial Capacity',qs:[
+   {t:'Has your revenue grown by at least 25% in the last 12 months?',neg:false},
+   {t:'Do you have financing relationships or credit facilities in place to fund your expansion ambitions?',neg:false},
+   {t:'Are you regularly losing bids or deals in target markets where you know you should be winning?',neg:true},
+   {t:'Has growth already exposed commercial or operational gaps that are actively slowing you down?',neg:true}]},
+  {name:'Expansion Execution',qs:[
+   {t:'Do you have a clear market entry sequence — which geography first, which sector, which partnership model?',neg:false},
+   {t:'Do you have a commercial director or equivalent providing oversight of your growth activity?',neg:false},
+   {t:'Are you uncertain which market to enter first — and have no clear methodology for that decision?',neg:true},
+   {t:'Does your commercial team lack the capacity to manage twice the partner or project volume without breaking?',neg:true}]}],
+ q17l:'Q17. Which best describes your current revenue scale?',
+ q17:['Pre-revenue expansion — planning stage, under EUR 1M current revenue',
+      'Early growth — EUR 1M to EUR 5M current revenue, first markets established',
+      'Established and scaling — EUR 5M to EUR 25M current revenue, multiple markets',
+      'Scaling across regions — EUR 25M+ current revenue, complex multi-geography portfolio'],
+ q18l:'Q18. Top 2 growth priorities for the next 90 days?',
+ q18:['Enter Africa — right market, legal structure, and local partner',
+      'Enter Europe — navigate regulatory and procurement complexity',
+      'Scale commercial capacity — team and systems can\'t keep pace with growth',
+      'Secure expansion financing or credit facilities',
+      'Find and structure the right local partnerships in target markets',
+      'Replicate the commercial model cleanly across new geographies'],
+ q19:['No time — too consumed by current operations to plan the next step',
+      'No methodology — no clear market entry framework or sequence',
+      'No local network — no trusted contacts in the target market',
+      'No capital — no financing structure in place for expansion'],
+ bands:{
+  low:{col:'#C0392B',lbl:'Restructure Before Scaling',
+   h:'Scaling now would amplify the gaps, not the strengths.',
+   b:'The ambition is right. The commercial structure is not ready for the weight of what you are trying to do next. Growth at this stage exposes every weakness faster than it creates value. Three focused structural changes make the difference between scaling and stalling. The Contracks Commercial Scale Protocol shows exactly which three.'},
+  medium:{col:'#E07B39',lbl:'Ready With Commercial Support',
+   h:'You can scale — with the right commercial partner alongside.',
+   b:'Solid foundations, but the commercial capacity is not fully there for the scale you are targeting. This is the most common position for businesses between EUR 5M and EUR 25M targeting new geographies. A Fractional COO or Commercial Director Retainer gives you senior commercial leadership without the full-time overhead.'},
+  high:{col:'#2D6A4F',lbl:'Scale-Ready',
+   h:'The structure is ready. The question is which market, which partner, and in what sequence.',
+   b:'Your commercial foundations are built for scale. Replicable model, local partner intelligence, financing in place. The Contracks Commercial Scale Protocol shows you are ready to move. What you need now is a partner with the network and field experience to execute alongside you — with clarity on sequencing, not just ambition.'}}}
+];
+
+// STATE
+let si=0,cq=0,ans=new Array(16).fill(null),q17=null,q18=[],q19=null,q20=null,q21='',uname='',uemail='';
+
+function ss(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('screen-'+id).classList.add('active');window.scrollTo(0,0);}
+
+// Binary scoring: correct=1, wrong=0
+function qs(qi,raw){
+  if(raw===null)return 0;
+  const ci=Math.floor(qi/4),qi2=qi%4;
+  const neg=SC[si].cats[ci].qs[qi2].neg;
+  // neg question: good answer = No (2); positive: good answer = Yes (1)
+  return neg?(raw===2?1:0):(raw===1?1:0);
+}
+function catS(ci){let t=0;for(let i=0;i<4;i++)t+=qs(ci*4+i,ans[ci*4+i]);return Math.round(t/4*100);}
+function ov(){return Math.round([0,1,2,3].reduce((a,c)=>a+catS(c),0)/4);}
+function wi(){return[0,1,2,3].reduce((b,c)=>catS(c)<catS(b)?c:b,0);}
+function band(s){return s>=70?'high':s>=40?'medium':'low';}
+
+function startScorecard(idx){
+  si=idx;cq=0;ans=new Array(16).fill(null);q17=null;q18=[];q19=null;q20=null;q21='';
+  const s=SC[idx];
+  const b=document.getElementById('quiz-badge');b.textContent=s.speed+' — '+s.name;b.className='badge '+s.id;
+  document.getElementById('quiz-title').textContent=s.hook;
+  document.getElementById('quiz-sub').textContent=s.sub;
+  buildQs(s);buildQual(s);showQ(0);ss('quiz');
+}
+
+function buildQs(s){
+  const con=document.getElementById('qcon');con.innerHTML='';
+  s.cats.forEach((cat,ci)=>cat.qs.forEach((q,qi)=>{
+    const gi=ci*4+qi,bl=document.createElement('div');
+    bl.className='qblock'+(gi===0?' active':'');bl.id='q'+gi;
+    bl.innerHTML=`<div class="qnum">Question ${gi+1} of 16 &nbsp;·&nbsp; ${cat.name}</div>
+    <div class="qtext">${q.t}</div>
+    <div class="aopts" style="flex-direction:row;gap:14px;margin-top:8px;">
+      <button class="abtn abtn-yes" onclick="selA(${gi},1,this)" style="flex:1;justify-content:center;padding:20px 16px;font-size:1rem;">
+        <span class="adot adot-yes">✓</span><span style="font-weight:600;">Yes</span>
+      </button>
+      <button class="abtn abtn-no" onclick="selA(${gi},2,this)" style="flex:1;justify-content:center;padding:20px 16px;font-size:1rem;">
+        <span class="adot adot-no">✗</span><span style="font-weight:600;">No</span>
+      </button>
+    </div>`;
+    con.appendChild(bl);
+  }));
+}
+
+function showQ(idx){
+  document.querySelectorAll('.qblock').forEach(b=>b.classList.remove('active'));
+  const bl=document.getElementById('q'+idx);if(bl)bl.classList.add('active');
+  const ci=Math.floor(idx/4),s=SC[si];
+  [0,1,2,3].forEach(i=>{const b=document.getElementById('cb'+i);b.className='cbar'+(i<ci?' done':i===ci?' act':'');});
+  document.getElementById('cat-name').textContent=s.cats[ci].name;
+  document.getElementById('prog-txt').textContent='Q '+(idx+1)+' of 16';
+  document.getElementById('pbar').style.width=((idx+1)/16*100)+'%';
+  const bn=document.getElementById('bnext');bn.disabled=ans[idx]===null;bn.textContent=idx===15?'Final questions →':'Continue →';
+  document.getElementById('bprev').style.visibility=idx===0?'hidden':'visible';
+  // Restore selection
+  if(ans[idx]!==null){
+    const btns=document.querySelectorAll('#q'+idx+' .abtn');
+    btns.forEach(b=>b.classList.remove('sel'));
+    const target=document.querySelector('#q'+idx+' .abtn-'+(ans[idx]===1?'yes':'no'));
+    if(target)target.classList.add('sel');
+  }
+  cq=idx;
+}
+
+function selA(qi,val,btn){
+  while(btn&&!btn.classList.contains('abtn'))btn=btn.parentElement;if(!btn)return;
+  ans[qi]=val;
+  btn.closest('.aopts').querySelectorAll('.abtn').forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel');
+  document.getElementById('bnext').disabled=false;
+}
+function nextQ(){if(ans[cq]===null)return;if(cq<15)showQ(cq+1);else ss('qual');}
+function prevQ(){if(cq>0)showQ(cq-1);}
+
+function buildQual(s){
+  document.getElementById('q17l').textContent=s.q17l;
+  const e17=document.getElementById('q17o');e17.innerHTML='';
+  s.q17.forEach((o,i)=>{const b=document.createElement('button');b.className='obtn';b.textContent=o;b.onclick=()=>{q17=i;e17.querySelectorAll('.obtn').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');chkQ();};e17.appendChild(b);});
+  document.getElementById('q18l').textContent=s.q18l;
+  const e18=document.getElementById('q18o');e18.innerHTML='';
+  s.q18.forEach((o,i)=>{const b=document.createElement('button');b.className='obtn';b.textContent=o;b.onclick=()=>{if(b.classList.contains('sel')){q18=q18.filter(x=>x!==i);b.classList.remove('sel');}else if(q18.length<2){q18.push(i);b.classList.add('sel');}chkQ();};e18.appendChild(b);});
+  const e19=document.getElementById('q19o');e19.innerHTML='';
+  s.q19.forEach((o,i)=>{const b=document.createElement('button');b.className='obtn';b.textContent=o;b.onclick=()=>{q19=i;e19.querySelectorAll('.obtn').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');chkQ();};e19.appendChild(b);});
+  document.getElementById('bdiy').classList.remove('sel');document.getElementById('badv').classList.remove('sel');q20=null;
+  const qb=document.getElementById('qual-badge');qb.textContent=SC[si].speed+' — '+SC[si].name;qb.className='badge '+SC[si].id;
+}
+function selQ20(v){q20=v;document.getElementById('bdiy').classList.toggle('sel',v==='diy');document.getElementById('badv').classList.toggle('sel',v==='advisory');chkQ();}
+function chkQ(){document.getElementById('bqnext').disabled=!(q17!==null&&q18.length>0&&q19!==null&&q20!==null);}
+function goEmail(){q21=document.getElementById('q21t').value;document.getElementById('sblur').textContent=ov()+'%';ss('email');}
+
+function subEmail(e){
+  e.preventDefault();uname=document.getElementById('ename').value;uemail=document.getElementById('eemail').value;
+  const co=document.getElementById('eco').value,s=SC[si],o=ov(),bd=band(o);
+  const sub=encodeURIComponent('Contracks Scorecard — '+s.name+' — '+uname+' — '+o+'%');
+  const body=encodeURIComponent('Name: '+uname+'\nEmail: '+uemail+'\nCompany: '+(co||'N/A')+'\nScorecard: '+s.speed+' — '+s.name+'\nScore: '+o+'%\nBand: '+bd.toUpperCase()+'\nQ17: '+(q17!==null?s.q17[q17]:'N/A')+'\nQ18: '+q18.map(i=>s.q18[i]).join(', ')+'\nQ19: '+(q19!==null?s.q19[q19]:'N/A')+'\nQ20: '+(q20||'N/A')+'\nQ21: '+(q21||'N/A')+'\n\nCategory scores:\n'+s.cats.map((c,i)=>c.name+': '+catS(i)+'%').join('\n'));
+  const lnk=document.createElement('a');lnk.href='mailto:hello@contracks.global?subject='+sub+'&body='+body;lnk.style.display='none';document.body.appendChild(lnk);lnk.click();document.body.removeChild(lnk);
+  showRes();
+  setTimeout(generatePDF,600);
+}
+
+let donutInst=null;
+
+const centerTextPlugin={
+  id:'centerText',
+  afterDraw(chart){
+    const{ctx,chartArea}=chart;
+    if(!chartArea)return;
+    const cfg=chart.config.options.plugins.centerText||{};
+    const cx=(chartArea.left+chartArea.right)/2;
+    const cy=(chartArea.top+chartArea.bottom)/2;
+    const r=Math.min(chartArea.right-chartArea.left,chartArea.bottom-chartArea.top)*0.5;
+    // React original: fontSize 36 on r≈95 → ratio 0.38
+    const fontSize=r*0.38;
+    ctx.save();
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    // Score number — slightly above center
+    ctx.font=`900 ${fontSize}px 'Playfair Display',serif`;
+    ctx.fillStyle=cfg.color||'#C5A050';
+    ctx.fillText(cfg.text||'',cx,cy-fontSize*0.12);
+    // OVERALL label — well below number, small and clean
+    ctx.font=`500 ${fontSize*0.22}px 'DM Sans',sans-serif`;
+    ctx.fillStyle='#aaa';
+    ctx.letterSpacing='2px';
+    ctx.fillText('OVERALL',cx,cy+fontSize*0.68);
+    ctx.restore();
+  }
+};
+
+function initDonut(scores,cols,centerText,centerColor){
+  const ctx=document.getElementById('donut-chart').getContext('2d');
+  if(donutInst){donutInst.destroy();donutInst=null;}
+  donutInst=new Chart(ctx,{
+    type:'doughnut',
+    plugins:[centerTextPlugin],
+    data:{
+      labels:SC[si].cats.map(c=>c.name),
+      datasets:[{data:scores,backgroundColor:cols,borderWidth:3,borderColor:'#fff'}]
+    },
+    options:{
+      cutout:'68%',
+      plugins:{
+        centerText:{text:centerText,color:centerColor||'#C5A050'},
+        legend:{display:false},
+        tooltip:{callbacks:{label:function(ctx){return ' '+ctx.label+': '+ctx.raw+'%';}}}
+      },
+      animation:{duration:700}
+    }
+  });
+}
+
+function generatePDF(){
+  if(!window.jspdf)return;
+  const {jsPDF}=window.jspdf;
+  const doc=new jsPDF({unit:'mm',format:'a4'});
+  const s=SC[si],o=ov(),bd=band(o),bnd=s.bands[bd];
+  const date=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  const W=210,M=15,UW=W-M*2;
+
+  const clean=t=>String(t||'')
+    .replace(/[\u2014\u2013]/g,'-').replace(/[\u201C\u201D]/g,'"')
+    .replace(/[\u2018\u2019]/g,"'").replace(/\u00B7/g,'.').replace(/\u2192/g,'->');
+
+  const NAVY=[10,22,40],GOLD=[197,160,80],WHITE=[255,255,255],LGREY=[187,187,187];
+  const CAT_COLS=[[91,155,213],[124,92,191],[82,183,136],[212,80,74]];
+  const LIGHT=[248,247,244],RULE=[232,228,220];
+  const bandRGB=bd==='high'?[45,106,79]:bd==='medium'?[224,123,57]:[192,57,43];
+
+  // -- HEADER ----------------------------------------------------------------
+  doc.setFillColor(...NAVY);doc.rect(0,0,W,38,'F');
+  doc.setFillColor(...GOLD);doc.rect(0,38,W,1,'F');
+  doc.setFont('helvetica','bold');doc.setFontSize(14);doc.setTextColor(...WHITE);
+  const cw=doc.getTextWidth('CONTRACKS');
+  doc.text('CONTRACKS',M,14);doc.text('.GLOBAL',M+cw,14);
+  doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.setTextColor(187,187,187);
+  doc.text('Commercial Diagnostic Report  -  '+clean(s.speed)+' - '+clean(s.name),M,21);
+  doc.setFontSize(7);doc.setTextColor(...LGREY);doc.text(clean(date),M,27);
+  doc.setFont('helvetica','italic');doc.setFontSize(7);doc.setTextColor(136,136,136);
+  doc.text('- Prepared for',W-M,13,{align:'right'});
+  doc.setFont('helvetica','bold');doc.setFontSize(8.5);doc.setTextColor(...WHITE);
+  doc.text(clean(uname),W-M,20,{align:'right'});
+  doc.setFont('helvetica','normal');doc.setTextColor(...WHITE);
+  doc.text(clean(uemail),W-M,27,{align:'right'});
+
+  // -- YOUR COMMERCIAL SCORE label -------------------------------------------
+  let y=46;
+  const slbl='YOUR COMMERCIAL SCORE';
+  doc.setFont('helvetica','bold');doc.setFontSize(6.5);doc.setTextColor(...GOLD);
+  doc.text(slbl,W/2,y,{align:'center'});
+  y+=8;
+
+  // -- DONUT — centred, captured from canvas ---------------------------------
+  const cnv=document.getElementById('donut-chart');
+  const cs=62;
+  if(cnv){doc.addImage(cnv.toDataURL('image/png'),'PNG',W/2-cs/2,y,cs,cs);}
+  y+=cs+8;
+
+  // -- 4 CATEGORY CARDS — white, matching screen ----------------------------
+  const cW=(UW-4)/2,cH=22;
+  s.cats.forEach((cat,ci)=>{
+    const pc=CAT_COLS[ci];
+    const cx2=M+(ci%2)*(cW+4);
+    const cy2=y+Math.floor(ci/2)*(cH+3);
+    // Card
+    doc.setFillColor(...LIGHT);doc.roundedRect(cx2,cy2,cW,cH,2,2,'F');
+    doc.setDrawColor(...RULE);doc.setLineWidth(0.4);doc.roundedRect(cx2,cy2,cW,cH,2,2,'S');
+    // Label — centred, pillar colour
+    doc.setFont('helvetica','bold');doc.setFontSize(5.5);doc.setTextColor(...pc);
+    doc.text(cat.name.toUpperCase(),cx2+cW/2,cy2+5.5,{align:'center'});
+    // Score — large, centred, pillar colour
+    doc.setFont('helvetica','bold');doc.setFontSize(20);
+    doc.text(catS(ci)+'%',cx2+cW/2,cy2+14.5,{align:'center'});
+    // Thin bar at bottom
+    const bx=cx2+4,bw=cW-8,p=catS(ci);
+    doc.setFillColor(...RULE);doc.roundedRect(bx,cy2+cH-5,bw,2,0.5,0.5,'F');
+    doc.setFillColor(...pc);doc.roundedRect(bx,cy2+cH-5,bw*p/100,2,0.5,0.5,'F');
+  });
+  y+=2*(cH+3)+8;
+
+  // -- BAND BADGE — outline style --------------------------------------------
+  const blbl=clean(bnd.lbl).toUpperCase();
+  doc.setFont('helvetica','bold');doc.setFontSize(6.5);
+  const bw=doc.getTextWidth(blbl)+16,bh=7,bx=W/2-bw/2;
+  doc.setFillColor(253,246,232);doc.roundedRect(bx,y,bw,bh,3.5,3.5,'F');
+  doc.setDrawColor(...bandRGB);doc.setLineWidth(0.8);doc.roundedRect(bx,y,bw,bh,3.5,3.5,'S');
+  doc.setTextColor(...bandRGB);doc.text(blbl,W/2,y+4.7,{align:'center'});
+  y+=bh+10;
+
+  // -- DIAGNOSIS -------------------------------------------------------------
+  doc.setFont('helvetica','bold');doc.setFontSize(12);doc.setTextColor(...NAVY);
+  const hl=doc.splitTextToSize(clean((uname?uname.split(' ')[0]+', ':'')+bnd.h),UW);
+  doc.text(hl,M,y);y+=hl.length*6+3;
+  doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(85,85,85);
+  const bl=doc.splitTextToSize(clean(bnd.b),UW);
+  doc.text(bl,M,y);y+=bl.length*4.8+10;
+
+  // -- NEXT STEP BOX ---------------------------------------------------------
+  const boxY=Math.min(y,250);
+  doc.setFillColor(...NAVY);doc.roundedRect(M,boxY,UW,28,2,2,'F');
+  doc.setFillColor(...GOLD);
+  doc.roundedRect(M,boxY,3.5,28,2,2,'F');doc.rect(M+2,boxY,1.5,28,'F');
+  doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(...GOLD);
+  doc.text('Are you ready to change your organisation?',M+8,boxY+9);
+  doc.setFont('helvetica','bold');doc.setFontSize(9.5);doc.setTextColor(...WHITE);
+  doc.text("Let's talk.",M+8,boxY+16);
+  doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(200,200,200);
+  doc.text('Book a 30-minute discovery call - no pitch, just clarity.',M+8,boxY+22);
+  doc.setFont('helvetica','bold');doc.setFontSize(8.5);doc.setTextColor(...GOLD);
+  doc.text('->  calendly.com/contracks_global',M+8,boxY+28);
+  doc.link(M+8,boxY+24,80,5,{url:'https://calendly.com/contracks_global'});
+
+  // -- FOOTER ----------------------------------------------------------------
+  const fY=281;
+  doc.setFillColor(...GOLD);doc.rect(0,fY,W,0.6,'F');
+  doc.setFont('helvetica','normal');doc.setFontSize(6.5);doc.setTextColor(140,140,140);
+  let fx=M;
+  [['contracks.global','https://contracks.global'],
+   ['  |  hello@contracks.global','mailto:hello@contracks.global'],
+   ['  |  LinkedIn','https://www.linkedin.com/company/contracks-global/']
+  ].forEach(([txt,url])=>{
+    const tw=doc.getTextWidth(txt);doc.text(txt,fx,fY+5);
+    const sep=txt.startsWith('  |  ')?doc.getTextWidth('  |  '):0;
+    const cw2=doc.getTextWidth(txt.replace('  |  ',''));
+    doc.link(fx+sep,fY+2,cw2,4,{url});fx+=tw;
+  });
+  doc.setTextColor(180,180,180);
+  doc.text('Better contracts. Better business. Better society.',W-M,fY+5,{align:'right'});
+  doc.save('Contracks-'+clean(s.name)+'-Diagnostic-'+(clean(uname).replace(/\s+/g,'')||'Report')+'.pdf');
+}
+
+
+function showRes(){
+  const s=SC[si],o=ov(),bd=band(o),bnd=s.bands[bd],w=wi(),wcat=s.cats[w];
+  const tb=document.getElementById('rtbadge');tb.textContent=bnd.lbl;
+  tb.style.cssText=`background:${bnd.col}18;color:${bnd.col};border:1px solid ${bnd.col}44;border-radius:20px;padding:6px 18px;font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;display:inline-block;`;
+  document.getElementById('rhead').textContent=(uname?uname+', ':'')+bnd.h;
+  document.getElementById('rdesc').textContent=bnd.b;
+  // Donut with center text drawn on canvas — Option B palette
+  const scores=s.cats.map((_,ci)=>catS(ci));
+  const catBgCols=['rgba(91,155,213,.88)','rgba(124,92,191,.88)','rgba(82,183,136,.88)','rgba(212,80,74,.88)'];
+  initDonut(scores,catBgCols,o+'%',bnd.col);
+  // 4 category cards — Option B colours
+  const optB=['#5B9BD5','#7C5CBF','#52B788','#D4504A'];
+  document.getElementById('cat-cards').innerHTML=s.cats.map((cat,ci)=>{
+    const p=catS(ci),pc=optB[ci];
+    return`<div style="background:#F8F7F4;border:1px solid #E8E4DC;border-radius:6px;padding:16px 18px;">
+      <div style="font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:${pc};margin-bottom:8px;">${cat.name}</div>
+      <div style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:${pc};line-height:1;margin-bottom:10px;">${p}%</div>
+      <div style="height:4px;background:#E8E4DC;border-radius:2px;overflow:hidden;"><div style="width:${p}%;height:100%;background:${pc};border-radius:2px;transition:width .8s ease;"></div></div>
+    </div>`;
+  }).join('');
+  // Answer breakdown
+  const allqs=s.cats.flatMap(c=>c.qs);
+  document.getElementById('bklist').innerHTML=allqs.map((q,qi)=>{
+    const correct=qs(qi,ans[qi])===1;
+    const cls=correct?'sch':'scl';
+    const lbl=correct?'✓ Ready':'✗ Gap';
+    return`<div class="bkrow"><div class="bkq">${q.t}</div><div class="bksc ${cls}">${lbl}</div></div>`;
+  }).join('');
+  document.getElementById('msub').textContent='Your weakest area is '+wcat.name+' ('+catS(w)+'%). That\'s where to start.';
+  document.getElementById('mbox').style.display='block';document.getElementById('ctaarea').style.display='none';
+  ss('results');
+}
+
+function setImp(yes){
+  document.getElementById('mbox').style.display='none';
+  const area=document.getElementById('ctaarea');area.style.display='block';
+  const s=SC[si],w=wi(),wn=s.cats[w].name;
+  if(yes){
+    if(q20==='diy'){
+      area.innerHTML=`<div class="ctabox"><h3>Here's where to start.</h3><p>Your weakest area is <strong>${wn}</strong>. There are specific frameworks that address exactly this. Serguei can point you to the right resources — no call needed.</p><a href="mailto:hello@contracks.global?subject=Resources%20—%20${s.name}" class="bbook">Get the resources → hello@contracks.global</a></div>`;
+    }else{
+      area.innerHTML=`<div class="ctabox"><h3>A 30-minute conversation is all it takes.</h3><p>Given your score in <strong>${wn}</strong>, one focused conversation with Serguei maps the 2–3 moves that matter most. No pitch — just a clear-eyed look at what's actually happening.</p><button class="bbook" onclick="Calendly.initPopupWidget({url:'https://calendly.com/contracks_global'});return false;">Book a discovery call →</button></div>`;
+    }
+  }else{
+    area.innerHTML=`<div class="nurbox"><p>No problem. When the time is right — <a href="mailto:hello@contracks.global">hello@contracks.global</a></p><p style="margin-top:8px;font-size:.82rem;color:#aaa;">Follow Serguei on <a href="https://www.linkedin.com/in/serguei-poppeleer" target="_blank">LinkedIn</a> for field notes on commercial management.</p></div>`;
+  }
+}
+
+function restart(){ss('landing');}
+
+window.addEventListener('DOMContentLoaded',function(){
+  const p=new URLSearchParams(window.location.search),sp=p.get('speed');
+  if(sp){const idx=parseInt(sp)-1;if(idx>=0&&idx<=3)startScorecard(idx);}
+});
+</script>
+
+</body>
+</html>
