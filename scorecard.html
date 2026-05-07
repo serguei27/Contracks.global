@@ -756,7 +756,6 @@ function showRes(){
       <div style="height:4px;background:#E8E4DC;border-radius:2px;overflow:hidden;"><div style="width:${p}%;height:100%;background:${pc};border-radius:2px;transition:width .8s ease;"></div></div>
     </div>`;
   }).join('');
-  }).join('');
   // Answer breakdown
   const allqs=s.cats.flatMap(c=>c.qs);
   document.getElementById('bklist').innerHTML=allqs.map((q,qi)=>{const p=Math.round(qs(qi,ans[qi])/4*100),cls=p>=75?'sch':p>=50?'scm':'scl',lbl=p>=75?'✓ Strong':p>=50?'~ Partial':'✗ Gap';return`<div class="bkrow"><div class="bkq">${q.t}</div><div class="bksc ${cls}">${lbl}</div></div>`;}).join('');
