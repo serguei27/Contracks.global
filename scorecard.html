@@ -8,6 +8,8 @@
 <meta name="description" content="Four scorecards to find out which Contracks speed applies to you. 21 questions. Instant score. Written report.">
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -275,7 +277,13 @@ footer{text-align:center;padding:28px 48px;border-top:1px solid #E8E4DC;margin-t
 <div id="screen-results" class="screen">
   <div class="inner">
     <div class="rhead">
-      <div class="rcircle" id="rcirc"><div class="rnum" id="rnum">0%</div><div class="rden">overall</div></div>
+      <div style="position:relative;width:200px;height:200px;margin:0 auto 20px;">
+        <canvas id="donut-chart" width="200" height="200"></canvas>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;">
+          <div id="rnum" style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:#C5A050;line-height:1;">0%</div>
+          <div style="font-size:.7rem;color:#aaa;">overall</div>
+        </div>
+      </div>
       <div class="rtbadge" id="rtbadge"></div>
       <div class="rheading" id="rhead"></div>
       <p class="rdesc" id="rdesc"></p>
@@ -288,6 +296,7 @@ footer{text-align:center;padding:28px 48px;border-top:1px solid #E8E4DC;margin-t
       <div class="mbtns"><button class="myes" onclick="setImp(true)">Yes — let's look at this</button><button class="mno" onclick="setImp(false)">Not right now</button></div>
     </div>
     <div id="ctaarea" style="display:none;"></div>
+    <button onclick="generatePDF()" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:#F8F7F4;border:1.5px solid #E8E4DC;border-radius:4px;padding:13px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:600;color:#555;cursor:pointer;margin-bottom:10px;transition:all .2s;" onmouseover="this.style.borderColor='#C5A050';this.style.color='#0A1628';" onmouseout="this.style.borderColor='#E8E4DC';this.style.color='#555';">⬇ Download PDF Report</button>
     <button class="brestart" onclick="restart()">← Start a different scorecard</button>
   </div>
 </div>
@@ -503,16 +512,96 @@ function subEmail(e){
   const body=encodeURIComponent('Name: '+uname+'\nEmail: '+uemail+'\nCompany: '+(co||'N/A')+'\nScorecard: '+s.speed+' — '+s.name+'\nScore: '+o+'%\nBand: '+bd.toUpperCase()+'\nQ17: '+(q17!==null?s.q17[q17]:'N/A')+'\nQ18: '+q18.map(i=>s.q18[i]).join(', ')+'\nQ19: '+(q19!==null?s.q19[q19]:'N/A')+'\nQ20: '+(q20||'N/A')+'\nQ21: '+(q21||'N/A')+'\n\nCategory scores:\n'+s.cats.map((c,i)=>c.name+': '+catS(i)+'%').join('\n'));
   const lnk=document.createElement('a');lnk.href='mailto:hello@contracks.global?subject='+sub+'&body='+body;lnk.style.display='none';document.body.appendChild(lnk);lnk.click();document.body.removeChild(lnk);
   showRes();
+  setTimeout(generatePDF,600);
+}
+
+let donutInst=null;
+function initDonut(scores,cols){
+  const ctx=document.getElementById('donut-chart').getContext('2d');
+  if(donutInst){donutInst.destroy();donutInst=null;}
+  donutInst=new Chart(ctx,{type:'doughnut',data:{labels:SC[si].cats.map(c=>c.name),datasets:[{data:scores,backgroundColor:cols,borderWidth:2,borderColor:'#fff'}]},options:{cutout:'68%',plugins:{legend:{position:'bottom',labels:{font:{family:"'DM Sans',sans-serif",size:11},color:'#555',padding:12,boxWidth:10}},tooltip:{callbacks:{label:function(ctx){return ' '+ctx.label+': '+ctx.raw+'%';}}}},animation:{duration:600}}});
+}
+
+function generatePDF(){
+  if(!window.jspdf)return;
+  const {jsPDF}=window.jspdf;
+  const doc=new jsPDF();
+  const s=SC[si],o=ov(),bd=band(o),bnd=s.bands[bd];
+  const date=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  // Header bar
+  doc.setFillColor(10,22,40);doc.rect(0,0,210,42,'F');
+  doc.setTextColor(197,160,80);doc.setFont('helvetica','bold');doc.setFontSize(15);doc.text('CONTRACKS GLOBAL',20,16);
+  doc.setTextColor(255,255,255);doc.setFont('helvetica','normal');doc.setFontSize(10);doc.text('Commercial Diagnostic Report — '+s.speed+' '+s.name,20,26);
+  doc.setTextColor(140,140,140);doc.setFontSize(8);doc.text(date+' · '+uname+' · '+uemail,20,35);
+  // Score block
+  let y=56;
+  doc.setFont('helvetica','bold');doc.setFontSize(36);doc.setTextColor(197,160,80);doc.text(o+'%',20,y);
+  doc.setFont('helvetica','normal');doc.setFontSize(11);doc.setTextColor(100,100,100);doc.text('Overall · '+bnd.lbl,58,y-6);
+  doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(140,140,140);doc.text(s.hook,58,y+2);
+  y+=14;
+  doc.setDrawColor(220,216,210);doc.setLineWidth(0.3);doc.line(20,y,190,y);y+=10;
+  // Categories
+  doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(10,22,40);doc.text('SCORE BY CATEGORY',20,y);y+=8;
+  const catCols=[[45,106,79],[224,123,57],[108,52,131],[197,160,80]];
+  s.cats.forEach((cat,ci)=>{
+    const p=catS(ci),gc=p>=70?[45,106,79]:p>=40?[224,123,57]:[192,57,43];
+    doc.setFillColor(...gc);doc.rect(20,y-3.5,3,5,'F');
+    doc.setFont('helvetica','normal');doc.setFontSize(10);doc.setTextColor(60,60,60);doc.text(cat.name,26,y);
+    doc.setFont('helvetica','bold');doc.setTextColor(...gc);doc.text(p+'%',80,y);
+    // mini bar
+    doc.setFillColor(230,228,220);doc.rect(95,y-3.5,80,5,'F');
+    doc.setFillColor(...gc);doc.rect(95,y-3.5,80*p/100,5,'F');
+    y+=8;
+  });
+  y+=4;doc.setDrawColor(220,216,210);doc.line(20,y,190,y);y+=10;
+  // Diagnosis
+  doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(10,22,40);doc.text('X-RAY DIAGNOSIS',20,y);y+=8;
+  doc.setFont('helvetica','bold');doc.setFontSize(11);doc.setTextColor(10,22,40);
+  const hlines=doc.splitTextToSize(bnd.h,170);doc.text(hlines,20,y);y+=hlines.length*6+4;
+  doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(80,80,80);
+  const blines=doc.splitTextToSize(bnd.b,170);doc.text(blines,20,y);y+=blines.length*5+8;
+  // Key gaps
+  const allqs=s.cats.flatMap(c=>c.qs);
+  const gaps=allqs.filter((q,qi)=>Math.round(qs(qi,ans[qi])/4*100)<50);
+  if(gaps.length>0&&y<230){
+    doc.setDrawColor(220,216,210);doc.line(20,y,190,y);y+=10;
+    doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(10,22,40);doc.text('KEY GAPS IDENTIFIED',20,y);y+=8;
+    gaps.slice(0,4).forEach(q=>{
+      if(y>255)return;
+      doc.setFillColor(192,57,43);doc.circle(22,y-1.5,1.5,'F');
+      doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(60,60,60);
+      const gl=doc.splitTextToSize(q.t,160);doc.text(gl,27,y);y+=gl.length*5+3;
+    });
+  }
+  // Next step box
+  const boxY=Math.min(Math.max(y+6,230),250);
+  doc.setFillColor(10,22,40);doc.rect(15,boxY,180,28,'F');
+  doc.setTextColor(197,160,80);doc.setFont('helvetica','bold');doc.setFontSize(10);doc.text('Next step',25,boxY+10);
+  doc.setTextColor(255,255,255);doc.setFont('helvetica','normal');doc.setFontSize(9);
+  const nxt=q20==='advisory'?'Book a discovery call: calendly.com/contracks_global':'Request resources: hello@contracks.global';
+  doc.text(nxt,25,boxY+19);
+  // Qualifying answers
+  doc.setTextColor(140,140,140);doc.setFontSize(7.5);
+  doc.text('Q17: '+(q17!==null?s.q17[q17]:'—'),15,boxY+33);
+  doc.text('Q18: '+q18.map(i=>s.q18[i]).join(', '),15,boxY+39);
+  // Footer
+  doc.setTextColor(160,160,160);doc.setFontSize(7.5);
+  doc.text('© Contracks Global · hello@contracks.global · contracks.global · Better contracts. Better business. Better society.',20,287);
+  doc.save('Contracks-'+s.name+'-Diagnostic-'+(uname.replace(/\s+/g,'')||'Report')+'.pdf');
 }
 
 function showRes(){
   const s=SC[si],o=ov(),bd=band(o),bnd=s.bands[bd],w=wi(),wcat=s.cats[w];
   document.getElementById('rnum').textContent=o+'%';
-  document.getElementById('rcirc').style.borderColor=bnd.col;document.getElementById('rnum').style.color=bnd.col;
+  document.getElementById('rnum').style.color=bnd.col;
   const tb=document.getElementById('rtbadge');tb.textContent=bnd.lbl;
   tb.style.cssText=`background:${bnd.col}18;color:${bnd.col};border:1px solid ${bnd.col}44;border-radius:20px;padding:6px 18px;font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;display:inline-block;`;
   document.getElementById('rhead').textContent=(uname?uname+', ':'')+bnd.h;
   document.getElementById('rdesc').textContent=bnd.b;
+  // Donut chart
+  const scores=s.cats.map((_,ci)=>catS(ci));
+  const catBgCols=['rgba(45,106,79,.85)','rgba(224,123,57,.85)','rgba(108,52,131,.85)','rgba(197,160,80,.85)'];
+  initDonut(scores,catBgCols);
   document.getElementById('catrows').innerHTML=s.cats.map((cat,ci)=>{const p=catS(ci),bc=p>=70?'#2D6A4F':p>=40?'#E07B39':'#C0392B';return`<div class="crow"><div class="crname" style="color:${cat.col};">${cat.name}</div><div class="crbarbg"><div class="crbarfill" style="width:${p}%;background:${bc};"></div></div><div class="crpct">${p}%</div></div>`;}).join('');
   const allqs=s.cats.flatMap(c=>c.qs);
   document.getElementById('bklist').innerHTML=allqs.map((q,qi)=>{const p=Math.round(qs(qi,ans[qi])/4*100),cls=p>=75?'sch':p>=50?'scm':'scl',lbl=p>=75?'✓ Strong':p>=50?'~ Partial':'✗ Gap';return`<div class="bkrow"><div class="bkq">${q.t}</div><div class="bksc ${cls}">${lbl}</div></div>`;}).join('');
