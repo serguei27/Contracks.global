@@ -276,19 +276,20 @@ footer{text-align:center;padding:28px 48px;border-top:1px solid #E8E4DC;margin-t
 
 <div id="screen-results" class="screen">
   <div class="inner">
+    <!-- Score header -->
     <div class="rhead">
-      <div style="position:relative;width:200px;height:200px;margin:0 auto 20px;">
-        <canvas id="donut-chart" width="200" height="200"></canvas>
-        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;">
-          <div id="rnum" style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:#C5A050;line-height:1;">0%</div>
-          <div style="font-size:.7rem;color:#aaa;">overall</div>
-        </div>
+      <div style="font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#C5A050;margin-bottom:16px;">Your Commercial Score</div>
+      <!-- Donut -->
+      <div style="position:relative;width:260px;height:260px;margin:0 auto 24px;">
+        <canvas id="donut-chart" width="260" height="260" style="display:block;"></canvas>
       </div>
+      <!-- 4 category cards -->
+      <div id="cat-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;"></div>
+      <!-- Band -->
       <div class="rtbadge" id="rtbadge"></div>
       <div class="rheading" id="rhead"></div>
       <p class="rdesc" id="rdesc"></p>
     </div>
-    <div class="catbk"><div class="catbkh">Score by category</div><div id="catrows"></div></div>
     <div class="bklist"><div class="bklh">Your answers at a glance</div><div id="bklist"></div></div>
     <div class="mbox" id="mbox">
       <div class="mq">Would you like to improve your score?</div>
@@ -516,10 +517,49 @@ function subEmail(e){
 }
 
 let donutInst=null;
-function initDonut(scores,cols){
+
+const centerTextPlugin={
+  id:'centerText',
+  beforeDraw(chart){
+    const{width,height,ctx}=chart;
+    const cfg=chart.config.options.plugins.centerText||{};
+    ctx.save();
+    // Main number
+    const fontSize=Math.min(width,height)*0.22;
+    ctx.font=`900 ${fontSize}px 'Playfair Display',serif`;
+    ctx.fillStyle=cfg.color||'#C5A050';
+    ctx.textAlign='center';
+    ctx.textBaseline='middle';
+    ctx.fillText(cfg.text||'',width/2,height/2-fontSize*0.1);
+    // Sub label
+    ctx.font=`500 ${fontSize*0.22}px 'DM Sans',sans-serif`;
+    ctx.fillStyle='#aaa';
+    ctx.letterSpacing='0.1em';
+    ctx.fillText('OVERALL',width/2,height/2+fontSize*0.55);
+    ctx.restore();
+  }
+};
+
+function initDonut(scores,cols,centerText,centerColor){
   const ctx=document.getElementById('donut-chart').getContext('2d');
   if(donutInst){donutInst.destroy();donutInst=null;}
-  donutInst=new Chart(ctx,{type:'doughnut',data:{labels:SC[si].cats.map(c=>c.name),datasets:[{data:scores,backgroundColor:cols,borderWidth:2,borderColor:'#fff'}]},options:{cutout:'68%',plugins:{legend:{position:'bottom',labels:{font:{family:"'DM Sans',sans-serif",size:11},color:'#555',padding:12,boxWidth:10}},tooltip:{callbacks:{label:function(ctx){return ' '+ctx.label+': '+ctx.raw+'%';}}}},animation:{duration:600}}});
+  donutInst=new Chart(ctx,{
+    type:'doughnut',
+    plugins:[centerTextPlugin],
+    data:{
+      labels:SC[si].cats.map(c=>c.name),
+      datasets:[{data:scores,backgroundColor:cols,borderWidth:3,borderColor:'#fff'}]
+    },
+    options:{
+      cutout:'68%',
+      plugins:{
+        centerText:{text:centerText,color:centerColor||'#C5A050'},
+        legend:{position:'bottom',labels:{font:{family:"'DM Sans',sans-serif",size:12},color:'#555',padding:16,boxWidth:12}},
+        tooltip:{callbacks:{label:function(ctx){return ' '+ctx.label+': '+ctx.raw+'%';}}}
+      },
+      animation:{duration:700}
+    }
+  });
 }
 
 function generatePDF(){
@@ -592,17 +632,24 @@ function generatePDF(){
 
 function showRes(){
   const s=SC[si],o=ov(),bd=band(o),bnd=s.bands[bd],w=wi(),wcat=s.cats[w];
-  document.getElementById('rnum').textContent=o+'%';
-  document.getElementById('rnum').style.color=bnd.col;
   const tb=document.getElementById('rtbadge');tb.textContent=bnd.lbl;
   tb.style.cssText=`background:${bnd.col}18;color:${bnd.col};border:1px solid ${bnd.col}44;border-radius:20px;padding:6px 18px;font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;display:inline-block;`;
   document.getElementById('rhead').textContent=(uname?uname+', ':'')+bnd.h;
   document.getElementById('rdesc').textContent=bnd.b;
-  // Donut chart
+  // Donut with center text drawn on canvas
   const scores=s.cats.map((_,ci)=>catS(ci));
   const catBgCols=['rgba(45,106,79,.85)','rgba(224,123,57,.85)','rgba(108,52,131,.85)','rgba(197,160,80,.85)'];
-  initDonut(scores,catBgCols);
-  document.getElementById('catrows').innerHTML=s.cats.map((cat,ci)=>{const p=catS(ci),bc=p>=70?'#2D6A4F':p>=40?'#E07B39':'#C0392B';return`<div class="crow"><div class="crname" style="color:${cat.col};">${cat.name}</div><div class="crbarbg"><div class="crbarfill" style="width:${p}%;background:${bc};"></div></div><div class="crpct">${p}%</div></div>`;}).join('');
+  initDonut(scores,catBgCols,o+'%',bnd.col);
+  // 4 category cards
+  document.getElementById('cat-cards').innerHTML=s.cats.map((cat,ci)=>{
+    const p=catS(ci),bc=p>=70?'#2D6A4F':p>=40?'#E07B39':'#C0392B';
+    return`<div style="background:#F8F7F4;border:1px solid #E8E4DC;border-radius:6px;padding:16px 18px;">
+      <div style="font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:${cat.col};margin-bottom:8px;">${cat.name}</div>
+      <div style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:${bc};line-height:1;margin-bottom:10px;">${p}%</div>
+      <div style="height:4px;background:#E8E4DC;border-radius:2px;overflow:hidden;"><div style="width:${p}%;height:100%;background:${bc};border-radius:2px;transition:width .8s ease;"></div></div>
+    </div>`;
+  }).join('');
+  // Answer breakdown
   const allqs=s.cats.flatMap(c=>c.qs);
   document.getElementById('bklist').innerHTML=allqs.map((q,qi)=>{const p=Math.round(qs(qi,ans[qi])/4*100),cls=p>=75?'sch':p>=50?'scm':'scl',lbl=p>=75?'✓ Strong':p>=50?'~ Partial':'✗ Gap';return`<div class="bkrow"><div class="bkq">${q.t}</div><div class="bksc ${cls}">${lbl}</div></div>`;}).join('');
   document.getElementById('msub').textContent='Your weakest area is '+wcat.name+' ('+catS(w)+'%). That\'s where to start.';
