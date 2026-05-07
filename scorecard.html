@@ -574,148 +574,97 @@ function generatePDF(){
   const date=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
   const W=210,M=15,UW=W-M*2;
 
-  // Sanitise text for jsPDF Latin-1 - replace Unicode-only chars
   const clean=t=>String(t||'')
-    .replace(/[\u2014\u2013]/g,'-')   // em/en dash -> hyphen
-    .replace(/[\u201C\u201D]/g,'"')   // curly double quotes
-    .replace(/[\u2018\u2019]/g,"'")   // curly single quotes
-    .replace(/\u00B7/g,'.')           // middle dot
-    .replace(/\u2192/g,'->');         // right arrow
+    .replace(/[\u2014\u2013]/g,'-').replace(/[\u201C\u201D]/g,'"')
+    .replace(/[\u2018\u2019]/g,"'").replace(/\u00B7/g,'.').replace(/\u2192/g,'->');
 
-  // -- Option B palette ------------------------------------------------------
   const NAVY=[10,22,40],GOLD=[197,160,80],WHITE=[255,255,255],LGREY=[187,187,187];
   const CAT_COLS=[[91,155,213],[124,92,191],[82,183,136],[212,80,74]];
-  const bandCol=bd==='high'?[82,183,136]:bd==='medium'?[224,123,57]:[192,57,43];
+  const LIGHT=[248,247,244],RULE=[232,228,220];
+  const bandRGB=bd==='high'?[45,106,79]:bd==='medium'?[224,123,57]:[192,57,43];
 
   // -- HEADER ----------------------------------------------------------------
   doc.setFillColor(...NAVY);doc.rect(0,0,W,38,'F');
   doc.setFillColor(...GOLD);doc.rect(0,38,W,1,'F');
-  // CONTRACKS.GLOBAL - all gold, fix width with getTextWidth
-  doc.setFont('helvetica','bold');doc.setFontSize(14);doc.setTextColor(...GOLD);
+  doc.setFont('helvetica','bold');doc.setFontSize(14);doc.setTextColor(...WHITE);
   const cw=doc.getTextWidth('CONTRACKS');
-  doc.text('CONTRACKS',M,14);
-  doc.text('.GLOBAL',M+cw,14);
-  // Report line
+  doc.text('CONTRACKS',M,14);doc.text('.GLOBAL',M+cw,14);
   doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.setTextColor(187,187,187);
-  doc.text('Commercial Diagnostic Report  .  '+s.speed+' - '+s.name,M,21);
-  doc.setFontSize(7);doc.setTextColor(...LGREY);
-  doc.text(date,M,27);
-  // Right: prepared for / name / email - both white, same size
+  doc.text('Commercial Diagnostic Report  -  '+clean(s.speed)+' - '+clean(s.name),M,21);
+  doc.setFontSize(7);doc.setTextColor(...LGREY);doc.text(clean(date),M,27);
   doc.setFont('helvetica','italic');doc.setFontSize(7);doc.setTextColor(136,136,136);
   doc.text('- Prepared for',W-M,13,{align:'right'});
   doc.setFont('helvetica','bold');doc.setFontSize(8.5);doc.setTextColor(...WHITE);
-  doc.text(uname,W-M,20,{align:'right'});
-  doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(...WHITE);
-  doc.text(uemail,W-M,27,{align:'right'});
+  doc.text(clean(uname),W-M,20,{align:'right'});
+  doc.setFont('helvetica','normal');doc.setTextColor(...WHITE);
+  doc.text(clean(uemail),W-M,27,{align:'right'});
 
-  // -- HOOK - big, bold, centred, no box ------------------------------------
+  // -- YOUR COMMERCIAL SCORE label -------------------------------------------
   let y=46;
-  doc.setFont('helvetica','bold');doc.setFontSize(13);doc.setTextColor(...NAVY);
-  doc.text(s.hook,W/2,y,{align:'center'});
-  y+=9;
+  const slbl='YOUR COMMERCIAL SCORE';
+  doc.setFont('helvetica','bold');doc.setFontSize(6.5);doc.setTextColor(...GOLD);
+  doc.text(slbl,W/2,y,{align:'center'});
+  y+=8;
 
-  // -- "YOUR PROJECT SCORE CARD" pill ---------------------------------------
-  const ptxt='YOUR PROJECT SCORE CARD';
-  doc.setFont('helvetica','bold');doc.setFontSize(6.5);
-  const pw=doc.getTextWidth(ptxt)+14,ph=6;
-  const px=W/2-pw/2;
-  doc.setDrawColor(...GOLD);doc.setLineWidth(0.5);
-  doc.roundedRect(px,y,pw,ph,1,1,'S');
-  doc.setTextColor(...GOLD);doc.text(ptxt,W/2,y+4,{align:'center'});
-  y+=ph+8;
-
-  // -- DONUT - centred, capture from canvas ---------------------------------
+  // -- DONUT — centred, captured from canvas ---------------------------------
   const cnv=document.getElementById('donut-chart');
   const cs=62;
-  if(cnv){
-    const img=cnv.toDataURL('image/png');
-    doc.addImage(img,'PNG',W/2-cs/2,y,cs,cs);
-  }
+  if(cnv){doc.addImage(cnv.toDataURL('image/png'),'PNG',W/2-cs/2,y,cs,cs);}
+  y+=cs+8;
 
-  // -- LEGEND - centred to donut ---------------------------------------------
-  const leg_y=y+cs+5;
-  const leg_item_w=s.cats.reduce((acc,cat)=>{
-    doc.setFont('helvetica','normal');doc.setFontSize(7.5);
-    return acc+2.5+2.5+doc.getTextWidth(cat.name)+7;
-  },0)-7;
-  let lx=W/2-leg_item_w/2;
-  s.cats.forEach((cat,ci)=>{
-    doc.setFillColor(...CAT_COLS[ci]);doc.circle(lx+1.8,leg_y+1.5,1.8,'F');
-    doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.setTextColor(100,100,100);
-    const tw=doc.getTextWidth(cat.name);
-    doc.text(cat.name,lx+5.5,leg_y+2);
-    lx+=5.5+tw+7;
-  });
-  y=leg_y+9;
-
-  // -- BAND BADGE - centred -------------------------------------------------
-  const bw=50,bh=6.5,bx=W/2-bw/2;
-  doc.setFillColor(...bandCol);doc.roundedRect(bx,y,bw,bh,1.5,1.5,'F');
-  doc.setFont('helvetica','bold');doc.setFontSize(6.5);doc.setTextColor(...WHITE);
-  doc.text(bnd.lbl.toUpperCase(),W/2,y+4.2,{align:'center'});
-  y+=bh+7;
-
-  // -- NAVY GRID - gold lines, pillar labels, white scores ------------------
-  const ROW_H=11,PAD_L=5,LABEL_W=32,SCORE_W=14;
-  const BAR_W=UW-LABEL_W-SCORE_W-PAD_L*2;
-  const grid_h=s.cats.length*ROW_H;
-  // Navy background
-  doc.setFillColor(...NAVY);doc.rect(M,y,UW,grid_h,'F');
-  // Top gold border
-  doc.setDrawColor(...GOLD);doc.setLineWidth(0.5);doc.line(M,y,M+UW,y);
+  // -- 4 CATEGORY CARDS — white, matching screen ----------------------------
+  const cW=(UW-4)/2,cH=22;
   s.cats.forEach((cat,ci)=>{
     const pc=CAT_COLS[ci];
-    const ry=y+ci*ROW_H,row_mid=ry+ROW_H/2;
-    // Pillar label
-    doc.setFont('helvetica','bold');doc.setFontSize(7.5);
-    doc.setTextColor(...pc);doc.text(cat.name.toUpperCase(),M+PAD_L,row_mid+1.5);
-    // Vertical gold divider
-    const vx=M+LABEL_W;
-    doc.setDrawColor(...GOLD);doc.setLineWidth(0.35);doc.line(vx,ry,vx,ry+ROW_H);
-    // Progress bar
-    const bar_x=vx+PAD_L*0.5,bar_y=row_mid-1.2,p=catS(ci);
-    const bar_fill=BAR_W*p/100;
-    doc.setFillColor(...WHITE);doc.rect(bar_x,bar_y,BAR_W,2.5,'F');  // white track
-    doc.setFillColor(...pc);doc.rect(bar_x,bar_y,bar_fill,2.5,'F');  // pillar fill
-    // Score in white
-    doc.setFont('helvetica','bold');doc.setFontSize(8.5);doc.setTextColor(...WHITE);
-    doc.text(p+'%',bar_x+BAR_W+SCORE_W/2,row_mid+1.5,{align:'center'});
-    // Horizontal divider between rows
-    if(ci<s.cats.length-1){
-      doc.setDrawColor(...GOLD);doc.setLineWidth(0.35);
-      doc.line(M,ry+ROW_H,M+UW,ry+ROW_H);
-    }
+    const cx2=M+(ci%2)*(cW+4);
+    const cy2=y+Math.floor(ci/2)*(cH+3);
+    // Card
+    doc.setFillColor(...LIGHT);doc.roundedRect(cx2,cy2,cW,cH,2,2,'F');
+    doc.setDrawColor(...RULE);doc.setLineWidth(0.4);doc.roundedRect(cx2,cy2,cW,cH,2,2,'S');
+    // Label — centred, pillar colour
+    doc.setFont('helvetica','bold');doc.setFontSize(5.5);doc.setTextColor(...pc);
+    doc.text(cat.name.toUpperCase(),cx2+cW/2,cy2+5.5,{align:'center'});
+    // Score — large, centred, pillar colour
+    doc.setFont('helvetica','bold');doc.setFontSize(20);
+    doc.text(catS(ci)+'%',cx2+cW/2,cy2+14.5,{align:'center'});
+    // Thin bar at bottom
+    const bx=cx2+4,bw=cW-8,p=catS(ci);
+    doc.setFillColor(...RULE);doc.roundedRect(bx,cy2+cH-5,bw,2,0.5,0.5,'F');
+    doc.setFillColor(...pc);doc.roundedRect(bx,cy2+cH-5,bw*p/100,2,0.5,0.5,'F');
   });
-  // Bottom gold border
-  doc.setDrawColor(...GOLD);doc.setLineWidth(0.5);doc.line(M,y+grid_h,M+UW,y+grid_h);
-  y+=grid_h+8;
+  y+=2*(cH+3)+8;
 
-  // -- X-RAY DIAGNOSIS -------------------------------------------------------
-  const diagStart=y;
-  doc.setFont('helvetica','bold');doc.setFontSize(6);doc.setTextColor(...LGREY);
-  doc.text('X-RAY DIAGNOSIS',M+5,y+5);y+=7;
-  doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(...NAVY);
-  const hl=doc.splitTextToSize((uname?uname.split(' ')[0]+', ':'')+bnd.h,UW-8);
-  doc.text(hl,M+5,y);y+=hl.length*5.5+3;
-  doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(80,80,80);
-  const bl=doc.splitTextToSize(bnd.b,UW-8);
-  doc.text(bl,M+5,y);y+=bl.length*4.8+5;
-  // Gold left bar
-  doc.setFillColor(...GOLD);doc.rect(M,diagStart,2.5,y-diagStart-5,'F');
+  // -- BAND BADGE — outline style --------------------------------------------
+  const blbl=clean(bnd.lbl).toUpperCase();
+  doc.setFont('helvetica','bold');doc.setFontSize(6.5);
+  const bw=doc.getTextWidth(blbl)+16,bh=7,bx=W/2-bw/2;
+  doc.setFillColor(253,246,232);doc.roundedRect(bx,y,bw,bh,3.5,3.5,'F');
+  doc.setDrawColor(...bandRGB);doc.setLineWidth(0.8);doc.roundedRect(bx,y,bw,bh,3.5,3.5,'S');
+  doc.setTextColor(...bandRGB);doc.text(blbl,W/2,y+4.7,{align:'center'});
+  y+=bh+10;
+
+  // -- DIAGNOSIS -------------------------------------------------------------
+  doc.setFont('helvetica','bold');doc.setFontSize(12);doc.setTextColor(...NAVY);
+  const hl=doc.splitTextToSize(clean((uname?uname.split(' ')[0]+', ':'')+bnd.h),UW);
+  doc.text(hl,M,y);y+=hl.length*6+3;
+  doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(85,85,85);
+  const bl=doc.splitTextToSize(clean(bnd.b),UW);
+  doc.text(bl,M,y);y+=bl.length*4.8+10;
 
   // -- NEXT STEP BOX ---------------------------------------------------------
-  const boxY=Math.min(y+5,248);
-  doc.setFillColor(...NAVY);doc.roundedRect(M,boxY,UW,24,2,2,'F');
+  const boxY=Math.min(y,250);
+  doc.setFillColor(...NAVY);doc.roundedRect(M,boxY,UW,28,2,2,'F');
   doc.setFillColor(...GOLD);
-  doc.roundedRect(M,boxY,3.5,24,2,2,'F');doc.rect(M+2,boxY,1.5,24,'F');
-  doc.setFont('helvetica','bold');doc.setFontSize(9.5);doc.setTextColor(...GOLD);
-  doc.text('Your next step',M+8,boxY+8);
+  doc.roundedRect(M,boxY,3.5,28,2,2,'F');doc.rect(M+2,boxY,1.5,28,'F');
+  doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(...GOLD);
+  doc.text('Are you ready to change your organisation?',M+8,boxY+9);
+  doc.setFont('helvetica','bold');doc.setFontSize(9.5);doc.setTextColor(...WHITE);
+  doc.text("Let's talk.",M+8,boxY+16);
   doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(200,200,200);
-  doc.text(q20==='advisory'?'Book a 30-minute discovery call - no pitch, just clarity.':'Request the resources package.',M+8,boxY+14);
+  doc.text('Book a 30-minute discovery call - no pitch, just clarity.',M+8,boxY+22);
   doc.setFont('helvetica','bold');doc.setFontSize(8.5);doc.setTextColor(...GOLD);
-  const cta=q20==='advisory'?'->  calendly.com/contracks_global':'->  hello@contracks.global';
-  const ctaUrl=q20==='advisory'?'https://calendly.com/contracks_global':'mailto:hello@contracks.global';
-  doc.text(cta,M+8,boxY+21);doc.link(M+8,boxY+17,80,5,{url:ctaUrl});
+  doc.text('->  calendly.com/contracks_global',M+8,boxY+28);
+  doc.link(M+8,boxY+24,80,5,{url:'https://calendly.com/contracks_global'});
 
   // -- FOOTER ----------------------------------------------------------------
   const fY=281;
@@ -723,18 +672,19 @@ function generatePDF(){
   doc.setFont('helvetica','normal');doc.setFontSize(6.5);doc.setTextColor(140,140,140);
   let fx=M;
   [['contracks.global','https://contracks.global'],
-   ['  .  hello@contracks.global','mailto:hello@contracks.global'],
-   ['  .  LinkedIn','https://www.linkedin.com/company/contracks-global/']
+   ['  |  hello@contracks.global','mailto:hello@contracks.global'],
+   ['  |  LinkedIn','https://www.linkedin.com/company/contracks-global/']
   ].forEach(([txt,url])=>{
     const tw=doc.getTextWidth(txt);doc.text(txt,fx,fY+5);
-    const sep=txt.startsWith('  .  ')?doc.getTextWidth('  .  '):0;
-    const cw2=doc.getTextWidth(txt.replace('  .  ',''));
+    const sep=txt.startsWith('  |  ')?doc.getTextWidth('  |  '):0;
+    const cw2=doc.getTextWidth(txt.replace('  |  ',''));
     doc.link(fx+sep,fY+2,cw2,4,{url});fx+=tw;
   });
   doc.setTextColor(180,180,180);
   doc.text('Better contracts. Better business. Better society.',W-M,fY+5,{align:'right'});
-  doc.save('Contracks-'+s.name+'-Diagnostic-'+(uname.replace(/\s+/g,'')||'Report')+'.pdf');
+  doc.save('Contracks-'+clean(s.name)+'-Diagnostic-'+(clean(uname).replace(/\s+/g,'')||'Report')+'.pdf');
 }
+
 
 function showRes(){
   const s=SC[si],o=ov(),bd=band(o),bnd=s.bands[bd],w=wi(),wcat=s.cats[w];
