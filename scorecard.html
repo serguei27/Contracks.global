@@ -558,7 +558,7 @@ function initDonut(scores,cols,centerText,centerColor){
       cutout:'68%',
       plugins:{
         centerText:{text:centerText,color:centerColor||'#C5A050'},
-        legend:{position:'bottom',labels:{font:{family:"'DM Sans',sans-serif",size:12},color:'#555',padding:16,boxWidth:12}},
+        legend:{display:false},
         tooltip:{callbacks:{label:function(ctx){return ' '+ctx.label+': '+ctx.raw+'%';}}}
       },
       animation:{duration:700}
