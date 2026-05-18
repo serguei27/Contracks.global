@@ -826,11 +826,12 @@ function showRes(){
   const videoMap={low:'64OAYX1bcrg',medium:'OKlY3tE8lHk',high:'DZr8RagSKnE'};
   const vid=videoMap[bd];
   document.getElementById('result-video').innerHTML=vid?
-    `<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
-       <iframe src="https://www.youtube.com/embed/${vid}?rel=0&modestbranding=1"
-         style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
-         allowfullscreen loading="lazy" title="Your results"></iframe>
-     </div>`:'';
+    `<iframe width="100%" height="315"
+       src="https://www.youtube.com/embed/${vid}?rel=0&modestbranding=1&playsinline=1"
+       style="display:block;border:none;border-radius:8px;"
+       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+       allowfullscreen
+       title="Your scorecard results"></iframe>`:'';
   document.getElementById('mbox').style.display='block';document.getElementById('ctaarea').style.display='none';
   ss('results');
 }
