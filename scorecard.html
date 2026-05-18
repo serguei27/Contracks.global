@@ -826,12 +826,14 @@ function showRes(){
   const videoMap={low:'64OAYX1bcrg',medium:'OKlY3tE8lHk',high:'DZr8RagSKnE'};
   const vid=videoMap[bd];
   document.getElementById('result-video').innerHTML=vid?
-    `<iframe width="100%" height="315"
-       src="https://www.youtube.com/embed/${vid}?rel=0&modestbranding=1&playsinline=1"
-       style="display:block;border:none;border-radius:8px;"
-       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-       allowfullscreen
-       title="Your scorecard results"></iframe>`:'';
+    `<div style="position:relative;width:100%;padding-bottom:56.25%;">
+       <iframe
+         src="https://www.youtube-nocookie.com/embed/${vid}?rel=0&playsinline=1&origin=https://contracks.global"
+         style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;border-radius:8px;"
+         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+         allowfullscreen
+         title="Your scorecard results"></iframe>
+     </div>`:'';
   document.getElementById('mbox').style.display='block';document.getElementById('ctaarea').style.display='none';
   ss('results');
 }
