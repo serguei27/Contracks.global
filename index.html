@@ -868,7 +868,132 @@ gap: 20px;
 .footer-manifesto { font-size: 0.85rem; color: rgba(255,255,255,0.35); font-style: italic; }
 .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
 
-/* ── ANIMATIONS ── */
+/* ── DIAGNOSTIC MODAL ── */
+.diag-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(10,22,40,0.92);
+  backdrop-filter: blur(6px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.diag-modal.open { display: flex; }
+
+.diag-modal-inner {
+  background: #FFFFFF;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 860px;
+  height: 90vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+}
+
+.diag-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: #0A1628;
+  border-bottom: 1px solid rgba(197,160,80,0.2);
+  flex-shrink: 0;
+}
+
+.diag-modal-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.7);
+  text-transform: uppercase;
+}
+
+.diag-modal-title span { color: #C5A050; }
+
+.diag-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.diag-modal-external {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.diag-modal-external:hover { color: #C5A050; }
+
+.diag-modal-close {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.6);
+  width: 32px;
+  height: 32px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.diag-modal-close:hover {
+  background: rgba(255,255,255,0.1);
+  color: #FFFFFF;
+}
+
+.diag-modal-frame {
+  flex: 1;
+  width: 100%;
+  border: none;
+  display: block;
+}
+
+.diag-modal-fallback {
+  display: none;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 48px;
+  text-align: center;
+  background: #F8F6F2;
+}
+
+.diag-modal-fallback p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.7;
+  max-width: 400px;
+}
+
+.diag-modal-fallback a {
+  background: #C5A050;
+  color: #0A1628;
+  padding: 14px 28px;
+  border-radius: 2px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.diag-modal-fallback a:hover { background: #D4B470; }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
@@ -919,7 +1044,7 @@ h1 { font-size: 2.4rem; }
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
       </a>
     </li>
-    <li><a href="https://serguei-k0iv6ldi.scoreapp.com" target="_blank" class="nav-cta">Take the diagnostic →</a></li>
+    <li><a href="#" onclick="openModal();return false;" class="nav-cta">Take the diagnostic →</a></li>
   </ul>
 </nav>
 
@@ -937,7 +1062,7 @@ h1 { font-size: 2.4rem; }
     <h1>Your project looks controlled<br>on paper. Your site runs<br>on <em>WhatsApp.</em></h1>
     <p class="hero-sub">The Delivery Control System™ closes the gap between governance and ground reality — for PMO Directors running cross-border capital projects across Europe, Africa and the Gulf.</p>
     <div class="hero-actions">
-      <a href="https://serguei-k0iv6ldi.scoreapp.com" target="_blank" class="btn-primary">Take the delivery control diagnostic →</a>
+      <a href="#" onclick="openModal();return false;" class="btn-primary">Take the delivery control diagnostic →</a>
       <button class="btn-ghost" onclick="Calendly.initPopupWidget({url:'https://calendly.com/contracks_global'});return false;">Book a discovery call →</button>
     </div>
     <div class="hero-metrics">
@@ -1098,7 +1223,7 @@ h1 { font-size: 2.4rem; }
       <div class="score-badge">15 questions · 5 minutes · Instant result</div>
       <h2>Find out where your delivery system is going to break.</h2>
       <p>Score your programme across all five control pillars — scope, plan, decisions, vendors, cadence. No consultant. No meeting. An honest picture of where control holds and where it doesn't.</p>
-      <a href="https://serguei-k0iv6ldi.scoreapp.com" target="_blank" class="btn-primary">Take the Delivery Control Diagnostic →</a>
+      <a href="#" onclick="openModal();return false;" class="btn-primary">Take the Delivery Control Diagnostic →</a>
     </div>
   </div>
 </section>
@@ -1253,6 +1378,74 @@ h1 { font-size: 2.4rem; }
   <div class="footer-copy">© 2026 Contracks Global. All rights reserved.</div>
 </footer>
 
+<!-- DIAGNOSTIC MODAL -->
+<div class="diag-modal" id="diagModal">
+  <div class="diag-modal-inner">
+    <div class="diag-modal-header">
+      <div class="diag-modal-title">Delivery Control Readiness <span>Diagnostic</span></div>
+      <div class="diag-modal-actions">
+        <a href="https://serguei-k0iv6ldi.scoreapp.com" target="_blank" class="diag-modal-external">
+          Open in new tab ↗
+        </a>
+        <button class="diag-modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+      </div>
+    </div>
+    <iframe
+      class="diag-modal-frame"
+      id="diagFrame"
+      src=""
+      data-src="https://serguei-k0iv6ldi.scoreapp.com"
+      title="Delivery Control Readiness Diagnostic"
+      allow="accelerometer; autoplay; clipboard-write"
+    ></iframe>
+    <div class="diag-modal-fallback" id="diagFallback">
+      <p>The diagnostic can't be embedded here — open it directly to take the assessment.</p>
+      <a href="https://serguei-k0iv6ldi.scoreapp.com" target="_blank">Open the diagnostic →</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openModal() {
+    const modal = document.getElementById('diagModal');
+    const frame = document.getElementById('diagFrame');
+    // Load iframe src on open (lazy load)
+    if (!frame.src || frame.src === window.location.href) {
+      frame.src = frame.dataset.src;
+    }
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    // Detect if iframe is blocked (X-Frame-Options)
+    frame.onload = function() {
+      try {
+        // If we can access contentDocument it loaded fine
+        const doc = frame.contentDocument || frame.contentWindow.document;
+        if (!doc || doc.URL === 'about:blank') throw new Error('blocked');
+      } catch(e) {
+        // Blocked — show fallback
+        frame.style.display = 'none';
+        document.getElementById('diagFallback').style.display = 'flex';
+      }
+    };
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('diagModal');
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Close on backdrop click
+  document.getElementById('diagModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>
+
 </body>
 </html>
-
