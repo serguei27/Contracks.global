@@ -7,7 +7,7 @@
 <meta name="description" content="The book for PMO Directors who need controls that match reality — not just the governance pack. Join the waitlist for No-Surprises Delivery by Serguei Poppeleer.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -245,89 +245,95 @@ nav {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(197,160,80,0.6);
+  color: rgba(197,160,80,0.5);
 }
 
-/* ── WHITE BOOK COVER ── */
-.book-cover-white {
-  background: #FFFFFF;
-  border: 1px solid rgba(197,160,80,0.3);
-  border-top: 4px solid #C5A050;
-  border-radius: 4px;
-  padding: 40px 36px 36px;
+/* ── INDUSTRIAL BOOK COVER ── */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&display=swap');
+
+.book-cover-industrial {
+  background: #0D0D0D;
+  border: 1px solid rgba(245,166,35,0.2);
+  border-radius: 3px;
+  padding: 32px 28px 28px;
   position: relative;
   overflow: hidden;
   box-shadow:
-    0 20px 60px rgba(0,0,0,0.25),
-    0 4px 16px rgba(0,0,0,0.15),
-    6px 6px 0 rgba(197,160,80,0.15);
+    0 24px 64px rgba(0,0,0,0.5),
+    0 4px 16px rgba(0,0,0,0.4),
+    4px 4px 0 rgba(245,166,35,0.08);
   transform: rotate(-1deg);
   transition: transform 0.4s ease;
+  width: 280px;
 }
 
-.book-cover-white:hover { transform: rotate(0deg) scale(1.02); }
+.book-cover-industrial:hover { transform: rotate(0deg) scale(1.02); }
 
-/* ── RADAR ── */
+/* Blueprint grid */
+.blueprint-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(245,166,35,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,166,35,0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+/* ── RADAR (amber version) ── */
 .radar-container {
   position: relative;
-  width: 220px;
-  height: 220px;
-  margin: 0 auto 28px;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 20px;
 }
 
-/* Rings */
 .radar-ring {
   position: absolute;
   border-radius: 50%;
-  border: 1px solid rgba(197,160,80,0.2);
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.radar-ring-1 { width: 220px; height: 220px; border-color: rgba(197,160,80,0.15); }
-.radar-ring-2 { width: 150px; height: 150px; border-color: rgba(197,160,80,0.2); }
-.radar-ring-3 { width: 80px; height: 80px; border-color: rgba(197,160,80,0.25); }
+.radar-ring-1 { width: 160px; height: 160px; border: 1px solid rgba(245,166,35,0.12); }
+.radar-ring-2 { width: 108px; height: 108px; border: 1px solid rgba(245,166,35,0.18); }
+.radar-ring-3 { width: 56px;  height: 56px;  border: 1px solid rgba(245,166,35,0.25); }
 
-/* Crosshairs */
 .radar-crosshair-h,
 .radar-crosshair-v {
   position: absolute;
-  background: rgba(197,160,80,0.12);
+  background: rgba(245,166,35,0.1);
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
 }
+.radar-crosshair-h { width: 160px; height: 1px; }
+.radar-crosshair-v { width: 1px; height: 160px; }
 
-.radar-crosshair-h { width: 220px; height: 1px; }
-.radar-crosshair-v { width: 1px; height: 220px; }
-
-/* Center dot */
 .radar-center {
   position: absolute;
-  width: 8px; height: 8px;
-  background: #C5A050;
+  width: 6px; height: 6px;
+  background: #F5A623;
   border-radius: 50%;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: 0 0 8px rgba(197,160,80,0.6);
+  box-shadow: 0 0 10px rgba(245,166,35,0.8);
   z-index: 3;
 }
 
-/* Sweep */
 .radar-sweep {
   position: absolute;
-  width: 110px;
-  height: 110px;
+  width: 80px; height: 80px;
   top: 50%; left: 50%;
   transform-origin: 0% 100%;
   transform: translate(0%, -100%);
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    rgba(197,160,80,0.0) 240deg,
-    rgba(197,160,80,0.08) 280deg,
-    rgba(197,160,80,0.2) 320deg,
-    rgba(197,160,80,0.35) 355deg,
-    rgba(197,160,80,0.5) 360deg
+    rgba(245,166,35,0.0) 240deg,
+    rgba(245,166,35,0.06) 280deg,
+    rgba(245,166,35,0.15) 320deg,
+    rgba(245,166,35,0.3) 355deg,
+    rgba(245,166,35,0.45) 360deg
   );
   border-radius: 0 100% 0 0;
   animation: radar-rotate 3s linear infinite;
@@ -339,81 +345,133 @@ nav {
   to   { transform: translate(0%, -100%) rotate(360deg); }
 }
 
-/* Blips */
 .radar-blip {
   position: absolute;
-  width: 6px; height: 6px;
-  background: #C5A050;
+  width: 5px; height: 5px;
+  background: #F5A623;
   border-radius: 50%;
-  box-shadow: 0 0 6px rgba(197,160,80,0.8);
+  box-shadow: 0 0 6px rgba(245,166,35,0.9);
   z-index: 3;
   opacity: 0;
 }
 
-.b1 { top: 30%; left: 68%; animation: blip 3s 0.4s infinite; }
-.b2 { top: 62%; left: 25%; animation: blip 3s 1.6s infinite; }
-.b3 { top: 22%; left: 38%; animation: blip 3s 2.2s infinite; }
-.b4 { top: 72%; left: 70%; animation: blip 3s 0.9s infinite; }
+.b1 { top: 28%; left: 66%; animation: blip 3s 0.4s infinite; }
+.b2 { top: 64%; left: 24%; animation: blip 3s 1.6s infinite; }
+.b3 { top: 20%; left: 36%; animation: blip 3s 2.2s infinite; }
+.b4 { top: 74%; left: 68%; animation: blip 3s 0.9s infinite; }
 
 @keyframes blip {
   0%   { opacity: 0; transform: scale(0.5); }
-  5%   { opacity: 1; transform: scale(1.4); }
-  15%  { opacity: 0.8; transform: scale(1); }
-  60%  { opacity: 0.2; }
+  5%   { opacity: 1; transform: scale(1.6); }
+  20%  { opacity: 0.7; transform: scale(1); }
+  60%  { opacity: 0.15; }
   100% { opacity: 0; }
 }
 
-/* Book cover text */
-.book-cover-content {
-  text-align: center;
-  position: relative;
-  z-index: 4;
-}
+/* ── COVER TEXT ── */
+.ind-content { position: relative; z-index: 4; }
 
-.book-cover-tag-w {
-  font-size: 0.6rem;
-  font-weight: 700;
+.ind-series {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(10,22,40,0.35);
-  margin-bottom: 10px;
+  color: #F5A623;
+  margin-bottom: 16px;
 }
 
-.book-cover-title-w {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.75rem;
-  font-weight: 900;
-  line-height: 1.1;
-  color: #0A1628;
-  margin-bottom: 14px;
-  letter-spacing: -0.02em;
+.ind-series span { color: rgba(255,255,255,0.25); }
+
+.ind-the {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 2px;
 }
 
-.book-cover-rule {
-  width: 40px;
-  height: 2px;
-  background: #C5A050;
-  margin: 0 auto 14px;
+.ind-title-1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.2rem;
+  line-height: 0.9;
+  color: #F5A623;
+  letter-spacing: 0.02em;
 }
 
-.book-cover-5cs-w {
-  font-size: 0.62rem;
-  font-weight: 600;
+.ind-title-2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.2rem;
+  line-height: 0.9;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.02em;
+}
+
+.ind-title-3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.2rem;
+  line-height: 0.9;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.02em;
+  margin-bottom: 16px;
+}
+
+.ind-tagline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 300;
   letter-spacing: 0.08em;
-  color: rgba(10,22,40,0.4);
+  color: rgba(255,255,255,0.3);
+  line-height: 1.6;
   text-transform: uppercase;
   margin-bottom: 16px;
-  line-height: 1.6;
 }
 
-.book-cover-5cs-w strong { color: #C5A050; }
-
-.book-cover-author-w {
-  font-size: 0.8rem;
-  color: rgba(10,22,40,0.45);
-  letter-spacing: 0.06em;
-  font-style: italic;
+.ind-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(245,166,35,0.15);
 }
+
+.ind-tags span {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.52rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 3px 7px;
+  color: rgba(255,255,255,0.35);
+  border-radius: 1px;
+}
+
+.ind-tags span.amber {
+  border-color: rgba(245,166,35,0.4);
+  color: #F5A623;
+}
+
+.ind-author {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid rgba(245,166,35,0.1);
+}
+
+.ind-author span {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+
+.ind-author span.amber { color: #F5A623; }
 
 /* ── SECTIONS ── */
 section { padding: 88px 48px; }
@@ -808,9 +866,12 @@ footer a { color: #C5A050; text-decoration: none; font-size: 0.78rem; }
       </div>
     </div>
     <div class="book-mock">
-      <div class="book-cover-white">
+      <div class="book-cover-industrial">
 
-        <!-- Radar animation -->
+        <!-- Blueprint grid -->
+        <div class="blueprint-grid"></div>
+
+        <!-- Radar -->
         <div class="radar-container">
           <div class="radar-ring radar-ring-1"></div>
           <div class="radar-ring radar-ring-2"></div>
@@ -825,15 +886,24 @@ footer a { color: #C5A050; text-decoration: none; font-size: 0.78rem; }
           <div class="radar-crosshair-v"></div>
         </div>
 
-        <!-- Book content overlaid -->
-        <div class="book-cover-content">
-          <div class="book-cover-tag-w">CONTRACKS GLOBAL</div>
-          <div class="book-cover-title-w">No-Surprises<br>Delivery</div>
-          <div class="book-cover-rule"></div>
-          <div class="book-cover-5cs-w">
-            <span><strong>CONTAIN</strong> · <strong>COMMAND</strong> · <strong>CLOSE</strong> · <strong>CONFIRM</strong> · <strong>CONTROL</strong></span>
+        <!-- Cover content -->
+        <div class="ind-content">
+          <div class="ind-series">PMO FIELD MANUAL <span>·</span> CROSS-BORDER DELIVERY</div>
+          <div class="ind-the">THE</div>
+          <div class="ind-title-1">DELIVERY</div>
+          <div class="ind-title-2">CONTROL</div>
+          <div class="ind-title-3">SYSTEM</div>
+          <div class="ind-tagline">LOCK SCOPE. CONTROL VENDORS.<br>STOP CROSS-BORDER PROJECTS DRIFTING.</div>
+          <div class="ind-tags">
+            <span>LOCK SCOPE</span>
+            <span class="amber">ONE REAL PLAN</span>
+            <span>DECISIONS FAST</span>
+            <span class="amber">VENDOR DATES</span>
           </div>
-          <div class="book-cover-author-w">Serguei Poppeleer</div>
+          <div class="ind-author">
+            <span>SERGUEI POPPELEER</span>
+            <span class="amber">PMO DIRECTOR · DENT</span>
+          </div>
         </div>
 
       </div>
