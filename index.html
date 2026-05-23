@@ -373,7 +373,7 @@ border-top: 1px solid rgba(197,160,80,0.12);
 
 .articles-grid {
 display: grid;
-grid-template-columns: repeat(3, 1fr);
+grid-template-columns: repeat(4, 1fr);
 gap: 2px;
 background: rgba(197,160,80,0.1);
 border-radius: 4px;
@@ -882,6 +882,7 @@ section { padding: 72px 24px; }
 .about-grid, .scorecard-inner, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
 .speeds-grid { grid-template-columns: 1fr 1fr; }
 .track-grid { grid-template-columns: 1fr 1fr; }
+.articles-grid { grid-template-columns: 1fr 1fr; }
 footer { padding: 32px 24px; flex-direction: column; text-align: center; }
 }
 
@@ -1123,23 +1124,30 @@ h1 { font-size: 2.4rem; }
     <h2>From the practice.</h2>
     <p class="section-intro">Real project failures. Real fixes. Written for PMO Directors who need tools, not theory.</p>
     <div class="articles-grid">
-      <a href="/report" class="article-card">
+      <a href="/report.html" class="article-card">
         <div class="article-tag">Special Report · Free Download</div>
         <div class="article-title">Beyond Paperwork Governance</div>
         <div class="article-excerpt">The full Delivery Control System — every step, the tools, and the real-project failures behind each one. 5,500 words. Give it to your team.</div>
         <div class="article-readmore">Download free <span>→</span></div>
       </a>
-      <a href="/article1" class="article-card">
+      <a href="/article1.html" class="article-card">
         <div class="article-tag">Article 1 · May 2026</div>
         <div class="article-title">Beyond Paperwork Governance</div>
         <div class="article-excerpt">Why most project controls look solid on paper and collapse on site — and the 5-step method that holds when reality pushes back.</div>
         <div class="article-readmore">Read article <span>→</span></div>
       </a>
-      <a href="/article2" class="article-card">
+      <a href="/article2.html" class="article-card">
         <div class="article-tag">Article 2 · May 2026</div>
         <div class="article-title">Is Your Project Under Control — Or Does It Just Look That Way?</div>
         <div class="article-excerpt">Five questions every PMO Director should be able to answer. Most can't. Answer them honestly before your next steering meeting.</div>
         <div class="article-readmore">Read article <span>→</span></div>
+      </a>
+      <a href="/book.html" class="article-card" style="background:rgba(197,160,80,0.05);border:1px solid rgba(197,160,80,0.2);position:relative;overflow:hidden;">
+        <div style="position:absolute;top:12px;right:12px;background:#C5A050;color:#0A1628;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;padding:4px 10px;border-radius:2px;text-transform:uppercase;">Coming 2026</div>
+        <div class="article-tag" style="color:#C5A050;">The Book</div>
+        <div class="article-title">No-Surprises Delivery</div>
+        <div class="article-excerpt">Five decisions. One system. Controls that match reality — not just the governance pack. Join the waitlist and get Chapter 1 free.</div>
+        <div class="article-readmore" style="color:#C5A050;">Join the waitlist <span>→</span></div>
       </a>
     </div>
   </div>
