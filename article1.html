@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beyond Paperwork Governance · Contracks Global</title>
+<meta name="description" content="Why most project controls look solid on paper and collapse on site — and the 5-step method that holds when reality pushes back.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0A1628;
+  --gold: #C5A050;
+  --text: #1A1A1A;
+  --text-light: #555555;
+  --border: #E8E4DC;
+  --bg: #FFFFFF;
+  --bg-warm: #F8F6F2;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #FFFFFF;
+  color: #1A1A1A;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  border-bottom: 1px solid #E8E4DC;
+  background: #FFFFFF;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0A1628;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.nav-logo span { color: #C5A050; }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-back {
+  font-size: 0.82rem;
+  color: #888;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-back:hover { color: #C5A050; }
+
+.nav-cta {
+  background: #C5A050;
+  color: #0A1628;
+  padding: 10px 22px;
+  border-radius: 2px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: background 0.2s;
+}
+
+.nav-cta:hover { background: #D4B470; }
+
+/* ── ARTICLE HEADER ── */
+.article-header {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 72px 48px 48px;
+  border-bottom: 1px solid #E8E4DC;
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.article-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #C5A050;
+  background: rgba(197,160,80,0.08);
+  border: 1px solid rgba(197,160,80,0.25);
+  padding: 5px 12px;
+  border-radius: 2px;
+}
+
+.article-date {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.article-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: #0A1628;
+  margin-bottom: 20px;
+}
+
+.article-deck {
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.65;
+  color: #555;
+  font-style: italic;
+  margin-bottom: 32px;
+}
+
+.article-byline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.88rem;
+  color: #555;
+}
+
+.byline-name {
+  font-weight: 600;
+  color: #0A1628;
+}
+
+.byline-dot {
+  color: #C5A050;
+}
+
+/* ── ARTICLE BODY ── */
+.article-body {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 56px 48px;
+}
+
+.article-body p {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: #1A1A1A;
+  font-weight: 300;
+  margin-bottom: 28px;
+}
+
+.article-body p strong {
+  font-weight: 600;
+  color: #0A1628;
+}
+
+.article-body em {
+  font-style: italic;
+}
+
+/* Pull quote */
+.pull-quote {
+  border-left: 3px solid #C5A050;
+  padding: 4px 0 4px 28px;
+  margin: 40px 0;
+}
+
+.pull-quote p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: #0A1628;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+/* Section headings */
+.article-body h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0A1628;
+  line-height: 1.25;
+  margin: 56px 0 20px;
+  letter-spacing: -0.01em;
+}
+
+.article-body h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0A1628;
+  margin: 36px 0 12px;
+  letter-spacing: 0.01em;
+}
+
+/* Divider */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 48px 0;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #E8E4DC;
+}
+
+.section-divider span {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #C5A050;
+  white-space: nowrap;
+}
+
+/* Mistake / shift blocks */
+.shift-block {
+  background: #F8F6F2;
+  border: 1px solid #E8E4DC;
+  border-left: 3px solid #C5A050;
+  border-radius: 2px;
+  padding: 24px 28px;
+  margin: 24px 0;
+}
+
+.shift-block .shift-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #C5A050;
+  margin-bottom: 8px;
+}
+
+.shift-block p {
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+
+/* Objection blocks */
+.objection-block {
+  background: #FFFFFF;
+  border: 1px solid #E8E4DC;
+  border-radius: 2px;
+  padding: 20px 24px;
+  margin: 16px 0;
+}
+
+.objection-q {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: #0A1628;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.objection-a {
+  font-size: 0.92rem;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 0 !important;
+}
+
+/* ── CTA BOX ── */
+.article-cta {
+  background: #0A1628;
+  border-radius: 4px;
+  padding: 48px;
+  margin: 64px 0 0;
+  text-align: center;
+}
+
+.article-cta h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 12px;
+}
+
+.article-cta p {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+  margin-bottom: 28px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-gold {
+  background: #C5A050;
+  color: #0A1628;
+  padding: 14px 28px;
+  border-radius: 2px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  transition: background 0.2s;
+}
+
+.btn-gold:hover { background: #D4B470; }
+
+.btn-outline {
+  border: 1px solid rgba(197,160,80,0.4);
+  color: #C5A050;
+  padding: 14px 28px;
+  border-radius: 2px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  transition: all 0.2s;
+}
+
+.btn-outline:hover { border-color: #C5A050; background: rgba(197,160,80,0.08); }
+
+/* ── FOOTER ── */
+footer {
+  background: #F8F6F2;
+  border-top: 1px solid #E8E4DC;
+  padding: 32px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+footer .footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0A1628;
+}
+
+footer .footer-logo span { color: #C5A050; }
+footer p { font-size: 0.78rem; color: #888; }
+footer a { color: #C5A050; text-decoration: none; font-size: 0.78rem; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 16px 24px; }
+  .article-header, .article-body { padding-left: 24px; padding-right: 24px; }
+  .article-header { padding-top: 48px; }
+  .article-cta { padding: 36px 24px; }
+  footer { padding: 24px; flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">CONTRACKS<span>.</span>GLOBAL</a>
+  <div class="nav-right">
+    <a href="/" class="nav-back">← Back to site</a>
+    <a href="https://serguei-k0iv6ldi.scoreapp.com" target="_blank" class="nav-cta">Take the diagnostic →</a>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="article-meta">
+    <span class="article-tag">Article 1</span>
+    <span class="article-date">May 2026 · Contracks Global</span>
+  </div>
+  <h1>Beyond Paperwork Governance</h1>
+  <p class="article-deck">Why most project controls look solid on paper and collapse on site — and the 5-step method that holds when reality pushes back.</p>
+  <div class="article-byline">
+    <span class="byline-name">Serguei Poppeleer</span>
+    <span class="byline-dot">·</span>
+    <span>Founder, Contracks Global</span>
+    <span class="byline-dot">·</span>
+    <span>contracks.global</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>Your governance pack is clean.</p>
+  <p>Stage gates signed off. RAID log updated. Steering deck submitted on time.</p>
+  <p>And the project is still drifting.</p>
+  <p>Vendors missing dates. Scope quietly expanding. Weekly meetings that have become a recurring argument about what was actually agreed.</p>
+
+  <div class="pull-quote">
+    <p>You already know something is wrong. The question is whether you find it — or whether it finds you first, in a steering meeting you didn't see coming.</p>
+  </div>
+
+  <h2>The moment I understood what governance actually costs</h2>
+
+  <p>We were on site to confirm the alignment for a bridge.</p>
+  <p>Equatorial Guinea. Deep in a forest. Thirty-metre trees on every side, chainsaws cutting in the background, a river running alongside the site — crocodiles visible from the bank. A village on the other side of the water, local community watching, uncertain what the road construction nearby would mean for them.</p>
+  <p>Five sources. Five different answers on where the bridge should go.</p>
+  <p>A government letter said one thing. An email said another. The local consultant in charge gave a third direction. An advisor from a neighbouring project gave a fourth — which turned out to be the correct one.</p>
+  <p>The consultant was a contractor. With a direct commercial interest in delaying the start of the project — keeping his own company in the lead position as long as possible. He knew the government document contained an error. He respected it anyway.</p>
+  <p>One side of the bridge approach had already been cleared of vegetation. In the wrong location. By approximately ten metres.</p>
+
+  <div class="pull-quote">
+    <p>Every source had a document. Nobody had the truth.</p>
+  </div>
+
+  <p>And beneath the chaos, something more fundamental was happening.</p>
+  <p>The contractor's team had arrived believing the client could not be trusted — worried about payment, expecting bad faith. The client was lost — genuinely unclear on what was correct — but could not show it. Two sides sitting across from each other, both convinced the other was the problem.</p>
+  <p>It turned out neither was. There was no bad faith. There was a genuine lack of clarity — on both sides — that nobody had surfaced, and that the governance system had simply documented without resolving.</p>
+  <p>We stopped. Stayed factual. Did not take sides, did not influence, did not position. We cross-checked every source on the spot, mapped the consequences of each alignment option, and produced one clear letter — with visuals, pros, cons, and a recommended path forward.</p>
+  <p><em>Napoleon's principle: a good drawing beats a long speech.</em> In a forest in Equatorial Guinea, with French, Spanish, Portuguese, and Mandarin all spoken around the same problem, that was not philosophy. It was the only thing that worked.</p>
+  <p>The confusion cleared. The right alignment was confirmed. Work started.</p>
+
+  <div class="pull-quote">
+    <p>The contractor delivered the first bridge at one-tenth the cost of the large-contractor standard. In six months instead of twelve. Zero security incidents. No perimeter fence — because the local community built it.</p>
+  </div>
+
+  <p>The client saw the work happen. Trust replaced distrust — not because anyone promised it would, but because the operating truth had been made visible to everyone and the delivery followed.</p>
+  <p>A second bridge followed. Then a third. On the third project, the client released payment the moment work was visibly underway. No objection. No dispute. One note confirmed: <strong>"We have started the works."</strong></p>
+
+  <div class="pull-quote">
+    <p>They did not release payment because the governance pack was clean. They released it because they could see the work had started. That is the difference between reporting and control.</p>
+  </div>
+
+  <div class="section-divider"><span>The three mistakes</span></div>
+
+  <h2>The three mistakes that create the split</h2>
+
+  <p>Most PMO Directors operate on a version of the same assumption: <em>"If the stage gates look right — RAID updated, reporting on time, steering committee signed off — delivery will follow."</em></p>
+  <p>It won't. And the moment a site or supplier blows the plan, you will discover what that assumption actually cost you. Not just in delays. In credibility. In the room where execs want answers.</p>
+
+  <div class="pull-quote">
+    <p>That is the fear nobody says out loud: being exposed as a paperwork PMO. Good at governance decks. Bad at actual control.</p>
+  </div>
+
+  <div class="shift-block">
+    <div class="shift-label">Mistake 1</div>
+    <p><strong>Scope tightened after kickoff, not before.</strong> Work starts from a letter, an email, a kickoff deck. No single written scope. No assumptions listed. No acceptance criteria agreed. Six weeks in, you are not tracking progress — you are adjudicating "was that included?" while the schedule bleeds.</p>
+  </div>
+
+  <div class="shift-block">
+    <div class="shift-label">Mistake 2</div>
+    <p><strong>Two plans running in parallel.</strong> The polished master schedule gets updated for governance. The site runs off WhatsApp, whiteboard sketches, and supervisor memory. By week two they have diverged. Nobody in the steering room can see it — because every governance signal still reads green.</p>
+  </div>
+
+  <div class="shift-block">
+    <div class="shift-label">Mistake 3</div>
+    <p><strong>Open items with no owner, no deadline, no consequence.</strong> Critical decisions sit in the RAID log for weeks. No single person accountable. No date. No consequence. The question stays open until it becomes a missed milestone — expensive, political, and slow to fix.</p>
+  </div>
+
+  <p>Governance documents intent. Control changes what happens on the ground next week.</p>
+
+  <div class="pull-quote">
+    <p>Most project trust problems are clarity problems in disguise. One operating truth fixes both.</p>
+  </div>
+
+  <div class="section-divider"><span>Five shifts</span></div>
+
+  <h2>Five shifts that make controls real</h2>
+
+  <div class="shift-block">
+    <div class="shift-label">Shift 1 — Contain</div>
+    <p><strong>Contain the scope before work starts.</strong> Not after supplier quotes. Not after kickoff. Before. One written document: assumptions, acceptance criteria, explicit out-of-scope items. When "was that included?" comes up, you open the document. The debate ends.</p>
+  </div>
+
+  <div class="shift-block">
+    <div class="shift-label">Shift 2 — Command</div>
+    <p><strong>Run one real plan.</strong> Not the deck plan and the site plan. One operating plan that reflects how work actually happens week to week — at field level, at supplier level, at handoff level. If the site team cannot use it, it is not the real plan.</p>
+  </div>
+
+  <div class="shift-block">
+    <div class="shift-label">Shift 3 — Close</div>
+    <p><strong>Close every decision.</strong> Every open item gets a single owner, a decision-by date, and a stated consequence if it slips. RAID logs do not close problems. Decision owners with deadlines and consequences do.</p>
+  </div>
+
+  <div class="shift-block">
+    <div class="shift-label">Shift 4 — Confirm</div>
+    <p><strong>Confirm vendor dates — do not accept them.</strong> A vendor commitment is not a confirmed date. A confirmed date has been verified against capacity, lead times, frozen drawings, ordered materials, and approved handoffs. Anything else is an optimistic promise you have agreed to inherit.</p>
+  </div>
+
+  <div class="shift-block">
+    <div class="shift-label">Shift 5 — Control</div>
+    <p><strong>Run a fixed weekly cadence.</strong> Same inputs. Same meeting. Same outputs — decisions made, actions assigned, dates re-committed. Not a status update. A control loop. Slippage gets caught in week one, not month three.</p>
+  </div>
+
+  <div class="section-divider"><span>Objections</span></div>
+
+  <h2>The objections I hear every time</h2>
+
+  <div class="objection-block">
+    <div class="objection-q">"We already have stage gates."</div>
+    <p class="objection-a">Stage gates are not control. They are checkpoints on a plan that may or may not reflect reality. The EG bridge site had five governance sources. None of them agreed. Stage gates would have signed all five off.</p>
+  </div>
+
+  <div class="objection-block">
+    <div class="objection-q">"It is too political to force decisions."</div>
+    <p class="objection-a">The politics do not improve with time — they compound. Shorten how long decisions stay open by designing owner, deadline, and consequence into every item from day one.</p>
+  </div>
+
+  <div class="objection-block">
+    <div class="objection-q">"I cannot see the site — I am Europe-based."</div>
+    <p class="objection-a">Access is not control. Proof of progress is. Define what visible progress looks like for each milestone. Time zones stop mattering.</p>
+  </div>
+
+  <div class="objection-block">
+    <div class="objection-q">"Vendors are the problem."</div>
+    <p class="objection-a">Vendor slippage is almost always enabled by weak commitments, not bad intentions. Fix the commitment design and most of the chasing stops.</p>
+  </div>
+
+  <div class="objection-block">
+    <div class="objection-q">"We do not have time to restructure mid-project."</div>
+    <p class="objection-a">You are already paying the time cost — in rework, re-quoting, expediting, and recovery meetings. The question is whether you spend that time fixing the system or explaining to execs why the forecast changed again.</p>
+  </div>
+
+  <div class="section-divider"><span>The standard</span></div>
+
+  <h2>The standard that actually matters</h2>
+
+  <p>A PMO Control Lead is not there to police templates. They are there to make delivery hold — especially when reality pushes back.</p>
+  <p>Controls that do not match reality are just documentation. They create the appearance of governance while the project drifts — and the PMO takes the blame when reality finally surfaces.</p>
+
+  <div class="pull-quote">
+    <p>No-surprises delivery is not a reporting standard. It is an operating standard.</p>
+  </div>
+
+  <div class="article-cta">
+    <h3>Go deeper.</h3>
+    <p><em>Beyond Paperwork Governance</em> is the full methodology — every step of the Delivery Control System, with the tools, the proof, and the real-project failures behind each one.</p>
+    <div class="cta-buttons">
+      <a href="/report" class="btn-gold">Download the full report →</a>
+      <a href="https://serguei-k0iv6ldi.scoreapp.com" target="_blank" class="btn-outline">Take the diagnostic →</a>
+    </div>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-logo">CONTRACKS<span>.</span>GLOBAL</div>
+  <p>Better contracts. Better business. Better society.</p>
+  <a href="/">contracks.global</a>
+</footer>
+
+</body>
+</html>
