@@ -129,6 +129,15 @@
     border: 1px solid rgba(201, 169, 89, 0.4);
     border-radius: 2px;
     white-space: nowrap;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: inline-block;
+  }
+  .media-badge:hover {
+    border-color: var(--gold);
+    background: rgba(201, 169, 89, 0.12);
+    opacity: 1;
+    transform: translateY(-1px);
   }
   .media-badge .small {
     font-family: 'Manrope', sans-serif;
@@ -529,10 +538,10 @@
   <div class="featured">
     <div class="featured-inner">
       <span class="featured-label">AS FEATURED</span>
-      <span class="media-badge"><span class="small">Aviation Week</span>Network</span>
-      <span class="media-badge"><span class="small">Airport</span>Business Intelligence</span>
-      <span class="media-badge"><span class="small">Global Tourism</span>Forum 2025</span>
-      <span class="media-badge"><span class="small">ICAO ESAF</span>Kigali</span>
+      <a class="media-badge" href="#aviation-week-url" target="_blank" rel="noopener"><span class="small">Aviation Week</span>Network</a>
+      <a class="media-badge" href="#airport-business-intelligence-url" target="_blank" rel="noopener"><span class="small">Airport</span>Business Intelligence</a>
+      <a class="media-badge" href="#global-tourism-forum-url" target="_blank" rel="noopener"><span class="small">Global Tourism</span>Forum 2025</a>
+      <a class="media-badge" href="#icao-esaf-url" target="_blank" rel="noopener"><span class="small">ICAO ESAF</span>Kigali</a>
     </div>
     <a class="download-btn" href="sergio-poppeleer-speaker.pdf" download="Sergio_Poppeleer_Speaker.pdf">
       <span class="arrow">↓</span>Download PDF
