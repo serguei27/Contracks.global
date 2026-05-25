@@ -1,1 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Serguei Poppeleer — Speaker One-Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,300;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A1F3D;
+    --navy-deep: #061427;
+    --gold: #C9A961;
+    --gold-light: #E0C786;
+    --cream: #F8F4EC;
+    --ivory: #FBF9F4;
+    --slate: #2C3E50;
+    --grey-mid: #6B7280;
+    --grey-light: #D9D5CC;
+    --rule: #EAE5DA;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #2a2a2a;
+    font-family: 'Manrope', -apple-system, sans-serif;
+    color: var(--slate);
+    -webkit-font-smoothing: antialiased;
+  }
+  .sheet {
+    width: 210mm;
+    max-width: 100%;
+    margin: 30px auto;
+    background: var(--ivory);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--navy);
+    color: var(--ivory);
+    padding: 32px 40px 24px 40px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 165px 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+  }
+  .photo {
+    width: 150px; height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a3358 0%, #0A1F3D 100%);
+    border: 3px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    color: var(--gold);
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 56px;
+    letter-spacing: 1px;
+  }
+  .name-block { padding-top: 4px; }
+  .name {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 46px;
+    letter-spacing: 6px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+  .tagline {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 19px;
+    color: var(--ivory);
+    opacity: 0.92;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .sub-positioning {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+  .sub-positioning span { color: var(--ivory); opacity: 0.6; margin: 0 8px; }
+
+  /* AS FEATURED STRIP */
+  .featured {
+    background: var(--navy-deep);
+    color: var(--ivory);
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    font-weight: 600;
+  }
+  .featured-label { color: var(--gold); white-space: nowrap; }
+  .featured-logos {
+    display: flex; gap: 22px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--ivory);
+    opacity: 0.85;
+    flex-wrap: wrap;
+  }
+  .featured-logos span { white-space: nowrap; }
+  .featured-logos span + span::before {
+    content: '•';
+    color: var(--gold);
+    margin-right: 22px;
+    margin-left: -11px;
+    opacity: 0.7;
+  }
+
+  /* BODY */
+  .body {
+    padding: 36px 40px 24px 40px;
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 40px;
+  }
+
+  /* LEFT - QUOTE + TOPICS */
+  .quote {
+    position: relative;
+    padding: 0 0 18px 36px;
+    margin-bottom: 22px;
+  }
+  .quote::before {
+    content: '"';
+    position: absolute;
+    left: -8px; top: -28px;
+    font-family: 'Fraunces', serif;
+    font-size: 110px;
+    color: var(--gold);
+    opacity: 0.45;
+    line-height: 1;
+  }
+  .quote-text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.45;
+    color: var(--navy);
+  }
+  .quote-attr {
+    margin-top: 8px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey-mid);
+    font-weight: 600;
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 32px;
+    color: var(--navy);
+    margin-bottom: 18px;
+    letter-spacing: 0.5px;
+  }
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 2px;
+    background: var(--gold);
+    margin-top: 6px;
+  }
+
+  .topic { margin-bottom: 18px; }
+  .topic-title {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+  .topic-sub {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .topic-desc {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11.5px;
+    line-height: 1.55;
+    color: var(--slate);
+  }
+
+  /* RIGHT - BIO */
+  .bio-block {
+    background: var(--cream);
+    padding: 24px 22px;
+    border-left: 2px solid var(--gold);
+    position: relative;
+  }
+  .bio-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 32px;
+    color: var(--navy);
+    margin-bottom: 14px;
+  }
+  .bio-title::after {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 2px;
+    background: var(--gold);
+    margin-top: 4px;
+  }
+  .bio-text {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11.5px;
+    line-height: 1.6;
+    color: var(--slate);
+    margin-bottom: 12px;
+  }
+  .bio-text strong { color: var(--navy); font-weight: 700; }
+
+  .credentials {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+  }
+  .credentials-label {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .credentials-list {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10.5px;
+    line-height: 1.55;
+    color: var(--slate);
+  }
+
+  /* METHOD STRIP */
+  .method {
+    background: var(--navy);
+    color: var(--ivory);
+    padding: 18px 40px;
+    text-align: center;
+    border-top: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+  }
+  .method-label {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--gold-light);
+    margin-bottom: 4px;
+  }
+  .method-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 19px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    color: var(--ivory);
+  }
+  .method-name sup { font-size: 10px; vertical-align: super; color: var(--gold); }
+  .method-5cs {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: var(--ivory);
+    opacity: 0.95;
+  }
+  .method-5cs strong { color: var(--gold); font-weight: 800; }
+  .method-5cs .sep {
+    color: var(--gold); opacity: 0.5; margin: 0 8px;
+  }
+
+  /* OFFERINGS */
+  .offerings-wrap { padding: 26px 40px 18px 40px; }
+  .offerings-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 28px;
+    color: var(--navy);
+    text-align: center;
+    margin-bottom: 22px;
+    position: relative;
+  }
+  .offerings-title::before, .offerings-title::after {
+    content: '';
+    display: inline-block;
+    width: 40px; height: 1px;
+    background: var(--gold);
+    vertical-align: middle;
+    margin: 0 16px;
+  }
+  .offerings {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .offering {
+    text-align: center;
+    padding: 0 14px;
+    border-right: 1px solid var(--rule);
+  }
+  .offering:last-child { border-right: none; }
+  .offering-label {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .offering-detail {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10.5px;
+    line-height: 1.5;
+    color: var(--slate);
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--navy);
+    color: var(--ivory);
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    border-top: 3px solid var(--gold);
+  }
+  .footer-left {
+    display: flex; gap: 14px;
+  }
+  .footer-icon {
+    width: 28px; height: 28px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 12px;
+    font-family: 'Fraunces', serif;
+  }
+  .footer-right {
+    text-align: right;
+    line-height: 1.7;
+  }
+  .footer-right a { color: var(--ivory); text-decoration: none; }
+  .footer-right .label {
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 9px;
+    margin-bottom: 2px;
+    display: block;
+  }
+
+  @media print {
+    body { background: white; }
+    .sheet { box-shadow: none; margin: 0; width: 100%; }
+  }
+  @media (max-width: 700px) {
+    .header { grid-template-columns: 1fr; text-align: center; }
+    .photo { margin: 0 auto; width: 120px; height: 120px; font-size: 44px; }
+    .name { font-size: 32px; letter-spacing: 3px; }
+    .body { grid-template-columns: 1fr; gap: 28px; padding: 28px 24px 18px; }
+    .offerings { grid-template-columns: repeat(2, 1fr); gap: 16px 0; }
+    .offering:nth-child(2) { border-right: none; }
+    .featured { flex-direction: column; align-items: flex-start; gap: 10px; padding: 14px 24px; }
+    .footer { flex-direction: column; gap: 12px; text-align: center; padding: 18px 24px; }
+    .footer-right { text-align: center; }
+    .offerings-wrap, .method { padding-left: 24px; padding-right: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="photo">SP</div>
+    <div class="name-block">
+      <div class="name">SERGUEI POPPELEER</div>
+      <div class="tagline">Fix the system. Before the project does it for you.</div>
+      <div class="sub-positioning">International Speaker <span>·</span> Delivery Systems Strategist</div>
+    </div>
+  </header>
+
+  <!-- AS FEATURED -->
+  <div class="featured">
+    <span class="featured-label">AS FEATURED</span>
+    <div class="featured-logos">
+      <span>Aviation Week Network</span>
+      <span>Airport Business Intelligence</span>
+      <span>Sustainability in the Air</span>
+      <span>Global Tourism Forum</span>
+      <span>ICAO ESAF Kigali</span>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- LEFT: QUOTE + TOPICS -->
+    <div>
+      <div class="quote">
+        <div class="quote-text">Projects don't fail. The systems around them do. Frontier markets just expose it faster.</div>
+        <div class="quote-attr">— Serguei Poppeleer, Global Tourism Forum 2025</div>
+      </div>
+
+      <h2 class="section-title">Topics</h2>
+
+      <div class="topic">
+        <div class="topic-title">No-Surprises Delivery</div>
+        <div class="topic-sub">Why projects don't fail — the systems around them do</div>
+        <div class="topic-desc">Even with templates, stage gates, RAID logs and reports, projects still drift: scope shifts, governance disconnects from how work gets done, and vendor slippage turns delivery into a constant chase. This keynote shows PMO Directors and project leaders how to make controls match reality — using the Delivery Control System™ to align requirements, procurement, contracts and execution, so decisions get enforced rather than argued.</div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-title">Beyond Paperwork Governance</div>
+        <div class="topic-sub">When the official plan and the site stop telling the same story</div>
+        <div class="topic-desc">Governance looks right on paper — but the site runs on WhatsApp, verbal agreements, and supplier dates nobody verified. Theory looks good. Reality drifts. Drawing on 30 countries of cross-border project work, this talk names the gap, explains why it widens fastest in frontier and high-pressure environments, and shows the five decisions that close it.</div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-title">Claims-Proof Delivery</div>
+        <div class="topic-sub">When time becomes money — and how to be ready</div>
+        <div class="topic-desc">Most EPC and infrastructure claims fail not because the cause was weak, but because the timeline was never built to defend it. This session unpacks the Claims-Proof Timeline System™ — the 5Ls — and shows commercial managers how to log, link and load a defensible position from day one, not the week before notification.</div>
+      </div>
+    </div>
+
+    <!-- RIGHT: BIO -->
+    <aside class="bio-block">
+      <h2 class="bio-title">Bio</h2>
+      <p class="bio-text"><strong>Serguei Poppeleer</strong> is the founder of <strong>Contracks Global</strong> and creator of the <strong>Delivery Control System™</strong> — a method for turning the person accountable for delivery into the person who actually delivers, in the markets where standard playbooks break first.</p>
+      <p class="bio-text"><strong>25+ years across 30+ countries.</strong> In Equatorial Guinea he scrapped the imported playbook, rebuilt delivery around ground reality, local entrepreneurs and community relationships — and delivered the camp in 6 months instead of 12, at one-tenth the cost, with zero security incidents.</p>
+      <p class="bio-text">He has worked with <strong>ENI · SNAM RETE · EnergiNet · ArcelorMittal · Brussels Airlines · Intels Nigeria · Marriott · Luminus</strong>, on projects from €100m to €700m. He speaks English, French, Dutch and Italian.</p>
+
+      <div class="credentials">
+        <div class="credentials-label">Credentials</div>
+        <div class="credentials-list">MCIArb · LLM Oil &amp; Gas (RGU) · Executive MBA (Hult) · M.Sc. Civil Engineering (Mons) · MIT · INSEAD · WorldCC Practitioner · CIoB</div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- METHOD STRIP -->
+  <div class="method">
+    <div class="method-label">The signature method</div>
+    <div class="method-name">The Delivery Control System<sup>TM</sup> &nbsp;—&nbsp; The 5Cs</div>
+    <div class="method-5cs">
+      <strong>CONTAIN</strong> the scope<span class="sep">·</span><strong>COMMAND</strong> one plan<span class="sep">·</span><strong>CLOSE</strong> every decision<span class="sep">·</span><strong>CONFIRM</strong> vendor dates<span class="sep">·</span><strong>CONTROL</strong> tower cadence
+    </div>
+  </div>
+
+  <!-- OFFERINGS -->
+  <div class="offerings-wrap">
+    <h2 class="offerings-title">Offerings &amp; Formats</h2>
+    <div class="offerings">
+      <div class="offering">
+        <div class="offering-label">Keynote</div>
+        <div class="offering-detail">45–60 min. High-energy, story-driven, actionable. Ideal for conferences and summits.</div>
+      </div>
+      <div class="offering">
+        <div class="offering-label">Panel</div>
+        <div class="offering-detail">Expert session on delivery, frontier markets, or sustainable infrastructure. Up to 75 min.</div>
+      </div>
+      <div class="offering">
+        <div class="offering-label">Workshop</div>
+        <div class="offering-detail">Half-day interactive session. Participants leave with the 5Cs applied to their live portfolio.</div>
+      </div>
+      <div class="offering">
+        <div class="offering-label">Virtual</div>
+        <div class="offering-detail">Remote keynote or masterclass. Pre-briefing, tailored content, follow-up resources.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-left">
+      <div class="footer-icon">in</div>
+      <div class="footer-icon">𝕏</div>
+      <div class="footer-icon">▶</div>
+    </div>
+    <div class="footer-right">
+      <span class="label">Booking</span>
+      spoppeleer@contracks.global &nbsp;·&nbsp; +32 466 446 290 &nbsp;·&nbsp; contracks.global<br>
+      linkedin.com/in/sergueipoppeleer &nbsp;·&nbsp; @sergiopoppeleer
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
 
