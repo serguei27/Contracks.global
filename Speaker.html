@@ -2,28 +2,29 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Serguei Poppeleer — Speaker One-Sheet</title>
+<title>Sergio Poppeleer — Speaker One-Sheet</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,300;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #0A1F3D;
-    --navy-deep: #061427;
-    --gold: #C9A961;
+    /* Contracks exact brand palette */
+    --navy: #0A1A33;
+    --navy-deep: #06112A;
+    --gold: #C9A959;
     --gold-light: #E0C786;
-    --cream: #F8F4EC;
+    --gold-soft: #F5F1E7;
+    --cream: #F5F1E7;
     --ivory: #FBF9F4;
+    --body: #6E7783;
     --slate: #2C3E50;
-    --grey-mid: #6B7280;
-    --grey-light: #D9D5CC;
     --rule: #EAE5DA;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
-    background: #2a2a2a;
+    background: #1a1a1a;
     font-family: 'Manrope', -apple-system, sans-serif;
-    color: var(--slate);
+    color: var(--body);
     -webkit-font-smoothing: antialiased;
   }
   .sheet {
@@ -31,7 +32,7 @@
     max-width: 100%;
     margin: 30px auto;
     background: var(--ivory);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     position: relative;
     overflow: hidden;
   }
@@ -40,7 +41,7 @@
   .header {
     background: var(--navy);
     color: var(--ivory);
-    padding: 32px 40px 24px 40px;
+    padding: 32px 40px 26px 40px;
     position: relative;
     display: grid;
     grid-template-columns: 165px 1fr;
@@ -57,7 +58,7 @@
   .photo {
     width: 150px; height: 150px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #1a3358 0%, #0A1F3D 100%);
+    background: linear-gradient(135deg, #1a3358 0%, #0A1A33 100%);
     border: 3px solid var(--gold);
     display: flex; align-items: center; justify-content: center;
     overflow: hidden;
@@ -66,6 +67,20 @@
     font-weight: 300;
     font-size: 56px;
     letter-spacing: 1px;
+    position: relative;
+  }
+  .photo img {
+    width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+  }
+  .photo-placeholder-note {
+    position: absolute;
+    bottom: -22px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 8px;
+    color: var(--gold-light);
+    opacity: 0.6;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
   }
   .name-block { padding-top: 4px; }
   .name {
@@ -75,7 +90,7 @@
     letter-spacing: 6px;
     color: var(--gold);
     line-height: 1;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
   .tagline {
     font-family: 'Fraunces', serif;
@@ -94,63 +109,86 @@
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--gold-light);
+    margin-bottom: 8px;
   }
   .sub-positioning span { color: var(--ivory); opacity: 0.6; margin: 0 8px; }
+  .icp-line {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11.5px;
+    color: var(--ivory);
+    opacity: 0.78;
+    line-height: 1.4;
+    padding-top: 6px;
+    border-top: 1px solid rgba(201, 169, 89, 0.3);
+    max-width: 95%;
+  }
+  .icp-line strong { color: var(--gold-light); font-weight: 600; }
 
   /* AS FEATURED STRIP */
   .featured {
     background: var(--navy-deep);
     color: var(--ivory);
-    padding: 14px 40px;
+    padding: 13px 40px;
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 20px;
     font-family: 'Manrope', sans-serif;
+  }
+  .featured-label {
+    color: var(--gold);
     font-size: 10px;
     letter-spacing: 3px;
-    font-weight: 600;
+    font-weight: 700;
+    white-space: nowrap;
   }
-  .featured-label { color: var(--gold); white-space: nowrap; }
   .featured-logos {
-    display: flex; gap: 22px;
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 11px;
-    letter-spacing: 1px;
-    color: var(--ivory);
-    opacity: 0.85;
+    display: flex; gap: 10px;
     flex-wrap: wrap;
+    align-items: center;
   }
-  .featured-logos span { white-space: nowrap; }
-  .featured-logos span + span::before {
-    content: '•';
+  .media-badge {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 10.5px;
+    letter-spacing: 0.8px;
+    color: var(--ivory);
+    opacity: 0.92;
+    padding: 5px 12px;
+    border: 1px solid rgba(201, 169, 89, 0.4);
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .media-badge .small {
+    font-family: 'Manrope', sans-serif;
+    font-size: 8px;
+    letter-spacing: 2px;
     color: var(--gold);
-    margin-right: 22px;
-    margin-left: -11px;
-    opacity: 0.7;
+    text-transform: uppercase;
+    margin-right: 6px;
+    font-weight: 700;
   }
 
   /* BODY */
   .body {
-    padding: 36px 40px 24px 40px;
+    padding: 32px 40px 22px 40px;
     display: grid;
     grid-template-columns: 1.35fr 1fr;
-    gap: 40px;
+    gap: 36px;
   }
 
   /* LEFT - QUOTE + TOPICS */
   .quote {
     position: relative;
-    padding: 0 0 18px 36px;
-    margin-bottom: 22px;
+    padding: 0 0 16px 32px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--rule);
   }
   .quote::before {
     content: '"';
     position: absolute;
-    left: -8px; top: -28px;
+    left: -6px; top: -26px;
     font-family: 'Fraunces', serif;
-    font-size: 110px;
+    font-size: 100px;
     color: var(--gold);
     opacity: 0.45;
     line-height: 1;
@@ -162,23 +200,23 @@
     font-size: 16px;
     line-height: 1.45;
     color: var(--navy);
+    margin-bottom: 6px;
   }
   .quote-attr {
-    margin-top: 8px;
     font-family: 'Manrope', sans-serif;
     font-size: 10px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--grey-mid);
+    color: var(--body);
     font-weight: 600;
   }
 
   .section-title {
     font-family: 'Fraunces', serif;
     font-weight: 400;
-    font-size: 32px;
+    font-size: 30px;
     color: var(--navy);
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     letter-spacing: 0.5px;
   }
   .section-title::after {
@@ -187,10 +225,10 @@
     width: 36px;
     height: 2px;
     background: var(--gold);
-    margin-top: 6px;
+    margin-top: 4px;
   }
 
-  .topic { margin-bottom: 18px; }
+  .topic { margin-bottom: 16px; }
   .topic-title {
     font-family: 'Manrope', sans-serif;
     font-weight: 700;
@@ -210,24 +248,56 @@
   }
   .topic-desc {
     font-family: 'Manrope', sans-serif;
-    font-size: 11.5px;
+    font-size: 11px;
     line-height: 1.55;
-    color: var(--slate);
+    color: var(--body);
   }
 
-  /* RIGHT - BIO */
+  /* RIGHT - BIO + ACTION PHOTO */
+  .right-col { display: flex; flex-direction: column; gap: 18px; }
+  .action-photo {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, #1a3358 0%, #0A1A33 100%);
+    border-radius: 4px;
+    border: 2px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold-light);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    position: relative;
+    overflow: hidden;
+  }
+  .action-photo img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .action-photo::after {
+    content: 'on stage · Global Tourism Forum 2025';
+    position: absolute;
+    bottom: 8px; left: 12px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(10, 26, 51, 0.85);
+    padding: 4px 10px;
+    border-radius: 2px;
+    font-weight: 700;
+  }
   .bio-block {
     background: var(--cream);
-    padding: 24px 22px;
+    padding: 22px 22px;
     border-left: 2px solid var(--gold);
-    position: relative;
   }
   .bio-title {
     font-family: 'Fraunces', serif;
     font-weight: 400;
-    font-size: 32px;
+    font-size: 30px;
     color: var(--navy);
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
   .bio-title::after {
     content: '';
@@ -239,16 +309,16 @@
   }
   .bio-text {
     font-family: 'Manrope', sans-serif;
-    font-size: 11.5px;
+    font-size: 11px;
     line-height: 1.6;
-    color: var(--slate);
-    margin-bottom: 12px;
+    color: var(--body);
+    margin-bottom: 10px;
   }
   .bio-text strong { color: var(--navy); font-weight: 700; }
 
   .credentials {
-    margin-top: 16px;
-    padding-top: 14px;
+    margin-top: 14px;
+    padding-top: 12px;
     border-top: 1px solid var(--rule);
   }
   .credentials-label {
@@ -262,10 +332,34 @@
   }
   .credentials-list {
     font-family: 'Manrope', sans-serif;
-    font-size: 10.5px;
+    font-size: 10px;
     line-height: 1.55;
-    color: var(--slate);
+    color: var(--body);
   }
+  .showreel {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: var(--navy);
+    border-left: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .showreel-icon {
+    color: var(--gold);
+    font-size: 16px;
+    line-height: 1;
+  }
+  .showreel-text {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--ivory);
+  }
+  .showreel-text a { color: var(--gold-light); text-decoration: none; }
+  .showreel-text a:hover { color: var(--gold); text-decoration: underline; }
 
   /* METHOD STRIP */
   .method {
@@ -307,14 +401,14 @@
   }
 
   /* OFFERINGS */
-  .offerings-wrap { padding: 26px 40px 18px 40px; }
+  .offerings-wrap { padding: 26px 40px 20px 40px; }
   .offerings-title {
     font-family: 'Fraunces', serif;
     font-weight: 400;
     font-size: 28px;
     color: var(--navy);
     text-align: center;
-    margin-bottom: 22px;
+    margin-bottom: 20px;
     position: relative;
   }
   .offerings-title::before, .offerings-title::after {
@@ -343,13 +437,31 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .offering-rate {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--navy);
     margin-bottom: 6px;
+    line-height: 1;
+  }
+  .offering-rate .from {
+    font-family: 'Manrope', sans-serif;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--body);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
   }
   .offering-detail {
     font-family: 'Manrope', sans-serif;
-    font-size: 10.5px;
+    font-size: 10px;
     line-height: 1.5;
-    color: var(--slate);
+    color: var(--body);
   }
 
   /* FOOTER */
@@ -361,14 +473,14 @@
     justify-content: space-between;
     align-items: center;
     font-family: 'Manrope', sans-serif;
-    font-size: 11px;
+    font-size: 10.5px;
     border-top: 3px solid var(--gold);
   }
   .footer-left {
-    display: flex; gap: 14px;
+    display: flex; gap: 12px;
   }
   .footer-icon {
-    width: 28px; height: 28px;
+    width: 30px; height: 30px;
     border: 1.5px solid var(--gold);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
@@ -376,12 +488,20 @@
     font-weight: 700;
     font-size: 12px;
     font-family: 'Fraunces', serif;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .footer-icon:hover {
+    background: var(--gold);
+    color: var(--navy);
+    transform: translateY(-2px);
   }
   .footer-right {
     text-align: right;
     line-height: 1.7;
   }
   .footer-right a { color: var(--ivory); text-decoration: none; }
+  .footer-right a:hover { color: var(--gold); }
   .footer-right .label {
     color: var(--gold);
     font-weight: 700;
@@ -395,18 +515,22 @@
   @media print {
     body { background: white; }
     .sheet { box-shadow: none; margin: 0; width: 100%; }
+    .footer-icon:hover { transform: none; }
   }
   @media (max-width: 700px) {
     .header { grid-template-columns: 1fr; text-align: center; }
     .photo { margin: 0 auto; width: 120px; height: 120px; font-size: 44px; }
-    .name { font-size: 32px; letter-spacing: 3px; }
-    .body { grid-template-columns: 1fr; gap: 28px; padding: 28px 24px 18px; }
-    .offerings { grid-template-columns: repeat(2, 1fr); gap: 16px 0; }
-    .offering:nth-child(2) { border-right: none; }
-    .featured { flex-direction: column; align-items: flex-start; gap: 10px; padding: 14px 24px; }
-    .footer { flex-direction: column; gap: 12px; text-align: center; padding: 18px 24px; }
+    .name { font-size: 30px; letter-spacing: 3px; }
+    .icp-line { max-width: 100%; }
+    .body { grid-template-columns: 1fr; gap: 24px; padding: 26px 22px 18px; }
+    .offerings { grid-template-columns: repeat(2, 1fr); gap: 18px 0; }
+    .offering { border-right: none; border-bottom: 1px solid var(--rule); padding-bottom: 14px; }
+    .offering:nth-child(odd) { border-right: 1px solid var(--rule); }
+    .offering:nth-last-child(-n+2) { border-bottom: none; }
+    .featured { flex-direction: column; align-items: flex-start; gap: 10px; padding: 14px 22px; }
+    .footer { flex-direction: column; gap: 12px; text-align: center; padding: 18px 22px; }
     .footer-right { text-align: center; }
-    .offerings-wrap, .method { padding-left: 24px; padding-right: 24px; }
+    .offerings-wrap, .method { padding-left: 22px; padding-right: 22px; }
   }
 </style>
 </head>
@@ -415,11 +539,15 @@
 
   <!-- HEADER -->
   <header class="header">
-    <div class="photo">SP</div>
+    <div class="photo">
+      <!-- Swap "SP" below with: <img src="path/to/portrait.jpg" alt="Sergio Poppeleer"> when you have a dedicated portrait -->
+      SP
+    </div>
     <div class="name-block">
-      <div class="name">SERGUEI POPPELEER</div>
+      <div class="name">SERGIO POPPELEER</div>
       <div class="tagline">Fix the system. Before the project does it for you.</div>
       <div class="sub-positioning">International Speaker <span>·</span> Delivery Systems Strategist</div>
+      <div class="icp-line">For <strong>PMO Directors, Country Directors and Commercial Managers</strong> on cross-border capital projects — energy, infrastructure, aviation, real estate. Europe ↔ Africa.</div>
     </div>
   </header>
 
@@ -427,11 +555,11 @@
   <div class="featured">
     <span class="featured-label">AS FEATURED</span>
     <div class="featured-logos">
-      <span>Aviation Week Network</span>
-      <span>Airport Business Intelligence</span>
-      <span>Sustainability in the Air</span>
-      <span>Global Tourism Forum</span>
-      <span>ICAO ESAF Kigali</span>
+      <span class="media-badge"><span class="small">Aviation Week</span>Network</span>
+      <span class="media-badge"><span class="small">Airport</span>Business Intelligence</span>
+      <span class="media-badge"><span class="small">Sustainability</span>in the Air</span>
+      <span class="media-badge"><span class="small">Global Tourism</span>Forum 2025</span>
+      <span class="media-badge"><span class="small">ICAO ESAF</span>Kigali</span>
     </div>
   </div>
 
@@ -441,8 +569,8 @@
     <!-- LEFT: QUOTE + TOPICS -->
     <div>
       <div class="quote">
-        <div class="quote-text">Projects don't fail. The systems around them do. Frontier markets just expose it faster.</div>
-        <div class="quote-attr">— Serguei Poppeleer, Global Tourism Forum 2025</div>
+        <div class="quote-text">"Projects don't fail. The systems around them do. Frontier markets just expose it faster."</div>
+        <div class="quote-attr">— signature thesis · Global Tourism Forum 2025</div>
       </div>
 
       <h2 class="section-title">Topics</h2>
@@ -466,18 +594,29 @@
       </div>
     </div>
 
-    <!-- RIGHT: BIO -->
-    <aside class="bio-block">
-      <h2 class="bio-title">Bio</h2>
-      <p class="bio-text"><strong>Serguei Poppeleer</strong> is the founder of <strong>Contracks Global</strong> and creator of the <strong>Delivery Control System™</strong> — a method for turning the person accountable for delivery into the person who actually delivers, in the markets where standard playbooks break first.</p>
-      <p class="bio-text"><strong>25+ years across 30+ countries.</strong> In Equatorial Guinea he scrapped the imported playbook, rebuilt delivery around ground reality, local entrepreneurs and community relationships — and delivered the camp in 6 months instead of 12, at one-tenth the cost, with zero security incidents.</p>
-      <p class="bio-text">He has worked with <strong>ENI · SNAM RETE · EnergiNet · ArcelorMittal · Brussels Airlines · Intels Nigeria · Marriott · Luminus</strong>, on projects from €100m to €700m. He speaks English, French, Dutch and Italian.</p>
-
-      <div class="credentials">
-        <div class="credentials-label">Credentials</div>
-        <div class="credentials-list">MCIArb · LLM Oil &amp; Gas (RGU) · Executive MBA (Hult) · M.Sc. Civil Engineering (Mons) · MIT · INSEAD · WorldCC Practitioner · CIoB</div>
+    <!-- RIGHT: ACTION PHOTO + BIO -->
+    <div class="right-col">
+      <div class="action-photo">
+        <img src="https://contracks.global/serguei-speaking.jpg" alt="Sergio Poppeleer speaking on stage">
       </div>
-    </aside>
+
+      <aside class="bio-block">
+        <h2 class="bio-title">Bio</h2>
+        <p class="bio-text"><strong>Sergio Poppeleer</strong> is the founder of <strong>Contracks Global</strong> and creator of the <strong>Delivery Control System™</strong> — a method for turning the person accountable for delivery into the person who actually delivers, in the markets where standard playbooks break first.</p>
+        <p class="bio-text"><strong>25+ years across 30+ countries.</strong> In Equatorial Guinea he scrapped the imported playbook, rebuilt delivery around ground reality, local entrepreneurs and community relationships — and delivered the camp in 6 months instead of 12, at one-tenth the cost, with zero security incidents.</p>
+        <p class="bio-text">He has worked with <strong>ENI · SNAM RETE · EnergiNet · ArcelorMittal · Brussels Airlines · Intels Nigeria · Marriott · Luminus</strong>, on projects from €100m to €700m. He speaks English, French, Dutch and Italian.</p>
+
+        <div class="credentials">
+          <div class="credentials-label">Credentials</div>
+          <div class="credentials-list">MCIArb · LLM Oil &amp; Gas (RGU) · Executive MBA (Hult) · M.Sc. Civil Engineering (Mons) · MIT · INSEAD · WorldCC Practitioner · CIoB</div>
+        </div>
+
+        <div class="showreel">
+          <span class="showreel-icon">▶</span>
+          <span class="showreel-text">Speaker showreel · <a href="https://youtube.com/@sergiopoppeleer" target="_blank" rel="noopener">youtube.com/@sergiopoppeleer</a></span>
+        </div>
+      </aside>
+    </div>
   </div>
 
   <!-- METHOD STRIP -->
@@ -491,11 +630,11 @@
 
   <!-- OFFERINGS -->
   <div class="offerings-wrap">
-    <h2 class="offerings-title">Offerings &amp; Formats</h2>
+    <h2 class="offerings-title">Formats</h2>
     <div class="offerings">
       <div class="offering">
         <div class="offering-label">Keynote</div>
-        <div class="offering-detail">45–60 min. High-energy, story-driven, actionable. Ideal for conferences and summits.</div>
+        <div class="offering-detail">45–60 min. High-energy, story-driven, actionable. Conferences and summits.</div>
       </div>
       <div class="offering">
         <div class="offering-label">Panel</div>
@@ -503,7 +642,7 @@
       </div>
       <div class="offering">
         <div class="offering-label">Workshop</div>
-        <div class="offering-detail">Half-day interactive session. Participants leave with the 5Cs applied to their live portfolio.</div>
+        <div class="offering-detail">Half-day interactive. Teams leave with the 5Cs applied to their live portfolio.</div>
       </div>
       <div class="offering">
         <div class="offering-label">Virtual</div>
@@ -515,18 +654,16 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-left">
-      <div class="footer-icon">in</div>
-      <div class="footer-icon">𝕏</div>
-      <div class="footer-icon">▶</div>
+      <a class="footer-icon" href="https://www.linkedin.com/in/serguei-poppeleer?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+      <a class="footer-icon" href="https://x.com/sergiopoppeleer" target="_blank" rel="noopener" aria-label="X / Twitter">𝕏</a>
+      <a class="footer-icon" href="https://youtube.com/@sergiopoppeleer" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
     </div>
     <div class="footer-right">
-      <span class="label">Booking</span>
-      spoppeleer@contracks.global &nbsp;·&nbsp; +32 466 446 290 &nbsp;·&nbsp; contracks.global<br>
-      linkedin.com/in/sergueipoppeleer &nbsp;·&nbsp; @sergiopoppeleer
+      <span class="label">To book Sergio for your next event</span>
+      <a href="mailto:spoppeleer@contracks.global">spoppeleer@contracks.global</a> &nbsp;·&nbsp; +32 466 446 290 &nbsp;·&nbsp; <a href="https://contracks.global" target="_blank" rel="noopener">contracks.global</a>
     </div>
   </footer>
 
 </div>
 </body>
 </html>
-
