@@ -103,12 +103,14 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    justify-content: center;
   }
   .featured-inner {
     display: flex;
     align-items: center;
     gap: 14px;
     flex-wrap: wrap;
+    justify-content: center;
   }
   .featured-label {
     color: var(--gold);
@@ -124,7 +126,7 @@
     padding: 12px 40px;
     border-top: 1px solid rgba(201, 169, 89, 0.18);
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
   }
   .download-btn {
@@ -379,6 +381,22 @@
     line-height: 1.55;
     color: var(--slate);
   }
+  .showreel {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--rule);
+  }
+  .showreel a {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--navy);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .showreel a:hover { color: var(--gold); }
 
   /* METHOD STRIP */
   .method {
@@ -551,10 +569,11 @@
   <div class="featured">
     <div class="featured-inner">
       <span class="featured-label">AS FEATURED</span>
-      <a class="media-badge" href="#aviation-week-url" target="_blank" rel="noopener"><span class="small">Aviation Week</span>Network</a>
-      <a class="media-badge" href="#airport-business-intelligence-url" target="_blank" rel="noopener"><span class="small">Airport</span>Business Intelligence</a>
-      <a class="media-badge" href="#global-tourism-forum-url" target="_blank" rel="noopener"><span class="small">Global Tourism</span>Forum 2025</a>
-      <a class="media-badge" href="#icao-esaf-url" target="_blank" rel="noopener"><span class="small">ICAO ESAF</span>Kigali</a>
+      <a class="media-badge" href="https://aviationweek.com/air-transport/aircraft-propulsion/bleriot-sees-kenyan-saf-production-starting-2027" target="_blank" rel="noopener"><span class="small">Aviation Week</span>Network</a>
+      <a class="media-badge" href="https://lnkd.in/gWpBtwPT" target="_blank" rel="noopener"><span class="small">Airport</span>Business Intelligence</a>
+      <a class="media-badge" href="https://lnkd.in/eny9EVGb" target="_blank" rel="noopener"><span class="small">Sustainability</span>in the Air</a>
+      <a class="media-badge" href="#" target="_blank" rel="noopener"><span class="small">Global Tourism</span>Forum 2025</a>
+      <a class="media-badge" href="#" target="_blank" rel="noopener"><span class="small">ICAO ESAF</span>Kigali</a>
     </div>
   </div>
 
@@ -612,6 +631,9 @@
         <div class="credentials">
           <div class="credentials-label">Credentials</div>
           <div class="credentials-list">MCIArb · LLM Oil &amp; Gas (RGU) · Executive MBA (Hult) · M.Sc. Civil Engineering (Mons) · MIT · INSEAD · WorldCC · CIoB</div>
+        </div>
+        <div class="showreel">
+          <a href="https://youtu.be/f_cDewcYDi8" target="_blank" rel="noopener">▶ Watch · Bleriot SAF · KCAA Forum Nairobi</a>
         </div>
       </aside>
     </div>
