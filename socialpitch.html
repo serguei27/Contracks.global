@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contracks — Social Pitch Next Steps</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B2A4A;
+    --navy-deep: #111d33;
+    --gold: #C9A84C;
+    --gold-light: #e8c96a;
+    --white: #FAFAF8;
+    --grey: #f0ede8;
+    --text: #2a2a2a;
+    --muted: #888;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--navy);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.07);
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+
+  .header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 40px 40px;
+    position: relative;
+  }
+
+  .header-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  header h1 span {
+    color: var(--gold);
+  }
+
+  .header-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    letter-spacing: 0.3px;
+  }
+
+  /* PITCH VERSIONS BAND */
+  .pitch-band {
+    background: var(--navy-deep);
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .pitch-band-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .pitch-band-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .pitch-versions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .pitch-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 6px;
+    padding: 20px;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+
+  .pitch-card:hover {
+    border-color: rgba(201,168,76,0.4);
+  }
+
+  .pitch-duration {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .pitch-clubs {
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .pitch-text {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.65;
+    font-style: italic;
+  }
+
+  /* MAIN CONTENT */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 56px 40px;
+  }
+
+  /* PRIORITY BANNER */
+  .priority-banner {
+    background: linear-gradient(135deg, var(--navy) 0%, #243552 100%);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 24px 28px;
+    margin-bottom: 56px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .priority-icon {
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .priority-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .priority-text {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+  }
+
+  .priority-text strong {
+    color: var(--white);
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 52px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e8e4df;
+  }
+
+  .section-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    opacity: 0.6;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  /* ACTION ITEMS */
+  .action-grid {
+    display: grid;
+    gap: 12px;
+  }
+
+  .action-item {
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    gap: 14px;
+    align-items: start;
+    background: var(--grey);
+    border-radius: 6px;
+    padding: 16px 18px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+    cursor: default;
+  }
+
+  .action-item:hover {
+    border-color: var(--gold);
+    background: #fdf9f0;
+  }
+
+  .action-item.priority-1 {
+    border-left: 3px solid var(--gold);
+    background: #fdf9f0;
+  }
+
+  .action-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  .action-dot.muted {
+    background: #ccc;
+  }
+
+  .action-content {}
+
+  .action-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .action-desc {
+    font-size: 12.5px;
+    color: #666;
+    line-height: 1.55;
+  }
+
+  .action-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+    align-self: flex-start;
+    margin-top: 3px;
+  }
+
+  .tag-now { background: #fff3cd; color: #856404; }
+  .tag-week { background: #d1e7dd; color: #0a5e37; }
+  .tag-build { background: #cfe2ff; color: #084298; }
+
+  /* QUESTIONS BLOCK */
+  .questions-block {
+    background: var(--navy);
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin-top: 0;
+  }
+
+  .questions-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .question-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+
+  .question-item:last-child { margin-bottom: 0; }
+
+  .q-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--gold);
+    line-height: 1.2;
+    flex-shrink: 0;
+  }
+
+  .q-text {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* FUNNEL */
+  .funnel {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: var(--grey);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 4px;
+  }
+
+  .funnel-step {
+    flex: 1;
+    padding: 14px 16px;
+    text-align: center;
+    position: relative;
+  }
+
+  .funnel-step::after {
+    content: '→';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold);
+    font-size: 16px;
+    z-index: 1;
+  }
+
+  .funnel-step:last-child::after { display: none; }
+
+  .funnel-step-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .funnel-step-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+
+  /* ONE ROOM */
+  .one-room-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .room-card {
+    border: 1px solid #e0dbd4;
+    border-radius: 6px;
+    padding: 16px 18px;
+    cursor: default;
+    transition: all 0.2s;
+  }
+
+  .room-card:hover {
+    border-color: var(--navy);
+    background: #f8f5ef;
+  }
+
+  .room-card.recommended {
+    border-color: var(--gold);
+    background: #fdf9f0;
+    position: relative;
+  }
+
+  .room-card.recommended::before {
+    content: '★ RECOMMENDED';
+    position: absolute;
+    top: -10px;
+    left: 14px;
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 2px;
+    background: var(--gold);
+    color: var(--navy);
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-weight: 700;
+  }
+
+  .room-title {
+    font-weight: 600;
+    font-size: 13.5px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .room-buyer {
+    font-size: 11.5px;
+    color: #888;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* DEPLOY TABLE */
+  .deploy-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .deploy-table th {
+    background: var(--navy);
+    color: var(--gold);
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    text-align: left;
+    font-weight: 500;
+  }
+
+  .deploy-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #ede9e3;
+    vertical-align: top;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .deploy-table tr:last-child td { border-bottom: none; }
+  .deploy-table tr:nth-child(even) td { background: #f8f5ef; }
+
+  .deploy-channel {
+    font-weight: 600;
+    color: var(--navy);
+    white-space: nowrap;
+  }
+
+  .deploy-clubs-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    padding: 28px 40px;
+    text-align: center;
+    border-top: 2px solid var(--gold);
+  }
+
+  .footer-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--gold);
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+
+  .footer-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 1px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .pitch-versions { grid-template-columns: 1fr; }
+    .one-room-grid { grid-template-columns: 1fr; }
+    .header-inner, main { padding-left: 20px; padding-right: 20px; }
+    .pitch-band-inner { padding-left: 20px; padding-right: 20px; }
+    .footer-inner { flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="header-eyebrow">Contracks · Social Pitch Sprint · May 2026</div>
+    <h1>Social Pitch <span>Next Steps</span></h1>
+    <p class="header-sub">Serguei Poppeleer · Founder, Contracks · ICP: PMO Directors / Project Leaders — cross-border capital projects</p>
+  </div>
+</header>
+
+<!-- PITCH VERSIONS -->
+<div class="pitch-band">
+  <div class="pitch-band-inner">
+    <div class="pitch-band-title">01 — The Golf Bag · Ready-to-Use Versions</div>
+    <div class="pitch-versions">
+
+      <div class="pitch-card">
+        <div class="pitch-duration">10 seconds</div>
+        <div class="pitch-clubs">NAME + SAME</div>
+        <div class="pitch-text">"I'm Serguei Poppeleer, Founder of Contracks. We help companies get their contracts and operations right on complex international projects."</div>
+      </div>
+
+      <div class="pitch-card">
+        <div class="pitch-duration">25 seconds</div>
+        <div class="pitch-clubs">+ FAME + PAIN</div>
+        <div class="pitch-text">"I developed the Delivery Control System — one operating truth that closes the gap between contract and site reality. A lot of teams look governed on paper, but the site runs on WhatsApp and unverified dates. Theory looks good. Reality drifts."</div>
+      </div>
+
+      <div class="pitch-card">
+        <div class="pitch-duration">45–60 seconds</div>
+        <div class="pitch-clubs">FULL SCRIPT</div>
+        <div class="pitch-text">"My name is Serguei Poppeleer, I'm the Founder of Contracks. We help companies get their contracts and operations right on complex international projects. I developed the Delivery Control System — closes the gap between contract and site reality. One operating truth. 30 countries of proof. Often project teams are struggling because governance looks right on paper — but the site runs on WhatsApp, verbal agreements, and supplier dates nobody has actually verified. Theory looks good. Reality drifts. Right now I'm building a diagnostic that tells project leaders exactly where their system is going to break — and writing the book that explains why it always breaks there. The bigger picture is a world where the projects communities actually need get delivered right."</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main>
+
+  <!-- PRIORITY BANNER -->
+  <div class="priority-banner">
+    <div class="priority-icon">⚡</div>
+    <div>
+      <div class="priority-label">My Priority Steer</div>
+      <div class="priority-text">
+        <strong>This week: three moves only.</strong> LinkedIn headline rewrite (today). London meeting with Richard prep (full pitch + opening question). ScoreApp landing page rewrite. Everything else follows after those three land.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: DEPLOY IN 5 PLACES -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">02</div>
+      <div class="section-title">Deploy in 5 Places This Week</div>
+    </div>
+
+    <div style="overflow-x:auto; margin-bottom:16px;">
+      <table class="deploy-table">
+        <thead>
+          <tr>
+            <th>Channel</th>
+            <th>Clubs</th>
+            <th>What to Write</th>
+            <th>When</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="deploy-channel">LinkedIn Headline + About</td>
+            <td class="deploy-clubs-badge">SAME + FAME</td>
+            <td>Tight 1–2 lines. Every outreach you send, every connection, sees this first.</td>
+            <td><span class="action-tag tag-now">Today</span></td>
+          </tr>
+          <tr>
+            <td class="deploy-channel">Outreach Emails</td>
+            <td class="deploy-clubs-badge">NAME + SAME + PAIN</td>
+            <td>First line only. Get to the pain fast — don't bury it in pleasantries.</td>
+            <td><span class="action-tag tag-now">Today</span></td>
+          </tr>
+          <tr>
+            <td class="deploy-channel">Sales Calls (first 30s)</td>
+            <td class="deploy-clubs-badge">SAME + PAIN</td>
+            <td>Deliver SAME + PAIN, then ask the opening question. Then stop talking.</td>
+            <td><span class="action-tag tag-week">This week</span></td>
+          </tr>
+          <tr>
+            <td class="deploy-channel">ScoreApp Landing Page</td>
+            <td class="deploy-clubs-badge">SAME + FAME + PAIN</td>
+            <td>Paste current copy — I'll rewrite it in pitch language.</td>
+            <td><span class="action-tag tag-week">This week</span></td>
+          </tr>
+          <tr>
+            <td class="deploy-channel">Book Intro / Back Cover</td>
+            <td class="deploy-clubs-badge">PAIN → FAME → GAME</td>
+            <td>PAIN opens the reader. FAME establishes authority. GAME closes with vision.</td>
+            <td><span class="action-tag tag-build">In build</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 3: OPENING QUESTIONS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <div class="section-title">High-Conversion Opening Questions</div>
+    </div>
+    <p style="font-size:13px; color:#666; margin-bottom:16px; line-height:1.6;">Deliver the 25-second version, then ask one of these. Then go quiet. Let them answer.</p>
+    <div class="questions-block">
+      <div class="questions-label">After the 25-second pitch — ask one:</div>
+      <div class="question-item">
+        <div class="q-mark">"</div>
+        <div class="q-text">Is your delivery running off the contract plan — or off the WhatsApp reality right now?</div>
+      </div>
+      <div class="question-item">
+        <div class="q-mark">"</div>
+        <div class="q-text">Where do you see drift most: supplier dates, scope decisions, or site reporting?</div>
+      </div>
+      <div class="question-item">
+        <div class="q-mark">"</div>
+        <div class="q-text">When was the last time your official plan and your site reality matched — even for a week?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: FUNNEL -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">04</div>
+      <div class="section-title">Your Immediate Funnel Sequence</div>
+    </div>
+    <p style="font-size:13px; color:#666; margin-bottom:16px; line-height:1.6;">Every pitch leads somewhere. This is the sequence that converts conversations into retainer clients.</p>
+    <div class="funnel">
+      <div class="funnel-step">
+        <div class="funnel-step-num">01</div>
+        <div class="funnel-step-label">Social Pitch</div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-step-num">02</div>
+        <div class="funnel-step-label">ScoreApp Diagnostic<br><span style="font-size:10px;color:#888;">20 questions</span></div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-step-num">03</div>
+        <div class="funnel-step-label">Diagnostic Report<br><span style="font-size:10px;color:#888;">instant, no meeting</span></div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-step-num">04</div>
+        <div class="funnel-step-label">15-min Debrief<br><span style="font-size:10px;color:#888;">optional</span></div>
+      </div>
+      <div class="funnel-step" style="background:#fdf9f0; border-left:2px solid var(--gold);">
+        <div class="funnel-step-num">05</div>
+        <div class="funnel-step-label" style="color:var(--navy);font-weight:700;">Retainer<br><span style="font-size:10px;color:var(--gold);">target close</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: ONE ROOM -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">05</div>
+      <div class="section-title">Your One Room — Next 14 Days</div>
+    </div>
+    <p style="font-size:13px; color:#666; margin-bottom:20px; line-height:1.6;">Pick one primary channel. Repeat the pitch enough times to make it work. One room beats four rooms every time.</p>
+    <div class="one-room-grid">
+      <div class="room-card recommended">
+        <div class="room-title">Existing Network + Warm EPC Referrals</div>
+        <div class="room-buyer">Richard (Interglobal) · Hugues de la Forge (Nexus)</div>
+      </div>
+      <div class="room-card recommended" style="border-color: var(--gold);">
+        <div class="room-title">LinkedIn Outbound → Project Leaders</div>
+        <div class="room-buyer">PMO Director · Commercial Director · Country Director</div>
+      </div>
+      <div class="room-card">
+        <div class="room-title">EPC / Owner Project Directors</div>
+        <div class="room-buyer">Known contacts · Europe–Africa corridor</div>
+      </div>
+      <div class="room-card">
+        <div class="room-title">Partners</div>
+        <div class="room-buyer">Law firms · QS firms · PM consultancies</div>
+      </div>
+    </div>
+    <div style="margin-top:16px; padding:16px 20px; background:#f8f5ef; border-left:3px solid var(--gold); border-radius:0 6px 6px 0;">
+      <p style="font-size:13px; color:var(--navy); font-weight:600; margin-bottom:4px;">Next action: tell me your one room.</p>
+      <p style="font-size:12.5px; color:#666; line-height:1.6;">Once confirmed, I'll draft the exact outreach message for that channel + a 2-week activity plan anchored to your pitch.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">CONTRACKS</div>
+    <div class="footer-meta">Serguei Poppeleer · Social Pitch Sprint · May 2026 · contracks.global</div>
+  </div>
+</footer>
+
+</body>
+</html>
