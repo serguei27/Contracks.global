@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contracks — The Golf Bag</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A1628;
+    --navy-mid: #122038;
+    --gold: #C9A84C;
+    --gold-light: #F5EDD6;
+    --gold-dim: #8B6F2E;
+    --white: #FAFAF8;
+    --grey: #6B7280;
+    --grey-light: #F3F4F6;
+    --dark: #1F2937;
+    --green: #166534;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Background texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(201,168,76,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(201,168,76,0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 48px 0 32px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    margin-bottom: 48px;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .brand-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .brand-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+  }
+
+  .brand-title span {
+    color: var(--gold);
+  }
+
+  .brand-sub {
+    font-size: 13px;
+    color: var(--grey);
+    font-weight: 300;
+    margin-top: 4px;
+    max-width: 400px;
+    line-height: 1.6;
+  }
+
+  .header-right {
+    text-align: right;
+  }
+
+  .mission-pill {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 4px;
+    padding: 12px 16px;
+    max-width: 320px;
+    margin-left: auto;
+  }
+
+  .mission-pill-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .mission-pill-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    color: var(--white);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* ── HIDDEN THEME BAR ── */
+  .theme-bar {
+    background: var(--gold);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .theme-bar-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--navy);
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .theme-bar-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(201,168,76,0.2);
+  }
+
+  /* ── CLUBS GRID ── */
+  .clubs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 56px;
+  }
+
+  .club-card {
+    background: var(--navy-mid);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+
+  .club-card:hover {
+    border-color: rgba(201,168,76,0.5);
+    transform: translateY(-2px);
+  }
+
+  .club-card.active {
+    border-color: var(--gold);
+  }
+
+  .club-header {
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .club-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .club-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .club-duration {
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 3px;
+    padding: 4px 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .club-body {
+    padding: 16px 20px;
+  }
+
+  .club-when {
+    font-size: 11px;
+    color: var(--grey);
+    margin-bottom: 10px;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .club-when strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .club-structure {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .beat-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  .beat-tag.include {
+    background: rgba(201,168,76,0.15);
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+
+  .beat-tag.skip {
+    background: rgba(255,255,255,0.04);
+    color: var(--grey);
+    border: 1px solid rgba(255,255,255,0.08);
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+
+  .club-tip {
+    font-size: 11px;
+    color: var(--grey);
+    border-left: 2px solid var(--gold-dim);
+    padding-left: 10px;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ── SITUATIONS TABLE ── */
+  .situations {
+    margin-bottom: 56px;
+  }
+
+  .situation-row {
+    display: grid;
+    grid-template-columns: 180px 1fr 1fr 100px;
+    gap: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: background 0.15s;
+  }
+
+  .situation-row:hover {
+    background: rgba(201,168,76,0.04);
+  }
+
+  .situation-row.header-row {
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .situation-row.header-row .cell {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    padding: 10px 16px;
+    font-weight: 500;
+  }
+
+  .cell {
+    padding: 14px 16px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-right: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .cell:last-child {
+    border-right: none;
+    text-align: center;
+  }
+
+  .cell strong {
+    color: var(--white);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+    font-size: 12px;
+  }
+
+  .cell span {
+    color: var(--grey);
+    font-size: 11px;
+  }
+
+  .cell .club-badge {
+    display: inline-block;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 2px;
+    padding: 3px 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+  }
+
+  /* ── 90-SEC SCRIPT ── */
+  .script-block {
+    background: var(--navy-mid);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 56px;
+  }
+
+  .script-header {
+    background: var(--navy);
+    padding: 16px 24px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .script-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .script-header .total-time {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--gold);
+  }
+
+  .script-beats {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .beat-row {
+    display: grid;
+    grid-template-columns: 80px 120px 1fr;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    align-items: start;
+  }
+
+  .beat-row:last-child {
+    border-bottom: none;
+  }
+
+  .beat-time {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 500;
+    padding-top: 2px;
+  }
+
+  .beat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--grey);
+    text-transform: uppercase;
+    padding-top: 2px;
+  }
+
+  .beat-content {
+    font-size: 12.5px;
+    color: var(--white);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .beat-content strong {
+    font-style: normal;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* ── DEPLOY PLAN ── */
+  .deploy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+    margin-bottom: 56px;
+  }
+
+  .deploy-card {
+    background: var(--navy-mid);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .deploy-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--gold);
+  }
+
+  .deploy-priority {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .deploy-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .deploy-desc {
+    font-size: 11px;
+    color: var(--grey);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .deploy-club {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--gold-dim);
+  }
+
+  /* ── FEEDBACK BOX ── */
+  .feedback-box {
+    background: var(--navy-mid);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 4px;
+    padding: 28px;
+    margin-bottom: 56px;
+  }
+
+  .feedback-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .feedback-questions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .feedback-q {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .feedback-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 500;
+    min-width: 20px;
+    padding-top: 1px;
+  }
+
+  .feedback-text {
+    font-size: 13px;
+    color: var(--white);
+    line-height: 1.6;
+  }
+
+  /* ── TAGLINE FOOTER ── */
+  .tagline-footer {
+    border-top: 1px solid rgba(201,168,76,0.2);
+    padding: 32px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+    gap: 16px;
+  }
+
+  .tagline-main {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(14px, 3vw, 20px);
+    font-weight: 700;
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .tagline-brand {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--grey);
+    text-transform: uppercase;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .situation-row {
+      grid-template-columns: 1fr 1fr;
+    }
+    .situation-row .cell:nth-child(3),
+    .situation-row .cell:nth-child(4) {
+      display: none;
+    }
+    .beat-row {
+      grid-template-columns: 70px 1fr;
+    }
+    .beat-label {
+      display: none;
+    }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .club-card, .deploy-card, .situation-row, .beat-row {
+    animation: fadeUp 0.4s ease both;
+  }
+
+  .club-card:nth-child(1) { animation-delay: 0.05s; }
+  .club-card:nth-child(2) { animation-delay: 0.1s; }
+  .club-card:nth-child(3) { animation-delay: 0.15s; }
+  .club-card:nth-child(4) { animation-delay: 0.2s; }
+  .club-card:nth-child(5) { animation-delay: 0.25s; }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <div class="brand">
+        <div class="brand-label">Contracks Global · Mission Pitch</div>
+        <div class="brand-title">The Golf <span>Bag</span></div>
+        <div class="brand-sub">Right club, right moment. Five cuts of the same story — from elevator to boardroom. Deploy with precision.</div>
+      </div>
+      <div class="header-right">
+        <div class="mission-pill">
+          <div class="mission-pill-label">Mission</div>
+          <div class="mission-pill-text">"Turn the person accountable for delivery into the person who actually delivers — in the markets where systems break first."</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HIDDEN THEME BAR -->
+  <div class="theme-bar">
+    <div class="theme-bar-label">Hidden Theme</div>
+    <div class="theme-bar-text">Projects don't fail. The systems around them do. Frontier markets just expose it faster.</div>
+  </div>
+
+  <!-- THE CLUBS -->
+  <div class="section-label">The Clubs — Five Cuts</div>
+
+  <div class="clubs-grid">
+
+    <!-- Club 1: The Spike -->
+    <div class="club-card">
+      <div class="club-header">
+        <div>
+          <div class="club-name">Club 01 · The Spike</div>
+          <div class="club-title">15-Second<br>Pattern Interrupt</div>
+        </div>
+        <div class="club-duration">15s</div>
+      </div>
+      <div class="club-body">
+        <div class="club-when"><strong>Use when:</strong> Casual intro, hallway, LinkedIn DM, end of a panel. You have one sentence to earn a second.</div>
+        <div class="club-structure">
+          <span class="beat-tag include">Theme</span>
+          <span class="beat-tag skip">Origin</span>
+          <span class="beat-tag include">Mission</span>
+          <span class="beat-tag skip">Vision</span>
+        </div>
+        <div class="club-tip">"Projects don't fail. The systems around them do. I fix the system — in the markets where it breaks first. That's Contracks."</div>
+      </div>
+    </div>
+
+    <!-- Club 2: The Wedge -->
+    <div class="club-card">
+      <div class="club-header">
+        <div>
+          <div class="club-name">Club 02 · The Wedge</div>
+          <div class="club-title">30-Second<br>Sharp Pitch</div>
+        </div>
+        <div class="club-duration">30s</div>
+      </div>
+      <div class="club-body">
+        <div class="club-when"><strong>Use when:</strong> Call opener, email intro, LinkedIn About first paragraph, investor first touch.</div>
+        <div class="club-structure">
+          <span class="beat-tag include">Theme</span>
+          <span class="beat-tag skip">Origin</span>
+          <span class="beat-tag include">EQ Guinea</span>
+          <span class="beat-tag include">Mission</span>
+          <span class="beat-tag skip">Vision</span>
+        </div>
+        <div class="club-tip">"Projects don't fail. The systems around them do. I've seen it across 30 countries — and in Equatorial Guinea I built a worker camp at one-tenth the cost in six months with no fence, because the community built it. That's not luck. That's method. My mission: turn delivery accountability into actual delivery."</div>
+      </div>
+    </div>
+
+    <!-- Club 3: The Iron -->
+    <div class="club-card">
+      <div class="club-header">
+        <div>
+          <div class="club-name">Club 03 · The Iron</div>
+          <div class="club-title">90-Second<br>Full Pitch</div>
+        </div>
+        <div class="club-duration">90s</div>
+      </div>
+      <div class="club-body">
+        <div class="club-when"><strong>Use when:</strong> Sales call, partner intro, podcast, stage opening, LinkedIn video. The standard club.</div>
+        <div class="club-structure">
+          <span class="beat-tag include">Theme</span>
+          <span class="beat-tag include">Charlie</span>
+          <span class="beat-tag include">Origin</span>
+          <span class="beat-tag include">Mission</span>
+          <span class="beat-tag include">Vision</span>
+        </div>
+        <div class="club-tip">Full OMV flow. Charlie → Qatar → EQ Guinea → "We have started the works" → Mission → 200 operators → Right projects built.</div>
+      </div>
+    </div>
+
+    <!-- Club 4: The Driver -->
+    <div class="club-card">
+      <div class="club-header">
+        <div>
+          <div class="club-name">Club 04 · The Driver</div>
+          <div class="club-title">5-Minute<br>Authority Pitch</div>
+        </div>
+        <div class="club-duration">5min</div>
+      </div>
+      <div class="club-body">
+        <div class="club-when"><strong>Use when:</strong> Discovery call, JV/partnership meeting, speaking slot, client proposal walkthrough.</div>
+        <div class="club-structure">
+          <span class="beat-tag include">Theme</span>
+          <span class="beat-tag include">Charlie</span>
+          <span class="beat-tag include">Qatar</span>
+          <span class="beat-tag include">EQ Guinea</span>
+          <span class="beat-tag include">5Cs method</span>
+          <span class="beat-tag include">Vision</span>
+        </div>
+        <div class="club-tip">90-sec + Qatar detail + "what the method actually changes" (contract + operating system + incentives + local reality) + 2 client proof points.</div>
+      </div>
+    </div>
+
+    <!-- Club 5: The Putter -->
+    <div class="club-card">
+      <div class="club-header">
+        <div>
+          <div class="club-name">Club 05 · The Putter</div>
+          <div class="club-title">Written<br>One-Liner</div>
+        </div>
+        <div class="club-duration">1 line</div>
+      </div>
+      <div class="club-body">
+        <div class="club-when"><strong>Use when:</strong> Email signature, LinkedIn headline, bio line, proposal cover, deck footer.</div>
+        <div class="club-structure">
+          <span class="beat-tag include">Tagline only</span>
+        </div>
+        <div class="club-tip">"Fix the system. Before the project does it for you." — <em>Serguei Poppeleer, Contracks Global</em></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SITUATION MAP -->
+  <div class="section-label">Situation Map — Which Club When</div>
+
+  <div class="situations" style="margin-bottom: 56px; border: 1px solid rgba(201,168,76,0.1); border-radius: 4px; overflow: hidden;">
+
+    <div class="situation-row header-row">
+      <div class="cell">Situation</div>
+      <div class="cell">Audience</div>
+      <div class="cell">Goal</div>
+      <div class="cell">Club</div>
+    </div>
+
+    <div class="situation-row">
+      <div class="cell"><strong>Richard / Interglobal</strong><span>Retainer conversion</span></div>
+      <div class="cell"><span>MD — knows you, warm, PMO context</span></div>
+      <div class="cell"><span>Reframe relationship to method, not just advisory</span></div>
+      <div class="cell"><div class="club-badge">Iron 90s</div></div>
+    </div>
+
+    <div class="situation-row">
+      <div class="cell"><strong>LinkedIn About</strong><span>Profile section</span></div>
+      <div class="cell"><span>PMO Directors, EPC players, diaspora founders</span></div>
+      <div class="cell"><span>Stop scroll, signal authority, invite connection</span></div>
+      <div class="cell"><div class="club-badge">Wedge 30s</div></div>
+    </div>
+
+    <div class="situation-row">
+      <div class="cell"><strong>Hugues / Nexus</strong><span>EPC Berlin Forum lead</span></div>
+      <div class="cell"><span>Project Law firm — Africa/ME EPC — warm</span></div>
+      <div class="cell"><span>Position as methodology partner, not just consultant</span></div>
+      <div class="cell"><div class="club-badge">Driver 5min</div></div>
+    </div>
+
+    <div class="situation-row">
+      <div class="cell"><strong>LinkedIn Video</strong><span>Weekly content</span></div>
+      <div class="cell"><span>PMO, EPC CM, founders — cold audience</span></div>
+      <div class="cell"><span>7-11-4 relationship depth, build following</span></div>
+      <div class="cell"><div class="club-badge">Iron 90s</div></div>
+    </div>
+
+    <div class="situation-row">
+      <div class="cell"><strong>Cold outreach</strong><span>EPC target clients</span></div>
+      <div class="cell"><span>PMO Directors — never heard of Contracks</span></div>
+      <div class="cell"><span>Earn the reply, not the sale</span></div>
+      <div class="cell"><div class="club-badge">Wedge 30s</div></div>
+    </div>
+
+    <div class="situation-row">
+      <div class="cell"><strong>Podcast / stage</strong><span>Speaking slot</span></div>
+      <div class="cell"><span>Mixed — operators + investors + founders</span></div>
+      <div class="cell"><span>Establish thought leadership, seed movement</span></div>
+      <div class="cell"><div class="club-badge">Driver 5min</div></div>
+    </div>
+
+    <div class="situation-row">
+      <div class="cell"><strong>Email signature</strong><span>Every outbound email</span></div>
+      <div class="cell"><span>Anyone who reads your email</span></div>
+      <div class="cell"><span>Passive brand signal, invite curiosity</span></div>
+      <div class="cell"><div class="club-badge">Putter</div></div>
+    </div>
+
+    <div class="situation-row">
+      <div class="cell"><strong>Dent KPI Accelerator</strong><span>Enrollment pitch</span></div>
+      <div class="cell"><span>Daniel Priestley / Dent team</span></div>
+      <div class="cell"><span>Show OMV is locked and you're ready to build</span></div>
+      <div class="cell"><div class="club-badge">Iron 90s</div></div>
+    </div>
+
+  </div>
+
+  <!-- 90-SEC SCRIPT -->
+  <div class="section-label">Club 03 — The Iron · Full 90-Second Script</div>
+
+  <div class="script-block">
+    <div class="script-header">
+      <h3>The 90-Second Mission Pitch</h3>
+      <div class="total-time">~90 seconds · Rating 9.8/10</div>
+    </div>
+    <div class="script-beats">
+
+      <div class="beat-row">
+        <div class="beat-time">8–10s</div>
+        <div class="beat-label">Hidden Theme</div>
+        <div class="beat-content"><strong>Projects don't fail. The systems around them do. Frontier markets just expose it faster.</strong></div>
+      </div>
+
+      <div class="beat-row">
+        <div class="beat-time">35–45s</div>
+        <div class="beat-label">Personal Origin</div>
+        <div class="beat-content">I was 8. My dad cleared his desk to make room for boxes from Radio Shack — a computer you had to build yourself. We assembled it piece by piece until a black and white screen lit up. One evening Charlie came by — a friend of my parents, Afro-American, possibly Ghanaian origin, stationed at the US Army base nearby. He looked at what an 8-year-old had built and said: <strong>"There will be one in every office, car and plane. The easiest way to control systems."</strong> 1983. Most people had no idea what they were looking at.</div>
+      </div>
+
+      <div class="beat-row">
+        <div class="beat-time">10–12s</div>
+        <div class="beat-label">Business Origin</div>
+        <div class="beat-content">Equatorial Guinea. Forest. No supply chain. We threw out the imported model — community built the camp. One tenth the cost. Six months. No fence. State client released payment with one note: <strong>"We have started the works."</strong> Third bridge unlocked.</div>
+      </div>
+
+      <div class="beat-row">
+        <div class="beat-time">8–10s</div>
+        <div class="beat-label">Mission</div>
+        <div class="beat-content"><strong>My mission is to turn the person accountable for delivery into the person who actually delivers — in the markets where systems break first.</strong></div>
+      </div>
+
+      <div class="beat-row">
+        <div class="beat-time">12–15s</div>
+        <div class="beat-label">3-Year Vision</div>
+        <div class="beat-content">In three years, <strong>200+ operators</strong> across Europe, Africa, the UK and the US will be running our method on live projects — on time, on budget, without surprises. The Contracks certification will travel without us in the room.</div>
+      </div>
+
+      <div class="beat-row">
+        <div class="beat-time">8–10s</div>
+        <div class="beat-label">Big Vision</div>
+        <div class="beat-content">But ultimately — <strong>a world where the right projects get built. Not the ones that survive the best contract fight. The ones communities actually need.</strong> Charlie saw it in 1983. We're building it now.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DEPLOY PLAN -->
+  <div class="section-label">Deploy This Week — Pick One</div>
+
+  <div class="deploy-grid">
+
+    <div class="deploy-card">
+      <div class="deploy-priority">Priority 1 · Today</div>
+      <div class="deploy-title">LinkedIn About Section</div>
+      <div class="deploy-desc">Replace your current About with the 30-second Wedge. Every profile visit becomes a first impression with the method behind it.</div>
+      <div class="deploy-club">→ Club 02 · Wedge 30s</div>
+    </div>
+
+    <div class="deploy-card">
+      <div class="deploy-priority">Priority 2 · This Week</div>
+      <div class="deploy-title">Email Signature</div>
+      <div class="deploy-desc">Add the tagline + "90 seconds about why we exist →" linked to your Mission Pitch video (once recorded). Every outbound email does the work.</div>
+      <div class="deploy-club">→ Club 05 · Putter</div>
+    </div>
+
+    <div class="deploy-card">
+      <div class="deploy-priority">Priority 3 · Richard Call</div>
+      <div class="deploy-title">Call Opener</div>
+      <div class="deploy-desc">Open the retainer conversation with the 90-second Iron. Reframe the relationship from advisory to method. Then move to P4C.</div>
+      <div class="deploy-club">→ Club 03 · Iron 90s</div>
+    </div>
+
+    <div class="deploy-card">
+      <div class="deploy-priority">Priority 4 · This Month</div>
+      <div class="deploy-title">LinkedIn Video</div>
+      <div class="deploy-desc">Record 10 takes on your phone. Keep the best one. Deploy as featured video on LinkedIn profile. No production needed — authenticity beats polish.</div>
+      <div class="deploy-club">→ Club 03 · Iron 90s</div>
+    </div>
+
+    <div class="deploy-card">
+      <div class="deploy-priority">Priority 5 · Hugues / Nexus</div>
+      <div class="deploy-title">Partner Pitch</div>
+      <div class="deploy-desc">Deploy the 5-minute Driver with Hugues at Nexus. Position Contracks as the methodology partner for their EPC/Africa legal work.</div>
+      <div class="deploy-club">→ Club 04 · Driver 5min</div>
+    </div>
+
+  </div>
+
+  <!-- FEEDBACK QUESTIONS -->
+  <div class="section-label">Feedback Protocol — Send to 3–5 Operators</div>
+
+  <div class="feedback-box">
+    <div class="feedback-title">After sharing your Mission Pitch, ask these four questions:</div>
+    <div class="feedback-questions">
+      <div class="feedback-q">
+        <div class="feedback-num">01</div>
+        <div class="feedback-text">What line do you remember 10 minutes later?</div>
+      </div>
+      <div class="feedback-q">
+        <div class="feedback-num">02</div>
+        <div class="feedback-text">Where did you lean in?</div>
+      </div>
+      <div class="feedback-q">
+        <div class="feedback-num">03</div>
+        <div class="feedback-text">What felt unclear or too abstract?</div>
+      </div>
+      <div class="feedback-q">
+        <div class="feedback-num">04</div>
+        <div class="feedback-text">What do you think Contracks does from this?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="tagline-footer">
+    <div class="tagline-main">"Fix the system. Before the project does it for you."</div>
+    <div class="tagline-brand">Contracks Global · May 2026</div>
+  </div>
+
+</div>
+</body>
+</html>
