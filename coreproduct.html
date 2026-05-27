@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decision-Ready Program Turnaround · Contracks Global</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A1A33;
+    --navy-mid: #112240;
+    --gold: #C9A959;
+    --gold-light: #E8D5A3;
+    --gold-bg: #F5F0E4;
+    --white: #FFFFFF;
+    --off-white: #F9F7F3;
+    --grey: #6B7280;
+    --light-grey: #E8E8E8;
+    --text: #1A1A2E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    background: var(--navy);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--gold);
+  }
+
+  .topbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .topbar-logo {
+    width: 34px;
+    height: 34px;
+    background: var(--gold);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--navy);
+    letter-spacing: -0.5px;
+  }
+
+  .topbar-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.3px;
+  }
+
+  .topbar-title span {
+    color: var(--gold);
+  }
+
+  .topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .btn-pdf {
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    padding: 9px 22px;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-pdf:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-pdf svg { width: 15px; height: 15px; }
+
+  .notes-toggle-btn {
+    background: transparent;
+    color: var(--gold-light);
+    border: 1px solid rgba(201,169,89,0.4);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .notes-toggle-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── SLIDE NAV ── */
+  .slide-nav {
+    background: var(--navy-mid);
+    padding: 12px 40px;
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    border-bottom: 1px solid rgba(201,169,89,0.2);
+  }
+
+  .slide-nav::-webkit-scrollbar { height: 4px; }
+  .slide-nav::-webkit-scrollbar-track { background: var(--navy); }
+  .slide-nav::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+  .nav-pill {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.6);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .nav-pill:hover, .nav-pill.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    padding: 64px 40px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: 
+      radial-gradient(ellipse 60% 80% at 80% 50%, rgba(201,169,89,0.07) 0%, transparent 70%),
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(201,169,89,0.03) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(201,169,89,0.03) 40px);
+  }
+
+  .hero-inner { position: relative; max-width: 860px; }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(201,169,89,0.15);
+    border: 1px solid rgba(201,169,89,0.4);
+    color: var(--gold);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero h1 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    margin-bottom: 32px;
+    max-width: 560px;
+  }
+
+  .hero-prize {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(201,169,89,0.12);
+    border: 1px solid var(--gold);
+    border-radius: 6px;
+    padding: 14px 24px;
+  }
+
+  .hero-prize-label {
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .hero-prize-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .hero-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+    font-weight: 400;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 48px 40px 80px;
+  }
+
+  /* ── SLIDE CARD ── */
+  .slide-card {
+    background: var(--white);
+    border-radius: 8px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 16px rgba(10,26,51,0.06);
+    overflow: hidden;
+    border: 1px solid var(--light-grey);
+    scroll-margin-top: 100px;
+  }
+
+  .slide-header {
+    background: var(--navy);
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .slide-num {
+    background: var(--gold);
+    color: var(--navy);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .slide-header-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .slide-header-text .slide-subtitle {
+    font-size: 12px;
+    color: rgba(201,169,89,0.8);
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .slide-body { padding: 28px 32px; }
+
+  /* ── CONTENT LABEL ── */
+  .content-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .content-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gold-bg);
+  }
+
+  /* ── SLIDE CONTENT ── */
+  .slide-content {
+    background: var(--off-white);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 6px 6px 0;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+
+  .slide-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+
+  .bullet-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .bullet-list li {
+    display: flex;
+    gap: 12px;
+    font-size: 14px;
+    color: #2D3748;
+    line-height: 1.6;
+  }
+
+  .bullet-list li::before {
+    content: '◆';
+    color: var(--gold);
+    font-size: 8px;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  .highlight-box {
+    background: var(--gold-bg);
+    border: 1px solid rgba(201,169,89,0.4);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-top: 16px;
+  }
+
+  .highlight-box p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.4;
+  }
+
+  /* ── STORY BOXES ── */
+  .story-grid { display: flex; flex-direction: column; gap: 16px; }
+
+  .story-box {
+    border: 1px solid var(--light-grey);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .story-box-header {
+    background: var(--navy);
+    padding: 10px 18px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.3px;
+  }
+
+  .story-box-body { padding: 14px 18px; }
+
+  .story-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .story-result {
+    font-size: 13px;
+    color: var(--grey);
+    line-height: 1.6;
+  }
+
+  .story-result strong { color: var(--text); }
+
+  /* ── VALUE TABLE ── */
+  .value-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+
+  .value-table thead th {
+    background: var(--navy);
+    color: var(--gold);
+    padding: 10px 16px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .value-table thead th:last-child { text-align: right; }
+
+  .value-table tbody tr { border-bottom: 1px solid var(--light-grey); }
+
+  .value-table tbody tr:nth-child(even) { background: var(--off-white); }
+
+  .value-table tbody td {
+    padding: 10px 16px;
+    font-size: 13.5px;
+    color: var(--text);
+    vertical-align: top;
+  }
+
+  .value-table tbody td:last-child {
+    text-align: right;
+    font-weight: 600;
+    color: var(--navy);
+    white-space: nowrap;
+  }
+
+  .value-total-row {
+    background: var(--gold-bg) !important;
+  }
+
+  .value-total-row td {
+    font-weight: 700 !important;
+    color: var(--navy) !important;
+    border-top: 2px solid var(--gold) !important;
+    font-size: 15px !important;
+  }
+
+  .investment-row td {
+    background: var(--navy) !important;
+    color: var(--gold) !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+  }
+
+  /* ── PHASES ── */
+  .phases { display: flex; flex-direction: column; gap: 12px; }
+
+  .phase-card {
+    border: 1px solid var(--light-grey);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .phase-header {
+    background: var(--navy);
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .phase-badge {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .phase-title {
+    color: var(--white);
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .phase-body {
+    padding: 12px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .phase-item {
+    display: flex;
+    gap: 10px;
+    font-size: 13.5px;
+    color: var(--text);
+  }
+
+  .phase-item::before {
+    content: '→';
+    color: var(--gold);
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+
+  /* ── METHOD STEPS ── */
+  .method-steps { display: flex; flex-direction: column; gap: 10px; }
+
+  .method-step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 14px 18px;
+    background: var(--off-white);
+    border-radius: 6px;
+    border: 1px solid var(--light-grey);
+  }
+
+  .step-num {
+    background: var(--navy);
+    color: var(--gold);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .step-content strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+
+  .step-content span { font-size: 13px; color: var(--grey); }
+
+  /* ── PACKAGING SECTIONS ── */
+  .pkg-section { margin-bottom: 20px; }
+
+  .pkg-section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--navy);
+    padding: 6px 0;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--gold);
+  }
+
+  .pkg-items { display: flex; flex-direction: column; gap: 8px; }
+
+  .pkg-item {
+    padding: 12px 16px;
+    background: var(--off-white);
+    border-radius: 5px;
+    border-left: 3px solid var(--gold);
+  }
+
+  .pkg-item-name {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+
+  .pkg-item-desc {
+    font-size: 12.5px;
+    color: var(--grey);
+    line-height: 1.55;
+  }
+
+  /* ── STATS ROW ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .stat-card {
+    background: var(--navy);
+    border-radius: 6px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .stat-card-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-card-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* ── CTA STEPS ── */
+  .cta-steps { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+
+  .cta-step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px 20px;
+    background: var(--off-white);
+    border-radius: 6px;
+    border: 1px solid var(--light-grey);
+  }
+
+  .cta-step-num {
+    background: var(--gold);
+    color: var(--navy);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .cta-step-text { font-size: 14px; color: var(--text); line-height: 1.6; }
+
+  .payment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+
+  .payment-card {
+    border: 1px solid var(--light-grey);
+    border-radius: 6px;
+    padding: 16px;
+  }
+
+  .payment-card.featured { border-color: var(--gold); background: var(--gold-bg); }
+
+  .payment-card-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .payment-card-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .payment-card-detail { font-size: 12px; color: var(--grey); line-height: 1.5; }
+
+  /* ── PRESENTER NOTES ── */
+  .presenter-notes {
+    margin-top: 20px;
+    border-top: 1px dashed var(--light-grey);
+    padding-top: 20px;
+    display: none;
+  }
+
+  .presenter-notes.visible { display: block; }
+
+  .notes-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .notes-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--light-grey);
+  }
+
+  .notes-content {
+    background: #FAFAF8;
+    border: 1px solid var(--light-grey);
+    border-radius: 6px;
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .notes-content p {
+    font-size: 13px;
+    color: #4A5568;
+    line-height: 1.75;
+    font-style: italic;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--navy);
+    padding: 32px 40px;
+    text-align: center;
+    border-top: 2px solid var(--gold);
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .footer-tagline {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  .footer-contact {
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── PRINT STYLES ── */
+  @media print {
+    .topbar, .slide-nav, .notes-toggle-btn, .btn-pdf { display: none !important; }
+    body { background: white; font-size: 12px; }
+    .hero { padding: 32px; }
+    .hero h1 { font-size: 36px; }
+    .main { padding: 24px; }
+    .slide-card { break-inside: avoid; margin-bottom: 20px; box-shadow: none; border: 1px solid #ddd; }
+    .presenter-notes { display: block !important; }
+    .notes-content { background: #f9f9f9; }
+    .stats-row { grid-template-columns: repeat(3,1fr); }
+    .payment-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .topbar { padding: 0 20px; }
+    .hero { padding: 40px 20px; }
+    .hero h1 { font-size: 36px; }
+    .hero-stats { flex-wrap: wrap; gap: 20px; }
+    .main { padding: 32px 20px; }
+    .slide-header, .slide-body { padding: 16px 20px; }
+    .stats-row { grid-template-columns: 1fr; }
+    .payment-grid { grid-template-columns: 1fr; }
+    .slide-nav { padding: 10px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="topbar-brand">
+    <div class="topbar-logo">CG</div>
+    <div class="topbar-title">Contracks <span>Global</span></div>
+  </div>
+  <div class="topbar-actions">
+    <button class="notes-toggle-btn" onclick="toggleNotes()">☰ Notes</button>
+    <button class="btn-pdf" onclick="window.print()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12l-4-4m4 4l4-4"/><path d="M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
+      Download PDF
+    </button>
+  </div>
+</header>
+
+<!-- SLIDE NAV -->
+<nav class="slide-nav">
+  <button class="nav-pill active" onclick="scrollTo('slide-1')">1 · Hook</button>
+  <button class="nav-pill" onclick="scrollTo('slide-2')">2 · Pain</button>
+  <button class="nav-pill" onclick="scrollTo('slide-3')">3 · Prize</button>
+  <button class="nav-pill" onclick="scrollTo('slide-4')">4 · Solution</button>
+  <button class="nav-pill" onclick="scrollTo('slide-5')">5 · Method</button>
+  <button class="nav-pill" onclick="scrollTo('slide-6')">6 · Packaging</button>
+  <button class="nav-pill" onclick="scrollTo('slide-7')">7 · Proof</button>
+  <button class="nav-pill" onclick="scrollTo('slide-8')">8 · Value</button>
+  <button class="nav-pill" onclick="scrollTo('slide-9')">9 · Next Steps</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Contracks Global · PMO / CAPEX Programme Leadership</div>
+    <h1>Decision-Ready<br><em>Program Turnaround</em></h1>
+    <p class="hero-sub">6-Week Install on One Live CAPEX Program. One baseline. One narrative. Decisions that hold.</p>
+    <div class="hero-prize">
+      <div>
+        <div class="hero-prize-label">The Prize</div>
+        <div class="hero-prize-text">Baseline Holds. Decisions Stick.</div>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">10+</div>
+        <div class="hero-stat-label">Heads of PMO/CPO served</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">100+</div>
+        <div class="hero-stat-label">Projects across 5 years</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">£18K</div>
+        <div class="hero-stat-label">Pay-in-full investment</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">6 wks</div>
+        <div class="hero-stat-label">From chaos to control</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- SLIDE 1 -->
+  <article class="slide-card" id="slide-1">
+    <div class="slide-header">
+      <div class="slide-num">1</div>
+      <div class="slide-header-text">
+        <div class="slide-subtitle">Opening Hook</div>
+        <h2>The Proven Process to One Approved Baseline</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="content-label">Slide Content</div>
+      <div class="slide-content">
+        <div class="slide-headline">The proven process to get to one approved baseline and decisions that stick — so CAPEX lands on time and on budget.</div>
+      </div>
+      <div class="presenter-notes">
+        <div class="notes-label">Presenter Notes</div>
+        <div class="notes-content">
+          <p>This is a straight promise: make the portfolio controllable without adding more reporting layers. We are talking about installing a small set of enforceable controls so the organisation runs off one version of truth, and decisions do not get quietly undone between meetings.</p>
+          <p>Every Head of PMO I've worked with had plans. Primavera, Excel, slide decks — sometimes all three running in parallel on the same programme. Then SteerCo gets uncomfortable and the simple question lands: "Which version is approved?" If you cannot answer that instantly, decisions get re-run, weeks disappear, and the PMO gets blamed for a system that was never installed.</p>
+          <p>I've worked with 10+ Heads of PMO and CPO, across 100+ projects and 10+ clients over five years. The clearest example is Brussels Airlines — a 20-year real estate programme. We built business cases, got approvals, unlocked financing, and followed workstreams through delivery. The portfolio landed on time — several streams early — and below budget. Not because of better slides. Because there was one baseline everyone owned, one escalation path, and governance that made drift visible early.</p>
+          <p>That's what today is about: one baseline, decisions that hold, and a portfolio you can defend — at SteerCo, with the CFO, and when things get messy.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- SLIDE 2 -->
+  <article class="slide-card" id="slide-2">
+    <div class="slide-header">
+      <div class="slide-num">2</div>
+      <div class="slide-header-text">
+        <div class="slide-subtitle">Pain Points</div>
+        <h2>The Challenge — Sound Familiar?</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="content-label">Slide Content</div>
+      <div class="slide-content">
+        <div class="slide-headline">The Challenge:</div>
+        <ul class="bullet-list">
+          <li>You have 5 versions of "the plan" across Excel, Primavera/MS Project, and slide decks — nobody can answer "which version is approved?"</li>
+          <li>Decisions get made in hallway chats, WhatsApp threads, or side calls with vendors — SteerCo becomes status theatre and everyone points fingers.</li>
+          <li>Change requests arrive as "quick tweaks" and get actioned before impact is priced or sequenced — teams work weekends to catch up.</li>
+        </ul>
+        <div class="highlight-box"><p>Sound familiar?</p></div>
+      </div>
+      <div class="presenter-notes">
+        <div class="notes-label">Presenter Notes</div>
+        <div class="notes-content">
+          <p>These three problems usually show up as one tangled knot. On the surface it looks like "we need better reporting" or "we need the PMO to tighten governance." Underneath, it's simpler and more dangerous: there is no single enforceable baseline, so every conversation becomes negotiable; decision rights are fuzzy, so real choices happen in side channels; and change enters unmanaged, so the portfolio keeps shifting while the dashboard tries to describe yesterday.</p>
+          <p>In real situations this sounds like: "Can someone send me the latest schedule?" followed by three different files, then 20 minutes arguing about which one is real. Or a vendor shows up saying "We already agreed this on the call," and the PMO is left digging through WhatsApp screenshots while procurement has already moved.</p>
+          <p>The commercial impact is brutal (budget creep, schedule churn, lender/executive confidence dropping). The emotional impact is worse: you walk into SteerCo knowing you're going to be challenged on numbers you can't fully defend. And the lifestyle impact is what people don't say out loud — weekends spent reconciling plans, rewriting decks, and chasing approvals that should have been clean in the first place.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- SLIDE 3 -->
+  <article class="slide-card" id="slide-3">
+    <div class="slide-header">
+      <div class="slide-num">3</div>
+      <div class="slide-header-text">
+        <div class="slide-subtitle">The Prize</div>
+        <h2>Imagine Instead — The After-State</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="content-label">Slide Content</div>
+      <div class="slide-content">
+        <div class="slide-headline">Imagine Instead:</div>
+        <ul class="bullet-list">
+          <li>One agreed schedule baseline that drives day-to-day decisions without turning it into a policing exercise — so when someone wants to move a date, it triggers a clear impact conversation (cost, cashflow, scope, downstream dependencies).</li>
+          <li>Early warning on forecast vs budget and cashflow without blunt cost-cutting — so you have clean forecast conversations, controlled spend, and real credibility with the CFO and sponsors.</li>
+          <li>A simple, visible decision process where decisions get made once and stick — no more committees, no re-opened debates — approvals don't drift, escalations are clean.</li>
+        </ul>
+        <div class="highlight-box">
+          <p>Baseline Holds. Decisions Stick. CAPEX investment turns into real assets — on time, on budget.</p>
+        </div>
+      </div>
+      <div class="presenter-notes">
+        <div class="notes-label">Presenter Notes</div>
+        <div class="notes-content">
+          <p>Imagine waking up and you already know what the next 90 days look like across the portfolio. Not in the vague "we have a plan" sense — in the practical sense that there is one baseline everyone can see, and it is the baseline people actually use to run the work.</p>
+          <p>Picture your next SteerCo: instead of spending half the meeting reconciling which schedule is real, you are working the decisions that matter. When someone tries to shift a milestone based on a side conversation, it does not become a new unofficial plan. It triggers a fast, structured impact conversation — and everyone can see the tradeoff before anything moves on site.</p>
+          <p>And the real win is what it does to your credibility. You stop being the person who tidies chaos after the fact. You become the control tower: baseline holds, decisions stick, and leaders cannot quietly override delivery without it showing up immediately.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- SLIDE 4 -->
+  <article class="slide-card" id="slide-4">
+    <div class="slide-header">
+      <div class="slide-num">4</div>
+      <div class="slide-header-text">
+        <div class="slide-subtitle">The Solution</div>
+        <h2>Decision-Ready Program Turnaround</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="content-label">Slide Content</div>
+      <div class="slide-content">
+        <div class="slide-headline">Introducing: Decision-Ready Program Turnaround — 6-Week Install on One Live CAPEX Program</div>
+        <ul class="bullet-list">
+          <li>One baseline. One narrative. Decisions that hold — installed inside a live CAPEX program in 6 weeks.</li>
+          <li>Built specifically for Heads of PMO and CPO on mid-to-large CAPEX programmes.</li>
+          <li>The "show me the record" operator who gets pulled into escalations when the schedule slips, variations spike, and leadership demands a defensible status.</li>
+          <li>Not a workshop, not templates, not advice — a working control system installed while the job runs.</li>
+        </ul>
+      </div>
+      <div class="presenter-notes">
+        <div class="notes-label">Presenter Notes</div>
+        <div class="notes-content">
+          <p>This is not a workshop, a set of templates, or a consultant telling you what you already know. Decision-Ready Program Turnaround is a 6-week install on one live program where we build the control system while the job is running.</p>
+          <p>The outcome is tangible: a single defensible baseline, a single decision narrative, and a record trail that lets delivery move without you losing commercial control. The steps are repeatable, the artifacts are standard, and a trained team can run the install — results don't depend on the founder's heroics.</p>
+          <p>Priced on value: preventing a portfolio-level credibility failure, not selling days or slides.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- SLIDE 5 -->
+  <article class="slide-card" id="slide-5">
+    <div class="slide-header">
+      <div class="slide-num">5</div>
+      <div class="slide-header-text">
+        <div class="slide-subtitle">The Method</div>
+        <h2>Baseline Control Blueprint™ — 5 Steps</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="content-label">Slide Content</div>
+      <div class="method-steps">
+        <div class="method-step">
+          <div class="step-num">1</div>
+          <div class="step-content"><strong>Single Source Baseline</strong><span>Establish one approved plan everyone runs, and only it. Locks scope, dates, dependencies — the clean "before" for every future change.</span></div>
+        </div>
+        <div class="method-step">
+          <div class="step-num">2</div>
+          <div class="step-content"><strong>Decision Rights Map</strong><span>Stop hallway decisions by making decision owners and routes explicit. Who decides what, where, and how it's recorded.</span></div>
+        </div>
+        <div class="method-step">
+          <div class="step-num">3</div>
+          <div class="step-content"><strong>Change Intake Gate</strong><span>Funnel every change into one visible queue before work starts. Nothing actioned before impact is priced, sequenced, and agreed.</span></div>
+        </div>
+        <div class="method-step">
+          <div class="step-num">4</div>
+          <div class="step-content"><strong>Impact First Conversations</strong><span>Force cost, cashflow, and dependency tradeoffs before dates move. Surprises reduce dramatically when everyone prices the tradeoff first.</span></div>
+        </div>
+        <div class="method-step">
+          <div class="step-num">5</div>
+          <div class="step-content"><strong>Decision Log to Execution</strong><span>Publish decisions fast, assign actions, and prevent re-litigation. Decisions logged once, tied to named owners — and they stay decided.</span></div>
+        </div>
+      </div>
+      <div class="presenter-notes">
+        <div class="notes-label">Presenter Notes</div>
+        <div class="notes-content">
+          <p>This is the Baseline Control Blueprint. It exists because across CAPEX portfolios the failure pattern is consistent: multiple competing versions of the plan, real decisions happening outside the governing forum, and change entering informally.</p>
+          <p>The point of the system is simple: create a defensible version of the truth and make it hard — socially and mechanically — to bypass it. Step 1 removes guesswork. Step 2 stops decision drift. Step 3 prevents unmanaged scope creep. Step 4 is where control shows up in real time. Step 5 makes it stick.</p>
+          <p>The outcome: Baseline Holds. Decisions Stick. CAPEX investment turns into real assets — on time, on budget — without adding more bureaucracy or slide-deck theatre.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- SLIDE 6 -->
+  <article class="slide-card" id="slide-6">
+    <div class="slide-header">
+      <div class="slide-num">6</div>
+      <div class="slide-header-text">
+        <div class="slide-subtitle">Packaging</div>
+        <h2>Everything You Get</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="content-label">Slide Content</div>
+      <div class="pkg-section">
+        <div class="pkg-section-title">Design & Planning</div>
+        <div class="pkg-items">
+          <div class="pkg-item">
+            <div class="pkg-item-name">Single Source Baseline Kit (Portfolio Baseline + Control Rules)</div>
+            <div class="pkg-item-desc">One approved baseline (scope, milestones, dependencies, assumptions) and the rules for how it can change. Ends the "5 versions of the plan" problem.</div>
+          </div>
+          <div class="pkg-item">
+            <div class="pkg-item-name">Decision Rights Map + Meeting-to-Decision Architecture</div>
+            <div class="pkg-item-desc">Who decides what, where decisions happen (SteerCo vs working group vs site), what inputs are required, and how decisions get recorded. Hallway decisions stop overruling governance.</div>
+          </div>
+        </div>
+      </div>
+      <div class="pkg-section">
+        <div class="pkg-section-title">Execution & Management</div>
+        <div class="pkg-items">
+          <div class="pkg-item">
+            <div class="pkg-item-name">Change Intake Gate + Live Change Queue</div>
+            <div class="pkg-item-desc">One intake route with visible queue, required fields, and triage. No work starts without a ticket. Scope drift cannot enter informally.</div>
+          </div>
+          <div class="pkg-item">
+            <div class="pkg-item-name">Impact-First Rhythm (Weekly Control Cycle + Decision Log → Actions)</div>
+            <div class="pkg-item-desc">Tight cadence forcing cost, cashflow, and dependency tradeoffs before dates move. Decisions logged once, tied to owners, executed.</div>
+          </div>
+        </div>
+      </div>
+      <div class="pkg-section">
+        <div class="pkg-section-title">Enhancement & Legacy</div>
+        <div class="pkg-items">
+          <div class="pkg-item">
+            <div class="pkg-item-name">Exec-Ready "One Narrative" Pack</div>
+            <div class="pkg-item-desc">Repeatable pack reconciling baseline vs current: what changed, who approved it, what it does to milestones/budget. ExCo and lenders see one defensible story.</div>
+          </div>
+          <div class="pkg-item">
+            <div class="pkg-item-name">Handover + Adoption System (Templates, Standards, Team Training)</div>
+            <div class="pkg-item-desc">Your team gets the tools and enablement to run the Baseline Control Blueprint without you in the room. System scales beyond heroics.</div>
+          </div>
+        </div>
+      </div>
+      <div class="presenter-notes">
+        <div class="notes-label">Presenter Notes</div>
+        <div class="notes-content">
+          <p>Design and Planning is where we stop the portfolio from being run by memory and scattered files. The decision log is not minutes — it is a live control mechanism tied to owners and actions.</p>
+          <p>The Handover and Legacy pieces remove the objection "this will die when the consultant leaves." The adoption system makes the Blueprint something your team can run reliably across multiple programs. This is what justifies the price: an installed, tangible control system that reduces rework, stops unmanaged change, and makes decision-making defensible.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- SLIDE 7 -->
+  <article class="slide-card" id="slide-7">
+    <div class="slide-header">
+      <div class="slide-num">7</div>
+      <div class="slide-header-text">
+        <div class="slide-subtitle">Social Proof</div>
+        <h2>Real Results Under Real CAPEX Pressure</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="content-label">Slide Content</div>
+      <div class="story-grid">
+        <div class="story-box">
+          <div class="story-box-header">European Airline Group — 20-Year Airport Real Estate Portfolio (hangars, engineering centre, crew training, African outstations)</div>
+          <div class="story-box-body">
+            <div class="story-quote">"20-year programme. Every stream approved, financed, and delivered on time or early — below budget."</div>
+            <div class="story-result"><strong>Result:</strong> Board-approved business cases per stream. Financing unlocked. Full portfolio delivered on time (several workstreams early) and below budget.</div>
+          </div>
+        </div>
+        <div class="story-box">
+          <div class="story-box-header">GCC Metro EPC — €700M Programme (FIDIC Silver Book) During a Geopolitical Supply-Chain Shock</div>
+          <div class="story-box-body">
+            <div class="story-quote">"Supply chain cut overnight. The programme didn't slip."</div>
+            <div class="story-result"><strong>Result:</strong> Led crisis response and global resupply across critical packages. Programme momentum maintained with no material slip. Claims position defended under FIDIC Silver Book.</div>
+          </div>
+        </div>
+        <div class="story-box">
+          <div class="story-box-header">Cross-Border Gas Pipelines — Italy & Denmark — Recovery Mode (ENI/SNAM RETE + ENERGIENET Baltic Pipe, Denys)</div>
+          <div class="story-box-body">
+            <div class="story-quote">"Six months lost mid-programme. Recovered on time. Investors back on side."</div>
+            <div class="story-result"><strong>Result:</strong> Recovered a 6-month idle period inside the original 24-month timeframe. Negotiated a €30M acceleration plan and claims strategy. Critical milestones hit. Investor confidence restored.</div>
+          </div>
+        </div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-card-num">£5K–£150K</div>
+          <div class="stat-card-label">Typical engagement range</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-num">30%+</div>
+          <div class="stat-card-label">Typical gross profit per sale</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-num">30–180</div>
+          <div class="stat-card-label">Days — typical timeline</div>
+        </div>
+      </div>
+      <div class="presenter-notes">
+        <div class="notes-label">Presenter Notes</div>
+        <div class="notes-content">
+          <p>These stories are here for one reason: to prove we can make CAPEX delivery controllable when reality is messy — multiple stakeholders, contracts, politics, supply chain shocks, and pressure from boards and investors.</p>
+          <p>In the airline portfolio, the win wasn't a prettier plan — it was stream-by-stream board approval and financing unlocked, then delivery that stayed on time (often early) and below budget. That is "baseline holds" at portfolio scale.</p>
+          <p>In the metro EPC example, the point is resilience: a shock that severed supply chains overnight didn't translate into a schedule collapse. That is "decisions stick" under pressure.</p>
+          <p>In the pipeline recovery, the proof is recovery discipline: six months of idle time is usually where confidence dies. Bringing it back inside the original 24-month window, while negotiating a €30M acceleration and claims strategy, shows we can stabilise the truth, force tradeoffs early, and get execution back into a controllable rhythm.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- SLIDE 8 -->
+  <article class="slide-card" id="slide-8">
+    <div class="slide-header">
+      <div class="slide-num">8</div>
+      <div class="slide-header-text">
+        <div class="slide-subtitle">Value Stack & Investment</div>
+        <h2>The Complete Value — £52,000 → Your Investment: £20,000</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="content-label">Slide Content</div>
+      <table class="value-table">
+        <thead>
+          <tr><th>Component</th><th>Value</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Single Source Baseline Kit (Portfolio Baseline + Control Rules)</td><td>£12,000</td></tr>
+          <tr><td>Decision Rights Map + Meeting-to-Decision Architecture</td><td>£8,000</td></tr>
+          <tr><td>Change Intake Gate + Live Change Queue (No Work Starts Without a Ticket)</td><td>£10,000</td></tr>
+          <tr><td>Impact-First Rhythm (Weekly Control Cycle + Decision Log → Actions)</td><td>£9,000</td></tr>
+          <tr><td>Exec-Ready "One Narrative" Pack (Baseline, Changes, Decisions in Plain English)</td><td>£7,000</td></tr>
+          <tr><td>Handover + Adoption System (Templates, Standards, and Team Training)</td><td>£6,000</td></tr>
+          <tr class="value-total-row"><td><strong>Total Value</strong></td><td><strong>£52,000</strong></td></tr>
+          <tr class="investment-row"><td><strong>Your Investment</strong></td><td><strong>£20,000</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="payment-grid">
+        <div class="payment-card featured">
+          <div class="payment-card-label">Pay in Full · Save 10%</div>
+          <div class="payment-card-price">£18,000</div>
+          <div class="payment-card-detail">10% discount if paid in full within 2 weeks of signing</div>
+        </div>
+        <div class="payment-card">
+          <div class="payment-card-label">Installment Plan</div>
+          <div class="payment-card-price">£20,420</div>
+          <div class="payment-card-detail">30% advance (£6,000) + 2 installments of £7,210 in months 2 & 3. 3% financing charge on balance.</div>
+        </div>
+      </div>
+      <div class="presenter-notes">
+        <div class="notes-label">Presenter Notes</div>
+        <div class="notes-content">
+          <p>This slide anchors value to control and credibility, not time. If they try to create this internally, they either burn months of senior PMO time and still end up with multiple plan versions, or they buy disconnected tools and get more reporting noise without enforceable decisions.</p>
+          <p>At £20K, this is small versus the cost of one major slip, one budget shock, or one lender/executive confidence wobble that forces a "single story scramble." The payment options let them start now: reward speed with the pay-in-full discount, or use installments for internal procurement cycles.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- SLIDE 9 -->
+  <article class="slide-card" id="slide-9">
+    <div class="slide-header">
+      <div class="slide-num">9</div>
+      <div class="slide-header-text">
+        <div class="slide-subtitle">Next Steps</div>
+        <h2>Your 6-Week Transformation Timeline</h2>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="content-label">Timeline</div>
+      <div class="phases">
+        <div class="phase-card">
+          <div class="phase-header">
+            <span class="phase-badge">Weeks 1–2</span>
+            <span class="phase-title">Phase 1 — Lock the Truth</span>
+          </div>
+          <div class="phase-body">
+            <div class="phase-item">Single Source Baseline — one approved plan everyone runs</div>
+            <div class="phase-item">Decision Rights Map — who decides what, and through which route</div>
+            <div class="phase-item">Set up the visible working system (baseline location, owners, rules of change)</div>
+          </div>
+        </div>
+        <div class="phase-card">
+          <div class="phase-header">
+            <span class="phase-badge">Weeks 3–4</span>
+            <span class="phase-title">Phase 2 — Stop Uncontrolled Change</span>
+          </div>
+          <div class="phase-body">
+            <div class="phase-item">Change Intake Gate — one queue for all change before work starts</div>
+            <div class="phase-item">Impact First Conversations — cost, cashflow, dependencies before dates move</div>
+            <div class="phase-item">First set of decisions processed end-to-end using the new gates</div>
+          </div>
+        </div>
+        <div class="phase-card">
+          <div class="phase-header">
+            <span class="phase-badge">Weeks 5–6</span>
+            <span class="phase-title">Phase 3 — Make Decisions Stick</span>
+          </div>
+          <div class="phase-body">
+            <div class="phase-item">Decision Log to Execution — publish decisions fast, tie to named actions</div>
+            <div class="phase-item">Clean escalation and meeting rhythm so steering is not theatre</div>
+            <div class="phase-item">Portfolio narrative stabilises: baseline holds, milestones become steerable</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;">
+        <div class="content-label">Next Steps</div>
+        <div class="cta-steps">
+          <div class="cta-step">
+            <div class="cta-step-num">1</div>
+            <div class="cta-step-text">Book a <strong>30-minute Decision Call</strong> (Head of PMO + 1 sponsor if possible)</div>
+          </div>
+          <div class="cta-step">
+            <div class="cta-step-num">2</div>
+            <div class="cta-step-text">Complete the <strong>10-minute Program Intake</strong> and upload: latest plan, last SteerCo pack, current RAID, decision forum list / org chart</div>
+          </div>
+          <div class="cta-step">
+            <div class="cta-step-num">3</div>
+            <div class="cta-step-text">If it is a fit: pay the <strong>30% deposit (£6,000)</strong> to secure your start date</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="presenter-notes">
+        <div class="notes-label">Presenter Notes</div>
+        <div class="notes-content">
+          <p>Walk them through the 6 weeks in plain terms: first we lock a single enforceable baseline and decision routes, then we stop change entering informally, then we make decisions publishable and executable so they do not get reopened.</p>
+          <p>Cover pricing calmly. Remind them the paid-in-full option rewards speed, while installments exist for internal procurement and budget cycles. Re-anchor that the deposit is not an extra fee — it simply secures the slot and comes off the total.</p>
+          <p>Make the CTA operational: a short call with the right two people, a lightweight intake that gives you the evidence, then deposit to lock dates. The goal is to remove ambiguity and stop the "let us think about it" drift by giving them a clean path to a start date.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">Contracks Global</div>
+  <div class="footer-tagline">"Better contracts. Better business. Better society."</div>
+  <div class="footer-contact">contracks.global · spoppeleer@contracks.global</div>
+</footer>
+
+<script>
+  let notesVisible = false;
+
+  function toggleNotes() {
+    notesVisible = !notesVisible;
+    document.querySelectorAll('.presenter-notes').forEach(el => {
+      el.classList.toggle('visible', notesVisible);
+    });
+    document.querySelector('.notes-toggle-btn').textContent = notesVisible ? '✕ Hide Notes' : '☰ Notes';
+  }
+
+  function scrollTo(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.querySelectorAll('.nav-pill').forEach(p => p.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+
+  // Highlight nav pill on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        const num = id.replace('slide-', '');
+        document.querySelectorAll('.nav-pill').forEach((p, i) => {
+          p.classList.toggle('active', i === parseInt(num) - 1);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  document.querySelectorAll('.slide-card').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
