@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dent Value Canvas + Bridge — PMO Control Lead · Contracks Global</title>
+<title>Dent Value Canvas + Bridge — Filled + Empty Templates · PMO Control Lead</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -249,6 +249,163 @@ body{max-width:1240px;margin:0 auto;padding:20px;background:#e8e8e8}
 
 /* Page break */
 .page-break{height:0;page-break-after:always}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --dred:#c0392b;--dblue:#1a3a6e;--dnavy:#1a2750;
+  --dgold:#f5a623;--dgreen:#27ae60;--dpurp:#8e44ad;
+  --w:#ffffff;--light:#f8f9fa;--lgrey:#f0f0f0;
+  --border:#d0d4da;--border-light:#e8eaed;
+  --text:#1a2332;--tmid:#6b7a8d;--tlight:#a0aab4;
+}
+html{font-family:'Open Sans',sans-serif;background:#d8d8d8;-webkit-font-smoothing:antialiased}
+body{max-width:1260px;margin:0 auto;padding:20px;background:#d8d8d8}
+.page{width:1200px;background:var(--w);margin:0 auto 40px;box-shadow:0 4px 20px rgba(0,0,0,.15);overflow:hidden;page-break-after:always}
+@media print{body{background:#fff;padding:0}.page{margin:0;box-shadow:none;page-break-after:always}}
+
+/* ══════════════════════════════════════
+   SHARED COMPONENTS
+══════════════════════════════════════ */
+.dent-hdr-bar{display:flex;align-items:center;gap:0;padding:12px 20px 10px;border-bottom:1px solid var(--border)}
+.dent-logo-main{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:var(--dnavy);letter-spacing:.04em;display:flex;align-items:center;gap:0}
+.dent-logo-main .dot{color:var(--dred)}
+.dent-divider{width:1px;height:28px;background:var(--border);margin:0 14px}
+.kpi-badge{display:flex;flex-direction:column;gap:0}
+.kpi-line1{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:600;color:var(--dred);letter-spacing:.04em;text-transform:uppercase}
+.kpi-line2{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:600;color:var(--dred);letter-spacing:.04em;text-transform:uppercase}
+.canvas-title-main{font-family:'Montserrat',sans-serif;font-size:28px;font-weight:300;color:var(--dnavy);letter-spacing:.02em;margin-left:6px}
+.hdr-quote{margin-left:auto;font-size:9px;font-style:italic;color:var(--tmid);text-align:right}
+.hdr-fields{display:flex;flex-direction:column;gap:2px;margin-left:20px}
+.hdr-field-row{display:flex;gap:0}
+.hdr-field-name{font-size:8px;color:var(--tlight);width:40px}
+.hdr-field-line{flex:1;border-bottom:1px solid var(--border);min-width:80px;height:14px}
+
+/* Cell labels */
+.cell-title{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;color:var(--dnavy);letter-spacing:.04em;text-transform:uppercase}
+.cell-title-sub{font-size:8px;color:var(--tmid);font-weight:400;margin-left:4px;text-transform:none;letter-spacing:0}
+.cell-mini{font-size:7.5px;color:var(--tlight);font-style:italic;margin-top:1px}
+.hook-lbl{font-size:7.5px;color:var(--tlight);font-style:italic;margin-bottom:2px}
+.land-lbl{font-size:7.5px;color:var(--tlight);font-style:italic;margin-bottom:2px;margin-top:4px}
+.input-line{border-bottom:1px solid var(--border-light);height:12px;margin-bottom:2px}
+.input-area{border:1px solid var(--border-light);min-height:60px;background:var(--lgrey)}
+.section-box{border:1px solid var(--border);background:var(--lgrey);min-height:60px}
+
+/* ══════════════════════════════════════
+   EMPTY VALUE CANVAS
+══════════════════════════════════════ */
+.evc{min-height:848px;display:flex;flex-direction:column}
+.evc-body{flex:1;padding:0 12px 10px;display:flex;flex-direction:column;gap:8px}
+
+/* Signature Method Top */
+.sig-method-section{border:1px solid var(--border);padding:8px 12px}
+.sig-method-hdr{display:flex;align-items:baseline;gap:6px;margin-bottom:6px}
+.sig-method-title{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--dnavy);text-transform:uppercase;letter-spacing:.06em}
+.sig-method-sub{font-size:8px;color:var(--tmid);font-style:italic}
+.sig-method-sub2{font-size:7.5px;color:var(--tlight);font-style:italic;margin-bottom:4px}
+.sig-pillars{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:4px}
+.sig-pillar{border:1px solid var(--border-light);background:var(--lgrey);min-height:80px;padding:6px}
+.sig-pillar-num{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;color:var(--border);margin-bottom:4px}
+
+/* Middle row */
+.evc-middle{display:grid;grid-template-columns:270px 1fr 270px;gap:8px;flex:1}
+
+/* Pain column */
+.pain-col{display:flex;flex-direction:column;gap:6px}
+.pain-section{border:1px solid var(--border);padding:8px 10px;flex:1}
+.pain-section-hdr{margin-bottom:6px}
+.pain-item-empty{padding-bottom:8px;border-bottom:1px solid var(--border-light);margin-bottom:6px}
+.pain-item-empty:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
+
+/* Mistakes center */
+.mistakes-section{border:1px solid var(--border);padding:8px 12px;display:flex;flex-direction:column;gap:4px;position:relative}
+.mistakes-hdr{margin-bottom:8px}
+.arrow-row{display:flex;align-items:center;gap:4px;margin:4px 0}
+.arrow-dash{flex:1;border-top:1px dashed var(--border);position:relative}
+.arrow-tip{color:var(--tlight);font-size:10px}
+
+/* Payoff column */
+.payoff-col{display:flex;flex-direction:column;gap:6px}
+.payoff-section{border:1px solid var(--border);padding:8px 10px;flex:1}
+
+/* Bottom row */
+.evc-bottom{display:grid;grid-template-columns:270px 1fr 270px;gap:8px}
+.deep-fear-box{border:1px solid var(--border);padding:8px 10px}
+.icp-box-empty{border:1px solid var(--border);padding:8px 12px;display:flex;flex-direction:column;gap:4px}
+.prize-box-empty{border:1px solid var(--border);padding:8px 10px}
+.inner-box{border:1px solid var(--border);background:var(--lgrey);min-height:70px;margin-top:6px}
+
+/* Footer */
+.dent-footer{display:flex;align-items:center;justify-content:space-between;padding:8px 20px;border-top:1px solid var(--border);font-size:8px;color:var(--tlight)}
+
+/* ══════════════════════════════════════
+   CANVAS DYNAMICS
+══════════════════════════════════════ */
+.dynamics-page{min-height:848px;display:flex;flex-direction:column}
+.dynamics-hdr{padding:16px 24px;border-bottom:1px solid var(--border)}
+.dynamics-logo-row{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.dynamics-title{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:300;color:var(--dnavy);letter-spacing:.04em}
+.dynamics-title strong{font-weight:800;display:block;font-size:24px}
+.dynamics-table{flex:1;margin:0}
+.dyn-row{display:grid;grid-template-columns:220px 1fr;border-bottom:1px solid var(--border)}
+.dyn-row:last-child{border-bottom:none}
+.dyn-label{padding:18px 24px;display:flex;align-items:center;border-right:1px solid var(--border)}
+.dyn-label-text{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;color:var(--dnavy);letter-spacing:.08em;text-transform:uppercase}
+.dyn-content{padding:16px 28px;display:flex;flex-direction:column;gap:6px}
+.dyn-bullet{display:flex;align-items:flex-start;gap:8px;font-size:11px;color:var(--text);line-height:1.5}
+.dyn-bullet::before{content:'·';color:var(--dred);font-size:16px;line-height:1;flex-shrink:0;margin-top:-1px}
+.dynamics-footer{padding:10px 24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.dyn-copy{font-size:8px;color:var(--tlight)}
+
+/* ══════════════════════════════════════
+   EMPTY VALUE BRIDGE
+══════════════════════════════════════ */
+.evb{min-height:848px;display:flex;flex-direction:column;border:3px solid var(--dred)}
+.evb-title-bar{padding:16px 24px 8px;text-align:center}
+.evb-title{font-family:'Montserrat',sans-serif;font-size:32px;font-weight:300;color:var(--dnavy);letter-spacing:.04em}
+.evb-title strong{font-weight:800}
+
+/* Arch section */
+.arch-section{position:relative;height:240px;overflow:hidden;padding:0 60px}
+.face-icon{position:absolute;top:20px;font-size:44px;opacity:.35}
+.face-left{left:20px}
+.face-right{right:20px}
+.state-label{position:absolute;top:70px;text-align:center;font-family:'Montserrat',sans-serif}
+.state-left{left:30px;text-align:center;width:80px}
+.state-right{right:30px;text-align:center;width:80px}
+.state-word{font-size:8px;color:var(--tlight);letter-spacing:.08em;text-transform:uppercase;display:block}
+.state-main{font-size:9px;font-weight:700;color:var(--dnavy);letter-spacing:.08em;text-transform:uppercase;display:block}
+.arch-svg-empty{width:100%;height:200px}
+
+/* Bridge labels */
+.polr-bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:8px 20px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--lgrey)}
+.polr-box{border:1px solid var(--border);background:var(--w);padding:6px 14px}
+.polr-box-label{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;color:var(--dnavy);text-transform:uppercase;letter-spacing:.06em}
+.polr-center{text-align:center;font-size:8px;color:var(--tlight);font-style:italic}
+
+/* Bottom section */
+.evb-bottom{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(--border);flex:1}
+.evb-col{padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.evb-col:not(:last-child){border-right:1px solid var(--border)}
+
+.evb-section-title{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:var(--dnavy);text-transform:uppercase;letter-spacing:.06em;display:flex;align-items:center;gap:6px}
+.evb-section-icon{color:var(--dred);font-size:14px}
+.evb-bullet-list{display:flex;flex-direction:column;gap:4px;margin-top:4px;padding-left:4px}
+.evb-bullet{font-size:10px;color:var(--tmid);display:flex;align-items:flex-start;gap:6px}
+.evb-bullet::before{content:'·';color:var(--dnavy);font-size:14px;line-height:1;flex-shrink:0}
+.frustrated-ambition{border:1px dashed var(--border);padding:8px 10px;margin:6px 0}
+.fa-label{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:700;color:var(--tmid);text-transform:uppercase;letter-spacing:.1em;text-align:center;margin-bottom:6px}
+.fa-arrow{display:flex;align-items:center;gap:4px;font-size:8px;color:var(--tlight);margin-bottom:3px}
+.fa-line{flex:1;border-top:1px solid var(--border-light)}
+.evb-sub-section{margin-top:6px}
+.evb-sub-title{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;color:var(--dnavy);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px}
+.evb-deep-fear-box{border:1px solid var(--border);background:var(--lgrey);padding:8px 10px}
+.evb-df-title{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;color:var(--dnavy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.evb-df-sub{font-size:8.5px;color:var(--tmid);line-height:1.5}
+.evb-prize-box{border:1px solid var(--border);background:var(--lgrey);padding:10px;text-align:center}
+.evb-prize-title{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;color:var(--dnavy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
+.evb-prize-sub{font-size:8px;color:var(--tmid);line-height:1.5}
+.evb-footer{display:flex;align-items:center;justify-content:space-between;padding:8px 20px;border-top:2px solid var(--border)}
+
 </style>
 </head>
 <body>
@@ -650,5 +807,380 @@ body{max-width:1240px;margin:0 auto;padding:20px;background:#e8e8e8}
 </div>
 </div>
 
+
+
+<!-- ════════════════════════════════════
+     PAGE 1 · EMPTY VALUE CANVAS
+════════════════════════════════════ -->
+<div class="page">
+<div class="evc">
+
+  <!-- Header -->
+  <div class="dent-hdr-bar">
+    <div class="dent-logo-main">Dent<span class="dot">.</span></div>
+    <div class="dent-divider"></div>
+    <div class="kpi-badge">
+      <span class="kpi-line1">Key Person</span>
+      <span class="kpi-line2">of Influence</span>
+    </div>
+    <div class="canvas-title-main">Value Canvas</div>
+    <div class="hdr-quote">"You're standing on a mountain of value."</div>
+    <div class="hdr-fields">
+      <div class="hdr-field-row"><div class="hdr-field-name" style="font-size:8px;color:var(--tlight)">Name:</div><div class="hdr-field-line" style="width:120px"></div></div>
+      <div class="hdr-field-row"><div class="hdr-field-name" style="font-size:8px;color:var(--tlight)">Version:</div><div class="hdr-field-line" style="width:120px"></div></div>
+      <div class="hdr-field-row"><div class="hdr-field-name" style="font-size:8px;color:var(--tlight)">Date:</div><div class="hdr-field-line" style="width:120px"></div></div>
+    </div>
+  </div>
+
+  <div class="evc-body">
+
+    <!-- Signature Method -->
+    <div class="sig-method-section">
+      <div class="sig-method-hdr">
+        <div class="sig-method-title">Signature Method</div>
+        <div class="sig-method-sub">Your 'essential principles / pillars' of success</div>
+      </div>
+      <div class="sig-method-sub2">Our essential ingredients of success:</div>
+      <div class="sig-pillars">
+        <div class="sig-pillar"><div class="sig-pillar-num">1</div></div>
+        <div class="sig-pillar"><div class="sig-pillar-num">2</div></div>
+        <div class="sig-pillar"><div class="sig-pillar-num">3</div></div>
+        <div class="sig-pillar"><div class="sig-pillar-num">4</div></div>
+        <div class="sig-pillar"><div class="sig-pillar-num">5</div></div>
+        <div class="sig-pillar"><div class="sig-pillar-num">6</div></div>
+      </div>
+    </div>
+
+    <!-- Middle row: Pain | Mistakes | Payoff -->
+    <div class="evc-middle" style="flex:1">
+
+      <!-- PAIN -->
+      <div class="pain-col">
+        <div class="pain-section">
+          <div class="pain-section-hdr">
+            <div class="cell-title">Pain <span class="cell-title-sub">What are their 3 dominant pain points?</span></div>
+          </div>
+          <div class="pain-item-empty">
+            <div class="hook-lbl">Hook it (2–3 word symptom)</div>
+            <div class="input-line"></div>
+            <div class="land-lbl">Land it (1–2 sentences: struggle + cost + consequences)</div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+          </div>
+          <div class="pain-item-empty">
+            <div class="hook-lbl">Hook 2</div>
+            <div class="input-line"></div>
+            <div class="land-lbl">Land it</div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+          </div>
+          <div class="pain-item-empty">
+            <div class="hook-lbl">Hook 3</div>
+            <div class="input-line"></div>
+            <div class="land-lbl">Land it</div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MISTAKES -->
+      <div class="mistakes-section">
+        <div class="mistakes-hdr">
+          <div class="cell-title">Mistakes <span class="cell-title-sub">What's really causing the pain — and what bad ideas and actions are perpetuating it?</span></div>
+        </div>
+        <!-- Arrows from left -->
+        <div style="position:absolute;left:-1px;top:80px;display:flex;flex-direction:column;gap:55px">
+          <div style="display:flex;align-items:center;gap:2px"><div style="width:16px;border-top:1px dashed var(--border)"></div><div style="color:var(--tlight);font-size:9px">→</div></div>
+          <div style="display:flex;align-items:center;gap:2px"><div style="width:16px;border-top:1px dashed var(--border)"></div><div style="color:var(--tlight);font-size:9px">→</div></div>
+          <div style="display:flex;align-items:center;gap:2px"><div style="width:16px;border-top:1px dashed var(--border)"></div><div style="color:var(--tlight);font-size:9px">→</div></div>
+        </div>
+        <div class="input-area" style="flex:1;min-height:200px"></div>
+      </div>
+
+      <!-- PAYOFF -->
+      <div class="payoff-col">
+        <div class="payoff-section">
+          <div style="margin-bottom:6px">
+            <div class="cell-title">Payoff <span class="cell-title-sub">What are the 3 big benefits they desire (and your method enables)</span></div>
+          </div>
+          <div class="pain-item-empty">
+            <div class="hook-lbl">Hook it (2–3 word objective)</div>
+            <div class="input-line"></div>
+            <div class="land-lbl">Land it (1–2 sentences: desire + without + resolution)</div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+          </div>
+          <div class="pain-item-empty">
+            <div class="hook-lbl">Hook 2</div>
+            <div class="input-line"></div>
+            <div class="land-lbl">Land it</div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+          </div>
+          <div class="pain-item-empty">
+            <div class="hook-lbl">Hook 3</div>
+            <div class="input-line"></div>
+            <div class="land-lbl">Land it</div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom row: Deep Fear | ICP | Prize -->
+    <div class="evc-bottom">
+
+      <div class="deep-fear-box">
+        <div class="cell-title" style="font-size:11px">Deep Fear <span class="cell-title-sub" style="font-size:8px">Their Core Emotional Driver</span></div>
+        <div class="inner-box" style="min-height:75px"></div>
+      </div>
+
+      <div class="icp-box-empty">
+        <div class="cell-title" style="font-size:13px;text-align:center">Ideal Client (ICP) <span class="cell-title-sub">Who is the ultimate decision maker?</span></div>
+        <div class="inner-box" style="min-height:75px"></div>
+      </div>
+
+      <div class="prize-box-empty">
+        <div class="cell-title" style="font-size:11px">Prize <span class="cell-title-sub" style="font-size:8px">A unique '4-word pitch' that captures the essence of desired outcome.</span></div>
+        <div class="inner-box" style="min-height:75px"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="dent-footer">
+    <div style="font-size:8.5px;color:var(--tlight)">www.dent.global</div>
+    <div style="font-size:8.5px;color:var(--tlight)">Be Brave. Have Fun. Make a Dent.</div>
+  </div>
+
+</div>
+</div>
+
+<!-- ════════════════════════════════════
+     PAGE 2 · CANVAS DYNAMICS
+════════════════════════════════════ -->
+<div class="page">
+<div class="dynamics-page">
+
+  <div class="dynamics-hdr">
+    <div class="dynamics-logo-row">
+      <div class="dent-logo-main" style="font-size:20px">Dent<span class="dot" style="color:var(--dred)">.</span></div>
+      <div class="dent-divider"></div>
+      <div class="dynamics-title">Canvas<strong>Dynamics</strong></div>
+    </div>
+  </div>
+
+  <div class="dynamics-table">
+    <div class="dyn-row">
+      <div class="dyn-label"><div class="dyn-label-text">Psychological<br>Triggers</div></div>
+      <div class="dyn-content">
+        <div class="dyn-bullet">Pain to Prize gap creates buying tension &amp; desire</div>
+        <div class="dyn-bullet">Connecting 3 core pains creates a powerful emotional driver</div>
+        <div class="dyn-bullet">Pain/Payoff symmetry creates coherence and clarity</div>
+        <div class="dyn-bullet">Method/Mistakes symmetry creates insightful 'lightbulb moments'</div>
+      </div>
+    </div>
+    <div class="dyn-row">
+      <div class="dyn-label"><div class="dyn-label-text">Content<br>Creation</div></div>
+      <div class="dyn-content">
+        <div class="dyn-bullet">Each Pain becomes a blog/video hook</div>
+        <div class="dyn-bullet">Each Mistake becomes a content series</div>
+        <div class="dyn-bullet">Each Method Pillar becomes a scorecard category or book chapter</div>
+        <div class="dyn-bullet">Each Payoff becomes a case study focus</div>
+      </div>
+    </div>
+    <div class="dyn-row">
+      <div class="dyn-label"><div class="dyn-label-text">Sales<br>Conversations</div></div>
+      <div class="dyn-content">
+        <div class="dyn-bullet">Start by confirming Pain recognition</div>
+        <div class="dyn-bullet">Explore Mistakes they've experienced</div>
+        <div class="dyn-bullet">Introduce Method as the solution</div>
+        <div class="dyn-bullet">Paint the picture of Payoffs and Prize</div>
+      </div>
+    </div>
+    <div class="dyn-row">
+      <div class="dyn-label"><div class="dyn-label-text">Team<br>Alignment</div></div>
+      <div class="dyn-content">
+        <div class="dyn-bullet">Unify messaging across all channels</div>
+        <div class="dyn-bullet">Ensure consistent positioning</div>
+        <div class="dyn-bullet">Focus product development on solving real pains</div>
+        <div class="dyn-bullet">Align success metrics with promised payoffs</div>
+      </div>
+    </div>
+    <div class="dyn-row">
+      <div class="dyn-label"><div class="dyn-label-text">Keynote<br>Presentations</div></div>
+      <div class="dyn-content">
+        <div class="dyn-bullet">Open with your mission to deliver 'The Prize'</div>
+        <div class="dyn-bullet">Establish relevance with relatable Pain points</div>
+        <div class="dyn-bullet">Share common Mistakes to build recognition</div>
+        <div class="dyn-bullet">Reveal your Signature Method as the Insightful P.O.L.R.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dynamics-footer">
+    <div class="dent-logo-main" style="font-size:16px">Dent<span class="dot">.</span></div>
+    <div class="dyn-copy">Copyright of Dent Global. All rights reserved. Not for reuse.</div>
+  </div>
+
+</div>
+</div>
+
+<!-- ════════════════════════════════════
+     PAGE 3 · EMPTY VALUE BRIDGE
+════════════════════════════════════ -->
+<div class="page">
+<div class="evb">
+
+  <!-- Title -->
+  <div class="evb-title-bar">
+    <div class="evb-title">The <strong>VALUE BRIDGE</strong></div>
+  </div>
+
+  <!-- Arch Visual -->
+  <div class="arch-section" style="position:relative;padding:0 60px">
+    <!-- Frustrated face left -->
+    <div style="position:absolute;left:20px;top:8px;text-align:center;width:90px">
+      <div style="font-size:36px;opacity:.25">😣</div>
+      <div style="font-size:7.5px;color:var(--tlight);text-transform:uppercase;letter-spacing:.08em;line-height:1.3;margin-top:4px">Frustrated<br><strong style="color:var(--dnavy)">CURRENT STATE</strong></div>
+    </div>
+    <!-- Happy face right -->
+    <div style="position:absolute;right:20px;top:8px;text-align:center;width:90px">
+      <div style="font-size:36px;opacity:.25">😊</div>
+      <div style="font-size:7.5px;color:var(--tlight);text-transform:uppercase;letter-spacing:.08em;line-height:1.3;margin-top:4px">Desired<br><strong style="color:var(--dnavy)">FUTURE STATE</strong></div>
+    </div>
+    <!-- SVG Arch -->
+    <svg width="100%" height="220" viewBox="0 0 1080 220" preserveAspectRatio="none" style="display:block">
+      <!-- Main arch -->
+      <path d="M 40 210 Q 540 20 1040 210" fill="none" stroke="#d0d4da" stroke-width="2.5"/>
+      <!-- Inner arch -->
+      <path d="M 80 210 Q 540 50 1000 210" fill="none" stroke="#e8eaed" stroke-width="1.5"/>
+      <!-- Pillar lines -->
+      <line x1="220" y1="210" x2="220" y2="155" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="400" y1="210" x2="400" y2="110" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="540" y1="210" x2="540" y2="78" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <line x1="680" y1="210" x2="680" y2="110" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="860" y1="210" x2="860" y2="155" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4,3"/>
+      <!-- Pillar rectangles -->
+      <rect x="160" y="130" width="120" height="80" fill="white" stroke="#e0e0e0" stroke-width="1"/>
+      <rect x="330" y="88" width="120" height="122" fill="white" stroke="#e0e0e0" stroke-width="1"/>
+      <rect x="470" y="58" width="140" height="152" fill="white" stroke="#e0e0e0" stroke-width="1"/>
+      <rect x="590" y="88" width="120" height="122" fill="white" stroke="#e0e0e0" stroke-width="1"/>
+      <rect x="760" y="130" width="120" height="80" fill="white" stroke="#e0e0e0" stroke-width="1"/>
+      <!-- Labels on pillars -->
+      <text x="220" y="148" text-anchor="middle" font-family="Montserrat" font-size="7" fill="#b0bac5" font-style="italic">Product Name</text>
+      <text x="540" y="52" text-anchor="middle" font-family="Montserrat" font-size="9" font-weight="700" fill="#9aa4b0" letter-spacing="2">· SIGNATURE METHOD ·</text>
+      <text x="390" y="108" text-anchor="middle" font-family="Montserrat" font-size="7" fill="#b0bac5" font-style="italic">"Success Pillars"</text>
+      <text x="500" y="108" text-anchor="middle" font-family="Montserrat" font-size="7" fill="#b0bac5">Measurable</text>
+      <!-- Scale dots -->
+      <text x="540" y="112" text-anchor="middle" font-family="Montserrat" font-size="8" font-weight="600" fill="#c8d0d8">10</text>
+      <text x="540" y="125" text-anchor="middle" font-family="Montserrat" font-size="7.5" fill="#d8dde2">·</text>
+      <text x="540" y="138" text-anchor="middle" font-family="Montserrat" font-size="7.5" fill="#d8dde2">·</text>
+      <text x="540" y="151" text-anchor="middle" font-family="Montserrat" font-size="7.5" fill="#d8dde2">·</text>
+      <text x="540" y="164" text-anchor="middle" font-family="Montserrat" font-size="7.5" fill="#d8dde2">·</text>
+      <text x="540" y="177" text-anchor="middle" font-family="Montserrat" font-size="7.5" fill="#d8dde2">·</text>
+      <text x="540" y="190" text-anchor="middle" font-family="Montserrat" font-size="8" font-weight="600" fill="#c8d0d8">0</text>
+      <!-- Category labels -->
+      <text x="630" y="118" font-family="Open Sans" font-size="7" fill="#c0c8d2" font-style="italic">· Quiz Categories</text>
+      <text x="630" y="130" font-family="Open Sans" font-size="7" fill="#c0c8d2" font-style="italic">· Book Chapters</text>
+      <text x="630" y="142" font-family="Open Sans" font-size="7" fill="#c0c8d2" font-style="italic">· Blog Topics</text>
+      <text x="860" y="148" text-anchor="middle" font-family="Montserrat" font-size="7" fill="#b0bac5" font-style="italic">Book Title</text>
+    </svg>
+  </div>
+
+  <!-- A Better Way / POLR Bar -->
+  <div class="polr-bar">
+    <div class="polr-box"><div class="polr-box-label">A Better Way</div></div>
+    <div class="polr-center">⟵ Path Of Least Resistance (P.O.L.R.) ⟶</div>
+    <div class="polr-box" style="text-align:right"><div class="polr-box-label">The Ultimate Destination</div></div>
+  </div>
+
+  <!-- Bottom: Pain | Mistakes | Payoff -->
+  <div class="evb-bottom">
+
+    <!-- LEFT: PAIN + DEEP FEAR -->
+    <div class="evb-col">
+      <div class="evb-section-title">Their Pain <span class="evb-section-icon">⟡</span></div>
+      <div class="evb-bullet-list">
+        <div class="evb-bullet">Symptom</div>
+        <div class="evb-bullet">Struggle</div>
+        <div class="evb-bullet">Cost</div>
+        <div class="evb-bullet">Consequence</div>
+      </div>
+      <div class="frustrated-ambition">
+        <div class="fa-label">Frustrated Ambition</div>
+        <div class="fa-arrow"><div style="font-size:7.5px;color:var(--tlight);flex:1">Previous Attempts</div><div style="color:var(--tlight)">→</div></div>
+        <div class="fa-arrow"><div style="color:var(--tlight)">←</div><div style="font-size:7.5px;color:var(--tlight);flex:1;text-align:right">Repeated Failure</div></div>
+      </div>
+      <div class="evb-deep-fear-box">
+        <div class="evb-df-title">Deep Fear</div>
+        <div class="evb-df-sub">The emotional core of the pain; fears, doubt &amp; uncertainty that motivates change.</div>
+      </div>
+    </div>
+
+    <!-- CENTER: MISTAKES -->
+    <div class="evb-col">
+      <div class="evb-section-title">Their Mistakes <span style="font-size:14px">💡</span></div>
+      <div class="evb-sub-section">
+        <div class="evb-sub-title">Root Cause</div>
+        <div style="width:8px;height:8px;background:var(--dred);border-radius:50%;margin:4px auto"></div>
+      </div>
+      <div class="evb-sub-section">
+        <div class="evb-sub-title">Wrong Thinking</div>
+        <div class="evb-bullet-list">
+          <div class="evb-bullet">Limiting Beliefs</div>
+          <div class="evb-bullet">Blind Spots</div>
+          <div class="evb-bullet">Misunderstandings</div>
+        </div>
+      </div>
+      <div style="width:8px;height:8px;background:var(--dred);border-radius:50%;margin:6px auto"></div>
+      <div class="evb-sub-section">
+        <div class="evb-sub-title">Wrong Action</div>
+        <div class="evb-bullet-list">
+          <div class="evb-bullet">Ineffective Approaches</div>
+          <div class="evb-bullet">Misguided Tactics</div>
+          <div class="evb-bullet">Bad Behaviours</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: PAYOFF + PRIZE -->
+    <div class="evb-col">
+      <div class="evb-section-title">The Payoff <span style="font-size:14px">🎯</span></div>
+      <div class="evb-bullet-list">
+        <div class="evb-bullet">Objective</div>
+        <div class="evb-bullet">Desire</div>
+        <div class="evb-bullet">Without</div>
+        <div class="evb-bullet">Resolution</div>
+      </div>
+      <div class="evb-prize-box" style="margin-top:auto">
+        <div class="evb-prize-title">The Prize</div>
+        <div class="evb-prize-sub">A unique '4-Word Pitch' that captures the essence of the desired outcome.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="evb-footer">
+    <div class="dent-logo-main" style="font-size:18px">Dent<span class="dot">.</span></div>
+    <div style="font-size:8px;color:var(--tlight)">Copyright of Dent Global. All rights reserved. Not for reuse.</div>
+  </div>
+
+</div>
+</div>
+
+
 </body>
 </html>
+
