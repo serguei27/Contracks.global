@@ -9,67 +9,73 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root { --navy: #0A1628; --navy-mid: #112240; --gold: #C5A050; --gold-light: #D4B470; }
-html { scroll-behavior: smooth; }
-body { font-family: 'DM Sans', sans-serif; background: #0A1628; color: #FFFFFF; min-height: 100vh; overflow-x: hidden; }
-nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; border-bottom: 1px solid rgba(197,160,80,0.15); }
-.nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #FFFFFF; text-decoration: none; letter-spacing: 0.02em; }
-.nav-logo span { color: #C5A050; }
-.nav-back { font-size: 0.82rem; color: rgba(255,255,255,0.5); text-decoration: none; letter-spacing: 0.05em; transition: color 0.2s; display: flex; align-items: center; gap: 6px; }
-.nav-back:hover { color: #C5A050; }
-.page { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 65px); }
-.report-preview { background: #112240; padding: 80px 64px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid rgba(197,160,80,0.12); position: relative; overflow: hidden; }
-.report-preview::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 20% 80%, rgba(197,160,80,0.04) 0%, transparent 60%); }
-.report-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #C5A050; margin-bottom: 32px; }
-.report-tag::before { content: ''; display: block; width: 24px; height: 1px; background: #C5A050; }
-.report-mock { background: rgba(255,255,255,0.03); border: 1px solid rgba(197,160,80,0.2); border-radius: 4px; padding: 40px; margin-bottom: 40px; position: relative; }
-.report-mock::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #C5A050, #D4B470); border-radius: 4px 4px 0 0; }
-.report-mock-logo { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; color: rgba(255,255,255,0.3); margin-bottom: 24px; }
-.report-mock-logo span { color: #C5A050; }
-.report-mock-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; line-height: 1.3; margin-bottom: 12px; }
-.report-mock-sub { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.6; font-style: italic; margin-bottom: 28px; }
-.report-mock-lines { display: flex; flex-direction: column; gap: 8px; }
-.mock-line { height: 8px; background: rgba(255,255,255,0.06); border-radius: 2px; }
-.mock-line.w-full { width: 100%; } .mock-line.w-80 { width: 80%; } .mock-line.w-65 { width: 65%; } .mock-line.w-90 { width: 90%; }
-.report-stats { display: flex; gap: 32px; position: relative; }
-.stat { display: flex; flex-direction: column; gap: 4px; }
-.stat-num { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: #C5A050; line-height: 1; }
-.stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.4); letter-spacing: 0.04em; }
-.report-contents { margin-top: 40px; padding-top: 40px; border-top: 1px solid rgba(197,160,80,0.12); }
-.contents-title { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #C5A050; margin-bottom: 16px; }
-.contents-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.contents-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
-.contents-list li::before { content: '→'; color: #C5A050; font-size: 0.75rem; flex-shrink: 0; margin-top: 2px; }
-.form-side { padding: 80px 64px; display: flex; flex-direction: column; justify-content: center; }
-.form-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #C5A050; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-.form-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: #C5A050; }
-.form-side h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 16px; }
-.form-side h1 em { font-style: normal; color: #C5A050; }
-.form-side p { font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 40px; max-width: 480px; }
-.gate-form { display: flex; flex-direction: column; gap: 16px; max-width: 480px; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.gate-form input, .gate-form select { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 2px; padding: 14px 16px; color: #FFFFFF; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; appearance: none; -webkit-appearance: none; }
-.gate-form input::placeholder { color: rgba(255,255,255,0.3); }
-.gate-form input:focus, .gate-form select:focus { border-color: rgba(197,160,80,0.5); }
-.gate-form select option { background: #112240; color: #FFFFFF; }
-.form-submit { background: #C5A050; color: #0A1628; border: none; padding: 16px 32px; border-radius: 2px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 700; cursor: pointer; letter-spacing: 0.03em; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
-.form-submit:hover { background: #D4B470; transform: translateY(-1px); }
-.form-note { font-size: 0.75rem; color: rgba(255,255,255,0.3); line-height: 1.6; margin-top: 4px; }
-.success-state { display: none; text-align: center; padding: 48px 32px; background: rgba(197,160,80,0.06); border: 1px solid rgba(197,160,80,0.2); border-radius: 4px; max-width: 480px; }
-.success-icon { font-size: 2.5rem; margin-bottom: 20px; }
-.success-state h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 12px; }
-.success-state p { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 28px; }
-.btn-download { display: inline-flex; align-items: center; gap: 8px; background: #C5A050; color: #0A1628; padding: 16px 32px; border-radius: 2px; text-decoration: none; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.03em; transition: background 0.2s; margin-bottom: 16px; }
-.btn-download:hover { background: #D4B470; }
-.btn-secondary { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(197,160,80,0.4); color: #C5A050; padding: 14px 28px; border-radius: 2px; text-decoration: none; font-weight: 500; font-size: 0.88rem; letter-spacing: 0.03em; transition: all 0.2s; }
-.btn-secondary:hover { background: rgba(197,160,80,0.08); }
-.btn-group { display: flex; flex-direction: column; gap: 10px; align-items: center; }
-footer { padding: 24px 48px; border-top: 1px solid rgba(197,160,80,0.1); display: flex; align-items: center; justify-content: space-between; font-size: 0.78rem; color: rgba(255,255,255,0.25); }
-footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
-footer a:hover { color: #C5A050; }
-@media (max-width: 900px) { .page { grid-template-columns: 1fr; } .report-preview { padding: 60px 32px; border-right: none; border-bottom: 1px solid rgba(197,160,80,0.12); } .form-side { padding: 60px 32px; } nav { padding: 16px 24px; } footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; } }
-@media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } .report-stats { gap: 20px; } }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0A1628;--navy-mid:#112240;--gold:#C5A050;--gold-light:#D4B470}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#0A1628;color:#FFFFFF;min-height:100vh;overflow-x:hidden}
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;border-bottom:1px solid rgba(197,160,80,0.15)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:#FFFFFF;text-decoration:none;letter-spacing:0.02em}
+.nav-logo span{color:#C5A050}
+.nav-back{font-size:0.82rem;color:rgba(255,255,255,0.5);text-decoration:none;letter-spacing:0.05em;transition:color 0.2s;display:flex;align-items:center;gap:6px}
+.nav-back:hover{color:#C5A050}
+.page{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 65px)}
+.report-preview{background:#112240;padding:80px 64px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid rgba(197,160,80,0.12);position:relative;overflow:hidden}
+.report-preview::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 80%,rgba(197,160,80,0.04) 0%,transparent 60%)}
+.report-tag{display:inline-flex;align-items:center;gap:8px;font-size:0.72rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#C5A050;margin-bottom:32px}
+.report-tag::before{content:'';display:block;width:24px;height:1px;background:#C5A050}
+.report-mock{background:rgba(255,255,255,0.03);border:1px solid rgba(197,160,80,0.2);border-radius:4px;padding:40px;margin-bottom:40px;position:relative}
+.report-mock::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#C5A050,#D4B470);border-radius:4px 4px 0 0}
+.report-mock-logo{font-size:0.65rem;font-weight:700;letter-spacing:0.15em;color:rgba(255,255,255,0.3);margin-bottom:24px}
+.report-mock-logo span{color:#C5A050}
+.report-mock-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;line-height:1.3;margin-bottom:12px}
+.report-mock-sub{font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.6;font-style:italic;margin-bottom:28px}
+.report-mock-lines{display:flex;flex-direction:column;gap:8px}
+.mock-line{height:8px;background:rgba(255,255,255,0.06);border-radius:2px}
+.mock-line.w-full{width:100%}.mock-line.w-80{width:80%}.mock-line.w-65{width:65%}.mock-line.w-90{width:90%}
+.report-stats{display:flex;gap:32px;position:relative}
+.stat{display:flex;flex-direction:column;gap:4px}
+.stat-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:#C5A050;line-height:1}
+.stat-label{font-size:0.75rem;color:rgba(255,255,255,0.4);letter-spacing:0.04em}
+.report-contents{margin-top:40px;padding-top:40px;border-top:1px solid rgba(197,160,80,0.12)}
+.contents-title{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#C5A050;margin-bottom:16px}
+.contents-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.contents-list li{display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;color:rgba(255,255,255,0.65);line-height:1.5}
+.contents-list li::before{content:'→';color:#C5A050;font-size:0.75rem;flex-shrink:0;margin-top:2px}
+.form-side{padding:80px 64px;display:flex;flex-direction:column;justify-content:center}
+.form-eyebrow{font-size:0.72rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#C5A050;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.form-eyebrow::before{content:'';display:block;width:24px;height:1px;background:#C5A050}
+.form-side h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;line-height:1.15;letter-spacing:-0.01em;margin-bottom:16px}
+.form-side h1 em{font-style:normal;color:#C5A050}
+.form-side>p{font-size:1rem;font-weight:300;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:32px;max-width:480px}
+.gate-form{display:flex;flex-direction:column;gap:14px;max-width:480px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.gate-form input,.gate-form select{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#FFFFFF;font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.2s;appearance:none;-webkit-appearance:none}
+.gate-form input::placeholder{color:rgba(255,255,255,0.3)}
+.gate-form input:focus,.gate-form select:focus{border-color:rgba(197,160,80,0.5)}
+.gate-form select option{background:#112240;color:#FFFFFF}
+.nl-row{display:flex;align-items:flex-start;gap:10px;cursor:pointer}
+.nl-row input[type=checkbox]{width:16px;height:16px;margin-top:3px;accent-color:#C5A050;flex-shrink:0;cursor:pointer}
+.nl-row label{font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.5;cursor:pointer}
+.form-submit{background:#C5A050;color:#0A1628;border:none;padding:16px 32px;border-radius:2px;font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:700;cursor:pointer;letter-spacing:0.03em;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.form-submit:hover{background:#D4B470;transform:translateY(-1px)}
+.form-note{font-size:0.73rem;color:rgba(255,255,255,0.25);line-height:1.5;margin-top:2px}
+.direct-link{margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);text-align:center}
+.direct-link p{font-size:0.78rem;color:rgba(255,255,255,0.3);margin-bottom:8px}
+.direct-link a{font-size:0.82rem;color:#C5A050;text-decoration:none;font-weight:500;letter-spacing:0.03em}
+.direct-link a:hover{text-decoration:underline}
+.success-state{display:none;padding:40px 32px;background:rgba(197,160,80,0.06);border:1px solid rgba(197,160,80,0.2);border-radius:4px;max-width:480px;text-align:center}
+.success-icon{font-size:2.5rem;margin-bottom:16px}
+.success-state h2{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:10px}
+.success-state p{font-size:0.92rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:24px}
+.btn-download{display:inline-flex;align-items:center;gap:8px;background:#C5A050;color:#0A1628;padding:16px 32px;border-radius:2px;text-decoration:none;font-weight:700;font-size:0.95rem;letter-spacing:0.03em;transition:background 0.2s;width:100%;justify-content:center;margin-bottom:10px}
+.btn-download:hover{background:#D4B470}
+.btn-secondary{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid rgba(197,160,80,0.35);color:#C5A050;padding:13px 28px;border-radius:2px;text-decoration:none;font-weight:500;font-size:0.85rem;letter-spacing:0.03em;transition:all 0.2s;width:100%}
+.btn-secondary:hover{background:rgba(197,160,80,0.08)}
+footer{padding:24px 48px;border-top:1px solid rgba(197,160,80,0.1);display:flex;align-items:center;justify-content:space-between;font-size:0.78rem;color:rgba(255,255,255,0.25)}
+footer a{color:rgba(255,255,255,0.4);text-decoration:none}
+footer a:hover{color:#C5A050}
+@media(max-width:900px){.page{grid-template-columns:1fr}.report-preview{padding:60px 32px;border-right:none;border-bottom:1px solid rgba(197,160,80,0.12)}.form-side{padding:60px 32px}nav{padding:16px 24px}footer{padding:20px 24px;flex-direction:column;gap:8px;text-align:center}}
+@media(max-width:480px){.form-row{grid-template-columns:1fr}.report-stats{gap:20px}}
 </style>
 </head>
 <body>
@@ -81,13 +87,13 @@ footer a:hover { color: #C5A050; }
 
 <div class="page">
 
-  <!-- LEFT -->
+  <!-- LEFT — Report preview -->
   <div class="report-preview">
-    <div class="report-tag">Free Special Report · RESOLVE™</div>
+    <div class="report-tag">Free Special Report &middot; RESOLVE&#8482;</div>
     <div class="report-mock">
       <div class="report-mock-logo">CONTRACKS <span>GLOBAL</span></div>
       <div class="report-mock-title">Beyond Paperwork Governance</div>
-      <div class="report-mock-sub">Why most project controls look solid on paper and collapse on site — and the 5Cs Framework™ that holds when reality pushes back.</div>
+      <div class="report-mock-sub">Why most project controls look solid on paper and collapse on site &mdash; and the 5Cs Framework&#8482; that holds when reality pushes back.</div>
       <div class="report-mock-lines">
         <div class="mock-line w-full"></div>
         <div class="mock-line w-90"></div>
@@ -102,23 +108,23 @@ footer a:hover { color: #C5A050; }
       <div class="stat"><span class="stat-num">Free</span><span class="stat-label">No catch</span></div>
     </div>
     <div class="report-contents">
-      <div class="contents-title">What's inside</div>
+      <div class="contents-title">What&#8217;s inside</div>
       <ul class="contents-list">
-        <li>The Equatorial Guinea story — what one camp delivery revealed about governance and trust</li>
+        <li>The Equatorial Guinea story &mdash; what one camp delivery revealed about governance and trust</li>
         <li>The 3 mistakes that split your governance plan from your operating reality</li>
-        <li>The 5Cs Framework™ — every step, with tools and real-project proof cases</li>
-        <li>CONTAIN: how to lock scope before work starts — not after it drifts</li>
+        <li>The 5Cs Framework&#8482; &mdash; every step, with tools and real-project proof cases</li>
+        <li>CONTAIN: how to lock scope before work starts &mdash; not after it drifts</li>
         <li>CONFIRM: how to verify vendor dates that actually hold under pressure</li>
         <li>CONTROL: the weekly cadence that catches slippage in week 1, not month 3</li>
       </ul>
     </div>
   </div>
 
-  <!-- RIGHT -->
+  <!-- RIGHT — Form -->
   <div class="form-side">
-    <div class="form-eyebrow">Instant access</div>
+    <div class="form-eyebrow">Free download</div>
     <h1>Get the report.<br><em>No fluff. No pitch.</em></h1>
-    <p>Enter your details to access the PDF. One download. We'll also send you our fortnightly field intelligence — unsubscribe any time.</p>
+    <p>Leave your details to receive the report and our fortnightly field intelligence. Fill in the form below to access the PDF.</p>
 
     <form class="gate-form" name="report-download" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="reportForm">
       <input type="hidden" name="form-name" value="report-download">
@@ -138,18 +144,23 @@ footer a:hover { color: #C5A050; }
         <option value="founder">Founder / Business Owner</option>
         <option value="other">Other</option>
       </select>
-      <button type="submit" class="form-submit">Get the free report <span>&#8594;</span></button>
-      <p class="form-note">Free. No spam. Unsubscribe from the newsletter at any time.</p>
+      <label class="nl-row">
+        <input type="checkbox" name="newsletter" value="yes" checked>
+        <span>Subscribe to fortnightly field intelligence &mdash; no-surprises delivery, proof cases, method notes. Unsubscribe any time.</span>
+      </label>
+      <button type="submit" class="form-submit">Get the report &amp; subscribe &#8594;</button>
+      <p class="form-note">Free. No spam. Unsubscribe at any time.</p>
     </form>
 
+    <!-- Direct download — no form -->
+
+    <!-- Success state -->
     <div class="success-state" id="successState">
       <div class="success-icon">&#10003;</div>
-      <h2>Your report is ready.</h2>
-      <p>Click below to download the PDF. We'll also send a copy to your inbox shortly.</p>
-      <div class="btn-group">
-        <a href="/Beyond_Paperwork_Governance_Special_Report.pdf" download class="btn-download">&#8595; Download the report</a>
-        <a href="https://serguei-k0iv6ldi.scoreapp.com" target="_blank" class="btn-secondary">Take the free diagnostic &#8594;</a>
-      </div>
+      <h2>You&#8217;re on the list.</h2>
+      <p>Download the report below. You&#8217;ll also receive our fortnightly field intelligence &mdash; unsubscribe any time.</p>
+      <a href="/Beyond_Paperwork_Governance_Special_Report.pdf" download class="btn-download">&#8595; Download the report</a>
+      <a href="https://serguei-k0iv6ldi.scoreapp.com" target="_blank" class="btn-secondary">Take the free diagnostic &#8594;</a>
     </div>
   </div>
 
@@ -167,12 +178,14 @@ footer a:hover { color: #C5A050; }
     form.addEventListener('submit', function() {
       setTimeout(function() {
         form.style.display = 'none';
+        document.querySelector('.direct-link').style.display = 'none';
         success.style.display = 'block';
       }, 800);
     });
   }
   if (window.location.search.includes('success=true')) {
     if (form) form.style.display = 'none';
+    document.querySelector('.direct-link') && (document.querySelector('.direct-link').style.display = 'none');
     if (success) success.style.display = 'block';
   }
 </script>
