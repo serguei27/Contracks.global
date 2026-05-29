@@ -174,21 +174,31 @@ footer a:hover{color:#C5A050}
 <script>
   const form = document.getElementById('reportForm');
   const success = document.getElementById('successState');
+
   if (form) {
-    form.addEventListener('submit', function() {
-      setTimeout(function() {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Submit to Netlify via fetch — page stays, no redirect
+      const data = new FormData(form);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+      })
+      .then(function() {
         form.style.display = 'none';
-        document.querySelector('.direct-link').style.display = 'none';
         success.style.display = 'block';
-      }, 800);
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .catch(function() {
+        // Fallback: show success anyway and let user download
+        form.style.display = 'none';
+        success.style.display = 'block';
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
     });
   }
-  if (window.location.search.includes('success=true')) {
-    if (form) form.style.display = 'none';
-    document.querySelector('.direct-link') && (document.querySelector('.direct-link').style.display = 'none');
-    if (success) success.style.display = 'block';
-  }
 </script>
-
 </body>
 </html>
