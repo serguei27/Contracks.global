@@ -121,7 +121,7 @@ footer a:hover{color:#B07FD4}
   <div class="form-side">
     <div class="form-eyebrow">T&eacute;l&eacute;chargement gratuit</div>
     <h1>Obtenez le rapport.<br><em>Construisez pour la croissance.</em></h1>
-    <p>Laissez vos coordonn&eacute;es pour recevoir le rapport et notre intelligence terrain bimensuelle. Ou t&eacute;l&eacute;chargez directement ci-dessous &mdash; sans formulaire.</p>
+    <p>Laissez vos coordonn&eacute;es pour recevoir le rapport et notre intelligence terrain bimensuelle. Remplissez le formulaire ci-dessous pour acc&eacute;der au PDF.</p>
 
     <form class="gate-form" name="reshape-report-download-fr" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="reportForm">
       <input type="hidden" name="form-name" value="reshape-report-download-fr">
@@ -149,11 +149,6 @@ footer a:hover{color:#B07FD4}
       <p class="form-note">Gratuit. Pas de spam. D&eacute;sabonnement &agrave; tout moment.</p>
     </form>
 
-    <div class="direct-link">
-      <p>Pr&eacute;f&eacute;rez-vous t&eacute;l&eacute;charger sans vous inscrire&nbsp;?</p>
-      <a href="/Beyond_Operational_Fragility_Special_Report.pdf" download>&#8595; T&eacute;l&eacute;charger le PDF directement</a>
-    </div>
-
     <div class="success-state" id="successState">
       <div class="success-icon">&#10003;</div>
       <h2>Vous &ecirc;tes inscrit.</h2>
@@ -171,8 +166,8 @@ footer a:hover{color:#B07FD4}
 
 <script>
   const form=document.getElementById('reportForm'),success=document.getElementById('successState');
-  if(form){form.addEventListener('submit',function(){setTimeout(function(){form.style.display='none';document.querySelector('.direct-link').style.display='none';success.style.display='block';},800);});}
-  if(window.location.search.includes('success=true')){if(form)form.style.display='none';document.querySelector('.direct-link')&&(document.querySelector('.direct-link').style.display='none');if(success)success.style.display='block';}
+  if(form){form.addEventListener('submit',function(){setTimeout(function(){form.style.display='none';success.style.display='block';},800);});}
+  if(window.location.search.includes('success=true')){if(form)form.style.display='none';if(success)success.style.display='block';}
 </script>
 </body>
 </html>
