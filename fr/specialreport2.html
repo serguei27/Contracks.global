@@ -156,7 +156,7 @@ footer a:hover{color:#C5A050}
       <div class="success-icon">&#10003;</div>
       <h2>Vous &ecirc;tes inscrit.</h2>
       <p>T&eacute;l&eacute;chargez le rapport ci-dessous. Vous recevrez &eacute;galement notre intelligence terrain bimensuelle &mdash; d&eacute;sabonnement &agrave; tout moment.</p>
-      <a href="/Beyond_Paperwork_Governance_Special_Report.pdf" download class="btn-download">&#8595; T&eacute;l&eacute;charger le rapport</a>
+      <a href="/Special%20Report%202%20FR%20Resolve%20Special%20Report%20-%20Au-dela%20de%20la%20Gouvernance%20sur%20Papier.pdf" download="Au-dela_de_la_Gouvernance_sur_Papier.pdf" class="btn-download">&#8595; T&eacute;l&eacute;charger le rapport</a>
       <a href="https://serguei-k0iv6ldi.scoreapp.com" target="_blank" class="btn-secondary">Faire le diagnostic gratuit &#8594;</a>
     </div>
   </div>
@@ -171,21 +171,31 @@ footer a:hover{color:#C5A050}
 <script>
   const form = document.getElementById('reportForm');
   const success = document.getElementById('successState');
+
   if (form) {
-    form.addEventListener('submit', function() {
-      setTimeout(function() {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Submit to Netlify via fetch — page stays, no redirect
+      const data = new FormData(form);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+      })
+      .then(function() {
         form.style.display = 'none';
-        document.querySelector('.direct-link').style.display = 'none';
         success.style.display = 'block';
-      }, 800);
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .catch(function() {
+        // Fallback: show success anyway and let user download
+        form.style.display = 'none';
+        success.style.display = 'block';
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
     });
   }
-  if (window.location.search.includes('success=true')) {
-    if (form) form.style.display = 'none';
-    document.querySelector('.direct-link') && (document.querySelector('.direct-link').style.display = 'none');
-    if (success) success.style.display = 'block';
-  }
 </script>
-
 </body>
 </html>
