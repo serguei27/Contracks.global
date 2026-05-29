@@ -121,7 +121,7 @@ footer a:hover{color:#B07FD4}
   <div class="form-side">
     <div class="form-eyebrow">Free download</div>
     <h1>Get the report.<br><em>Build for scale.</em></h1>
-    <p>Leave your details to receive the report and our fortnightly field intelligence. Or download directly below &mdash; no form required.</p>
+    <p>Leave your details to receive the report and our fortnightly field intelligence. Fill in the form below to access the PDF.</p>
 
     <form class="gate-form" name="reshape-report-download" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="reportForm">
       <input type="hidden" name="form-name" value="reshape-report-download">
@@ -149,11 +149,6 @@ footer a:hover{color:#B07FD4}
       <p class="form-note">Free. No spam. Unsubscribe at any time.</p>
     </form>
 
-    <div class="direct-link">
-      <p>Prefer to download without registering?</p>
-      <a href="/Beyond_Operational_Fragility_Special_Report.pdf" download>&#8595; Download the PDF directly</a>
-    </div>
-
     <div class="success-state" id="successState">
       <div class="success-icon">&#10003;</div>
       <h2>You&#8217;re on the list.</h2>
@@ -171,9 +166,8 @@ footer a:hover{color:#B07FD4}
 
 <script>
   const form=document.getElementById('reportForm'),success=document.getElementById('successState');
-  if(form){form.addEventListener('submit',function(){setTimeout(function(){form.style.display='none';document.querySelector('.direct-link').style.display='none';success.style.display='block';},800);});}
-  if(window.location.search.includes('success=true')){if(form)form.style.display='none';document.querySelector('.direct-link')&&(document.querySelector('.direct-link').style.display='none');if(success)success.style.display='block';}
+  if(form){form.addEventListener('submit',function(){setTimeout(function(){form.style.display='none';success.style.display='block';},800);});}
+  if(window.location.search.includes('success=true')){if(form)form.style.display='none';if(success)success.style.display='block';}
 </script>
 </body>
 </html>
-
