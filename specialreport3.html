@@ -153,7 +153,7 @@ footer a:hover{color:#B07FD4}
       <div class="success-icon">&#10003;</div>
       <h2>You&#8217;re on the list.</h2>
       <p>Download the report below. You&#8217;ll also receive our fortnightly field intelligence &mdash; unsubscribe any time.</p>
-      <a href="/Beyond_Operational_Fragility_Special_Report.pdf" download class="btn-download">&#8595; Download the report</a>
+      <a href="/Special%20Report%203%20EN%20Reshape%20Special%20Report%20-%20Beyond%20Operational%20Fragility.pdf" download="Beyond_Operational_Fragility_EN.pdf" class="btn-download">&#8595; Download the report</a>
       <a href="https://serguei-k0iv6ldi.scoreapp.com" target="_blank" class="btn-secondary">Take the free diagnostic &#8594;</a>
     </div>
   </div>
@@ -165,9 +165,33 @@ footer a:hover{color:#B07FD4}
 </footer>
 
 <script>
-  const form=document.getElementById('reportForm'),success=document.getElementById('successState');
-  if(form){form.addEventListener('submit',function(){setTimeout(function(){form.style.display='none';success.style.display='block';},800);});}
-  if(window.location.search.includes('success=true')){if(form)form.style.display='none';if(success)success.style.display='block';}
+  const form = document.getElementById('reportForm');
+  const success = document.getElementById('successState');
+
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Submit to Netlify via fetch — page stays, no redirect
+      const data = new FormData(form);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+      })
+      .then(function() {
+        form.style.display = 'none';
+        success.style.display = 'block';
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .catch(function() {
+        // Fallback: show success anyway and let user download
+        form.style.display = 'none';
+        success.style.display = 'block';
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+  }
 </script>
 </body>
 </html>
