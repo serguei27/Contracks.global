@@ -659,7 +659,7 @@ function goEmail(){q21=document.getElementById('q21t').value;document.getElement
 function subEmail(e){
   e.preventDefault();uname=document.getElementById('ename').value;uemail=document.getElementById('eemail').value;
   const co=document.getElementById('eco').value,s=SC[si],o=ov(),bd=band(o);
-  const diag=ans.map((a,i)=>'Q'+(i+1)+' '+(a===1?'Y':a===0?'N':'-')).join(', ');
+  const diag=ans.map((a,i)=>'Q'+(i+1)+' '+(a===1?'Y':a===2?'N':'-')).join(', ');
   const answers='Diagnostic (Y/N): '+diag+' || Context — Q17: '+(q17!==null?s.q17[q17]:'N/A')+' | Q18: '+q18.map(i=>s.q18[i]).join(', ')+' | Q19: '+(q19!==null?s.q19[q19]:'N/A')+' | Q20: '+(q20||'N/A')+' | Q21: '+(q21||'N/A')+' || Categories: '+s.cats.map((c,i)=>c.name+' '+catS(i)+'%').join(', ');
   const params=new URLSearchParams();
   params.append('form-name','scorecard');
@@ -899,7 +899,7 @@ function setImp(yes){
   const s=SC[si],w=wi(),wn=s.cats[w].name;
   if(yes){
     if(q20==='diy'){
-      area.innerHTML=`<div class="ctabox"><h3>Here's where to start.</h3><p>Your weakest area is <strong>${wn}</strong>. There are specific frameworks that address exactly this. Serguei can point you to the right resources — no call needed.</p><a href="mailto:hello@contracks.global?subject=Resources%20—%20${s.name}" class="bbook">Get the resources → hello@contracks.global</a></div>`;
+      area.innerHTML=`<div class="ctabox"><h3>Here's where to start.</h3><p>Your weakest area is <strong>${wn}</strong>. There are specific frameworks that address exactly this — Serguei can point you to the right resources, no call needed.</p><button class="bbook" onclick="resOK(this)">Send me the resources →</button><p id="resok" style="display:none;margin-top:14px;font-size:.92rem;color:#C5A050;font-weight:600;">✓ On its way — we'll email your resources to ${uemail||'you'} shortly.</p></div>`;
     }else{
       area.innerHTML=`<div class="ctabox"><h3>A 30-minute conversation is all it takes.</h3><p>Given your score in <strong>${wn}</strong>, one focused conversation with Serguei maps the 2–3 moves that matter most. No pitch — just a clear-eyed look at what's actually happening.</p><button class="bbook" onclick="Calendly.initPopupWidget({url:'https://calendly.com/contracks_global'});return false;">Book a discovery call →</button></div>`;
     }
@@ -907,6 +907,7 @@ function setImp(yes){
     area.innerHTML=`<div class="nurbox"><p>No problem. When the time is right — <a href="mailto:hello@contracks.global">hello@contracks.global</a></p><p style="margin-top:8px;font-size:.82rem;color:#aaa;">Follow Serguei on <a href="https://www.linkedin.com/in/serguei-poppeleer" target="_blank">LinkedIn</a> for field notes on commercial management.</p></div>`;
   }
 }
+function resOK(btn){btn.style.display='none';var k=document.getElementById('resok');if(k)k.style.display='block';}
 
 function restart(){ss('landing');}
 
