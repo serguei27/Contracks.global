@@ -659,7 +659,8 @@ function goEmail(){q21=document.getElementById('q21t').value;document.getElement
 function subEmail(e){
   e.preventDefault();uname=document.getElementById('ename').value;uemail=document.getElementById('eemail').value;
   const co=document.getElementById('eco').value,s=SC[si],o=ov(),bd=band(o);
-  const answers='Q17: '+(q17!==null?s.q17[q17]:'N/A')+' | Q18: '+q18.map(i=>s.q18[i]).join(', ')+' | Q19: '+(q19!==null?s.q19[q19]:'N/A')+' | Q20: '+(q20||'N/A')+' | Q21: '+(q21||'N/A')+' || Categories: '+s.cats.map((c,i)=>c.name+' '+catS(i)+'%').join(', ');
+  const diag=ans.map((a,i)=>'Q'+(i+1)+' '+(a===1?'Y':a===0?'N':'-')).join(', ');
+  const answers='Diagnostic (Y/N): '+diag+' || Context — Q17: '+(q17!==null?s.q17[q17]:'N/A')+' | Q18: '+q18.map(i=>s.q18[i]).join(', ')+' | Q19: '+(q19!==null?s.q19[q19]:'N/A')+' | Q20: '+(q20||'N/A')+' | Q21: '+(q21||'N/A')+' || Categories: '+s.cats.map((c,i)=>c.name+' '+catS(i)+'%').join(', ');
   const params=new URLSearchParams();
   params.append('form-name','scorecard');
   params.append('name',uname);
@@ -810,10 +811,10 @@ function generatePDF(){
   doc.text(bl,M,y);y+=bl.length*4.8+10;
 
   // -- NEXT STEP BOX ---------------------------------------------------------
-  const boxY=Math.min(y,250);
-  doc.setFillColor(...NAVY);doc.roundedRect(M,boxY,UW,28,2,2,'F');
+  const boxY=Math.min(y,240);
+  doc.setFillColor(...NAVY);doc.roundedRect(M,boxY,UW,32,2,2,'F');
   doc.setFillColor(...GOLD);
-  doc.roundedRect(M,boxY,3.5,28,2,2,'F');doc.rect(M+2,boxY,1.5,28,'F');
+  doc.roundedRect(M,boxY,3.5,32,2,2,'F');doc.rect(M+2,boxY,1.5,32,'F');
   doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(...GOLD);
   doc.text('Ready to close the weakest gap?',M+8,boxY+9);
   doc.setFont('helvetica','bold');doc.setFontSize(9.5);doc.setTextColor(...WHITE);
