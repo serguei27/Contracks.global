@@ -77,6 +77,7 @@ border-bottom: 1px solid rgba(197, 160, 80, 0.2);
 h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 4.4rem); font-weight: 900; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 28px; }
 h1 em { font-style: normal; color: #C5A050; }
 .hero-sub { font-size: 1.15rem; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.72); max-width: 580px; margin-bottom: 48px; }
+.hero-punch-mobile { display: none; }
 .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 64px; }
 .btn-primary { background: #C5A050; color: #0A1628; padding: 16px 36px; border-radius: 2px; font-weight: 600; font-size: 0.95rem; letter-spacing: 0.03em; text-decoration: none; display: inline-block; transition: all 0.2s; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; }
 .btn-primary:hover { background: #D4B470; transform: translateY(-1px); }
@@ -260,6 +261,8 @@ footer { background: #0A1628; border-top: 1px solid rgba(197,160,80,0.12); paddi
 
 @media (max-width: 1024px) {
   .hero-right { display: none; }
+  .hero-punch-mobile { display: block; font-family: 'Playfair Display', serif; font-size: 1.15rem; line-height: 1.5; color: #FFFFFF; margin: -28px 0 40px; }
+  .hero-punch-mobile span { color: #C5A050; }
   nav { padding: 16px 24px; }
   .nav-links { display: flex; gap: 16px; }
   .nav-links li:not(:last-child):not(:nth-last-child(2)) { display: none; }
@@ -343,6 +346,7 @@ footer { background: #0A1628; border-top: 1px solid rgba(197,160,80,0.12); paddi
     <div class="hero-eyebrow">5Cs Framework&#8482; &#183; Governance Designed for Distance</div>
     <h1>Projects don&#8217;t fail.<br><em>The systems around them do.</em></h1>
     <p class="hero-sub">Frontier markets just expose it faster. We design, fix and build the delivery and commercial systems behind cross-border capital projects &#8212; from &#8364;10M ventures to &#8364;2B programmes. Europe &#183; Africa &#183; Gulf.</p>
+    <p class="hero-punch-mobile">Controlled <span>on paper.</span> Run on <span>WhatsApp.</span> <span style="color:rgba(255,255,255,0.55);">We close that gap.</span></p>
     <div class="hero-actions">
       <a href="#" onclick="openModal();return false;" class="btn-primary">Take the diagnostic &#8594;</a>
       <button class="btn-ghost" onclick="Calendly.initPopupWidget({url:'https://calendly.com/contracks_global'});return false;">Book a discovery call &#8594;</button>
@@ -409,7 +413,7 @@ footer { background: #0A1628; border-top: 1px solid rgba(197,160,80,0.12); paddi
     <div class="speeds-header">
       <div class="section-eyebrow">What we do</div>
       <h2>The Four Speeds.</h2>
-      <p class="section-intro">Every client is at one of four stages. The problem is different at each stage &#8212; and so is the product. Find where you are.</p>
+      <p class="section-intro">Four entry points. One control system. Every client enters at one of four stages &#8212; the problem is different at each, and so is the product. Find where you are.</p>
     </div>
     <div class="speeds-grid">
       <a href="/start.html" class="speed-card s1">
@@ -493,7 +497,7 @@ footer { background: #0A1628; border-top: 1px solid rgba(197,160,80,0.12); paddi
         <div class="sc-icon">S2</div>
         <div class="sc-text">
           <div class="sc-title">Is your programme a Control Tower or a Paperwork PMO?</div>
-          <div class="sc-sub">Speed 2 &#8212; Delivery Control Readiness Diagnostic &#183; 15 questions &#183; Instant result</div>
+          <div class="sc-sub">Speed 2 &#8212; Delivery Control Readiness Diagnostic &#183; 21 questions &#183; Instant result</div>
         </div>
       </a>
       <a href="/scorecard.html?speed=3" class="sc-card purple">
@@ -512,7 +516,7 @@ footer { background: #0A1628; border-top: 1px solid rgba(197,160,80,0.12); paddi
       </a>
     </div>
     <div class="scorecard-cta-box">
-      <div class="score-badge">15 questions &#183; 5 minutes &#183; Instant result</div>
+      <div class="score-badge">21 questions &#183; 5 minutes &#183; Instant result</div>
       <h2>Find out where your delivery system is going to break.</h2>
       <p>Score your programme across all five control pillars &#8212; scope, plan, decisions, vendors, cadence. No consultant. No meeting. An honest picture of where control holds and where it doesn&#8217;t.</p>
       <a href="#" onclick="openModal();return false;" class="btn-primary">Take the Diagnostic &#8594;</a>
@@ -701,12 +705,6 @@ footer { background: #0A1628; border-top: 1px solid rgba(197,160,80,0.12); paddi
         <div class="track-outcome">Delivered at 1/10th standard cost. 6 months vs 12. Community-led. Zero claims.</div>
       </div>
 
-      <div class="track-card" style="width:calc(25% - 1.5px);min-width:0;flex-shrink:0;scroll-snap-align:start;">
-        <div class="track-sector">Energy &#183; Belgium / France</div>
-        <div class="track-client">Major Gas Pipeline &#8212; Cross-Border, Denmark&#8211;Poland</div>
-        <div class="track-outcome">Commercial manager on &#8364;850M+ Denmark&#8211;Poland gas pipeline. Claims strategy. Full delivery.</div>
-      </div>
-
     </div>
     <p style="text-align:center;margin-top:12px;font-size:0.72rem;color:rgba(255,255,255,0.2);font-style:italic;font-family:'DM Sans',sans-serif;">&#8592; swipe or use arrows &#8594;</p>
 
@@ -735,66 +733,16 @@ footer { background: #0A1628; border-top: 1px solid rgba(197,160,80,0.12); paddi
     <h2>From the field.</h2>
     <p class="section-intro">Real mandates. Real outcomes. In their own words.</p>
 
-    <div style="display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-bottom:16px;">
-      <div id="tm-dots" style="display:flex;gap:6px;"></div>
-      <button onclick="tmScroll(-1)" style="width:36px;height:36px;background:rgba(197,160,80,0.08);border:1px solid rgba(197,160,80,0.3);color:#C5A050;border-radius:2px;cursor:pointer;font-size:1rem;line-height:1;">&#8592;</button>
-      <button onclick="tmScroll(1)" style="width:36px;height:36px;background:#C5A050;border:1px solid #C5A050;color:#0A1628;border-radius:2px;cursor:pointer;font-size:1rem;line-height:1;">&#8594;</button>
-    </div>
-
-    <div id="tm-carousel" style="display:flex;gap:2px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;background:rgba(197,160,80,0.1);border-radius:4px;">
-
-      <div style="width:calc(25% - 1.5px);min-width:0;flex-shrink:0;scroll-snap-align:start;background:#112240;padding:24px 24px;display:flex;flex-direction:column;">
-        <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#C5A050;margin-bottom:16px;">Procurement &nbsp;&#183;&nbsp; West Africa</div>
-        <div style="font-family:'Playfair Display',serif;font-size:0.95rem;font-style:italic;color:rgba(255,255,255,0.85);line-height:1.65;flex:1;margin-bottom:16px;">&ldquo;Contracks brought structure and clarity to a procurement process that had become difficult to manage across suppliers and stakeholders. We improved alignment, reduced unnecessary costs, and kept delivery moving without constant firefighting.&rdquo;</div>
-        <div style="border-top:1px solid rgba(197,160,80,0.15);padding-top:16px;">
-          <div style="font-size:0.88rem;font-weight:600;color:#FFFFFF;">Richard I.</div>
+    <div style="max-width:760px;margin:0 auto;">
+      <div style="background:#112240;border:1px solid rgba(197,160,80,0.15);border-radius:8px;padding:40px 44px;text-align:center;">
+        <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#C5A050;margin-bottom:18px;">Procurement &nbsp;&#183;&nbsp; West Africa</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.15rem;font-style:italic;color:rgba(255,255,255,0.9);line-height:1.7;margin-bottom:22px;">&ldquo;Contracks brought structure and clarity to a procurement process that had become difficult to manage across suppliers and stakeholders. We improved alignment, reduced unnecessary costs, and kept delivery moving without constant firefighting.&rdquo;</div>
+        <div style="border-top:1px solid rgba(197,160,80,0.15);padding-top:18px;display:inline-block;">
+          <div style="font-size:0.9rem;font-weight:600;color:#FFFFFF;">Richard I.</div>
           <div style="font-size:0.78rem;color:#C5A050;letter-spacing:0.04em;margin-top:2px;">CEO &nbsp;&#183;&nbsp; Water Project &nbsp;&#183;&nbsp; West Africa</div>
         </div>
       </div>
-
-      <div style="width:calc(25% - 1.5px);min-width:0;flex-shrink:0;scroll-snap-align:start;background:#112240;padding:24px 24px;display:flex;flex-direction:column;opacity:0.45;">
-        <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#C5A050;margin-bottom:16px;">More testimonials coming</div>
-        <div style="font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;color:rgba(255,255,255,0.4);line-height:1.7;flex:1;margin-bottom:24px;">&ldquo;&#8201;&mdash;&#8201;&rdquo;</div>
-        <div style="border-top:1px solid rgba(197,160,80,0.08);padding-top:16px;">
-          <div style="font-size:0.78rem;color:rgba(255,255,255,0.25);">&#8212;</div>
-        </div>
-      </div>
-
-      <div style="width:calc(25% - 1.5px);min-width:0;flex-shrink:0;scroll-snap-align:start;background:#112240;padding:24px 24px;display:flex;flex-direction:column;opacity:0.45;">
-        <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#C5A050;margin-bottom:16px;">More testimonials coming</div>
-        <div style="font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;color:rgba(255,255,255,0.4);line-height:1.7;flex:1;margin-bottom:24px;">&ldquo;&#8201;&mdash;&#8201;&rdquo;</div>
-        <div style="border-top:1px solid rgba(197,160,80,0.08);padding-top:16px;">
-          <div style="font-size:0.78rem;color:rgba(255,255,255,0.25);">&#8212;</div>
-        </div>
-      </div>
-
-      <div style="width:calc(25% - 1.5px);min-width:0;flex-shrink:0;scroll-snap-align:start;background:#112240;padding:24px 24px;display:flex;flex-direction:column;opacity:0.45;">
-        <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#C5A050;margin-bottom:16px;">More testimonials coming</div>
-        <div style="font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;color:rgba(255,255,255,0.4);line-height:1.7;flex:1;margin-bottom:24px;">&ldquo;&#8201;&mdash;&#8201;&rdquo;</div>
-        <div style="border-top:1px solid rgba(197,160,80,0.08);padding-top:16px;">
-          <div style="font-size:0.78rem;color:rgba(255,255,255,0.25);">&#8212;</div>
-        </div>
-      </div>
-
     </div>
-    <p style="text-align:center;margin-top:12px;font-size:0.72rem;color:rgba(255,255,255,0.2);font-style:italic;">Swipe or use arrows to browse &#8594;</p>
-
-    <style>#tm-carousel::-webkit-scrollbar{display:none}@media(max-width:1024px){#tm-carousel>div{width:calc(50% - 1px)!important}}@media(max-width:640px){#tm-carousel>div{width:84%!important}}</style>
-    <script>
-    (function(){
-      var c=document.getElementById('tm-carousel');
-      var dc=document.getElementById('tm-dots');
-      var cards=c.querySelectorAll(':scope>div');
-      var n=cards.length;
-      function vis(){return window.innerWidth<=640?1:window.innerWidth<=1024?2:4;}
-      function mkDots(){dc.innerHTML='';var d=Math.ceil(n/vis());for(var i=0;i<d;i++){var b=document.createElement('button');b.style.cssText='width:6px;height:6px;border-radius:50%;border:none;cursor:pointer;background:rgba(197,160,80,'+(i===0?'1':'0.3')+');padding:0;transition:all 0.2s;';b.onclick=(function(x){return function(){c.scrollLeft=x*(c.scrollWidth/d);};})(i);dc.appendChild(b);}}
-      function upd(){var d=Math.ceil(n/vis());var idx=Math.round(c.scrollLeft/(c.scrollWidth/d));dc.querySelectorAll('button').forEach(function(b,i){b.style.background=i===idx?'rgba(197,160,80,1)':'rgba(197,160,80,0.3)';b.style.width=i===idx?'16px':'6px';b.style.borderRadius=i===idx?'3px':'50%';});}
-      window.tmScroll=function(dir){var w=c.scrollWidth/n;c.scrollLeft+=dir*w*vis();setTimeout(upd,350);};
-      c.addEventListener('scroll',function(){clearTimeout(c._t);c._t=setTimeout(upd,100);});
-      window.addEventListener('resize',function(){mkDots();upd();});
-      mkDots();
-    })();
-    </script>
   </div>
 </section>
 
@@ -875,7 +823,7 @@ footer { background: #0A1628; border-top: 1px solid rgba(197,160,80,0.12); paddi
         <div class="modal-center"></div>
       </div>
       <div class="diag-modal-content">
-        <div class="diag-modal-eyebrow">5 pillars &#183; 15 questions &#183; Instant result</div>
+        <div class="diag-modal-eyebrow">5 pillars &#183; 21 questions &#183; Instant result</div>
         <h2>Is your programme a Control Tower<br>or a Paperwork PMO?</h2>
         <p>Score your delivery system across all five control pillars &#8212; scope, plan, decisions, vendors, cadence. Takes 5 minutes. No consultant. No meeting.</p>
         <div class="diag-modal-checklist">
