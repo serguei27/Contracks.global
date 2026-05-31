@@ -39,13 +39,13 @@ a:hover { opacity: 0.78; }
 
 /* HERO */
 .hero { background: #0A1A33; color: #FFFFFF; padding: 5rem 2rem 5.5rem; border-top: 3px solid #5C8B6F; position: relative; overflow: hidden; }
-.hero::after { content: “”; position: absolute; right: -120px; top: 50%; transform: translateY(-50%); width: 360px; height: 360px; background: radial-gradient(circle, rgba(92,139,111,0.18), transparent 65%); pointer-events: none; }
+.hero::after { content: ""; position: absolute; right: -120px; top: 50%; transform: translateY(-50%); width: 360px; height: 360px; background: radial-gradient(circle, rgba(92,139,111,0.18), transparent 65%); pointer-events: none; }
 .hero-inner { position: relative; z-index: 2; max-width: 880px; }
 .speed-label { display: inline-block; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.22em; color: #5C8B6F; margin-bottom: 1rem; text-transform: uppercase; }
 .hero h1 { font-size: clamp(2.5rem, 5.5vw, 4.2rem); color: #FFFFFF; margin-bottom: 1.5rem; }
 .hero .sub { font-size: 1.2rem; color: rgba(255,255,255,0.82); margin-bottom: 2.5rem; max-width: 720px; line-height: 1.55; }
 .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
-.btn { display: inline-block; padding: 0.95rem 1.8rem; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.05em; border-radius: 2px; transition: transform 0.15s, opacity 0.15s; cursor: pointer; border: none; font-family: ‘Inter’, sans-serif; }
+.btn { display: inline-block; padding: 0.95rem 1.8rem; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.05em; border-radius: 2px; transition: transform 0.15s, opacity 0.15s; cursor: pointer; border: none; font-family: 'Inter', sans-serif; }
 .btn-primary { background: #C9A959; color: #0A1A33 !important; }
 .btn-primary:hover { transform: translateY(-1px); opacity: 1; }
 .btn-ghost { background: transparent; color: #FFFFFF !important; border: 1px solid rgba(255,255,255,0.35); }
@@ -65,22 +65,22 @@ section { padding: 5rem 2rem; }
 /* WHO CARDS */
 .who-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
 .who-card { background: #FFFFFF; padding: 2rem 1.75rem; border-top: 3px solid #5C8B6F; border-radius: 2px; box-shadow: 0 1px 3px rgba(10,26,51,0.04); }
-.who-card .num { font-family: ‘Cormorant Garamond’, serif; font-size: 1.4rem; color: #5C8B6F; font-weight: 600; margin-bottom: 0.5rem; display: block; }
+.who-card .num { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #5C8B6F; font-weight: 600; margin-bottom: 0.5rem; display: block; }
 .who-card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: #0A1A33; }
 .who-card p { color: #6E7783; font-size: 0.95rem; }
 
 /* DELIVERABLES */
 .deliverables { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem 2.5rem; }
 .deliverable { padding: 1.25rem 0 1.25rem 1.5rem; border-left: 2px solid #C9A959; }
-.deliverable h4 { font-size: 1.15rem; margin-bottom: 0.35rem; color: #0A1A33; font-family: ‘Cormorant Garamond’, serif; font-weight: 600; }
+.deliverable h4 { font-size: 1.15rem; margin-bottom: 0.35rem; color: #0A1A33; font-family: 'Cormorant Garamond', serif; font-weight: 600; }
 .deliverable p { color: #6E7783; font-size: 0.93rem; line-height: 1.6; }
 
 /* CASE STUDY — hardcoded dark navy, no variables */
 .case-study { background: #14253F; border: 1px solid rgba(201,169,89,0.25); padding: 3rem 2.5rem; border-radius: 3px; max-width: 920px; }
 .case-study .case-tag { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; color: #C9A959; text-transform: uppercase; margin-bottom: 1rem; }
-.case-study h3 { font-size: 2rem; margin-bottom: 1.5rem; color: #FFFFFF; font-family: ‘Cormorant Garamond’, serif; font-weight: 600; }
+.case-study h3 { font-size: 2rem; margin-bottom: 1.5rem; color: #FFFFFF; font-family: 'Cormorant Garamond', serif; font-weight: 600; }
 .case-study .case-block { margin-bottom: 1.5rem; }
-.case-study .case-block strong { display: block; font-family: ‘Inter’, sans-serif; font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: #C9A959; margin-bottom: 0.5rem; font-weight: 600; }
+.case-study .case-block strong { display: block; font-family: 'Inter', sans-serif; font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: #C9A959; margin-bottom: 0.5rem; font-weight: 600; }
 .case-study .case-block p { color: rgba(255,255,255,0.85); font-size: 1rem; line-height: 1.7; }
 
 /* FORM */
@@ -89,7 +89,7 @@ section { padding: 5rem 2rem; }
 .form-wrap > p { color: #6E7783; margin-bottom: 2rem; }
 .field { margin-bottom: 1.25rem; }
 .field label { display: block; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #0A1A33; margin-bottom: 0.5rem; }
-.field input, .field textarea { width: 100%; padding: 0.85rem 1rem; font-family: ‘Inter’, sans-serif; font-size: 0.95rem; color: #0A1A33; background: #F5F1E7; border: 1px solid transparent; border-radius: 2px; transition: border-color 0.2s, background 0.2s; }
+.field input, .field textarea { width: 100%; padding: 0.85rem 1rem; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #0A1A33; background: #F5F1E7; border: 1px solid transparent; border-radius: 2px; transition: border-color 0.2s, background 0.2s; }
 .field input:focus, .field textarea:focus { outline: none; border-color: #C9A959; background: #FFFFFF; }
 .field textarea { resize: vertical; min-height: 110px; }
 .form-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; flex-wrap: wrap; gap: 1rem; }
@@ -113,7 +113,7 @@ section { padding: 5rem 2rem; }
 /* FOOTER */
 footer { background: #0A1A33; color: rgba(255,255,255,0.6); padding: 3rem 2rem 2rem; text-align: center; font-size: 0.85rem; border-top: 1px solid rgba(201,169,89,0.15); }
 footer .brand-line { color: #FFFFFF; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
-footer .gold { color: #C9A959; font-style: italic; font-family: ‘Cormorant Garamond’, serif; font-size: 1rem; margin-bottom: 1.5rem; display: block; }
+footer .gold { color: #C9A959; font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1rem; margin-bottom: 1.5rem; display: block; }
 footer a { color: rgba(255,255,255,0.7); margin: 0 0.5rem; }
 </style>
 
