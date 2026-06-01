@@ -21,8 +21,6 @@ em{color:var(--gold);font-style:italic;}
 .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff!important;}
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold)!important;}
 
-.preview-flag{background:#0A1A33;color:#5FB3C4;text-align:center;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:8px;font-weight:600;}
-
 .site-header{background:var(--navy);padding:1.1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
 .brand{color:#fff;font-weight:700;font-size:.95rem;letter-spacing:.1em;text-decoration:none;}
 .brand .dot{color:var(--gold);}
@@ -42,6 +40,15 @@ section{padding:4rem 2rem;}
 .section-head{margin-bottom:2rem;}
 .section-head h2{font-size:clamp(1.7rem,3vw,2.2rem);}
 .section-cream{background:var(--cream);}
+.ladder-strip{background:var(--navy-soft);padding:1.7rem 2rem 1.5rem;}
+.maturity-line{display:grid;grid-template-columns:repeat(5,1fr);gap:.7rem;max-width:900px;margin:0 auto;}
+.mstep{position:relative;border:1px solid rgba(255,255,255,.16);border-radius:3px;padding:.8rem .5rem;text-align:center;color:rgba(255,255,255,.45);}
+.mstep span{display:block;font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;line-height:1.1;}
+.mstep b{font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;font-weight:600;}
+.mstep.active{border-color:var(--gold);color:#fff;background:rgba(201,169,89,.08);}
+.mstep.current{background:rgba(201,169,89,.18);box-shadow:inset 0 0 0 1px var(--gold);}
+.mstep.current::after{content:'You are here';position:absolute;top:-.65rem;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:.55rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.12rem .45rem;border-radius:2px;white-space:nowrap;}
+@media(max-width:650px){.maturity-line{grid-template-columns:repeat(5,1fr);gap:.35rem;}.mstep{padding:.6rem .2rem;}.mstep b{font-size:.55rem;letter-spacing:.02em;}.mstep.current::after{display:none;}}
 .section-navy{background:var(--navy);color:#fff;}
 .section-navy h2{color:#fff;}
 
@@ -87,13 +94,12 @@ section{padding:4rem 2rem;}
 .rung .io{font-size:.85rem;color:rgba(255,255,255,.7);margin-top:.5rem;}
 .rung .io b{color:var(--gold);font-weight:600;}
 
-footer{background:var(--navy);color:rgba(255,255,255,.6);padding:2.2rem 2rem;text-align:center;font-size:.85rem;border-top:1px solid rgba(201,169,89,.15);}
-footer .gold{color:var(--gold);font-style:italic;font-family:'Cormorant Garamond',serif;}
-footer .fmeta{margin-top:.9rem;font-size:.84rem;}
-footer .fmeta a{color:rgba(255,255,255,.72);text-decoration:none;}
-footer .fmeta .sep{color:rgba(255,255,255,.3);margin:0 .6rem;}
-footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
-.video-sec{text-align:center;}
+footer{background:var(--navy);color:rgba(255,255,255,.6);padding:3rem 2rem 2rem;text-align:center;font-size:.85rem;border-top:1px solid rgba(201,169,89,.15);}
+footer .brand-line{color:var(--white);font-weight:700;letter-spacing:.1em;margin-bottom:.5rem;}
+footer .gold{color:var(--gold);font-style:italic;font-family:'Cormorant Garamond',serif;font-size:1rem;margin-bottom:1.5rem;display:block;}
+footer a{color:rgba(255,255,255,.7);margin:0 .5rem;text-decoration:none;transition:opacity .2s;}
+footer a:hover{color:var(--gold);}
+.video-sec{text-align:center;background:#fff;}
 .video-wrap{max-width:760px;margin:0 auto;}
 .video-sec .vhead{margin:0 auto 1.5rem;max-width:620px;}
 .video-sec .vhead h2{margin-bottom:.6rem;}
@@ -104,8 +110,6 @@ footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
 </style>
 </head>
 <body>
-
-<div class="preview-flag" id="flag">Preview · CONTROL results page · sample render (live version computes from the assessment)</div>
 
 <header class="site-header">
   <a href="/" class="brand">CONTRACKS<span class="dot">.</span>GLOBAL</a>
@@ -119,6 +123,11 @@ footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
   <div class="level-badge" id="levelBadge">Level 2 · Managed</div>
   <h1 id="heroH1">Governance is in place. Real <em>control</em> isn't — yet.</h1>
   <p class="meaning" id="heroMeaning">At this level the framework exists, but the live status lives off-system. Right now, the deck and the site disagree.</p>
+</section>
+
+<!-- MATURITY LADDER -->
+<section class="ladder-strip">
+  <div class="maturity-line" id="ladder"></div>
 </section>
 
 <!-- 5Cs BREAKDOWN -->
@@ -147,7 +156,7 @@ footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
 </section>
 
 <!-- SCORE-BAND VIDEO -->
-<section class="section-cream video-sec">
+<section class="video-sec">
   <div class="video-wrap">
     <div class="vhead">
       <span class="label">Watch</span>
@@ -175,57 +184,28 @@ footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
       <input type="hidden" name="sector" id="hSector" />
       <input type="hidden" name="role" id="hRole" />
       <input type="hidden" name="concern" id="hConcern" />
+      <input type="hidden" name="cap" id="hCap" />
+      <input type="hidden" name="stage" id="hStage" />
       <div class="field"><input type="text" name="name" id="fName" placeholder="First name" required /></div>
       <div class="field"><input type="email" name="email" id="fEmail" placeholder="Work email" required /></div>
       <div class="field"><input type="text" name="org" id="fOrg" placeholder="Programme / organisation" /></div>
-      <button type="submit" class="btn btn-primary" id="reportBtn">Send me the report →</button>
+      <button type="submit" class="btn btn-primary" id="reportBtn">Download my full report →</button>
       <div class="gate-note">No spam. Your report, and the occasional field note on delivery control.</div>
     </form>
   </div>
 </section>
 
-<!-- OFFER LADDER -->
-<section class="section-navy">
-  <div class="container">
-    <div class="section-head"><span class="label" style="color:#5FB3C4;">When you're ready to close the gaps</span><h2>Three ways forward.</h2></div>
-    <div class="ladder">
-      <div class="rung featured">
-        <div class="rung-main">
-          <div class="meta">Start here · 45 min · paid review</div>
-          <h3>Delivery Control Review</h3>
-          <p>We walk your assessment, results and report together — and pressure-test where the programme is actually exposed.</p>
-          <div class="io"><b>You leave with:</b> your top 5 control gaps, a maturity roadmap, and recommended actions.</div>
-        </div>
-        <a href="control-review.html" class="btn btn-primary" id="reviewBtn">Book the Review →</a>
-      </div>
-      <div class="rung">
-        <div class="rung-main">
-          <div class="meta">Team · fixed-fee</div>
-          <h3>No-Surprises Workshop</h3>
-          <p>Half a day with your programme team to install the 5Cs cadence on your live programme — not in theory, on your actual gaps.</p>
-        </div>
-        <a href="control-workshop.html" class="btn btn-ghost">Enquire →</a>
-      </div>
-      <div class="rung">
-        <div class="rung-main">
-          <div class="meta">Embedded · retainer</div>
-          <h3>Fractional Programme Control</h3>
-          <p>Contracks holds delivery control on the programme until your team owns it — we stay until the controls are real, not while we run them.</p>
-        </div>
-        <a href="control-fractional.html" class="btn btn-ghost">Enquire →</a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <footer>
-  <div class="gold">Better contracts. Better business. Better society.</div>
-  <div class="fmeta">
-    <a href="mailto:spoppeleer@contracks.global">spoppeleer@contracks.global</a>
-    <span class="sep">·</span>
-    <a href="/privacy.html">Privacy Policy</a>
+  <div class="brand-line">CONTRACKS<span style="color:#C9A959">.</span>GLOBAL</div>
+  <span class="gold">Better contracts. Better business. Better society.</span>
+  <div>
+    <a href="mailto:hello@contracks.global">hello@contracks.global</a> ·
+    <a href="tel:+32466446290">+32 466 446 290</a> ·
+    <a href="https://www.linkedin.com/company/contracks-global/">LinkedIn</a> ·
+    <a href="/privacy.html">Privacy</a>
   </div>
-  <div class="fcopy">© Contracks Global 2026</div>
+  <p style="margin-top:1.5rem; font-size:0.78rem; opacity:0.6;">© 2026 Contracks Global. All rights reserved.</p>
 </footer>
 
 <script>
@@ -275,8 +255,6 @@ footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
     data={overall:+q.get('s'),pillars:{
       contain:+q.get('contain'),command:+q.get('command'),close:+q.get('close'),confirm:+q.get('confirm'),control:+q.get('control')},
       concern:q.get('concern')||''};
-    var f=document.getElementById('flag');
-    if(f)f.textContent='Your live result \u00b7 Delivery Control Readiness';
   } else {
     // fallback sample \u2014 a coherent Level 2 (CONFIRM weakest, COMMAND second)
     data={overall:36,pillars:{contain:48,command:33,close:45,confirm:22,control:38},concern:'vendors'};
@@ -305,6 +283,15 @@ footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
   document.getElementById('heroH1').innerHTML=lvl.h1;
   document.getElementById('heroMeaning').textContent=lvl.meaning;
 
+  // maturity ladder \u2014 active steps follow the real score, current level marked
+  var LADDER_LABELS=['Reactive','Managed','Controlled','Predictable','No-Surprises'];
+  var lh='';
+  LADDER_LABELS.forEach(function(nm,i){
+    var n=i+1, cls='mstep'+(n<=lvl.n?' active':'')+(n===lvl.n?' current':'');
+    lh+='<div class="'+cls+'"><span>'+n+'</span><b>'+nm+'</b></div>';
+  });
+  document.getElementById('ladder').innerHTML=lh;
+
   // pillar bars (sorted by ORDER) with the lowest two flagged
   var scored=ORDER.map(function(k){return {k:k,v:data.pillars[k]};});
   var ranked=scored.slice().sort(function(a,b){return a.v-b.v;});
@@ -319,11 +306,18 @@ footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
   document.getElementById('pillarBars').innerHTML=barsHtml;
 
   // top 2 gap cards
+  var WHY={
+    contain:'scope you don\u2019t contain gets paid for twice \u2014 once to build it, once to argue over who owns the change.',
+    command:'when the board\u2019s plan and the site\u2019s plan drift apart, you find out at handover \u2014 the most expensive moment to learn it.',
+    close:'every open decision is a meter running; the cost lands downstream as idle crews and compressed schedule.',
+    confirm:'a vendor date taken on trust is a claim waiting to happen \u2014 found weeks after it was quietly missed.',
+    control:'without a fixed rhythm, slippage shows up in a report instead of in the room \u2014 too late to be cheap.'
+  };
   var gapsHtml='';
   [ranked[0],ranked[1]].forEach(function(p,i){
     var meta=PILLARS[p.k];
     var tag=(i===0)?p.v+'/100 \u00b7 weakest':p.v+'/100 \u00b7 gap';
-    gapsHtml+='<div class="gap"><span class="pill">'+meta.name+' \u00b7 '+tag+'</span><h3>'+meta.head+'</h3><p class="lookslike">'+meta.looks+'</p><p class="costs"><strong>What it typically costs:</strong> '+meta.costs+'</p></div>';
+    gapsHtml+='<div class="gap"><span class="pill">'+meta.name+' \u00b7 '+tag+'</span><h3>'+meta.head+'</h3><p class="lookslike">'+meta.looks+'</p><p class="costs"><strong>What it typically costs:</strong> '+meta.costs+'</p><p class="costs whym"><strong>Why this matters:</strong> '+WHY[p.k]+'</p></div>';
   });
   document.getElementById('gaps').innerHTML=gapsHtml;
 
@@ -343,7 +337,7 @@ footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
   setv('hContain',data.pillars.contain);setv('hCommand',data.pillars.command);setv('hClose',data.pillars.close);
   setv('hConfirm',data.pillars.confirm);setv('hControl',data.pillars.control);
   setv('hConcern',data.concern||'');
-  if(live){setv('hSector',q.get('sector')||'');setv('hRole',q.get('role')||'');}
+  if(live){setv('hSector',q.get('sector')||'');setv('hRole',q.get('role')||'');setv('hCap',q.get('cap')||'');setv('hStage',q.get('stage')||'');}
 
   function reportURL(name,org){
     var p=new URLSearchParams({s:data.overall,contain:data.pillars.contain,command:data.pillars.command,
@@ -353,9 +347,6 @@ footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
     return 'control-report.html?'+p.toString();
   }
 
-  // carry score to the Review booking page
-  var rbtn=document.getElementById('reviewBtn');
-  if(rbtn){rbtn.setAttribute('href','control-review.html?'+reportURL('','').split('?')[1]);}
 
   var form=document.getElementById('reportForm');
   if(form){
