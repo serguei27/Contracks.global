@@ -100,6 +100,52 @@ footer a:hover{color:var(--gold);}
 .video-frame{position:relative;width:100%;padding-top:56.25%;border-radius:6px;overflow:hidden;background:#0A1A33;box-shadow:0 3px 16px rgba(10,26,51,.13);}
 .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
 .video-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:.84rem;letter-spacing:.04em;}
+
+/* --- decision engine: radar, control map, speed, actions --- */
+.radar-wrap{text-align:center;margin:0 auto 2.2rem;max-width:340px;}
+.cmap{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:stretch;margin-bottom:1.6rem;}
+@media(max-width:680px){.cmap{grid-template-columns:1fr;}}
+.cmap-where{background:#fff;border-radius:4px;padding:1.6rem 1.7rem;box-shadow:0 1px 3px rgba(10,26,51,.05);}
+.cmap-domain{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);margin-bottom:1rem;}
+.cmap-domain b{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--navy);margin-left:.45rem;letter-spacing:0;}
+.cchip{display:flex;align-items:center;gap:.6rem;padding:.45rem 0;font-size:.92rem;border-bottom:1px solid #F0ECE2;}
+.cchip:last-child{border-bottom:none;}
+.cchip .ic{width:18px;height:18px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.66rem;font-weight:700;color:#fff;flex:0 0 18px;}
+.cchip.strong .ic{background:#2D6A4F;}
+.cchip.weak .ic{background:var(--gold);color:var(--navy);}
+.cchip.critical .ic{background:var(--warn);}
+.cchip .cn{font-weight:600;}
+.cchip.critical .cn{color:var(--warn);}
+.cchip .cv{margin-left:auto;color:var(--grey);font-size:.82rem;text-transform:capitalize;}
+.speed-card{background:var(--navy);color:#fff;border-radius:4px;padding:1.8rem;border-top:4px solid var(--gold);display:flex;flex-direction:column;}
+.speed-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5FB3C4;margin-bottom:.5rem;}
+.speed-card h3{font-family:'Cormorant Garamond',serif;font-size:2rem;color:#fff;margin-bottom:.5rem;}
+.speed-outcome{font-size:1.05rem;font-weight:500;color:#fff;margin-bottom:.6rem;}
+.speed-why{color:rgba(255,255,255,.7);font-weight:300;font-size:.92rem;margin-bottom:1.2rem;}
+.speed-link{margin-top:auto;color:var(--gold);font-weight:600;font-size:.92rem;text-decoration:none;}
+.speed-link:hover{text-decoration:underline;}
+.cmap-sw{display:flex;gap:1.5rem;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--grey);margin-bottom:.7rem;}
+.cmap-sw b{font-family:'Cormorant Garamond',serif;font-size:1.05rem;letter-spacing:0;text-transform:none;color:var(--navy);margin-left:.3rem;}
+.cmap-exposure{font-size:.95rem;color:var(--navy);font-weight:500;border-left:3px solid var(--warn);padding-left:.8rem;margin:0 0 1.1rem;line-height:1.5;}
+.speed-next{margin-top:auto;padding-top:1.1rem;border-top:1px solid rgba(255,255,255,.14);}
+.speed-nextlabel{display:block;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;}
+.speed-read{display:block;color:#fff;font-weight:500;font-size:.95rem;text-decoration:none;margin-bottom:.7rem;border-bottom:1px dotted rgba(255,255,255,.3);padding-bottom:.55rem;}
+.speed-read:hover{color:var(--gold);}
+.speed-cta{display:inline-block;color:var(--navy);background:var(--gold);font-weight:700;font-size:.9rem;text-decoration:none;padding:.7rem 1.2rem;border-radius:3px;}
+.speed-cta:hover{transform:translateY(-1px);}
+.actions-block{background:#fff;border-radius:4px;padding:1.7rem 1.8rem;box-shadow:0 1px 3px rgba(10,26,51,.05);}
+.actions{margin:.8rem 0 0;padding-left:0;list-style:none;counter-reset:a;}
+.actions li{counter-increment:a;position:relative;padding:.7rem 0 .7rem 2.7rem;border-bottom:1px solid #F0ECE2;font-size:.95rem;line-height:1.55;}
+.actions li:last-child{border-bottom:none;}
+.actions li::before{content:counter(a);position:absolute;left:0;top:.62rem;width:1.7rem;height:1.7rem;background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:700;font-family:'Cormorant Garamond',serif;}
+.actions li b{font-weight:600;}
+.res-readout{max-width:560px;margin:1.4rem auto 0;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.14);display:flex;align-items:baseline;justify-content:center;gap:.55rem;flex-wrap:wrap;color:rgba(255,255,255,.85);}
+.res-readout .rlab{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5FB3C4;}
+.res-readout .rnum{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:#fff;line-height:1;}
+.res-readout .rband{font-size:.9rem;font-weight:500;}
+.res-readout.fragile .rnum,.res-readout.fragile .rband{color:#E8A07A;}
+.commercial{font-size:1.22rem;line-height:1.62;color:rgba(255,255,255,.9);font-weight:300;margin-top:.4rem;}
+.commercial b{color:var(--gold);font-weight:600;}
 </style>
 </head>
 <body>
@@ -111,11 +157,12 @@ footer a:hover{color:var(--gold);}
 
 <!-- SCORE HERO -->
 <section class="score-hero">
-  <div class="label">Your Delivery Control Readiness result</div>
+  <div class="label">CONTROL Assessment — your results</div>
   <div class="score-ring" id="ring"><div class="inner"><span class="score-num" id="scoreNum">36</span><span class="score-of">OUT OF 100</span></div></div>
   <div class="level-badge" id="levelBadge">Level 2 · Managed</div>
   <h1 id="heroH1">Governance is in place. Real <em>control</em> isn't — yet.</h1>
   <p class="meaning" id="heroMeaning">At this level the framework exists, but the live status lives off-system. Right now, the deck and the site disagree.</p>
+  <div class="res-readout" id="resReadout"></div>
 </section>
 
 <!-- MATURITY LADDER -->
@@ -129,12 +176,51 @@ footer a:hover{color:var(--gold);}
 <section>
   <div class="container">
     <div class="section-head"><span class="label">Your 5Cs</span><h2>Where your control holds — and where it <em>doesn't.</em></h2></div>
+    <div id="radar" class="radar-wrap"></div>
     <div id="pillarBars"></div>
   </div>
 </section>
 
-<!-- TOP GAPS -->
+<!-- CONTROL MAP / DECISION ENGINE -->
 <section class="section-cream">
+  <div class="container">
+    <div class="section-head"><span class="label">Your control map</span><h2>Where you are — and the <em>one move</em> that fits.</h2></div>
+    <div class="cmap">
+      <div class="cmap-where">
+        <div class="cmap-domain">Where the asset is <b id="domainBadge">—</b></div>
+        <p class="cmap-sw"><span>Strongest <b id="strongPill">—</b></span><span>Weakest <b id="weakPill">—</b></span></p>
+        <p class="cmap-exposure" id="exposure"></p>
+        <div id="cmapChips"></div>
+      </div>
+      <div class="speed-card" id="speedCard">
+        <span class="speed-eyebrow">Recommended speed</span>
+        <h3 id="speedName">—</h3>
+        <p class="speed-outcome" id="speedOutcome"></p>
+        <p class="speed-why" id="speedWhy"></p>
+        <div class="speed-next">
+          <span class="speed-nextlabel">Your next step</span>
+          <a class="speed-read" id="readLink" href="library.html">1 · Read — Beyond Paperwork Governance →</a>
+          <a class="speed-cta" id="speedLink" href="control-review.html">2 · Book a diagnostic review →</a>
+        </div>
+      </div>
+    </div>
+    <div class="actions-block">
+      <span class="label">Your first three moves</span>
+      <ol id="actions" class="actions"></ol>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT THIS MEANS COMMERCIALLY -->
+<section class="section-navy">
+  <div class="container" style="max-width:780px;">
+    <span class="label" style="color:#5FB3C4;">What this means commercially</span>
+    <p class="commercial" id="commercial"></p>
+  </div>
+</section>
+
+<!-- TOP GAPS -->
+<section>
   <div class="container">
     <div class="section-head"><span class="label">What to fix first</span><h2>Your two biggest <em>gaps.</em></h2></div>
     <div id="gaps"></div>
@@ -154,7 +240,7 @@ footer a:hover{color:var(--gold);}
 <section class="section-cream">
   <p class="gate-lead">Your score shows the pattern. The full report shows what to do next.</p>
   <div class="report-card">
-    <h2>Get your full Delivery Control Report</h2>
+    <h2>Get your full CONTROL Report</h2>
     <p>All five pillars, every gap, and the maturity roadmap to your next level — as a PDF you can forward to your programme director, sponsor or board.</p>
     <form id="reportForm" name="control-report-request" method="POST" data-netlify="true">
       <input type="hidden" name="form-name" value="control-report-request" />
@@ -212,12 +298,12 @@ footer a:hover{color:var(--gold);}
     {min:41,max:65,n:3,name:'Controlled',
      h1:'The 5Cs are running. Now make them <em>predictable.</em>',
      meaning:'Scope, decisions and vendor dates are tracked, and gaps surface in cadence. The next step is catching them before they form.'},
-    {min:66,max:85,n:4,name:'Predictable',
-     h1:'You\u2019re predictable. <em>No-Surprises Delivery</em> is the last step.',
-     meaning:'Issues are caught as gaps and close before they cascade. The programme moves on facts, not optimism.'},
-    {min:86,max:100,n:5,name:'No-Surprises Delivery',
-     h1:'This is <em>No-Surprises Delivery.</em> Now protect it.',
-     meaning:'Full control. Nothing reaches the board by accident — the programme is the proof.'}
+    {min:66,max:85,n:4,name:'Operational',
+     h1:'Delivery is controlled. Now the asset has to <em>run.</em>',
+     meaning:'The build lands predictably. The next frontier is the asset operating and performing after handover — not just being delivered. No-Surprises Delivery now has to outlast the project.'},
+    {min:86,max:100,n:5,name:'Scalable',
+     h1:'This is <em>No-Surprises Delivery</em> — and it scales.',
+     meaning:'Control holds as the work repeats and the team turns over. The system travels without you in the room.'}
   ];
   var PILLARS={
     contain:{name:'CONTAIN',sub:'\u00b7 scope',head:'Scope isn\u2019t holding.',
@@ -238,6 +324,72 @@ footer a:hover{color:var(--gold);}
   };
   var ORDER=['contain','command','close','confirm','control'];
 
+  // plain-English exposure line for the weakest pillar
+  var EXPOSURE={
+    contain:'Scope is expanding faster than it\u2019s being contained \u2014 changes get absorbed, not priced.',
+    command:'The reported plan and the plan actually being worked have drifted apart.',
+    close:'Decisions are accumulating instead of closing \u2014 each open one is a meter running.',
+    confirm:'Vendor commitments are being accepted faster than they\u2019re verified.',
+    control:'Slippage is surfacing in reports instead of in a live cadence \u2014 too late to be cheap.'
+  };
+  // commercial consequence of the weakest pillar \u2014 money/risk language for an executive reader
+  var COMMERCIAL={
+    contain:'margin leakage and scope change you absorb as cost now and argue as a claim later.',
+    command:'unreliable forecasts and commitments to the board you can\u2019t actually hold.',
+    close:'delays that compound and decisions that bottleneck the whole programme.',
+    confirm:'supplier and contractor risk that surfaces late \u2014 as claims, not as warnings.',
+    control:'surprises that reach you in a report instead of in operations, when they\u2019re no longer cheap to fix.'
+  };
+  // first concrete move per pillar (drives the three priority actions)
+  var ACTIONS={
+    contain:'Write down what is explicitly out of scope, and route every change through one gate.',
+    command:'Build one integrated plan everyone runs from, and retire the parallel versions.',
+    close:'Put an owner, a date and a consequence on every open decision.',
+    confirm:'Validate vendor readiness against evidence \u2014 capacity and lead times, not promises.',
+    control:'Install a fixed weekly control cadence that produces status, instead of assembling it for meetings.'
+  };
+  // the four speeds, with the locked outcome statements
+  var SPEEDS={
+    START:{name:'START',outcome:'Turn an idea into an investable business.',accent:'#2D6A4F'},
+    RESOLVE:{name:'RESOLVE',outcome:'Recover control before the work becomes a claim.',accent:'#E07B39'},
+    RESHAPE:{name:'RESHAPE',outcome:'Build operations that don\u2019t depend on heroes.',accent:'#6C3483'},
+    GROW:{name:'GROW',outcome:'Grow without breaking the business.',accent:'#C5A050'}
+  };
+  function classify(v){return v>=65?'strong':(v<35?'critical':'weak');}
+  // domain = where the asset is, derived from stage (BUILD / OPERATE; MAINTAIN needs a stage option \u2014 field-alignment task)
+  function domainFor(stage){var s=(stage||'').toLowerCase();
+    if(/scal|replicat/.test(s))return 'OPERATE';
+    if(/handover|go-live/.test(s))return 'OPERATE';
+    if(/idea|design|launch|execution|early|mid/.test(s))return 'BUILD';
+    return '';}
+  // recommended speed = situation (stage) first, sharpened by level + the structural weakness
+  // speed from PATTERN, not score: control level x resilience x stage
+  function recommendSpeed(control,resilience,stage){var s=(stage||'').toLowerCase();
+    if(/idea|design/.test(s))return {key:'START',why:'You\u2019re still shaping the thing \u2014 the first job is proving it\u2019s worth building.'};
+    if(control<=40){
+      if(/pre-launch|pre-execution/.test(s))return {key:'START',why:'Early, and control isn\u2019t there yet \u2014 set the system up before you build, not after.'};
+      return {key:'RESOLVE',why:'Control isn\u2019t holding in live work \u2014 recover it before a gap becomes a claim.'};
+    }
+    if(resilience<=45)return {key:'RESHAPE',why:'The work is under control, but the organisation around it isn\u2019t \u2014 it leans on specific people and goodwill, not a system.'};
+    if(control>=66 && resilience>=55)return {key:'GROW',why:'Control and resilience both hold \u2014 the frontier now is scaling without breaking what works.'};
+    return {key:'RESOLVE',why:'You\u2019re managing it, but specific controls are still slipping \u2014 close them before they compound.'};}
+  // resilience band (the separate stress-test axis)
+  function resBand(r){return r>=66?{t:'Resilient',d:'built to outlast the project',fragile:false}
+    :(r>=46?{t:'Some fragility',d:'still leans on people and goodwill',fragile:false}
+    :{t:'Operational fragility detected',d:'it would struggle if a key person left or the work scaled',fragile:true});}
+  // 5Cs radar (pentagon), values follow ORDER
+  function radarSVG(scored){
+    var cx=150,cy=145,R=104,N=5,L=['CONTAIN','COMMAND','CLOSE','CONFIRM','CONTROL'];
+    function a(i){return -Math.PI/2 + i*2*Math.PI/N;}
+    var g='';
+    [25,50,75,100].forEach(function(r){var p=[];for(var i=0;i<N;i++){var rr=R*r/100;p.push((cx+rr*Math.cos(a(i))).toFixed(1)+','+(cy+rr*Math.sin(a(i))).toFixed(1));}g+='<polygon points="'+p.join(' ')+'" fill="none" stroke="#E1DDD3" stroke-width="1"/>';});
+    for(var i=0;i<N;i++){var x=cx+R*Math.cos(a(i)),y=cy+R*Math.sin(a(i));g+='<line x1="'+cx+'" y1="'+cy+'" x2="'+x.toFixed(1)+'" y2="'+y.toFixed(1)+'" stroke="#E1DDD3" stroke-width="1"/>';var lx=cx+(R+16)*Math.cos(a(i)),ly=cy+(R+16)*Math.sin(a(i));var an=Math.abs(lx-cx)<8?'middle':(lx>cx?'start':'end');g+='<text x="'+lx.toFixed(1)+'" y="'+(ly+3).toFixed(1)+'" text-anchor="'+an+'" font-size="9" font-weight="600" letter-spacing="0.5" fill="#0A1A33" font-family="Inter,sans-serif">'+L[i]+'</text>';}
+    var dp=[];for(var i=0;i<N;i++){var rr=R*scored[i].v/100;dp.push((cx+rr*Math.cos(a(i))).toFixed(1)+','+(cy+rr*Math.sin(a(i))).toFixed(1));}
+    g+='<polygon points="'+dp.join(' ')+'" fill="rgba(31,122,140,.20)" stroke="#1F7A8C" stroke-width="2"/>';
+    for(var i=0;i<N;i++){var rr=R*scored[i].v/100;g+='<circle cx="'+(cx+rr*Math.cos(a(i))).toFixed(1)+'" cy="'+(cy+rr*Math.sin(a(i))).toFixed(1)+'" r="3" fill="#1F7A8C"/>';}
+    return '<svg viewBox="0 0 300 300" width="300" height="300" style="max-width:100%;height:auto">'+g+'</svg>';
+  }
+
   function levelFor(s){for(var i=0;i<LEVELS.length;i++){if(s>=LEVELS[i].min&&s<=LEVELS[i].max)return LEVELS[i];}return LEVELS[0];}
 
   var q=new URLSearchParams(window.location.search);
@@ -246,10 +398,10 @@ footer a:hover{color:var(--gold);}
   if(live){
     data={overall:+q.get('s'),pillars:{
       contain:+q.get('contain'),command:+q.get('command'),close:+q.get('close'),confirm:+q.get('confirm'),control:+q.get('control')},
-      concern:q.get('concern')||''};
+      resilience:(+q.get('res')||0),scale:(+q.get('scale')||0),concern:q.get('concern')||''};
   } else {
-    // fallback sample \u2014 a coherent Level 2 (CONFIRM weakest, COMMAND second)
-    data={overall:36,pillars:{contain:48,command:33,close:45,confirm:22,control:38},concern:'vendors'};
+    // fallback sample \u2014 a coherent Level 2 (CONFIRM weakest), resilient-fragile
+    data={overall:36,pillars:{contain:48,command:33,close:45,confirm:22,control:38},resilience:30,scale:25,concern:'vendors'};
   }
 
   var lvl=levelFor(data.overall);
@@ -276,7 +428,7 @@ footer a:hover{color:var(--gold);}
   document.getElementById('heroMeaning').textContent=lvl.meaning;
 
   // maturity ladder \u2014 active steps follow the real score, current level marked
-  var LADDER_LABELS=['Reactive','Managed','Controlled','Predictable','No-Surprises'];
+  var LADDER_LABELS=['Reactive','Managed','Controlled','Operational','Scalable'];
   var lh='';
   LADDER_LABELS.forEach(function(nm,i){
     var n=i+1, cls='mstep'+(n<=lvl.n?' active':'')+(n===lvl.n?' current':'');
@@ -296,6 +448,48 @@ footer a:hover{color:var(--gold);}
     barsHtml+='<div class="pillar'+(weak?' weak':'')+'"><div class="pillar-top"><span class="pillar-name">'+meta.name+' <span class="sub">'+meta.sub+'</span>'+tag+'</span><span class="pillar-score">'+p.v+'</span></div><div class="pillar-bar-bg"><div class="pillar-bar" style="width:'+p.v+'%"></div></div></div>';
   });
   document.getElementById('pillarBars').innerHTML=barsHtml;
+
+  // ---- decision engine: radar + control map + domain + recommended speed + 3 actions ----
+  document.getElementById('radar').innerHTML=radarSVG(scored);
+
+  var stageVal = live ? (q.get('stage')||'') : '';
+  var dom = (live && q.get('domain')) ? q.get('domain') : domainFor(stageVal);
+  document.getElementById('domainBadge').textContent = dom || '\u2014';
+
+  // strong / weak / critical chips, lowest first
+  var chips='';
+  scored.slice().sort(function(a,b){return a.v-b.v;}).forEach(function(p){
+    var cls=classify(p.v), ic = cls==='strong'?'\u2713':(cls==='critical'?'\u2715':'!');
+    chips+='<div class="cchip '+cls+'"><span class="ic">'+ic+'</span><span class="cn">'+PILLARS[p.k].name+'</span><span class="cv">'+cls+' \u00b7 '+p.v+'</span></div>';
+  });
+  document.getElementById('cmapChips').innerHTML=chips;
+
+  var weakest=ranked[0].k, strongest=ranked[ranked.length-1].k;
+  document.getElementById('weakPill').textContent=PILLARS[weakest].name;
+  document.getElementById('strongPill').textContent=PILLARS[strongest].name;
+  document.getElementById('exposure').textContent=EXPOSURE[weakest];
+
+  // resilience readout (second, separate score)
+  var rb=resBand(data.resilience), rr=document.getElementById('resReadout');
+  if(rr){rr.className='res-readout'+(rb.fragile?' fragile':'');
+    rr.innerHTML='<span class="rlab">Resilience</span><span class="rnum">'+data.resilience+'</span><span class="rband">'+rb.t+' \u2014 '+rb.d+'</span>';}
+
+  // commercial meaning \u2014 weakest C in money terms, plus a continuity line if resilience is fragile
+  var cm='Commercially, your weakest control \u2014 <b>'+PILLARS[weakest].name+'</b> \u2014 is where value leaks: expect '+COMMERCIAL[weakest];
+  if(data.resilience<46){ cm+=' And with resilience at '+data.resilience+', the deeper exposure is continuity \u2014 what you\u2019ve built leans on specific people and wouldn\u2019t transfer cleanly, which quietly discounts any handover, sale or valuation.'; }
+  var cmEl=document.getElementById('commercial'); if(cmEl) cmEl.innerHTML=cm;
+
+  // recommended speed
+  var rec=recommendSpeed(data.overall,data.resilience,stageVal), sp=SPEEDS[rec.key];
+  document.getElementById('speedName').textContent=sp.name;
+  document.getElementById('speedOutcome').textContent=sp.outcome;
+  document.getElementById('speedWhy').textContent=rec.why;
+  document.getElementById('speedCard').style.borderTopColor=sp.accent;
+
+  // three priority actions, from the three weakest pillars
+  var ah='';
+  ranked.slice(0,3).forEach(function(p){ ah+='<li><b>'+PILLARS[p.k].name+'</b> \u2014 '+ACTIONS[p.k]+'</li>'; });
+  document.getElementById('actions').innerHTML=ah;
 
   // top 2 gap cards
   var WHY={
@@ -358,4 +552,3 @@ footer a:hover{color:var(--gold);}
 </script>
 </body>
 </html>
-
