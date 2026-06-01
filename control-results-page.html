@@ -18,8 +18,6 @@ em{color:var(--gold);font-style:italic;}
 .btn{display:inline-block;padding:1rem 2rem;font-size:.96rem;font-weight:600;letter-spacing:.02em;border-radius:3px;text-decoration:none;cursor:pointer;border:none;font-family:'Inter',sans-serif;transition:transform .15s,background .2s;}
 .btn-primary{background:var(--gold);color:var(--navy)!important;box-shadow:0 8px 26px rgba(201,169,89,.25);}
 .btn-primary:hover{transform:translateY(-1px);}
-.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff!important;}
-.btn-ghost:hover{border-color:var(--gold);color:var(--gold)!important;}
 
 .site-header{background:var(--navy);padding:1.1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
 .brand{color:#fff;font-weight:700;font-size:.95rem;letter-spacing:.1em;text-decoration:none;}
@@ -86,16 +84,8 @@ section{padding:4rem 2rem;}
 .field input:focus{outline:none;border-color:var(--accent);background:#fff;}
 .report-card .btn-primary{width:100%;margin-top:.4rem;}
 .gate-note{font-size:.78rem;color:var(--grey);margin-top:.9rem;}
-
-.ladder{max-width:760px;margin:0 auto;}
-.rung{background:var(--navy-soft);border:1px solid rgba(201,169,89,.2);border-radius:3px;padding:1.6rem 1.8rem;margin-bottom:1.1rem;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap;}
-.rung.featured{border-color:var(--gold);background:linear-gradient(180deg,rgba(201,169,89,.08),var(--navy-soft));}
-.rung-main{flex:1;min-width:240px;}
-.rung h3{font-size:1.3rem;color:#fff;margin-bottom:.25rem;}
-.rung .meta{font-size:.78rem;color:#5FB3C4;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.5rem;}
-.rung p{color:rgba(255,255,255,.78);font-size:.92rem;}
-.rung .io{font-size:.85rem;color:rgba(255,255,255,.7);margin-top:.5rem;}
-.rung .io b{color:var(--gold);font-weight:600;}
+.gate-note a{color:var(--accent);text-decoration:none;font-weight:600;}
+.gate-note a:hover{text-decoration:underline;}
 
 footer{background:var(--navy);color:rgba(255,255,255,.6);padding:3rem 2rem 2rem;text-align:center;font-size:.85rem;border-top:1px solid rgba(201,169,89,.15);}
 footer .brand-line{color:var(--white);font-weight:700;letter-spacing:.1em;margin-bottom:.5rem;}
@@ -193,7 +183,7 @@ footer a:hover{color:var(--gold);}
 <section class="video-sec">
   <div class="video-wrap">
     <div class="vhead">
-      <span class="label">Watch</span>
+      <span class="label">Your next move</span>
       <h2 id="vidHead"></h2>
       <p id="vidSub"></p>
     </div>
@@ -368,3 +358,4 @@ footer a:hover{color:var(--gold);}
 </script>
 </body>
 </html>
+
