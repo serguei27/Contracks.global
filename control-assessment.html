@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CONTROL — Delivery Control Readiness Assessment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{--navy:#0A1A33;--navy-soft:#14253F;--gold:#C9A959;--grey:#6E7783;--cream:#F5F1E7;--white:#fff;--accent:#1F7A8C;--warn:#C0552B;--line:#E1DDD3;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;color:var(--navy);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.15;letter-spacing:-.01em;}
+em{color:var(--gold);font-style:italic;}
+.label{font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:inline-block;margin-bottom:.8rem;}
+
+.site-header{background:var(--navy);padding:1.1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+.brand{color:#fff;font-weight:700;font-size:.95rem;letter-spacing:.1em;text-decoration:none;}
+.brand .dot{color:var(--gold);}
+.nav-back{color:rgba(255,255,255,.6);font-size:.8rem;text-decoration:none;}
+
+.wrap{max-width:760px;margin:0 auto;padding:3rem 1.5rem 5rem;}
+.intro{text-align:center;margin-bottom:2.5rem;}
+.intro h1{font-size:clamp(1.9rem,4vw,2.5rem);margin-bottom:.8rem;}
+.intro p{color:var(--grey);max-width:520px;margin:0 auto;}
+
+.pillar-block{background:#fff;border-radius:5px;padding:1.8rem 1.7rem;margin-bottom:1.2rem;box-shadow:0 1px 3px rgba(10,26,51,.05);}
+.pillar-block h2{font-size:1.05rem;font-family:'Inter';font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:.2rem;}
+.pillar-block .pdesc{font-size:.85rem;color:var(--grey);margin-bottom:1.4rem;}
+
+.q{padding:1.1rem 0;border-top:1px solid var(--line);}
+.q:first-of-type{border-top:none;padding-top:.3rem;}
+.q .qtext{font-size:.98rem;font-weight:500;color:var(--navy);}
+.scale{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-top:.8rem;}
+.scale label{display:block;position:relative;text-align:center;padding:.6rem .25rem;border:1px solid var(--line);border-radius:3px;font-size:.78rem;font-weight:500;color:var(--grey);background:#fff;cursor:pointer;transition:all .12s;}
+.scale input{position:absolute;opacity:0;pointer-events:none;}
+.scale label:hover{border-color:var(--accent);}
+.scale label:has(input:checked){background:var(--accent);border-color:var(--accent);color:#fff;}
+.q.unanswered .scale label{border-color:var(--warn);}
+/* --- stepped scorecard presentation --- */
+.wiz-head{margin:0 0 1.8rem;}
+.wiz-bar{display:flex;gap:.5rem;margin-bottom:.7rem;}
+.wiz-seg{flex:1;text-align:center;}
+.wiz-seg-bar{display:block;height:5px;border-radius:3px;background:var(--line);transition:background .35s;}
+.wiz-seg-lab{display:block;font-size:.6rem;letter-spacing:.05em;text-transform:uppercase;color:var(--grey);margin-top:.35rem;font-weight:600;}
+.wiz-seg.done .wiz-seg-bar{background:var(--gold);}
+.wiz-seg.active .wiz-seg-lab{color:var(--accent);}
+.wiz-meta{display:flex;justify-content:space-between;align-items:baseline;}
+.wiz-section{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
+.wiz-count{font-size:.78rem;color:var(--grey);letter-spacing:.04em;}
+.step{display:none;}
+.step.active{display:block;animation:wizfade .25s ease;}
+@keyframes wizfade{from{opacity:0;transform:translateY(7px);}to{opacity:1;transform:none;}}
+.wiz-nav{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:1.4rem;}
+.btn-back{background:none;border:none;color:var(--grey);font-family:inherit;font-size:.92rem;font-weight:600;cursor:pointer;padding:.6rem .2rem;}
+.btn-back:hover{color:var(--navy);}
+.wiz-nav .err{flex:1;text-align:center;}
+
+.ctx label.field-label{display:block;font-size:.95rem;font-weight:500;margin:1.1rem 0 .45rem;}
+.ctx select{width:100%;padding:.7rem .9rem;font-family:inherit;font-size:.92rem;color:var(--navy);background:var(--cream);border:1px solid var(--line);border-radius:3px;}
+.ctx select:focus{outline:none;border-color:var(--accent);}
+.concern-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.45rem;}
+.concern-pills label{position:relative;font-size:.82rem;padding:.5rem .9rem;border:1px solid var(--line);border-radius:20px;cursor:pointer;color:var(--grey);background:#fff;transition:all .12s;}
+.concern-pills input{position:absolute;opacity:0;pointer-events:none;}
+.concern-pills label:has(input:checked){background:var(--navy);border-color:var(--navy);color:#fff;}
+
+.submit-row{text-align:center;margin-top:2rem;}
+.btn-primary{display:inline-block;padding:1.05rem 2.6rem;font-size:1rem;font-weight:600;letter-spacing:.02em;border-radius:3px;text-decoration:none;cursor:pointer;border:none;font-family:'Inter',sans-serif;background:var(--gold);color:var(--navy);box-shadow:0 8px 26px rgba(201,169,89,.25);transition:transform .15s;}
+.btn-primary:hover{transform:translateY(-1px);}
+.err{color:var(--warn);font-size:.88rem;margin-top:.9rem;min-height:1.2em;font-weight:500;}
+
+footer{background:var(--navy);color:rgba(255,255,255,.55);padding:2rem;text-align:center;font-size:.82rem;}
+footer .gold{color:var(--gold);font-style:italic;font-family:'Cormorant Garamond',serif;}
+footer a{color:rgba(255,255,255,.7);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="brand">CONTRACKS<span class="dot">.</span>GLOBAL</a>
+  <a href="/" class="nav-back">← Back to site</a>
+</header>
+
+<div class="wrap">
+  <div class="intro">
+    <span class="label">Delivery Control Readiness Assessment</span>
+    <h1>How close are you to <em>No-Surprises Delivery?</em></h1>
+    <p>20 questions. About 4 minutes. No jargon, no PMO language — just whether your delivery system actually holds. No score is shown to anyone but you.</p>
+  </div>
+
+  <form id="assessment">
+
+    <div class="wiz-head">
+      <div class="wiz-bar" id="wizSegments"></div>
+      <div class="wiz-meta"><span class="wiz-section" id="wizSection"></span><span class="wiz-count" id="wizCount"></span></div>
+    </div>
+
+    <!-- DOMAIN / LENS -->
+    <div class="pillar-block">
+      <h2>First — what are you assessing?</h2><div class="pdesc">This sets the lens. The five controls are the same everywhere; what they look like changes with where the asset is.</div>
+      <div class="concern-pills">
+        <label><input type="radio" name="domain" value="BUILD">Build / deliver an asset</label>
+        <label><input type="radio" name="domain" value="OPERATE">Operate an asset</label>
+        <label><input type="radio" name="domain" value="MAINTAIN">Maintain an asset</label>
+      </div>
+    </div>
+
+    <!-- CONTAIN -->
+    <div class="pillar-block">
+      <h2>Contain</h2><div class="pdesc">What are we actually delivering?</div>
+      <div class="q" data-q="q1"><div class="qtext">Everyone can explain what we are trying to deliver, what is included, and what is not.</div>
+        <div class="scale"><label><input type="radio" name="q1" value="0">Not yet</label><label><input type="radio" name="q1" value="1">Partly</label><label><input type="radio" name="q1" value="2">Mostly</label><label><input type="radio" name="q1" value="3">Fully</label></div></div>
+      <div class="q" data-q="q2"><div class="qtext">Assumptions, exclusions, and dependencies are written down before execution starts.</div>
+        <div class="scale"><label><input type="radio" name="q2" value="0">Not yet</label><label><input type="radio" name="q2" value="1">Partly</label><label><input type="radio" name="q2" value="2">Mostly</label><label><input type="radio" name="q2" value="3">Fully</label></div></div>
+      <div class="q" data-q="q3"><div class="qtext">When the target changes, time, cost, responsibility, and impact are reset before work continues.</div>
+        <div class="scale"><label><input type="radio" name="q3" value="0">Not yet</label><label><input type="radio" name="q3" value="1">Partly</label><label><input type="radio" name="q3" value="2">Mostly</label><label><input type="radio" name="q3" value="3">Fully</label></div></div>
+    </div>
+
+    <!-- COMMAND -->
+    <div class="pillar-block">
+      <h2>Command</h2><div class="pdesc">Is there one real plan?</div>
+      <div class="q" data-q="q4"><div class="qtext">There is one working plan that reflects how the work actually happens.</div>
+        <div class="scale"><label><input type="radio" name="q4" value="0">Not yet</label><label><input type="radio" name="q4" value="1">Partly</label><label><input type="radio" name="q4" value="2">Mostly</label><label><input type="radio" name="q4" value="3">Fully</label></div></div>
+      <div class="q" data-q="q5"><div class="qtext">The reported plan and the operational reality are the same.</div>
+        <div class="scale"><label><input type="radio" name="q5" value="0">Not yet</label><label><input type="radio" name="q5" value="1">Partly</label><label><input type="radio" name="q5" value="2">Mostly</label><label><input type="radio" name="q5" value="3">Fully</label></div></div>
+      <div class="q" data-q="q6"><div class="qtext">Interfaces between teams, suppliers, locations, or partners have one clear owner.</div>
+        <div class="scale"><label><input type="radio" name="q6" value="0">Not yet</label><label><input type="radio" name="q6" value="1">Partly</label><label><input type="radio" name="q6" value="2">Mostly</label><label><input type="radio" name="q6" value="3">Fully</label></div></div>
+    </div>
+
+    <!-- CLOSE -->
+    <div class="pillar-block">
+      <h2>Close</h2><div class="pdesc">Are decisions forced to conclusion?</div>
+      <div class="q" data-q="q7"><div class="qtext">Every open decision has an owner, deadline, and consequence if it slips.</div>
+        <div class="scale"><label><input type="radio" name="q7" value="0">Not yet</label><label><input type="radio" name="q7" value="1">Partly</label><label><input type="radio" name="q7" value="2">Mostly</label><label><input type="radio" name="q7" value="3">Fully</label></div></div>
+      <div class="q" data-q="q8"><div class="qtext">Decisions are closed before they become delays, cost, confusion, or customer impact.</div>
+        <div class="scale"><label><input type="radio" name="q8" value="0">Not yet</label><label><input type="radio" name="q8" value="1">Partly</label><label><input type="radio" name="q8" value="2">Mostly</label><label><input type="radio" name="q8" value="3">Fully</label></div></div>
+      <div class="q" data-q="q9"><div class="qtext">We can see today which decisions are overdue and what they are blocking.</div>
+        <div class="scale"><label><input type="radio" name="q9" value="0">Not yet</label><label><input type="radio" name="q9" value="1">Partly</label><label><input type="radio" name="q9" value="2">Mostly</label><label><input type="radio" name="q9" value="3">Fully</label></div></div>
+    </div>
+
+    <!-- CONFIRM -->
+    <div class="pillar-block">
+      <h2>Confirm</h2><div class="pdesc">Do we know what is true?</div>
+      <div class="q" data-q="q10"><div class="qtext">Critical commitments are verified against evidence, not accepted on promise.</div>
+        <div class="scale"><label><input type="radio" name="q10" value="0">Not yet</label><label><input type="radio" name="q10" value="1">Partly</label><label><input type="radio" name="q10" value="2">Mostly</label><label><input type="radio" name="q10" value="3">Fully</label></div></div>
+      <div class="q" data-q="q11"><div class="qtext">Handoffs between people, suppliers, systems, or locations are mapped and confirmed.</div>
+        <div class="scale"><label><input type="radio" name="q11" value="0">Not yet</label><label><input type="radio" name="q11" value="1">Partly</label><label><input type="radio" name="q11" value="2">Mostly</label><label><input type="radio" name="q11" value="3">Fully</label></div></div>
+      <div class="q" data-q="q12"><div class="qtext">When a date, cost, or output is promised, there is proof of readiness behind it.</div>
+        <div class="scale"><label><input type="radio" name="q12" value="0">Not yet</label><label><input type="radio" name="q12" value="1">Partly</label><label><input type="radio" name="q12" value="2">Mostly</label><label><input type="radio" name="q12" value="3">Fully</label></div></div>
+    </div>
+
+    <!-- CONTROL -->
+    <div class="pillar-block">
+      <h2>Control</h2><div class="pdesc">Do we see problems early?</div>
+      <div class="q" data-q="q13"><div class="qtext">There is a fixed control cadence with the same inputs, outputs, and accountability every cycle.</div>
+        <div class="scale"><label><input type="radio" name="q13" value="0">Not yet</label><label><input type="radio" name="q13" value="1">Partly</label><label><input type="radio" name="q13" value="2">Mostly</label><label><input type="radio" name="q13" value="3">Fully</label></div></div>
+      <div class="q" data-q="q14"><div class="qtext">Slippage is caught early through the cadence, not discovered late in reporting.</div>
+        <div class="scale"><label><input type="radio" name="q14" value="0">Not yet</label><label><input type="radio" name="q14" value="1">Partly</label><label><input type="radio" name="q14" value="2">Mostly</label><label><input type="radio" name="q14" value="3">Fully</label></div></div>
+      <div class="q" data-q="q15"><div class="qtext">For any issue, we can show cause → impact → recovery action.</div>
+        <div class="scale"><label><input type="radio" name="q15" value="0">Not yet</label><label><input type="radio" name="q15" value="1">Partly</label><label><input type="radio" name="q15" value="2">Mostly</label><label><input type="radio" name="q15" value="3">Fully</label></div></div>
+      <div class="q" data-q="q16"><div class="qtext">If a serious problem were forming right now, we would see it early enough to act before it became a crisis.</div>
+        <div class="scale"><label><input type="radio" name="q16" value="0">Not yet</label><label><input type="radio" name="q16" value="1">Partly</label><label><input type="radio" name="q16" value="2">Mostly</label><label><input type="radio" name="q16" value="3">Fully</label></div></div>
+    </div>
+
+    <!-- RESILIENCE -->
+    <div class="pillar-block">
+      <h2>Will it hold?</h2><div class="pdesc">Not a sixth C — a stress test on the system you've just scored: key people, tested assumptions, handover, scale.</div>
+      <div class="q" data-q="q17"><div class="qtext">If one key person disappeared tomorrow, delivery would continue.</div>
+        <div class="scale"><label><input type="radio" name="q17" value="0">Not yet</label><label><input type="radio" name="q17" value="1">Partly</label><label><input type="radio" name="q17" value="2">Mostly</label><label><input type="radio" name="q17" value="3">Fully</label></div></div>
+      <div class="q" data-q="q18"><div class="qtext">Major decisions are based on tested assumptions, not optimism.</div>
+        <div class="scale"><label><input type="radio" name="q18" value="0">Not yet</label><label><input type="radio" name="q18" value="1">Partly</label><label><input type="radio" name="q18" value="2">Mostly</label><label><input type="radio" name="q18" value="3">Fully</label></div></div>
+      <div class="q" data-q="q19"><div class="qtext">What is delivered can be operated by the people who inherit it.</div>
+        <div class="scale"><label><input type="radio" name="q19" value="0">Not yet</label><label><input type="radio" name="q19" value="1">Partly</label><label><input type="radio" name="q19" value="2">Mostly</label><label><input type="radio" name="q19" value="3">Fully</label></div></div>
+      <div class="q" data-q="q20"><div class="qtext">Scaling up would strengthen performance, not expose hidden weaknesses.</div>
+        <div class="scale"><label><input type="radio" name="q20" value="0">Not yet</label><label><input type="radio" name="q20" value="1">Partly</label><label><input type="radio" name="q20" value="2">Mostly</label><label><input type="radio" name="q20" value="3">Fully</label></div></div>
+    </div>
+
+    <!-- CONTEXT -->
+    <div class="pillar-block ctx">
+      <h2 style="color:var(--navy);">A little context</h2><div class="pdesc">So your report speaks to your work, not a generic one.</div>
+      <label class="field-label">Value / scale of the work</label>
+      <select name="cap"><option value="">Select…</option><option>Under €250k</option><option>€250k–€2M</option><option>€2M–€10M</option><option>€10M–€50M</option><option>€50M+</option></select>
+      <label class="field-label">Sector</label>
+      <select name="sector"><option value="">Select…</option><option>Infrastructure / construction</option><option>Real estate / workplace</option><option>Energy / industrial</option><option>Aviation / transport</option><option>FMCG / drinks</option><option>Retail / hospitality</option><option>Digital product / app</option><option>Startup / new venture</option><option>Operations / scale-up</option><option>Other</option></select>
+      <label class="field-label">Your role</label>
+      <select name="role"><option value="">Select…</option><option>Founder / owner</option><option>PMO / delivery lead</option><option>Project lead</option><option>Operations lead</option><option>Commercial / contracts lead</option><option>Sponsor / executive</option><option>Other</option></select>
+      <label class="field-label">Where is the work now?</label>
+      <select name="stage"><option value="">Select…</option><option>Idea / design</option><option>Pre-launch / pre-execution</option><option>Early execution</option><option>Mid-execution</option><option>Handover / go-live</option><option>Scaling / replication</option></select>
+      <label class="field-label">Your biggest control concern right now <span style="color:var(--accent);font-weight:600;">· required</span></label>
+      <div class="concern-pills">
+        <label><input type="radio" name="concern" value="scope">Scope</label>
+        <label><input type="radio" name="concern" value="decisions">Decisions</label>
+        <label><input type="radio" name="concern" value="vendors">Vendors</label>
+        <label><input type="radio" name="concern" value="visibility">Visibility</label>
+        <label><input type="radio" name="concern" value="interfaces">Interfaces</label>
+      </div>
+    </div>
+
+    <div class="wiz-nav">
+      <button type="button" class="btn-back" id="prevBtn">← Back</button>
+      <div class="err" id="err"></div>
+      <button type="button" class="btn-primary" id="nextBtn">Continue →</button>
+    </div>
+
+  </form>
+</div>
+
+<footer>
+  <div class="gold">Better contracts. Better business. Better society.</div>
+  <div style="margin-top:.6rem;"><a href="mailto:hello@contracks.global">hello@contracks.global</a> · <a href="/privacy.html">Privacy Policy</a></div>
+  <div style="margin-top:.6rem;font-size:.76rem;color:rgba(255,255,255,.4);">© Contracks Global 2026</div>
+</footer>
+
+<script>
+(function(){
+  var pillars = {contain:['q1','q2','q3'],command:['q4','q5','q6'],close:['q7','q8','q9'],confirm:['q10','q11','q12'],control:['q13','q14','q15','q16']};
+  function val(name){var el=document.querySelector('input[name="'+name+'"]:checked');return el?parseInt(el.value,10):null;}
+
+  var form=document.getElementById('assessment');
+  var steps=Array.prototype.slice.call(form.querySelectorAll('.pillar-block'));
+  steps.forEach(function(s){s.classList.add('step');});
+  var cur=0;
+  var prevBtn=document.getElementById('prevBtn'), nextBtn=document.getElementById('nextBtn'), err=document.getElementById('err');
+  var segWrap=document.getElementById('wizSegments');
+  var PHASE_LABELS=['Lens','5Cs','Resilience','Context','Results'];
+  PHASE_LABELS.forEach(function(lab){var d=document.createElement('div');d.className='wiz-seg';d.innerHTML='<span class="wiz-seg-bar"></span><span class="wiz-seg-lab">'+lab+'</span>';segWrap.appendChild(d);});
+  function phaseOfStep(i){var b=steps[i];
+    if(b.querySelector('input[name="domain"]'))return 0;
+    if(b.classList.contains('ctx'))return 3;
+    var nums=Array.prototype.map.call(b.querySelectorAll('input[type=radio]'),function(r){var m=r.name.match(/^q(\d+)$/);return m?+m[1]:0;});
+    var maxn=Math.max.apply(null,nums.concat(0));
+    return maxn>=17?2:1;}
+
+  function requiredNames(block){var o={};block.querySelectorAll('input[type=radio]').forEach(function(r){if(/^q\d+$/.test(r.name)||r.name==='domain'||r.name==='concern')o[r.name]=1;});return Object.keys(o);}
+  function missingIn(block){var m=[];requiredNames(block).forEach(function(n){if(!block.querySelector('input[name="'+n+'"]:checked'))m.push(n);});return m;}
+
+  function render(){
+    steps.forEach(function(s,i){s.classList.toggle('active',i===cur);});
+    var cp=phaseOfStep(cur);
+    Array.prototype.forEach.call(segWrap.children,function(seg,i){seg.classList.toggle('done',i<=cp&&i<4);seg.classList.toggle('active',i===cp);});
+    var b=steps[cur], h=b.querySelector('h2');
+    document.getElementById('wizSection').textContent=h?h.textContent:'';
+    document.getElementById('wizCount').textContent='';
+    prevBtn.style.visibility=(cur===0)?'hidden':'visible';
+    nextBtn.textContent=(cur===steps.length-1)?'See my results \u2192':'Continue \u2192';
+    err.textContent='';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  prevBtn.addEventListener('click',function(){if(cur>0){cur--;render();}});
+  nextBtn.addEventListener('click',function(){
+    var b=steps[cur], miss=missingIn(b);
+    b.querySelectorAll('.q').forEach(function(el){el.classList.remove('unanswered');});
+    if(miss.length){
+      miss.forEach(function(n){var el=b.querySelector('.q[data-q="'+n+'"]');if(el)el.classList.add('unanswered');});
+      if(b.querySelector('input[name="domain"]')){err.textContent='Select the asset lens first \u2014 Build, Operate or Maintain.';}
+      else if(miss.length===1&&miss[0]==='concern'){err.textContent='Pick your biggest control concern to finish.';}
+      else{err.textContent='Please answer '+(miss.length>1?('these '+miss.length+' questions.'):'this question.');}
+      return;
+    }
+    if(cur<steps.length-1){cur++;render();}else{compute();}
+  });
+
+  function compute(){
+    var diag=['q1','q2','q3','q4','q5','q6','q7','q8','q9','q10','q11','q12','q13','q14','q15','q16','q17','q18','q19','q20'];
+    var domEl=document.querySelector('input[name="domain"]:checked');
+    for(var i=0;i<diag.length;i++){if(val(diag[i])===null){err.textContent='A question was missed \u2014 step back and complete it.';return;}}
+    if(!domEl){err.textContent='Select what you\u2019re assessing.';return;}
+    // CONTROL score = the 5Cs (q1-q16; the CONTROL pillar now includes q16). Resilience (q17-q20) is a separate axis, never blended in.
+    var ctrlQs=['q1','q2','q3','q4','q5','q6','q7','q8','q9','q10','q11','q12','q13','q14','q15','q16'];
+    var cSum=0; ctrlQs.forEach(function(q){cSum+=val(q);});
+    var overall=Math.round(cSum/48*100);
+    function pscore(arr){var s=0;arr.forEach(function(q){s+=val(q);});return Math.round(s/(arr.length*3)*100);}
+    var p={contain:pscore(pillars.contain),command:pscore(pillars.command),close:pscore(pillars.close),confirm:pscore(pillars.confirm),control:pscore(pillars.control)};
+    function sel(name){var el=document.querySelector('[name="'+name+'"]');return el&&el.value?el.value:'';}
+    var concern=(document.querySelector('input[name="concern"]:checked')||{}).value||'';
+    function one(q){return Math.round(val(q)/3*100);}
+    var resSum=0;['q17','q18','q19','q20'].forEach(function(q){resSum+=val(q);});
+    var resilience=Math.round(resSum/12*100);
+    var params=new URLSearchParams({
+      s:overall, contain:p.contain, command:p.command, close:p.close, confirm:p.confirm, control:p.control,
+      res:resilience, crisis:one('q16'), keyp:one('q17'), assume:one('q18'), hand:one('q19'), scale:one('q20'),
+      domain:(domEl?domEl.value:''), cap:sel('cap'), sector:sel('sector'), role:sel('role'), stage:sel('stage'), concern:concern
+    });
+    window.location.href='control-results-page.html?'+params.toString();
+  }
+
+  render();
+})();
+</script>
+</body>
+</html>
