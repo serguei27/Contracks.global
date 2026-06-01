@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delivery Control Library — Contracks Global</title>
+<meta name="description" content="Find your level on the delivery-control maturity ladder. The report and articles that move you up — built on the 5Cs Framework.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--navy:#0A1628;--navy-mid:#112240;--navy-light:#1A3A5C;--gold:#C5A050;--gold-light:#D4B470;--grey:#888;--line:rgba(197,160,80,0.15);}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#0A1628;color:#fff;overflow-x:hidden;line-height:1.65;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:'Playfair Display',serif;font-weight:700;line-height:1.15;letter-spacing:-0.01em;}
+em{font-style:normal;color:var(--gold);}
+a{color:inherit;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(10,22,40,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(197,160,80,0.2);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#fff;letter-spacing:0.02em;text-decoration:none;}
+.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:30px;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.82rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-cta{background:var(--gold);color:var(--navy)!important;padding:10px 22px;border-radius:2px;font-weight:600!important;}
+.nav-cta:hover{background:var(--gold-light)!important;}
+@media(max-width:980px){.nav-links a:not(.nav-cta){display:none;}nav{padding:14px 20px;}}
+
+/* HERO */
+.hero{position:relative;padding:84px 48px 56px;overflow:hidden;border-top:3px solid var(--gold);}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 30%,rgba(197,160,80,0.07),transparent 60%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(197,160,80,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(197,160,80,0.04) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;}
+.hero-inner{position:relative;max-width:880px;margin:0 auto;}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:0.72rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--gold);}
+.hero h1{font-size:clamp(2.3rem,4.5vw,3.4rem);color:#fff;margin-bottom:18px;}
+.hero .sub{font-size:1.08rem;font-weight:300;color:rgba(255,255,255,0.68);max-width:620px;line-height:1.7;}
+
+/* 5Cs vs LADDER framing */
+.frame{position:relative;max-width:880px;margin:34px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.frame-card{background:var(--navy-mid);border:1px solid var(--line);border-radius:6px;padding:22px 24px;}
+.frame-card .lbl{font-size:0.66rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.frame-card h3{font-size:1.15rem;color:#fff;margin-bottom:8px;}
+.frame-card p{font-size:0.88rem;color:rgba(255,255,255,0.6);font-weight:300;line-height:1.6;}
+.cs-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.cs-chips span{font-size:0.68rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;border:1px solid rgba(197,160,80,0.35);color:var(--gold);padding:3px 9px;border-radius:2px;}
+@media(max-width:680px){.frame{grid-template-columns:1fr;}}
+
+/* MINI LADDER */
+.ladder-wrap{max-width:980px;margin:0 auto;padding:56px 48px 8px;}
+.ladder-lead{text-align:center;font-size:0.72rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.ladder-leadsub{text-align:center;font-size:0.9rem;color:rgba(255,255,255,0.45);font-style:italic;margin-bottom:26px;}
+.mini-ladder{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+.mrung{position:relative;background:var(--navy-mid);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:16px 8px;text-align:center;cursor:pointer;transition:all 0.2s;}
+.mrung:hover{border-color:rgba(197,160,80,0.5);transform:translateY(-2px);}
+.mrung .mn{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:rgba(255,255,255,0.35);line-height:1;}
+.mrung .mnm{font-size:0.66rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:6px;}
+.mrung.current{border-color:var(--gold);background:rgba(197,160,80,0.12);}
+.mrung.current .mn{color:var(--gold);}
+.mrung.current .mnm{color:#fff;}
+.mrung.current::after{content:'You are here';position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:0.54rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 8px;border-radius:2px;white-space:nowrap;}
+@media(max-width:680px){.mini-ladder{grid-template-columns:repeat(5,1fr);gap:4px;}.mrung{padding:12px 3px;}.mrung .mn{font-size:1.2rem;}.mrung .mnm{font-size:0.5rem;letter-spacing:0.02em;}.mrung.current::after{display:none;}}
+
+/* ARRIVAL BANNER */
+.arrival{max-width:980px;margin:24px auto 0;padding:0 48px;display:none;}
+.arrival.show{display:block;}
+.arrival-inner{background:rgba(197,160,80,0.1);border:1px solid rgba(197,160,80,0.35);border-radius:6px;padding:16px 22px;font-size:0.95rem;color:#fff;}
+.arrival-inner strong{color:var(--gold);}
+
+/* LEVEL SHELVES (accordion) */
+.shelves{max-width:980px;margin:0 auto;padding:40px 48px 80px;}
+.shelf{border:1px solid rgba(255,255,255,0.1);border-radius:6px;margin-bottom:14px;overflow:hidden;background:var(--navy-mid);transition:border-color 0.2s;}
+.shelf.open{border-color:rgba(197,160,80,0.4);}
+.shelf.current{border-color:var(--gold);}
+.shelf-head{display:flex;align-items:center;gap:18px;padding:22px 26px;cursor:pointer;user-select:none;}
+.shelf-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:rgba(255,255,255,0.3);line-height:1;flex-shrink:0;width:46px;text-align:center;}
+.shelf.open .shelf-num,.shelf.current .shelf-num{color:var(--gold);}
+.shelf-head .h-main{flex:1;min-width:0;}
+.shelf-name{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:#fff;}
+.shelf-tag{font-size:0.86rem;color:rgba(255,255,255,0.5);font-weight:300;margin-top:2px;}
+.shelf-tog{flex-shrink:0;width:30px;height:30px;border:1px solid rgba(197,160,80,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.1rem;transition:all 0.25s;}
+.shelf.open .shelf-tog{background:var(--gold);color:var(--navy);transform:rotate(45deg);}
+.shelf-body{max-height:0;overflow:hidden;transition:max-height 0.35s ease;}
+.shelf.open .shelf-body{max-height:1400px;}
+.shelf-inner{padding:4px 26px 28px;border-top:1px solid rgba(255,255,255,0.08);}
+.sb-block{margin-top:20px;}
+.sb-lbl{font-size:0.66rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:7px;}
+.sb-block p{font-size:0.94rem;color:rgba(255,255,255,0.72);font-weight:300;line-height:1.7;}
+
+/* report + articles */
+.asset{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:5px;padding:14px 18px;text-decoration:none;transition:all 0.2s;margin-top:8px;}
+.asset:hover{border-color:rgba(197,160,80,0.45);background:rgba(197,160,80,0.07);}
+.asset .ico{width:30px;height:30px;flex-shrink:0;border-radius:4px;background:rgba(197,160,80,0.15);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:0.8rem;}
+.asset .at{flex:1;font-size:0.92rem;color:#fff;font-weight:500;}
+.asset .arr{color:var(--gold);font-size:0.85rem;}
+.asset.soon{cursor:default;opacity:0.55;}
+.asset.soon:hover{border-color:rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);}
+.asset.soon .at{color:rgba(255,255,255,0.6);}
+.soon-pill{font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);border:1px solid rgba(255,255,255,0.18);padding:3px 8px;border-radius:2px;white-space:nowrap;}
+.art-list{display:flex;flex-direction:column;gap:7px;margin-top:8px;}
+.art{display:flex;align-items:center;gap:10px;font-size:0.9rem;color:rgba(255,255,255,0.78);text-decoration:none;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.06);transition:color 0.2s;}
+.art:last-child{border-bottom:none;}
+.art:hover{color:var(--gold);}
+.art::before{content:'\2192';color:var(--gold);font-size:0.8rem;opacity:0.6;flex-shrink:0;}
+.art.soon{color:rgba(255,255,255,0.4);cursor:default;}
+.art.soon::before{opacity:0.25;}
+.art.soon:hover{color:rgba(255,255,255,0.4);}
+.art .ap{margin-left:auto;}
+
+/* capstone book */
+.capstone{background:linear-gradient(135deg,rgba(197,160,80,0.12),rgba(17,34,64,0.4));border:1px solid rgba(197,160,80,0.4);border-radius:6px;padding:22px 24px;margin-top:8px;}
+.capstone .ct{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:#fff;margin-bottom:4px;}
+.capstone .cmeta{font-size:0.74rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.capstone .cbtn{display:inline-block;background:var(--gold);color:var(--navy);text-decoration:none;font-weight:700;font-size:0.85rem;padding:11px 22px;border-radius:3px;transition:background 0.2s;}
+.capstone .cbtn:hover{background:var(--gold-light);}
+
+/* next step */
+.nextstep{margin-top:24px;padding-top:20px;border-top:1px solid rgba(197,160,80,0.18);}
+.nextstep .nl{font-size:0.92rem;color:rgba(255,255,255,0.72);font-weight:300;margin-bottom:14px;}
+.nextstep .nl b{color:#fff;font-weight:600;}
+.ns-btns{display:flex;gap:10px;flex-wrap:wrap;}
+.ns-btn{text-decoration:none;font-size:0.85rem;font-weight:600;padding:11px 20px;border-radius:3px;transition:all 0.2s;}
+.ns-primary{background:var(--gold);color:var(--navy);}
+.ns-primary:hover{background:var(--gold-light);}
+.ns-ghost{border:1px solid rgba(197,160,80,0.4);color:var(--gold);}
+.ns-ghost:hover{background:rgba(197,160,80,0.08);}
+
+.rlabel{display:inline-block;margin-left:10px;font-size:0.58rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(197,160,80,0.45);padding:2px 7px;border-radius:2px;vertical-align:middle;}
+
+/* TOP DIAGNOSTIC BAND */
+.diag-band{background:var(--navy-mid);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 48px;}
+.diag-inner{max-width:980px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.diag-inner p{font-size:0.95rem;color:rgba(255,255,255,0.7);font-weight:300;flex:1;min-width:260px;}
+.diag-inner p b{color:#fff;font-weight:600;}
+.diag-btn{flex-shrink:0;background:var(--gold);color:var(--navy);text-decoration:none;font-weight:700;font-size:0.88rem;padding:13px 24px;border-radius:3px;transition:background 0.2s;}
+.diag-btn:hover{background:var(--gold-light);}
+@media(max-width:640px){.diag-band{padding:20px;}.diag-btn{width:100%;text-align:center;}}
+
+/* FOOTER */
+footer{background:var(--navy);border-top:1px solid rgba(197,160,80,0.15);padding:40px 48px;text-align:center;}
+footer .fb{font-family:'Playfair Display',serif;font-weight:700;letter-spacing:0.1em;color:#fff;margin-bottom:8px;}
+footer .fb span{color:var(--gold);}
+footer .fg{color:var(--gold);font-style:italic;font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:14px;}
+footer .fl a{color:rgba(255,255,255,0.7);text-decoration:none;margin:0 .5rem;font-size:0.85rem;}
+footer .fl a:hover{color:var(--gold);}
+footer .fc{margin-top:14px;font-size:0.74rem;color:rgba(255,255,255,0.35);}
+@media(max-width:640px){.hero,.ladder-wrap,.shelves,.arrival{padding-left:20px;padding-right:20px;}nav{padding:14px 18px;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">CONTRACKS<span>.</span>GLOBAL</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/control-assessment.html">Diagnostic</a></li>
+    <li><a href="/library.html" class="active">Library</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    <li><a href="/control-assessment.html" class="nav-cta">Take the diagnostic &rarr;</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">Delivery Control Library</div>
+    <h1>Find where your delivery system breaks &mdash; and <em>what to fix next.</em></h1>
+    <p class="sub">This is not an article archive. It is a control pathway: start at your diagnostic level, read the few pieces that matter, and move one level up the Delivery Control Maturity Ladder.</p>
+
+    <div class="frame">
+      <div class="frame-card">
+        <div class="lbl">The operating system</div>
+        <h3>The 5Cs Framework</h3>
+        <p>The method behind controlled delivery. Five disciplines that decide whether a programme stays in control.</p>
+        <div class="cs-chips"><span>Contain</span><span>Command</span><span>Close</span><span>Confirm</span><span>Control</span></div>
+      </div>
+      <div class="frame-card">
+        <div class="lbl">The scale</div>
+        <h3>The maturity ladder</h3>
+        <p>How well the 5Cs are installed — your position on the 5Cs journey, from Level 1 (Reactive) to Level 5 (No-Surprises Delivery).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOP DIAGNOSTIC BAND -->
+<section class="diag-band">
+  <div class="diag-inner">
+    <p><b>Already took the diagnostic?</b> Open your level below. <b>Not yet?</b> Take it first &mdash; it places you on the ladder in five minutes.</p>
+    <a class="diag-btn" href="/control-assessment.html">Take the diagnostic &rarr;</a>
+  </div>
+</section>
+
+<!-- ARRIVAL BANNER (shown when ?level=N) -->
+<div class="arrival" id="arrival"><div class="arrival-inner" id="arrivalText"></div></div>
+
+<!-- MINI LADDER -->
+<div class="ladder-wrap">
+  <div class="ladder-lead">The Delivery Control Maturity Ladder</div>
+  <div class="ladder-leadsub">Five levels. Pick yours to open its shelf.</div>
+  <div class="mini-ladder" id="miniLadder"></div>
+</div>
+
+<!-- LEVEL SHELVES -->
+<div class="shelves" id="shelves"></div>
+
+<footer>
+  <div class="fb">CONTRACKS<span>.</span>GLOBAL</div>
+  <div class="fg">Better contracts. Better business. Better society.</div>
+  <div class="fl">
+    <a href="mailto:hello@contracks.global">hello@contracks.global</a> ·
+    <a href="tel:+32466446290">+32 466 446 290</a> ·
+    <a href="https://www.linkedin.com/company/contracks-global/">LinkedIn</a> ·
+    <a href="/privacy.html">Privacy</a>
+  </div>
+  <div class="fc">© 2026 Contracks Global. All rights reserved.</div>
+</footer>
+
+<script>
+// ── CONTENT CONFIG ─────────────────────────────────────────────
+// Each level: report{title,url}, articles[{title,url}] — url:null = coming soon.
+// Re-sort freely; the page renders from this object.
+var LEVELS=[
+ {n:1,name:'Reactive',tag:'The programme runs on people, not controls.',
+  means:'Controls live on paper, not on the programme. Problems are discovered after they happen, and delivery depends on heroics and firefighting.',
+  breaks:'Dashboards show green while the work drifts. Reporting gets mistaken for control. Nobody sees the surprise coming until it is already a crisis.',
+  report:{title:'Beyond Paperwork Governance',url:'/specialreport2',label:'Start here \u00b7 Core report'},
+  articles:[
+   {title:'Why reporting isn\u2019t control',url:'/article1.html'},
+   {title:'Why dashboards lie',url:'/article3.html'},
+   {title:'Why most teams call for help too late',url:'/article8.html'}
+  ]},
+ {n:2,name:'Managed',tag:'Governance exists. Reality lives outside it.',
+  means:'A governance framework is in place, but the live programme runs off-system. Reports are produced; control is not consistent. The deck and the site disagree.',
+  breaks:'Two plans run at once and only one is real. Slippage shows up in hindsight. Visibility is an illusion built from last week\u2019s numbers.',
+  report:{title:'The Cost of Drift',url:null},
+  articles:[
+   {title:'Is your project under control \u2014 or does it just look that way?',url:'/article2.html'},
+   {title:'The FIDIC stall that needed a reframe, not a letter',url:'/article5.html'}
+  ]},
+ {n:3,name:'Controlled',tag:'The 5Cs are operating.',
+  means:'Scope, plan, decisions, vendor dates and cadence are actively managed. Problems surface as gaps before they become surprises. This is where the 5Cs are installed and working.',
+  breaks:'Control holds in the room but isn\u2019t yet predictive \u2014 you catch issues early, but you\u2019re not yet forecasting them before they form.',
+  report:{title:'The 5Cs Framework',url:null},
+  articles:[
+   {title:'Contain \u2014 the scope document that ends \u201Cwas that included?\u201D',url:'/article9.html'},
+   {title:'Command \u2014 your project is running two plans; only one is real',url:'/article6.html'},
+   {title:'Close \u2014 the RAID log is a list of future surprises',url:'/article7.html'}
+  ]},
+ {n:4,name:'Predictable',tag:'Outcomes become forecastable.',
+  means:'Risks are visible early. Recovery actions trigger before schedule and cost impacts land. The programme moves on facts, not optimism.',
+  breaks:'The discipline still leans on the current team \u2014 it isn\u2019t yet a system that survives turnover and scale.',
+  report:{title:'No-Surprises Forecasting',url:null},
+  articles:[
+   {title:'Leading indicators \u2014 seeing the slip before it shows',url:null}
+  ]},
+ {n:5,name:'No-Surprises Delivery',tag:'Full operational control.',
+  means:'Nothing reaches the board by accident. Issues are identified, owned and resolved before they escalate. The programme is evidence-driven, not personality-driven.',
+  breaks:'The only risk left is complacency \u2014 protecting the system as the programme scales and the team turns over.',
+  report:{title:'No-Surprises Delivery \u2014 the complete 5Cs system',url:'/book.html',capstone:true,meta:'Coming 2026 \u00b7 Join the waitlist'},
+  articles:[
+   {title:'What it feels like when the controls actually work',url:'/article4.html'}
+  ]}
+];
+
+var SHORT=['Reactive','Managed','Controlled','Predictable','No-Surprises'];
+
+function esc(s){return s;}
+// commercial next-step per level
+function nextStep(L){
+  var nx = L.n<5
+    ? '<b>Next: Level '+(L.n+1)+' \u2014 '+SHORT[L.n]+'.</b> Close the gaps above to move up.'
+    : '<b>You\u2019re at the summit.</b> The work now is protecting it as the programme scales and the team turns over.';
+  var primary,ghost;
+  if(L.n<=2){
+    primary='<a class="ns-btn ns-primary" href="/control-assessment.html">Take the diagnostic &rarr;</a>';
+    ghost='<a class="ns-btn ns-ghost" href="/specialreport2">Read the core report &rarr;</a>';
+  } else {
+    primary='<a class="ns-btn ns-primary" href="/control-review.html">Book a Delivery Control Review &rarr;</a>';
+    ghost = L.n===3
+      ? '<a class="ns-btn ns-ghost" href="/control-workshop.html">Install it: Workshop &rarr;</a>'
+      : '<a class="ns-btn ns-ghost" href="/control-fractional.html">Embed it: Fractional Control &rarr;</a>';
+  }
+  return '<div class="nextstep"><div class="nl">'+nx+'</div><div class="ns-btns">'+primary+ghost+'</div></div>';
+}
+
+function reportHTML(L){
+  var r=L.report;
+  if(r.capstone){
+    return '<div class="capstone"><div class="cmeta">Level 5 capstone</div><div class="ct">'+r.title+'</div>'+
+      '<a class="cbtn" href="'+r.url+'">'+r.meta+' &rarr;</a></div>';
+  }
+  if(r.url){
+    var lab=r.label?'<span class="rlabel">'+r.label+'</span>':'';
+    return '<a class="asset" href="'+r.url+'"><span class="ico">\u25A4</span><span class="at">'+r.title+lab+'</span><span class="arr">Read &rarr;</span></a>';
+  }
+  return '<div class="asset soon"><span class="ico">\u25A4</span><span class="at">'+r.title+'</span><span class="soon-pill">Coming soon</span></div>';
+}
+
+function articlesHTML(L){
+  if(!L.articles.length){
+    return '<div class="art-list"><div class="art soon">More articles coming soon<span class="ap soon-pill">In development</span></div></div>';
+  }
+  var h='<div class="art-list">';
+  L.articles.forEach(function(a){
+    if(a.url){ h+='<a class="art" href="'+a.url+'">'+a.title+'</a>'; }
+    else { h+='<div class="art soon">'+a.title+'<span class="ap soon-pill">Coming soon</span></div>'; }
+  });
+  return h+'</div>';
+}
+
+// render mini ladder
+var ml=document.getElementById('miniLadder'),mh='';
+LEVELS.forEach(function(L){
+  mh+='<div class="mrung" data-n="'+L.n+'" onclick="openLevel('+L.n+',true)"><div class="mn">'+L.n+'</div><div class="mnm">'+SHORT[L.n-1]+'</div></div>';
+});
+ml.innerHTML=mh;
+
+// render shelves
+var sc=document.getElementById('shelves'),sh='';
+LEVELS.forEach(function(L){
+  sh+='<div class="shelf" id="shelf-'+L.n+'">'+
+    '<div class="shelf-head" onclick="toggle('+L.n+')">'+
+      '<div class="shelf-num">'+L.n+'</div>'+
+      '<div class="h-main"><div class="shelf-name">'+L.name+'</div><div class="shelf-tag">'+L.tag+'</div></div>'+
+      '<div class="shelf-tog">+</div>'+
+    '</div>'+
+    '<div class="shelf-body"><div class="shelf-inner">'+
+      '<div class="sb-block"><div class="sb-lbl">What this level means</div><p>'+L.means+'</p></div>'+
+      '<div class="sb-block"><div class="sb-lbl">What breaks here</div><p>'+L.breaks+'</p></div>'+
+      '<div class="sb-block"><div class="sb-lbl">Recommended report</div>'+reportHTML(L)+'</div>'+
+      '<div class="sb-block"><div class="sb-lbl">Articles</div>'+articlesHTML(L)+'</div>'+
+      nextStep(L)+
+    '</div></div>'+
+  '</div>';
+});
+sc.innerHTML=sh;
+
+function toggle(n){
+  var el=document.getElementById('shelf-'+n);
+  el.classList.toggle('open');
+}
+function openLevel(n,scroll){
+  var el=document.getElementById('shelf-'+n);
+  if(!el.classList.contains('open'))el.classList.add('open');
+  if(scroll)el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// arrival from diagnostic: ?level=N
+(function(){
+  var q=new URLSearchParams(window.location.search);
+  var lv=parseInt(q.get('level'));
+  if(lv>=1&&lv<=5){
+    var rung=document.querySelector('.mrung[data-n="'+lv+'"]');if(rung)rung.classList.add('current');
+    var sh=document.getElementById('shelf-'+lv);if(sh)sh.classList.add('current','open');
+    var a=document.getElementById('arrival');var t=document.getElementById('arrivalText');
+    t.innerHTML='Your diagnostic puts you at <strong>Level '+lv+' \u2014 '+SHORT[lv-1]+'</strong>. Here\u2019s your shelf: what it means, what to read, and your next step.';
+    a.classList.add('show');
+    setTimeout(function(){document.getElementById('shelf-'+lv).scrollIntoView({behavior:'smooth',block:'center'});},400);
+  }
+})();
+</script>
+</body>
+</html>
