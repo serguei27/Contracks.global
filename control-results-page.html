@@ -256,6 +256,8 @@ footer a:hover{color:var(--gold);}
       <input type="hidden" name="concern" id="hConcern" />
       <input type="hidden" name="cap" id="hCap" />
       <input type="hidden" name="stage" id="hStage" />
+      <input type="hidden" name="domain" id="hDomain" />
+      <input type="hidden" name="resilience" id="hResilience" />
       <div class="field"><input type="text" name="name" id="fName" placeholder="First name" required /></div>
       <div class="field"><input type="email" name="email" id="fEmail" placeholder="Work email" required /></div>
       <div class="field"><input type="text" name="org" id="fOrg" placeholder="Programme / organisation" /></div>
@@ -523,11 +525,13 @@ footer a:hover{color:var(--gold);}
   setv('hContain',data.pillars.contain);setv('hCommand',data.pillars.command);setv('hClose',data.pillars.close);
   setv('hConfirm',data.pillars.confirm);setv('hControl',data.pillars.control);
   setv('hConcern',data.concern||'');
-  if(live){setv('hSector',q.get('sector')||'');setv('hRole',q.get('role')||'');setv('hCap',q.get('cap')||'');setv('hStage',q.get('stage')||'');}
+  setv('hResilience',data.resilience);
+  if(live){setv('hSector',q.get('sector')||'');setv('hRole',q.get('role')||'');setv('hCap',q.get('cap')||'');setv('hStage',q.get('stage')||'');setv('hDomain',q.get('domain')||'');}
 
   function reportURL(name,org){
     var p=new URLSearchParams({s:data.overall,contain:data.pillars.contain,command:data.pillars.command,
       close:data.pillars.close,confirm:data.pillars.confirm,control:data.pillars.control,
+      res:data.resilience,scale:data.scale,domain:(live?q.get('domain')||'':''),
       cap:(live?q.get('cap')||'':''),sector:(live?q.get('sector')||'':''),role:(live?q.get('role')||'':''),
       stage:(live?q.get('stage')||'':''),concern:data.concern||'',name:name||'',org:org||''});
     return 'control-report.html?'+p.toString();
