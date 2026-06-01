@@ -41,6 +41,17 @@ em{color:var(--gold);font-style:italic;}
 .rstep.active .rn{color:var(--navy);}
 .rstep.current{background:rgba(201,169,89,.16);box-shadow:inset 0 0 0 1px var(--gold);}
 @media(max-width:560px){.rstep .rl{font-size:.5rem;letter-spacing:.02em;}}
+.mladder{margin:1.3rem 0 1.5rem;border:1px solid var(--line);border-radius:5px;overflow:hidden;}
+.mlrow{display:flex;gap:1rem;padding:1rem 1.2rem;border-bottom:1px solid var(--line);align-items:flex-start;}
+.mlrow:last-child{border-bottom:none;}
+.mlnum{flex:0 0 auto;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.05rem;color:var(--grey);}
+.mlname{font-weight:700;font-size:1rem;color:var(--navy);margin-bottom:.15rem;}
+.mlmean{font-size:.88rem;color:var(--grey);line-height:1.5;}
+.mlrow.current{background:rgba(201,169,89,.10);}
+.mlrow.current .mlnum{border-color:var(--gold);background:var(--gold);color:var(--navy);}
+.mltag{color:var(--accent);font-weight:600;font-size:.78rem;margin-left:.4rem;}
+.ladder-philo{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.12rem;line-height:1.5;color:var(--navy);border-left:3px solid var(--gold);padding-left:1rem;}
+@media print{.mlrow,.mladder{page-break-inside:avoid;}}
 .ring{width:128px;height:128px;border-radius:50%;flex:none;background:conic-gradient(var(--accent) 0% 36%, rgba(255,255,255,.12) 36% 100%);display:flex;align-items:center;justify-content:center;}
 .ring .in{width:100px;height:100px;border-radius:50%;background:var(--navy-soft);display:flex;flex-direction:column;align-items:center;justify-content:center;}
 .ring .n{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;line-height:1;}
@@ -159,7 +170,7 @@ p.body{margin-bottom:1rem;}
 
   <!-- MATURITY LADDER -->
   <div class="pad" style="padding-top:0;">
-    <div class="rladder-label">Where you sit on the maturity ladder</div>
+    <div class="rladder-label">Your maturity position</div>
     <div class="rladder" id="rLadder"></div>
   </div>
 
@@ -194,6 +205,16 @@ p.body{margin-bottom:1rem;}
   <div class="pad">
     <h2 class="sec">Your two priority gaps</h2>
     <div id="gapsDeep"></div>
+  </div>
+
+  <hr class="divide" />
+
+  <!-- UNDERSTANDING THE MATURITY LADDER -->
+  <div class="pad">
+    <h2 class="sec">Understanding the maturity ladder</h2>
+    <p class="body">Every programme sits somewhere on a five-level control maturity ladder. The levels don&rsquo;t describe how much you report — they describe how early you see what&rsquo;s coming.</p>
+    <div class="mladder" id="mladder"></div>
+    <p class="ladder-philo">Progression through the levels is not about more reporting. It is about moving from discovering problems after they happen to preventing them before they occur.</p>
   </div>
 
   <hr class="divide" />
@@ -301,6 +322,22 @@ p.body{margin-bottom:1rem;}
   var rl='';
   RLAB.forEach(function(nm,i){var n=i+1;var c='rstep'+(n<=lvl.n?' active':'')+(n===lvl.n?' current':'');rl+='<div class="'+c+'"><span class="rn">'+n+'</span><span class="rl">'+nm+'</span></div>';});
   document.getElementById('rLadder').innerHTML=rl;
+  // understanding the maturity ladder \u2014 full definitions, current level highlighted
+  var LADDER_DEFS=[
+    {name:'Reactive',def:'The programme is driven by people, not controls. Problems are discovered after they happen. Delivery depends on heroics and firefighting.'},
+    {name:'Managed',def:'Governance exists, but reality lives outside the system. Reports are produced, but the live programme is not consistently controlled \u2014 the deck and the site often disagree.'},
+    {name:'Controlled',def:'The 5Cs are operating. Scope, decisions, interfaces, vendor commitments and cadence are actively managed. Problems surface as gaps before they become surprises.'},
+    {name:'Predictable',def:'Delivery outcomes become forecastable. Risks are visible early. Recovery actions are triggered before schedule and cost impacts materialise.'},
+    {name:'No-Surprises Delivery',def:'Full operational control. Nothing reaches the board unexpectedly because issues are identified, owned and resolved before they escalate. The programme becomes evidence-driven rather than personality-driven.'}
+  ];
+  var ml='';
+  LADDER_DEFS.forEach(function(d,i){
+    var n=i+1, cur=(n===lvl.n);
+    ml+='<div class="mlrow'+(cur?' current':'')+'"><div class="mlnum">'+n+'</div>'+
+      '<div class="mlbody"><div class="mlname">'+d.name+(cur?'<span class="mltag">\u00b7 Your level</span>':'')+'</div>'+
+      '<div class="mlmean">'+d.def+'</div></div></div>';
+  });
+  document.getElementById('mladder').innerHTML=ml;
   var d=new Date();
   document.getElementById('dateStr').textContent=d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
   if(data.org){document.getElementById('prepared').innerHTML='Prepared for '+data.org+(data.name?' \u00b7 '+data.name:'')+' \u00b7 <span>'+document.getElementById('dateStr').textContent+'</span>';}
