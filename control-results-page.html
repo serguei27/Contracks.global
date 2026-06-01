@@ -41,6 +41,8 @@ section{padding:4rem 2rem;}
 .section-head h2{font-size:clamp(1.7rem,3vw,2.2rem);}
 .section-cream{background:var(--cream);}
 .ladder-strip{background:var(--navy-soft);padding:1.7rem 2rem 1.5rem;}
+.ladder-label{max-width:900px;margin:0 auto .8rem;color:#5FB3C4;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:center;}
+.gate-lead{max-width:620px;margin:0 auto 1.5rem;text-align:center;font-family:'Cormorant Garamond',serif;font-size:1.4rem;line-height:1.4;color:var(--navy);font-style:italic;}
 .maturity-line{display:grid;grid-template-columns:repeat(5,1fr);gap:.7rem;max-width:900px;margin:0 auto;}
 .mstep{position:relative;border:1px solid rgba(255,255,255,.16);border-radius:3px;padding:.8rem .5rem;text-align:center;color:rgba(255,255,255,.45);}
 .mstep span{display:block;font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;line-height:1.1;}
@@ -127,6 +129,7 @@ footer a:hover{color:var(--gold);}
 
 <!-- MATURITY LADDER -->
 <section class="ladder-strip">
+  <div class="ladder-label">Your maturity position</div>
   <div class="maturity-line" id="ladder"></div>
 </section>
 
@@ -155,20 +158,9 @@ footer a:hover{color:var(--gold);}
   </div>
 </section>
 
-<!-- SCORE-BAND VIDEO -->
-<section class="video-sec">
-  <div class="video-wrap">
-    <div class="vhead">
-      <span class="label">Watch</span>
-      <h2 id="vidHead"></h2>
-      <p id="vidSub"></p>
-    </div>
-    <div class="video-frame" id="vidFrame"></div>
-  </div>
-</section>
-
 <!-- REPORT GATE -->
 <section class="section-cream">
+  <p class="gate-lead">Your score shows the pattern. The full report shows what to do next.</p>
   <div class="report-card">
     <h2>Get your full Delivery Control Report</h2>
     <p>All five pillars, every gap, and the maturity roadmap to your next level — as a PDF you can forward to your programme director, sponsor or board.</p>
@@ -190,20 +182,28 @@ footer a:hover{color:var(--gold);}
       <div class="field"><input type="email" name="email" id="fEmail" placeholder="Work email" required /></div>
       <div class="field"><input type="text" name="org" id="fOrg" placeholder="Programme / organisation" /></div>
       <button type="submit" class="btn btn-primary" id="reportBtn">Download my full report →</button>
-      <div class="gate-note">No spam. Your report, and the occasional field note on delivery control.</div>
+      <div class="gate-note">No spam — your report, plus the occasional field note on delivery control. <a href="/privacy.html">Privacy</a>.</div>
     </form>
   </div>
 </section>
 
+<!-- SCORE-BAND VIDEO -->
+<section class="video-sec">
+  <div class="video-wrap">
+    <div class="vhead">
+      <span class="label">Watch</span>
+      <h2 id="vidHead"></h2>
+      <p id="vidSub"></p>
+    </div>
+    <div class="video-frame" id="vidFrame"></div>
+  </div>
+</section>
 
 <footer>
   <div class="brand-line">CONTRACKS<span style="color:#C9A959">.</span>GLOBAL</div>
   <span class="gold">Better contracts. Better business. Better society.</span>
   <div>
-    <a href="mailto:hello@contracks.global">hello@contracks.global</a> ·
-    <a href="tel:+32466446290">+32 466 446 290</a> ·
-    <a href="https://www.linkedin.com/company/contracks-global/">LinkedIn</a> ·
-    <a href="/privacy.html">Privacy</a>
+    <a href="mailto:hello@contracks.global">hello@contracks.global</a>
   </div>
   <p style="margin-top:1.5rem; font-size:0.78rem; opacity:0.6;">© 2026 Contracks Global. All rights reserved.</p>
 </footer>
