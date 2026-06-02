@@ -199,8 +199,8 @@ footer a:hover{color:var(--gold);}
         <p class="speed-why" id="speedWhy"></p>
         <div class="speed-next">
           <span class="speed-nextlabel">Your next step</span>
-          <a class="speed-read" id="readLink" href="library.html">1 · Read — Beyond Paperwork Governance →</a>
-          <a class="speed-cta" id="speedLink" href="control-review.html">2 · Book a diagnostic review →</a>
+          <a class="speed-read" id="readLink" href="/specialreport2">1 · Read — Beyond Paperwork Governance →</a>
+          <a class="speed-cta" id="speedLink" href="/control-review.html">2 · Request your Review →</a>
         </div>
       </div>
     </div>
@@ -487,6 +487,8 @@ footer a:hover{color:var(--gold);}
   document.getElementById('speedOutcome').textContent=sp.outcome;
   document.getElementById('speedWhy').textContent=rec.why;
   document.getElementById('speedCard').style.borderTopColor=sp.accent;
+  // carry the readiness score into the booking link so the Review has context
+  document.getElementById('speedLink').href='/control-review.html?'+new URLSearchParams({s:data.overall,contain:data.pillars.contain,command:data.pillars.command,close:data.pillars.close,confirm:data.pillars.confirm,control:data.pillars.control}).toString();
 
   // three priority actions, from the three weakest pillars
   var ah='';
