@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GROW landing — hybrid template preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{--navy:#0A1A33;--navy-soft:#14253F;--gold:#C9A959;--grey:#6E7783;--cream:#F5F1E7;--white:#fff;--accent:#B8860B;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;color:var(--navy);background:#fff;line-height:1.65;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.15;letter-spacing:-.01em;}
+h1 em,h2 em,h3 em{color:var(--gold);font-style:italic;}
+.container{max-width:1180px;margin:0 auto;padding:0 2rem;}
+.label{font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:inline-block;margin-bottom:1rem;}
+.label::before{content:"— ";}
+.btn{display:inline-block;padding:1.05rem 2.1rem;font-size:.98rem;font-weight:600;letter-spacing:.03em;border-radius:3px;text-decoration:none;cursor:pointer;border:none;font-family:'Inter',sans-serif;transition:transform .15s,background .2s;}
+.btn-primary{background:var(--gold);color:var(--navy)!important;box-shadow:0 8px 26px rgba(201,169,89,.25);}
+.btn-primary:hover{transform:translateY(-1px);}
+
+.preview-flag{background:#0A1A33;color:#C9A959;text-align:center;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:8px;font-weight:600;}
+.gap-note{background:#F6EFDD;border-bottom:1px solid #E4D2A6;color:#7a5e12;text-align:center;font-size:.78rem;padding:7px;font-style:italic;}
+
+.site-header{background:var(--navy);padding:1.1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+.brand{color:#fff;font-weight:700;font-size:.95rem;letter-spacing:.1em;text-decoration:none;}
+.brand .dot{color:var(--gold);}
+.nav-back{color:rgba(255,255,255,.6);font-size:.8rem;text-decoration:none;}
+
+/* 1 · HERO */
+.lp-hero{position:relative;min-height:82vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 2rem;border-top:3px solid var(--accent);
+  background:linear-gradient(rgba(10,26,51,.72),rgba(10,26,51,.88)),radial-gradient(ellipse 90% 70% at 70% 35%,rgba(184,134,11,.24),transparent 60%),url('/grow-hero.jpg') center/cover no-repeat,var(--navy);}
+.lp-hero-inner{position:relative;z-index:2;max-width:840px;}
+.speed-label{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.22em;color:#E0C063;margin-bottom:1.1rem;text-transform:uppercase;}
+.lp-hero h1{font-size:clamp(2.4rem,5vw,3.9rem);color:#fff;margin-bottom:1.4rem;}
+.lp-hero .sub{font-size:1.18rem;color:rgba(255,255,255,.84);max-width:680px;margin:0 auto 2.3rem;line-height:1.55;font-weight:300;}
+.lp-note{margin-top:1.1rem;font-size:.8rem;color:rgba(255,255,255,.5);}
+
+/* 2 · SELF-QUALIFY */
+.qualify{background:var(--white);padding:5rem 2rem;}
+.qualify-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.qualify-img{aspect-ratio:4/3;border-radius:4px;border:1px solid #E8E4DC;position:relative;overflow:hidden;background:linear-gradient(135deg,#14253F,#0A1A33);display:flex;align-items:center;justify-content:center;}
+.qualify-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.qualify-img .slot-label{color:rgba(224,192,99,.95);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:1rem;font-weight:600;}
+.qualify h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin-bottom:1.1rem;}
+.qualify p{color:var(--grey);font-size:1rem;line-height:1.75;margin-bottom:1rem;}
+.qualify .pains{color:var(--navy);font-weight:500;}
+.stat{border-left:3px solid var(--gold);padding:.5rem 0 .5rem 1.1rem;margin:1.4rem 0;}
+.stat .big{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--navy);}
+.stat .truth{font-size:.97rem;color:var(--grey);line-height:1.65;margin-top:.45rem;}
+
+/* 3 · AUTHORITY */
+.authority-wrap{background:var(--cream);border-top:1px solid #E8E4DC;border-bottom:1px solid #E8E4DC;padding:2.8rem 2rem;}
+.authority{display:flex;align-items:center;gap:1.6rem;max-width:760px;margin:0 auto;}
+.authority-photo{width:96px;height:96px;flex-shrink:0;border-radius:50%;background:var(--navy);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.authority-photo img{width:100%;height:100%;object-fit:cover;}
+.authority-photo .monogram{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--gold);}
+.authority-name{font-size:1.02rem;font-weight:600;margin-bottom:.25rem;}
+.authority-creds{font-size:.74rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;}
+.authority-line{font-size:.94rem;color:var(--grey);line-height:1.6;}
+@media(max-width:600px){.authority{flex-direction:column;text-align:center;}}
+
+/* 4 · WHO */
+.section-cream{background:var(--cream);}
+section{padding:5rem 2rem;}
+.section-head{max-width:760px;margin-bottom:2.6rem;}
+.section-head h2{font-size:clamp(2rem,3.6vw,2.7rem);margin-bottom:.6rem;}
+.who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;max-width:1180px;margin:0 auto;}
+.who-card{background:#fff;padding:1.9rem 1.7rem;border-top:3px solid var(--accent);border-radius:2px;box-shadow:0 1px 3px rgba(10,26,51,.05);}
+.who-card .num{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--accent);font-weight:600;display:block;margin-bottom:.4rem;}
+.who-card h3{font-size:1.2rem;margin-bottom:.4rem;}
+.who-card p{color:var(--grey);font-size:.94rem;}
+
+/* 5 · PROOF */
+.section-navy{background:var(--navy);color:#fff;}
+.section-navy h2{color:#fff;}
+.case-study{background:var(--navy-soft);border:1px solid rgba(201,169,89,.25);padding:2.6rem 2.3rem;border-radius:3px;max-width:920px;margin:0 auto;}
+.case-tag{font-size:.74rem;font-weight:600;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-bottom:.9rem;}
+.case-study h3{font-size:1.8rem;color:#fff;margin-bottom:1.2rem;}
+.case-block{margin-bottom:1.1rem;}
+.case-block strong{display:block;font-family:'Inter',sans-serif;font-size:.76rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;font-weight:600;}
+.case-block p{color:rgba(255,255,255,.85);font-size:.98rem;line-height:1.7;}
+
+/* 6 · FINAL CTA */
+.final-cta{background:var(--navy);text-align:center;padding:4.5rem 2rem;border-top:1px solid rgba(201,169,89,.2);}
+.final-cta h2{color:#fff;font-size:2.1rem;margin-bottom:1.3rem;}
+footer{background:var(--navy);color:rgba(255,255,255,.6);padding:2.2rem 2rem;text-align:center;font-size:.85rem;}
+footer .gold{color:var(--gold);font-style:italic;font-family:'Cormorant Garamond',serif;}
+footer .fmeta{margin-top:.9rem;font-size:.84rem;}
+footer .fmeta a{color:rgba(255,255,255,.72);text-decoration:none;}
+footer .fmeta a:hover{color:var(--gold);}
+footer .fmeta .sep{color:rgba(255,255,255,.3);margin:0 .6rem;}
+footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
+@media(max-width:760px){.qualify-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="preview-flag">Preview · GROW hybrid (same locked shell) · Speed 4</div>
+<div class="gap-note">Three image gaps: 1) hero — aerial operation at scale (too big for one person)  ·  2) sector — the human bottleneck  ·  3) headshot</div>
+
+<header class="site-header">
+  <a href="/" class="brand">CONTRACKS<span class="dot">.</span>GLOBAL</a>
+  <a href="/" class="nav-back">← Back to site</a>
+</header>
+
+<!-- 1 · HERO -->
+<section class="lp-hero">
+  <div class="lp-hero-inner">
+    <span class="speed-label">Free Scale Readiness Diagnostic</span>
+    <h1>Can your business scale — or will the commercial side become the <em>bottleneck?</em></h1>
+    <p class="sub">Growth rarely fails on strategy. It fails because the commercial function can't keep up — and the founder ends up doing it themselves at 11pm.</p>
+    <a href="#" class="btn btn-primary">Start the Scale Readiness Assessment →</a>
+    <div class="lp-note">Free · 21 questions · 5 minutes · Instant result</div>
+  </div>
+</section>
+
+<!-- 2 · SELF-QUALIFY -->
+<section class="qualify">
+  <div class="qualify-grid">
+    <div class="qualify-img">
+      <!-- Replace with: <img src="/grow-sector.jpg" alt="A business operating at scale"> -->
+      <span class="slot-label">The bottleneck<br>(everything routing through one overloaded person / one control point — the human chokepoint, not a happy team photo)</span>
+    </div>
+    <div>
+      <h2>Find out if your business is built to scale — or built around <em>you.</em></h2>
+      <p>Cut through the growth plan and diagnose your business in minutes — whether the commercial engine can carry the next stage, or whether scale just multiplies the cracks you're already papering over.</p>
+      <p class="pains">Built for founders and MDs scaling up or entering new markets, where every new contract, supplier and counterparty adds commercial load the business isn't yet built to carry.</p>
+      <div class="stat">
+        <div class="big">You can't scale a function that only works because you're running it.</div>
+        <div class="truth">Growth multiplies whatever you've already built. Strong commercial structure scales into a bigger business; a founder approving every contract scales into a bottleneck. Scale simply exposes which one you have.</div>
+      </div>
+      <p>Scored against the 5Cs Framework — the system used to embed commercial leadership in businesses scaling across Europe, Africa and the Gulf. You get clear, actionable feedback on exactly where you're ready to scale, and where you'll break first.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · AUTHORITY -->
+<div class="authority-wrap">
+  <div class="authority">
+    <div class="authority-photo">
+      <!-- Replace with: <img src="/serguei-portrait.jpg" alt="Serguei Poppeleer"> -->
+      <span class="monogram">SP</span>
+    </div>
+    <div>
+      <div class="authority-name">Serguei Poppeleer · Founder, Contracks Global</div>
+      <div class="authority-creds">MCIArb · IACCM · LLM Oil &amp; Gas · Executive MBA</div>
+      <p class="authority-line">25 years across 30 countries, embedding the senior commercial leadership that lets businesses scale and enter new markets without breaking.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 4 · WHO -->
+<section class="section-cream">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Who this is for</span>
+      <h2>If the business is outgrowing <em>you.</em></h2>
+    </div>
+    <div class="who-grid">
+      <div class="who-card"><span class="num">01</span><h3>Founders ready to step out</h3><p>The business is past the point where the founder should approve every contract — but no one else is built to do it yet.</p></div>
+      <div class="who-card"><span class="num">02</span><h3>Companies entering Africa or Europe</h3><p>Where local commercial fluency, supplier networks and contract conventions decide whether the entry works at all.</p></div>
+      <div class="who-card"><span class="num">03</span><h3>Boards needing senior commercial leadership</h3><p>Without committing to a full-time executive hire while the shape of the role is still emerging.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · PROOF -->
+<section class="section-navy">
+  <div class="container">
+    <div class="section-head"><span class="label">Proof</span><h2>One we scaled.</h2></div>
+    <div class="case-study">
+      <div class="case-tag">Oil &amp; Gas · West Africa · $2.7B portfolio</div>
+      <h3>Intels Nigeria — embedded commercial leadership.</h3>
+      <div class="case-block"><strong>Situation</strong><p>A $2.7B portfolio of services to several international oil majors operating in Nigeria. Commercial intensity high, decision cycles long, contractual exposure significant across multiple counterparties.</p></div>
+      <div class="case-block"><strong>Intervention</strong><p>Embedded senior commercial leadership across the portfolio. Structured contract governance, strengthened supplier and subcontractor frameworks, improved commercial decision-making and reduced disputes before they became claims.</p></div>
+      <div class="case-block"><strong>Outcome</strong><p>Approximately $1M per month in cost savings. Litigation exposure cut by around 30%. The commercial function moved from reactive to deliberate.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · ASSESSMENT CTA -->
+<section class="final-cta">
+  <h2>Will the next stage scale your business — or <em>expose it?</em></h2>
+  <a href="#" class="btn btn-primary">Start the Scale Readiness Assessment →</a>
+</section>
+
+<footer>
+  <div class="gold">Better contracts. Better business. Better society.</div>
+  <div class="fmeta">
+    <a href="mailto:hello@contracks.global">hello@contracks.global</a>
+    <span class="sep">·</span>
+    <a href="/privacy.html">Privacy Policy</a>
+  </div>
+  <div class="fcopy">© Contracks Global 2026</div>
+</footer>
+
+</body>
+</html>
