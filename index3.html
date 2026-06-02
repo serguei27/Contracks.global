@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Speed 1 — START | Contracks Global</title>
+<meta name="description" content="Turn an idea into an investable business. Pressure-test whether the market will pay, the money lasts and the margin holds — before you bet a year on it." />
+<meta property="og:title" content="Speed 1 — START | Contracks Global" />
+<meta property="og:description" content="Turn an idea into an investable business." />
+<meta property="og:url" content="https://contracks.global/start" />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{--navy:#0A1A33;--navy-soft:#14253F;--gold:#C9A959;--grey:#6E7783;--cream:#F5F1E7;--white:#fff;--accent:#2D6A4F;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;color:var(--navy);background:#fff;line-height:1.65;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.15;letter-spacing:-.01em;}
+h1 em,h2 em,h3 em{color:var(--gold);font-style:italic;}
+.container{max-width:1180px;margin:0 auto;padding:0 2rem;}
+.label{font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:inline-block;margin-bottom:1rem;}
+.label::before{content:"— ";}
+.btn{display:inline-block;padding:1.05rem 2.1rem;font-size:.98rem;font-weight:600;letter-spacing:.03em;border-radius:3px;text-decoration:none;cursor:pointer;border:none;font-family:'Inter',sans-serif;transition:transform .15s,background .2s;}
+.btn-primary{background:var(--gold);color:var(--navy)!important;box-shadow:0 8px 26px rgba(201,169,89,.25);}
+.btn-primary:hover{transform:translateY(-1px);}
+
+.site-header{background:var(--navy);padding:1.1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+.brand{color:#fff;font-weight:700;font-size:.95rem;letter-spacing:.1em;text-decoration:none;}
+.brand .dot{color:var(--gold);}
+.nav-back{color:rgba(255,255,255,.6);font-size:.8rem;text-decoration:none;}
+
+/* 1 · HERO */
+.lp-hero{position:relative;min-height:82vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 2rem;border-top:3px solid var(--accent);background:linear-gradient(rgba(10,26,51,.82),rgba(10,26,51,.92)),radial-gradient(ellipse 90% 70% at 70% 35%,rgba(45,106,79,.22),transparent 60%),url('/start-platform.jpeg') center/cover no-repeat,var(--navy);}
+.speed-promise{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.15rem,2.2vw,1.45rem);color:var(--gold);margin:0 auto 1.2rem;max-width:680px;line-height:1.3;}
+.cta-payoff{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--gold);max-width:620px;margin:0 auto 1.7rem;line-height:1.4;}
+/* mid · three-stage slideshow */
+.qualify-img .ff{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:midFade 15s ease-in-out infinite;}
+.qualify-img .ff.f1{animation-delay:0s;}
+.qualify-img .ff.f2{animation-delay:5s;}
+.qualify-img .ff.f3{animation-delay:10s;}
+@keyframes midFade{0%{opacity:0}3%{opacity:1}30%{opacity:1}33%{opacity:0}100%{opacity:0}}
+.stag{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);z-index:3;text-align:center;font-size:.74rem;font-weight:600;letter-spacing:.03em;padding:.45rem 1.1rem;border:1px solid rgba(255,255,255,.32);border-radius:3px;color:#fff;background:rgba(10,26,51,.62);line-height:1.3;opacity:0;animation:midTag 15s ease-in-out infinite;}
+.stag b{display:block;font-size:.54rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.15rem;}
+.stag.s1{animation-delay:0s;}
+.stag.s2{animation-delay:5s;}
+.stag.s3{animation-delay:10s;}
+@keyframes midTag{0%{opacity:0}3%{opacity:1}30%{opacity:1}33%{opacity:0}100%{opacity:0}}
+.mid-cap{margin-top:.7rem;font-size:.82rem;color:var(--grey);line-height:1.5;text-align:center;}
+.mid-cap b{color:var(--navy);font-weight:600;}
+@media(prefers-reduced-motion:reduce){.qualify-img .ff{animation:none;opacity:0;}.qualify-img .ff.f3{opacity:1;}.stag{display:none;}}
+.lp-hero-inner{position:relative;z-index:2;max-width:840px;}
+.speed-label{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.22em;color:#6FB48E;margin-bottom:1.1rem;text-transform:uppercase;}
+.lp-hero h1{font-size:clamp(2.4rem,5vw,3.9rem);color:#fff;margin-bottom:1.4rem;}
+.lp-hero .sub{font-size:1.18rem;color:rgba(255,255,255,.84);max-width:680px;margin:0 auto 2.3rem;line-height:1.55;font-weight:300;}
+.lp-frame{margin-top:1.4rem;font-size:.93rem;color:rgba(255,255,255,.66);max-width:620px;margin-left:auto;margin-right:auto;line-height:1.55;}
+.lp-frame strong{color:var(--gold);font-weight:600;}
+.lp-note{margin-top:1.1rem;font-size:.8rem;color:rgba(255,255,255,.5);}
+
+/* 2 · SELF-QUALIFY */
+.qualify{background:var(--white);padding:5rem 2rem;}
+.qualify-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.qualify-img{aspect-ratio:3/2;border-radius:4px;border:1px solid #E8E4DC;position:relative;overflow:hidden;background:linear-gradient(135deg,#14253F,#0A1A33);display:flex;align-items:center;justify-content:center;}
+.qualify-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.qualify h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin-bottom:1.1rem;}
+.qualify p{color:var(--grey);font-size:1rem;line-height:1.75;margin-bottom:1rem;}
+.qualify .pains{color:var(--navy);font-weight:500;}
+.stat{border-left:3px solid var(--gold);padding:.5rem 0 .5rem 1.1rem;margin:1.4rem 0;}
+.stat .big{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--navy);}
+.stat .truth{font-size:.97rem;color:var(--grey);line-height:1.65;margin-top:.45rem;}
+
+/* 3 · AUTHORITY */
+.authority-wrap{background:var(--cream);border-top:1px solid #E8E4DC;border-bottom:1px solid #E8E4DC;padding:2.8rem 2rem;}
+.authority{display:flex;align-items:center;gap:1.6rem;max-width:760px;margin:0 auto;}
+.authority-photo{width:96px;height:96px;flex-shrink:0;border-radius:50%;background:var(--navy);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.authority-photo img{width:100%;height:100%;object-fit:cover;}
+.authority-photo .monogram{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--gold);}
+.authority-name{font-size:1.02rem;font-weight:600;margin-bottom:.25rem;}
+.authority-creds{font-size:.74rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;}
+.authority-line{font-size:.94rem;color:var(--grey);line-height:1.6;}
+@media(max-width:600px){.authority{flex-direction:column;text-align:center;}}
+
+/* 4 · WHO */
+.section-cream{background:var(--cream);}
+section{padding:5rem 2rem;}
+.section-head{max-width:760px;margin-bottom:2.6rem;}
+.section-head h2{font-size:clamp(2rem,3.6vw,2.7rem);margin-bottom:.6rem;}
+.who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;max-width:1180px;margin:0 auto;}
+.who-card{background:#fff;padding:1.9rem 1.7rem;border-top:3px solid var(--accent);border-radius:2px;box-shadow:0 1px 3px rgba(10,26,51,.05);}
+.who-card .num{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--accent);font-weight:600;display:block;margin-bottom:.4rem;}
+.who-card h3{font-size:1.2rem;margin-bottom:.4rem;}
+.who-card p{color:var(--grey);font-size:.94rem;}
+
+/* 5 · PROOF */
+.section-navy{background:var(--navy);color:#fff;}
+.section-navy h2{color:#fff;}
+.case-study{background:var(--navy-soft);border:1px solid rgba(201,169,89,.25);padding:2.6rem 2.3rem;border-radius:3px;max-width:920px;margin:0 auto;}
+.case-tag{font-size:.74rem;font-weight:600;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-bottom:.9rem;}
+.case-study h3{font-size:1.8rem;color:#fff;margin-bottom:1.2rem;}
+.case-block{margin-bottom:1.1rem;}
+.case-block strong{display:block;font-family:'Inter',sans-serif;font-size:.76rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;font-weight:600;}
+.case-block p{color:rgba(255,255,255,.85);font-size:.98rem;line-height:1.7;}
+
+/* 6 · FINAL CTA */
+.final-cta{background:var(--navy);text-align:center;padding:4.5rem 2rem;border-top:1px solid rgba(201,169,89,.2);}
+.final-cta h2{color:#fff;font-size:2.1rem;margin-bottom:1.3rem;}
+footer{background:var(--navy);color:rgba(255,255,255,.6);padding:2.2rem 2rem;text-align:center;font-size:.85rem;}
+footer .gold{color:var(--gold);font-style:italic;font-family:'Cormorant Garamond',serif;}
+footer .fmeta{margin-top:.9rem;font-size:.84rem;}
+footer .fmeta a{color:rgba(255,255,255,.72);text-decoration:none;}
+footer .fmeta a:hover{color:var(--gold);}
+footer .fmeta .sep{color:rgba(255,255,255,.3);margin:0 .6rem;}
+footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
+@media(max-width:760px){.qualify-grid{grid-template-columns:1fr;}}
+
+/* 1b · SIGNS */
+.signs{background:var(--cream);border-bottom:1px solid #E8E4DC;padding-top:3.4rem;padding-bottom:3.4rem;}
+.signs-title{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:1.6rem;max-width:760px;}
+.signs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.6rem;}
+.sign{display:flex;gap:.85rem;align-items:flex-start;}
+.sign .tick{color:var(--accent);font-weight:700;font-size:1.05rem;flex-shrink:0;line-height:1.55;}
+.sign p{color:var(--navy);font-size:1rem;line-height:1.6;font-weight:500;}
+
+/* before / after */
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.7rem;}
+.ba-col{background:rgba(255,255,255,.04);border:1px solid rgba(201,169,89,.18);border-radius:3px;padding:1.3rem 1.4rem;}
+.ba-col.after{border-color:rgba(201,169,89,.45);}
+.ba-h{display:block;font-size:.74rem;letter-spacing:.15em;text-transform:uppercase;font-weight:600;color:var(--gold);margin-bottom:.85rem;}
+.ba-col ul{list-style:none;}
+.ba-col li{color:rgba(255,255,255,.85);font-size:.95rem;line-height:1.55;padding:.3rem 0 .3rem 1.2rem;position:relative;}
+.ba-col li::before{content:"\2014";position:absolute;left:0;color:rgba(201,169,89,.5);}
+.ba-col.after li::before{content:"\2713";color:var(--gold);}
+@media(max-width:600px){.ba-grid{grid-template-columns:1fr;}}
+
+/* 5b · KILLER LINE */
+.killer{background:var(--cream);text-align:center;border-top:1px solid #E8E4DC;border-bottom:1px solid #E8E4DC;}
+.killer-lines{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:600;color:var(--navy);line-height:1.2;margin-bottom:1rem;}
+.killer-tag{font-size:1.05rem;color:var(--grey);max-width:560px;margin:0 auto;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="brand">CONTRACKS<span class="dot">.</span>GLOBAL</a>
+  <a href="/" class="nav-back">← Back to site</a>
+</header>
+
+<!-- 1 · HERO -->
+<section class="lp-hero">
+  <div class="lp-hero-inner">
+    <span class="speed-label">Speed 1 — Start</span>
+    <p class="speed-promise">Turn an idea into an investable business.</p>
+    <h1>From feedstock to an <em>investable fuel platform.</em></h1>
+    <p class="sub">Plenty of ideas are exciting. Few are investable. The gap is structure — a market that pays, money that lasts, and margin that holds. Find out which side of the line you're on.</p>
+    <a href="/control-assessment.html" class="btn btn-primary">Start with the CONTROL diagnostic →</a>
+    <p class="lp-frame">Start with the 5-minute <strong>CONTROL</strong> diagnostic. If START isn't your biggest problem, it'll tell you. If it is, you unlock your <strong>START Deep Dive</strong> — exactly what makes it investable, and what to fix first.</p>
+    <div class="lp-note">Free · 20 questions · about 4 minutes · Instant result</div>
+  </div>
+</section>
+
+<!-- 1b · SIGNS -->
+<section class="signs">
+  <div class="container">
+    <h2 class="signs-title">Signs you're already in <em>START territory.</em></h2>
+    <div class="signs-grid">
+      <div class="sign"><span class="tick">&#10003;</span><p>You've pitched the idea a hundred times — but never the business model.</p></div>
+      <div class="sign"><span class="tick">&#10003;</span><p>You're building features before anyone has agreed to pay.</p></div>
+      <div class="sign"><span class="tick">&#10003;</span><p>Investors say "interesting," then go quiet.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · SELF-QUALIFY -->
+<section class="qualify">
+  <div class="qualify-grid">
+    <div>
+      <div class="qualify-img">
+        <img class="ff f1" src="/start-feedstock.jpeg" alt="Stage 1 — feedstock, abundant and untapped" onerror="this.style.display='none';">
+        <img class="ff f2" src="/start-plant.jpeg" alt="Stage 2 — pilot plant, proving production" onerror="this.style.display='none';">
+        <img class="ff f3" src="/start-platform.jpeg" alt="Stage 3 — investable modular SAF platform" onerror="this.style.display='none';">
+        <span class="stag s1"><b>Stage 1</b>Feedstock</span>
+        <span class="stag s2"><b>Stage 2</b>Pilot</span>
+        <span class="stag s3"><b>Stage 3</b>Platform</span>
+      </div>
+      <p class="mid-cap"><b>Opportunity → venture → investable platform.</b><br>Bleriot, built in East Africa.</p>
+    </div>
+    <div>
+      <h2>Find out if it's investable — before you bet a year on <em>it.</em></h2>
+      <p>Cut through the optimism and pressure-test your venture in minutes — whether the market will pay, whether the money lasts, and whether the margin survives contact with reality.</p>
+      <p class="pains">Built for founders, owner-operators and first-time builders turning an idea into something an investor — or a bank — will actually back.</p>
+      <div class="stat">
+        <div class="big">Most ventures don't fail at the idea. They fail at the model.</div>
+        <div class="truth">A market too small, a margin too thin, a runway too short — each one is cheap to fix early and fatal to miss late. Most are only discovered after the money's been spent.</div>
+      </div>
+      <p>Scored against the 5Cs Framework — the same system used to structure ventures and capital programmes up to €2B across 30 countries. You get a clear read on whether it's investable, and what to fix first.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · AUTHORITY -->
+<div class="authority-wrap">
+  <div class="authority">
+    <div class="authority-photo">
+      <img src="/serguei-portrait.jpeg" alt="Serguei Poppeleer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <span class="monogram" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;">SP</span>
+    </div>
+    <div>
+      <div class="authority-name">Serguei Poppeleer · Founder, Contracks Global</div>
+      <div class="authority-creds">MCIArb · IACCM · LLM Oil &amp; Gas · Executive MBA</div>
+      <p class="authority-line">25 years across 30 countries, structuring ventures and capital projects up to €2B.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 4 · WHO -->
+<section class="section-cream">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Who this is for</span>
+      <h2>If it's exciting — but not yet a <em>business.</em></h2>
+    </div>
+    <div class="who-grid">
+      <div class="who-card"><span class="num">01</span><h3>First-time founders</h3><p>A strong idea and real momentum, but no structure an investor recognises yet.</p></div>
+      <div class="who-card"><span class="num">02</span><h3>Owner-operators going formal</h3><p>A business that runs on you, that now needs to be fundable, sellable or scalable.</p></div>
+      <div class="who-card"><span class="num">03</span><h3>Corporate builders &amp; spinouts</h3><p>A new venture inside or out of an existing company, that has to stand on its own commercials.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · PROOF -->
+<section class="section-navy">
+  <div class="container">
+    <div class="section-head"><span class="label">Proof</span><h2>Proof from the field.</h2></div>
+    <div class="case-study">
+      <div class="case-tag">Aviation · East Africa · Sustainable aviation fuel</div>
+      <h3>Bleriot — a sustainable aviation fuel venture, built investable from day one.</h3>
+      <div class="case-block"><strong>Situation</strong><p>A capital-intensive sustainable aviation fuel platform targeting East Africa. A real market opening — but one that had to be structured to attract serious capital, not just polite interest.</p></div>
+      <div class="case-block"><strong>Intervention</strong><p>Built the venture's commercial architecture from the ground up — market, money and margin — so the model held up under investor and partner scrutiny, not just in the pitch.</p></div>
+      <div class="case-block"><strong>Outcome</strong><p>Structured from initial seed and vegetable-oil trading into a modular SAF platform concept — positioned for micro-refineries across East Africa ahead of biofuel legislation.</p></div>
+      <div class="ba-grid">
+        <div class="ba-col"><span class="ba-h">Before</span><ul><li>An idea with momentum</li><li>"Interest," no commitment</li><li>The model lived in the founder's head</li></ul></div>
+        <div class="ba-col after"><span class="ba-h">After</span><ul><li>A board-governed platform</li><li>A defensible commercial case</li><li>Structure that outlives the founder</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5b · KILLER LINE -->
+<section class="killer">
+  <div class="container">
+    <p class="killer-lines">An idea is worth nothing.<br>A model is worth backing.</p>
+    <p class="killer-tag">START exists to turn one into the other — before you spend a year finding out.</p>
+  </div>
+</section>
+
+<!-- 6 · ASSESSMENT CTA -->
+<section class="final-cta">
+  <h2>If an investor asked for your model tomorrow, would you <em>have one?</em></h2>
+  <p class="cta-payoff">The best time to learn it's investable is before you've spent the runway.</p>
+  <a href="/control-assessment.html" class="btn btn-primary">Start with the CONTROL diagnostic →</a>
+</section>
+
+<footer>
+  <div class="gold">Better contracts. Better business. Better society.</div>
+  <div class="fmeta">
+    <a href="mailto:hello@contracks.global">hello@contracks.global</a>
+    <span class="sep">·</span>
+    <a href="/privacy.html">Privacy Policy</a>
+  </div>
+  <div class="fcopy">© Contracks Global 2026</div>
+</footer>
+
+</body>
+</html>
