@@ -31,7 +31,7 @@ h1 em,h2 em,h3 em{color:var(--gold);font-style:italic;}
 .nav-back{color:rgba(255,255,255,.6);font-size:.8rem;text-decoration:none;}
 
 /* 1 · HERO (static on the after photo) */
-.lp-hero{position:relative;min-height:82vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 2rem;border-top:3px solid var(--accent);background:linear-gradient(rgba(10,26,51,.82),rgba(10,26,51,.92)),radial-gradient(ellipse 90% 70% at 70% 35%,rgba(201,122,74,.22),transparent 60%),url('/resolve-hero-after.jpeg') center/cover no-repeat,var(--navy);}
+.lp-hero{position:relative;min-height:82vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 2rem;border-top:3px solid var(--accent);background:linear-gradient(rgba(10,26,51,.82),rgba(10,26,51,.92)),radial-gradient(ellipse 90% 70% at 70% 35%,rgba(201,122,74,.22),transparent 60%),url('/resolve-hero.jpeg') center/cover no-repeat,var(--navy);}
 .lp-hero-inner{position:relative;z-index:2;max-width:840px;}
 .speed-label{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.22em;color:#E0A07A;margin-bottom:1.1rem;text-transform:uppercase;}
 .speed-promise{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.15rem,2.2vw,1.45rem);color:var(--gold);margin:0 auto 1.2rem;max-width:680px;line-height:1.3;}
@@ -53,26 +53,23 @@ h1 em,h2 em,h3 em{color:var(--gold);font-style:italic;}
 /* 2 · SELF-QUALIFY */
 .qualify{background:var(--white);padding:5rem 2rem;}
 .qualify-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
-.qualify-img{aspect-ratio:3/2;border-radius:4px;border:1px solid #E8E4DC;position:relative;overflow:hidden;background:linear-gradient(135deg,#14253F,#0A1A33);display:flex;align-items:center;justify-content:center;}
-.qualify-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.qualify-img{aspect-ratio:1.6;border-radius:4px;border:1px solid #E8E4DC;position:relative;overflow:hidden;background:linear-gradient(135deg,#0E1D33,#0A1A33);display:flex;align-items:center;justify-content:center;}
+.qualify-img img{width:100%;height:100%;object-fit:contain;display:block;}
+.mid-cap{margin-top:.7rem;font-size:.82rem;color:var(--grey);line-height:1.5;text-align:center;}
+.mid-cap b{color:var(--navy);font-weight:600;}
 .qualify h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin-bottom:1.1rem;}
 .qualify p{color:var(--grey);font-size:1rem;line-height:1.75;margin-bottom:1rem;}
 .qualify .pains{color:var(--navy);font-weight:500;}
 .stat{border-left:3px solid var(--gold);padding:.5rem 0 .5rem 1.1rem;margin:1.4rem 0;}
 .stat .big{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--navy);}
 .stat .truth{font-size:.97rem;color:var(--grey);line-height:1.65;margin-top:.45rem;}
-/* mid · three-photo fade */
-.qualify-img .ff{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:midFade 12s ease-in-out infinite;}
+/* mid · two-photo fade (images self-label) */
+.qualify-img .ff{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;animation:midFade 13.5s ease-in-out infinite;}
 .qualify-img .ff.f1{animation-delay:0s;}
-.qualify-img .ff.f2{animation-delay:4s;}
-.qualify-img .ff.f3{animation-delay:8s;}
-@keyframes midFade{0%{opacity:0}6%{opacity:1}30%{opacity:1}38%{opacity:0}100%{opacity:0}}
-.mid-tag{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);z-index:3;text-align:center;font-size:.74rem;font-weight:600;letter-spacing:.03em;padding:.45rem 1rem;border:1px solid rgba(255,255,255,.32);border-radius:3px;color:#fff;background:rgba(10,26,51,.62);line-height:1.3;opacity:0;}
-.mid-tag b{display:block;font-size:.54rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.15rem;}
-.mid-tag.before{animation:midTag 12s ease-in-out infinite;animation-delay:0s;}
-.mid-tag.after{animation:midTag 12s ease-in-out infinite;animation-delay:4s;}
-@keyframes midTag{0%{opacity:0}6%{opacity:1}30%{opacity:1}38%{opacity:0}100%{opacity:0}}
-@media(prefers-reduced-motion:reduce){.qualify-img .ff{animation:none;opacity:0;}.qualify-img .ff.f3{opacity:1;}.mid-tag{display:none;}}
+.qualify-img .ff.f2{animation-delay:4.5s;}
+.qualify-img .ff.f3{animation-delay:9s;}
+@keyframes midFade{0%{opacity:0}4%{opacity:1}29%{opacity:1}33%{opacity:0}100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.qualify-img .ff{animation:none;opacity:0;}.qualify-img .ff.f3{opacity:1;}}
 
 /* 3 · AUTHORITY */
 .authority-wrap{background:var(--cream);border-top:1px solid #E8E4DC;border-bottom:1px solid #E8E4DC;padding:2.8rem 2rem;}
@@ -168,12 +165,13 @@ footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
 <!-- 2 · SELF-QUALIFY -->
 <section class="qualify">
   <div class="qualify-grid">
-    <div class="qualify-img">
-      <img class="ff f1" src="/resolve-hero-before.jpeg" alt="A claim forming — positions hardening" onerror="this.style.display='none';">
-      <img class="ff f2" src="/resolve-hero-after.jpeg" alt="A deal again — the dispute reframed to value" onerror="this.style.display='none';">
-      <img class="ff f3" src="/resolve-sector.jpeg" alt="Commercial recovery under pressure" onerror="this.style.display='none';">
-      <span class="mid-tag before"><b>Before</b>A claim forming</span>
-      <span class="mid-tag after"><b>After</b>A deal again</span>
+    <div>
+      <div class="qualify-img">
+        <img class="ff f1" src="/resolve-delayed.jpeg" alt="Delayed project — 8 weeks behind, 14% over budget, 37 open decisions, confidence low" onerror="this.style.display='none';">
+        <img class="ff f2" src="/resolve-resolved.jpeg" alt="Resolved project — 2 weeks early, 10% under budget, 0 critical decisions, confidence high" onerror="this.style.display='none';">
+        <img class="ff f3" src="/resolve-split.jpeg" alt="Same project, two systems — delayed and over budget versus early and under" onerror="this.style.display='none';">
+      </div>
+      <p class="mid-cap"><b>Same scope. Same contractors. Same budget.</b> The only variable is the control around the work.</p>
     </div>
     <div>
       <h2>Find the leaks before they harden into <em>losses.</em></h2>
@@ -263,4 +261,3 @@ footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
 
 </body>
 </html>
-
