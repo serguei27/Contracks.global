@@ -230,8 +230,8 @@ var LEVELS=[
   report:{title:'Beyond Paperwork Governance',url:'/specialreport2',label:'Start here \u00b7 Core report'},
   articles:[
    {title:'Why reporting isn\u2019t control',url:'/article1.html'},
-   {title:'Why dashboards lie',url:'/article3.html'},
-   {title:'Why most teams call for help too late',url:'/article8.html'}
+   {title:'Why dashboards lie',url:null},
+   {title:'Why most teams call for help too late',url:null}
   ]},
  {n:2,name:'Managed',tag:'Governance exists. Reality lives outside it.',
   means:'A governance framework is in place, but the live programme runs off-system. Reports are produced; control is not consistent. The deck and the site disagree.',
@@ -239,7 +239,7 @@ var LEVELS=[
   report:{title:'The Cost of Drift',url:null},
   articles:[
    {title:'Is your project under control \u2014 or does it just look that way?',url:'/article2.html'},
-   {title:'The FIDIC stall that needed a reframe, not a letter',url:'/article5.html'},
+   {title:'The FIDIC stall that needed a reframe, not a letter',url:null},
    {title:'More Managed-level material',url:null}
   ]},
  {n:3,name:'Controlled',tag:'The 5Cs are operating.',
@@ -247,9 +247,9 @@ var LEVELS=[
   breaks:'Control holds in the room but isn\u2019t yet predictive \u2014 you catch issues early, but you\u2019re not yet forecasting them before they form.',
   report:{title:'The 5Cs Framework',url:'/specialreport2'},
   articles:[
-   {title:'Contain \u2014 the scope document that ends \u201Cwas that included?\u201D',url:'/article9.html'},
-   {title:'Command \u2014 your project is running two plans; only one is real',url:'/article6.html'},
-   {title:'Close \u2014 the RAID log is a list of future surprises',url:'/article7.html'}
+   {title:'Contain \u2014 the scope document that ends \u201Cwas that included?\u201D',url:null},
+   {title:'Command \u2014 your project is running two plans; only one is real',url:null},
+   {title:'Close \u2014 the RAID log is a list of future surprises',url:null}
   ]},
  {n:4,name:'Operational',tag:'Outcomes become forecastable.',
   means:'Risks are visible early. Recovery actions trigger before schedule and cost impacts land. The programme moves on facts, not optimism.',
@@ -262,9 +262,9 @@ var LEVELS=[
  {n:5,name:'Scalable',tag:'Full operational control.',
   means:'Very little reaches the board by accident. Issues are identified, owned and resolved before they escalate. The programme is evidence-driven, not personality-driven.',
   breaks:'The only risk left is complacency \u2014 protecting the system as the programme scales and the team turns over.',
-  report:{title:'No-Surprises Delivery \u2014 the complete 5Cs system',url:'/book.html',capstone:true,meta:'Coming 2026 \u00b7 Join the waitlist'},
+  report:{title:'No-Surprises Delivery \u2014 the complete 5Cs system',url:'mailto:hello@contracks.global?subject=Frontier%20Founder%20waitlist',capstone:true,meta:'Coming 2026 \u00b7 Join the waitlist'},
   articles:[
-   {title:'What it feels like when the controls actually work',url:'/article4.html'},
+   {title:'What it feels like when the controls actually work',url:null},
    {title:'More Scalable-level material',url:null}
   ]}
 ];
@@ -282,7 +282,7 @@ function nextStep(L){
     primary='<a class="ns-btn ns-primary" href="/control-assessment.html">Take the diagnostic &rarr;</a>';
     ghost='<a class="ns-btn ns-ghost" href="/specialreport2">Read the core report &rarr;</a>';
   } else {
-    primary='<a class="ns-btn ns-primary" href="/control-review.html">Book a Delivery Control Review &rarr;</a>';
+    primary='<a class="ns-btn ns-primary" href="/control-review.html">Request a Delivery Control Review &rarr;</a>';
     ghost = L.n===3
       ? '<a class="ns-btn ns-ghost" href="/control-workshop.html">Install it: Workshop &rarr;</a>'
       : '<a class="ns-btn ns-ghost" href="/control-fractional.html">Embed it: Fractional Control &rarr;</a>';
