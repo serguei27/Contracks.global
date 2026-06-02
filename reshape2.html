@@ -34,8 +34,21 @@ h1 em,h2 em,h3 em{color:var(--gold);font-style:italic;}
 .nav-back{color:rgba(255,255,255,.6);font-size:.8rem;text-decoration:none;}
 
 /* 1 · HERO */
-.lp-hero{position:relative;min-height:82vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 2rem;border-top:3px solid var(--accent);
-  background:linear-gradient(rgba(10,26,51,.72),rgba(10,26,51,.88)),radial-gradient(ellipse 90% 70% at 70% 35%,rgba(108,52,131,.22),transparent 60%),url('/reshape-hero.jpg') center/cover no-repeat,var(--navy);}
+.lp-hero{position:relative;min-height:82vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 2rem;border-top:3px solid var(--accent);background:var(--navy);overflow:hidden;}
+.hero-frame{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;}
+.hero-frame.before{background-image:url('/reshape-hero-before.jpeg'),linear-gradient(135deg,#1b2d49,#0A1A33);}
+.hero-frame.after{background-image:url('/reshape-hero-after.jpeg'),linear-gradient(135deg,#27466f,#0A1A33);opacity:0;animation:heroFade 10s ease-in-out infinite;}
+.hero-veil{position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(10,26,51,.72),rgba(10,26,51,.88)),radial-gradient(ellipse 90% 70% at 70% 35%,rgba(108,52,131,.22),transparent 60%);}
+.hero-tag{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:3;text-align:center;font-size:.78rem;font-weight:600;letter-spacing:.03em;padding:.5rem 1.15rem;border:1px solid rgba(255,255,255,.32);border-radius:3px;color:#fff;background:rgba(10,26,51,.6);line-height:1.3;}
+.hero-tag b{display:block;font-size:.56rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.18rem;}
+.speed-promise{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.15rem,2.2vw,1.45rem);color:var(--gold);margin:0 auto 1.2rem;max-width:680px;line-height:1.3;}
+.cta-payoff{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--gold);max-width:620px;margin:0 auto 1.7rem;line-height:1.4;}
+.hero-tag.before{animation:tagBefore 10s ease-in-out infinite;}
+.hero-tag.after{opacity:0;animation:tagAfter 10s ease-in-out infinite;}
+@keyframes heroFade{0%,38%{opacity:0;}50%,88%{opacity:1;}100%{opacity:0;}}
+@keyframes tagBefore{0%,38%{opacity:1;}50%,88%{opacity:0;}100%{opacity:1;}}
+@keyframes tagAfter{0%,38%{opacity:0;}50%,88%{opacity:1;}100%{opacity:0;}}
+@media(prefers-reduced-motion:reduce){.hero-frame.after{opacity:1;animation:none;}.hero-tag.before{opacity:0;animation:none;}.hero-tag.after{opacity:1;animation:none;}}
 .lp-hero-inner{position:relative;z-index:2;max-width:840px;}
 .speed-label{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.22em;color:#B589C7;margin-bottom:1.1rem;text-transform:uppercase;}
 .lp-hero h1{font-size:clamp(2.4rem,5vw,3.9rem);color:#fff;margin-bottom:1.4rem;}
@@ -137,8 +150,14 @@ footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
 
 <!-- 1 · HERO -->
 <section class="lp-hero">
+  <div class="hero-frame before"></div>
+  <div class="hero-frame after"></div>
+  <div class="hero-veil"></div>
+  <span class="hero-tag before"><b>Before</b>Survey: 3 days</span>
+  <span class="hero-tag after"><b>After</b>Survey: 15 minutes</span>
   <div class="lp-hero-inner">
     <span class="speed-label">Speed 3 — Reshape</span>
+    <p class="speed-promise">Build operations that don't depend on heroes.</p>
     <h1>Will your transformation change how work gets done — or just add another <em>layer?</em></h1>
     <p class="sub">Most transformations create activity. Very few change how work gets done. Six months later, the organisation quietly returns to the old way.</p>
     <a href="/control-assessment.html" class="btn btn-primary">Start with the CONTROL diagnostic →</a>
@@ -163,8 +182,8 @@ footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
 <section class="qualify">
   <div class="qualify-grid">
     <div class="qualify-img">
-      <!-- Replace with: <img src="/reshape-sector.jpg" alt="Operations being modernised"> -->
-      <span class="slot-label">Operations command centre · control room · airport operations · digital twin<br>&mdash; show &ldquo;how work gets done,&rdquo; not &ldquo;technology&rdquo;</span>
+      <img src="/reshape-sector.jpeg" alt="A major operation being modernised" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+      <span class="slot-label" style="display:none;">Operations command centre · control room · airport operations · digital twin<br>&mdash; show &ldquo;how work gets done,&rdquo; not &ldquo;technology&rdquo;</span>
     </div>
     <div>
       <h2>Find out if your transformation will stick — or quietly <em>unravel.</em></h2>
@@ -183,8 +202,8 @@ footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
 <div class="authority-wrap">
   <div class="authority">
     <div class="authority-photo">
-      <!-- Replace with: <img src="/serguei-portrait.jpg" alt="Serguei Poppeleer"> -->
-      <span class="monogram">SP</span>
+      <img src="/serguei-portrait.jpeg" alt="Serguei Poppeleer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <span class="monogram" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;">SP</span>
     </div>
     <div>
       <div class="authority-name">Serguei Poppeleer · Founder, Contracks Global</div>
@@ -238,6 +257,7 @@ footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
 <!-- 6 · ASSESSMENT CTA -->
 <section class="final-cta">
   <h2>If you disappeared for 90 days, would the new way still <em>survive?</em></h2>
+  <p class="cta-payoff">The work no longer depends on who built it.</p>
   <a href="/control-assessment.html" class="btn btn-primary">Start with the CONTROL diagnostic →</a>
 </section>
 
