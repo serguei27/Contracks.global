@@ -31,20 +31,24 @@ h1 em,h2 em,h3 em{color:var(--gold);font-style:italic;}
 .nav-back{color:rgba(255,255,255,.6);font-size:.8rem;text-decoration:none;}
 
 /* 1 · HERO */
-.lp-hero{position:relative;min-height:82vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 2rem;border-top:3px solid var(--accent);background:linear-gradient(rgba(10,26,51,.82),rgba(10,26,51,.92)),radial-gradient(ellipse 90% 70% at 70% 35%,rgba(45,106,79,.22),transparent 60%),url('/start-feedstock.jpeg') center/cover no-repeat,var(--navy);}
+.lp-hero{position:relative;min-height:82vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 2rem;border-top:3px solid var(--accent);background:linear-gradient(rgba(10,26,51,.82),rgba(10,26,51,.92)),radial-gradient(ellipse 90% 70% at 70% 35%,rgba(45,106,79,.22),transparent 60%),url('/start-hero-after.jpeg') center/cover no-repeat,var(--navy);}
 .speed-promise{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.15rem,2.2vw,1.45rem);color:var(--gold);margin:0 auto 1.2rem;max-width:680px;line-height:1.3;}
 .cta-payoff{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--gold);max-width:620px;margin:0 auto 1.7rem;line-height:1.4;}
-/* mid · four-photo slideshow */
-.qualify-img .ff{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:midFade 18s ease-in-out infinite;}
+/* mid · three-stage slideshow */
+.qualify-img .ff{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:midFade 15s ease-in-out infinite;}
 .qualify-img .ff.f1{animation-delay:0s;}
-.qualify-img .ff.f2{animation-delay:4.5s;}
-.qualify-img .ff.f3{animation-delay:9s;}
-.qualify-img .ff.f4{animation-delay:13.5s;}
-.qualify-img .ff.wide{object-fit:contain;background:#0A1A33;}
-@keyframes midFade{0%{opacity:0}2%{opacity:1}23%{opacity:1}26%{opacity:0}100%{opacity:0}}
+.qualify-img .ff.f2{animation-delay:5s;}
+.qualify-img .ff.f3{animation-delay:10s;}
+@keyframes midFade{0%{opacity:0}3%{opacity:1}30%{opacity:1}33%{opacity:0}100%{opacity:0}}
+.stag{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);z-index:3;text-align:center;font-size:.74rem;font-weight:600;letter-spacing:.03em;padding:.45rem 1.1rem;border:1px solid rgba(255,255,255,.32);border-radius:3px;color:#fff;background:rgba(10,26,51,.62);line-height:1.3;opacity:0;animation:midTag 15s ease-in-out infinite;}
+.stag b{display:block;font-size:.54rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.15rem;}
+.stag.s1{animation-delay:0s;}
+.stag.s2{animation-delay:5s;}
+.stag.s3{animation-delay:10s;}
+@keyframes midTag{0%{opacity:0}3%{opacity:1}30%{opacity:1}33%{opacity:0}100%{opacity:0}}
 .mid-cap{margin-top:.7rem;font-size:.82rem;color:var(--grey);line-height:1.5;text-align:center;}
 .mid-cap b{color:var(--navy);font-weight:600;}
-@media(prefers-reduced-motion:reduce){.qualify-img .ff{animation:none;opacity:0;}.qualify-img .ff.f4{opacity:1;}}
+@media(prefers-reduced-motion:reduce){.qualify-img .ff{animation:none;opacity:0;}.qualify-img .ff.f3{opacity:1;}.stag{display:none;}}
 .lp-hero-inner{position:relative;z-index:2;max-width:840px;}
 .speed-label{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.22em;color:#6FB48E;margin-bottom:1.1rem;text-transform:uppercase;}
 .lp-hero h1{font-size:clamp(2.4rem,5vw,3.9rem);color:#fff;margin-bottom:1.4rem;}
@@ -146,7 +150,7 @@ footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
   <div class="lp-hero-inner">
     <span class="speed-label">Speed 1 — Start</span>
     <p class="speed-promise">Turn an idea into an investable business.</p>
-    <h1>Is there a real business here — or just a good <em>idea?</em></h1>
+    <h1>From feedstock to an <em>investable fuel platform.</em></h1>
     <p class="sub">Plenty of ideas are exciting. Few are investable. The gap is structure — a market that pays, money that lasts, and margin that holds. Find out which side of the line you're on.</p>
     <a href="/control-assessment.html" class="btn btn-primary">Start with the CONTROL diagnostic →</a>
     <p class="lp-frame">Start with the 5-minute <strong>CONTROL</strong> diagnostic. If START isn't your biggest problem, it'll tell you. If it is, you unlock your <strong>START Deep Dive</strong> — exactly what makes it investable, and what to fix first.</p>
@@ -171,12 +175,14 @@ footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
   <div class="qualify-grid">
     <div>
       <div class="qualify-img">
-        <img class="ff f1" src="/start-feedstock.jpeg" alt="Opportunity — abundant feedstock, untapped" onerror="this.style.display='none';">
-        <img class="ff f2" src="/start-plant.jpeg" alt="Venture — from idea to operating business" onerror="this.style.display='none';">
-        <img class="ff f3" src="/start-platform.jpeg" alt="Platform — investor-ready, ahead of the market" onerror="this.style.display='none';">
-        <img class="ff f4 wide" src="/start-story.jpeg" alt="From opportunity to industry — feedstock to SAF" onerror="this.style.display='none';">
+        <img class="ff f1" src="/start-hero-before.jpeg" alt="Stage 1 — feedstock, abundant and untapped" onerror="this.style.display='none';">
+        <img class="ff f2" src="/start-sector.jpeg" alt="Stage 2 — pilot plant, proving production" onerror="this.style.display='none';">
+        <img class="ff f3" src="/start-hero-after.jpeg" alt="Stage 3 — investable modular SAF platform" onerror="this.style.display='none';">
+        <span class="stag s1"><b>Stage 1</b>Feedstock</span>
+        <span class="stag s2"><b>Stage 2</b>Pilot</span>
+        <span class="stag s3"><b>Stage 3</b>Platform</span>
       </div>
-      <p class="mid-cap"><b>Opportunity → venture → investable platform.</b> Bleriot, built in East Africa.</p>
+      <p class="mid-cap"><b>Opportunity → venture → investable platform.</b><br>Bleriot, built in East Africa.</p>
     </div>
     <div>
       <h2>Find out if it's investable — before you bet a year on <em>it.</em></h2>
@@ -230,7 +236,7 @@ footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
       <h3>Bleriot — a sustainable aviation fuel venture, built investable from day one.</h3>
       <div class="case-block"><strong>Situation</strong><p>A capital-intensive sustainable aviation fuel platform targeting East Africa. A real market opening — but one that had to be structured to attract serious capital, not just polite interest.</p></div>
       <div class="case-block"><strong>Intervention</strong><p>Built the venture's commercial architecture from the ground up — market, money and margin — so the model held up under investor and partner scrutiny, not just in the pitch.</p></div>
-      <div class="case-block"><strong>Outcome</strong><p>Moved from concept to a board-governed platform with a defensible commercial case. Founded as CEO, then transitioned to Board Advisor as the structure took hold — the business no longer depended on the person who started it.</p></div>
+      <div class="case-block"><strong>Outcome</strong><p>Structured from initial seed and vegetable-oil trading into a modular SAF platform concept — positioned for micro-refineries across East Africa ahead of biofuel legislation.</p></div>
       <div class="ba-grid">
         <div class="ba-col"><span class="ba-h">Before</span><ul><li>An idea with momentum</li><li>"Interest," no commitment</li><li>The model lived in the founder's head</li></ul></div>
         <div class="ba-col after"><span class="ba-h">After</span><ul><li>A board-governed platform</li><li>A defensible commercial case</li><li>Structure that outlives the founder</li></ul></div>
