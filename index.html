@@ -68,7 +68,15 @@ border-bottom: 1px solid rgba(197, 160, 80, 0.2);
 .nav-cta:hover { background: #D4B470 !important; }
 
 .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 120px 48px 80px; }
-.hero-bg { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.78) 46%, rgba(10,22,40,0.45) 100%), url('/hero-cloche-dor.jpeg') center 42%/cover no-repeat; }
+.hero-slides { position: absolute; inset: 0; background: url('/hero-cloche-dor.jpeg') center 42%/cover no-repeat; }
+.hero-slide { position: absolute; inset: 0; background-position: center 42%; background-size: cover; background-repeat: no-repeat; opacity: 0; will-change: opacity; animation: heroFade 32s ease-in-out infinite; }
+.hero-slide.s1 { background-image: url('/hero-cloche-dor.jpeg'); animation-delay: 0s; }
+.hero-slide.s2 { background-image: url('/hero-cloche-interior.jpeg'); animation-delay: -24s; }
+.hero-slide.s3 { background-image: url('/hero-cloche-build.jpeg'); animation-delay: -16s; }
+.hero-slide.s4 { background-image: url('/hero-cloche-dig.jpeg'); animation-delay: -8s; }
+@keyframes heroFade { 0%{opacity:1;} 20%{opacity:1;} 24%{opacity:0;} 96%{opacity:0;} 100%{opacity:1;} }
+@media (prefers-reduced-motion: reduce) { .hero-slide { animation: none; opacity: 0; } .hero-slide.s1 { opacity: 1; } }
+.hero-bg { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.78) 46%, rgba(10,22,40,0.45) 100%); }
 .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(197,160,80,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(197,160,80,0.04) 1px, transparent 1px); background-size: 60px 60px; }
 .hero-content { position: relative; max-width: 760px; animation: fadeUp 0.9s ease both; }
 .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #C5A050; margin-bottom: 24px; }
@@ -334,6 +342,12 @@ footer { background: #0A1628; border-top: 1px solid rgba(197,160,80,0.12); paddi
 
 <!-- HERO -->
 <section class="hero" id="home">
+  <div class="hero-slides">
+    <div class="hero-slide s1"></div>
+    <div class="hero-slide s2"></div>
+    <div class="hero-slide s3"></div>
+    <div class="hero-slide s4"></div>
+  </div>
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
