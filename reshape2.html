@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>RESHAPE landing — hybrid template preview</title>
+<title>Speed 3 — RESHAPE | Contracks Global</title>
+<meta name="description" content="Build operations that don't depend on heroes. Diagnose whether your transformation will actually change how work gets done — before the budget is gone." />
+<meta property="og:title" content="Speed 3 — RESHAPE | Contracks Global" />
+<meta property="og:description" content="Build operations that don't depend on heroes." />
+<meta property="og:url" content="https://contracks.global/reshape" />
+<meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -35,6 +40,8 @@ h1 em,h2 em,h3 em{color:var(--gold);font-style:italic;}
 .speed-label{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.22em;color:#B589C7;margin-bottom:1.1rem;text-transform:uppercase;}
 .lp-hero h1{font-size:clamp(2.4rem,5vw,3.9rem);color:#fff;margin-bottom:1.4rem;}
 .lp-hero .sub{font-size:1.18rem;color:rgba(255,255,255,.84);max-width:680px;margin:0 auto 2.3rem;line-height:1.55;font-weight:300;}
+.lp-frame{margin-top:1.4rem;font-size:.93rem;color:rgba(255,255,255,.66);max-width:620px;margin-left:auto;margin-right:auto;line-height:1.55;}
+.lp-frame strong{color:var(--gold);font-weight:600;}
 .lp-note{margin-top:1.1rem;font-size:.8rem;color:rgba(255,255,255,.5);}
 
 /* 2 · SELF-QUALIFY */
@@ -94,12 +101,34 @@ footer .fmeta a:hover{color:var(--gold);}
 footer .fmeta .sep{color:rgba(255,255,255,.3);margin:0 .6rem;}
 footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
 @media(max-width:760px){.qualify-grid{grid-template-columns:1fr;}}
+
+/* 1b · SIGNS */
+.signs{background:var(--cream);border-bottom:1px solid #E8E4DC;}
+.signs-title{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:2rem;max-width:760px;}
+.signs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.6rem;}
+.sign{display:flex;gap:.85rem;align-items:flex-start;}
+.sign .tick{color:var(--accent);font-weight:700;font-size:1.05rem;flex-shrink:0;line-height:1.55;}
+.sign p{color:var(--navy);font-size:1rem;line-height:1.6;font-weight:500;}
+
+/* before / after */
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.7rem;}
+.ba-col{background:rgba(255,255,255,.04);border:1px solid rgba(201,169,89,.18);border-radius:3px;padding:1.3rem 1.4rem;}
+.ba-col.after{border-color:rgba(201,169,89,.45);}
+.ba-h{display:block;font-size:.74rem;letter-spacing:.15em;text-transform:uppercase;font-weight:600;color:var(--gold);margin-bottom:.85rem;}
+.ba-col ul{list-style:none;}
+.ba-col li{color:rgba(255,255,255,.85);font-size:.95rem;line-height:1.55;padding:.3rem 0 .3rem 1.2rem;position:relative;}
+.ba-col li::before{content:"\2014";position:absolute;left:0;color:rgba(201,169,89,.5);}
+.ba-col.after li::before{content:"\2713";color:var(--gold);}
+@media(max-width:600px){.ba-grid{grid-template-columns:1fr;}}
+
+/* 5b · KILLER LINE */
+.killer{background:var(--cream);text-align:center;border-top:1px solid #E8E4DC;border-bottom:1px solid #E8E4DC;}
+.killer-lines{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:600;color:var(--navy);line-height:1.2;margin-bottom:1rem;}
+.killer-tag{font-size:1.05rem;color:var(--grey);max-width:560px;margin:0 auto;}
 </style>
 </head>
 <body>
 
-<div class="preview-flag">Preview · RESHAPE hybrid (same locked shell as RESOLVE) · Speed 3</div>
-<div class="gap-note">Three image gaps: 1) hero — operations command centre / control room  ·  2) sector — operations being modernised  ·  3) headshot</div>
 
 <header class="site-header">
   <a href="/" class="brand">CONTRACKS<span class="dot">.</span>GLOBAL</a>
@@ -109,11 +138,24 @@ footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
 <!-- 1 · HERO -->
 <section class="lp-hero">
   <div class="lp-hero-inner">
-    <span class="speed-label">Free Transformation Value Diagnostic</span>
-    <h1>Will your transformation create value — or just more <em>complexity?</em></h1>
-    <p class="sub">New systems, new processes and new org charts do not guarantee change. Assess whether your transformation will actually change how work gets done — before the budget is gone.</p>
-    <a href="#" class="btn btn-primary">Start the Transformation Value Assessment →</a>
-    <div class="lp-note">Free · 21 questions · 5 minutes · Instant result</div>
+    <span class="speed-label">Speed 3 — Reshape</span>
+    <h1>Will your transformation change how work gets done — or just add another <em>layer?</em></h1>
+    <p class="sub">Most transformations create activity. Very few change how work gets done. Six months later, the organisation quietly returns to the old way.</p>
+    <a href="/control-assessment.html" class="btn btn-primary">Start with the CONTROL diagnostic →</a>
+    <p class="lp-frame">Start with the 5-minute <strong>CONTROL</strong> diagnostic. If RESHAPE isn't your biggest problem, it'll tell you. If it is, you unlock your <strong>RESHAPE Deep Dive</strong> — exactly where the change will hold, and where it'll slide back.</p>
+    <div class="lp-note">Free · 20 questions · about 4 minutes · Instant result</div>
+  </div>
+</section>
+
+<!-- 1b · SIGNS -->
+<section class="signs">
+  <div class="container">
+    <h2 class="signs-title">Signs you're already in <em>RESHAPE territory.</em></h2>
+    <div class="signs-grid">
+      <div class="sign"><span class="tick">&#10003;</span><p>The business only works because certain people know how it really runs.</p></div>
+      <div class="sign"><span class="tick">&#10003;</span><p>New systems were launched — but teams still rely on spreadsheets, WhatsApp and workarounds.</p></div>
+      <div class="sign"><span class="tick">&#10003;</span><p>If three key people left tomorrow, performance would drop immediately.</p></div>
+    </div>
   </div>
 </section>
 
@@ -170,21 +212,33 @@ footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
 <!-- 5 · PROOF -->
 <section class="section-navy">
   <div class="container">
-    <div class="section-head"><span class="label">Proof</span><h2>One we reshaped.</h2></div>
+    <div class="section-head"><span class="label">Proof</span><h2>Proof from the field.</h2></div>
     <div class="case-study">
       <div class="case-tag">Aviation · Cross-border real estate &amp; operations</div>
-      <h3>Brussels Airlines — overseas premises and operations reshaped.</h3>
+      <h3>A major European airline — overseas premises and operations reshaped.</h3>
       <div class="case-block"><strong>Situation</strong><p>Overseas operations spread across multiple countries, run on premises and processes that no longer fit the work. Set-ups were inconsistent, documentation fragmented, and continuity depended on the few people who knew how each location actually ran.</p></div>
       <div class="case-block"><strong>Intervention</strong><p>Reshaped the footprint around how the work actually happens. Lease conditions were specially crafted to match operations across the entire portfolio — governed by one set of guiding rules, so every lease supported a pillar of the business rather than just a single site. Operations and facilities management were simplified into one repeatable model, for the teams in post locally and for the corporate real-estate and FM function.</p></div>
-      <div class="case-block"><strong>Outcome</strong><p>Costs reduced by around 20%, with the change implemented in weeks — seamless for the customer, as if the shift had happened in a single day, and smooth for the operations teams living it. Resilient premises, lease terms that hold, and an operation that no longer depends on who built it.</p></div>
+      <div class="case-block"><strong>Outcome</strong><p>Costs reduced by around 20%, with the change implemented in weeks — seamless for customers, with minimal disruption for the teams living the change. Resilient premises, lease terms that hold, and an operation that no longer depends on who built it.</p></div>
+      <div class="ba-grid">
+        <div class="ba-col"><span class="ba-h">Before</span><ul><li>Processes lived in people</li><li>Sites operated differently</li><li>Continuity depended on experience</li></ul></div>
+        <div class="ba-col after"><span class="ba-h">After</span><ul><li>One operating model</li><li>Repeatable across locations</li><li>20% cost reduction</li><li>Minimal disruption</li></ul></div>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- 5b · KILLER LINE -->
+<section class="killer">
+  <div class="container">
+    <p class="killer-lines">Technology scales software.<br>Systems scale organisations.</p>
+    <p class="killer-tag">RESHAPE exists because most companies confuse the two.</p>
   </div>
 </section>
 
 <!-- 6 · ASSESSMENT CTA -->
 <section class="final-cta">
-  <h2>How much of your transformation will still be working in <em>12 months?</em></h2>
-  <a href="#" class="btn btn-primary">Start the Transformation Value Assessment →</a>
+  <h2>If you disappeared for 90 days, would the new way still <em>survive?</em></h2>
+  <a href="/control-assessment.html" class="btn btn-primary">Start with the CONTROL diagnostic →</a>
 </section>
 
 <footer>
