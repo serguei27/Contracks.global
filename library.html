@@ -180,7 +180,7 @@ footer .fc{margin-top:14px;font-size:0.74rem;color:rgba(255,255,255,0.35);}
       <div class="frame-card">
         <div class="lbl">The scale</div>
         <h3>The maturity ladder</h3>
-        <p>How well the 5Cs are installed — your position on the 5Cs journey, from Level 1 (Reactive) to Level 5 (No-Surprises Delivery).</p>
+        <p>How well the 5Cs are installed — your position on the 5Cs journey, from Level 1 (Reactive) to Level 5 (Scalable).</p>
       </div>
     </div>
   </div>
@@ -221,7 +221,7 @@ footer .fc{margin-top:14px;font-size:0.74rem;color:rgba(255,255,255,0.35);}
 
 <script>
 // ── CONTENT CONFIG ─────────────────────────────────────────────
-// Each level: report{title,url}, articles[{title,url}] — url:null = coming soon.
+// Each level: report{title,url}, articles[{title,url}] — url:null = in development.
 // Re-sort freely; the page renders from this object.
 var LEVELS=[
  {n:1,name:'Reactive',tag:'The programme runs on people, not controls.',
@@ -239,34 +239,37 @@ var LEVELS=[
   report:{title:'The Cost of Drift',url:null},
   articles:[
    {title:'Is your project under control \u2014 or does it just look that way?',url:'/article2.html'},
-   {title:'The FIDIC stall that needed a reframe, not a letter',url:'/article5.html'}
+   {title:'The FIDIC stall that needed a reframe, not a letter',url:'/article5.html'},
+   {title:'More Managed-level material',url:null}
   ]},
  {n:3,name:'Controlled',tag:'The 5Cs are operating.',
   means:'Scope, plan, decisions, vendor dates and cadence are actively managed. Problems surface as gaps before they become surprises. This is where the 5Cs are installed and working.',
   breaks:'Control holds in the room but isn\u2019t yet predictive \u2014 you catch issues early, but you\u2019re not yet forecasting them before they form.',
-  report:{title:'The 5Cs Framework',url:null},
+  report:{title:'The 5Cs Framework',url:'/specialreport2'},
   articles:[
    {title:'Contain \u2014 the scope document that ends \u201Cwas that included?\u201D',url:'/article9.html'},
    {title:'Command \u2014 your project is running two plans; only one is real',url:'/article6.html'},
    {title:'Close \u2014 the RAID log is a list of future surprises',url:'/article7.html'}
   ]},
- {n:4,name:'Predictable',tag:'Outcomes become forecastable.',
+ {n:4,name:'Operational',tag:'Outcomes become forecastable.',
   means:'Risks are visible early. Recovery actions trigger before schedule and cost impacts land. The programme moves on facts, not optimism.',
   breaks:'The discipline still leans on the current team \u2014 it isn\u2019t yet a system that survives turnover and scale.',
   report:{title:'No-Surprises Forecasting',url:null},
   articles:[
-   {title:'Leading indicators \u2014 seeing the slip before it shows',url:null}
+   {title:'Leading indicators \u2014 seeing the slip before it shows',url:null},
+   {title:'More Operational-level material',url:null}
   ]},
- {n:5,name:'No-Surprises Delivery',tag:'Full operational control.',
-  means:'Nothing reaches the board by accident. Issues are identified, owned and resolved before they escalate. The programme is evidence-driven, not personality-driven.',
+ {n:5,name:'Scalable',tag:'Full operational control.',
+  means:'Very little reaches the board by accident. Issues are identified, owned and resolved before they escalate. The programme is evidence-driven, not personality-driven.',
   breaks:'The only risk left is complacency \u2014 protecting the system as the programme scales and the team turns over.',
   report:{title:'No-Surprises Delivery \u2014 the complete 5Cs system',url:'/book.html',capstone:true,meta:'Coming 2026 \u00b7 Join the waitlist'},
   articles:[
-   {title:'What it feels like when the controls actually work',url:'/article4.html'}
+   {title:'What it feels like when the controls actually work',url:'/article4.html'},
+   {title:'More Scalable-level material',url:null}
   ]}
 ];
 
-var SHORT=['Reactive','Managed','Controlled','Predictable','No-Surprises'];
+var SHORT=['Reactive','Managed','Controlled','Operational','Scalable'];
 
 function esc(s){return s;}
 // commercial next-step per level
@@ -297,17 +300,17 @@ function reportHTML(L){
     var lab=r.label?'<span class="rlabel">'+r.label+'</span>':'';
     return '<a class="asset" href="'+r.url+'"><span class="ico">\u25A4</span><span class="at">'+r.title+lab+'</span><span class="arr">Read &rarr;</span></a>';
   }
-  return '<div class="asset soon"><span class="ico">\u25A4</span><span class="at">'+r.title+'</span><span class="soon-pill">Coming soon</span></div>';
+  return '<div class="asset soon"><span class="ico">\u25A4</span><span class="at">'+r.title+'</span><span class="soon-pill">In development</span></div>';
 }
 
 function articlesHTML(L){
   if(!L.articles.length){
-    return '<div class="art-list"><div class="art soon">More articles coming soon<span class="ap soon-pill">In development</span></div></div>';
+    return '<div class="art-list"><div class="art soon">More field notes<span class="ap soon-pill">In development</span></div></div>';
   }
   var h='<div class="art-list">';
   L.articles.forEach(function(a){
     if(a.url){ h+='<a class="art" href="'+a.url+'">'+a.title+'</a>'; }
-    else { h+='<div class="art soon">'+a.title+'<span class="ap soon-pill">Coming soon</span></div>'; }
+    else { h+='<div class="art soon">'+a.title+'<span class="ap soon-pill">In development</span></div>'; }
   });
   return h+'</div>';
 }
@@ -365,3 +368,4 @@ function openLevel(n,scroll){
 </script>
 </body>
 </html>
+
