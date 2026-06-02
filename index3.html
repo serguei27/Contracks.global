@@ -1,274 +1,814 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Speed 1 — START | Contracks Global</title>
-<meta name="description" content="Turn an idea into an investable business. Pressure-test whether the market will pay, the money lasts and the margin holds — before you bet a year on it." />
-<meta property="og:title" content="Speed 1 — START | Contracks Global" />
-<meta property="og:description" content="Turn an idea into an investable business." />
-<meta property="og:url" content="https://contracks.global/start" />
-<meta property="og:type" content="website" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contracks Global — Better contracts. Better business. Better society.</title>
+<meta name="description" content="The 5Cs Framework™ — the delivery and commercial systems behind cross-border capital projects, from €10M ventures to €2B programmes. Europe · Africa · Gulf.">
+<meta property="og:title" content="Contracks Global — Projects don't fail. The systems around them do.">
+<meta property="og:description" content="The 5Cs Framework™ designs, fixes and builds the systems behind cross-border capital projects. 30 countries of proof. Europe · Africa · Gulf.">
+<meta property="og:url" content="https://contracks.global">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <style>
-:root{--navy:#0A1A33;--navy-soft:#14253F;--gold:#C9A959;--grey:#6E7783;--cream:#F5F1E7;--white:#fff;--accent:#2D6A4F;}
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Inter',sans-serif;color:var(--navy);background:#fff;line-height:1.65;-webkit-font-smoothing:antialiased;}
-h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.15;letter-spacing:-.01em;}
-h1 em,h2 em,h3 em{color:var(--gold);font-style:italic;}
-.container{max-width:1180px;margin:0 auto;padding:0 2rem;}
-.label{font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:inline-block;margin-bottom:1rem;}
-.label::before{content:"— ";}
-.btn{display:inline-block;padding:1.05rem 2.1rem;font-size:.98rem;font-weight:600;letter-spacing:.03em;border-radius:3px;text-decoration:none;cursor:pointer;border:none;font-family:'Inter',sans-serif;transition:transform .15s,background .2s;}
-.btn-primary{background:var(--gold);color:var(--navy)!important;box-shadow:0 8px 26px rgba(201,169,89,.25);}
-.btn-primary:hover{transform:translateY(-1px);}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-.site-header{background:var(--navy);padding:1.1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
-.brand{color:#fff;font-weight:700;font-size:.95rem;letter-spacing:.1em;text-decoration:none;}
-.brand .dot{color:var(--gold);}
-.nav-back{color:rgba(255,255,255,.6);font-size:.8rem;text-decoration:none;}
+:root {
+--navy: #0A1628;
+--navy-mid: #112240;
+--navy-light: #1A3A5C;
+--gold: #C5A050;
+--gold-light: #D4B470;
+--gold-pale: #F5EDD8;
+--white: #FFFFFF;
+--off-white: #F8F6F2;
+--grey: #888888;
+--dark: #222222;
+--green: #2D6A4F;
+--orange: #E07B39;
+--purple: #6C3483;
+--red: #C0392B;
+}
 
-/* 1 · HERO */
-.lp-hero{position:relative;min-height:82vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 2rem;border-top:3px solid var(--accent);background:linear-gradient(rgba(10,26,51,.82),rgba(10,26,51,.92)),radial-gradient(ellipse 90% 70% at 70% 35%,rgba(45,106,79,.22),transparent 60%),url('/start-platform.jpeg') center/cover no-repeat,var(--navy);}
-.speed-promise{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.15rem,2.2vw,1.45rem);color:var(--gold);margin:0 auto 1.2rem;max-width:680px;line-height:1.3;}
-.cta-payoff{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--gold);max-width:620px;margin:0 auto 1.7rem;line-height:1.4;}
-/* mid · three-stage slideshow */
-.qualify-img .ff{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:midFade 15s ease-in-out infinite;}
-.qualify-img .ff.f1{animation-delay:0s;}
-.qualify-img .ff.f2{animation-delay:5s;}
-.qualify-img .ff.f3{animation-delay:10s;}
-@keyframes midFade{0%{opacity:0}3%{opacity:1}30%{opacity:1}33%{opacity:0}100%{opacity:0}}
-.stag{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);z-index:3;text-align:center;font-size:.74rem;font-weight:600;letter-spacing:.03em;padding:.45rem 1.1rem;border:1px solid rgba(255,255,255,.32);border-radius:3px;color:#fff;background:rgba(10,26,51,.62);line-height:1.3;opacity:0;animation:midTag 15s ease-in-out infinite;}
-.stag b{display:block;font-size:.54rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.15rem;}
-.stag.s1{animation-delay:0s;}
-.stag.s2{animation-delay:5s;}
-.stag.s3{animation-delay:10s;}
-@keyframes midTag{0%{opacity:0}3%{opacity:1}30%{opacity:1}33%{opacity:0}100%{opacity:0}}
-.mid-cap{margin-top:.7rem;font-size:.82rem;color:var(--grey);line-height:1.5;text-align:center;}
-.mid-cap b{color:var(--navy);font-weight:600;}
-@media(prefers-reduced-motion:reduce){.qualify-img .ff{animation:none;opacity:0;}.qualify-img .ff.f3{opacity:1;}.stag{display:none;}}
-.lp-hero-inner{position:relative;z-index:2;max-width:840px;}
-.speed-label{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.22em;color:#6FB48E;margin-bottom:1.1rem;text-transform:uppercase;}
-.lp-hero h1{font-size:clamp(2.4rem,5vw,3.9rem);color:#fff;margin-bottom:1.4rem;}
-.lp-hero .sub{font-size:1.18rem;color:rgba(255,255,255,.84);max-width:680px;margin:0 auto 2.3rem;line-height:1.55;font-weight:300;}
-.lp-frame{margin-top:1.4rem;font-size:.93rem;color:rgba(255,255,255,.66);max-width:620px;margin-left:auto;margin-right:auto;line-height:1.55;}
-.lp-frame strong{color:var(--gold);font-weight:600;}
-.lp-note{margin-top:1.1rem;font-size:.8rem;color:rgba(255,255,255,.5);}
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
-/* 2 · SELF-QUALIFY */
-.qualify{background:var(--white);padding:5rem 2rem;}
-.qualify-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
-.qualify-img{aspect-ratio:3/2;border-radius:4px;border:1px solid #E8E4DC;position:relative;overflow:hidden;background:linear-gradient(135deg,#14253F,#0A1A33);display:flex;align-items:center;justify-content:center;}
-.qualify-img img{width:100%;height:100%;object-fit:cover;display:block;}
-.qualify h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin-bottom:1.1rem;}
-.qualify p{color:var(--grey);font-size:1rem;line-height:1.75;margin-bottom:1rem;}
-.qualify .pains{color:var(--navy);font-weight:500;}
-.stat{border-left:3px solid var(--gold);padding:.5rem 0 .5rem 1.1rem;margin:1.4rem 0;}
-.stat .big{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--navy);}
-.stat .truth{font-size:.97rem;color:var(--grey);line-height:1.65;margin-top:.45rem;}
+body {
+font-family: 'DM Sans', sans-serif;
+background: #0A1628;
+color: #FFFFFF;
+overflow-x: hidden;
+}
 
-/* 3 · AUTHORITY */
-.authority-wrap{background:var(--cream);border-top:1px solid #E8E4DC;border-bottom:1px solid #E8E4DC;padding:2.8rem 2rem;}
-.authority{display:flex;align-items:center;gap:1.6rem;max-width:760px;margin:0 auto;}
-.authority-photo{width:96px;height:96px;flex-shrink:0;border-radius:50%;background:var(--navy);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;overflow:hidden;}
-.authority-photo img{width:100%;height:100%;object-fit:cover;}
-.authority-photo .monogram{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--gold);}
-.authority-name{font-size:1.02rem;font-weight:600;margin-bottom:.25rem;}
-.authority-creds{font-size:.74rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;}
-.authority-line{font-size:.94rem;color:var(--grey);line-height:1.6;}
-@media(max-width:600px){.authority{flex-direction:column;text-align:center;}}
+nav {
+position: fixed;
+top: 0; left: 0; right: 0;
+z-index: 100;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 18px 48px;
+background: rgba(10, 22, 40, 0.95);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid rgba(197, 160, 80, 0.2);
+}
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: #FFFFFF; letter-spacing: 0.02em; }
+.nav-logo span { color: #C5A050; }
+.nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+.nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: #C5A050; }
+.nav-linkedin { display: inline-flex !important; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid rgba(197,160,80,0.4); border-radius: 2px; color: #C5A050 !important; padding: 0 !important; transition: all 0.2s !important; text-transform: none !important; letter-spacing: 0 !important; }
+.nav-linkedin:hover { background: #C5A050 !important; color: #0A1628 !important; border-color: #C5A050 !important; }
+.nav-linkedin svg { display: block; }
+.nav-cta { background: #C5A050; color: #0A1628 !important; padding: 10px 24px; border-radius: 2px; font-weight: 600 !important; transition: background 0.2s !important; }
+.nav-cta:hover { background: #D4B470 !important; }
 
-/* 4 · WHO */
-.section-cream{background:var(--cream);}
-section{padding:5rem 2rem;}
-.section-head{max-width:760px;margin-bottom:2.6rem;}
-.section-head h2{font-size:clamp(2rem,3.6vw,2.7rem);margin-bottom:.6rem;}
-.who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;max-width:1180px;margin:0 auto;}
-.who-card{background:#fff;padding:1.9rem 1.7rem;border-top:3px solid var(--accent);border-radius:2px;box-shadow:0 1px 3px rgba(10,26,51,.05);}
-.who-card .num{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--accent);font-weight:600;display:block;margin-bottom:.4rem;}
-.who-card h3{font-size:1.2rem;margin-bottom:.4rem;}
-.who-card p{color:var(--grey);font-size:.94rem;}
+.hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 120px 48px 80px; }
+.hero-bg { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.78) 46%, rgba(10,22,40,0.45) 100%), url('/hero-cloche-dor.jpeg') center 42%/cover no-repeat; }
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(197,160,80,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(197,160,80,0.04) 1px, transparent 1px); background-size: 60px 60px; }
+.hero-content { position: relative; max-width: 760px; animation: fadeUp 0.9s ease both; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #C5A050; margin-bottom: 24px; }
+.hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: #C5A050; }
+h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 4.4rem); font-weight: 900; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 28px; }
+h1 em { font-style: normal; color: #C5A050; }
+.hero-sub { font-size: 1.15rem; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.72); max-width: 580px; margin-bottom: 48px; }
+.hero-punch-mobile { display: none; }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 64px; }
+.btn-primary { background: #C5A050; color: #0A1628; padding: 16px 36px; border-radius: 2px; font-weight: 600; font-size: 0.95rem; letter-spacing: 0.03em; text-decoration: none; display: inline-block; transition: all 0.2s; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+.btn-primary:hover { background: #D4B470; transform: translateY(-1px); }
+.btn-ghost { border: 1px solid rgba(197,160,80,0.4); color: #C5A050; padding: 16px 36px; border-radius: 2px; font-weight: 500; font-size: 0.95rem; letter-spacing: 0.03em; text-decoration: none; display: inline-block; transition: all 0.2s; background: transparent; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+.btn-ghost:hover { border-color: #C5A050; background: rgba(197,160,80,0.08); }
+.hero-metrics { display: flex; gap: 48px; flex-wrap: wrap; }
+.metric { display: flex; flex-direction: column; gap: 4px; }
+.metric-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: #C5A050; line-height: 1; }
+.metric-label { font-size: 0.8rem; color: rgba(255,255,255,0.5); font-weight: 400; letter-spacing: 0.05em; }
+.hero-right { position: absolute; right: 48px; top: 50%; transform: translateY(-50%); animation: fadeIn 1.2s ease 0.3s both; }
 
-/* 5 · PROOF */
-.section-navy{background:var(--navy);color:#fff;}
-.section-navy h2{color:#fff;}
-.case-study{background:var(--navy-soft);border:1px solid rgba(201,169,89,.25);padding:2.6rem 2.3rem;border-radius:3px;max-width:920px;margin:0 auto;}
-.case-tag{font-size:.74rem;font-weight:600;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-bottom:.9rem;}
-.case-study h3{font-size:1.8rem;color:#fff;margin-bottom:1.2rem;}
-.case-block{margin-bottom:1.1rem;}
-.case-block strong{display:block;font-family:'Inter',sans-serif;font-size:.76rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;font-weight:600;}
-.case-block p{color:rgba(255,255,255,.85);font-size:.98rem;line-height:1.7;}
+section { padding: 100px 48px; }
+.section-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #C5A050; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.section-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: #C5A050; }
+h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 20px; }
+.section-intro { font-size: 1.05rem; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.75; max-width: 640px; margin-bottom: 60px; }
 
-/* 6 · FINAL CTA */
-.final-cta{background:var(--navy);text-align:center;padding:4.5rem 2rem;border-top:1px solid rgba(201,169,89,.2);}
-.final-cta h2{color:#fff;font-size:2.1rem;margin-bottom:1.3rem;}
-footer{background:var(--navy);color:rgba(255,255,255,.6);padding:2.2rem 2rem;text-align:center;font-size:.85rem;}
-footer .gold{color:var(--gold);font-style:italic;font-family:'Cormorant Garamond',serif;}
-footer .fmeta{margin-top:.9rem;font-size:.84rem;}
-footer .fmeta a{color:rgba(255,255,255,.72);text-decoration:none;}
-footer .fmeta a:hover{color:var(--gold);}
-footer .fmeta .sep{color:rgba(255,255,255,.3);margin:0 .6rem;}
-footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
-@media(max-width:760px){.qualify-grid{grid-template-columns:1fr;}}
+.about-section { background: #112240 !important; border-top: 1px solid rgba(197,160,80,0.12); border-bottom: 1px solid rgba(197,160,80,0.12); }
+.about-grid { display: grid; grid-template-columns: 0.78fr 1.22fr; gap: 56px; align-items: start; max-width: 1200px; margin: 0 auto; }
+.about-photo { border-radius: 4px; overflow: hidden; border: 1px solid rgba(197,160,80,0.2); position: relative; }
+.about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.about-photo-caption { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(10,22,40,0.85); padding: 12px 16px; font-size: 0.78rem; color: rgba(255,255,255,0.6); letter-spacing: 0.04em; }
+.about-photo-caption span { color: #C5A050; }
 
-/* 1b · SIGNS */
-.signs{background:var(--cream);border-bottom:1px solid #E8E4DC;padding-top:3.4rem;padding-bottom:3.4rem;}
-.signs-title{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:1.6rem;max-width:760px;}
-.signs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.6rem;}
-.sign{display:flex;gap:.85rem;align-items:flex-start;}
-.sign .tick{color:var(--accent);font-weight:700;font-size:1.05rem;flex-shrink:0;line-height:1.55;}
-.sign p{color:var(--navy);font-size:1rem;line-height:1.6;font-weight:500;}
+.articles-section { background: #0A1628; border-top: 1px solid rgba(197,160,80,0.12); }
+@media (max-width: 640px) { .articles-section { padding-bottom: 48px; } }
+.article-card { background: #112240; padding: 36px 32px; display: flex; flex-direction: column; transition: background 0.2s; text-decoration: none; color: #FFFFFF; }
+.article-card:hover { background: #1A3A5C; }
+.article-tag { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #C5A050; margin-bottom: 16px; }
+.article-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; line-height: 1.35; margin-bottom: 14px; color: #FFFFFF; word-break: break-word; }
+.article-excerpt { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.7; font-weight: 300; flex: 1; margin-bottom: 24px; overflow: hidden; }
+.article-readmore { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #C5A050; display: flex; align-items: center; gap: 6px; margin-top: auto; }
 
-/* before / after */
-.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.7rem;}
-.ba-col{background:rgba(255,255,255,.04);border:1px solid rgba(201,169,89,.18);border-radius:3px;padding:1.3rem 1.4rem;}
-.ba-col.after{border-color:rgba(201,169,89,.45);}
-.ba-h{display:block;font-size:.74rem;letter-spacing:.15em;text-transform:uppercase;font-weight:600;color:var(--gold);margin-bottom:.85rem;}
-.ba-col ul{list-style:none;}
-.ba-col li{color:rgba(255,255,255,.85);font-size:.95rem;line-height:1.55;padding:.3rem 0 .3rem 1.2rem;position:relative;}
-.ba-col li::before{content:"\2014";position:absolute;left:0;color:rgba(201,169,89,.5);}
-.ba-col.after li::before{content:"\2713";color:var(--gold);}
-@media(max-width:600px){.ba-grid{grid-template-columns:1fr;}}
+.testimonial-section { background: #0A1628; border-top: 1px solid rgba(197,160,80,0.12); border-bottom: 1px solid rgba(197,160,80,0.12); padding: 48px; }
+.testimonial-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+.logo-row { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; margin-top: 24px; }
+.logo-placeholder { height: 28px; opacity: 0.6; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.12em; color: rgba(255,255,255,0.6); display: flex; align-items: center; }
 
-/* 5b · KILLER LINE */
-.killer{background:var(--cream);text-align:center;border-top:1px solid #E8E4DC;border-bottom:1px solid #E8E4DC;}
-.killer-lines{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:600;color:var(--navy);line-height:1.2;margin-bottom:1rem;}
-.killer-tag{font-size:1.05rem;color:var(--grey);max-width:560px;margin:0 auto;}
+.about-text p { font-size: 1.05rem; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,0.75); margin-bottom: 20px; }
+.about-text p strong { color: #FFFFFF; font-weight: 500; }
+.credentials { margin-top: 36px; padding-top: 36px; border-top: 1px solid rgba(197,160,80,0.15); }
+.credentials p { font-size: 0.9rem !important; color: rgba(255,255,255,0.5) !important; margin-bottom: 8px !important; }
+.credentials strong { color: #C5A050 !important; font-weight: 600 !important; }
+.founder-card{display:flex;align-items:center;gap:16px;margin-top:32px;padding:16px 18px;background:rgba(197,160,80,0.06);border:1px solid rgba(197,160,80,0.2);border-radius:8px;}
+.founder-card img{width:66px;height:66px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid rgba(197,160,80,0.45);flex-shrink:0;}
+.founder-card .fc-meta strong{display:block;color:#fff;font-size:0.98rem;font-weight:600;}
+.founder-card .fc-meta span{font-size:0.8rem;color:#C5A050;line-height:1.4;}
+.about-quote { background: rgba(197,160,80,0.06); border: 1px solid rgba(197,160,80,0.15); border-radius: 4px; padding: 48px; position: relative; }
+.about-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 8rem; color: rgba(197,160,80,0.1); position: absolute; top: -20px; left: 24px; line-height: 1; }
+.about-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; font-style: italic; line-height: 1.6; color: #FFFFFF; position: relative; z-index: 1; }
+.about-quote cite { display: block; margin-top: 24px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-style: normal; color: #C5A050; letter-spacing: 0.05em; }
+
+.speeds-section { max-width: 1200px; margin: 0 auto; }
+.speeds-header { max-width: 640px; margin-bottom: 60px; }
+#speeds { background: #0A1628; }
+#track { background: #0A1628; }
+.speeds-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: rgba(197,160,80,0.15); border-radius: 4px; overflow: hidden; }
+.speed-card { background: #112240 !important; padding: 52px 34px; transition: background 0.3s, transform 0.3s; position: relative; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+.speed-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; z-index: 1; }
+.speed-card.s1::before { background: #2D6A4F; }
+.speed-card.s2a::before { background: #E07B39; }
+.speed-card.s2b::before { background: #6C3483; }
+.speed-card.s3::before { background: #C5A050; }
+.speed-card:hover { background: #1A3A5C !important; transform: translateY(-2px); }
+.speed-number { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px; }
+.speed-card.s1 .speed-number { color: #2D6A4F; }
+.speed-card.s2a .speed-number { color: #E07B39; }
+.speed-card.s2b .speed-number { color: #6C3483; }
+.speed-card.s3 .speed-number { color: #C5A050; }
+.speed-name { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 10px; line-height: 1.1; color: #FFFFFF; }
+.speed-tagline { font-size: 0.88rem; color: rgba(255,255,255,0.55); font-style: italic; margin-bottom: 24px; line-height: 1.5; }
+.speed-qso{flex:1;margin-bottom:24px;}
+.qso-q{font-family:'Playfair Display',serif;font-size:1.18rem;font-style:italic;color:#fff;line-height:1.4;margin-bottom:18px;}
+.qso-row{font-size:0.86rem;color:rgba(255,255,255,0.68);padding:11px 0;border-top:1px solid rgba(255,255,255,0.08);}
+.qso-row span{display:block;font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C5A050;margin-bottom:3px;opacity:0.9;}
+.speed-items { list-style: none; margin-bottom: 24px; flex: 1; }
+.speed-items li { font-size: 0.85rem; color: rgba(255,255,255,0.65); padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 8px; }
+.speed-items li::before { content: '→'; font-size: 0.7rem; opacity: 0.4; flex-shrink: 0; }
+.speed-readmore { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(197,160,80,0.18); display: flex; align-items: center; justify-content: space-between; transition: color 0.2s; }
+.speed-card.s1 .speed-readmore { color: #4CAF50; }
+.speed-card.s2a .speed-readmore { color: #FF9A5C; }
+.speed-card.s2b .speed-readmore { color: #B07FD4; }
+.speed-card.s3 .speed-readmore { color: #C5A050; }
+.speed-readmore .arrow { transition: transform 0.2s; }
+.speed-card:hover .speed-readmore .arrow { transform: translateX(4px); }
+.speeds-flow { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+.flow-item { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 18px; border-radius: 2px; text-decoration: none; transition: all 0.2s; }
+.flow-item.s1 { color: #2D6A4F; border: 1px solid rgba(45,106,79,0.4); }
+.flow-item.s2a { color: #E07B39; border: 1px solid rgba(224,123,57,0.4); }
+.flow-item.s2b { color: #6C3483; border: 1px solid rgba(108,52,131,0.4); }
+.flow-item.s3 { color: #C5A050; border: 1px solid rgba(197,160,80,0.4); }
+.flow-item:hover { background: rgba(197,160,80,0.08); }
+.flow-arrow { color: rgba(255,255,255,0.25); font-size: 1rem; }
+.flow-note { width: 100%; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.35); font-style: italic; margin-top: 12px; }
+
+.scorecard-section { background: #112240 !important; border-top: 1px solid rgba(197,160,80,0.12); border-bottom: 1px solid rgba(197,160,80,0.12); }
+.scorecard-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.scorecard-cards { display: flex; flex-direction: column; gap: 12px; }
+.sc-card { background: rgba(255,255,255,0.06) !important; border: 1px solid rgba(255,255,255,0.12) !important; border-radius: 3px; padding: 18px 20px; display: flex; align-items: center; gap: 16px; transition: all 0.2s; text-decoration: none; color: #FFFFFF !important; }
+.sc-card:hover { background: rgba(197,160,80,0.1) !important; border-color: rgba(197,160,80,0.4) !important; transform: translateX(4px); }
+.sc-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; }
+.sc-card.green .sc-icon { background: rgba(45,106,79,0.3); color: #4CAF50; }
+.sc-card.orange .sc-icon { background: rgba(224,123,57,0.3); color: #FF9A5C; }
+.sc-card.purple .sc-icon { background: rgba(108,52,131,0.3); color: #B07FD4; }
+.sc-card.gold .sc-icon { background: rgba(197,160,80,0.3); color: #C5A050; }
+.sc-text { flex: 1; }
+.sc-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 3px; color: #FFFFFF !important; }
+.sc-sub { font-size: 0.78rem; color: rgba(255,255,255,0.5) !important; }
+.scorecard-cta-box { text-align: center; }
+.scorecard-cta-box h2 { font-size: clamp(1.6rem, 2.5vw, 2.2rem); margin-bottom: 16px; }
+.scorecard-cta-box p { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 32px; }
+.score-badge { display: inline-block; background: rgba(197,160,80,0.1); border: 1px solid rgba(197,160,80,0.3); border-radius: 2px; padding: 8px 20px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #C5A050; margin-bottom: 24px; }
+
+.track-section { max-width: 1200px; margin: 0 auto; }
+.track-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(197,160,80,0.1); border-radius: 4px; overflow: hidden; }
+.track-card { background: #112240 !important; padding: 32px 28px; transition: background 0.2s; }
+.track-card:hover { background: #1A3A5C !important; }
+.track-sector { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #C5A050; margin-bottom: 10px; opacity: 0.8; }
+.track-client { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; line-height: 1.3; word-break: break-word; overflow-wrap: break-word; }
+.track-outcome { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.6; font-weight: 300; overflow-wrap: break-word; }
+
+.contact-section { background: #112240 !important; border-top: 1px solid rgba(197,160,80,0.12); }
+.contact-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.contact-info h2 { margin-bottom: 20px; color: #FFFFFF !important; }
+.contact-info p { font-size: 1rem; color: rgba(255,255,255,0.6) !important; line-height: 1.75; font-weight: 300; margin-bottom: 36px; }
+.contact-details { display: flex; flex-direction: column; gap: 16px; }
+.contact-item { display: flex; align-items: center; gap: 14px; font-size: 0.95rem; }
+.contact-item-icon { width: 40px; height: 40px; background: rgba(197,160,80,0.1); border: 1px solid rgba(197,160,80,0.2); border-radius: 2px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0; color: #C5A050 !important; }
+.contact-item a { color: rgba(255,255,255,0.75) !important; text-decoration: none; transition: color 0.2s; }
+.contact-item a:hover { color: #C5A050 !important; }
+.contact-item span { color: rgba(255,255,255,0.6) !important; }
+.contact-form-box { background: rgba(197,160,80,0.04) !important; border: 1px solid rgba(197,160,80,0.15) !important; border-radius: 4px; padding: 40px; }
+.contact-form-box h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 8px; color: #FFFFFF !important; }
+.contact-form-box p { font-size: 0.875rem; color: rgba(255,255,255,0.5) !important; margin-bottom: 28px; line-height: 1.6; }
+.form-group { margin-bottom: 16px; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; background: rgba(255,255,255,0.05) !important; border: 1px solid rgba(255,255,255,0.1) !important; border-radius: 2px; padding: 14px 16px; color: #FFFFFF !important; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; transition: border-color 0.2s; outline: none; appearance: none; -webkit-appearance: none; }
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.3) !important; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: rgba(197,160,80,0.5) !important; }
+.form-group select option { background: #112240 !important; color: #FFFFFF !important; }
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-submit { width: 100%; background: #C5A050 !important; color: #0A1628 !important; border: none !important; padding: 16px; border-radius: 2px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer; letter-spacing: 0.03em; transition: background 0.2s; margin-top: 8px; display: block; }
+.form-submit:hover { background: #D4B470 !important; }
+.form-divider { text-align: center; margin: 20px 0; position: relative; }
+.form-divider::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: rgba(255,255,255,0.1); }
+.form-divider span { position: relative; background: #112240; padding: 0 12px; font-size: 0.78rem; color: rgba(255,255,255,0.35); font-style: italic; }
+.btn-calendly { width: 100%; background: transparent !important; color: #C5A050 !important; border: 1px solid rgba(197,160,80,0.4) !important; padding: 16px; border-radius: 2px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer; letter-spacing: 0.03em; transition: all 0.2s; display: block; text-align: center; }
+.btn-calendly:hover { background: rgba(197,160,80,0.08) !important; border-color: #C5A050 !important; }
+
+footer { background: #0A1628; border-top: 1px solid rgba(197,160,80,0.12); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: #FFFFFF; }
+.footer-logo span { color: #C5A050; }
+.footer-manifesto { font-size: 0.85rem; color: rgba(255,255,255,0.35); font-style: italic; }
+.footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+.footer-right{display:flex;align-items:center;gap:18px;}
+.footer-lang{display:flex;gap:6px;}
+.footer-lang a{font-size:0.74rem;font-weight:600;letter-spacing:0.08em;text-decoration:none;padding:4px 10px;border-radius:2px;color:rgba(255,255,255,0.4);border:1px solid rgba(255,255,255,0.12);}
+.footer-lang a.fl-active{color:#C5A050;border-color:rgba(197,160,80,0.4);font-weight:700;}
+@media(max-width:1024px){.footer-right{flex-direction:column;gap:12px;}}
+
+.diag-modal { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(10,22,40,0.92); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 20px; }
+.diag-modal.open { display: flex; }
+.diag-modal-inner { background: #112240; border: 1px solid rgba(197,160,80,0.2); border-radius: 4px; width: 100%; max-width: 680px; position: relative; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,0.6); animation: modalIn 0.25s ease; }
+@keyframes modalIn { from { opacity: 0; transform: translateY(20px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.diag-modal-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid rgba(197,160,80,0.15); }
+.diag-modal-title { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; color: rgba(255,255,255,0.5); text-transform: uppercase; }
+.diag-modal-title span { color: #C5A050; }
+.diag-modal-close { background: none; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.5); width: 30px; height: 30px; border-radius: 2px; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.diag-modal-close:hover { background: rgba(255,255,255,0.08); color: #FFFFFF; }
+.diag-modal-body { display: grid; grid-template-columns: 200px 1fr; min-height: 360px; }
+.diag-modal-radar { background: #0A1628; display: flex; align-items: center; justify-content: center; position: relative; border-right: 1px solid rgba(197,160,80,0.1); }
+.modal-ring { position: absolute; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 1px solid rgba(197,160,80,0.2); }
+.r1 { width: 140px; height: 140px; }
+.r2 { width: 95px; height: 95px; border-color: rgba(197,160,80,0.28); }
+.r3 { width: 50px; height: 50px; border-color: rgba(197,160,80,0.36); }
+.modal-center { position: absolute; width: 8px; height: 8px; background: #C5A050; border-radius: 50%; box-shadow: 0 0 10px rgba(197,160,80,0.7); z-index: 3; }
+.modal-sweep { position: absolute; width: 70px; height: 70px; top: 50%; left: 50%; transform-origin: 0% 100%; transform: translate(0%, -100%); background: conic-gradient(from 0deg, transparent 280deg, rgba(197,160,80,0.15) 320deg, rgba(197,160,80,0.4) 360deg); border-radius: 0 100% 0 0; animation: radar-rotate 3s linear infinite; z-index: 2; }
+.diag-modal-content { padding: 36px 32px; display: flex; flex-direction: column; justify-content: center; }
+.diag-modal-eyebrow { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #C5A050; margin-bottom: 14px; }
+.diag-modal-content h2 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: #FFFFFF; line-height: 1.3; margin-bottom: 12px; letter-spacing: -0.01em; }
+.diag-modal-content p { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 20px; font-weight: 300; }
+.diag-modal-checklist { display: flex; flex-direction: column; gap: 6px; margin-bottom: 28px; }
+.diag-modal-checklist span { font-size: 0.78rem; color: rgba(255,255,255,0.45); letter-spacing: 0.02em; }
+.diag-modal-btn { background: #C5A050; color: #0A1628; padding: 14px 24px; border-radius: 2px; text-decoration: none; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.03em; transition: background 0.2s; display: inline-block; text-align: center; margin-bottom: 10px; }
+.diag-modal-btn:hover { background: #D4B470; }
+.diag-modal-note { font-size: 0.72rem !important; color: rgba(255,255,255,0.25) !important; margin-bottom: 0 !important; font-style: italic; }
+@media (max-width: 560px) { .diag-modal-body { grid-template-columns: 1fr; } .diag-modal-radar { display: none; } .diag-modal-content { padding: 28px 24px; } }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@media (max-width: 1024px) {
+  .hero-right { display: none; }
+  .hero-punch-mobile { display: block; font-family: 'Playfair Display', serif; font-size: 1.15rem; line-height: 1.5; color: #FFFFFF; margin: -28px 0 40px; }
+  .hero-punch-mobile span { color: #C5A050; }
+  nav { padding: 16px 24px; }
+  .nav-links { display: flex; gap: 16px; }
+  .nav-links li:not(:last-child):not(:nth-last-child(2)) { display: none; }
+  section { padding: 72px 24px; }
+  .about-grid, .scorecard-inner, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+  .speeds-grid { grid-template-columns: 1fr 1fr; }
+  .track-grid { grid-template-columns: 1fr 1fr; }
+  footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+}
+@media (max-width: 640px) {
+  .hero { padding: 100px 20px 60px; }
+  h1 { font-size: 2.2rem; }
+  .speeds-grid { grid-template-columns: 1fr; }
+  .track-grid { grid-template-columns: 1fr; }
+  .hero-metrics { gap: 24px; }
+  /* Nav: single-line CTA, hide all other links */
+  nav { padding: 12px 16px; }
+  .nav-links li:not(:last-child) { display: none !important; }
+  .nav-cta {
+    font-size: 0.72rem !important;
+    padding: 8px 12px !important;
+    white-space: nowrap !important;
+    letter-spacing: 0 !important;
+    line-height: 1 !important;
+  }
+  .nav-logo { font-size: 1rem; }
+  /* Cards */
+  .article-card { padding: 22px 18px; }
+  .track-card { padding: 20px 18px; }
+  .track-client { font-size: 0.95rem; }
+  /* Articles + track section padding */
+  .articles-section { padding-bottom: 48px; }
+  #track { padding-bottom: 48px; }
+  /* Speed flow: centre + hide arrows */
+  .speeds-flow { justify-content: center; gap: 10px; }
+  .flow-arrow { display: none; }
+  .flow-item { text-align: center; }
+  /* Scorecard badge */
+  .score-badge { font-size: 0.68rem; padding: 6px 14px; letter-spacing: 0.06em; }
+}
 </style>
 </head>
 <body>
 
-<header class="site-header">
-  <a href="/" class="brand">CONTRACKS<span class="dot">.</span>GLOBAL</a>
-  <a href="/" class="nav-back">← Back to site</a>
-</header>
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo" style="text-decoration:none;">CONTRACKS<span>.</span>GLOBAL</a>
+  <ul class="nav-links">
+    <li><a href="#control">CONTROL</a></li>
+    <li><a href="#speeds">Four Speeds</a></li>
+    <li><a href="/library.html">Library</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li>
+      <a href="https://www.linkedin.com/company/contracks-global/" target="_blank" rel="noopener" class="nav-linkedin" aria-label="Contracks Global on LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+      </a>
+    </li>
+    <li><a href="#" onclick="openModal();return false;" class="nav-cta">Take the diagnostic &#8594;</a></li>
+  </ul>
+</nav>
 
-<!-- 1 · HERO -->
-<section class="lp-hero">
-  <div class="lp-hero-inner">
-    <span class="speed-label">Speed 1 — Start</span>
-    <p class="speed-promise">Turn an idea into an investable business.</p>
-    <h1>From feedstock to an <em>investable fuel platform.</em></h1>
-    <p class="sub">Plenty of ideas are exciting. Few are investable. The gap is structure — a market that pays, money that lasts, and margin that holds. Find out which side of the line you're on.</p>
-    <a href="/control-assessment.html" class="btn btn-primary">Start with the CONTROL diagnostic →</a>
-    <p class="lp-frame">Start with the 5-minute <strong>CONTROL</strong> diagnostic. If START isn't your biggest problem, it'll tell you. If it is, you unlock your <strong>START Deep Dive</strong> — exactly what makes it investable, and what to fix first.</p>
-    <div class="lp-note">Free · 20 questions · about 4 minutes · Instant result</div>
-  </div>
-</section>
-
-<!-- 1b · SIGNS -->
-<section class="signs">
-  <div class="container">
-    <h2 class="signs-title">Signs you're already in <em>START territory.</em></h2>
-    <div class="signs-grid">
-      <div class="sign"><span class="tick">&#10003;</span><p>You've pitched the idea a hundred times — but never the business model.</p></div>
-      <div class="sign"><span class="tick">&#10003;</span><p>You're building features before anyone has agreed to pay.</p></div>
-      <div class="sign"><span class="tick">&#10003;</span><p>Investors say "interesting," then go quiet.</p></div>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">5Cs Framework&#8482; &#183; Governance Designed for Distance</div>
+    <h1>Projects don&#8217;t fail.<br><em>The systems around them do.</em></h1>
+    <p class="hero-sub">Frontier markets just expose it faster. We design, fix and build the delivery and commercial systems behind cross-border capital projects &#8212; from &#8364;10M ventures to &#8364;2B programmes. Europe &#183; Africa &#183; Gulf.</p>
+    <p class="hero-punch-mobile">Controlled <span>on paper.</span> Run on <span>WhatsApp.</span> <span style="color:rgba(255,255,255,0.55);">We close that gap.</span></p>
+    <div class="hero-actions">
+      <a href="#" onclick="openModal();return false;" class="btn-primary">Take the diagnostic &#8594;</a>
+      <a href="#control" class="btn-ghost">Explore CONTROL &#8594;</a>
+    </div>
+    <div class="hero-metrics">
+      <div class="metric"><span class="metric-num">25+</span><span class="metric-label">Years experience</span></div>
+      <div class="metric"><span class="metric-num">30+</span><span class="metric-label">Countries</span></div>
+      <div class="metric"><span class="metric-num">&#8364;2B+</span><span class="metric-label">Projects advised</span></div>
+      <div class="metric"><span class="metric-num">4</span><span class="metric-label">Entry points</span></div>
     </div>
   </div>
 </section>
 
-<!-- 2 · SELF-QUALIFY -->
-<section class="qualify">
-  <div class="qualify-grid">
-    <div>
-      <div class="qualify-img">
-        <img class="ff f1" src="/start-feedstock.jpeg" alt="Stage 1 — feedstock, abundant and untapped" onerror="this.style.display='none';">
-        <img class="ff f2" src="/start-plant.jpeg" alt="Stage 2 — pilot plant, proving production" onerror="this.style.display='none';">
-        <img class="ff f3" src="/start-platform.jpeg" alt="Stage 3 — investable modular SAF platform" onerror="this.style.display='none';">
-        <span class="stag s1"><b>Stage 1</b>Feedstock</span>
-        <span class="stag s2"><b>Stage 2</b>Pilot</span>
-        <span class="stag s3"><b>Stage 3</b>Platform</span>
+<!-- CONTROL APEX -->
+<section id="control" style="background:#0A1628;border-top:1px solid rgba(197,160,80,0.12);border-bottom:1px solid rgba(197,160,80,0.12);">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-eyebrow">CONTROL &#183; The apex product</div>
+    <h2>How close are you to <em>No-Surprises Delivery?</em></h2>
+    <p class="section-intro">Most programmes look controlled until pressure arrives &#8212; scope drift, unverified vendor promises, decisions without owners. CONTROL measures where your delivery control will actually hold, and where it won&#8217;t.</p>
+
+    <div class="ctrl-ladder" style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:48px;">
+      <div class="ctrl-rung"><div class="cn">1</div><div class="cm">Reactive</div></div>
+      <div class="ctrl-rung"><div class="cn">2</div><div class="cm">Managed</div></div>
+      <div class="ctrl-rung"><div class="cn">3</div><div class="cm">Controlled</div></div>
+      <div class="ctrl-rung"><div class="cn">4</div><div class="cm">Operational</div></div>
+      <div class="ctrl-rung top"><div class="cn">5</div><div class="cm">Scalable</div></div>
+    </div>
+
+    <div class="ctrl-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+      <div class="ctrl-left">
+        <img class="ctrl-img" src="/control-hangar.jpeg" alt="Aircraft engine maintenance in hangar">
+        <div class="ctrl-panel">
+        <div class="cp-head"><span class="cp-ttl">Delivery Control</span><span class="cp-live"><i></i>CONTROL VIEW</span></div>
+        <div class="cp-bars">
+          <div class="cp-bar"><span>CONTAIN</span><div class="cp-track"><div class="cp-fill" style="width:84%"></div></div></div>
+          <div class="cp-bar"><span>COMMAND</span><div class="cp-track"><div class="cp-fill" style="width:62%"></div></div></div>
+          <div class="cp-bar"><span>CLOSE</span><div class="cp-track"><div class="cp-fill" style="width:47%"></div></div></div>
+          <div class="cp-bar"><span>CONFIRM</span><div class="cp-track"><div class="cp-fill" style="width:73%"></div></div></div>
+          <div class="cp-bar"><span>CONTROL</span><div class="cp-track"><div class="cp-fill" style="width:55%"></div></div></div>
+        </div>
+        <div class="cp-foot"><span>Maturity&#160; <b>Level 2 &#8212; Managed</b></span><span class="cp-note">Illustrative</span></div>
       </div>
-      <p class="mid-cap"><b>Opportunity → venture → investable platform.</b><br>Bleriot, built in East Africa.</p>
-    </div>
-    <div>
-      <h2>Find out if it's investable — before you bet a year on <em>it.</em></h2>
-      <p>Cut through the optimism and pressure-test your venture in minutes — whether the market will pay, whether the money lasts, and whether the margin survives contact with reality.</p>
-      <p class="pains">Built for founders, owner-operators and first-time builders turning an idea into something an investor — or a bank — will actually back.</p>
-      <div class="stat">
-        <div class="big">Most ventures don't fail at the idea. They fail at the model.</div>
-        <div class="truth">A market too small, a margin too thin, a runway too short — each one is cheap to fix early and fatal to miss late. Most are only discovered after the money's been spent.</div>
       </div>
-      <p>Scored against the 5Cs Framework — the same system used to structure ventures and capital programmes up to €2B across 30 countries. You get a clear read on whether it's investable, and what to fix first.</p>
+      <div style="background:rgba(197,160,80,0.06);border:1px solid rgba(197,160,80,0.28);border-radius:6px;padding:36px;text-align:center;">
+        <div class="score-badge">20 questions &#183; ~4 min &#183; Instant Level 1&#8211;5</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#FFFFFF;margin:8px 0 12px;">Real delivery control &#8212; or exposure?</h3>
+        <p style="font-size:0.92rem;color:rgba(255,255,255,0.6);line-height:1.6;margin-bottom:24px;">Score your programme across the five control pillars and discover whether your governance is preventing surprises &#8212; or simply documenting them.</p>
+        <a href="#" onclick="openModal();return false;" class="btn-primary" style="display:block;margin-bottom:14px;">Take the diagnostic &#8594;</a>
+        <a href="/library.html" style="font-size:0.85rem;color:#C5A050;text-decoration:none;font-weight:600;">See the maturity library &#8594;</a>
+      </div>
+    </div>
+  </div>
+  <style>
+    #control ul li{font-size:0.98rem;color:rgba(255,255,255,0.75);padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.08);}
+    #control ul li:last-child{border-bottom:none;}
+    #control ul li b{color:#C5A050;font-weight:700;letter-spacing:0.04em;}
+    .ctrl-rung{background:#112240;border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:16px 10px;text-align:center;}
+    .ctrl-rung .cn{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:rgba(255,255,255,0.4);line-height:1;}
+    .ctrl-rung .cm{font-size:0.68rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:6px;}
+    .ctrl-rung.top{background:rgba(197,160,80,0.12);border-color:#C5A050;}
+    .ctrl-rung.top .cn{color:#C5A050;}
+    .ctrl-rung.top .cm{color:#FFFFFF;}
+    .ctrl-panel{background:#0E1C32;border:1px solid rgba(197,160,80,0.25);border-radius:8px;padding:24px 26px;box-shadow:0 18px 50px rgba(0,0,0,0.35);}
+    .cp-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(197,160,80,0.18);padding-bottom:14px;margin-bottom:20px;}
+    .cp-ttl{font-family:'Playfair Display',serif;font-size:1.05rem;color:#fff;font-weight:700;letter-spacing:0.02em;}
+    .cp-live{font-size:0.6rem;font-weight:700;letter-spacing:0.14em;color:#C5A050;display:flex;align-items:center;gap:6px;}
+    .cp-live i{width:7px;height:7px;border-radius:50%;background:#C5A050;display:inline-block;box-shadow:0 0 8px rgba(197,160,80,0.8);}
+    .cp-bars{display:flex;flex-direction:column;gap:14px;}
+    .cp-bar{display:grid;grid-template-columns:78px 1fr;align-items:center;gap:14px;}
+    .cp-bar>span{font-size:0.64rem;font-weight:700;letter-spacing:0.08em;color:rgba(255,255,255,0.7);}
+    .cp-track{height:8px;background:rgba(255,255,255,0.08);border-radius:4px;overflow:hidden;}
+    .cp-fill{height:100%;background:linear-gradient(90deg,#C5A050,#D4B470);border-radius:4px;}
+    .cp-foot{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:14px;border-top:1px solid rgba(197,160,80,0.18);font-size:0.78rem;color:rgba(255,255,255,0.6);}
+    .cp-foot b{color:#fff;font-weight:600;}
+    .cp-note{font-size:0.6rem;color:rgba(255,255,255,0.3);font-style:italic;letter-spacing:0.04em;}
+    .ctrl-left{display:flex;flex-direction:column;gap:18px;}
+    .ctrl-img{width:100%;height:210px;object-fit:cover;border-radius:8px;border:1px solid rgba(197,160,80,0.25);display:block;}
+    @media(max-width:768px){#control .ctrl-grid{grid-template-columns:1fr!important;gap:32px!important;}#control .ctrl-ladder{gap:4px!important;}.ctrl-rung{padding:12px 4px!important;}.ctrl-rung .cn{font-size:1.1rem!important;}.ctrl-rung .cm{font-size:0.52rem!important;letter-spacing:0.02em!important;}}
+  </style>
+</section>
+
+<!-- FOUR SPEEDS -->
+<section id="speeds">
+  <div class="speeds-section">
+    <div class="speeds-header">
+      <div class="section-eyebrow">What we do</div>
+      <h2>The Four Speeds.</h2>
+      <p class="section-intro">Four entry points. One control system. Every client enters at one of four stages &#8212; the problem is different at each, and so is the product. Find where you are.</p>
+    </div>
+    <div class="speeds-grid">
+      <a href="/start.html" class="speed-card s1">
+        <div class="speed-number">Speed 1</div>
+        <div class="speed-name">START</div>
+        <div class="speed-qso">
+          <div class="qso-q">Can this become a real business?</div>
+          <div class="qso-row"><span>Situation</span>A complex idea with no commercial spine yet.</div>
+          <div class="qso-row"><span>Outcome</span>An investable business.</div>
+        </div>
+        <div class="speed-readmore"><span>Explore</span><span class="arrow">&#8594;</span></div>
+      </a>
+      <a href="/resolve.html" class="speed-card s2a">
+        <div class="speed-number">Speed 2</div>
+        <div class="speed-name">RESOLVE</div>
+        <div class="speed-qso">
+          <div class="qso-q">Is delivery slipping toward a claim?</div>
+          <div class="qso-row"><span>Situation</span>Scope, vendors and decisions drifting off-plan.</div>
+          <div class="qso-row"><span>Outcome</span>Control recovered before it becomes a claim.</div>
+        </div>
+        <div class="speed-readmore"><span>Explore</span><span class="arrow">&#8594;</span></div>
+      </a>
+      <a href="/reshape.html" class="speed-card s2b">
+        <div class="speed-number">Speed 3</div>
+        <div class="speed-name">RESHAPE</div>
+        <div class="speed-qso">
+          <div class="qso-q">Will the change actually stick?</div>
+          <div class="qso-row"><span>Situation</span>The business runs on a few people&#8217;s heads.</div>
+          <div class="qso-row"><span>Outcome</span>Operations that don&#8217;t depend on heroes.</div>
+        </div>
+        <div class="speed-readmore"><span>Explore</span><span class="arrow">&#8594;</span></div>
+      </a>
+      <a href="/grow.html" class="speed-card s3">
+        <div class="speed-number">Speed 4</div>
+        <div class="speed-name">GROW</div>
+        <div class="speed-qso">
+          <div class="qso-q">Can we scale without breaking?</div>
+          <div class="qso-row"><span>Situation</span>Commercial capacity is the bottleneck.</div>
+          <div class="qso-row"><span>Outcome</span>Growth without breaking the business.</div>
+        </div>
+        <div class="speed-readmore"><span>Explore</span><span class="arrow">&#8594;</span></div>
+      </a>
+    </div>
+    <div class="speeds-flow">
+      <a href="/start.html" class="flow-item s1">Speed 1 &#8212; Start</a>
+      <span class="flow-arrow">&#8594;</span>
+      <a href="/resolve.html" class="flow-item s2a">Speed 2 &#8212; Resolve</a>
+      <span class="flow-arrow">&#8594;</span>
+      <a href="/reshape.html" class="flow-item s2b">Speed 3 &#8212; Reshape</a>
+      <span class="flow-arrow">&#8594;</span>
+      <a href="/grow.html" class="flow-item s3">Speed 4 &#8212; Grow</a>
+      <p class="flow-note">Clients move through speeds as their situation evolves.</p>
     </div>
   </div>
 </section>
 
-<!-- 3 · AUTHORITY -->
-<div class="authority-wrap">
-  <div class="authority">
-    <div class="authority-photo">
-      <img src="/serguei-portrait.jpeg" alt="Serguei Poppeleer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-      <span class="monogram" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;">SP</span>
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="section-eyebrow">Who we are</div>
+      <h2>Both sides of every table.</h2>
+      <p>I&#8217;ve been the contractor trying to get paid. The developer trying to control costs. The founder trying to survive an investor agreement. The operations manager cleaning up what the commercial team missed.</p>
+      <p>Twenty-five years across EPC, energy, real estate, aviation and startups &#8212; in 30 countries &#8212; taught me one thing. <strong>The contracts that fail aren&#8217;t managed badly. They&#8217;re designed badly before management begins.</strong></p>
+      <p>Contracks works with PMO Directors, commercial managers and project operators on the delivery control side of their programmes. We don&#8217;t consult from a distance. <strong>We build the system from the inside.</strong></p>
+      <p>Founder of the <strong>5Cs Framework&#8482;</strong> &#8212; used on cross-border capital projects from &#8364;10M to &#8364;2B across Europe, Africa and the Gulf.</p>
+      <div class="founder-card">
+        <img src="/serguei-portrait.jpeg" alt="Serguei Poppeleer, Founder of Contracks Global">
+        <div class="fc-meta"><strong>Serguei Poppeleer</strong><span>Founder &amp; Managing Director &#183; Brussels &#183; Lagos &#183; Nairobi</span></div>
+      </div>
+      <div class="credentials">
+        <p>Executive MBA, Hult &#183; LLM Oil &amp; Gas, Robert Gordon</p>
+        <p>MIT &#183; INSEAD &#183; MCIArb &#183; IACCM &#183; CIoB</p>
+      </div>
     </div>
-    <div>
-      <div class="authority-name">Serguei Poppeleer · Founder, Contracks Global</div>
-      <div class="authority-creds">MCIArb · IACCM · LLM Oil &amp; Gas · Executive MBA</div>
-      <p class="authority-line">25 years across 30 countries, structuring ventures and capital projects up to €2B.</p>
+    <div style="display:flex;flex-direction:column;gap:24px;">
+      <div class="about-photo">
+        <img src="/serguei-speaking.jpg" alt="Serguei Poppeleer speaking at the Global Tourism Forum, Brussels 2025" loading="lazy">
+        <div class="about-photo-caption"><span>Global Tourism Forum</span> &#183; Annual Meeting &#183; Brussels, 2025</div>
+      </div>
+      <div class="about-quote">
+        <blockquote>&#8220;Projects don&#8217;t fail. The systems around them do. Frontier markets just expose it faster.&#8221;</blockquote>
+        <cite>&#8212; World Commerce &amp; Contracting, Global EPC Forum Berlin, April 2026</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACK RECORD -->
+<section id="track">
+  <div class="track-section">
+    <div class="section-eyebrow">Selected track record</div>
+    <h2>The work speaks.</h2>
+    <p class="section-intro">Three flagship mandates. Real results, across sectors, geographies and scales.</p>
+
+    <div class="track-grid">
+      <div class="track-card">
+        <div class="track-sector">Infrastructure &#183; Qatar</div>
+        <div class="track-client">Zero delay through the GCC embargo</div>
+        <div class="track-outcome">&#8364;700M metro programme, Qatar. Commercial integrity maintained under crisis.</div>
+      </div>
+      <div class="track-card">
+        <div class="track-sector">Energy &#183; Belgium</div>
+        <div class="track-client">Stalled &#8364;400M FIDIC negotiation, unlocked</div>
+        <div class="track-outcome">Major energy infrastructure EPC, Belgium. Commercial reset delivered under pressure.</div>
+      </div>
+      <div class="track-card">
+        <div class="track-sector">Aviation &#183; Africa</div>
+        <div class="track-client">Delivered 10% below budget across 15 countries</div>
+        <div class="track-outcome">Aviation portfolio framework for a major European airline, Africa. LiDAR-based assessment.</div>
+      </div>
+    </div>
+
+    <div id="track-more" style="display:none;margin-top:2px;">
+      <div class="track-grid">
+      <div class="track-card">
+        <div class="track-sector">O&amp;G &#183; West Africa</div>
+        <div class="track-client">$1M/month saved, litigation down 30%</div>
+        <div class="track-outcome">$2.7B oil &amp; gas infrastructure portfolio, West Africa.</div>
+      </div>
+      <div class="track-card">
+        <div class="track-sector">Energy Startup &#183; Kenya</div>
+        <div class="track-client">From inception to investable platform</div>
+        <div class="track-outcome">Sustainable aviation fuel venture, East Africa. All four speeds; board advisory post-investment.</div>
+      </div>
+      <div class="track-card">
+        <div class="track-sector">Pipeline &#183; Denmark / Poland</div>
+        <div class="track-client">6-month idle recovered inside the original window</div>
+        <div class="track-outcome">&#8364;850M+ gas pipeline programme, Denmark / Poland. &#8364;30M+ claims position maintained.</div>
+      </div>
+      <div class="track-card">
+        <div class="track-sector">Pipeline &#183; France</div>
+        <div class="track-client">Six-month claims deadlock, broken</div>
+        <div class="track-outcome">Major gas transmission, France. Reframed from positional dispute to project value.</div>
+      </div>
+      <div class="track-card">
+        <div class="track-sector">EPC &#183; Equatorial Guinea</div>
+        <div class="track-client">Built at one-tenth the cost, half the time</div>
+        <div class="track-outcome">West Africa community camp, Equatorial Guinea. Community-led. Zero claims.</div>
+      </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:32px;">
+      <button id="track-toggle" onclick="toggleTrack()" class="btn-ghost">View all case studies &#8594;</button>
+    </div>
+  </div>
+  <script>
+    function toggleTrack(){var m=document.getElementById('track-more');var b=document.getElementById('track-toggle');var open=m.style.display!=='none';m.style.display=open?'none':'block';b.innerHTML=open?'View all case studies &#8594;':'Show fewer &#8593;';}
+  </script>
+</section>
+
+<!-- PROOF BAND -->
+<div class="proof-band" style="position:relative;height:340px;background:url('/hangar-wide.jpeg') center 32%/cover no-repeat;border-top:1px solid rgba(197,160,80,0.15);border-bottom:1px solid rgba(197,160,80,0.15);">
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,22,40,0.88),rgba(10,22,40,0.42));"></div>
+  <div style="position:relative;max-width:1200px;margin:0 auto;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 48px;">
+    <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#C5A050;margin-bottom:12px;">From &#8364;10M ventures to &#8364;2B programmes</div>
+    <div style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:#fff;max-width:620px;line-height:1.2;">Built where the systems break first.</div>
+  </div>
+  <style>@media(max-width:640px){.proof-band{height:240px!important;}.proof-band>div:last-child{padding:0 20px!important;}}</style>
+</div>
+
+<!-- LIBRARY FEATURE -->
+<section class="articles-section" id="articles">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="section-eyebrow">Reports &amp; field notes</div>
+    <h2>Start where your programme is.</h2>
+    <p class="section-intro">Everything we publish sits on the Delivery Control Maturity Ladder. Take the diagnostic, find your level, and read the few pieces that move you up &#8212; not the whole archive.</p>
+
+    <div class="feat-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(197,160,80,0.15);border-radius:4px;overflow:hidden;">
+      <a href="/specialreport2" class="article-card" style="border-bottom:3px solid #C5A050;">
+        <div class="article-tag">Special Report &#183; RESOLVE&#8482; &#183; Free</div>
+        <div class="article-title">Beyond Paperwork Governance</div>
+        <div class="article-excerpt">The full 5Cs Framework&#8482; &#8212; every step, the tools, and the proof cases across 30 countries. The core report behind the diagnostic.</div>
+        <div class="article-readmore">Download free <span>&#8594;</span></div>
+      </a>
+      <a href="/specialreport3" class="article-card" style="border-bottom:3px solid #6C3483;">
+        <div class="article-tag" style="color:#B07FD4;">Special Report &#183; RESHAPE&#8482; &#183; Free</div>
+        <div class="article-title">Beyond Operational Fragility</div>
+        <div class="article-excerpt">The business delivers, but three people hold all the knowledge. When one leaves, the system stalls. The RESHAPE method for operations that scale.</div>
+        <div class="article-readmore" style="color:#B07FD4;">Download free <span>&#8594;</span></div>
+      </a>
+      <a href="/article2.html" class="article-card" style="border-bottom:3px solid #C5A050;">
+        <div class="article-tag" style="color:#C5A050;">Latest article</div>
+        <div class="article-title">Is Your Project Under Control &#8212; Or Does It Just Look That Way?</div>
+        <div class="article-excerpt">Call your site supervisor right now. Ask what is happening today. Then open your master schedule.</div>
+        <div class="article-readmore">Read article <span>&#8594;</span></div>
+      </a>
+    </div>
+
+    <div style="text-align:center;margin-top:36px;">
+      <a href="/library.html" class="btn-primary">Explore the Delivery Control Library &#8594;</a>
+    </div>
+  </div>
+  <style>
+    #articles{background:#F8F6F2;}
+    #articles .section-eyebrow{color:#9A7B2E;}
+    #articles .section-eyebrow::before{background:#9A7B2E;}
+    #articles h2{color:#0A1628;}
+    #articles .section-intro{color:#5A5A5A;}
+    @media(max-width:1024px){#articles .feat-grid{grid-template-columns:1fr 1fr!important;}}
+    @media(max-width:640px){#articles .feat-grid{grid-template-columns:1fr!important;}}
+  </style>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background:#0A1628;border-top:1px solid rgba(197,160,80,0.12);border-bottom:1px solid rgba(197,160,80,0.12);padding:100px 48px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="section-eyebrow">Field note</div>
+    <h2>From the field.</h2>
+    <p class="section-intro">Real mandates. Real outcomes. In their own words.</p>
+
+    <div style="max-width:760px;margin:0 auto;">
+      <div style="background:#112240;border:1px solid rgba(197,160,80,0.15);border-radius:8px;padding:40px 44px;text-align:center;">
+        <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#C5A050;margin-bottom:18px;">Procurement &nbsp;&#183;&nbsp; West Africa</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.15rem;font-style:italic;color:rgba(255,255,255,0.9);line-height:1.7;margin-bottom:22px;">&ldquo;Contracks brought structure and clarity to a procurement process that had become difficult to manage across suppliers and stakeholders. We improved alignment, reduced unnecessary costs, and kept delivery moving without constant firefighting.&rdquo;</div>
+        <div style="border-top:1px solid rgba(197,160,80,0.15);padding-top:18px;display:inline-block;">
+          <div style="font-size:0.9rem;font-weight:600;color:#FFFFFF;">Richard I.</div>
+          <div style="font-size:0.78rem;color:#C5A050;letter-spacing:0.04em;margin-top:2px;">CEO &nbsp;&#183;&nbsp; Water Project &nbsp;&#183;&nbsp; West Africa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section style="background:#112240;border-top:1px solid rgba(197,160,80,0.2);padding:44px 48px;">
+  <div style="max-width:600px;margin:0 auto;text-align:center;">
+    <div class="section-eyebrow" style="justify-content:center;">Field Intelligence</div>
+    <h2 style="margin-bottom:10px;font-size:1.55rem;">No-Surprises Delivery. Every two weeks.</h2>
+    <p style="font-size:0.92rem;color:rgba(255,255,255,0.55);line-height:1.65;margin-bottom:24px;font-weight:300;">Field notes from airports, infrastructure programmes, energy projects and cross-border ventures. No noise. Unsubscribe any time.</p>
+    <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubscribe(event)" style="display:flex;gap:8px;max-width:480px;margin:0 auto 16px;">
+      <input type="hidden" name="form-name" value="newsletter">
+      <p hidden><label>Don&#8217;t fill this out: <input name="bot-field"></label></p>
+      <input type="email" id="nl-email" name="email" placeholder="Your email address" required
+        style="flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:2px;padding:14px 18px;color:#FFFFFF;font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;min-width:0;"
+        onfocus="this.style.borderColor='rgba(197,160,80,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.15)'">
+      <button type="submit"
+        style="background:#C5A050;color:#0A1628;border:none;border-radius:2px;padding:14px 28px;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:600;cursor:pointer;white-space:nowrap;letter-spacing:0.03em;"
+        onmouseover="this.style.background='#D4B470'" onmouseout="this.style.background='#C5A050'">
+        Subscribe &#8594;
+      </button>
+    </form>
+    <p id="nl-msg" style="font-size:0.82rem;color:#C5A050;min-height:20px;"></p>
+    <p style="font-size:0.75rem;color:rgba(255,255,255,0.2);margin-top:8px;">No spam. Unsubscribe at any time.</p>
+  </div>
+</section>
+<script>
+function handleSubscribe(e){
+  e.preventDefault();
+  var email=document.getElementById('nl-email').value;
+  var body=new URLSearchParams();
+  body.append('form-name','newsletter');
+  body.append('email',email);
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body.toString()}).catch(function(){});
+  document.getElementById('nl-msg').textContent='Thank you — you\'re on the list.';
+  document.getElementById('nl-email').value='';
+}
+</script>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-eyebrow">Get in touch</div>
+      <h2>Let&#8217;s talk.</h2>
+      <p>If a site or supplier blew the plan up tomorrow &#8212; would your controls hold? If the answer isn&#8217;t a confident yes, that&#8217;s where we start.</p>
+      <p style="font-size:0.85rem;color:#C5A050;font-weight:600;margin:-22px 0 28px;">&#9679; Usually replies within 24 hours.</p>
+      <div class="contact-details">
+        <div class="contact-item">
+          <div class="contact-item-icon">&#9993;</div>
+          <a href="mailto:hello@contracks.global">hello@contracks.global</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">&#9742;</div>
+          <a href="tel:+32466446290">+32 466 446 290</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">&#128172;</div>
+          <a href="https://wa.me/32466446290" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">&#128205;</div>
+          <span style="color:rgba(255,255,255,0.6);">Brussels &#183; Lagos &#183; Nairobi</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">in</div>
+          <a href="https://www.linkedin.com/in/serguei-poppeleer" target="_blank" rel="noopener">LinkedIn &#8212; Serguei Poppeleer</a>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form-box">
+      <h3>Send a message</h3>
+      <p>Tell us where you are and what you&#8217;re dealing with. We&#8217;ll respond within 24 hours.</p>
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you">
+        <input type="hidden" name="form-name" value="contact">
+        <p hidden><label>Don&#8217;t fill this out: <input name="bot-field"></label></p>
+        <div class="form-group"><input type="text" name="name" placeholder="Your name" required></div>
+        <div class="form-group"><input type="email" name="email" placeholder="Your email" required></div>
+        <div class="form-group"><input type="text" name="company" placeholder="Company / Project"></div>
+        <div class="form-group">
+          <select name="speed">
+            <option value="" disabled selected>Where are you? (choose a speed)</option>
+            <option value="start">Speed 1 &#8212; START (new venture or direction)</option>
+            <option value="resolve">Speed 2 &#8212; RESOLVE (delivery control)</option>
+            <option value="reshape">Speed 3 &#8212; RESHAPE (digital transformation)</option>
+            <option value="grow">Speed 4 &#8212; GROW (scaling)</option>
+            <option value="unsure">Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-group"><textarea name="message" placeholder="What are you dealing with?"></textarea></div>
+        <button type="submit" class="form-submit">Send message &#8594;</button>
+      </form>
+      <div class="form-divider"><span>or</span></div>
+      <button class="btn-calendly" onclick="Calendly.initPopupWidget({url:'https://calendly.com/contracks_global'});return false;">&#128197; Book a discovery call &#8594;</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">CONTRACKS<span>.</span>GLOBAL</div>
+  <div class="footer-manifesto">Better contracts. Better business. Better society.</div>
+  <div class="footer-right">
+    <div class="footer-lang"><a href="/" class="fl-active">EN</a><a href="/fr">FR</a></div>
+    <div class="footer-copy">&#169; 2026 Contracks Global. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- DIAGNOSTIC MODAL -->
+<div class="diag-modal" id="diagModal">
+  <div class="diag-modal-inner">
+    <div class="diag-modal-header">
+      <div class="diag-modal-title">Delivery Control Readiness <span>Diagnostic</span></div>
+      <button class="diag-modal-close" onclick="closeModal()" aria-label="Close">&#10005;</button>
+    </div>
+    <div class="diag-modal-body">
+      <div class="diag-modal-radar">
+        <div class="modal-ring r1"></div>
+        <div class="modal-ring r2"></div>
+        <div class="modal-ring r3"></div>
+        <div class="modal-sweep"></div>
+        <div class="modal-center"></div>
+      </div>
+      <div class="diag-modal-content">
+        <div class="diag-modal-eyebrow">The 5Cs &#183; 20 questions &#183; Instant result</div>
+        <h2>Is your programme a Control Tower<br>or a Paperwork PMO?</h2>
+        <p>Score your delivery system across all five control pillars &#8212; scope, plan, decisions, vendors, cadence. Takes about 4 minutes. No consultant. No meeting.</p>
+        <div class="diag-modal-checklist">
+          <span>&#10003; CONTAIN &#8212; Scope Control</span>
+          <span>&#10003; COMMAND &#8212; One Plan</span>
+          <span>&#10003; CLOSE &#8212; Decision Discipline</span>
+          <span>&#10003; CONFIRM &#8212; Vendor Verification</span>
+          <span>&#10003; CONTROL &#8212; Tower Cadence</span>
+        </div>
+        <a href="/control-assessment.html" class="diag-modal-btn" onclick="closeModal()">Start the diagnostic &#8594;</a>
+        <p class="diag-modal-note">Opens the on-site diagnostic.</p>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- 4 · WHO -->
-<section class="section-cream">
-  <div class="container">
-    <div class="section-head">
-      <span class="label">Who this is for</span>
-      <h2>If it's exciting — but not yet a <em>business.</em></h2>
-    </div>
-    <div class="who-grid">
-      <div class="who-card"><span class="num">01</span><h3>First-time founders</h3><p>A strong idea and real momentum, but no structure an investor recognises yet.</p></div>
-      <div class="who-card"><span class="num">02</span><h3>Owner-operators going formal</h3><p>A business that runs on you, that now needs to be fundable, sellable or scalable.</p></div>
-      <div class="who-card"><span class="num">03</span><h3>Corporate builders &amp; spinouts</h3><p>A new venture inside or out of an existing company, that has to stand on its own commercials.</p></div>
-    </div>
-  </div>
-</section>
+<script>
+  function openModal() {
+    document.getElementById('diagModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('diagModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('diagModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>
 
-<!-- 5 · PROOF -->
-<section class="section-navy">
-  <div class="container">
-    <div class="section-head"><span class="label">Proof</span><h2>Proof from the field.</h2></div>
-    <div class="case-study">
-      <div class="case-tag">Aviation · East Africa · Sustainable aviation fuel</div>
-      <h3>Bleriot — a sustainable aviation fuel venture, built investable from day one.</h3>
-      <div class="case-block"><strong>Situation</strong><p>A capital-intensive sustainable aviation fuel platform targeting East Africa. A real market opening — but one that had to be structured to attract serious capital, not just polite interest.</p></div>
-      <div class="case-block"><strong>Intervention</strong><p>Built the venture's commercial architecture from the ground up — market, money and margin — so the model held up under investor and partner scrutiny, not just in the pitch.</p></div>
-      <div class="case-block"><strong>Outcome</strong><p>Structured from initial seed and vegetable-oil trading into a modular SAF platform concept — positioned for micro-refineries across East Africa ahead of biofuel legislation.</p></div>
-      <div class="ba-grid">
-        <div class="ba-col"><span class="ba-h">Before</span><ul><li>An idea with momentum</li><li>"Interest," no commitment</li><li>The model lived in the founder's head</li></ul></div>
-        <div class="ba-col after"><span class="ba-h">After</span><ul><li>A board-governed platform</li><li>A defensible commercial case</li><li>Structure that outlives the founder</li></ul></div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- 5b · KILLER LINE -->
-<section class="killer">
-  <div class="container">
-    <p class="killer-lines">An idea is worth nothing.<br>A model is worth backing.</p>
-    <p class="killer-tag">START exists to turn one into the other — before you spend a year finding out.</p>
-  </div>
-</section>
-
-<!-- 6 · ASSESSMENT CTA -->
-<section class="final-cta">
-  <h2>If an investor asked for your model tomorrow, would you <em>have one?</em></h2>
-  <p class="cta-payoff">The best time to learn it's investable is before you've spent the runway.</p>
-  <a href="/control-assessment.html" class="btn btn-primary">Start with the CONTROL diagnostic →</a>
-</section>
-
-<footer>
-  <div class="gold">Better contracts. Better business. Better society.</div>
-  <div class="fmeta">
-    <a href="mailto:hello@contracks.global">hello@contracks.global</a>
-    <span class="sep">·</span>
-    <a href="/privacy.html">Privacy Policy</a>
-  </div>
-  <div class="fcopy">© Contracks Global 2026</div>
-</footer>
 
 </body>
 </html>
