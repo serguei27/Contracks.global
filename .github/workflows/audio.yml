@@ -1,1 +1,42 @@
+name: Generate article audio
+
+on:
+  workflow_dispatch:
+    inputs:
+      html:
+        description: 'Article HTML file (e.g. l2-article7.html)'
+        required: true
+      slug:
+        description: 'Audio slug (e.g. l2-article7)'
+        required: true
+      voice:
+        description: 'ElevenLabs voice ID (leave blank to use the secret)'
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  audio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install
+      - name: Generate audio + timestamps
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+        run: |
+          VOICE="${{ github.event.inputs.voice }}"
+          node generate-audio.js --html "${{ github.event.inputs.html }}" --slug "${{ github.event.inputs.slug }}" ${VOICE:+--voice "$VOICE"}
+      - name: Commit audio files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add audio/
+          git commit -m "Audio: ${{ github.event.inputs.slug }}" || echo "No changes"
+          git push
 
