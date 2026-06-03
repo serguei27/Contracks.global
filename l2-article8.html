@@ -24,6 +24,8 @@
   .article-body{max-width:var(--max);margin:0 auto;padding:64px 24px 80px;}
   p{margin-bottom:24px;}
   .lead{font-size:22px;font-weight:400;line-height:1.7;color:var(--navy);margin-bottom:32px;}
+  .intro-title{font-family:"Playfair Display",serif;font-size:25px;font-weight:800;color:var(--navy);line-height:1.25;letter-spacing:-0.01em;margin-bottom:6px;}
+  .intro-by{font-family:"DM Sans",sans-serif;font-size:13px;font-weight:600;color:var(--gold);letter-spacing:0.04em;margin-bottom:38px;}
   h2{font-family:"Playfair Display",serif;font-size:26px;font-weight:700;color:var(--navy);margin:56px 0 20px;line-height:1.25;letter-spacing:-0.01em;}
   blockquote{border-left:4px solid var(--gold);margin:40px 0;padding:20px 28px;background:rgba(197,160,80,0.06);border-radius:0 4px 4px 0;}
   blockquote p{font-family:"Playfair Display",serif;font-size:21px;font-weight:700;font-style:italic;color:var(--navy);line-height:1.5;margin:0;}
@@ -120,6 +122,8 @@
 
 <main class="article-body">
 
+  <p class="intro-title">There Are Four Stages in a Project&rsquo;s Commercial Life.</p>
+  <p class="intro-by">Written and narrated by Serguei Poppeleer.</p>
   <p class="lead">&euro;1.2M.</p>
   <p>That was the acceleration bill on a major cross-border infrastructure programme after three diagnostic signals went unaddressed for six weeks. Beyond the bill, senior leadership spent nine weeks firefighting rather than delivering the next programme.</p>
   <p>The controls that would have prevented it were available in week two. At a fraction of that cost. The gap &mdash; between when the problem was visible and when it was addressed &mdash; is where the money went.</p>
@@ -395,3 +399,4 @@ window.addEventListener('DOMContentLoaded', async ()=>{
 window.addEventListener('beforeunload', ()=>{ if(MODE==='browser') speechSynthesis.cancel(); });
 </script>
 </body></html>
+
