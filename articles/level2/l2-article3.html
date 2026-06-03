@@ -377,8 +377,8 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     MODE='el'; E=elEngine; applySrc(); return;
   }catch(e){}
   try{
-    const h=await fetch(`${AUDIO_BASE}/${ARTICLE_SLUG}.mp3`,{method:'HEAD'});
-    if(h.ok){ MODE='plain'; E=plainEngine; applySrc(); return; }
+    const h=await fetch(`${AUDIO_BASE}/${ARTICLE_SLUG}.mp3`,{headers:{Range:'bytes=0-1'},cache:'no-cache'});
+    if(h.ok || h.status===206){ MODE='plain'; E=plainEngine; applySrc(); return; }
   }catch(e){}
   MODE='browser'; E=brEngine; pickVoice(); speechSynthesis.onvoiceschanged=pickVoice; speechSynthesis.getVoices(); applySrc();
 });
