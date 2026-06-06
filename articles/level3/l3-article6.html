@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The RAID Log Has 34 Open Items. Eleven Have Owners. — Contracks Global</title>
+<meta name="description" content="Airport and airline infrastructure programmes track hundreds of open decisions. Most organisations have a tool to log them. Very few have a system to close them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0A1628;--gold:#C5A050;--dark:#1A1A1A;--grey:#6B7280;--white:#FFFFFF;--max:740px;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--white);color:var(--dark);font-family:"DM Sans",-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;line-height:1.8;font-size:19px;overflow-x:hidden;padding-bottom:130px;}
+  nav{background:var(--navy);padding:16px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;}
+  .nav-brand{font-family:"DM Sans",sans-serif;font-size:13px;font-weight:700;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;}
+  .nav-right{display:flex;align-items:center;gap:20px;}
+  .nav-back{font-family:"DM Sans",sans-serif;font-size:11px;color:rgba(255,255,255,0.45);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;transition:color .2s;}
+  .nav-back:hover{color:var(--gold);}
+  .nav-cta{font-family:"DM Sans",sans-serif;font-size:11px;font-weight:500;color:var(--navy);background:var(--gold);padding:8px 16px;border-radius:3px;text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;}
+  .article-header{background:var(--navy);padding:80px 40px 60px;text-align:center;}
+  .article-meta{font-family:"DM Sans",sans-serif;font-size:11px;font-weight:500;color:var(--gold);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:24px;}
+  .article-title{font-family:"Playfair Display",Georgia,serif;font-size:clamp(26px,5vw,50px);font-weight:800;color:var(--white);line-height:1.15;max-width:820px;margin:0 auto 20px;letter-spacing:-0.02em;}
+  .article-subtitle{font-family:"DM Sans",sans-serif;font-size:18px;color:rgba(255,255,255,0.65);font-style:italic;max-width:600px;margin:0 auto 32px;line-height:1.6;font-weight:400;}
+  .article-byline{font-family:"DM Sans",sans-serif;font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.08em;}
+  .article-hero{display:block;width:100%;height:auto;}
+  .article-body{max-width:var(--max);margin:0 auto;padding:64px 24px 80px;}
+  p{margin-bottom:24px;}
+  .lead{font-size:22px;font-weight:400;line-height:1.7;color:var(--navy);margin-bottom:32px;}
+  .intro-title{font-family:"Playfair Display",serif;font-size:25px;font-weight:800;color:var(--navy);line-height:1.25;letter-spacing:-0.01em;margin-bottom:6px;}
+  .intro-by{font-family:"DM Sans",sans-serif;font-size:13px;font-weight:600;color:var(--gold);letter-spacing:0.04em;margin-bottom:38px;}
+  h2{font-family:"Playfair Display",serif;font-size:26px;font-weight:700;color:var(--navy);margin:56px 0 20px;line-height:1.25;letter-spacing:-0.01em;}
+  blockquote{border-left:4px solid var(--gold);margin:40px 0;padding:20px 28px;background:rgba(197,160,80,0.06);border-radius:0 4px 4px 0;}
+  blockquote p{font-family:"Playfair Display",serif;font-size:21px;font-weight:700;font-style:italic;color:var(--navy);line-height:1.5;margin:0;}
+  .key-line{font-family:"Playfair Display",serif;font-size:20px;font-weight:700;color:var(--navy);line-height:1.5;border-left:4px solid var(--gold);padding:16px 28px;margin:40px 0;background:rgba(197,160,80,0.08);border-radius:0 4px 4px 0;}
+  .brutal{font-size:20px;font-weight:700;font-style:italic;color:var(--navy);margin:24px 0;}
+  hr{border:none;border-top:1px solid #E4EAF3;margin:48px 0;}
+  .step{border-left:3px solid var(--navy);padding:0 0 0 24px;margin:28px 0;}
+  .step-label{font-family:"DM Sans",sans-serif;font-size:12px;font-weight:500;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;}
+  .step-title{font-family:"Playfair Display",serif;font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+  .proof-box{border-left:4px solid var(--navy);padding:20px 28px;margin:32px 0;background:#F5F4F0;border-radius:0 4px 4px 0;}
+  .proof-box strong{display:block;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:12px;}
+  .proof-box p{font-size:17px;margin-bottom:8px;}
+  .proof-box p:last-child{margin-bottom:0;}
+  .ai-box{border-left:4px solid var(--navy);padding:20px 28px;margin:40px 0;background:#F0F2F6;border-radius:0 4px 4px 0;}
+  .ai-box strong{display:block;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);margin-bottom:12px;}
+  .ai-box p{font-size:17px;margin-bottom:8px;}
+  .ai-box p:last-child{margin-bottom:0;font-style:italic;font-family:"Playfair Display",serif;font-size:18px;color:var(--navy);border-top:1px solid #E4EAF3;padding-top:12px;margin-top:4px;}
+  .objection{border-bottom:1px solid #F0F0F0;padding:24px 0;}
+  .objection:last-child{border-bottom:none;}
+  .objection-q{font-style:italic;color:var(--navy);margin-bottom:10px;font-size:18px;font-weight:400;}
+  .cta-block{background:var(--navy);border-radius:8px;padding:48px 44px;margin:60px 0 0;text-align:center;}
+  .cta-block h3{font-family:"Playfair Display",serif;font-size:24px;font-weight:700;color:var(--white);margin-bottom:12px;line-height:1.3;}
+  .cta-block p{color:rgba(255,255,255,0.6);font-size:16px;margin-bottom:28px;}
+  .cta-primary{display:inline-block;background:var(--gold);color:var(--navy);font-family:"DM Sans",sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;padding:14px 28px;border-radius:3px;margin:6px;}
+  .cta-secondary{display:inline-block;border:1.5px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);font-family:"DM Sans",sans-serif;font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;padding:14px 28px;border-radius:3px;margin:6px;}
+  footer{background:var(--navy);padding:40px;text-align:center;}
+  .footer-brand{display:inline-block;font-family:"DM Sans",sans-serif;font-size:13px;font-weight:700;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;margin-bottom:14px;}
+  .footer-tagline{font-family:"Playfair Display",serif;font-size:16px;font-style:italic;color:rgba(255,255,255,0.7);margin-bottom:14px;}
+  .footer-link{font-family:"DM Sans",sans-serif;font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.08em;text-decoration:none;}
+  .listen-bar{display:inline-flex;align-items:center;gap:8px;background:rgba(197,160,80,0.12);border:1px solid rgba(197,160,80,0.45);color:var(--gold);font-family:"DM Sans",sans-serif;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:11px 22px;border-radius:30px;cursor:pointer;transition:all .18s;}
+  .listen-bar:hover{background:rgba(197,160,80,0.22);}
+  .s{transition:background .3s ease,color .3s ease;border-radius:3px;}
+  .listening .read-block{opacity:.38;transition:opacity .45s ease;}
+  .listening .read-block.block-active{opacity:1;}
+  .s.read{color:#9CA3AF;}
+  .s.active{background:linear-gradient(180deg,transparent 62%,rgba(197,160,80,.40) 62%);}
+  .article-subtitle .s.active{background:linear-gradient(180deg,transparent 62%,rgba(197,160,80,.55) 62%);color:#fff;}
+  .clickable .s{cursor:pointer;}
+  .cks-player{position:fixed;bottom:0;left:0;right:0;background:rgba(8,18,34,.97);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-top:1px solid rgba(197,160,80,.18);z-index:300;box-shadow:0 -10px 44px rgba(0,0,0,.5);transform:translateY(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);}
+  .cks-player.show{transform:translateY(0);}
+  .cks-scrub{height:3px;background:rgba(255,255,255,.08);cursor:pointer;}
+  .cks-fill{height:100%;background:linear-gradient(90deg,var(--gold),#D4B470);width:0%;}
+  .cks-scrub:hover{height:5px;transition:height .15s;}
+  .cks-now{padding:9px 22px 0;display:flex;align-items:center;gap:10px;overflow:hidden;}
+  .cks-nl{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.65;flex-shrink:0;}
+  .cks-nt{font-size:12px;color:rgba(255,255,255,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;font-family:"Playfair Display",serif;font-style:italic;}
+  .cks-main{padding:13px 22px 16px;display:flex;align-items:center;gap:15px;}
+  .cks-play{width:48px;height:48px;background:var(--gold);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;box-shadow:0 4px 16px rgba(197,160,80,.38);}
+  .cks-play:hover{background:#D4B470;transform:scale(1.05);}
+  .cks-wave{display:flex;align-items:center;gap:2px;height:24px;flex-shrink:0;}
+  .cks-wb{width:2px;background:var(--gold);border-radius:2px;opacity:.22;}
+  @keyframes ckswv{0%,100%{transform:scaleY(.3);}50%{transform:scaleY(1);}}
+  .cks-player.playing .cks-wb{opacity:.8;animation:ckswv .75s ease-in-out infinite;}
+  .cks-wb:nth-child(1){height:8px;animation-delay:0s;}.cks-wb:nth-child(2){height:17px;animation-delay:.12s;}
+  .cks-wb:nth-child(3){height:23px;animation-delay:.24s;}.cks-wb:nth-child(4){height:14px;animation-delay:.18s;}
+  .cks-wb:nth-child(5){height:9px;animation-delay:.06s;}
+  .cks-info{flex:1;min-width:0;}
+  .cks-t{font-size:12.5px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .cks-st{font-size:10.5px;color:rgba(255,255,255,.42);margin-top:3px;}
+  .cks-right{display:flex;align-items:center;gap:9px;flex-shrink:0;}
+  .cks-speed{display:flex;gap:1px;background:rgba(255,255,255,.05);border-radius:6px;padding:2px;}
+  .cks-spd{background:none;border:none;color:rgba(255,255,255,.42);font-family:"DM Sans",sans-serif;font-size:9.5px;font-weight:600;padding:5px 8px;border-radius:4px;cursor:pointer;transition:all .12s;}
+  .cks-spd.on,.cks-spd:hover{background:rgba(197,160,80,.18);color:var(--gold);}
+  .cks-src{display:flex;align-items:center;gap:6px;background:rgba(197,160,80,.07);border:1px solid rgba(197,160,80,.2);border-radius:5px;padding:5px 9px;}
+  .cks-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
+  .cks-srcl{font-size:8.5px;font-weight:700;color:var(--gold);letter-spacing:.8px;}
+  .cks-stop{width:34px;height:34px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+  .cks-stop:hover{background:rgba(255,255,255,.1);}
+  @media(max-width:640px){nav{padding:14px 20px;}.nav-cta{font-size:10px;padding:7px 10px;}.nav-right{gap:12px;}.article-header{padding:48px 20px 40px;}.article-body{padding:40px 20px 60px;}.cta-block{padding:32px 24px;}h2{font-size:22px;margin:40px 0 16px;}.cks-info{display:none;}.cks-main{gap:11px;padding:12px 16px 15px;}.cks-now{padding:9px 16px 0;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">CONTRACKS.GLOBAL</a>
+  <div class="nav-right">
+    <a href="/" class="nav-back">&larr; Back to the site</a>
+    <a href="/control" class="nav-cta">Take the diagnostic &rarr;</a>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="article-meta">RESHAPE&trade; &nbsp;&middot;&nbsp; Article 6 &nbsp;&middot;&nbsp; Mistake &nbsp;&middot;&nbsp; May 2026</div>
+  <h1 class="article-title">The RAID Log Has 34 Open Items.<br>Eleven Have Owners.</h1>
+  <p class="article-subtitle">Every open decision on a live project is an unpriced financial exposure. Most organisations track them carefully. Almost none have designed a system to close them.</p>
+  <button class="listen-bar" onclick="cksToggle()" style="margin-bottom:24px;">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6,4 20,12 6,20" fill="currentColor" stroke="none"/></svg>
+    <span id="cksListenLabel">Listen to this article</span>
+    <span id="cksListenTime" style="opacity:.7"></span>
+  </button>
+  <p class="article-byline" style="margin-top:22px;">Written and narrated by Serguei Poppeleer &nbsp;&middot;&nbsp; Founder, Contracks Global &nbsp;&middot;&nbsp; contracks.global</p>
+</header>
+
+<img src="/articles/level3/l3-article6.jpeg" alt="Project decision log — tracked but not closed" class="article-hero">
+
+<main class="article-body">
+
+  <p class="intro-title">The RAID Log Has 34 Open Items. Eleven Have Owners.</p>
+  <p class="intro-by">Written and narrated by Serguei Poppeleer.</p>
+
+  <!-- ATTRACT -->
+  <p class="lead">34 open items. 11 have owners. 6 have deadlines. 3 have both. The programme is 14 weeks in.</p>
+
+  <p class="brutal">Every one of those open items is a financial exposure the project has not yet priced.</p>
+
+  <p>Most airport and airline infrastructure programmes have a RAID log. Most teams update it conscientiously. The items accumulate. The deadlines pass. The programme absorbs the cost of what was never resolved.</p>
+
+  <p class="brutal">Here&rsquo;s what nobody says in the project review when the log is presented:</p>
+
+  <div class="key-line">We have digitized the issue tracking. We have not designed consequences into the decision architecture.</div>
+
+  <p>The pattern on every programme where handover was delayed or the final account was disputed:</p>
+
+  <div class="step">
+    <div class="step-label">&rarr;</div>
+    <div class="step-title">RAID logs are maintained and updated in real time.</div>
+    <p>34 open items. None have a consequence attached to their deadline. The log tracks the problem accurately. It has no mechanism to close it.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">&rarr;</div>
+    <div class="step-title">Risk dashboards show amber items, updated weekly.</div>
+    <p>The same items have been amber for six weeks. Nobody has forced a resolution because nobody designed a consequence for non-resolution. The amber stays amber. The programme pays.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">&rarr;</div>
+    <div class="step-title">Escalation processes are documented in the governance framework.</div>
+    <p>Without a stated consequence &mdash; what changes in the programme if this item is not resolved by this date &mdash; escalation is a notification, not an enforcement. The item continues to drift.</p>
+  </div>
+
+  <p class="brutal">The RAID log does not fail because nobody updates it. It fails because updating it was never connected to closing the items it contains.</p>
+
+  <p>The three elements every open item must have before it is logged:</p>
+
+  <div class="step">
+    <div class="step-label">&rarr;</div>
+    <div class="step-title">One named owner &mdash; not a team, not a function.</div>
+    <p>A team that owns a decision owns nothing. The consequence has nowhere to land. One person. Named. Accountable. If they leave the project, the ownership transfers explicitly, not by default.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">&rarr;</div>
+    <div class="step-title">One stated consequence &mdash; what changes in the programme if this is not resolved by this date.</div>
+    <p>Without a consequence, a deadline is a suggestion. With a consequence &mdash; stated, agreed, automatic &mdash; the deadline is real. The consequence does not need to be punitive. It needs to exist.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">&rarr;</div>
+    <div class="step-title">Items close or escalate &mdash; revised target dates are not closure.</div>
+    <p>A revised target date with no consequence is a postponed suggestion. An item that has been open for three weeks with two revised dates is not being managed. It is being tracked.</p>
+  </div>
+
+  <p>What airport infrastructure programme management needs is not better issue tracking software. It is a decision architecture that connects every open item to an owner, a deadline and a consequence before it is added to the log.</p>
+
+  <p>This isn&rsquo;t about the project teams maintaining the log. They raise items conscientiously and update diligently. It is about a governance culture that treats tracking as equivalent to managing &mdash; when the only thing that closes a decision is a consequence that makes resolution cost less than non-resolution.</p>
+
+  <blockquote><p>Every day an item stays open on a live project, the cost of that item sits inside the project unpriced. The decision log is the mechanism that closes it before the cost is fixed.</p></blockquote>
+
+  <hr>
+
+  <!-- DISRUPT -->
+  <h2>The assumption that turns tracking into drift</h2>
+
+  <p>Most project teams operate on a version of the same belief: <em>&ldquo;If it&rsquo;s on the RAID log, it&rsquo;s being managed.&rdquo;</em></p>
+
+  <p>An item on the RAID log is being tracked. Tracking and managing are different things. An item can be tracked for eight weeks while remaining completely unresolved. The log records the existence of the problem. The decision architecture &mdash; owner, deadline, consequence &mdash; resolves it.</p>
+
+  <p>Most RAID logs have the first. Almost none have the third.</p>
+
+  <div class="key-line">A RAID log without a consequence architecture is an accurate record of the decisions a programme failed to make. It is not governance. It is documentation of the absence of governance.</div>
+
+  <hr>
+
+  <!-- INFORM -->
+  <h2>What decision closure actually requires</h2>
+
+  <p>Three things, without exception. One owner &mdash; a single named person, not a team or a function. A decision-by date &mdash; a specific calendar date, not &ldquo;ASAP&rdquo; or &ldquo;next meeting.&rdquo; A consequence &mdash; a specific change to the programme, cost or scope that occurs automatically if the item is not resolved by the deadline.</p>
+
+  <p>The consequence is the element that is almost always missing. Without a consequence, a deadline is a suggestion. With a consequence &mdash; &ldquo;if the floor finish specification is not confirmed by Wednesday, the contractor will order the next available equivalent and that specification will be accepted as contractual&rdquo; &mdash; the deadline becomes enforceable. Both parties now have an interest in resolving the item before the consequence fires.</p>
+
+  <p>The second failure is automatic escalation. Most RAID logs have no escalation mechanism. When a deadline passes without resolution, the item stays on the log with a revised target date. This is not accountability. A functioning decision closure system escalates automatically when a deadline passes &mdash; not to produce a report, but to trigger the consequence that was stated when the item was added.</p>
+
+  <div class="proof-box">
+    <strong>A major European airline &mdash; Central Africa outstation (Burundi)</strong>
+    <p>A materials substitution decision on the floor finish sat open for eleven days. During that time, the contractor ordered provisional quantities of an alternative finish. When the approved specification finally came through, the provisional order had to be cancelled and a new order placed. The delay cost nine days of programme and created a variation claim that took three weeks to close.</p>
+    <p>After introducing a 48-hour decision rule &mdash; every open item resolves within 48 hours or the stated consequence applies automatically &mdash; this category of delay did not recur across the remaining outstation projects. Nine days of programme were recovered within the original window. Decision closure time dropped from an average of eleven days to under two.</p>
+  </div>
+
+  <hr>
+
+  <!-- RECOMMEND -->
+  <h2>Five questions that tell you where your decision architecture actually stands</h2>
+
+  <div class="step">
+    <div class="step-label">1</div>
+    <div class="step-title">How many items on the current RAID log have been open for more than 14 days?</div>
+    <p>For each one &mdash; who is the single named owner, what is the current deadline, and what specific consequence is attached to that deadline? If any of those three answers requires thought, the decision architecture is incomplete.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">2</div>
+    <div class="step-title">When the last major programme delay occurred: how many of the contributing decisions had been on the RAID log for more than seven days before they were resolved?</div>
+    <p>That number is the cost of tracking without closing.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">3</div>
+    <div class="step-title">What is your documented process for escalating an unresolved item when its deadline passes?</div>
+    <p>Who does it go to, how quickly, and what authority does that person have to force a decision?</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">4</div>
+    <div class="step-title">Can you identify the three RAID items on your current project that, if left unresolved for another seven days, will have the most material impact on programme or cost?</div>
+    <p>Are those three items receiving the most active management &mdash; or are they listed alongside 31 others with equal urgency?</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">5</div>
+    <div class="step-title">When your project team describes an open decision as &ldquo;waiting for a response&rdquo; &mdash; what consequence is attached to the absence of that response, and by what date?</div>
+    <p>If there is no consequence, the item is waiting indefinitely. The programme is absorbing the cost of that wait.</p>
+  </div>
+
+  <hr>
+
+  <!-- OVERCOME -->
+  <h2>The objections this always raises</h2>
+
+  <div class="objection">
+    <p class="objection-q">&ldquo;Adding consequences to every RAID item is too bureaucratic for a fast-moving project.&rdquo;</p>
+    <p>The bureaucracy is two sentences per item: the deadline date and the stated consequence. The alternative is eleven days of open items, a provisional materials order, nine days of programme recovery and a three-week variation dispute. The comparison is not close. Consequences do not slow projects down. Unresolved decisions do.</p>
+  </div>
+
+  <div class="objection">
+    <p class="objection-q">&ldquo;We can&rsquo;t impose consequences unilaterally &mdash; some decisions require client approval.&rdquo;</p>
+    <p>The decision closure system works within the approval hierarchy. The consequence for a client approval item is: if not resolved by Wednesday, the item escalates to the relevant director with a specific recommendation and a 24-hour window to decide. The consequence is not punitive. It is a designed forcing function that prevents indefinite drift while respecting the approval chain.</p>
+  </div>
+
+  <div class="objection">
+    <p class="objection-q">&ldquo;Our RAID log is well managed &mdash; all items are reviewed weekly.&rdquo;</p>
+    <p>Weekly review is tracking. Closure requires a consequence. If the same items appear on every weekly review for six weeks, the review is accurately recording the failure to close &mdash; not producing closure. The measure of a decision log is not how often it is reviewed. It is how quickly items leave it.</p>
+  </div>
+
+  <hr>
+
+  <!-- AI BOX -->
+  <div class="ai-box">
+    <strong>AI Reality Check</strong>
+    <p>AI tools can now monitor decision logs automatically &mdash; flagging items approaching deadlines, identifying patterns in decision drift and surfacing correlations between unresolved items and programme delay. Some platforms prioritise items by their predicted impact on critical path and send automated alerts when deadlines pass without resolution.</p>
+    <p>This capability is valuable when the closure mechanism is functioning. AI applied to a RAID log with no consequences will identify and prioritise the items that are drifting faster. It will surface which decisions are most likely to affect the programme. It will not create the consequence that makes resolving them cost less than leaving them open.</p>
+    <p>AI can show you which items are most dangerous. It cannot replace the consequence that makes closing them happen.</p>
+  </div>
+
+  <hr>
+
+  <!-- REINFORCE -->
+  <h2>What a decision log that closes looks like in operation</h2>
+
+  <p>Every item added to the log has three fields beyond the description: one owner, one date, one consequence. Items without all three are returned before they are recorded. The weekly cadence call reviews every item approaching its deadline. Items that pass their deadline trigger the stated consequence automatically &mdash; unless a specific decision has been made to extend, with a new date and a new consequence.</p>
+
+  <p>The result is a decision log that shrinks. Not one that accumulates.</p>
+
+  <p>When an item closes, it closes with a written outcome: the decision made, the date it was made, the person who made it. That record is the variation management system, the handover evidence and the final account defence &mdash; all produced in real time, not assembled retrospectively.</p>
+
+  <p class="brutal">34 open items. 11 owners. The programme is 14 weeks in.</p>
+
+  <p>Those are not 34 governance problems.</p>
+
+  <p>They are 34 financial exposures the project has not yet priced &mdash; and 23 of them have nobody accountable for closing them.</p>
+
+  <div class="cta-block">
+    <h3>Where does your delivery system actually stand?</h3>
+    <p>The CONTROL diagnostic measures your governance architecture across the five dimensions of The 5Cs Framework&trade;. Twenty questions. Four minutes. Instant result.</p>
+    <a href="/control" class="cta-primary">Start with the CONTROL diagnostic &rarr;</a>
+    <a href="/specialreport3" class="cta-secondary">Download the full report &rarr;</a>
+  </div>
+
+</main>
+
+<footer>
+  <a href="/" class="footer-brand">CONTRACKS.GLOBAL</a>
+  <p class="footer-tagline">The System Travels. The Chaos Does Not.</p>
+  <a href="/" class="footer-link">contracks.global</a>
+</footer>
+
+<div class="cks-player" id="cksPlayer">
+  <div class="cks-scrub" id="cksScrub" onclick="cksSeek(event)"><div class="cks-fill" id="cksFill"></div></div>
+  <div class="cks-now"><span class="cks-nl">Now reading</span><span class="cks-nt" id="cksNow">Press play to begin</span></div>
+  <div class="cks-main">
+    <button class="cks-play" id="cksPlay" onclick="cksToggle()"><svg id="cksIcon" width="17" height="17" viewBox="0 0 24 24" fill="#0A1628"><polygon points="6,4 20,12 6,20"/></svg></button>
+    <div class="cks-wave"><div class="cks-wb"></div><div class="cks-wb"></div><div class="cks-wb"></div><div class="cks-wb"></div><div class="cks-wb"></div></div>
+    <div class="cks-info"><div class="cks-t">The RAID Log Has 34 Open Items</div><div class="cks-st" id="cksStatus">Loading&hellip;</div></div>
+    <div class="cks-right">
+      <div class="cks-speed">
+        <button class="cks-spd" onclick="cksRate(0.75)">0.75&times;</button>
+        <button class="cks-spd on" onclick="cksRate(1)">1&times;</button>
+        <button class="cks-spd" onclick="cksRate(1.25)">1.25&times;</button>
+        <button class="cks-spd" onclick="cksRate(1.5)">1.5&times;</button>
+      </div>
+      <div class="cks-src" id="cksSrc"><span class="cks-dot"></span><span class="cks-srcl" id="cksSrcL">VOICE</span></div>
+      <button class="cks-stop" onclick="cksStop()"><svg width="10" height="10" viewBox="0 0 10 10"><rect width="10" height="10" rx="1.5" fill="rgba(255,255,255,.45)"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<script>
+const ARTICLE_SLUG='l3-article6';const AUDIO_BASE='/audio';
+const SELECTOR='.article-subtitle, main h2, main p, main .key-line, main .step-title, main blockquote p, main .proof-box strong';
+const SENT_RE=/[^.!?]+[.!?]+(?:["'"')\]]+)?\s*|[^.!?]+$/g;
+let spans={},block=[],N=0,times=null,cur=-1,state='idle',rate=1,MODE='browser';
+function endOffsets(t){const re=new RegExp(SENT_RE.source,'g');let m,acc=0,out=[];while((m=re.exec(t))!==null){if(m[0]===''){re.lastIndex++;continue;}acc+=m[0].length;out.push(acc);}return out.length?out:[t.length];}
+function sidx(o,b){for(let i=0;i<b.length;i++)if(o<b[i])return i;return b.length-1;}
+function mkSpan(t,si){const s=document.createElement('span');s.className='s';s.dataset.si=si;s.textContent=t;return s;}
+function wrapEl(el,ctx){[...el.childNodes].forEach(c=>{if(c.nodeType===3){const txt=c.nodeValue,frag=document.createDocumentFragment();let buf='',c0=sidx(ctx.off,ctx.bounds);for(let i=0;i<txt.length;i++){const gi=sidx(ctx.off,ctx.bounds);if(gi!==c0&&buf!==''){frag.appendChild(mkSpan(buf,ctx.base+c0));buf='';c0=gi;}buf+=txt[i];ctx.off++;}if(buf!=='')frag.appendChild(mkSpan(buf,ctx.base+c0));el.replaceChild(frag,c);}else if(c.nodeType===1)wrapEl(c,ctx);});}
+function build(){document.querySelectorAll(SELECTOR).forEach(node=>{if(node.closest('.cta-block'))return;node.classList.add('read-block');const raw=node.textContent,bounds=endOffsets(raw);wrapEl(node,{off:0,bounds,base:N});for(let i=0;i<bounds.length;i++)block[N+i]=node;N+=bounds.length;});document.querySelectorAll('.s').forEach(s=>{const i=+s.dataset.si;(spans[i]=spans[i]||[]).push(s);s.onclick=()=>cksSeekSentence(i);});const w=document.querySelector('main').textContent.trim().split(/\s+/).length;document.getElementById('cksListenTime').textContent='· '+Math.max(1,Math.round(w/150))+' min';}
+function sentText(i){return(spans[i]||[]).map(s=>s.textContent).join('');}
+function highlight(i){if(i===cur||i<0||i>=N)return;if(cur>=0&&spans[cur])spans[cur].forEach(s=>{s.classList.remove('active');s.classList.add('read');});for(let k=Math.max(0,cur);k<i;k++)spans[k]?.forEach(s=>s.classList.add('read'));cur=i;spans[i]?.forEach(s=>{s.classList.remove('read');s.classList.add('active');});document.querySelectorAll('.read-block.block-active').forEach(b=>b.classList.remove('block-active'));const blk=block[i];blk?.classList.add('block-active');document.getElementById('cksNow').textContent=sentText(i).trim().slice(0,80);if(blk){const r=blk.getBoundingClientRect(),vh=innerHeight;if(r.top<vh*0.2||r.bottom>vh-150)scrollTo({top:scrollY+r.top-vh*0.32,behavior:'smooth'});}}
+function clearAll(){document.querySelectorAll('.s.active,.s.read').forEach(s=>s.classList.remove('active','read'));document.querySelectorAll('.block-active').forEach(b=>b.classList.remove('block-active'));cur=-1;}
+let audio=null;
+function timeToSentence(t){let i=0;for(let k=0;k<times.length;k++){if(t>=times[k].start)i=k;else break;}return i;}
+function elInit(){audio=new Audio(`${AUDIO_BASE}/${ARTICLE_SLUG}.mp3`);audio.preload='metadata';audio.addEventListener('timeupdate',()=>{const t=audio.currentTime,dur=audio.duration||times.at(-1).end;if(times)highlight(Math.min(timeToSentence(t),N-1));setProgress(t/dur*100);setStatus(remain(dur-t));});audio.addEventListener('ended',finish);}
+const elEngine={play(){if(!audio)elInit();audio.playbackRate=rate;audio.play();},pause(){audio&&audio.pause();},stop(){if(audio){audio.pause();audio.currentTime=0;}},seekSentence(i){if(!audio)elInit();if(times)audio.currentTime=times[Math.min(i,times.length-1)].start;if(state==='playing')audio.play();},seekFraction(f){if(!audio)elInit();audio.currentTime=f*(audio.duration||(times?times.at(-1).end:0));if(state==='playing')audio.play();},setRate(r){if(audio)audio.playbackRate=r;}};
+let voice=null,smooth=null;
+function pickVoice(){const v=speechSynthesis.getVoices();voice=v.find(x=>x.name==='Daniel'&&x.lang==='en-GB')||v.find(x=>x.lang==='en-GB')||v.find(x=>x.lang.startsWith('en'));}
+function speakFrom(i){if(i>=N){finish();return;}highlight(i);const u=new SpeechSynthesisUtterance(sentText(i));u.rate=rate;if(voice)u.voice=voice;startSmooth(i);u.onend=()=>{if(state==='playing'){stopSmooth();speakFrom(i+1);}};u.onerror=e=>{if(e.error!=='interrupted'&&state==='playing'){stopSmooth();speakFrom(i+1);}};speechSynthesis.speak(u);}
+function len(i){return sentText(i).length;}
+function startSmooth(i){stopSmooth();let total=0,before=0;for(let k=0;k<N;k++){const l=len(k);if(k<i)before+=l;total+=l;}const dur=Math.max(800,len(i)/(14.5*rate)*1000),t0=performance.now();smooth=setInterval(()=>{const f=Math.min(1,(performance.now()-t0)/dur);setProgress((before+len(i)*f)/total*100);},120);}
+function stopSmooth(){if(smooth){clearInterval(smooth);smooth=null;}}
+const brEngine={play(){if(state==='paused')speechSynthesis.resume();else{speechSynthesis.cancel();speakFrom(cur<0?0:cur);}},pause(){speechSynthesis.pause();stopSmooth();},stop(){speechSynthesis.cancel();stopSmooth();},seekSentence(i){speechSynthesis.cancel();stopSmooth();cur=i-1;if(state==='playing')speakFrom(i);else highlight(i);},seekFraction(f){this.seekSentence(Math.floor(f*N));},setRate(){if(state==='playing'){const i=cur;speechSynthesis.cancel();stopSmooth();speakFrom(i);}}};
+const plainEngine={play(){if(!audio)elInit();audio.playbackRate=rate;audio.play();},pause(){audio&&audio.pause();},stop(){if(audio){audio.pause();audio.currentTime=0;}},seekSentence(){},seekFraction(f){if(!audio)elInit();audio.currentTime=f*(audio.duration||0);if(state==='playing')audio.play();},setRate(r){if(audio)audio.playbackRate=r;}};
+let E=brEngine;
+function cksToggle(){state==='playing'?cksPause():play();}
+function play(){if(state==='done')clearAll();if(MODE!=='plain'){document.body.classList.add('listening');if(state!=='paused'&&cur<0)highlight(0);}state='playing';setUI(true);E.play();}
+function cksPause(){state='paused';setUI(false);E.pause();setStatus('Paused');}
+function cksStop(){state='idle';setUI(false);E.stop();stopSmooth();clearAll();document.body.classList.remove('listening');setProgress(0);setStatus(label());document.getElementById('cksNow').textContent='Press play to begin';}
+function finish(){state='done';setUI(false);stopSmooth();setProgress(100);setStatus('Finished');document.getElementById('cksNow').textContent='Article complete';document.body.classList.remove('listening');}
+function cksSeekSentence(i){if(MODE==='plain')return;if(state==='idle')play();E.seekSentence(i);highlight(i);}
+function cksSeek(e){const r=e.currentTarget.getBoundingClientRect();E.seekFraction((e.clientX-r.left)/r.width);}
+function cksRate(r){rate=r;document.querySelectorAll('.cks-spd').forEach(b=>b.classList.toggle('on',parseFloat(b.textContent)===r));E.setRate(r);}
+function setProgress(p){document.getElementById('cksFill').style.width=Math.min(100,Math.max(0,p))+'%';}
+function setStatus(s){document.getElementById('cksStatus').textContent=s;}
+function remain(sec){sec=Math.max(0,Math.round(sec));const m=Math.floor(sec/60),s=sec%60;return m>0?`${m}m ${s}s left`:`${s}s left`;}
+function setUI(on){document.getElementById('cksIcon').innerHTML=on?'<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>':'<polygon points="6,4 20,12 6,20"/>';document.getElementById('cksPlayer').classList.toggle('playing',on);document.getElementById('cksListenLabel').textContent=on?'Pause':'Listen to this article';}
+function label(){return MODE==='el'?'Contracks Global Insights':MODE==='plain'?'Audio article':'Browser voice (preview)';}
+function applySrc(){const l=document.getElementById('cksSrcL');l.textContent=MODE==='el'?'ELEVENLABS':MODE==='plain'?'AUDIO':'BROWSER';if(MODE==='el'&&times){const d=times.at(-1)?.end||0;document.getElementById('cksListenTime').textContent='· '+Math.max(1,Math.round(d/60))+' min';}if(MODE!=='plain')document.querySelector('main').classList.add('clickable');setStatus(label());}
+window.addEventListener('DOMContentLoaded',async()=>{build();document.getElementById('cksPlayer').classList.add('show');try{const r=await fetch(`${AUDIO_BASE}/${ARTICLE_SLUG}.sentences.json`,{cache:'no-cache'});if(!r.ok)throw 0;const d=await r.json();times=d.sentences;if(!Array.isArray(times)||!times.length)throw 0;if(times.length!==N)console.warn(`Sentence mismatch: audio ${times.length} vs page ${N}`);MODE='el';E=elEngine;applySrc();return;}catch(e){}try{const h=await fetch(`${AUDIO_BASE}/${ARTICLE_SLUG}.mp3`,{headers:{Range:'bytes=0-1'},cache:'no-cache'});if(h.ok||h.status===206){MODE='plain';E=plainEngine;applySrc();return;}}catch(e){}MODE='browser';E=brEngine;pickVoice();speechSynthesis.onvoiceschanged=pickVoice;speechSynthesis.getVoices();applySrc();});
+window.addEventListener('beforeunload',()=>{if(MODE==='browser')speechSynthesis.cancel();});
+</script>
+</body>
+</html>
