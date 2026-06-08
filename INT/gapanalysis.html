@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contracks — Asset Gap Matrix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --navy:#0A1628; --navy2:#112240; --navy3:#0E1C32;
+    --gold:#C5A050; --gold-l:#D4B470; --gold-pale:#F5EDD8;
+    --orange:#E07B39; --red:#C0392B; --grey:#8893A4;
+    --line:rgba(197,160,80,0.18);
+  }
+  body{font-family:'DM Sans',sans-serif;background:var(--navy);color:#fff;line-height:1.5;-webkit-font-smoothing:antialiased;padding:0 0 80px;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+
+  header{background:var(--navy);border-bottom:3px solid var(--gold);padding:48px 24px 36px;}
+  .header-inner{max-width:1180px;margin:0 auto;}
+  .eyebrow{font-size:0.72rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .eyebrow::before{content:'';width:30px;height:1px;background:var(--gold);}
+  h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1.08;letter-spacing:-0.02em;margin-bottom:14px;}
+  h1 em{font-style:normal;color:var(--gold);}
+  .lede{font-size:1.02rem;font-weight:300;color:rgba(255,255,255,0.72);max-width:760px;line-height:1.7;}
+
+  .legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:26px;padding-top:22px;border-top:1px solid var(--line);}
+  .lg{display:flex;align-items:center;gap:8px;font-size:0.8rem;color:rgba(255,255,255,0.7);}
+  .chip{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;flex-shrink:0;}
+  .c-have{background:rgba(197,160,80,0.18);color:var(--gold);}
+  .c-star{background:var(--gold);color:var(--navy);}
+  .c-part{background:rgba(224,123,57,0.18);color:var(--orange);}
+  .c-miss{background:rgba(192,57,43,0.18);color:#E8786B;}
+
+  section{padding:54px 0 8px;}
+  .sec-label{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;margin-bottom:6px;}
+  .sec-label .n{color:var(--gold);margin-right:10px;}
+  .sec-sub{font-size:0.92rem;color:rgba(255,255,255,0.55);margin-bottom:26px;font-weight:300;max-width:720px;}
+
+  .tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:8px;}
+  table{width:100%;border-collapse:collapse;min-width:760px;}
+  thead th{background:var(--navy3);font-size:0.66rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);position:sticky;top:0;}
+  thead th.col-name{color:var(--gold);}
+  thead th.col-build{color:var(--gold);background:rgba(197,160,80,0.08);}
+  .pgroup td{background:var(--navy2);font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--gold);letter-spacing:0.04em;padding:11px 16px;border-top:1px solid var(--line);text-transform:uppercase;}
+  tbody td{padding:12px 16px;font-size:0.85rem;border-bottom:1px solid rgba(255,255,255,0.05);vertical-align:top;color:rgba(255,255,255,0.82);}
+  td.asset{font-weight:600;color:#fff;width:200px;}
+  td.cell{width:120px;}
+  td.build{background:rgba(197,160,80,0.06);color:var(--gold-l);font-weight:500;border-left:1px solid var(--line);}
+  tbody tr:hover td{background:rgba(255,255,255,0.02);}
+  tbody tr:hover td.build{background:rgba(197,160,80,0.1);}
+
+  .mk{display:inline-flex;align-items:center;gap:7px;font-size:0.8rem;}
+  .dot{width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.66rem;font-weight:700;flex-shrink:0;}
+  .have{background:rgba(197,160,80,0.18);color:var(--gold);}
+  .star{background:var(--gold);color:var(--navy);}
+  .part{background:rgba(224,123,57,0.2);color:var(--orange);}
+  .miss{background:rgba(192,57,43,0.22);color:#E8786B;}
+  .mk small{color:rgba(255,255,255,0.5);font-size:0.74rem;}
+
+  .priority{margin-top:60px;background:var(--navy2);border:1px solid var(--gold);border-radius:10px;padding:34px 32px;}
+  .priority h3{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:8px;}
+  .priority p{font-size:0.9rem;color:rgba(255,255,255,0.6);margin-bottom:24px;font-weight:300;}
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+  .step{background:var(--navy3);border-radius:6px;padding:18px 16px;border-top:3px solid var(--gold);}
+  .step .num{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:var(--gold);line-height:1;}
+  .step .t{font-size:0.86rem;font-weight:600;margin:8px 0 5px;}
+  .step .d{font-size:0.74rem;color:rgba(255,255,255,0.5);line-height:1.45;}
+  .step.first{border-top-color:var(--red);}
+  .step.first .num{color:#E8786B;}
+
+  footer{max-width:1180px;margin:60px auto 0;padding:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:0.78rem;color:rgba(255,255,255,0.4);}
+  footer .gold{color:var(--gold);}
+
+  @media(max-width:760px){
+    .steps{grid-template-columns:1fr 1fr;}
+    h1{font-size:1.9rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="eyebrow">Dent KPI · Asset Gap Matrix</div>
+    <h1>What they have. What I have. <em>What I build next.</em></h1>
+    <p class="lede">Niki Avraam (WORKWELL) and Charlie Curson (Mandarin) versus Contracks, asset by asset — across the five KPIs, then section by section down the homepage. The job is to close the gap, not admire it.</p>
+    <div class="legend">
+      <span class="lg"><span class="chip c-star">★</span> Ahead of both</span>
+      <span class="lg"><span class="chip c-have">✓</span> Have it</span>
+      <span class="lg"><span class="chip c-part">◐</span> Partial</span>
+      <span class="lg"><span class="chip c-miss">✕</span> Missing — to build</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ============ 5P ASSET MATRIX ============ -->
+<section>
+  <div class="sec-label"><span class="n">01</span>The 5P Asset Matrix</div>
+  <div class="sec-sub">Every Dent KPI, broken into the concrete assets that drive it. Your strengths are real — Pitch substance, the article library, the hardest credentials of the three. The gaps are leverage and packaging, not raw material.</div>
+
+  <div class="tbl-scroll">
+  <table>
+    <thead>
+      <tr>
+        <th class="col-name">Asset</th>
+        <th>Niki / WORKWELL</th>
+        <th>Charlie / Mandarin</th>
+        <th class="col-name">You / Contracks</th>
+        <th class="col-build">Build next</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="pgroup"><td colspan="5">Pitch</td></tr>
+      <tr><td class="asset">Sharp reframe / hook</td><td class="cell"><span class="mk"><span class="dot have">✓</span></span></td><td class="cell"><span class="mk"><span class="dot have">✓</span></span></td><td class="cell"><span class="mk"><span class="dot star">★</span></span></td><td class="build">Keep — as sharp as theirs</td></tr>
+      <tr><td class="asset">Quantified pain wall</td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>stat wall</small></span></td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>cost of drift</small></span></td><td class="cell"><span class="mk"><span class="dot miss">✕</span></span></td><td class="build">Cost-of-drift number wall</td></tr>
+      <tr><td class="asset">Borrowed-authority stat</td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>Surgeon Gen.</small></span></td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>WEF</small></span></td><td class="cell"><span class="mk"><span class="dot miss">✕</span></span></td><td class="build">IPA / McKinsey overrun stat</td></tr>
+      <tr><td class="asset">Leads with buyer pain</td><td class="cell"><span class="mk"><span class="dot have">✓</span></span></td><td class="cell"><span class="mk"><span class="dot have">✓</span></span></td><td class="cell"><span class="mk"><span class="dot part">◐</span><small>leads w/ credentials</small></span></td><td class="build">Reorder hero: pain first</td></tr>
+
+      <tr class="pgroup"><td colspan="5">Publish</td></tr>
+      <tr><td class="asset">Named LinkedIn newsletter</td><td class="cell"><span class="mk"><span class="dot part">◐</span></span></td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>Strategic Edge</small></span></td><td class="cell"><span class="mk"><span class="dot miss">✕</span><small>site form only</small></span></td><td class="build">Launch named LI newsletter</td></tr>
+      <tr><td class="asset">Book</td><td class="cell"><span class="mk"><span class="dot have">✓</span></span></td><td class="cell"><span class="mk"><span class="dot star">★</span><small>bestseller</small></span></td><td class="cell"><span class="mk"><span class="dot miss">✕</span><small>planned</small></span></td><td class="build">Ship it — biggest single lever</td></tr>
+      <tr><td class="asset">Podcast / audio show</td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>Change Proof</small></span></td><td class="cell"><span class="mk"><span class="dot part">◐</span></span></td><td class="cell"><span class="mk"><span class="dot part">◐</span><small>audio, no show</small></span></td><td class="build">Surface a show from the audio</td></tr>
+      <tr><td class="asset">Article / report library</td><td class="cell"><span class="mk"><span class="dot have">✓</span></span></td><td class="cell"><span class="mk"><span class="dot have">✓</span></span></td><td class="cell"><span class="mk"><span class="dot star">★</span><small>18 + 3 reports</small></span></td><td class="build">Nothing — just distribute it</td></tr>
+      <tr><td class="asset">On-site AI agent</td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>Ask WORKWELL</small></span></td><td class="cell"><span class="mk"><span class="dot miss">✕</span></span></td><td class="cell"><span class="mk"><span class="dot miss">✕</span></span></td><td class="build">Optional: "Ask Contracks"</td></tr>
+      <tr><td class="asset">Reach / distribution</td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>48K</small></span></td><td class="cell"><span class="mk"><span class="dot part">◐</span><small>4.8K</small></span></td><td class="cell"><span class="mk"><span class="dot miss">✕</span><small>~72 / post</small></span></td><td class="build">Newsletter push + comment engine</td></tr>
+
+      <tr class="pgroup"><td colspan="5">Productise</td></tr>
+      <tr><td class="asset">Named diagnostic</td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>Potential Index</small></span></td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>Cap. Assessment</small></span></td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>CONTROL / 5Cs</small></span></td><td class="build">Make it the single CTA spine</td></tr>
+      <tr><td class="asset">Visible "Getting Started" doors</td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>3 doors</small></span></td><td class="cell"><span class="mk"><span class="dot have">✓</span></span></td><td class="cell"><span class="mk"><span class="dot miss">✕</span></span></td><td class="build">3-door entry block</td></tr>
+      <tr><td class="asset">Named core programme</td><td class="cell"><span class="mk"><span class="dot have">✓</span></span></td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>Accelerator™</small></span></td><td class="cell"><span class="mk"><span class="dot part">◐</span><small>speeds = situations</small></span></td><td class="build">Name the core offer</td></tr>
+      <tr><td class="asset">Recurring P4C tier</td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>reinforcement</small></span></td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>coaching</small></span></td><td class="cell"><span class="mk"><span class="dot miss">✕</span></span></td><td class="build">Monthly health / quarterly review</td></tr>
+      <tr><td class="asset">Single-CTA discipline</td><td class="cell"><span class="mk"><span class="dot part">◐</span></span></td><td class="cell"><span class="mk"><span class="dot star">★</span><small>all → assessment</small></span></td><td class="cell"><span class="mk"><span class="dot miss">✕</span><small>many CTAs</small></span></td><td class="build">One spine → scorecard</td></tr>
+
+      <tr class="pgroup"><td colspan="5">Profile</td></tr>
+      <tr><td class="asset">Authority credentials</td><td class="cell"><span class="mk"><span class="dot have">✓</span></span></td><td class="cell"><span class="mk"><span class="dot have">✓</span></span></td><td class="cell"><span class="mk"><span class="dot star">★</span><small>MIT/INSEAD/MCIArb</small></span></td><td class="build">Surface them — don't hide them</td></tr>
+      <tr><td class="asset">Book / awards markers</td><td class="cell"><span class="mk"><span class="dot have">✓</span></span></td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>Amazon badge</small></span></td><td class="cell"><span class="mk"><span class="dot miss">✕</span></span></td><td class="build">Book + visible proof markers</td></tr>
+      <tr><td class="asset">Owned signature idea</td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>pref. discomfort</small></span></td><td class="cell"><span class="mk"><span class="dot have">✓</span></span></td><td class="cell"><span class="mk"><span class="dot part">◐</span><small>have line, not owned</small></span></td><td class="build">Publicly own "systems around them"</td></tr>
+      <tr><td class="asset">Speaker page</td><td class="cell"><span class="mk"><span class="dot have">✓</span></span></td><td class="cell"><span class="mk"><span class="dot have">✓</span></span></td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>have one</small></span></td><td class="build">Surface on site + LI</td></tr>
+      <tr><td class="asset">"Book a call" on profile</td><td class="cell"><span class="mk"><span class="dot have">✓</span></span></td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>Book appt.</small></span></td><td class="cell"><span class="mk"><span class="dot part">◐</span></span></td><td class="build">Add Calendly to LI profile</td></tr>
+
+      <tr class="pgroup"><td colspan="5">Partnership</td></tr>
+      <tr><td class="asset">Repeatable engine</td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>podcast</small></span></td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>own forum</small></span></td><td class="cell"><span class="mk"><span class="dot miss">✕</span></span></td><td class="build">One engine: podcast or forum</td></tr>
+      <tr><td class="asset">Associate / expert network</td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>franchise</small></span></td><td class="cell"><span class="mk"><span class="dot have">✓</span><small>associates</small></span></td><td class="cell"><span class="mk"><span class="dot part">◐</span><small>informal</small></span></td><td class="build">Formalise associates</td></tr>
+      <tr><td class="asset">Referral / channel partners</td><td class="cell"><span class="mk"><span class="dot part">◐</span></span></td><td class="cell"><span class="mk"><span class="dot part">◐</span></span></td><td class="cell"><span class="mk"><span class="dot part">◐</span><small>Yvonne in train</small></span></td><td class="build">Systematise (recruiters, lawyers)</td></tr>
+      <tr><td class="asset">Guest on others' shows</td><td class="cell"><span class="mk"><span class="dot have">✓</span></span></td><td class="cell"><span class="mk"><span class="dot have">✓</span></span></td><td class="cell"><span class="mk"><span class="dot miss">✕</span></span></td><td class="build">Pitch Change Proof podcast</td></tr>
+      <tr><td class="asset">Live BD relationships</td><td class="cell"><span class="mk"><span class="dot have">✓</span></span></td><td class="cell"><span class="mk"><span class="dot have">✓</span></span></td><td class="cell"><span class="mk"><span class="dot star">★</span><small>Richard, Hugues, Bleriot</small></span></td><td class="build">Convert to a system</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ============ HOMEPAGE SECTION MATRIX ============ -->
+<section>
+  <div class="sec-label"><span class="n">02</span>Homepage, Section by Section</div>
+  <div class="sec-sub">The same comparison run down the landing page. Where you're a ★ — the maturity ladder, the hard case studies — you lead both. The ✕ rows are the build list, in roughly the order a visitor meets them.</div>
+
+  <div class="tbl-scroll">
+  <table>
+    <thead>
+      <tr>
+        <th class="col-name">Page section</th>
+        <th>Niki / WORKWELL</th>
+        <th>Charlie / Mandarin</th>
+        <th class="col-name">You / Contracks</th>
+        <th class="col-build">The gap</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="asset">Hero reframe + primary CTA</td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot have">✓</span></td><td class="build">Strong — but lead with pain</td></tr>
+      <tr><td class="asset">Client logo / trust strip</td><td class="cell"><span class="dot part">◐</span></td><td class="cell"><span class="dot star">★</span></td><td class="cell"><span class="dot miss">✕</span></td><td class="build">Sector + scale proof strip</td></tr>
+      <tr><td class="asset">Quantified pain / cost of drift</td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot miss">✕</span></td><td class="build">Build it — top priority</td></tr>
+      <tr><td class="asset">Diagnostic hook</td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot have">✓</span></td><td class="build">Make it the single spine</td></tr>
+      <tr><td class="asset">Named framework</td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot have">✓</span></td><td class="build">None — 5Cs is front-door</td></tr>
+      <tr><td class="asset">Maturity ladder / levels</td><td class="cell"><span class="dot part">◐</span></td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot star">★</span></td><td class="build">None — your strongest section</td></tr>
+      <tr><td class="asset">Offer ladder / Getting Started</td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot miss">✕</span></td><td class="build">3-door block + named offers</td></tr>
+      <tr><td class="asset">Outcomes / payoff ("what changes")</td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot part">◐</span></td><td class="build">Future-state payoff section</td></tr>
+      <tr><td class="asset">Case studies / hard proof</td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot part">◐</span></td><td class="cell"><span class="dot star">★</span></td><td class="build">Your moat — add logos to it</td></tr>
+      <tr><td class="asset">Named testimonials</td><td class="cell"><span class="dot part">◐</span></td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot part">◐</span></td><td class="build">Add more named quotes</td></tr>
+      <tr><td class="asset">Founder authority bio</td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot part">◐</span></td><td class="build">Person-first + markers</td></tr>
+      <tr><td class="asset">Book / flagship magnet</td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot star">★</span></td><td class="cell"><span class="dot miss">✕</span></td><td class="build">Ship the book</td></tr>
+      <tr><td class="asset">FAQ (objection handling)</td><td class="cell"><span class="dot star">★</span></td><td class="cell"><span class="dot part">◐</span></td><td class="cell"><span class="dot miss">✕</span></td><td class="build">Build the Dent FAQ</td></tr>
+      <tr><td class="asset">Named newsletter capture</td><td class="cell"><span class="dot part">◐</span></td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot part">◐</span></td><td class="build">Name it; push on LI</td></tr>
+      <tr><td class="asset">Contact / booking</td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot have">✓</span></td><td class="build">None — form + Calendly live</td></tr>
+      <tr><td class="asset">Single-CTA discipline</td><td class="cell"><span class="dot part">◐</span></td><td class="cell"><span class="dot star">★</span></td><td class="cell"><span class="dot miss">✕</span></td><td class="build">Consolidate to one destination</td></tr>
+      <tr><td class="asset">On-site AI agent</td><td class="cell"><span class="dot have">✓</span></td><td class="cell"><span class="dot miss">✕</span></td><td class="cell"><span class="dot miss">✕</span></td><td class="build">Optional differentiator</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ============ PRIORITY ============ -->
+<div class="wrap">
+  <div class="priority">
+    <h3>Close the gap — in this order</h3>
+    <p>Sequenced by leverage, not by where they sit on the page. The first one is your literal Dent floor (entry score: 0).</p>
+    <div class="steps">
+      <div class="step first"><div class="num">1</div><div class="t">Offer ladder</div><div class="d">3-door block, named core offer, recurring P4C tier. Closes your weakest KPI.</div></div>
+      <div class="step"><div class="num">2</div><div class="t">Pain wall</div><div class="d">Cost-of-drift numbers + borrowed stat. Cheapest high-impact site fix.</div></div>
+      <div class="step"><div class="num">3</div><div class="t">The book</div><div class="d">Converts your 8-grade Profile asset into visible authority in one move.</div></div>
+      <div class="step"><div class="num">4</div><div class="t">Named newsletter</div><div class="d">Push distribution that bypasses the 72-impression feed lottery.</div></div>
+      <div class="step"><div class="num">5</div><div class="t">Partnership engine</div><div class="d">Podcast or forum — turn Niki / Yvonne outreach into a system.</div></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span><span class="gold">CONTRACKS GLOBAL</span> · Asset Gap Matrix · 8 June 2026</span>
+  <span>Better contracts. Better companies. Better communities.</span>
+</footer>
+
+</div>
+</body>
+</html>
