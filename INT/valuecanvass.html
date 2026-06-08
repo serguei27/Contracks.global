@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dent Value Canvas + Bridge — Filled + Empty Templates · PMO Control Lead</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --dred:#e94560;--dblue:#1a3a6e;--dnavy:#16213e;
+  --dgold:#f5a623;--dgreen:#27ae60;--dpurp:#8e44ad;
+  --w:#ffffff;--light:#f5f6fa;--border:#dde1e7;
+  --text:#1a2332;--tmid:#5a6a7a;--tlight:#95a5a6;
+}
+html{font-family:'Open Sans',sans-serif;background:#e8e8e8;-webkit-font-smoothing:antialiased}
+body{max-width:1240px;margin:0 auto;padding:20px;background:#e8e8e8}
+
+/* PAGE WRAPPER */
+.page{width:1200px;background:var(--w);margin:0 auto 40px;box-shadow:0 4px 24px rgba(0,0,0,.18);position:relative;overflow:hidden;page-break-after:always}
+@media print{body{background:#fff;padding:0}.page{margin:0;box-shadow:none;page-break-after:always}}
+
+/* ═══════════════════════════════════════
+   VALUE CANVAS
+═══════════════════════════════════════ */
+.vc{min-height:848px;display:grid;grid-template-rows:auto auto 1fr auto auto;padding:0}
+
+/* Canvas Header */
+.vc-hdr{background:var(--dnavy);padding:8px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--dred)}
+.vc-hdr-l{display:flex;flex-direction:column;gap:3px}
+.vc-fields{display:flex;gap:20px}
+.vc-field{font-size:8px;color:rgba(255,255,255,.6)}
+.vc-field-l{font-weight:700;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.07em;margin-right:3px}
+.vc-field-v{color:rgba(255,255,255,.8)}
+.vc-hdr-c{text-align:center}
+.vc-main-title{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:.06em}
+.vc-quote{font-size:9px;font-style:italic;color:var(--dgold);margin-top:2px}
+.vc-hdr-r{text-align:right}
+.dent-logo{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;color:#fff;letter-spacing:.06em}
+.dent-logo span{color:var(--dred)}
+.dent-tag{font-size:7px;color:rgba(255,255,255,.38);letter-spacing:.08em;text-transform:uppercase;margin-top:1px}
+
+/* ICP Bar */
+.vc-icp-bar{background:var(--dred);padding:5px 18px;display:flex;align-items:center;gap:10px}
+.vc-icp-l{font-family:'Montserrat',sans-serif;font-size:7px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7);white-space:nowrap}
+.vc-icp-nick{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:.04em;margin-right:8px}
+.vc-icp-desc{font-size:8.5px;color:rgba(255,255,255,.8);line-height:1.4}
+.vc-icp-desc strong{color:#fff}
+
+/* Main Content Grid */
+.vc-grid{display:grid;grid-template-columns:230px 1fr 230px;gap:0;padding:10px 14px 8px;background:var(--light);flex:1}
+
+/* Boxes */
+.vc-box{background:var(--w);border:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
+.vc-box+.vc-box{margin-top:8px}
+.vb-hdr{padding:5px 10px;display:flex;align-items:center;justify-content:space-between}
+.vb-hdr-pain{background:var(--dred)}
+.vb-hdr-fear{background:var(--dpurp)}
+.vb-hdr-method{background:var(--dgold)}
+.vb-hdr-mistakes{background:#e67e22}
+.vb-hdr-payoff{background:var(--dgreen)}
+.vb-hdr-icp{background:var(--dblue)}
+.vb-title{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+.vb-hdr-method .vb-title,.vb-hdr-mistakes .vb-title{color:rgba(0,0,0,.65)}
+.vb-sub{font-size:7px;color:rgba(255,255,255,.6);font-style:italic}
+.vb-hdr-method .vb-sub,.vb-hdr-mistakes .vb-sub{color:rgba(0,0,0,.45)}
+.vb-body{padding:8px 10px;flex:1;display:flex;flex-direction:column;gap:5px}
+
+/* ICP Box */
+.vc-icp-box{background:var(--w);border:1px solid var(--border);border-top:3px solid var(--dblue);margin-bottom:8px;padding:9px 10px}
+.vb-section-title{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--dblue);margin-bottom:4px}
+.vb-section-sub{font-size:7.5px;color:var(--tlight);font-style:italic;margin-bottom:5px}
+.icp-nick-main{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;color:var(--text);text-transform:uppercase;margin-bottom:4px}
+.icp-desc-main{font-size:8.5px;line-height:1.5;color:var(--tmid)}
+.icp-desc-main strong{color:var(--text);font-weight:600}
+
+/* Pain items */
+.pain-item{padding-bottom:6px;border-bottom:1px solid var(--border)}
+.pain-item:last-child{border-bottom:none;padding-bottom:0}
+.hook-label{font-size:6.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tlight);margin-bottom:1px}
+.hook-text{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;color:var(--dred);text-transform:uppercase;margin-bottom:2px}
+.land-label{font-size:6.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tlight);margin-top:3px;margin-bottom:1px}
+.land-text{font-size:8.5px;line-height:1.45;color:var(--tmid)}
+
+/* Deep Fear */
+.fear-quote{font-size:10px;line-height:1.6;color:var(--text);font-style:italic;border-left:3px solid var(--dpurp);padding-left:8px}
+.fear-quote strong{color:var(--dpurp);font-style:normal;font-weight:700}
+.gi-note{background:rgba(142,68,173,.06);border:1px solid rgba(142,68,173,.18);padding:7px 9px;font-size:8px;line-height:1.5;color:var(--tmid);font-style:italic;margin-top:6px}
+.gi-note strong{color:var(--dpurp);font-style:normal}
+
+/* Method pillars */
+.method-badge{font-size:8px;font-weight:700;color:rgba(0,0,0,.5);font-style:italic;margin-bottom:5px;letter-spacing:.04em}
+.pillar{display:flex;gap:7px;align-items:flex-start;padding:4px 0;border-bottom:1px solid var(--border)}
+.pillar:last-child{border-bottom:none;padding-bottom:0}
+.p-num{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;color:rgba(245,166,35,.5);width:12px;flex-shrink:0;padding-top:1px}
+.p-verb{font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dgold);display:block;margin-bottom:1px}
+.p-name{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;color:var(--text)}
+.p-body{font-size:8px;line-height:1.4;color:var(--tmid);margin-top:1px}
+
+/* Mistakes */
+.mistake{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px 0;border-bottom:1px solid var(--border)}
+.mistake:last-child{border-bottom:none}
+.m-lbl{font-size:6.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tlight);margin-bottom:1px}
+.m-think{font-size:8px;font-style:italic;color:#e67e22;line-height:1.38}
+.m-act{font-size:8px;color:var(--tmid);line-height:1.38}
+
+/* Payoff items */
+.payoff-item{padding-bottom:6px;border-bottom:1px solid var(--border)}
+.payoff-item:last-child{border-bottom:none;padding-bottom:0}
+.pay-hook{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;color:var(--dgreen);text-transform:uppercase;margin-bottom:2px}
+.pay-sub-label{font-size:6.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tlight);margin-top:3px;margin-bottom:1px}
+.pay-text{font-size:8.5px;line-height:1.45;color:var(--tmid)}
+
+/* Prize Strip */
+.vc-prize{background:linear-gradient(90deg,var(--dgold),#f0a500);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;margin:0 14px 8px}
+.prize-left-vc{display:flex;flex-direction:column;gap:1px}
+.prize-label-vc{font-family:'Montserrat',sans-serif;font-size:7.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.5)}
+.prize-ref-vc{font-size:8.5px;color:rgba(0,0,0,.5);font-style:italic;margin-top:2px}
+.prize-stmt-vc{font-family:'Montserrat',sans-serif;font-size:26px;font-weight:900;color:var(--dnavy);letter-spacing:.02em}
+.prize-right-vc{font-size:8px;color:rgba(0,0,0,.5);text-align:right;line-height:1.6;max-width:160px;font-style:italic}
+
+/* Canvas Footer */
+.vc-footer{background:var(--dnavy);padding:5px 18px;display:flex;align-items:center;justify-content:space-between;font-size:7.5px;color:rgba(255,255,255,.35)}
+.vc-footer-logo{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;color:rgba(255,255,255,.5)}
+.vc-footer-logo span{color:var(--dred)}
+
+/* ═══════════════════════════════════════
+   VALUE BRIDGE
+═══════════════════════════════════════ */
+.vb-page{min-height:848px;background:var(--w);display:grid;grid-template-rows:auto auto auto 1fr auto auto}
+
+/* Bridge Header */
+.vb-page-hdr{background:var(--dnavy);padding:8px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--dred)}
+.vbph-l{display:flex;flex-direction:column;gap:1px}
+.vbph-company{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.06em}
+.vbph-sub{font-size:7.5px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.08em}
+.vbph-c{text-align:center}
+.vb-main-title{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:.08em}
+.vb-main-title .red{color:var(--dred)}
+.vbph-r{text-align:right}
+
+/* Journey Bar */
+.vb-journey{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;border-bottom:2px solid var(--border)}
+.vbj-state{padding:8px 16px;display:flex;flex-direction:column;gap:2px}
+.vbj-from{background:rgba(233,69,96,.05);border-right:1px solid var(--border)}
+.vbj-to{background:rgba(39,174,96,.05);border-left:1px solid var(--border)}
+.vbj-lbl{font-family:'Montserrat',sans-serif;font-size:7px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.vbj-from .vbj-lbl{color:var(--dred)}.vbj-to .vbj-lbl{color:var(--dgreen)}
+.vbj-name{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;text-transform:uppercase}
+.vbj-from .vbj-name{color:var(--dred)}.vbj-to .vbj-name{color:var(--dgreen)}
+.vbj-desc{font-size:8.5px;color:var(--tmid);line-height:1.4}
+.vbj-polr{padding:8px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:200px;background:rgba(245,166,35,.05)}
+.vbj-polr-l{font-family:'Montserrat',sans-serif;font-size:7px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--tlight);text-align:center}
+.vbj-polr-v{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;color:var(--dgold);text-transform:uppercase;letter-spacing:.04em;text-align:center}
+.vbj-polr-s{font-size:8px;color:var(--tlight);font-style:italic;text-align:center}
+
+/* Arch */
+.vb-arch{position:relative;height:58px;background:var(--w);overflow:hidden}
+.arch-svg{position:absolute;top:0;left:0;width:100%;height:58px}
+
+/* Bridge Main Grid */
+.vb-main{display:grid;grid-template-columns:1fr 1.08fr 1fr;border-top:2px solid var(--border);flex:1}
+.vb-col{display:flex;flex-direction:column;border-right:2px solid var(--border)}
+.vb-col:last-child{border-right:none}
+
+/* Bridge Sections */
+.vbs{display:flex;flex-direction:column;border-bottom:2px solid var(--border)}
+.vbs:last-child{border-bottom:none;flex:1}
+.vbs-hdr{padding:5px 12px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.vbs-pain{background:var(--dred)}
+.vbs-fear{background:var(--dpurp)}
+.vbs-fa{background:rgba(26,58,110,.12)}
+.vbs-mis{background:#e67e22}
+.vbs-met{background:var(--dgold)}
+.vbs-pay{background:var(--dgreen)}
+.vbs-prize{background:linear-gradient(90deg,var(--dgold),#f0a500)}
+.vbs-meas{background:rgba(26,58,110,.06)}
+.vbs-title{font-family:'Montserrat',sans-serif;font-size:8.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+.vbs-met .vbs-title,.vbs-prize .vbs-title,.vbs-meas .vbs-title,.vbs-fa .vbs-title{color:rgba(0,0,0,.6)}
+.vbs-sub{font-size:7px;color:rgba(255,255,255,.6);font-style:italic}
+.vbs-met .vbs-sub,.vbs-prize .vbs-sub{color:rgba(0,0,0,.4)}
+.vbs-body{padding:8px 12px;flex:1;display:flex;flex-direction:column;gap:5px;overflow:hidden}
+
+/* Bridge Pain */
+.bpain{display:flex;flex-direction:column;gap:2px;padding-bottom:5px;border-bottom:1px solid var(--border)}
+.bpain:last-child{border-bottom:none;padding-bottom:0}
+.bpain-sym{font-family:'Montserrat',sans-serif;font-size:9.5px;font-weight:700;color:var(--dred);text-transform:uppercase}
+.bpain-lbl{font-size:6.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tlight);margin-top:2px;margin-bottom:1px}
+.bpain-txt{font-size:8.5px;line-height:1.42;color:var(--tmid)}
+
+/* Bridge Fear */
+.bfear-txt{font-size:9.5px;line-height:1.58;color:var(--text);font-style:italic;border-left:3px solid var(--dpurp);padding-left:9px}
+.bfear-txt strong{color:var(--dpurp);font-style:normal;font-weight:700}
+.bfear-gi{background:rgba(142,68,173,.06);border:1px solid rgba(142,68,173,.15);padding:7px 9px;font-size:8px;line-height:1.5;color:var(--tmid);font-style:italic}
+.bfear-gi strong{color:var(--dpurp);font-style:normal}
+
+/* FA note */
+.fa-note{font-size:8.5px;line-height:1.5;color:var(--tmid);font-style:italic;background:rgba(26,58,110,.04);border:1px solid var(--border);padding:7px 9px}
+.fa-arrows{display:flex;gap:8px;margin-top:4px;font-size:8px;color:var(--tlight)}
+
+/* Bridge mistakes */
+.bmis{padding-bottom:5px;border-bottom:1px solid var(--border)}
+.bmis:last-child{border-bottom:none;padding-bottom:0}
+.bmis-lbl{font-size:6.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tlight);margin-bottom:1px}
+.bmis-think{font-size:8.5px;font-style:italic;color:#e67e22;line-height:1.38}
+.bmis-act{font-size:8.5px;color:var(--tmid);line-height:1.38}
+
+/* Bridge method */
+.bmet-name{font-size:8px;font-weight:700;color:rgba(0,0,0,.5);font-style:italic;margin-bottom:5px}
+.bpillar{display:flex;gap:7px;align-items:flex-start;padding:3px 0;border-bottom:1px solid var(--border)}
+.bpillar:last-child{border-bottom:none;padding-bottom:0}
+.bp-num{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:800;color:rgba(245,166,35,.5);width:12px;flex-shrink:0}
+.bp-verb{font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dgold);display:block}
+.bp-name{font-family:'Montserrat',sans-serif;font-size:9.5px;font-weight:700;color:var(--text)}
+.bp-body{font-size:8px;line-height:1.38;color:var(--tmid)}
+
+/* Measurable */
+.meas-row{display:flex;gap:6px;align-items:flex-start;padding:3px 0;border-bottom:1px solid var(--border)}
+.meas-row:last-child{border-bottom:none}
+.meas-lbl{font-size:7px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--tlight);width:68px;flex-shrink:0;padding-top:1px}
+.meas-val{font-size:8.5px;color:var(--tmid);line-height:1.42;flex:1}
+
+/* Bridge payoff */
+.bpay{display:flex;flex-direction:column;gap:2px;padding-bottom:5px;border-bottom:1px solid var(--border)}
+.bpay:last-child{border-bottom:none;padding-bottom:0}
+.bpay-obj{font-family:'Montserrat',sans-serif;font-size:9.5px;font-weight:700;color:var(--dgreen);text-transform:uppercase}
+.bpay-lbl{font-size:6.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tlight);margin-top:2px;margin-bottom:1px}
+.bpay-txt{font-size:8.5px;line-height:1.42;color:var(--tmid)}
+
+/* Prize block */
+.prize-vb{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px;gap:4px;flex:1;background:rgba(245,166,35,.04)}
+.pvb-lbl{font-family:'Montserrat',sans-serif;font-size:7.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.45)}
+.pvb-stmt{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:var(--text)}
+.pvb-tm{font-size:9px;font-weight:700;color:var(--dgold)}
+.pvb-ref{font-size:8.5px;color:var(--tlight);font-style:italic}
+
+/* Bottom Bar */
+.vb-bottom{background:var(--dnavy);display:grid;grid-template-columns:1fr auto 1fr;padding:6px 0;border-top:3px solid var(--dred)}
+.vbb-side{padding:0 16px;display:flex;flex-direction:column;gap:2px}
+.vbb-left{border-right:1px solid rgba(255,255,255,.1)}
+.vbb-right{border-left:1px solid rgba(255,255,255,.1)}
+.vbb-lbl{font-family:'Montserrat',sans-serif;font-size:7px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.vbb-val{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.04em}
+.vbb-desc{font-size:7.5px;color:rgba(255,255,255,.45);line-height:1.4}
+.vbb-center{text-align:center;padding:0 20px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.vbb-c-lbl{font-size:7px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.vbb-c-val{font-family:'Montserrat',sans-serif;font-size:9.5px;font-weight:800;color:var(--dgold);letter-spacing:.04em}
+.vbb-c-copy{font-size:7px;color:rgba(255,255,255,.3);font-style:italic;margin-top:2px}
+
+/* Page break */
+.page-break{height:0;page-break-after:always}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --dred:#c0392b;--dblue:#1a3a6e;--dnavy:#1a2750;
+  --dgold:#f5a623;--dgreen:#27ae60;--dpurp:#8e44ad;
+  --w:#ffffff;--light:#f8f9fa;--lgrey:#f0f0f0;
+  --border:#d0d4da;--border-light:#e8eaed;
+  --text:#1a2332;--tmid:#6b7a8d;--tlight:#a0aab4;
+}
+html{font-family:'Open Sans',sans-serif;background:#d8d8d8;-webkit-font-smoothing:antialiased}
+body{max-width:1260px;margin:0 auto;padding:20px;background:#d8d8d8}
+.page{width:1200px;background:var(--w);margin:0 auto 40px;box-shadow:0 4px 20px rgba(0,0,0,.15);overflow:hidden;page-break-after:always}
+@media print{body{background:#fff;padding:0}.page{margin:0;box-shadow:none;page-break-after:always}}
+
+/* ══════════════════════════════════════
+   SHARED COMPONENTS
+══════════════════════════════════════ */
+.dent-hdr-bar{display:flex;align-items:center;gap:0;padding:12px 20px 10px;border-bottom:1px solid var(--border)}
+.dent-logo-main{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:var(--dnavy);letter-spacing:.04em;display:flex;align-items:center;gap:0}
+.dent-logo-main .dot{color:var(--dred)}
+.dent-divider{width:1px;height:28px;background:var(--border);margin:0 14px}
+.kpi-badge{display:flex;flex-direction:column;gap:0}
+.kpi-line1{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:600;color:var(--dred);letter-spacing:.04em;text-transform:uppercase}
+.kpi-line2{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:600;color:var(--dred);letter-spacing:.04em;text-transform:uppercase}
+.canvas-title-main{font-family:'Montserrat',sans-serif;font-size:28px;font-weight:300;color:var(--dnavy);letter-spacing:.02em;margin-left:6px}
+.hdr-quote{margin-left:auto;font-size:9px;font-style:italic;color:var(--tmid);text-align:right}
+.hdr-fields{display:flex;flex-direction:column;gap:2px;margin-left:20px}
+.hdr-field-row{display:flex;gap:0}
+.hdr-field-name{font-size:8px;color:var(--tlight);width:40px}
+.hdr-field-line{flex:1;border-bottom:1px solid var(--border);min-width:80px;height:14px}
+
+/* Cell labels */
+.cell-title{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;color:var(--dnavy);letter-spacing:.04em;text-transform:uppercase}
+.cell-title-sub{font-size:8px;color:var(--tmid);font-weight:400;margin-left:4px;text-transform:none;letter-spacing:0}
+.cell-mini{font-size:7.5px;color:var(--tlight);font-style:italic;margin-top:1px}
+.hook-lbl{font-size:7.5px;color:var(--tlight);font-style:italic;margin-bottom:2px}
+.land-lbl{font-size:7.5px;color:var(--tlight);font-style:italic;margin-bottom:2px;margin-top:4px}
+.input-line{border-bottom:1px solid var(--border-light);height:12px;margin-bottom:2px}
+.input-area{border:1px solid var(--border-light);min-height:60px;background:var(--lgrey)}
+.section-box{border:1px solid var(--border);background:var(--lgrey);min-height:60px}
+
+/* ══════════════════════════════════════
+   EMPTY VALUE CANVAS
+══════════════════════════════════════ */
+.evc{min-height:848px;display:flex;flex-direction:column}
+.evc-body{flex:1;padding:0 12px 10px;display:flex;flex-direction:column;gap:8px}
+
+/* Signature Method Top */
+.sig-method-section{border:1px solid var(--border);padding:8px 12px}
+.sig-method-hdr{display:flex;align-items:baseline;gap:6px;margin-bottom:6px}
+.sig-method-title{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--dnavy);text-transform:uppercase;letter-spacing:.06em}
+.sig-method-sub{font-size:8px;color:var(--tmid);font-style:italic}
+.sig-method-sub2{font-size:7.5px;color:var(--tlight);font-style:italic;margin-bottom:4px}
+.sig-pillars{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:4px}
+.sig-pillar{border:1px solid var(--border-light);background:var(--lgrey);min-height:80px;padding:6px}
+.sig-pillar-num{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;color:var(--border);margin-bottom:4px}
+
+/* Middle row */
+.evc-middle{display:grid;grid-template-columns:270px 1fr 270px;gap:8px;flex:1}
+
+/* Pain column */
+.pain-col{display:flex;flex-direction:column;gap:6px}
+.pain-section{border:1px solid var(--border);padding:8px 10px;flex:1}
+.pain-section-hdr{margin-bottom:6px}
+.pain-item-empty{padding-bottom:8px;border-bottom:1px solid var(--border-light);margin-bottom:6px}
+.pain-item-empty:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
+
+/* Mistakes center */
+.mistakes-section{border:1px solid var(--border);padding:8px 12px;display:flex;flex-direction:column;gap:4px;position:relative}
+.mistakes-hdr{margin-bottom:8px}
+.arrow-row{display:flex;align-items:center;gap:4px;margin:4px 0}
+.arrow-dash{flex:1;border-top:1px dashed var(--border);position:relative}
+.arrow-tip{color:var(--tlight);font-size:10px}
+
+/* Payoff column */
+.payoff-col{display:flex;flex-direction:column;gap:6px}
+.payoff-section{border:1px solid var(--border);padding:8px 10px;flex:1}
+
+/* Bottom row */
+.evc-bottom{display:grid;grid-template-columns:270px 1fr 270px;gap:8px}
+.deep-fear-box{border:1px solid var(--border);padding:8px 10px}
+.icp-box-empty{border:1px solid var(--border);padding:8px 12px;display:flex;flex-direction:column;gap:4px}
+.prize-box-empty{border:1px solid var(--border);padding:8px 10px}
+.inner-box{border:1px solid var(--border);background:var(--lgrey);min-height:70px;margin-top:6px}
+
+/* Footer */
+.dent-footer{display:flex;align-items:center;justify-content:space-between;padding:8px 20px;border-top:1px solid var(--border);font-size:8px;color:var(--tlight)}
+
+/* ══════════════════════════════════════
+   CANVAS DYNAMICS
+══════════════════════════════════════ */
+.dynamics-page{min-height:848px;display:flex;flex-direction:column}
+.dynamics-hdr{padding:16px 24px;border-bottom:1px solid var(--border)}
+.dynamics-logo-row{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.dynamics-title{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:300;color:var(--dnavy);letter-spacing:.04em}
+.dynamics-title strong{font-weight:800;display:block;font-size:24px}
+.dynamics-table{flex:1;margin:0}
+.dyn-row{display:grid;grid-template-columns:220px 1fr;border-bottom:1px solid var(--border)}
+.dyn-row:last-child{border-bottom:none}
+.dyn-label{padding:18px 24px;display:flex;align-items:center;border-right:1px solid var(--border)}
+.dyn-label-text{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;color:var(--dnavy);letter-spacing:.08em;text-transform:uppercase}
+.dyn-content{padding:16px 28px;display:flex;flex-direction:column;gap:6px}
+.dyn-bullet{display:flex;align-items:flex-start;gap:8px;font-size:11px;color:var(--text);line-height:1.5}
+.dyn-bullet::before{content:'·';color:var(--dred);font-size:16px;line-height:1;flex-shrink:0;margin-top:-1px}
+.dynamics-footer{padding:10px 24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.dyn-copy{font-size:8px;color:var(--tlight)}
+
+/* ══════════════════════════════════════
+   EMPTY VALUE BRIDGE
+══════════════════════════════════════ */
+.evb{min-height:848px;display:flex;flex-direction:column;border:3px solid var(--dred)}
+.evb-title-bar{padding:16px 24px 8px;text-align:center}
+.evb-title{font-family:'Montserrat',sans-serif;font-size:32px;font-weight:300;color:var(--dnavy);letter-spacing:.04em}
+.evb-title strong{font-weight:800}
+
+/* Arch section */
+.arch-section{position:relative;height:240px;overflow:hidden;padding:0 60px}
+.face-icon{position:absolute;top:20px;font-size:44px;opacity:.35}
+.face-left{left:20px}
+.face-right{right:20px}
+.state-label{position:absolute;top:70px;text-align:center;font-family:'Montserrat',sans-serif}
+.state-left{left:30px;text-align:center;width:80px}
+.state-right{right:30px;text-align:center;width:80px}
+.state-word{font-size:8px;color:var(--tlight);letter-spacing:.08em;text-transform:uppercase;display:block}
+.state-main{font-size:9px;font-weight:700;color:var(--dnavy);letter-spacing:.08em;text-transform:uppercase;display:block}
+.arch-svg-empty{width:100%;height:200px}
+
+/* Bridge labels */
+.polr-bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:8px 20px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--lgrey)}
+.polr-box{border:1px solid var(--border);background:var(--w);padding:6px 14px}
+.polr-box-label{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;color:var(--dnavy);text-transform:uppercase;letter-spacing:.06em}
+.polr-center{text-align:center;font-size:8px;color:var(--tlight);font-style:italic}
+
+/* Bottom section */
+.evb-bottom{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid var(--border);flex:1}
+.evb-col{padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.evb-col:not(:last-child){border-right:1px solid var(--border)}
+
+.evb-section-title{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:var(--dnavy);text-transform:uppercase;letter-spacing:.06em;display:flex;align-items:center;gap:6px}
+.evb-section-icon{color:var(--dred);font-size:14px}
+.evb-bullet-list{display:flex;flex-direction:column;gap:4px;margin-top:4px;padding-left:4px}
+.evb-bullet{font-size:10px;color:var(--tmid);display:flex;align-items:flex-start;gap:6px}
+.evb-bullet::before{content:'·';color:var(--dnavy);font-size:14px;line-height:1;flex-shrink:0}
+.frustrated-ambition{border:1px dashed var(--border);padding:8px 10px;margin:6px 0}
+.fa-label{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:700;color:var(--tmid);text-transform:uppercase;letter-spacing:.1em;text-align:center;margin-bottom:6px}
+.fa-arrow{display:flex;align-items:center;gap:4px;font-size:8px;color:var(--tlight);margin-bottom:3px}
+.fa-line{flex:1;border-top:1px solid var(--border-light)}
+.evb-sub-section{margin-top:6px}
+.evb-sub-title{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;color:var(--dnavy);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px}
+.evb-deep-fear-box{border:1px solid var(--border);background:var(--lgrey);padding:8px 10px}
+.evb-df-title{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;color:var(--dnavy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.evb-df-sub{font-size:8.5px;color:var(--tmid);line-height:1.5}
+.evb-prize-box{border:1px solid var(--border);background:var(--lgrey);padding:10px;text-align:center}
+.evb-prize-title{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;color:var(--dnavy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
+.evb-prize-sub{font-size:8px;color:var(--tmid);line-height:1.5}
+.evb-footer{display:flex;align-items:center;justify-content:space-between;padding:8px 20px;border-top:2px solid var(--border)}
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     PAGE 1 · VALUE CANVAS
+═══════════════════════════════════════ -->
+<div class="page">
+<div class="vc">
+
+  <!-- Header -->
+  <div class="vc-hdr">
+    <div class="vc-hdr-l">
+      <div class="vc-fields">
+        <div class="vc-field"><span class="vc-field-l">Name:</span><span class="vc-field-v">Serguei Poppeleer</span></div>
+        <div class="vc-field"><span class="vc-field-l">Company:</span><span class="vc-field-v">Contracks Global</span></div>
+        <div class="vc-field"><span class="vc-field-l">Version:</span><span class="vc-field-v">v1.0 — Locked</span></div>
+        <div class="vc-field"><span class="vc-field-l">Date:</span><span class="vc-field-v">May 2026</span></div>
+      </div>
+    </div>
+    <div class="vc-hdr-c">
+      <div class="vc-main-title">Value Canvas · Key Person of Influence</div>
+      <div class="vc-quote">"You're standing on a mountain of value."</div>
+    </div>
+    <div class="vc-hdr-r">
+      <div class="dent-logo">Dent<span>.</span></div>
+      <div class="dent-tag">Be Brave. Have Fun. Make a Dent.</div>
+    </div>
+  </div>
+
+  <!-- ICP Bar -->
+  <div class="vc-icp-bar">
+    <div class="vc-icp-l">Prime ICP ·</div>
+    <div class="vc-icp-nick">The PMO Control Lead</div>
+    <div class="vc-icp-desc">Head of PMO / PMO Director · Owner-side · Cross-border CAPEX · Europe ↔ Africa / Gulf · Age 35–55 · Capital-heavy sectors: energy, aviation, real estate, construction, manufacturing, agribusiness · <strong>Skeptical of PMO theater.</strong></div>
+  </div>
+
+  <!-- Grid -->
+  <div class="vc-grid">
+
+    <!-- LEFT: ICP + PAIN -->
+    <div style="display:flex;flex-direction:column;gap:8px;padding-right:8px">
+      <div class="vc-icp-box">
+        <div class="vb-section-title">Ideal Client (ICP)</div>
+        <div class="vb-section-sub">Who is the ultimate decision maker?</div>
+        <div class="icp-nick-main">The PMO Control Lead</div>
+        <div class="icp-desc-main">Accountable for turning messy, high-stakes projects into predictable delivery. Identity tied to bringing order with governance, clear decisions and accountability. Often Europe-based with overseas execution across Africa / Gulf. <strong>Insider truth:</strong> most organisations have templates but rarely an end-to-end operating system tailored to real country, supply-chain and compliance conditions — so projects look governed but still drift.</div>
+      </div>
+      <div class="vc-box" style="flex:1">
+        <div class="vb-hdr vb-hdr-pain">
+          <div class="vb-title">Pain — 3 Dominant Points</div>
+          <div class="vb-sub">Hook it · Land it</div>
+        </div>
+        <div class="vb-body">
+          <div class="pain-item">
+            <div class="hook-label">Hook it</div>
+            <div class="hook-text">1 · Scope Drift</div>
+            <div class="land-label">Land it</div>
+            <div class="land-text">Requirements come in half-baked then change mid-stream after supplier quotes land. Weekly steering stuck adjudicating "was that in scope?" 6–12 months later: a portfolio of "mostly complete" projects and a credibility problem with finance because forecasts keep getting revised.</div>
+          </div>
+          <div class="pain-item">
+            <div class="hook-label">Hook it</div>
+            <div class="hook-text">2 · Governance Disconnected</div>
+            <div class="land-label">Land it</div>
+            <div class="land-text">Checklists, stage gates, RAID logs — but no single-page operating plan reflecting site reality. Official plan and real plan diverge fast. Problems surface late, expensive and political because nobody can point to one shared operating truth.</div>
+          </div>
+          <div class="pain-item">
+            <div class="hook-label">Hook it</div>
+            <div class="hook-text">3 · Vendor Slippage</div>
+            <div class="land-label">Land it</div>
+            <div class="land-text">Suppliers miss dates, explanation changes every call. Chasing across email, WhatsApp and spreadsheets. Idle crews, expediting fees, schedule cascades. Business starts treating projects as inherently unreliable.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER: FEAR + METHOD + MISTAKES -->
+    <div style="display:flex;flex-direction:column;gap:8px;padding:0 8px">
+      <div class="vc-box">
+        <div class="vb-hdr vb-hdr-fear">
+          <div class="vb-title">Deep Fear — Their Core Emotional Driver</div>
+        </div>
+        <div class="vb-body">
+          <div class="fear-quote">I am going to get <strong>exposed as a paperwork PMO</strong> — good at governance decks, bad at actual control. And when a site or supplier blows the plan up, execs will still pin it on me because I was supposed to be the one running the controls.</div>
+          <div class="gi-note"><strong>Golden insight:</strong> They're not scared of complex delivery — scared of being the "control" person <strong>without any real levers.</strong> Judged on outcomes they cannot directly command. Want control that holds up in the messy middle — decisions, consequences, visibility that survive when suppliers and sites push back.</div>
+        </div>
+      </div>
+      <div class="vc-box" style="flex:1">
+        <div class="vb-hdr vb-hdr-method">
+          <div class="vb-title">Signature Method — Your Essential Principles / Pillars</div>
+          <div class="vb-sub" style="color:rgba(0,0,0,.45)">The 5Cs</div>
+        </div>
+        <div class="vb-body">
+          <div class="method-badge">The Delivery Control System™</div>
+          <div class="pillar"><div class="p-num">1</div><div><div class="p-verb">Contain</div><div class="p-name">the Scope</div><div class="p-body">Turn fuzzy requirements into one written scope — clear assumptions, acceptance criteria and what is explicitly out of scope.</div></div></div>
+          <div class="pillar"><div class="p-num">2</div><div><div class="p-verb">Command</div><div class="p-name">One Plan</div><div class="p-body">Replace deck governance with one operating plan that matches how site/production actually runs week to week.</div></div></div>
+          <div class="pillar"><div class="p-num">3</div><div><div class="p-verb">Close</div><div class="p-name">Every Decision</div><div class="p-body">Set decision owners, deadlines and consequences so open items get closed before they become delays.</div></div></div>
+          <div class="pillar"><div class="p-num">4</div><div><div class="p-verb">Confirm</div><div class="p-name">Vendor Dates</div><div class="p-body">Rebuild supplier commitments around capacity, lead times, handoffs and proof of readiness — not optimistic promises.</div></div></div>
+          <div class="pillar"><div class="p-num">5</div><div><div class="p-verb">Control</div><div class="p-name">Tower Cadence</div><div class="p-body">Fixed weekly rhythm — same inputs, same meeting, same outputs — so slippage is caught early and corrected fast.</div></div></div>
+        </div>
+      </div>
+      <div class="vc-box">
+        <div class="vb-hdr vb-hdr-mistakes">
+          <div class="vb-title">Mistakes — What's really causing the pain?</div>
+          <div class="vb-sub" style="color:rgba(0,0,0,.45)">Wrong thinking → Wrong action</div>
+        </div>
+        <div class="vb-body" style="gap:2px">
+          <div class="mistake"><div><div class="m-lbl">Wrong thinking</div><div class="m-think">"We can start now and tighten scope later — everyone roughly knows what we mean."</div></div><div><div class="m-lbl">Wrong action</div><div class="m-act">→ Kicking off from a slide deck without a written scope — debating "was that included?" in every meeting.</div></div></div>
+          <div class="mistake"><div><div class="m-lbl">Wrong thinking</div><div class="m-think">"As long as stage gates look right, delivery will follow."</div></div><div><div class="m-lbl">Wrong action</div><div class="m-act">→ Polished template updated for governance while site runs off WhatsApp — plans diverge by week 2.</div></div></div>
+          <div class="mistake"><div><div class="m-lbl">Wrong thinking</div><div class="m-think">"I can't force a decision — I just need to keep everyone aligned."</div></div><div><div class="m-lbl">Wrong action</div><div class="m-act">→ RAID logs with no owner, no deadline, no consequence — scramble when they cascade.</div></div></div>
+          <div class="mistake"><div><div class="m-lbl">Wrong thinking</div><div class="m-think">"Procurement got the commitment — if they miss, it's on them."</div></div><div><div class="m-lbl">Wrong action</div><div class="m-act">→ Accepting supplier dates without verifying capacity, lead times and readiness.</div></div></div>
+          <div class="mistake"><div><div class="m-lbl">Wrong thinking</div><div class="m-think">"If we meet often enough and share updates, we'll stay on top."</div></div><div><div class="m-lbl">Wrong action</div><div class="m-act">→ Status calls with no fixed inputs, outputs or follow-through — slippage discovered late, not early.</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: PAYOFF -->
+    <div style="display:flex;flex-direction:column;gap:8px;padding-left:8px">
+      <div class="vc-box" style="flex:1">
+        <div class="vb-hdr vb-hdr-payoff">
+          <div class="vb-title">Payoff — 3 Big Benefits</div>
+          <div class="vb-sub">Desired + without + resolution</div>
+        </div>
+        <div class="vb-body">
+          <div class="payoff-item">
+            <div class="hook-label">Hook it</div>
+            <div class="pay-hook">1 · Predictable Delivery</div>
+            <div class="pay-sub-label">Desire</div>
+            <div class="pay-text">I can tell the execs — with confidence — what is on track, what is off track, and exactly what we're doing about it before it becomes a fire.</div>
+            <div class="pay-sub-label">Without</div>
+            <div class="pay-text">Adding a second reporting layer (deck factory) or RAG status that hides real risk.</div>
+            <div class="pay-sub-label">Resolution</div>
+            <div class="pay-text">Controls feel real in the work — delivery becomes steady instead of surprise-driven.</div>
+          </div>
+          <div class="payoff-item">
+            <div class="hook-label">Hook it</div>
+            <div class="pay-hook">2 · Fast Decisions</div>
+            <div class="pay-sub-label">Desire</div>
+            <div class="pay-text">When something shifts — site, supplier, design — decisions get made in days not weeks, with a clear owner, clear options and clear trade-offs.</div>
+            <div class="pay-sub-label">Without</div>
+            <div class="pay-text">Endless steering meetings, vague actions or decision logs no one follows.</div>
+            <div class="pay-sub-label">Resolution</div>
+            <div class="pay-text">The project moves forward because decisions are forced to conclusion — not deferred until the plan breaks.</div>
+          </div>
+          <div class="payoff-item">
+            <div class="hook-label">Hook it</div>
+            <div class="pay-hook">3 · Real Control</div>
+            <div class="pay-sub-label">Desire</div>
+            <div class="pay-text">If a key milestone slips, I can show cause → impact → recovery plan, and the team actually executes it — not just agrees in a meeting.</div>
+            <div class="pay-sub-label">Without</div>
+            <div class="pay-text">Overcorrecting into micromanagement or pretending a recovery plan exists when it's just hopeful actions.</div>
+            <div class="pay-sub-label">Resolution</div>
+            <div class="pay-text">The PMO is seen as the control tower that keeps delivery stable — not a paperwork function that gets blamed when reality hits.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Prize -->
+  <div class="vc-prize">
+    <div class="prize-left-vc">
+      <div class="prize-label-vc">The Prize · A Unique 4-Word Pitch</div>
+      <div class="prize-ref-vc">Freedom-Based · "I help PMO Control Leads make controls match reality."</div>
+    </div>
+    <div class="prize-stmt-vc">No-Surprises Delivery</div>
+    <div class="prize-right-vc">The Delivery Control System™<br>Canvas score: 190/200<br>Locked · May 2026</div>
+  </div>
+
+  <!-- Footer -->
+  <div class="vc-footer">
+    <div class="vc-footer-logo">Dent<span>.</span></div>
+    <div>Value Canvas · Key Person of Influence · Contracks Global · Serguei Poppeleer · May 2026</div>
+    <div>www.dent.global · Be Brave. Have Fun. Make a Dent.</div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 2 · VALUE BRIDGE
+═══════════════════════════════════════ -->
+<div class="page">
+<div class="vb-page">
+
+  <!-- Header -->
+  <div class="vb-page-hdr">
+    <div class="vbph-l">
+      <div class="vbph-company">Contracks Global · Serguei Poppeleer</div>
+      <div class="vbph-sub">Value Bridge · PMO Control Lead · May 2026</div>
+    </div>
+    <div class="vbph-c">
+      <div class="vb-main-title">The <span class="red">VALUE</span> BRIDGE</div>
+    </div>
+    <div class="vbph-r">
+      <div class="dent-logo">Dent<span>.</span></div>
+      <div class="dent-tag">Copyright Dent Global · Not for reuse</div>
+    </div>
+  </div>
+
+  <!-- Journey -->
+  <div class="vb-journey">
+    <div class="vbj-state vbj-from">
+      <div class="vbj-lbl">Frustrated Current State</div>
+      <div class="vbj-name">Paperwork PMO</div>
+      <div class="vbj-desc">Governance on paper. No real control when sites or suppliers blow the plan. Blamed by execs when delivery slips. Controls exist in decks — not in reality.</div>
+    </div>
+    <div class="vbj-polr">
+      <div class="vbj-polr-l">Path Of Least Resistance (P.O.L.R.) · A Better Way</div>
+      <div class="vbj-polr-v">The Delivery Control System™</div>
+      <div class="vbj-polr-s">Contain · Command · Close · Confirm · Control</div>
+    </div>
+    <div class="vbj-state vbj-to">
+      <div class="vbj-lbl">Desired Future State · Ultimate Destination</div>
+      <div class="vbj-name">Control Tower PMO</div>
+      <div class="vbj-desc">Controls match reality. Decisions stick. Execs, sites and suppliers all running from the same plan. No surprises.</div>
+    </div>
+  </div>
+
+  <!-- Arch -->
+  <div class="vb-arch">
+    <svg class="arch-svg" viewBox="0 0 1200 58" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="ag2" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#e94560;stop-opacity:0.5"/>
+          <stop offset="25%" style="stop-color:#f5a623;stop-opacity:0.8"/>
+          <stop offset="50%" style="stop-color:#f5a623;stop-opacity:1"/>
+          <stop offset="75%" style="stop-color:#f5a623;stop-opacity:0.8"/>
+          <stop offset="100%" style="stop-color:#27ae60;stop-opacity:0.5"/>
+        </linearGradient>
+      </defs>
+      <path d="M 30 54 Q 600 -6 1170 54" stroke="url(#ag2)" stroke-width="3" fill="none" stroke-dasharray="none"/>
+      <line x1="260" y1="50" x2="260" y2="38" stroke="#f5a623" stroke-width="1" opacity="0.4"/>
+      <line x1="480" y1="50" x2="480" y2="24" stroke="#f5a623" stroke-width="1" opacity="0.4"/>
+      <line x1="600" y1="50" x2="600" y2="16" stroke="#f5a623" stroke-width="1.5" opacity="0.6"/>
+      <line x1="720" y1="50" x2="720" y2="24" stroke="#f5a623" stroke-width="1" opacity="0.4"/>
+      <line x1="940" y1="50" x2="940" y2="38" stroke="#f5a623" stroke-width="1" opacity="0.4"/>
+      <text x="260" y="34" text-anchor="middle" font-family="Montserrat" font-size="7" fill="#c97a1a" font-style="italic" opacity="0.8">Product Name</text>
+      <text x="600" y="12" text-anchor="middle" font-family="Montserrat" font-size="8.5" font-weight="800" fill="#c97a1a" letter-spacing="2.5">SIGNATURE METHOD · THE DELIVERY CONTROL SYSTEM™</text>
+      <text x="940" y="34" text-anchor="middle" font-family="Montserrat" font-size="7" fill="#c97a1a" font-style="italic" opacity="0.8">Book Title</text>
+      <circle cx="30" cy="54" r="4" fill="#e94560" opacity="0.5"/>
+      <circle cx="1170" cy="54" r="4" fill="#27ae60" opacity="0.5"/>
+    </svg>
+  </div>
+
+  <!-- Main Grid -->
+  <div class="vb-main">
+
+    <!-- LEFT: PAIN + FEAR -->
+    <div class="vb-col">
+      <div class="vbs" style="flex:1">
+        <div class="vbs-hdr vbs-pain">
+          <div class="vbs-title">Their Pain</div>
+          <div class="vbs-sub">Symptom · Struggle · Cost · Consequence</div>
+        </div>
+        <div class="vbs-body">
+          <div class="bpain">
+            <div class="bpain-sym">Scope Drift</div>
+            <div class="bpain-lbl">Struggle</div><div class="bpain-txt">Half-baked requirements change mid-stream. Stuck adjudicating "was that in scope?" instead of tracking progress.</div>
+            <div class="bpain-lbl">Cost</div><div class="bpain-txt">Rework, redesign, re-quoting, change orders, delays in procurement.</div>
+            <div class="bpain-lbl">Consequence</div><div class="bpain-txt">"Mostly complete" portfolio. Credibility problem with finance.</div>
+          </div>
+          <div class="bpain">
+            <div class="bpain-sym">Governance Disconnected</div>
+            <div class="bpain-lbl">Struggle</div><div class="bpain-txt">Official plan and real plan diverge. Terms misalign with ops — arguing instead of enforcing.</div>
+            <div class="bpain-lbl">Consequence</div><div class="bpain-txt">Problems surface late, expensive and political. No shared operating truth.</div>
+          </div>
+          <div class="bpain">
+            <div class="bpain-sym">Vendor Slippage</div>
+            <div class="bpain-lbl">Struggle</div><div class="bpain-txt">Suppliers miss dates, explanation changes every call. Chasing across email, WhatsApp, spreadsheets.</div>
+            <div class="bpain-lbl">Consequence</div><div class="bpain-txt">Schedule cascades. Business treats projects as inherently unreliable.</div>
+          </div>
+        </div>
+      </div>
+      <div class="vbs">
+        <div class="vbs-hdr vbs-fear">
+          <div class="vbs-title">Deep Fear</div>
+          <div class="vbs-sub">The emotional core · Motivates change</div>
+        </div>
+        <div class="vbs-body">
+          <div class="bfear-txt">"I am going to get <strong>exposed as a paperwork PMO</strong> — good at governance decks, bad at actual control. Execs will pin it on me because I was supposed to be running the controls."</div>
+          <div class="bfear-gi"><strong>Golden insight:</strong> Scared of being the "control" person <strong>without any real levers.</strong> Want control that holds up in the messy middle — with decisions, consequences and visibility that survive when suppliers and sites push back.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER: FA + MISTAKES + METHOD + MEASURABLE -->
+    <div class="vb-col">
+      <div class="vbs">
+        <div class="vbs-hdr vbs-fa">
+          <div class="vbs-title" style="color:rgba(0,0,0,.55);font-size:7.5px">Frustrated Ambition · Previous Attempts → Repeated Failure</div>
+        </div>
+        <div class="vbs-body" style="padding:6px 12px">
+          <div class="fa-note">Previous approaches: generic PMO templates ignoring country-specific ops · procurement focus without execution control · promises without specifics on governance cadence and supplier levers · digital transformations that end as shelfware.</div>
+        </div>
+      </div>
+      <div class="vbs" style="flex:1">
+        <div class="vbs-hdr vbs-mis">
+          <div class="vbs-title">Their Mistakes</div>
+          <div class="vbs-sub" style="color:rgba(0,0,0,.45)">Wrong Thinking · Wrong Action</div>
+        </div>
+        <div class="vbs-body">
+          <div class="bmis"><div class="bmis-lbl">Wrong thinking</div><div class="bmis-think">"We can start now and tighten scope later — everyone roughly knows what we mean."</div><div class="bmis-lbl">Wrong action</div><div class="bmis-act">→ Kicking off from a slide deck without a written scope. Debating "was that included?" weekly.</div></div>
+          <div class="bmis"><div class="bmis-lbl">Wrong thinking</div><div class="bmis-think">"As long as stage gates look right, delivery will follow."</div><div class="bmis-lbl">Wrong action</div><div class="bmis-act">→ Template updated while site runs off WhatsApp. Plans diverge by week 2.</div></div>
+          <div class="bmis"><div class="bmis-lbl">Wrong thinking</div><div class="bmis-think">"I can't force a decision — I need to keep everyone aligned."</div><div class="bmis-lbl">Wrong action</div><div class="bmis-act">→ RAID logs with no owner, deadline, consequence. Scramble when they cascade.</div></div>
+          <div class="bmis"><div class="bmis-lbl">Wrong thinking</div><div class="bmis-think">"Procurement got the commitment — if they miss, it's on them."</div><div class="bmis-lbl">Wrong action</div><div class="bmis-act">→ Accepting dates without verifying capacity, lead times and readiness.</div></div>
+          <div class="bmis"><div class="bmis-lbl">Wrong thinking</div><div class="bmis-think">"If we meet often enough and share updates, we'll stay on top."</div><div class="bmis-lbl">Wrong action</div><div class="bmis-act">→ Status calls with no fixed inputs/outputs/follow-through. Slippage discovered late.</div></div>
+        </div>
+      </div>
+      <div class="vbs">
+        <div class="vbs-hdr vbs-met">
+          <div class="vbs-title">Signature Method · The 5Cs</div>
+          <div class="vbs-sub" style="color:rgba(0,0,0,.4)">Product: The Delivery Control System™ · Book: "No-Surprises Delivery"</div>
+        </div>
+        <div class="vbs-body">
+          <div class="bpillar"><div class="bp-num">1</div><div><div class="bp-verb">Contain</div><div class="bp-name">the Scope</div><div class="bp-body">One written scope — assumptions, acceptance criteria, explicit out-of-scope.</div></div></div>
+          <div class="bpillar"><div class="bp-num">2</div><div><div class="bp-verb">Command</div><div class="bp-name">One Plan</div><div class="bp-body">One operating plan matching site/production reality week to week.</div></div></div>
+          <div class="bpillar"><div class="bp-num">3</div><div><div class="bp-verb">Close</div><div class="bp-name">Every Decision</div><div class="bp-body">Owners, deadlines, consequences — items closed before they cascade.</div></div></div>
+          <div class="bpillar"><div class="bp-num">4</div><div><div class="bp-verb">Confirm</div><div class="bp-name">Vendor Dates</div><div class="bp-body">Dates verified against capacity, lead times and readiness.</div></div></div>
+          <div class="bpillar"><div class="bp-num">5</div><div><div class="bp-verb">Control</div><div class="bp-name">Tower Cadence</div><div class="bp-body">Fixed weekly rhythm — slippage caught early and corrected fast.</div></div></div>
+        </div>
+      </div>
+      <div class="vbs">
+        <div class="vbs-hdr vbs-meas">
+          <div class="vbs-title" style="color:rgba(0,0,0,.55);font-size:7.5px">Measurable · Quiz Categories · Book Chapters · Blog Topics</div>
+        </div>
+        <div class="vbs-body" style="padding:5px 12px;gap:3px">
+          <div class="meas-row"><div class="meas-lbl">Scorecard 0–10</div><div class="meas-val">Scope contained? · One plan running? · Decisions closing? · Vendor dates confirmed? · Cadence fixed?</div></div>
+          <div class="meas-row"><div class="meas-lbl">Book chapters</div><div class="meas-val">1. Contain · 2. Command · 3. Close · 4. Confirm · 5. Control Tower Cadence</div></div>
+          <div class="meas-row"><div class="meas-lbl">Blog topics</div><div class="meas-val">Scope drift · The paperwork PMO · Vendor slippage · Governance theater · Control Tower cadence</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: PAYOFF + PRIZE -->
+    <div class="vb-col">
+      <div class="vbs" style="flex:1">
+        <div class="vbs-hdr vbs-pay">
+          <div class="vbs-title">The Payoff</div>
+          <div class="vbs-sub">Objective · Desire · Without · Resolution</div>
+        </div>
+        <div class="vbs-body">
+          <div class="bpay">
+            <div class="bpay-obj">Predictable Delivery</div>
+            <div class="bpay-lbl">Desire</div><div class="bpay-txt">Tell execs with confidence what's on/off track and exactly what we're doing about it — before it becomes a fire.</div>
+            <div class="bpay-lbl">Without</div><div class="bpay-txt">A second reporting layer (deck factory) or RAG status that hides real risk.</div>
+            <div class="bpay-lbl">Resolution</div><div class="bpay-txt">Controls feel real in the work — delivery becomes steady instead of surprise-driven.</div>
+          </div>
+          <div class="bpay">
+            <div class="bpay-obj">Fast Decisions</div>
+            <div class="bpay-lbl">Desire</div><div class="bpay-txt">When something shifts — decisions in days not weeks, clear owner, clear options, clear trade-offs.</div>
+            <div class="bpay-lbl">Without</div><div class="bpay-txt">Endless steering meetings, vague actions or decision logs no one follows.</div>
+            <div class="bpay-lbl">Resolution</div><div class="bpay-txt">Project moves forward — decisions forced to conclusion, not deferred until the plan breaks.</div>
+          </div>
+          <div class="bpay">
+            <div class="bpay-obj">Real Control</div>
+            <div class="bpay-lbl">Desire</div><div class="bpay-txt">If a milestone slips — show cause → impact → recovery plan, and the team actually executes it.</div>
+            <div class="bpay-lbl">Without</div><div class="bpay-txt">Overcorrecting into micromanagement or pretending a recovery plan exists when it's hopeful actions.</div>
+            <div class="bpay-lbl">Resolution</div><div class="bpay-txt">PMO is the control tower that keeps delivery stable — not the paperwork function that gets blamed.</div>
+          </div>
+        </div>
+      </div>
+      <div class="vbs">
+        <div class="vbs-hdr vbs-prize">
+          <div class="vbs-title" style="color:rgba(0,0,0,.6)">The Prize · Unique 4-Word Pitch</div>
+          <div class="vbs-sub" style="color:rgba(0,0,0,.4)">Freedom-based · Captures the desired outcome</div>
+        </div>
+        <div class="prize-vb">
+          <div class="pvb-lbl">The Prize</div>
+          <div class="pvb-stmt">No-Surprises Delivery</div>
+          <div class="pvb-tm">The Delivery Control System™</div>
+          <div class="pvb-ref">"I help PMO Control Leads make controls match reality."</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="vb-bottom">
+    <div class="vbb-side vbb-left">
+      <div class="vbb-lbl">A Better Way</div>
+      <div class="vbb-val">The Delivery Control System™</div>
+      <div class="vbb-desc">Five decisions. One system. Controls that match reality — not just the governance pack.</div>
+    </div>
+    <div class="vbb-center">
+      <div class="vbb-c-lbl">Path Of Least Resistance (P.O.L.R.)</div>
+      <div class="vbb-c-val">Contain · Command · Close · Confirm · Control</div>
+      <div class="vbb-c-copy">Copyright Dent Global · All rights reserved · Not for reuse · www.dent.global</div>
+    </div>
+    <div class="vbb-side vbb-right">
+      <div class="vbb-lbl">The Ultimate Destination</div>
+      <div class="vbb-val">No-Surprises Delivery</div>
+      <div class="vbb-desc">PMO seen as the control tower that keeps delivery stable — not a paperwork function.</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+
+<!-- ════════════════════════════════════
+     PAGE 1 · EMPTY VALUE CANVAS
+════════════════════════════════════ -->
+<div class="page">
+<div class="evc">
+
+  <!-- Header -->
+  <div class="dent-hdr-bar">
+    <div class="dent-logo-main">Dent<span class="dot">.</span></div>
+    <div class="dent-divider"></div>
+    <div class="kpi-badge">
+      <span class="kpi-line1">Key Person</span>
+      <span class="kpi-line2">of Influence</span>
+    </div>
+    <div class="canvas-title-main">Value Canvas</div>
+    <div class="hdr-quote">"You're standing on a mountain of value."</div>
+    <div class="hdr-fields">
+      <div class="hdr-field-row"><div class="hdr-field-name" style="font-size:8px;color:var(--tlight)">Name:</div><div class="hdr-field-line" style="width:120px"></div></div>
+      <div class="hdr-field-row"><div class="hdr-field-name" style="font-size:8px;color:var(--tlight)">Version:</div><div class="hdr-field-line" style="width:120px"></div></div>
+      <div class="hdr-field-row"><div class="hdr-field-name" style="font-size:8px;color:var(--tlight)">Date:</div><div class="hdr-field-line" style="width:120px"></div></div>
+    </div>
+  </div>
+
+  <div class="evc-body">
+
+    <!-- Signature Method -->
+    <div class="sig-method-section">
+      <div class="sig-method-hdr">
+        <div class="sig-method-title">Signature Method</div>
+        <div class="sig-method-sub">Your 'essential principles / pillars' of success</div>
+      </div>
+      <div class="sig-method-sub2">Our essential ingredients of success:</div>
+      <div class="sig-pillars">
+        <div class="sig-pillar"><div class="sig-pillar-num">1</div></div>
+        <div class="sig-pillar"><div class="sig-pillar-num">2</div></div>
+        <div class="sig-pillar"><div class="sig-pillar-num">3</div></div>
+        <div class="sig-pillar"><div class="sig-pillar-num">4</div></div>
+        <div class="sig-pillar"><div class="sig-pillar-num">5</div></div>
+        <div class="sig-pillar"><div class="sig-pillar-num">6</div></div>
+      </div>
+    </div>
+
+    <!-- Middle row: Pain | Mistakes | Payoff -->
+    <div class="evc-middle" style="flex:1">
+
+      <!-- PAIN -->
+      <div class="pain-col">
+        <div class="pain-section">
+          <div class="pain-section-hdr">
+            <div class="cell-title">Pain <span class="cell-title-sub">What are their 3 dominant pain points?</span></div>
+          </div>
+          <div class="pain-item-empty">
+            <div class="hook-lbl">Hook it (2–3 word symptom)</div>
+            <div class="input-line"></div>
+            <div class="land-lbl">Land it (1–2 sentences: struggle + cost + consequences)</div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+          </div>
+          <div class="pain-item-empty">
+            <div class="hook-lbl">Hook 2</div>
+            <div class="input-line"></div>
+            <div class="land-lbl">Land it</div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+          </div>
+          <div class="pain-item-empty">
+            <div class="hook-lbl">Hook 3</div>
+            <div class="input-line"></div>
+            <div class="land-lbl">Land it</div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MISTAKES -->
+      <div class="mistakes-section">
+        <div class="mistakes-hdr">
+          <div class="cell-title">Mistakes <span class="cell-title-sub">What's really causing the pain — and what bad ideas and actions are perpetuating it?</span></div>
+        </div>
+        <!-- Arrows from left -->
+        <div style="position:absolute;left:-1px;top:80px;display:flex;flex-direction:column;gap:55px">
+          <div style="display:flex;align-items:center;gap:2px"><div style="width:16px;border-top:1px dashed var(--border)"></div><div style="color:var(--tlight);font-size:9px">→</div></div>
+          <div style="display:flex;align-items:center;gap:2px"><div style="width:16px;border-top:1px dashed var(--border)"></div><div style="color:var(--tlight);font-size:9px">→</div></div>
+          <div style="display:flex;align-items:center;gap:2px"><div style="width:16px;border-top:1px dashed var(--border)"></div><div style="color:var(--tlight);font-size:9px">→</div></div>
+        </div>
+        <div class="input-area" style="flex:1;min-height:200px"></div>
+      </div>
+
+      <!-- PAYOFF -->
+      <div class="payoff-col">
+        <div class="payoff-section">
+          <div style="margin-bottom:6px">
+            <div class="cell-title">Payoff <span class="cell-title-sub">What are the 3 big benefits they desire (and your method enables)</span></div>
+          </div>
+          <div class="pain-item-empty">
+            <div class="hook-lbl">Hook it (2–3 word objective)</div>
+            <div class="input-line"></div>
+            <div class="land-lbl">Land it (1–2 sentences: desire + without + resolution)</div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+          </div>
+          <div class="pain-item-empty">
+            <div class="hook-lbl">Hook 2</div>
+            <div class="input-line"></div>
+            <div class="land-lbl">Land it</div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+          </div>
+          <div class="pain-item-empty">
+            <div class="hook-lbl">Hook 3</div>
+            <div class="input-line"></div>
+            <div class="land-lbl">Land it</div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+            <div class="input-line"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom row: Deep Fear | ICP | Prize -->
+    <div class="evc-bottom">
+
+      <div class="deep-fear-box">
+        <div class="cell-title" style="font-size:11px">Deep Fear <span class="cell-title-sub" style="font-size:8px">Their Core Emotional Driver</span></div>
+        <div class="inner-box" style="min-height:75px"></div>
+      </div>
+
+      <div class="icp-box-empty">
+        <div class="cell-title" style="font-size:13px;text-align:center">Ideal Client (ICP) <span class="cell-title-sub">Who is the ultimate decision maker?</span></div>
+        <div class="inner-box" style="min-height:75px"></div>
+      </div>
+
+      <div class="prize-box-empty">
+        <div class="cell-title" style="font-size:11px">Prize <span class="cell-title-sub" style="font-size:8px">A unique '4-word pitch' that captures the essence of desired outcome.</span></div>
+        <div class="inner-box" style="min-height:75px"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="dent-footer">
+    <div style="font-size:8.5px;color:var(--tlight)">www.dent.global</div>
+    <div style="font-size:8.5px;color:var(--tlight)">Be Brave. Have Fun. Make a Dent.</div>
+  </div>
+
+</div>
+</div>
+
+<!-- ════════════════════════════════════
+     PAGE 2 · CANVAS DYNAMICS
+════════════════════════════════════ -->
+<div class="page">
+<div class="dynamics-page">
+
+  <div class="dynamics-hdr">
+    <div class="dynamics-logo-row">
+      <div class="dent-logo-main" style="font-size:20px">Dent<span class="dot" style="color:var(--dred)">.</span></div>
+      <div class="dent-divider"></div>
+      <div class="dynamics-title">Canvas<strong>Dynamics</strong></div>
+    </div>
+  </div>
+
+  <div class="dynamics-table">
+    <div class="dyn-row">
+      <div class="dyn-label"><div class="dyn-label-text">Psychological<br>Triggers</div></div>
+      <div class="dyn-content">
+        <div class="dyn-bullet">Pain to Prize gap creates buying tension &amp; desire</div>
+        <div class="dyn-bullet">Connecting 3 core pains creates a powerful emotional driver</div>
+        <div class="dyn-bullet">Pain/Payoff symmetry creates coherence and clarity</div>
+        <div class="dyn-bullet">Method/Mistakes symmetry creates insightful 'lightbulb moments'</div>
+      </div>
+    </div>
+    <div class="dyn-row">
+      <div class="dyn-label"><div class="dyn-label-text">Content<br>Creation</div></div>
+      <div class="dyn-content">
+        <div class="dyn-bullet">Each Pain becomes a blog/video hook</div>
+        <div class="dyn-bullet">Each Mistake becomes a content series</div>
+        <div class="dyn-bullet">Each Method Pillar becomes a scorecard category or book chapter</div>
+        <div class="dyn-bullet">Each Payoff becomes a case study focus</div>
+      </div>
+    </div>
+    <div class="dyn-row">
+      <div class="dyn-label"><div class="dyn-label-text">Sales<br>Conversations</div></div>
+      <div class="dyn-content">
+        <div class="dyn-bullet">Start by confirming Pain recognition</div>
+        <div class="dyn-bullet">Explore Mistakes they've experienced</div>
+        <div class="dyn-bullet">Introduce Method as the solution</div>
+        <div class="dyn-bullet">Paint the picture of Payoffs and Prize</div>
+      </div>
+    </div>
+    <div class="dyn-row">
+      <div class="dyn-label"><div class="dyn-label-text">Team<br>Alignment</div></div>
+      <div class="dyn-content">
+        <div class="dyn-bullet">Unify messaging across all channels</div>
+        <div class="dyn-bullet">Ensure consistent positioning</div>
+        <div class="dyn-bullet">Focus product development on solving real pains</div>
+        <div class="dyn-bullet">Align success metrics with promised payoffs</div>
+      </div>
+    </div>
+    <div class="dyn-row">
+      <div class="dyn-label"><div class="dyn-label-text">Keynote<br>Presentations</div></div>
+      <div class="dyn-content">
+        <div class="dyn-bullet">Open with your mission to deliver 'The Prize'</div>
+        <div class="dyn-bullet">Establish relevance with relatable Pain points</div>
+        <div class="dyn-bullet">Share common Mistakes to build recognition</div>
+        <div class="dyn-bullet">Reveal your Signature Method as the Insightful P.O.L.R.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dynamics-footer">
+    <div class="dent-logo-main" style="font-size:16px">Dent<span class="dot">.</span></div>
+    <div class="dyn-copy">Copyright of Dent Global. All rights reserved. Not for reuse.</div>
+  </div>
+
+</div>
+</div>
+
+<!-- ════════════════════════════════════
+     PAGE 3 · EMPTY VALUE BRIDGE
+════════════════════════════════════ -->
+<div class="page">
+<div class="evb">
+
+  <!-- Title -->
+  <div class="evb-title-bar">
+    <div class="evb-title">The <strong>VALUE BRIDGE</strong></div>
+  </div>
+
+  <!-- Arch Visual -->
+  <div class="arch-section" style="position:relative;padding:0 60px">
+    <!-- Frustrated face left -->
+    <div style="position:absolute;left:20px;top:8px;text-align:center;width:90px">
+      <div style="font-size:36px;opacity:.25">😣</div>
+      <div style="font-size:7.5px;color:var(--tlight);text-transform:uppercase;letter-spacing:.08em;line-height:1.3;margin-top:4px">Frustrated<br><strong style="color:var(--dnavy)">CURRENT STATE</strong></div>
+    </div>
+    <!-- Happy face right -->
+    <div style="position:absolute;right:20px;top:8px;text-align:center;width:90px">
+      <div style="font-size:36px;opacity:.25">😊</div>
+      <div style="font-size:7.5px;color:var(--tlight);text-transform:uppercase;letter-spacing:.08em;line-height:1.3;margin-top:4px">Desired<br><strong style="color:var(--dnavy)">FUTURE STATE</strong></div>
+    </div>
+    <!-- SVG Arch -->
+    <svg width="100%" height="220" viewBox="0 0 1080 220" preserveAspectRatio="none" style="display:block">
+      <!-- Main arch -->
+      <path d="M 40 210 Q 540 20 1040 210" fill="none" stroke="#d0d4da" stroke-width="2.5"/>
+      <!-- Inner arch -->
+      <path d="M 80 210 Q 540 50 1000 210" fill="none" stroke="#e8eaed" stroke-width="1.5"/>
+      <!-- Pillar lines -->
+      <line x1="220" y1="210" x2="220" y2="155" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="400" y1="210" x2="400" y2="110" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="540" y1="210" x2="540" y2="78" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <line x1="680" y1="210" x2="680" y2="110" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="860" y1="210" x2="860" y2="155" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4,3"/>
+      <!-- Pillar rectangles -->
+      <rect x="160" y="130" width="120" height="80" fill="white" stroke="#e0e0e0" stroke-width="1"/>
+      <rect x="330" y="88" width="120" height="122" fill="white" stroke="#e0e0e0" stroke-width="1"/>
+      <rect x="470" y="58" width="140" height="152" fill="white" stroke="#e0e0e0" stroke-width="1"/>
+      <rect x="590" y="88" width="120" height="122" fill="white" stroke="#e0e0e0" stroke-width="1"/>
+      <rect x="760" y="130" width="120" height="80" fill="white" stroke="#e0e0e0" stroke-width="1"/>
+      <!-- Labels on pillars -->
+      <text x="220" y="148" text-anchor="middle" font-family="Montserrat" font-size="7" fill="#b0bac5" font-style="italic">Product Name</text>
+      <text x="540" y="52" text-anchor="middle" font-family="Montserrat" font-size="9" font-weight="700" fill="#9aa4b0" letter-spacing="2">· SIGNATURE METHOD ·</text>
+      <text x="390" y="108" text-anchor="middle" font-family="Montserrat" font-size="7" fill="#b0bac5" font-style="italic">"Success Pillars"</text>
+      <text x="500" y="108" text-anchor="middle" font-family="Montserrat" font-size="7" fill="#b0bac5">Measurable</text>
+      <!-- Scale dots -->
+      <text x="540" y="112" text-anchor="middle" font-family="Montserrat" font-size="8" font-weight="600" fill="#c8d0d8">10</text>
+      <text x="540" y="125" text-anchor="middle" font-family="Montserrat" font-size="7.5" fill="#d8dde2">·</text>
+      <text x="540" y="138" text-anchor="middle" font-family="Montserrat" font-size="7.5" fill="#d8dde2">·</text>
+      <text x="540" y="151" text-anchor="middle" font-family="Montserrat" font-size="7.5" fill="#d8dde2">·</text>
+      <text x="540" y="164" text-anchor="middle" font-family="Montserrat" font-size="7.5" fill="#d8dde2">·</text>
+      <text x="540" y="177" text-anchor="middle" font-family="Montserrat" font-size="7.5" fill="#d8dde2">·</text>
+      <text x="540" y="190" text-anchor="middle" font-family="Montserrat" font-size="8" font-weight="600" fill="#c8d0d8">0</text>
+      <!-- Category labels -->
+      <text x="630" y="118" font-family="Open Sans" font-size="7" fill="#c0c8d2" font-style="italic">· Quiz Categories</text>
+      <text x="630" y="130" font-family="Open Sans" font-size="7" fill="#c0c8d2" font-style="italic">· Book Chapters</text>
+      <text x="630" y="142" font-family="Open Sans" font-size="7" fill="#c0c8d2" font-style="italic">· Blog Topics</text>
+      <text x="860" y="148" text-anchor="middle" font-family="Montserrat" font-size="7" fill="#b0bac5" font-style="italic">Book Title</text>
+    </svg>
+  </div>
+
+  <!-- A Better Way / POLR Bar -->
+  <div class="polr-bar">
+    <div class="polr-box"><div class="polr-box-label">A Better Way</div></div>
+    <div class="polr-center">⟵ Path Of Least Resistance (P.O.L.R.) ⟶</div>
+    <div class="polr-box" style="text-align:right"><div class="polr-box-label">The Ultimate Destination</div></div>
+  </div>
+
+  <!-- Bottom: Pain | Mistakes | Payoff -->
+  <div class="evb-bottom">
+
+    <!-- LEFT: PAIN + DEEP FEAR -->
+    <div class="evb-col">
+      <div class="evb-section-title">Their Pain <span class="evb-section-icon">⟡</span></div>
+      <div class="evb-bullet-list">
+        <div class="evb-bullet">Symptom</div>
+        <div class="evb-bullet">Struggle</div>
+        <div class="evb-bullet">Cost</div>
+        <div class="evb-bullet">Consequence</div>
+      </div>
+      <div class="frustrated-ambition">
+        <div class="fa-label">Frustrated Ambition</div>
+        <div class="fa-arrow"><div style="font-size:7.5px;color:var(--tlight);flex:1">Previous Attempts</div><div style="color:var(--tlight)">→</div></div>
+        <div class="fa-arrow"><div style="color:var(--tlight)">←</div><div style="font-size:7.5px;color:var(--tlight);flex:1;text-align:right">Repeated Failure</div></div>
+      </div>
+      <div class="evb-deep-fear-box">
+        <div class="evb-df-title">Deep Fear</div>
+        <div class="evb-df-sub">The emotional core of the pain; fears, doubt &amp; uncertainty that motivates change.</div>
+      </div>
+    </div>
+
+    <!-- CENTER: MISTAKES -->
+    <div class="evb-col">
+      <div class="evb-section-title">Their Mistakes <span style="font-size:14px">💡</span></div>
+      <div class="evb-sub-section">
+        <div class="evb-sub-title">Root Cause</div>
+        <div style="width:8px;height:8px;background:var(--dred);border-radius:50%;margin:4px auto"></div>
+      </div>
+      <div class="evb-sub-section">
+        <div class="evb-sub-title">Wrong Thinking</div>
+        <div class="evb-bullet-list">
+          <div class="evb-bullet">Limiting Beliefs</div>
+          <div class="evb-bullet">Blind Spots</div>
+          <div class="evb-bullet">Misunderstandings</div>
+        </div>
+      </div>
+      <div style="width:8px;height:8px;background:var(--dred);border-radius:50%;margin:6px auto"></div>
+      <div class="evb-sub-section">
+        <div class="evb-sub-title">Wrong Action</div>
+        <div class="evb-bullet-list">
+          <div class="evb-bullet">Ineffective Approaches</div>
+          <div class="evb-bullet">Misguided Tactics</div>
+          <div class="evb-bullet">Bad Behaviours</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: PAYOFF + PRIZE -->
+    <div class="evb-col">
+      <div class="evb-section-title">The Payoff <span style="font-size:14px">🎯</span></div>
+      <div class="evb-bullet-list">
+        <div class="evb-bullet">Objective</div>
+        <div class="evb-bullet">Desire</div>
+        <div class="evb-bullet">Without</div>
+        <div class="evb-bullet">Resolution</div>
+      </div>
+      <div class="evb-prize-box" style="margin-top:auto">
+        <div class="evb-prize-title">The Prize</div>
+        <div class="evb-prize-sub">A unique '4-Word Pitch' that captures the essence of the desired outcome.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="evb-footer">
+    <div class="dent-logo-main" style="font-size:18px">Dent<span class="dot">.</span></div>
+    <div style="font-size:8px;color:var(--tlight)">Copyright of Dent Global. All rights reserved. Not for reuse.</div>
+  </div>
+
+</div>
+</div>
+
+
+</body>
+</html>
