@@ -1,33 +1,18 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Built to Stall · Contracks Global</title>
-<meta name="description" content="The founder's guide to scaling delivery without becoming the bottleneck — and the system that lets delivery travel without you in every room.">
+<title>Built to Stall &middot; Contracks Global</title>
+<meta name="description" content="The founder&rsquo;s guide to scaling delivery without becoming the bottleneck &mdash; and the system that lets delivery travel without you in every room.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --navy: #0A1628;
-  --gold: #C5A050;
-  --text: #1A1A1A;
-  --text-light: #555555;
-  --border: #E8E4DC;
-  --bg: #FFFFFF;
-  --bg-warm: #F8F6F2;
-}
+:root { --navy: #0A1628; --gold: #C5A050; --text: #1A1A1A; --text-light: #555555; --border: #E8E4DC; --bg: #FFFFFF; --bg-warm: #F8F6F2; }
 html { scroll-behavior: smooth; }
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: #FFFFFF;
-  color: #1A1A1A;
-  overflow-x: hidden;
-  padding-bottom: 130px;
-}
-/* NAV */
+body { font-family: 'DM Sans', sans-serif; background: #FFFFFF; color: #1A1A1A; overflow-x: hidden; padding-bottom: 130px; }
 nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 48px; border-bottom: 1px solid rgba(197,160,80,0.18); background: #0A1628; position: sticky; top: 0; z-index: 100; }
 .nav-logo { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; color: #C5A050; text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; }
 .nav-right { display: flex; align-items: center; gap: 24px; }
@@ -35,7 +20,6 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .nav-back:hover { color: #C5A050; }
 .nav-cta { background: #C5A050; color: #0A1628; padding: 10px 22px; border-radius: 2px; font-size: 0.82rem; font-weight: 600; text-decoration: none; letter-spacing: 0.04em; transition: background 0.2s; }
 .nav-cta:hover { background: #D4B470; }
-/* ARTICLE HEADER */
 .article-header { background: #0A1628; padding: 80px 40px 60px; text-align: center; }
 .article-meta { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #C5A050; margin-bottom: 24px; }
 .article-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.12; letter-spacing: -0.02em; color: #FFFFFF; max-width: 820px; margin: 0 auto 20px; }
@@ -43,7 +27,7 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .article-byline { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 0.8rem; color: rgba(255,255,255,0.4); flex-wrap: wrap; }
 .byline-name { font-weight: 600; color: rgba(255,255,255,0.6); }
 .byline-dot { color: #C5A050; }
-/* ARTICLE BODY */
+.article-hero { display: block; width: 100%; height: auto; }
 .article-body { max-width: 760px; margin: 0 auto; padding: 56px 48px; }
 .article-body p { font-size: 1.05rem; line-height: 1.85; color: #1A1A1A; font-weight: 300; margin-bottom: 28px; }
 .article-body p strong { font-weight: 600; color: #0A1628; }
@@ -63,7 +47,6 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .objection-block { background: #FFFFFF; border: 1px solid #E8E4DC; border-radius: 2px; padding: 20px 24px; margin: 16px 0; }
 .objection-q { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; color: #0A1628; margin-bottom: 10px; font-weight: 400; }
 .objection-a { font-size: 0.92rem; color: #555; line-height: 1.7; margin-bottom: 0 !important; }
-/* CTA */
 .article-cta { background: #0A1628; border-radius: 4px; padding: 48px; margin: 64px 0 0; text-align: center; }
 .article-cta h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: #FFFFFF; margin-bottom: 12px; }
 .article-cta p { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 28px; max-width: 500px; margin-left: auto; margin-right: auto; }
@@ -72,22 +55,18 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .btn-gold:hover { background: #D4B470; }
 .btn-outline { border: 1px solid rgba(197,160,80,0.4); color: #C5A050; padding: 14px 28px; border-radius: 2px; text-decoration: none; font-weight: 500; font-size: 0.9rem; letter-spacing: 0.03em; transition: all 0.2s; }
 .btn-outline:hover { border-color: #C5A050; background: rgba(197,160,80,0.08); }
-/* FOOTER */
 footer { background: #0A1628; padding: 40px; text-align: center; }
 .footer-brand { display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; color: #C5A050; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; margin-bottom: 14px; }
 .footer-tagline { font-family: 'Playfair Display', serif; font-size: 16px; font-style: italic; color: rgba(255,255,255,0.7); margin-bottom: 14px; }
 .footer-link { font-family: 'DM Sans', sans-serif; font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; text-decoration: none; }
-/* LISTEN BUTTON */
 .listen-bar{display:inline-flex;align-items:center;gap:8px;background:rgba(197,160,80,0.12);border:1px solid rgba(197,160,80,0.45);color:#C5A050;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;padding:11px 22px;border-radius:30px;cursor:pointer;transition:all .18s;}
 .listen-bar:hover{background:rgba(197,160,80,0.2);}
-/* SENTENCE TRACKING */
 .s{transition:background .3s ease,color .3s ease;border-radius:3px;}
 .listening .read-block{opacity:.4;transition:opacity .45s ease;}
 .listening .read-block.block-active{opacity:1;}
 .s.read{color:#9CA3AF !important;}
 .s.active{background:linear-gradient(180deg,transparent 62%,rgba(197,160,80,.40) 62%);}
 .clickable .s{cursor:pointer;}
-/* PLAYER (cks- prefixed) */
 .cks-player{position:fixed;bottom:0;left:0;right:0;background:rgba(8,18,34,.97);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-top:1px solid rgba(197,160,80,.18);z-index:300;box-shadow:0 -10px 44px rgba(0,0,0,.5);transform:translateY(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);}
 .cks-player.show{transform:translateY(0);}
 .cks-scrub{height:3px;background:rgba(255,255,255,.08);cursor:pointer;position:relative;}
@@ -118,7 +97,6 @@ footer { background: #0A1628; padding: 40px; text-align: center; }
 .cks-srcl{font-size:8.5px;font-weight:700;color:#C5A050;letter-spacing:.8px;}
 .cks-stop{width:34px;height:34px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;}
 .cks-stop:hover{background:rgba(255,255,255,.1);}
-/* RESPONSIVE */
 @media (max-width: 768px) {
   nav { padding: 16px 24px; }
   .article-header, .article-body { padding-left: 24px; padding-right: 24px; }
@@ -136,15 +114,15 @@ footer { background: #0A1628; padding: 40px; text-align: center; }
 <nav>
   <a href="/" class="nav-logo">CONTRACKS.GLOBAL</a>
   <div class="nav-right">
-    <a href="/" class="nav-back">← Back to the site</a>
-    <a href="https://contracks.global/control" class="nav-cta">Take the diagnostic →</a>
+    <a href="/" class="nav-back">&larr; Back to the site</a>
+    <a href="https://contracks.global/control" class="nav-cta">Take the diagnostic &rarr;</a>
   </div>
 </nav>
 
 <header class="article-header">
-  <div class="article-meta">GROW&trade; — Special Report &nbsp;&middot;&nbsp; Scaling Delivery &nbsp;&middot;&nbsp; June 2026</div>
+  <div class="article-meta">GROW&trade; &mdash; Special Report &nbsp;&middot;&nbsp; Scaling Delivery &nbsp;&middot;&nbsp; June 2026</div>
   <h1>Built to Stall</h1>
-  <p class="article-deck">Why the business that delivers best becomes the hardest to grow — and how to make delivery travel without you in every room.</p>
+  <p class="article-deck">Why the business that delivers best becomes the hardest to grow &mdash; and how to make delivery travel without you in every room.</p>
   <div style="margin-bottom:24px;">
     <button class="listen-bar" onclick="cksToggle()">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6,4 20,12 6,20" fill="currentColor" stroke="none"/></svg>
@@ -154,12 +132,14 @@ footer { background: #0A1628; padding: 40px; text-align: center; }
   </div>
   <div class="article-byline">
     <span class="byline-name">Written and narrated by Serguei Poppeleer</span>
-    <span class="byline-dot">·</span>
+    <span class="byline-dot">&middot;</span>
     <span>Founder, Contracks Global</span>
-    <span class="byline-dot">·</span>
+    <span class="byline-dot">&middot;</span>
     <span>contracks.global</span>
   </div>
 </header>
+
+<img src="/articles/level4/l4-grow-sr.jpeg" alt="Built to Stall. The system travels. The chaos does not." class="article-hero">
 
 <article class="article-body">
 
@@ -167,27 +147,26 @@ footer { background: #0A1628; padding: 40px; text-align: center; }
   <p class="intro-by">Written and narrated by Serguei Poppeleer.</p>
 
   <p>If you founded or run a capital projects business, you already know the uncomfortable version of success: the better you deliver, the more the whole thing depends on you.</p>
-  <p>You win the work. You keep the clients. The projects land. And every time you try to take on more, something strains — a deadline you personally rescue, a decision only you can sign off, a new project manager who needs a week of your time before they can move.</p>
+  <p>You win the work. You keep the clients. The projects land. And every time you try to take on more, something strains &mdash; a deadline you personally rescue, a decision only you can sign off, a new project manager who needs a week of your time before they can move.</p>
   <p>Growth does not stall because demand dried up. It stalls because the operation cannot absorb more without you in the middle of it.</p>
 
   <div class="pull-quote"><p>The business runs as fast as you can process. Add people, and you just create more people waiting at the bottleneck.</p></div>
 
-  <p>This is for founder-led project, construction, engineering and advisory firms that have proven delivery — but cannot scale without the founder becoming the operating system.</p>
-
-  <p>Here is the part nobody says out loud: the delivery system that makes you good is unwritten. It lives in founder instinct and institutional memory. Every new contract starts from a blank page. Every new hire inherits chaos and calls it learning the ropes. This report is for the founder who has built something that works — and is tired of being the reason it cannot grow.</p>
+  <p>This is for founder-led project, construction, engineering and advisory firms that have proven delivery &mdash; but cannot scale without the founder becoming the operating system.</p>
+  <p>Here is the part nobody says out loud: the delivery system that makes you good is unwritten. It lives in founder instinct and institutional memory. Every new contract starts from a blank page. Every new hire inherits chaos and calls it learning the ropes. This report is for the founder who has built something that works &mdash; and is tired of being the reason it cannot grow.</p>
 
   <div class="section-divider"><span>The portability problem</span></div>
   <h2>The Scaling Illusion</h2>
-  <p>Most founders believe the same thing: we just need more people, a better process, or the right system to buy. So they hire, they buy software, they run an offsite. Six months later they are exactly where they started — except payroll is bigger and the founder is more stretched.</p>
+  <p>Most founders believe the same thing: we just need more people, a better process, or the right system to buy. So they hire, they buy software, they run an offsite. Six months later they are exactly where they started &mdash; except payroll is bigger and the founder is more stretched.</p>
 
   <div class="pull-quote"><p>You do not have a people problem. You have a portability problem.</p></div>
 
-  <p>Your delivery system works. It just cannot leave your head. A system that cannot be handed over is not an asset — it is a dependency. And a business built on a dependency stalls at the exact size where that dependency runs out of hours in the day.</p>
+  <p>Your delivery system works. It just cannot leave your head. A system that cannot be handed over is not an asset &mdash; it is a dependency. And a business built on a dependency stalls at the exact size where that dependency runs out of hours in the day.</p>
 
   <div class="pull-quote"><p>The 5Cs are not just project controls. At GROW level, they become the operating system that lets delivery travel without the founder.</p></div>
 
   <h3>What it actually costs you</h3>
-  <p><strong>You become the ceiling.</strong> The business grows only to the size of your bandwidth. Every senior hire you bring in to take work off your plate needs you to explain how things are done — because nothing is written.</p>
+  <p><strong>You become the ceiling.</strong> The business grows only to the size of your bandwidth. Every senior hire you bring in to take work off your plate needs you to explain how things are done &mdash; because nothing is written.</p>
   <p><strong>Every project resets to zero.</strong> No playbook, no standard positions, no repeatable governance. Each delivery reinvents the wheel. The cost is invisible because it is spread across every project, but it is the biggest tax on your margin.</p>
   <p><strong>Growth turns into fragility.</strong> The system that works for three live projects breaks at five. You start turning work away and call it a bandwidth problem, when it is a structure problem.</p>
 
@@ -197,47 +176,47 @@ footer { background: #0A1628; padding: 40px; text-align: center; }
   <h2>Three mistakes founders make trying to scale</h2>
 
   <div class="shift-block">
-    <div class="shift-label">Mistake 1 — Hiring before systematising</div>
-    <p>A strong hire feels like relief. But if the system does not exist, the hire inherits the chaos — an expensive person sitting inside it. Three months in, they are gone, underperforming, or quietly building a parallel way of working only they understand. You recreated the original problem at a higher salary.</p>
+    <div class="shift-label">Mistake 1 &mdash; Hiring before systematising</div>
+    <p>A strong hire feels like relief. But if the system does not exist, the hire inherits the chaos &mdash; an expensive person sitting inside it. Three months in, they are gone, underperforming, or quietly building a parallel way of working only they understand. You recreated the original problem at a higher salary.</p>
   </div>
   <div class="shift-block">
-    <div class="shift-label">Mistake 2 — Productising the wrong thing</div>
-    <p>Everyone says productise, so you standardise the offering — a standard scope, a standard fee. But the service was never the hard part. What does not survive scale is the delivery architecture underneath it. Standardise the system, not the service. The brochure is not the bottleneck. The engine is.</p>
+    <div class="shift-label">Mistake 2 &mdash; Productising the wrong thing</div>
+    <p>Everyone says productise, so you standardise the offering &mdash; a standard scope, a standard fee. But the service was never the hard part. What does not survive scale is the delivery architecture underneath it. Standardise the system, not the service. The brochure is not the bottleneck. The engine is.</p>
   </div>
   <div class="shift-block">
-    <div class="shift-label">Mistake 3 — Treating commercial capacity as a sales problem</div>
-    <p>When the pipeline dries up, the obvious answer is "get better at business development." But it dries up because business development stops the moment delivery gets busy. The same people do both, and delivery always wins, because delivery has a deadline.</p>
+    <div class="shift-label">Mistake 3 &mdash; Treating commercial capacity as a sales problem</div>
+    <p>When the pipeline dries up, the obvious answer is &ldquo;get better at business development.&rdquo; But it dries up because business development stops the moment delivery gets busy. The same people do both, and delivery always wins, because delivery has a deadline.</p>
   </div>
 
   <div class="section-divider"><span>The 5Cs framework</span></div>
-  <h2>The 5Cs Framework — what travels</h2>
+  <h2>The 5Cs Framework &mdash; what travels</h2>
 
-  <div class="pull-quote"><p>Every founder-led firm that stalled had a brilliant delivery system. The problem was where it lived: in three people's heads.</p></div>
+  <div class="pull-quote"><p>Every founder-led firm that stalled had a brilliant delivery system. The problem was where it lived: in three people&rsquo;s heads.</p></div>
 
-  <p>Frontier markets did not teach me this — they made it impossible to ignore. Deliver across thirty countries, with teams you cannot see, and you learn fast that nothing survives on the founder being in the room. Either the system travels, or nothing does.</p>
-  <p>The 5Cs take the five mechanisms that control delivery and make them portable: written, repeatable, independent of any one person. The same five conditions that hold a single project. When they live in your head, the business runs at founder speed. When they are written down, it runs at system speed — and system speed scales.</p>
+  <p>Frontier markets did not teach me this &mdash; they made it impossible to ignore. Deliver across thirty countries, with teams you cannot see, and you learn fast that nothing survives on the founder being in the room. Either the system travels, or nothing does.</p>
+  <p>The 5Cs take the five mechanisms that control delivery and make them portable: written, repeatable, independent of any one person. The same five conditions that hold a single project. When they live in your head, the business runs at founder speed. When they are written down, it runs at system speed &mdash; and system speed scales.</p>
 
-  <div class="shift-block"><div class="shift-label">C1 — Contain</div><p>A written scope discipline any project manager can apply: assumptions, acceptance criteria, explicit out-of-scope positions. Written down, it stops being the founder's instinct and becomes the firm's standard.</p></div>
-  <div class="shift-block"><div class="shift-label">C2 — Command</div><p>One operating-plan architecture, the same shape on every project, recognised on day one. A structure a new hire inherits, not a plan you rebuild each time.</p></div>
-  <div class="shift-block"><div class="shift-label">C3 — Close</div><p>A decision protocol — owner, decision-by date, consequence — that runs without you in the room. This is the literal mechanism that removes the founder bottleneck.</p></div>
-  <div class="shift-block"><div class="shift-label">C4 — Confirm</div><p>A verification standard that travels, so a junior project manager checks a supplier's date the way you would: against capacity, lead times, and proof of readiness.</p></div>
-  <div class="shift-block"><div class="shift-label">C5 — Control</div><p>A fixed weekly cadence that runs on its own clock. People can change. The rhythm does not.</p></div>
+  <div class="shift-block"><div class="shift-label">C1 &mdash; Contain</div><p>A written scope discipline any project manager can apply: assumptions, acceptance criteria, explicit out-of-scope positions. Written down, it stops being the founder&rsquo;s instinct and becomes the firm&rsquo;s standard.</p></div>
+  <div class="shift-block"><div class="shift-label">C2 &mdash; Command</div><p>One operating-plan architecture, the same shape on every project, recognised on day one. A structure a new hire inherits, not a plan you rebuild each time.</p></div>
+  <div class="shift-block"><div class="shift-label">C3 &mdash; Close</div><p>A decision protocol &mdash; owner, decision-by date, consequence &mdash; that runs without you in the room. This is the literal mechanism that removes the founder bottleneck.</p></div>
+  <div class="shift-block"><div class="shift-label">C4 &mdash; Confirm</div><p>A verification standard that travels, so a junior project manager checks a supplier&rsquo;s date the way you would: against capacity, lead times, and proof of readiness.</p></div>
+  <div class="shift-block"><div class="shift-label">C5 &mdash; Control</div><p>A fixed weekly cadence that runs on its own clock. People can change. The rhythm does not.</p></div>
 
-  <div class="pull-quote"><p>When the five Cs live in your head, you are the system. Written down, the system is the system — and it can be handed to anyone, in any market.</p></div>
+  <div class="pull-quote"><p>When the five Cs live in your head, you are the system. Written down, the system is the system &mdash; and it can be handed to anyone, in any market.</p></div>
 
   <div class="section-divider"><span>The proof</span></div>
   <h2>Proof this is not theory</h2>
 
-  <p>This is the same scaling problem, seen at project level: more distance, more parties, more interfaces — and the system either travels or fails.</p>
+  <p>This is the same scaling problem, seen at project level: more distance, more parties, more interfaces &mdash; and the system either travels or fails.</p>
   <div class="shift-block">
-    <div class="shift-label">Proof · Equatorial Guinea — Camp Delivery</div>
-    <p>A remote camp build: complex terrain, no established supply chain, limited local capability. The standard playbook predicted twelve months and heavy cost. Instead, the camp was delivered in six months at roughly a tenth of the cost. No fence was needed — the local community built it. No claims were filed. The state client released payment on a single line: "We have started the works." That result did not depend on me standing on site. It depended on a system clear enough to hold where most projects drift.</p>
+    <div class="shift-label">Proof &middot; Equatorial Guinea &mdash; Camp Delivery</div>
+    <p>A remote camp build: complex terrain, no established supply chain, limited local capability. The standard playbook predicted twelve months and heavy cost. Instead, the camp was delivered in six months at roughly a tenth of the cost. No fence was needed &mdash; the local community built it. No claims were filed. The state client released payment on a single line: &ldquo;We have started the works.&rdquo; That result did not depend on me standing on site. It depended on a system clear enough to hold where most projects drift.</p>
   </div>
 
-  <p>Same problem at a different scale: more jurisdictions, more parties, more distance — and again, the system either travels or fails.</p>
+  <p>Same problem at a different scale: more jurisdictions, more parties, more distance &mdash; and again, the system either travels or fails.</p>
   <div class="shift-block">
-    <div class="shift-label">Proof · Cross-Border EPC Programme — €850M+ (anonymised)</div>
-    <p>Commercial controls had to hold across multiple jurisdictions, hostile contracting environments, and complex multi-party interfaces. Scale, in practice, is just that — more parties, more interfaces, more distance. The system held because it did not depend on one person being in every room.</p>
+    <div class="shift-label">Proof &middot; Cross-Border EPC Programme &mdash; &euro;850M+ (anonymised)</div>
+    <p>Commercial controls had to hold across multiple jurisdictions, hostile contracting environments, and complex multi-party interfaces. Scale, in practice, is just that &mdash; more parties, more interfaces, more distance. The system held because it did not depend on one person being in every room.</p>
   </div>
 
   <div class="pull-quote"><p>Delivery that scales depends less on heroics and more on a system portable enough to travel without its author.</p></div>
@@ -245,50 +224,50 @@ footer { background: #0A1628; padding: 40px; text-align: center; }
   <div class="section-divider"><span>Five shifts</span></div>
   <h2>Five shifts that let delivery travel</h2>
 
-  <div class="shift-block"><div class="shift-label">Shift 1 — Systematise, then hire</div><p>The system has to exist before a person can perform inside it. Document the delivery architecture before the next senior hire, so they inherit a structure, not a vacuum.</p></div>
-  <div class="shift-block"><div class="shift-label">Shift 2 — Standardise the architecture, not the offer</div><p>The service can flex by client. The engine cannot. Standardise how delivery runs — governance, decision protocols, control cadence, escalation logic.</p></div>
-  <div class="shift-block"><div class="shift-label">Shift 3 — Give business development its own capacity</div><p>The pipeline dies because business development stops when delivery gets busy. Give it its own rhythm, its own assets, and its own infrastructure, separate from delivery.</p></div>
-  <div class="shift-block"><div class="shift-label">Shift 4 — If only you can do it, it isn't a system yet</div><p>Every time you personally rescue a project, you confirm the dependency. The test of a system is whether someone else can run it and it still holds.</p></div>
-  <div class="shift-block"><div class="shift-label">Shift 5 — Decisions close at the edge</div><p>The founder bottleneck is just decisions routing through one person. Give every open decision an owner, a date, and a consequence, and let it close without you.</p></div>
+  <div class="shift-block"><div class="shift-label">Shift 1 &mdash; Systematise, then hire</div><p>The system has to exist before a person can perform inside it. Document the delivery architecture before the next senior hire, so they inherit a structure, not a vacuum.</p></div>
+  <div class="shift-block"><div class="shift-label">Shift 2 &mdash; Standardise the architecture, not the offer</div><p>The service can flex by client. The engine cannot. Standardise how delivery runs &mdash; governance, decision protocols, control cadence, escalation logic.</p></div>
+  <div class="shift-block"><div class="shift-label">Shift 3 &mdash; Give business development its own capacity</div><p>The pipeline dies because business development stops when delivery gets busy. Give it its own rhythm, its own assets, and its own infrastructure, separate from delivery.</p></div>
+  <div class="shift-block"><div class="shift-label">Shift 4 &mdash; If only you can do it, it isn&rsquo;t a system yet</div><p>Every time you personally rescue a project, you confirm the dependency. The test of a system is whether someone else can run it and it still holds.</p></div>
+  <div class="shift-block"><div class="shift-label">Shift 5 &mdash; Decisions close at the edge</div><p>The founder bottleneck is just decisions routing through one person. Give every open decision an owner, a date, and a consequence, and let it close without you.</p></div>
 
   <div class="pull-quote"><p>The clearest sign these shifts are working: you take a two-week holiday, and the business does not text you once.</p></div>
 
   <div class="section-divider"><span>Objections</span></div>
-  <h2>The objections you're probably raising</h2>
+  <h2>The objections you&rsquo;re probably raising</h2>
 
   <div class="objection-block">
-    <div class="objection-q">"Our work is too bespoke to systematise."</div>
-    <p class="objection-a">The deliverables are bespoke. The system that produces them is not. You do not scope, plan, decide, verify and control differently on every project — you do those five things the same way every time. Systematise the five, not the deliverable.</p>
+    <div class="objection-q">&ldquo;Our work is too bespoke to systematise.&rdquo;</div>
+    <p class="objection-a">The deliverables are bespoke. The system that produces them is not. You do not scope, plan, decide, verify and control differently on every project &mdash; you do those five things the same way every time. Systematise the five, not the deliverable.</p>
   </div>
   <div class="objection-block">
-    <div class="objection-q">"If I write it down, my people leave and take it with them."</div>
-    <p class="objection-a">When the system lives only as unwritten operating logic, the people who hold it are the risk — and the leverage is theirs, not yours. A written system is the thing that survives turnover. Your edge was never the secret. It was the discipline.</p>
+    <div class="objection-q">&ldquo;If I write it down, my people leave and take it with them.&rdquo;</div>
+    <p class="objection-a">When the system lives only as unwritten operating logic, the people who hold it are the risk &mdash; and the leverage is theirs, not yours. A written system is the thing that survives turnover. Your edge was never the secret. It was the discipline.</p>
   </div>
   <div class="objection-block">
-    <div class="objection-q">"I don't have time to build a system while I'm delivering."</div>
+    <div class="objection-q">&ldquo;I don&rsquo;t have time to build a system while I&rsquo;m delivering.&rdquo;</div>
     <p class="objection-a">You do not have time not to. The system is built from the projects you are already running, not on top of them. You are capturing the work you already do once, so you stop doing it from scratch every time.</p>
   </div>
   <div class="objection-block">
-    <div class="objection-q">"Won't a system make us rigid and slow?"</div>
+    <div class="objection-q">&ldquo;Won&rsquo;t a system make us rigid and slow?&rdquo;</div>
     <p class="objection-a">Rigidity comes from process with no judgement. A portable system handles the repeatable eighty percent automatically, so your judgement is free for the twenty percent that needs it. It does not remove your speed. It is the only thing that lets you keep it at scale.</p>
   </div>
 
   <div class="section-divider"><span>The core truth</span></div>
   <h2>The core truth</h2>
 
-  <div class="pull-quote"><p>A founder is not there to be the system. A founder is there to build the system — so the business can outgrow the founder.</p></div>
+  <div class="pull-quote"><p>A founder is not there to be the system. A founder is there to build the system &mdash; so the business can outgrow the founder.</p></div>
 
   <p>A system is only real if it travels. If it cannot be handed to a new person, in a new market, and still hold, it is not a system. It is you, working harder.</p>
-  <p>Growth that is engineered looks like this: a new project manager is running the system by Friday. A proposal goes out while three projects are in delivery, and nobody burns out. You take on two new clients without being on a single delivery call. And you take the two-week holiday — and the business does not text you once.</p>
+  <p>Growth that is engineered looks like this: a new project manager is running the system by Friday. A proposal goes out while three projects are in delivery, and nobody burns out. You take on two new clients without being on a single delivery call. And you take the two-week holiday &mdash; and the business does not text you once.</p>
 
   <div class="pull-quote"><p>The system travels. The chaos does not.</p></div>
 
   <div class="article-cta">
     <h3>Find where delivery still depends on you.</h3>
-    <p>Take the CONTROL diagnostic. Twenty questions. Four minutes. It shows which of the five conditions is still running at founder speed — and what it takes to move it to system speed.</p>
+    <p>Take the CONTROL diagnostic. Twenty questions. Four minutes. It shows which of the five conditions is still running at founder speed &mdash; and what it takes to move it to system speed.</p>
     <div class="cta-buttons">
-      <a href="https://contracks.global/control" class="btn-gold">Take the diagnostic →</a>
-      <a href="/grow" class="btn-outline">Join the GROW waitlist →</a>
+      <a href="https://contracks.global/control" class="btn-gold">Take the diagnostic &rarr;</a>
+      <a href="/grow" class="btn-outline">Join the GROW waitlist &rarr;</a>
     </div>
   </div>
 
@@ -300,7 +279,6 @@ footer { background: #0A1628; padding: 40px; text-align: center; }
   <a href="/" class="footer-link">contracks.global</a>
 </footer>
 
-<!-- ══ AUDIO PLAYER ══ -->
 <div class="cks-player" id="cksPlayer">
   <div class="cks-scrub" id="cksScrub" onclick="cksSeek(event)"><div class="cks-fill" id="cksFill"></div></div>
   <div class="cks-now"><span class="cks-nl">Now reading</span><span class="cks-nt" id="cksNow">Press play to begin</span></div>
@@ -322,175 +300,48 @@ footer { background: #0A1628; padding: 40px; text-align: center; }
 </div>
 
 <script>
-/* ════════════════════════════════════════════════════════════
-   CONTRACKS in-page reader — GROW Special Report (Built to Stall)
-   Standard model, lifted from articles/level2/l2-article1.html.
-   SELECTOR and SENT_RE are IDENTICAL to the article reader and the
-   GitHub Action — do not change them or sentence-sync will drift.
-   States auto-detected: synced mp3+json → mp3 only → browser voice.
-════════════════════════════════════════════════════════════ */
 const ARTICLE_SLUG = 'specialreport4';
 const AUDIO_BASE = '/audio';
 const SELECTOR = '.article-deck, .article-body h2, .article-body h3, .article-body p, .article-body .objection-q';
-const SENT_RE = /[^.!?]+[.!?]+(?:["'”’)\]]+)?\s*|[^.!?]+$/g;
-let spans = {};
-let block = [];
-let N = 0;
-let times = null;
-let cur = -1, state = 'idle', rate = 1, MODE = 'browser';
-function endOffsets(text){
-  const re = new RegExp(SENT_RE.source, 'g'); let m, acc = 0; const out = [];
-  while ((m = re.exec(text)) !== null){ if (m[0] === ''){ re.lastIndex++; continue; } acc += m[0].length; out.push(acc); }
-  return out.length ? out : [text.length];
-}
-function sidx(off, bounds){ for (let i=0;i<bounds.length;i++) if (off < bounds[i]) return i; return bounds.length-1; }
-function mkSpan(text, si){ const s=document.createElement('span'); s.className='s'; s.dataset.si=si; s.textContent=text; return s; }
-function wrapEl(el, ctx){
-  [...el.childNodes].forEach(child=>{
-    if (child.nodeType === 3){
-      const txt = child.nodeValue, frag = document.createDocumentFragment();
-      let buf='', c0 = sidx(ctx.off, ctx.bounds);
-      for (let c=0;c<txt.length;c++){
-        const gi = sidx(ctx.off, ctx.bounds);
-        if (gi !== c0 && buf !== ''){ frag.appendChild(mkSpan(buf, ctx.base + c0)); buf=''; c0=gi; }
-        buf += txt[c]; ctx.off++;
-      }
-      if (buf !== '') frag.appendChild(mkSpan(buf, ctx.base + c0));
-      el.replaceChild(frag, child);
-    } else if (child.nodeType === 1){ wrapEl(child, ctx); }
-  });
-}
-function build(){
-  document.querySelectorAll(SELECTOR).forEach(node=>{
-    if (node.closest('.article-cta')) return;
-    node.classList.add('read-block');
-    const raw = node.textContent;
-    const bounds = endOffsets(raw);
-    wrapEl(node, { off:0, bounds, base:N });
-    for (let i=0;i<bounds.length;i++) block[N+i] = node;
-    N += bounds.length;
-  });
-  document.querySelectorAll('.s').forEach(s=>{
-    const i = +s.dataset.si; (spans[i] = spans[i] || []).push(s);
-    s.onclick = () => cksSeekSentence(i);
-  });
-  const words = document.querySelector('.article-body').textContent.trim().split(/\s+/).length;
-  document.getElementById('cksListenTime').textContent = '· ' + Math.max(1, Math.round(words/150)) + ' min';
-}
-function sentText(i){ return (spans[i] || []).map(s=>s.textContent).join(''); }
-function highlight(i){
-  if (i === cur || i < 0 || i >= N) return;
-  if (cur >= 0 && spans[cur]) spans[cur].forEach(s=>{ s.classList.remove('active'); s.classList.add('read'); });
-  for (let k=Math.max(0,cur); k<i; k++) spans[k]?.forEach(s=>s.classList.add('read'));
-  cur = i;
-  spans[i]?.forEach(s=>{ s.classList.remove('read'); s.classList.add('active'); });
-  document.querySelectorAll('.read-block.block-active').forEach(b=>b.classList.remove('block-active'));
-  const blk = block[i]; blk?.classList.add('block-active');
-  document.getElementById('cksNow').textContent = sentText(i).trim().slice(0,80);
-  if (blk){ const r=blk.getBoundingClientRect(), vh=innerHeight; if (r.top<vh*0.2 || r.bottom>vh-150) scrollTo({top:scrollY+r.top-vh*0.32, behavior:'smooth'}); }
-}
-function clearAll(){ document.querySelectorAll('.s.active,.s.read').forEach(s=>s.classList.remove('active','read')); document.querySelectorAll('.block-active').forEach(b=>b.classList.remove('block-active')); cur=-1; }
+const SENT_RE = /[^.!?]+[.!?]+(?:["'"')\]]+)?\s*|[^.!?]+$/g;
+let spans={},block=[],N=0,times=null,cur=-1,state='idle',rate=1,MODE='browser';
+function endOffsets(text){const re=new RegExp(SENT_RE.source,'g');let m,acc=0;const out=[];while((m=re.exec(text))!==null){if(m[0]===''){re.lastIndex++;continue;}acc+=m[0].length;out.push(acc);}return out.length?out:[text.length];}
+function sidx(off,bounds){for(let i=0;i<bounds.length;i++)if(off<bounds[i])return i;return bounds.length-1;}
+function mkSpan(text,si){const s=document.createElement('span');s.className='s';s.dataset.si=si;s.textContent=text;return s;}
+function wrapEl(el,ctx){[...el.childNodes].forEach(child=>{if(child.nodeType===3){const txt=child.nodeValue,frag=document.createDocumentFragment();let buf='',c0=sidx(ctx.off,ctx.bounds);for(let c=0;c<txt.length;c++){const gi=sidx(ctx.off,ctx.bounds);if(gi!==c0&&buf!==''){frag.appendChild(mkSpan(buf,ctx.base+c0));buf='';c0=gi;}buf+=txt[c];ctx.off++;}if(buf!=='')frag.appendChild(mkSpan(buf,ctx.base+c0));el.replaceChild(frag,child);}else if(child.nodeType===1){wrapEl(child,ctx);}});}
+function build(){document.querySelectorAll(SELECTOR).forEach(node=>{if(node.closest('.article-cta'))return;node.classList.add('read-block');const raw=node.textContent;const bounds=endOffsets(raw);wrapEl(node,{off:0,bounds,base:N});for(let i=0;i<bounds.length;i++)block[N+i]=node;N+=bounds.length;});document.querySelectorAll('.s').forEach(s=>{const i=+s.dataset.si;(spans[i]=spans[i]||[]).push(s);s.onclick=()=>cksSeekSentence(i);});const words=document.querySelector('.article-body').textContent.trim().split(/\s+/).length;document.getElementById('cksListenTime').textContent='· '+Math.max(1,Math.round(words/150))+' min';}
+function sentText(i){return(spans[i]||[]).map(s=>s.textContent).join('');}
+function highlight(i){if(i===cur||i<0||i>=N)return;if(cur>=0&&spans[cur])spans[cur].forEach(s=>{s.classList.remove('active');s.classList.add('read');});for(let k=Math.max(0,cur);k<i;k++)spans[k]?.forEach(s=>s.classList.add('read'));cur=i;spans[i]?.forEach(s=>{s.classList.remove('read');s.classList.add('active');});document.querySelectorAll('.read-block.block-active').forEach(b=>b.classList.remove('block-active'));const blk=block[i];blk?.classList.add('block-active');document.getElementById('cksNow').textContent=sentText(i).trim().slice(0,80);if(blk){const r=blk.getBoundingClientRect(),vh=innerHeight;if(r.top<vh*0.2||r.bottom>vh-150)scrollTo({top:scrollY+r.top-vh*0.32,behavior:'smooth'});}}
+function clearAll(){document.querySelectorAll('.s.active,.s.read').forEach(s=>s.classList.remove('active','read'));document.querySelectorAll('.block-active').forEach(b=>b.classList.remove('block-active'));cur=-1;}
 let audio=null;
-function timeToSentence(t){ let i=0; for (let k=0;k<times.length;k++){ if (t>=times[k].start) i=k; else break; } return i; }
-function elInit(){
-  audio = new Audio(`${AUDIO_BASE}/${ARTICLE_SLUG}.mp3`); audio.preload='metadata';
-  audio.addEventListener('timeupdate', ()=>{
-    const t=audio.currentTime, dur=audio.duration || times.at(-1).end;
-    if (times) highlight(Math.min(timeToSentence(t), N-1));
-    setProgress(t/dur*100); setStatus(remain(dur-t));
-  });
-  audio.addEventListener('ended', finish);
-}
-const elEngine = {
-  play(){ if(!audio)elInit(); audio.playbackRate=rate; audio.play(); },
-  pause(){ audio&&audio.pause(); },
-  stop(){ if(audio){audio.pause();audio.currentTime=0;} },
-  seekSentence(i){ if(!audio)elInit(); if(times) audio.currentTime=times[Math.min(i,times.length-1)].start; if(state==='playing')audio.play(); },
-  seekFraction(f){ if(!audio)elInit(); audio.currentTime=f*(audio.duration||(times?times.at(-1).end:0)); if(state==='playing')audio.play(); },
-  setRate(r){ if(audio)audio.playbackRate=r; }
-};
-let voice=null, smooth=null;
-function pickVoice(){ const v=speechSynthesis.getVoices(); voice=v.find(x=>x.name==='Daniel'&&x.lang==='en-GB')||v.find(x=>x.lang==='en-GB')||v.find(x=>x.lang.startsWith('en')); }
-function speakFrom(i){
-  if(i>=N){ finish(); return; }
-  highlight(i);
-  const u=new SpeechSynthesisUtterance(sentText(i)); u.rate=rate; if(voice)u.voice=voice;
-  startSmooth(i);
-  u.onend=()=>{ if(state==='playing'){ stopSmooth(); speakFrom(i+1); } };
-  u.onerror=e=>{ if(e.error!=='interrupted'&&state==='playing'){ stopSmooth(); speakFrom(i+1); } };
-  speechSynthesis.speak(u);
-}
-function len(i){ return sentText(i).length; }
-function startSmooth(i){
-  stopSmooth();
-  let total=0, before=0; for(let k=0;k<N;k++){ const l=len(k); if(k<i)before+=l; total+=l; }
-  const dur=Math.max(800, len(i)/(14.5*rate)*1000), t0=performance.now();
-  smooth=setInterval(()=>{ const f=Math.min(1,(performance.now()-t0)/dur); setProgress((before+len(i)*f)/total*100); }, 120);
-}
-function stopSmooth(){ if(smooth){clearInterval(smooth);smooth=null;} }
-const brEngine = {
-  play(){ if(state==='paused')speechSynthesis.resume(); else { speechSynthesis.cancel(); speakFrom(cur<0?0:cur); } },
-  pause(){ speechSynthesis.pause(); stopSmooth(); },
-  stop(){ speechSynthesis.cancel(); stopSmooth(); },
-  seekSentence(i){ speechSynthesis.cancel(); stopSmooth(); cur=i-1; if(state==='playing')speakFrom(i); else highlight(i); },
-  seekFraction(f){ this.seekSentence(Math.floor(f*N)); },
-  setRate(){ if(state==='playing'){ const i=cur; speechSynthesis.cancel(); stopSmooth(); speakFrom(i); } }
-};
-const plainEngine = {
-  play(){ if(!audio)elInit(); audio.playbackRate=rate; audio.play(); },
-  pause(){ audio&&audio.pause(); },
-  stop(){ if(audio){audio.pause();audio.currentTime=0;} },
-  seekSentence(){},
-  seekFraction(f){ if(!audio)elInit(); audio.currentTime=f*(audio.duration||0); if(state==='playing')audio.play(); },
-  setRate(r){ if(audio)audio.playbackRate=r; }
-};
-let E = brEngine;
-function cksToggle(){ state==='playing' ? cksPause() : play(); }
-function play(){
-  if(state==='done') clearAll();
-  if(MODE!=='plain'){ document.body.classList.add('listening'); if(state!=='paused'&&cur<0) highlight(0); }
-  state='playing'; setUI(true); E.play();
-}
-function cksPause(){ state='paused'; setUI(false); E.pause(); setStatus('Paused'); }
-function cksStop(){ state='idle'; setUI(false); E.stop(); stopSmooth(); clearAll(); document.body.classList.remove('listening'); setProgress(0); setStatus(label()); document.getElementById('cksNow').textContent='Press play to begin'; }
-function finish(){ state='done'; setUI(false); stopSmooth(); setProgress(100); setStatus('Finished'); document.getElementById('cksNow').textContent='Report complete'; document.body.classList.remove('listening'); }
-function cksSeekSentence(i){ if(MODE==='plain')return; if(state==='idle')play(); E.seekSentence(i); highlight(i); }
-function cksSeek(e){ const r=e.currentTarget.getBoundingClientRect(); E.seekFraction((e.clientX-r.left)/r.width); }
-function cksRate(r){ rate=r; document.querySelectorAll('.cks-spd').forEach(b=>b.classList.toggle('on',parseFloat(b.textContent)===r)); E.setRate(r); }
-function setProgress(p){ document.getElementById('cksFill').style.width=Math.min(100,Math.max(0,p))+'%'; }
-function setStatus(s){ document.getElementById('cksStatus').textContent=s; }
-function remain(sec){ sec=Math.max(0,Math.round(sec)); const m=Math.floor(sec/60),s=sec%60; return m>0?`${m}m ${s}s left`:`${s}s left`; }
-function setUI(on){
-  document.getElementById('cksIcon').innerHTML = on ? '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>' : '<polygon points="6,4 20,12 6,20"/>';
-  document.getElementById('cksPlayer').classList.toggle('playing', on);
-  document.getElementById('cksListenLabel').textContent = on ? 'Pause' : 'Listen to this report';
-}
-function label(){ return MODE==='el' ? 'Contracks Global Insights' : MODE==='plain' ? 'Audio report' : 'Browser voice (preview)'; }
-function applySrc(){
-  const l=document.getElementById('cksSrcL');
-  l.textContent = MODE==='el' ? 'ELEVENLABS' : MODE==='plain' ? 'AUDIO' : 'BROWSER';
-  if(MODE==='el' && times){ const d=times.at(-1)?.end||0; document.getElementById('cksListenTime').textContent='· '+Math.max(1,Math.round(d/60))+' min'; }
-  if(MODE!=='plain') document.querySelector('.article-body').classList.add('clickable');
-  setStatus(label());
-}
-window.addEventListener('DOMContentLoaded', async ()=>{
-  build();
-  document.getElementById('cksPlayer').classList.add('show');
-  try{
-    const r=await fetch(`${AUDIO_BASE}/${ARTICLE_SLUG}.sentences.json`,{cache:'no-cache'});
-    if(!r.ok) throw 0;
-    const d=await r.json(); times=d.sentences;
-    if(!Array.isArray(times)||!times.length) throw 0;
-    if(times.length!==N) console.warn(`Sentence mismatch: audio ${times.length} vs page ${N}`);
-    MODE='el'; E=elEngine; applySrc(); return;
-  }catch(e){}
-  try{
-    const h=await fetch(`${AUDIO_BASE}/${ARTICLE_SLUG}.mp3`,{headers:{Range:'bytes=0-1'},cache:'no-store'});
-    if(h.ok && (h.status===200||h.status===206)){ MODE='plain'; E=plainEngine; applySrc(); return; }
-  }catch(e){}
-  MODE='browser'; E=brEngine; pickVoice(); speechSynthesis.onvoiceschanged=pickVoice; speechSynthesis.getVoices(); applySrc();
-});
-window.addEventListener('beforeunload', ()=>{ if(MODE==='browser') speechSynthesis.cancel(); });
+function timeToSentence(t){let i=0;for(let k=0;k<times.length;k++){if(t>=times[k].start)i=k;else break;}return i;}
+function elInit(){audio=new Audio(`${AUDIO_BASE}/${ARTICLE_SLUG}.mp3`);audio.preload='metadata';audio.addEventListener('timeupdate',()=>{const t=audio.currentTime,dur=audio.duration||times.at(-1).end;if(times)highlight(Math.min(timeToSentence(t),N-1));setProgress(t/dur*100);setStatus(remain(dur-t));});audio.addEventListener('ended',finish);}
+const elEngine={play(){if(!audio)elInit();audio.playbackRate=rate;audio.play();},pause(){audio&&audio.pause();},stop(){if(audio){audio.pause();audio.currentTime=0;}},seekSentence(i){if(!audio)elInit();if(times)audio.currentTime=times[Math.min(i,times.length-1)].start;if(state==='playing')audio.play();},seekFraction(f){if(!audio)elInit();audio.currentTime=f*(audio.duration||(times?times.at(-1).end:0));if(state==='playing')audio.play();},setRate(r){if(audio)audio.playbackRate=r;}};
+let voice=null,smooth=null;
+function pickVoice(){const v=speechSynthesis.getVoices();voice=v.find(x=>x.name==='Daniel'&&x.lang==='en-GB')||v.find(x=>x.lang==='en-GB')||v.find(x=>x.lang.startsWith('en'));}
+function speakFrom(i){if(i>=N){finish();return;}highlight(i);const u=new SpeechSynthesisUtterance(sentText(i));u.rate=rate;if(voice)u.voice=voice;startSmooth(i);u.onend=()=>{if(state==='playing'){stopSmooth();speakFrom(i+1);}};u.onerror=e=>{if(e.error!=='interrupted'&&state==='playing'){stopSmooth();speakFrom(i+1);}};speechSynthesis.speak(u);}
+function len(i){return sentText(i).length;}
+function startSmooth(i){stopSmooth();let total=0,before=0;for(let k=0;k<N;k++){const l=len(k);if(k<i)before+=l;total+=l;}const dur=Math.max(800,len(i)/(14.5*rate)*1000),t0=performance.now();smooth=setInterval(()=>{const f=Math.min(1,(performance.now()-t0)/dur);setProgress((before+len(i)*f)/total*100);},120);}
+function stopSmooth(){if(smooth){clearInterval(smooth);smooth=null;}}
+const brEngine={play(){if(state==='paused')speechSynthesis.resume();else{speechSynthesis.cancel();speakFrom(cur<0?0:cur);}},pause(){speechSynthesis.pause();stopSmooth();},stop(){speechSynthesis.cancel();stopSmooth();},seekSentence(i){speechSynthesis.cancel();stopSmooth();cur=i-1;if(state==='playing')speakFrom(i);else highlight(i);},seekFraction(f){this.seekSentence(Math.floor(f*N));},setRate(){if(state==='playing'){const i=cur;speechSynthesis.cancel();stopSmooth();speakFrom(i);}}};
+const plainEngine={play(){if(!audio)elInit();audio.playbackRate=rate;audio.play();},pause(){audio&&audio.pause();},stop(){if(audio){audio.pause();audio.currentTime=0;}},seekSentence(){},seekFraction(f){if(!audio)elInit();audio.currentTime=f*(audio.duration||0);if(state==='playing')audio.play();},setRate(r){if(audio)audio.playbackRate=r;}};
+let E=brEngine;
+function cksToggle(){state==='playing'?cksPause():play();}
+function play(){if(state==='done')clearAll();if(MODE!=='plain'){document.body.classList.add('listening');if(state!=='paused'&&cur<0)highlight(0);}state='playing';setUI(true);E.play();}
+function cksPause(){state='paused';setUI(false);E.pause();setStatus('Paused');}
+function cksStop(){state='idle';setUI(false);E.stop();stopSmooth();clearAll();document.body.classList.remove('listening');setProgress(0);setStatus(label());document.getElementById('cksNow').textContent='Press play to begin';}
+function finish(){state='done';setUI(false);stopSmooth();setProgress(100);setStatus('Finished');document.getElementById('cksNow').textContent='Report complete';document.body.classList.remove('listening');}
+function cksSeekSentence(i){if(MODE==='plain')return;if(state==='idle')play();E.seekSentence(i);highlight(i);}
+function cksSeek(e){const r=e.currentTarget.getBoundingClientRect();E.seekFraction((e.clientX-r.left)/r.width);}
+function cksRate(r){rate=r;document.querySelectorAll('.cks-spd').forEach(b=>b.classList.toggle('on',parseFloat(b.textContent)===r));E.setRate(r);}
+function setProgress(p){document.getElementById('cksFill').style.width=Math.min(100,Math.max(0,p))+'%';}
+function setStatus(s){document.getElementById('cksStatus').textContent=s;}
+function remain(sec){sec=Math.max(0,Math.round(sec));const m=Math.floor(sec/60),s=sec%60;return m>0?`${m}m ${s}s left`:`${s}s left`;}
+function setUI(on){document.getElementById('cksIcon').innerHTML=on?'<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>':'<polygon points="6,4 20,12 6,20"/>';document.getElementById('cksPlayer').classList.toggle('playing',on);document.getElementById('cksListenLabel').textContent=on?'Pause':'Listen to this report';}
+function label(){return MODE==='el'?'Contracks Global Insights':MODE==='plain'?'Audio report':'Browser voice (preview)';}
+function applySrc(){const l=document.getElementById('cksSrcL');l.textContent=MODE==='el'?'ELEVENLABS':MODE==='plain'?'AUDIO':'BROWSER';if(MODE==='el'&&times){const d=times.at(-1)?.end||0;document.getElementById('cksListenTime').textContent='· '+Math.max(1,Math.round(d/60))+' min';}if(MODE!=='plain')document.querySelector('.article-body').classList.add('clickable');setStatus(label());}
+window.addEventListener('DOMContentLoaded',async()=>{build();document.getElementById('cksPlayer').classList.add('show');try{const r=await fetch(`${AUDIO_BASE}/${ARTICLE_SLUG}.sentences.json`,{cache:'no-cache'});if(!r.ok)throw 0;const d=await r.json();times=d.sentences;if(!Array.isArray(times)||!times.length)throw 0;if(times.length!==N)console.warn(`Sentence mismatch: audio ${times.length} vs page ${N}`);MODE='el';E=elEngine;applySrc();return;}catch(e){}try{const h=await fetch(`${AUDIO_BASE}/${ARTICLE_SLUG}.mp3`,{headers:{Range:'bytes=0-1'},cache:'no-store'});if(h.ok&&(h.status===200||h.status===206)){MODE='plain';E=plainEngine;applySrc();return;}}catch(e){}MODE='browser';E=brEngine;pickVoice();speechSynthesis.onvoiceschanged=pickVoice;speechSynthesis.getVoices();applySrc();});
+window.addEventListener('beforeunload',()=>{if(MODE==='browser')speechSynthesis.cancel();});
 </script>
 </body>
 </html>
