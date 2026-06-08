@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>An Idea Is Worth Nothing · Contracks Global</title>
+<meta name="description" content="A founder's guide to turning a venture into something worth backing — before you burn the runway finding out. Market that pays, money that lasts, margin that holds.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0A1628;
+  --gold: #C5A050;
+  --text: #1A1A1A;
+  --text-light: #555555;
+  --border: #E8E4DC;
+  --bg: #FFFFFF;
+  --bg-warm: #F8F6F2;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #FFFFFF;
+  color: #1A1A1A;
+  overflow-x: hidden;
+  padding-bottom: 130px;
+}
+/* NAV */
+nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 48px; border-bottom: 1px solid rgba(197,160,80,0.18); background: #0A1628; position: sticky; top: 0; z-index: 100; }
+.nav-logo { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; color: #C5A050; text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; }
+.nav-right { display: flex; align-items: center; gap: 24px; }
+.nav-back { font-size: 11px; color: rgba(255,255,255,0.45); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.nav-back:hover { color: #C5A050; }
+.nav-cta { background: #C5A050; color: #0A1628; padding: 10px 22px; border-radius: 2px; font-size: 0.82rem; font-weight: 600; text-decoration: none; letter-spacing: 0.04em; transition: background 0.2s; }
+.nav-cta:hover { background: #D4B470; }
+/* ARTICLE HEADER */
+.article-header { background: #0A1628; padding: 80px 40px 60px; text-align: center; }
+.article-meta { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #C5A050; margin-bottom: 24px; }
+.article-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.12; letter-spacing: -0.02em; color: #FFFFFF; max-width: 820px; margin: 0 auto 20px; }
+.article-deck { font-size: 1.15rem; font-weight: 300; line-height: 1.65; color: rgba(255,255,255,0.65); font-style: italic; max-width: 600px; margin: 0 auto 32px; }
+.article-byline { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 0.8rem; color: rgba(255,255,255,0.4); flex-wrap: wrap; }
+.byline-name { font-weight: 600; color: rgba(255,255,255,0.6); }
+.byline-dot { color: #C5A050; }
+/* ARTICLE BODY */
+.article-body { max-width: 760px; margin: 0 auto; padding: 56px 48px; }
+.article-body p { font-size: 1.05rem; line-height: 1.85; color: #1A1A1A; font-weight: 300; margin-bottom: 28px; }
+.article-body p strong { font-weight: 600; color: #0A1628; }
+.article-body em { font-style: italic; }
+.intro-title { font-family: 'Playfair Display', serif; font-size: 1.5rem !important; font-weight: 900; color: #0A1628 !important; line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 6px !important; }
+.intro-by { font-family: 'DM Sans', sans-serif; font-size: 0.85rem !important; font-weight: 600 !important; color: #C5A050 !important; letter-spacing: 0.04em; margin-bottom: 36px !important; }
+.pull-quote { border-left: 3px solid #C5A050; padding: 4px 0 4px 28px; margin: 40px 0; }
+.pull-quote p { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-style: italic; line-height: 1.6; color: #0A1628; font-weight: 400; margin-bottom: 0; }
+.article-body h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: #0A1628; line-height: 1.25; margin: 56px 0 20px; letter-spacing: -0.01em; }
+.article-body h3 { font-size: 1.1rem; font-weight: 600; color: #0A1628; margin: 36px 0 12px; letter-spacing: 0.01em; }
+.section-divider { display: flex; align-items: center; gap: 16px; margin: 48px 0; }
+.section-divider::before, .section-divider::after { content: ''; flex: 1; height: 1px; background: #E8E4DC; }
+.section-divider span { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #C5A050; white-space: nowrap; }
+.shift-block { background: #F8F6F2; border: 1px solid #E8E4DC; border-left: 3px solid #C5A050; border-radius: 2px; padding: 24px 28px; margin: 24px 0; }
+.shift-block .shift-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #C5A050; margin-bottom: 8px; }
+.shift-block p { margin-bottom: 0; font-size: 1rem; }
+.objection-block { background: #FFFFFF; border: 1px solid #E8E4DC; border-radius: 2px; padding: 20px 24px; margin: 16px 0; }
+.objection-q { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; color: #0A1628; margin-bottom: 10px; font-weight: 400; }
+.objection-a { font-size: 0.92rem; color: #555; line-height: 1.7; margin-bottom: 0 !important; }
+/* CTA */
+.article-cta { background: #0A1628; border-radius: 4px; padding: 48px; margin: 64px 0 0; text-align: center; }
+.article-cta h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: #FFFFFF; margin-bottom: 12px; }
+.article-cta p { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 28px; max-width: 500px; margin-left: auto; margin-right: auto; }
+.cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-gold { background: #C5A050; color: #0A1628; padding: 14px 28px; border-radius: 2px; text-decoration: none; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.03em; transition: background 0.2s; }
+.btn-gold:hover { background: #D4B470; }
+.btn-outline { border: 1px solid rgba(197,160,80,0.4); color: #C5A050; padding: 14px 28px; border-radius: 2px; text-decoration: none; font-weight: 500; font-size: 0.9rem; letter-spacing: 0.03em; transition: all 0.2s; }
+.btn-outline:hover { border-color: #C5A050; background: rgba(197,160,80,0.08); }
+/* FOOTER */
+footer { background: #0A1628; padding: 40px; text-align: center; }
+.footer-brand { display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; color: #C5A050; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; margin-bottom: 14px; }
+.footer-tagline { font-family: 'Playfair Display', serif; font-size: 16px; font-style: italic; color: rgba(255,255,255,0.7); margin-bottom: 14px; }
+.footer-link { font-family: 'DM Sans', sans-serif; font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; text-decoration: none; }
+/* LISTEN BUTTON */
+.listen-bar{display:inline-flex;align-items:center;gap:8px;background:rgba(197,160,80,0.12);border:1px solid rgba(197,160,80,0.45);color:#C5A050;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;padding:11px 22px;border-radius:30px;cursor:pointer;transition:all .18s;}
+.listen-bar:hover{background:rgba(197,160,80,0.2);}
+/* SENTENCE TRACKING */
+.s{transition:background .3s ease,color .3s ease;border-radius:3px;}
+.listening .read-block{opacity:.4;transition:opacity .45s ease;}
+.listening .read-block.block-active{opacity:1;}
+.s.read{color:#9CA3AF !important;}
+.s.active{background:linear-gradient(180deg,transparent 62%,rgba(197,160,80,.40) 62%);}
+.clickable .s{cursor:pointer;}
+/* PLAYER (cks- prefixed) */
+.cks-player{position:fixed;bottom:0;left:0;right:0;background:rgba(8,18,34,.97);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-top:1px solid rgba(197,160,80,.18);z-index:300;box-shadow:0 -10px 44px rgba(0,0,0,.5);transform:translateY(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);}
+.cks-player.show{transform:translateY(0);}
+.cks-scrub{height:3px;background:rgba(255,255,255,.08);cursor:pointer;position:relative;}
+.cks-fill{height:100%;background:linear-gradient(90deg,#C5A050,#D4B470);width:0%;}
+.cks-scrub:hover{height:5px;transition:height .15s;}
+.cks-now{padding:9px 22px 0;display:flex;align-items:center;gap:10px;overflow:hidden;}
+.cks-nl{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#C5A050;opacity:.65;flex-shrink:0;}
+.cks-nt{font-size:12px;color:rgba(255,255,255,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;font-family:'Playfair Display',serif;font-style:italic;}
+.cks-main{padding:13px 22px 16px;display:flex;align-items:center;gap:15px;}
+.cks-play{width:48px;height:48px;background:#C5A050;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;box-shadow:0 4px 16px rgba(197,160,80,.38);}
+.cks-play:hover{background:#D4B470;transform:scale(1.05);}
+.cks-wave{display:flex;align-items:center;gap:2px;height:24px;flex-shrink:0;}
+.cks-wb{width:2px;background:#C5A050;border-radius:2px;opacity:.22;}
+@keyframes ckswv{0%,100%{transform:scaleY(.3);}50%{transform:scaleY(1);}}
+.cks-player.playing .cks-wb{opacity:.8;animation:ckswv .75s ease-in-out infinite;}
+.cks-wb:nth-child(1){height:8px;animation-delay:0s;}.cks-wb:nth-child(2){height:17px;animation-delay:.12s;}
+.cks-wb:nth-child(3){height:23px;animation-delay:.24s;}.cks-wb:nth-child(4){height:14px;animation-delay:.18s;}
+.cks-wb:nth-child(5){height:9px;animation-delay:.06s;}
+.cks-info{flex:1;min-width:0;}
+.cks-t{font-size:12.5px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cks-st{font-size:10.5px;color:rgba(255,255,255,.42);margin-top:3px;}
+.cks-right{display:flex;align-items:center;gap:9px;flex-shrink:0;}
+.cks-speed{display:flex;gap:1px;background:rgba(255,255,255,.05);border-radius:6px;padding:2px;}
+.cks-spd{background:none;border:none;color:rgba(255,255,255,.42);font-family:'DM Sans',sans-serif;font-size:9.5px;font-weight:600;padding:5px 8px;border-radius:4px;cursor:pointer;transition:all .12s;}
+.cks-spd.on,.cks-spd:hover{background:rgba(197,160,80,.18);color:#C5A050;}
+.cks-src{display:flex;align-items:center;gap:6px;background:rgba(197,160,80,.07);border:1px solid rgba(197,160,80,.2);border-radius:5px;padding:5px 9px;cursor:pointer;}
+.cks-dot{width:6px;height:6px;border-radius:50%;background:#C5A050;}
+.cks-srcl{font-size:8.5px;font-weight:700;color:#C5A050;letter-spacing:.8px;}
+.cks-stop{width:34px;height:34px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.cks-stop:hover{background:rgba(255,255,255,.1);}
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 16px 24px; }
+  .article-header, .article-body { padding-left: 24px; padding-right: 24px; }
+  .article-header { padding-top: 48px; }
+  .article-cta { padding: 36px 24px; }
+  footer { padding: 24px; }
+  .cks-info{display:none;}
+  .cks-main{gap:11px;padding:12px 16px 15px;}
+  .cks-now{padding:9px 16px 0;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">CONTRACKS.GLOBAL</a>
+  <div class="nav-right">
+    <a href="/" class="nav-back">← Back to the site</a>
+    <a href="https://contracks.global/start" class="nav-cta">Take the START diagnostic →</a>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="article-meta">START&trade; — Special Report &nbsp;&middot;&nbsp; The Viability Triangle &nbsp;&middot;&nbsp; June 2026</div>
+  <h1>An Idea Is Worth Nothing</h1>
+  <p class="article-deck">A founder's guide to turning a venture into something worth backing — before you burn the runway finding out.</p>
+  <div style="margin-bottom:24px;">
+    <button class="listen-bar" onclick="cksToggle()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6,4 20,12 6,20" fill="currentColor" stroke="none"/></svg>
+      <span id="cksListenLabel">Listen to this report</span>
+      <span id="cksListenTime" style="opacity:.7"></span>
+    </button>
+  </div>
+  <div class="article-byline">
+    <span class="byline-name">Written and narrated by Serguei Poppeleer</span>
+    <span class="byline-dot">·</span>
+    <span>Founder, Contracks Global</span>
+    <span class="byline-dot">·</span>
+    <span>contracks.global</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p class="intro-title">An Idea Is Worth Nothing.</p>
+  <p class="intro-by">Written and narrated by Serguei Poppeleer.</p>
+
+  <p>The pitch lands. The room leans in. Someone says "this is really interesting" — and means it. Then the follow-up never comes. Not a no. Just quiet.</p>
+  <p>Every founder has lived that silence. And almost every founder reads it wrong — replaying the deck for weeks, convinced the story did not land. It landed perfectly. The story was never the problem. The vision excited them. The numbers behind it did not exist yet. And "interesting" is the word people use in the gap between the two.</p>
+
+  <div class="pull-quote"><p>The room stays excited. The runway does not.</p></div>
+
+  <p>Here is the part nobody says out loud: the idea you are guarding so carefully — the one you make people sign an NDA before you'll explain — is the part nobody is trying to steal. The same idea is sitting in a dozen other heads in a dozen other cities right now. What is rare, what capital actually pays for, is the part most founders treat as an afterthought. This report is for the founder who has an idea they believe in, and is tired of hearing "interesting" when they need to hear "send the terms."</p>
+
+  <div class="section-divider"><span>Why ideas don't get funded</span></div>
+  <h2>Why Exciting Ideas Don't Get Funded</h2>
+  <p>Most founders believe the same thing: a strong enough idea will attract the capital to build it. Get the vision right, make people feel it, and the money follows. It does not. Vision opens the meeting. It does not close the round.</p>
+
+  <div class="pull-quote"><p>Investors do not back ideas. They back models that make the idea inevitable.</p></div>
+
+  <p>The data is blunt about where ventures actually die. Startup post-mortem data repeatedly shows the same pattern: ventures fail because the market does not pay, the cash does not last, or the unit economics do not hold. Almost none fail because the idea was bad.</p>
+
+  <div class="pull-quote"><p>That is the Viability Triangle. Not branding — autopsy data turned into a founder's filter.</p></div>
+
+  <h3>The big misconception</h3>
+  <p>The idea is the hard part — the model comes later. That single belief keeps more good ideas small than any competitor ever will. The idea is the easy part. Ideas are abundant and free, which is exactly why they carry no premium. The model is the scarce thing, and therefore the thing that gets funded.</p>
+
+  <div class="shift-block">
+    <div class="shift-label">Mistake 1 — Polishing the deck instead of proving the market</div>
+    <p>A sharper deck feels like progress. It changes nothing about whether the market will pay. You can perfect the story for months and still have no model underneath it. A deck persuades a room for an hour; a model survives the diligence that follows.</p>
+  </div>
+  <div class="shift-block">
+    <div class="shift-label">Mistake 2 — Building before anyone agrees to pay</div>
+    <p>Building feels productive. Features shipped before demand is proven burn the scarcest thing a venture owns — runway — proving the wrong thing. The most expensive way to discover nobody will pay is to build the whole thing first.</p>
+  </div>
+  <div class="shift-block">
+    <div class="shift-label">Mistake 3 — Keeping the model in your head</div>
+    <p>When the model lives only in the founder's head, it is un-backable by anyone who wasn't in the room. Diligence stalls, the round drifts, and "interesting" becomes the polite no that protects the investor's optimism about you.</p>
+  </div>
+
+  <div class="pull-quote"><p>The story gets sharper while the model stays missing.</p></div>
+
+  <div class="section-divider"><span>The Viability Triangle</span></div>
+  <h2>The Viability Triangle</h2>
+
+  <div class="pull-quote"><p>Most ventures don't fail at the idea. They fail at the model. Frontier opportunities just expose it faster.</p></div>
+
+  <p>The Viability Triangle is the architecture that turns an idea into an investable business. Three tests decide it — the same three that quietly kill the ventures that fail. Pass all three and you have a model. Fail one and you have a story.</p>
+
+  <div class="shift-block"><div class="shift-label">Market — a market that pays</div><p>Not a market that admires. A market that pays. A hundred people saying "I'd use that" is enthusiasm; one signed letter of intent, one offtake agreement, one customer who pre-pays is demand. The test is whether money is contracted, not whether interest is expressed.</p></div>
+  <div class="shift-block"><div class="shift-label">Money — money that lasts</div><p>Ventures die one milestone short of the proof that would have raised the next round. The test is whether the runway reaches the milestone that unlocks capital — not a vague horizon.</p></div>
+  <div class="shift-block"><div class="shift-label">Margin — a margin that holds</div><p>A margin that only works in the spreadsheet is one you will defend in front of an investor who has seen a thousand of them. The test is whether the unit economics survive real costs — the bad day, not the best case.</p></div>
+  <div class="shift-block"><div class="shift-label">Structure — the frame</div><p>Market, money and margin only become backable when they are written into a structure someone outside your head can recognise: governance, a defensible commercial case, decisions an outsider can follow. Structure is the difference between an idea and an asset.</p></div>
+
+  <h3>Market. Money. Margin. — proof, not theory</h3>
+  <div class="shift-block">
+    <div class="shift-label">Proof · Bleriot — Sustainable Aviation Fuel · Kenya</div>
+    <p>Sustainable aviation fuel in East Africa was an obvious idea long before it was a company. Abundant feedstock. Demand written into law through CORSIA, ISCC and EU RED II. A continent underserved. None of that was scarce — anyone could see it. What turned it into something backable was the model: an offtake position built against mandated airline demand, a modular micro-refinery design that staged the capital so each increment bought a milestone, and unit economics anchored in real vegetable-oil feedstock rather than a single fragile mega-asset. Built from an idea into an investable SAF platform, with investor interest and scale-up discussions underway. The opportunity was always free. The model was the work.</p>
+  </div>
+  <div class="shift-block">
+    <div class="shift-label">Proof · The pattern across 30 countries</div>
+    <p>A sustainable-fuel venture in Kenya and a €2B capital programme in Europe have nothing in common except this: in both, the thing that got backed was never the idea. The idea was the free part everyone could see. What separated the funded from the forgotten was a model that survived being checked.</p>
+  </div>
+
+  <div class="pull-quote"><p>The idea makes the meeting interesting. The model makes the wire transfer happen.</p></div>
+
+  <div class="section-divider"><span>Five moves</span></div>
+  <h2>Five Moves to Make It Investable</h2>
+
+  <div class="shift-block"><div class="shift-label">Move 1 — Prove the market will pay, not that it approves</div><p>Stop treating secrecy as strategy. Spend the energy on securing one piece of contracted demand — a letter of intent, a deposit, a pre-paid pilot. Find the difference between admiration and demand before you fund it, not after.</p></div>
+  <div class="shift-block"><div class="shift-label">Move 2 — Map the runway to the milestone, not the calendar</div><p>Identify the single proof point that unlocks the next tranche of capital, and check the money reaches it with room to spare.</p></div>
+  <div class="shift-block"><div class="shift-label">Move 3 — Build the margin on real costs</div><p>Construct the unit economics from what things cost when they go wrong, then stress them. A margin that only holds on the best-case line is a wish, not a model.</p></div>
+  <div class="shift-block"><div class="shift-label">Move 4 — Write the model into a structure</div><p>Move it out of your head and into governance, a clear commercial case, and decisions an outsider can follow. It has to be backable by people who were not in the room when you fell in love with it.</p></div>
+  <div class="shift-block"><div class="shift-label">Move 5 — Name what you've assumed versus what you've tested</div><p>An assumption written down is a managed risk. An assumption left unspoken is a future failure with a date on it you have not seen yet. The first hard question in diligence finds every one you skipped.</p></div>
+
+  <div class="pull-quote"><p>An investable business is not a better-told idea. It is an idea that survives being checked.</p></div>
+
+  <div class="section-divider"><span>Objections</span></div>
+  <h2>The Objections You're Probably Raising</h2>
+
+  <div class="objection-block">
+    <div class="objection-q">"The idea is the hard part — the model comes later."</div>
+    <p class="objection-a">The idea is the easy part; ideas are abundant and free, which is exactly why they get no premium. The model is the scarce thing, and therefore the thing that gets funded. "Later" is usually after the runway has been spent building features nobody agreed to pay for. The model does not come after traction — it is how you earn traction worth having.</p>
+  </div>
+  <div class="objection-block">
+    <div class="objection-q">"We'll figure out the numbers once we have customers."</div>
+    <p class="objection-a">By then the numbers are no longer a question you answer — they are a verdict you receive. Working out the unit economics before you scale is cheap. Discovering them after you have scaled a business that loses money on every sale is the most expensive lesson in the venture's life.</p>
+  </div>
+  <div class="objection-block">
+    <div class="objection-q">"Investors back vision, not spreadsheets."</div>
+    <p class="objection-a">They back vision underwritten by a model. Vision is the reason they take the meeting; the model is the reason they wire the money. The rare founder who can hold both is the one who hears "send the terms" instead of "really interesting."</p>
+  </div>
+  <div class="objection-block">
+    <div class="objection-q">"If I share the idea, someone will steal it."</div>
+    <p class="objection-a">If the idea is that easy to steal, it was never the moat. What is hard to copy is a proven market, a funded path and a margin that holds — and you cannot build any of those in secret. Sharing the idea is how you start testing it.</p>
+  </div>
+
+  <div class="section-divider"><span>The core truth</span></div>
+  <h2>The Core Truth</h2>
+
+  <div class="pull-quote"><p>The idea is the cheapest thing you own. The model is the only thing worth protecting.</p></div>
+
+  <p>Across 25 years, 30 countries, and ventures and programmes up to €2B, the ones that got backed were almost never the most exciting in the room. They were the most structured. The market was proven, the money was mapped, the margin was real — so when the scrutiny came, there was a business to defend rather than a story to oversell.</p>
+
+  <h3>The investability ladder — where does your venture sit?</h3>
+  <p><strong>Level 1 — Pitch-Deck Hope.</strong> An idea and a deck. No evidence anyone will pay. Story-led.</p>
+  <p><strong>Level 2 — Build Without Buyers.</strong> Product or features underway before any contracted demand exists.</p>
+  <p><strong>Level 3 — Numbers in the Head.</strong> Market, money and margin live in the founder's head — untested, unwritten.</p>
+  <p><strong>Level 4 — Tested Model.</strong> Demand evidenced, runway mapped to a milestone, unit economics stressed.</p>
+  <p><strong>Level 5 — Investable Platform.</strong> All three tests passed and written into a governed structure. No surprises in diligence.</p>
+
+  <p>Growth that is earned looks like this: an investor asks for your model, and it already exists. The round closes on the maths, not the mood in the room. The venture is backable by people who weren't there when you fell in love with it. And "interesting" stops being the last thing you hear before the silence.</p>
+
+  <div class="pull-quote"><p>An idea is worth nothing. A model is worth backing.</p></div>
+
+  <div class="article-cta">
+    <h3>Do you have an idea — or a model?</h3>
+    <p>Take the START diagnostic. Twenty questions. Four minutes. It shows whether your venture has a market that pays, money that lasts, and a margin that holds — or whether you are still selling a story the model cannot yet defend.</p>
+    <p style="font-family:'Playfair Display',serif;font-style:italic;color:#C5A050;font-size:1.05rem;margin-bottom:26px;">An idea is worth nothing. A model is worth backing.</p>
+    <div class="cta-buttons">
+      <a href="https://contracks.global/start" class="btn-gold">Take the START diagnostic →</a>
+      <a href="/discovery" class="btn-outline">Book a viability review →</a>
+    </div>
+  </div>
+
+</article>
+
+<footer>
+  <a href="/" class="footer-brand">CONTRACKS.GLOBAL</a>
+  <p class="footer-tagline">An Idea Is Worth Nothing. A Model Is Worth Backing.</p>
+  <a href="/" class="footer-link">contracks.global</a>
+</footer>
+
+<!-- ══ AUDIO PLAYER ══ -->
+<div class="cks-player" id="cksPlayer">
+  <div class="cks-scrub" id="cksScrub" onclick="cksSeek(event)"><div class="cks-fill" id="cksFill"></div></div>
+  <div class="cks-now"><span class="cks-nl">Now reading</span><span class="cks-nt" id="cksNow">Press play to begin</span></div>
+  <div class="cks-main">
+    <button class="cks-play" id="cksPlay" onclick="cksToggle()"><svg id="cksIcon" width="17" height="17" viewBox="0 0 24 24" fill="#0A1628"><polygon points="6,4 20,12 6,20"/></svg></button>
+    <div class="cks-wave"><div class="cks-wb"></div><div class="cks-wb"></div><div class="cks-wb"></div><div class="cks-wb"></div><div class="cks-wb"></div></div>
+    <div class="cks-info"><div class="cks-t">An Idea Is Worth Nothing</div><div class="cks-st" id="cksStatus">Loading&hellip;</div></div>
+    <div class="cks-right">
+      <div class="cks-speed">
+        <button class="cks-spd" onclick="cksRate(0.75)">0.75&times;</button>
+        <button class="cks-spd on" onclick="cksRate(1)">1&times;</button>
+        <button class="cks-spd" onclick="cksRate(1.25)">1.25&times;</button>
+        <button class="cks-spd" onclick="cksRate(1.5)">1.5&times;</button>
+      </div>
+      <div class="cks-src" id="cksSrc" title="Voice source"><span class="cks-dot"></span><span class="cks-srcl" id="cksSrcL">VOICE</span></div>
+      <button class="cks-stop" onclick="cksStop()"><svg width="10" height="10" viewBox="0 0 10 10"><rect width="10" height="10" rx="1.5" fill="rgba(255,255,255,.45)"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ════════════════════════════════════════════════════════════
+   CONTRACKS in-page reader — START Special Report (An Idea Is Worth Nothing)
+   Standard model, lifted from articles/level2/l2-article1.html.
+   SELECTOR and SENT_RE are IDENTICAL to the article reader and the
+   GitHub Action — do not change them or sentence-sync will drift.
+   States auto-detected: synced mp3+json → mp3 only → browser voice.
+════════════════════════════════════════════════════════════ */
+const ARTICLE_SLUG = 'start-special-report';
+const AUDIO_BASE = '/audio';
+const SELECTOR = '.article-deck, .article-body h2, .article-body h3, .article-body p, .article-body .objection-q';
+const SENT_RE = /[^.!?]+[.!?]+(?:["'”’)\]]+)?\s*|[^.!?]+$/g;
+let spans = {};
+let block = [];
+let N = 0;
+let times = null;
+let cur = -1, state = 'idle', rate = 1, MODE = 'browser';
+function endOffsets(text){
+  const re = new RegExp(SENT_RE.source, 'g'); let m, acc = 0; const out = [];
+  while ((m = re.exec(text)) !== null){ if (m[0] === ''){ re.lastIndex++; continue; } acc += m[0].length; out.push(acc); }
+  return out.length ? out : [text.length];
+}
+function sidx(off, bounds){ for (let i=0;i<bounds.length;i++) if (off < bounds[i]) return i; return bounds.length-1; }
+function mkSpan(text, si){ const s=document.createElement('span'); s.className='s'; s.dataset.si=si; s.textContent=text; return s; }
+function wrapEl(el, ctx){
+  [...el.childNodes].forEach(child=>{
+    if (child.nodeType === 3){
+      const txt = child.nodeValue, frag = document.createDocumentFragment();
+      let buf='', c0 = sidx(ctx.off, ctx.bounds);
+      for (let c=0;c<txt.length;c++){
+        const gi = sidx(ctx.off, ctx.bounds);
+        if (gi !== c0 && buf !== ''){ frag.appendChild(mkSpan(buf, ctx.base + c0)); buf=''; c0=gi; }
+        buf += txt[c]; ctx.off++;
+      }
+      if (buf !== '') frag.appendChild(mkSpan(buf, ctx.base + c0));
+      el.replaceChild(frag, child);
+    } else if (child.nodeType === 1){ wrapEl(child, ctx); }
+  });
+}
+function build(){
+  document.querySelectorAll(SELECTOR).forEach(node=>{
+    if (node.closest('.article-cta')) return;
+    node.classList.add('read-block');
+    const raw = node.textContent;
+    const bounds = endOffsets(raw);
+    wrapEl(node, { off:0, bounds, base:N });
+    for (let i=0;i<bounds.length;i++) block[N+i] = node;
+    N += bounds.length;
+  });
+  document.querySelectorAll('.s').forEach(s=>{
+    const i = +s.dataset.si; (spans[i] = spans[i] || []).push(s);
+    s.onclick = () => cksSeekSentence(i);
+  });
+  const words = document.querySelector('.article-body').textContent.trim().split(/\s+/).length;
+  document.getElementById('cksListenTime').textContent = '· ' + Math.max(1, Math.round(words/150)) + ' min';
+}
+function sentText(i){ return (spans[i] || []).map(s=>s.textContent).join(''); }
+function highlight(i){
+  if (i === cur || i < 0 || i >= N) return;
+  if (cur >= 0 && spans[cur]) spans[cur].forEach(s=>{ s.classList.remove('active'); s.classList.add('read'); });
+  for (let k=Math.max(0,cur); k<i; k++) spans[k]?.forEach(s=>s.classList.add('read'));
+  cur = i;
+  spans[i]?.forEach(s=>{ s.classList.remove('read'); s.classList.add('active'); });
+  document.querySelectorAll('.read-block.block-active').forEach(b=>b.classList.remove('block-active'));
+  const blk = block[i]; blk?.classList.add('block-active');
+  document.getElementById('cksNow').textContent = sentText(i).trim().slice(0,80);
+  if (blk){ const r=blk.getBoundingClientRect(), vh=innerHeight; if (r.top<vh*0.2 || r.bottom>vh-150) scrollTo({top:scrollY+r.top-vh*0.32, behavior:'smooth'}); }
+}
+function clearAll(){ document.querySelectorAll('.s.active,.s.read').forEach(s=>s.classList.remove('active','read')); document.querySelectorAll('.block-active').forEach(b=>b.classList.remove('block-active')); cur=-1; }
+let audio=null;
+function timeToSentence(t){ let i=0; for (let k=0;k<times.length;k++){ if (t>=times[k].start) i=k; else break; } return i; }
+function elInit(){
+  audio = new Audio(`${AUDIO_BASE}/${ARTICLE_SLUG}.mp3`); audio.preload='metadata';
+  audio.addEventListener('timeupdate', ()=>{
+    const t=audio.currentTime, dur=audio.duration || times.at(-1).end;
+    if (times) highlight(Math.min(timeToSentence(t), N-1));
+    setProgress(t/dur*100); setStatus(remain(dur-t));
+  });
+  audio.addEventListener('ended', finish);
+}
+const elEngine = {
+  play(){ if(!audio)elInit(); audio.playbackRate=rate; audio.play(); },
+  pause(){ audio&&audio.pause(); },
+  stop(){ if(audio){audio.pause();audio.currentTime=0;} },
+  seekSentence(i){ if(!audio)elInit(); if(times) audio.currentTime=times[Math.min(i,times.length-1)].start; if(state==='playing')audio.play(); },
+  seekFraction(f){ if(!audio)elInit(); audio.currentTime=f*(audio.duration||(times?times.at(-1).end:0)); if(state==='playing')audio.play(); },
+  setRate(r){ if(audio)audio.playbackRate=r; }
+};
+let voice=null, smooth=null;
+function pickVoice(){ const v=speechSynthesis.getVoices(); voice=v.find(x=>x.name==='Daniel'&&x.lang==='en-GB')||v.find(x=>x.lang==='en-GB')||v.find(x=>x.lang.startsWith('en')); }
+function speakFrom(i){
+  if(i>=N){ finish(); return; }
+  highlight(i);
+  const u=new SpeechSynthesisUtterance(sentText(i)); u.rate=rate; if(voice)u.voice=voice;
+  startSmooth(i);
+  u.onend=()=>{ if(state==='playing'){ stopSmooth(); speakFrom(i+1); } };
+  u.onerror=e=>{ if(e.error!=='interrupted'&&state==='playing'){ stopSmooth(); speakFrom(i+1); } };
+  speechSynthesis.speak(u);
+}
+function len(i){ return sentText(i).length; }
+function startSmooth(i){
+  stopSmooth();
+  let total=0, before=0; for(let k=0;k<N;k++){ const l=len(k); if(k<i)before+=l; total+=l; }
+  const dur=Math.max(800, len(i)/(14.5*rate)*1000), t0=performance.now();
+  smooth=setInterval(()=>{ const f=Math.min(1,(performance.now()-t0)/dur); setProgress((before+len(i)*f)/total*100); }, 120);
+}
+function stopSmooth(){ if(smooth){clearInterval(smooth);smooth=null;} }
+const brEngine = {
+  play(){ if(state==='paused')speechSynthesis.resume(); else { speechSynthesis.cancel(); speakFrom(cur<0?0:cur); } },
+  pause(){ speechSynthesis.pause(); stopSmooth(); },
+  stop(){ speechSynthesis.cancel(); stopSmooth(); },
+  seekSentence(i){ speechSynthesis.cancel(); stopSmooth(); cur=i-1; if(state==='playing')speakFrom(i); else highlight(i); },
+  seekFraction(f){ this.seekSentence(Math.floor(f*N)); },
+  setRate(){ if(state==='playing'){ const i=cur; speechSynthesis.cancel(); stopSmooth(); speakFrom(i); } }
+};
+const plainEngine = {
+  play(){ if(!audio)elInit(); audio.playbackRate=rate; audio.play(); },
+  pause(){ audio&&audio.pause(); },
+  stop(){ if(audio){audio.pause();audio.currentTime=0;} },
+  seekSentence(){},
+  seekFraction(f){ if(!audio)elInit(); audio.currentTime=f*(audio.duration||0); if(state==='playing')audio.play(); },
+  setRate(r){ if(audio)audio.playbackRate=r; }
+};
+let E = brEngine;
+function cksToggle(){ state==='playing' ? cksPause() : play(); }
+function play(){
+  if(state==='done') clearAll();
+  if(MODE!=='plain'){ document.body.classList.add('listening'); if(state!=='paused'&&cur<0) highlight(0); }
+  state='playing'; setUI(true); E.play();
+}
+function cksPause(){ state='paused'; setUI(false); E.pause(); setStatus('Paused'); }
+function cksStop(){ state='idle'; setUI(false); E.stop(); stopSmooth(); clearAll(); document.body.classList.remove('listening'); setProgress(0); setStatus(label()); document.getElementById('cksNow').textContent='Press play to begin'; }
+function finish(){ state='done'; setUI(false); stopSmooth(); setProgress(100); setStatus('Finished'); document.getElementById('cksNow').textContent='Report complete'; document.body.classList.remove('listening'); }
+function cksSeekSentence(i){ if(MODE==='plain')return; if(state==='idle')play(); E.seekSentence(i); highlight(i); }
+function cksSeek(e){ const r=e.currentTarget.getBoundingClientRect(); E.seekFraction((e.clientX-r.left)/r.width); }
+function cksRate(r){ rate=r; document.querySelectorAll('.cks-spd').forEach(b=>b.classList.toggle('on',parseFloat(b.textContent)===r)); E.setRate(r); }
+function setProgress(p){ document.getElementById('cksFill').style.width=Math.min(100,Math.max(0,p))+'%'; }
+function setStatus(s){ document.getElementById('cksStatus').textContent=s; }
+function remain(sec){ sec=Math.max(0,Math.round(sec)); const m=Math.floor(sec/60),s=sec%60; return m>0?`${m}m ${s}s left`:`${s}s left`; }
+function setUI(on){
+  document.getElementById('cksIcon').innerHTML = on ? '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>' : '<polygon points="6,4 20,12 6,20"/>';
+  document.getElementById('cksPlayer').classList.toggle('playing', on);
+  document.getElementById('cksListenLabel').textContent = on ? 'Pause' : 'Listen to this report';
+}
+function label(){ return MODE==='el' ? 'Contracks Global Insights' : MODE==='plain' ? 'Audio report' : 'Browser voice (preview)'; }
+function applySrc(){
+  const l=document.getElementById('cksSrcL');
+  l.textContent = MODE==='el' ? 'ELEVENLABS' : MODE==='plain' ? 'AUDIO' : 'BROWSER';
+  if(MODE==='el' && times){ const d=times.at(-1)?.end||0; document.getElementById('cksListenTime').textContent='· '+Math.max(1,Math.round(d/60))+' min'; }
+  if(MODE!=='plain') document.querySelector('.article-body').classList.add('clickable');
+  setStatus(label());
+}
+window.addEventListener('DOMContentLoaded', async ()=>{
+  build();
+  document.getElementById('cksPlayer').classList.add('show');
+  try{
+    const r=await fetch(`${AUDIO_BASE}/${ARTICLE_SLUG}.sentences.json`,{cache:'no-cache'});
+    if(!r.ok) throw 0;
+    const d=await r.json(); times=d.sentences;
+    if(!Array.isArray(times)||!times.length) throw 0;
+    if(times.length!==N) console.warn(`Sentence mismatch: audio ${times.length} vs page ${N}`);
+    MODE='el'; E=elEngine; applySrc(); return;
+  }catch(e){}
+  try{
+    const h=await fetch(`${AUDIO_BASE}/${ARTICLE_SLUG}.mp3`,{method:'HEAD'});
+    if(h.ok){ MODE='plain'; E=plainEngine; applySrc(); return; }
+  }catch(e){}
+  MODE='browser'; E=brEngine; pickVoice(); speechSynthesis.onvoiceschanged=pickVoice; speechSynthesis.getVoices(); applySrc();
+});
+window.addEventListener('beforeunload', ()=>{ if(MODE==='browser') speechSynthesis.cancel(); });
+</script>
+</body>
+</html>
