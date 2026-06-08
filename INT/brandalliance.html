@@ -192,6 +192,61 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 .doc-footer .df-brand { color: var(--gold); font-weight: 900; letter-spacing: 2px; font-family: 'Playfair Display', serif; font-size: 14px; }
 .doc-footer .df-meta { color: rgba(255,255,255,0.3); font-size: 11px; }
 .doc-footer .df-tagline { color: rgba(255,255,255,0.4); font-size: 11px; font-style: italic; }
+
+/* DENT CANVAS FAITHFUL STYLE */
+.dent-canvas { background: #fff; border: 1px solid #D5D7DC; border-radius: 4px; overflow: hidden; margin-bottom: 0; font-family: "Helvetica Neue", Arial, sans-serif; }
+.dent-canvas-top { background: #fff; border-bottom: 1px solid #D5D7DC; }
+.dent-toprow { display: flex; justify-content: space-between; align-items: flex-start; padding: 14px 18px 8px; }
+.dent-logo-text { font-family: "Helvetica Neue", Arial, sans-serif; font-weight: 900; font-size: 18px; color: #1B3A6B; }
+.dent-logo-text::after { content: ""; }
+.dent-canvas-title { font-size: 18px; font-weight: 600; color: #222; margin-left: 6px; }
+.dent-subtitle { font-size: 11px; color: #666; margin-top: 2px; margin-left: 0; }
+.dent-logo-block { display: flex; align-items: baseline; flex-wrap: wrap; gap: 2px; }
+.dent-icp-block { font-size: 11px; color: #555; text-align: right; max-width: 420px; line-height: 1.5; }
+.dent-icp-label { font-weight: 700; color: #888; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+.dent-icp-val { color: #333; }
+.dent-kpi-bar { background: #F5F6F8; border-top: 1px solid #E8E9EC; padding: 5px 18px; font-size: 9.5px; color: #888; letter-spacing: 1px; text-align: right; }
+.dent-kpi-red { background: #CC2229; color: white; font-weight: 700; padding: 1px 5px; border-radius: 2px; font-size: 9px; margin-left: 4px; }
+
+/* Triangle canvas */
+.dent-triangle-body { display: grid; grid-template-columns: 1fr 280px 1fr; gap: 0; min-height: 420px; }
+.dent-cash-drivers { padding: 24px 18px; border-right: 1px solid #E8E9EC; }
+.dent-wealth-drivers { padding: 24px 18px; border-left: 1px solid #E8E9EC; }
+.dent-diagram-center { padding: 16px 8px; display: flex; align-items: center; justify-content: center; background: #FAFAFA; }
+.dent-drivers-title { display: flex; align-items: baseline; gap: 6px; margin-bottom: 16px; color: #444; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+.dent-big3 { font-size: 32px; font-weight: 900; color: #1B3A6B; line-height: 1; }
+.dent-drivers-sub { font-size: 10px; color: #888; font-style: italic; font-weight: 400; text-transform: none; letter-spacing: 0; margin-top: 2px; }
+.dent-driver-block { margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px dashed #E0E1E5; }
+.dent-driver-block:last-child { border-bottom: none; margin-bottom: 0; }
+.dent-driver-label { font-size: 12px; font-weight: 700; color: #1B3A6B; margin-bottom: 5px; }
+.dent-driver-sub2 { font-weight: 400; color: #888; font-size: 11px; }
+.dent-driver-list { list-style: none; padding: 0; }
+.dent-driver-list li { font-size: 11px; color: #444; padding: 2px 0; padding-left: 10px; position: relative; line-height: 1.4; }
+.dent-driver-list li::before { content: "•"; position: absolute; left: 0; color: #999; }
+
+/* Inventory canvas */
+.dent-inv-body { display: grid; grid-template-columns: 1fr 1px 1fr; min-height: 520px; }
+.dent-inv-divider { background: #D5D7DC; }
+.dent-inv-col { padding: 0; }
+.dent-inv-header { font-size: 11px; font-weight: 700; color: #888; letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 20px 10px; border-bottom: 1px solid #E8E9EC; }
+.dent-inv-content { padding: 12px 20px; }
+.dent-inv-item { font-size: 12px; color: #333; padding: 7px 0; border-bottom: 1px solid #F2F3F5; line-height: 1.5; }
+.dent-inv-item:last-child { border-bottom: none; }
+
+/* Hitlist canvas */
+.dent-hitlist-body { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, auto); }
+.dent-hitlist-cell { border-right: 1px solid #D5D7DC; border-bottom: 1px solid #D5D7DC; }
+.dent-hitlist-cell:nth-child(3), .dent-hitlist-cell:nth-child(6) { border-right: none; }
+.dent-hitlist-cell:nth-child(4), .dent-hitlist-cell:nth-child(5), .dent-hitlist-cell:nth-child(6) { border-bottom: none; }
+.dent-hitlist-header { font-size: 10px; font-weight: 700; color: #888; letter-spacing: 1.2px; text-transform: uppercase; padding: 12px 14px 8px; border-bottom: 1px solid #E8E9EC; background: #FAFAFA; }
+.dent-hitlist-content { padding: 10px 14px; }
+.dent-hitlist-item { font-size: 11.5px; color: #444; padding: 5px 0; border-bottom: 1px solid #F2F3F5; line-height: 1.4; }
+.dent-hitlist-item:last-child { border-bottom: none; }
+.dent-hitlist-item.hot { color: #1B3A6B; font-weight: 600; }
+
+/* Dent footer */
+.dent-canvas-footer { background: #F5F6F8; border-top: 1px solid #D5D7DC; padding: 8px 18px; display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: #888; }
+.dent-footer-tagline { font-weight: 600; color: #555; }
 </style>
 </head>
 <body>
@@ -276,68 +331,138 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
     <div class="section-title">Partnership Triangle</div>
     <div class="section-sub">The rule: always bring at least 2/3 to the table. Ask for only 1/3 in return. This turns conversations from requests into opportunities.</div>
   </div>
-  <div class="canvas-wrap">
-    <div class="canvas-header">
-      <div class="c-num">▲</div>
-      <div><div class="c-title">Partnership Triangle — Filled</div><div class="c-sub">3 Cash Drivers (what you bring) · 3 Wealth Drivers (what you seek)</div></div>
+
+  <div class="dent-canvas">
+    <div class="dent-canvas-top">
+      <div class="dent-toprow">
+        <div class="dent-logo-block"><span class="dent-logo-text">Dent.</span> <span class="dent-canvas-title">Partnership Triangle</span><div class="dent-subtitle">You're in partnership with everyone who touches the business.</div></div>
+        <div class="dent-icp-block"><span class="dent-icp-label">ICP:</span> <span class="dent-icp-val">PMO Control Lead — PMO Director / Heads of PMO, owner-side, cross-border capital projects</span><br><span class="dent-icp-label">Date:</span> <span class="dent-icp-val">June 2026</span></div>
+      </div>
+      <div class="dent-kpi-bar">PITCH · PUBLISH · PRODUCT · PROFILE · <strong>PARTNERSHIP</strong> <span class="dent-kpi-red">KPI METHOD</span></div>
     </div>
-    <div class="canvas-body">
-      <div class="triangle-grid">
-        <div>
-          <div class="triangle-sides">
-            <div class="triangle-side">
-              <div class="ts-label">Brand (Trust) — You Bring</div>
-              <ul>
-                <li>Serguei Poppeleer personal brand — 25+ years, 30 countries, owner-side only</li>
-                <li>MCIArb + LLM + Exec MBA — institutional credibility</li>
-                <li>Named clients: ENI, EnergiNet, ArcelorMittal, Brussels Airlines</li>
-                <li>Bleriot Group Board Advisor — live aviation/Africa reach</li>
-                <li>5Cs Framework™ — named, proprietary, defensible</li>
-              </ul>
-            </div>
-            <div class="triangle-side">
-              <div class="ts-label">Distribution (Reach) — You Bring</div>
-              <ul>
-                <li>LinkedIn — consistent publishing, Mon/Thu cadence</li>
-                <li>Founder Frontier YouTube channel</li>
-                <li>Contracks 30-country network — Europe, Gulf, Africa</li>
-                <li>airportIR published analysis — 21,000+ impressions</li>
-                <li>Zoho Campaigns email list (L2 + L3 workflows live)</li>
-              </ul>
-            </div>
-            <div class="triangle-side">
-              <div class="ts-label">Product (Value) — You Bring</div>
-              <ul>
-                <li>5Cs Framework™ — proven delivery control methodology</li>
-                <li>Live diagnostic scorecard — qualifies prospects before engagement</li>
-                <li>Special Reports (RESOLVE + RESHAPE locked; START in progress)</li>
-                <li>Article library — 18 articles live with audio narration</li>
-                <li>Book in development — legacy positioning asset</li>
-              </ul>
-            </div>
-          </div>
+
+    <div class="dent-triangle-body">
+
+      <!-- LEFT: 3 CASH DRIVERS -->
+      <div class="dent-cash-drivers">
+        <div class="dent-drivers-title"><span class="dent-big3">3</span> <span>CASH<br>DRIVERS</span><div class="dent-drivers-sub">(Who already has ...)</div></div>
+        <div class="dent-driver-block">
+          <div class="dent-driver-label">BRAND <span class="dent-driver-sub2">(Trust)</span></div>
+          <ul class="dent-driver-list">
+            <li>Serguei Poppeleer personal brand — 25+ years, 30 countries, owner-side only</li>
+            <li>MCIArb · LLM · Exec MBA — institutional credibility</li>
+            <li>Named clients: ENI, EnergiNet, ArcelorMittal, Brussels Airlines</li>
+            <li>Bleriot Group Board Advisor — live aviation/Africa reach</li>
+            <li>5Cs Framework™ — named, proprietary, defensible method</li>
+          </ul>
         </div>
-        <div>
-          <div class="triangle-wealth">
-            <div class="wealth-item">
-              <div class="wi-label">Insights — You Seek</div>
-              <div class="wi-text">PMO/project failure benchmarking data · Research on governance failures and scope drift · Key customer case studies and practitioner validation</div>
-            </div>
-            <div class="wealth-item">
-              <div class="wi-label">Investments — You Seek</div>
-              <div class="wi-text">Sponsored content arrangements · Ambassador fees (Geni Savage model) from tools/software companies whose audience overlaps with PMO Control Leads</div>
-            </div>
-            <div class="wealth-item">
-              <div class="wi-label">Introductions — You Seek</div>
-              <div class="wi-text">Warm paths to PMO Directors and country directors in EPC programmes (Europe↔Africa) · Access to capital project owners in energy, aviation, real estate, infrastructure · EPC contractor network introductions</div>
-            </div>
-            <div class="wealth-item" style="background: var(--navy); border-color: transparent;">
-              <div class="wi-label" style="color: var(--gold);">The Rule</div>
-              <div class="wi-text" style="color: rgba(255,255,255,0.6);">You bring Brand + Distribution + Product (2/3). You ask for Introductions, Investments, or Insights (1/3). Never ask one partner for more than one third of the triangle.</div>
-            </div>
-          </div>
+        <div class="dent-driver-block">
+          <div class="dent-driver-label">DISTRIBUTION <span class="dent-driver-sub2">(Reach)</span></div>
+          <ul class="dent-driver-list">
+            <li>LinkedIn — consistent Mon/Thu publishing cadence</li>
+            <li>Founder Frontier YouTube channel</li>
+            <li>Contracks 30-country network — Europe, Gulf, Africa</li>
+            <li>airportIR — 21,000+ impressions on published analysis</li>
+            <li>Zoho Campaigns email list (L2 + L3 workflows live)</li>
+          </ul>
+        </div>
+        <div class="dent-driver-block">
+          <div class="dent-driver-label">PRODUCT <span class="dent-driver-sub2">(Value)</span></div>
+          <ul class="dent-driver-list">
+            <li>5Cs Framework™ — proven delivery control methodology</li>
+            <li>Live diagnostic scorecard — qualifies prospects before engagement</li>
+            <li>Special Reports (RESOLVE + RESHAPE locked; START in progress)</li>
+            <li>18 articles live with ElevenLabs audio narration (EN + FR)</li>
+            <li>Book in development — legacy positioning asset</li>
+          </ul>
         </div>
       </div>
+
+      <!-- CENTER: SVG DIAGRAM -->
+      <div class="dent-diagram-center">
+        <svg viewBox="0 0 380 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;display:block;margin:0 auto;">
+          <!-- Outer ring circle -->
+          <circle cx="190" cy="175" r="148" fill="white" stroke="#D5D7DC" stroke-width="1.5"/>
+          <!-- Inner triangle -->
+          <polygon points="190,52 76,252 304,252" fill="none" stroke="#D5D7DC" stroke-width="1.5"/>
+          <!-- Spokes from triangle vertices to center -->
+          <line x1="190" y1="52" x2="190" y2="175" stroke="#D5D7DC" stroke-width="0.8" stroke-dasharray="4,3"/>
+          <line x1="76" y1="252" x2="190" y2="175" stroke="#D5D7DC" stroke-width="0.8" stroke-dasharray="4,3"/>
+          <line x1="304" y1="252" x2="190" y2="175" stroke="#D5D7DC" stroke-width="0.8" stroke-dasharray="4,3"/>
+
+          <!-- BRAND label - top -->
+          <text x="190" y="44" text-anchor="middle" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" font-weight="700" fill="#CC2229">BRAND</text>
+
+          <!-- DISTRIBUTION label - bottom left -->
+          <text x="58" y="272" text-anchor="middle" font-family="Helvetica Neue,Arial,sans-serif" font-size="11" font-weight="700" fill="#CC2229">DISTRIBUTION</text>
+
+          <!-- PRODUCT label - bottom right -->
+          <text x="322" y="272" text-anchor="middle" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" font-weight="700" fill="#CC2229">PRODUCT</text>
+
+          <!-- Arc path definitions for curved text -->
+          <defs>
+            <!-- Left arc: INTRODUCTIONS — upper-left to lower-left -->
+            <path id="leftArc" d="M 104 60 A 148 148 0 0 0 50 222"/>
+            <!-- Right arc: INVESTMENTS — upper-right to lower-right -->
+            <path id="rightArc" d="M 330 222 A 148 148 0 0 0 276 60"/>
+          </defs>
+
+          <!-- INTRODUCTIONS curved text on left -->
+          <text font-family="Helvetica Neue,Arial,sans-serif" font-size="9.5" font-weight="700" letter-spacing="2.5" fill="#1B3A6B">
+            <textPath href="#leftArc" startOffset="5%">INTRODUCTIONS</textPath>
+          </text>
+
+          <!-- INVESTMENTS curved text on right -->
+          <text font-family="Helvetica Neue,Arial,sans-serif" font-size="9.5" font-weight="700" letter-spacing="2.5" fill="#1B3A6B">
+            <textPath href="#rightArc" startOffset="5%">INVESTMENTS</textPath>
+          </text>
+
+          <!-- INSIGHTS at bottom — italic -->
+          <text x="190" y="348" text-anchor="middle" font-family="Helvetica Neue,Arial,sans-serif" font-size="16" font-weight="700" font-style="italic" fill="#1B3A6B">INSIGHTS</text>
+        </svg>
+      </div>
+
+      <!-- RIGHT: 3 WEALTH DRIVERS -->
+      <div class="dent-wealth-drivers">
+        <div class="dent-drivers-title" style="text-align:right;"><span class="dent-big3">3</span> <span>WEALTH<br>DRIVERS</span><div class="dent-drivers-sub">(Who can offer ...)</div></div>
+        <div class="dent-driver-block" style="text-align:right;">
+          <div class="dent-driver-label">INSIGHTS</div>
+          <ul class="dent-driver-list" style="text-align:right;list-style:none;">
+            <li>PMO/project failure benchmarking data</li>
+            <li>WorldCC research and publications</li>
+            <li>Tim Cummins (WorldCC) thought leadership</li>
+            <li>Sector research from Modalis / airportIR</li>
+            <li>Key customer validation and case data</li>
+          </ul>
+        </div>
+        <div class="dent-driver-block" style="text-align:right;">
+          <div class="dent-driver-label">INVESTMENTS</div>
+          <ul class="dent-driver-list" style="text-align:right;list-style:none;">
+            <li>Sponsored content arrangements</li>
+            <li>Ambassador fees — software/tools companies</li>
+            <li>Speaking fees from conferences</li>
+            <li>Co-funded research and diagnostic projects</li>
+            <li>Platform access and audience reach</li>
+          </ul>
+        </div>
+        <div class="dent-driver-block" style="text-align:right;">
+          <div class="dent-driver-label">INTRODUCTIONS</div>
+          <ul class="dent-driver-list" style="text-align:right;list-style:none;">
+            <li>Hugues de la Forge — Nexus Project Law</li>
+            <li>Tim Cummins — WorldCC</li>
+            <li>Named contact — airportIR / Modalis</li>
+            <li>PMO Directors in energy / aviation / EPC</li>
+            <li>Africa CEO Forum and Africa50 organisers</li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- end triangle body -->
+
+    <div class="dent-canvas-footer">
+      <span>www.dent.global</span>
+      <span class="dent-footer-tagline">Be Brave. Have Fun. Make a Dent.</span>
+      <span style="font-size:10px;color:#aaa;">Copyright of Dent Global Ltd. All rights reserved. Not for reuse.</span>
     </div>
   </div>
 </div>
@@ -349,37 +474,54 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
     <div class="section-title">Partnership Inventory</div>
     <div class="section-sub">A clear audit of what's on the table and what's being sought — the foundation for every partnership conversation.</div>
   </div>
-  <div class="canvas-wrap">
-    <div class="canvas-header">
-      <div class="c-num">≡</div>
-      <div><div class="c-title">Partnership Inventory — Filled</div><div class="c-sub">What I Can Offer · What I Would Like</div></div>
+
+  <div class="dent-canvas">
+    <div class="dent-canvas-top">
+      <div class="dent-toprow">
+        <div class="dent-logo-block"><span class="dent-logo-text">Dent.</span> <span class="dent-canvas-title">Partnership Inventory</span></div>
+        <div class="dent-icp-block"><span class="dent-icp-label">ICP:</span> <span class="dent-icp-val">PMO Control Lead — Heads of PMO / PMO Directors, owner-side, cross-border capital projects</span><br><span class="dent-icp-label">Date:</span> <span class="dent-icp-val">June 2026</span></div>
+      </div>
+      <div class="dent-kpi-bar">PITCH · PUBLISH · PRODUCT · PROFILE · <strong>PARTNERSHIP</strong> <span class="dent-kpi-red">KPI METHOD</span></div>
     </div>
-    <div class="canvas-body" style="padding:0;">
-      <div class="inventory-grid">
-        <div class="inv-col">
-          <div class="inv-label">What I Can Offer</div>
-          <div class="inv-item"><div class="inv-dot"></div><p><strong>Event speaking:</strong> I handle content, prep, recording — partner provides platform and audience. Speaker profile live at contracks.global/speaker.</p></div>
-          <div class="inv-item"><div class="inv-dot"></div><p><strong>Email feature:</strong> Introduce partner as the domain expert to my PMO Control Lead network — direct credibility transfer.</p></div>
-          <div class="inv-item"><div class="inv-dot"></div><p><strong>Interview spotlight:</strong> I produce, edit, distribute — partner gets content and exposure to senior project owners.</p></div>
-          <div class="inv-item"><div class="inv-dot"></div><p><strong>Co-created content:</strong> I write and produce — partner gets co-credit and distribution. No-Surprises Delivery framing.</p></div>
-          <div class="inv-item"><div class="inv-dot"></div><p><strong>Joint research / case study:</strong> I do the research — partner gets thought leadership positioning on scope drift, governance failures, vendor slippage.</p></div>
-          <div class="inv-item"><div class="inv-dot"></div><p><strong>Book contribution:</strong> Partners who contribute a foreword or case study get legacy positioning in the published work.</p></div>
-          <div class="inv-item"><div class="inv-dot"></div><p><strong>Diagnostic scorecard:</strong> Already live — can be co-branded or customised for partner's audience. I handle all tech and lead routing.</p></div>
-          <div class="inv-item"><div class="inv-dot"></div><p><strong>Audio-narrated content:</strong> ElevenLabs cloned voice, EN + FR — partners get higher production value than most practitioners offer.</p></div>
-          <div class="inv-item"><div class="inv-dot"></div><p><strong>Bleriot Group credibility:</strong> Board Advisor role — live aviation infrastructure proof case in East Africa alongside 30 countries of historical cases.</p></div>
-        </div>
-        <div class="inv-col">
-          <div class="inv-label">What I Would Like</div>
-          <div class="inv-item"><div class="inv-dot"></div><p><strong>Distribution access:</strong> Reach PMO Directors and capital programme owners at scale — larger LinkedIn followings, podcasts, newsletters, communities.</p></div>
-          <div class="inv-item"><div class="inv-dot"></div><p><strong>Brand association:</strong> WorldCC, PMI, APM, EPC industry brands, Africa platforms — credibility ladder climb through institutional alignment.</p></div>
-          <div class="inv-item"><div class="inv-dot"></div><p><strong>Warm introductions:</strong> Paths to PMO Directors and country directors in cross-border EPC programmes (Europe↔Africa corridor).</p></div>
-          <div class="inv-item"><div class="inv-dot"></div><p><strong>Product bundling:</strong> Complementary tools — contract management platforms, project controls software — to strengthen the Delivery Control System offer.</p></div>
-          <div class="inv-item"><div class="inv-dot"></div><p><strong>Research and data:</strong> PMO/project failure benchmarking data and sector research to strengthen book and diagnostic.</p></div>
-          <div class="inv-item"><div class="inv-dot"></div><p><strong>Co-hosting:</strong> Joint webinars and roundtables that combine both audiences — multiplication, not addition.</p></div>
-          <div class="inv-item"><div class="inv-dot"></div><p><strong>Speaker platform:</strong> Conference and event slots in infrastructure, EPC, PMO, and Africa forums — without cold pitching event organisers.</p></div>
-          <div class="inv-item"><div class="inv-dot"></div><p><strong>Revenue arrangements:</strong> Sponsored content, ambassador fees from software or professional services firms serving the same audience.</p></div>
+
+    <div class="dent-inv-body">
+      <div class="dent-inv-col">
+        <div class="dent-inv-header">WHAT I CAN OFFER</div>
+        <div class="dent-inv-content">
+          <div class="dent-inv-item">Speaking at their events/webinars — I handle content, prep, and recording; partner provides platform and audience. Speaker profile already built and live at contracks.global/speaker.</div>
+          <div class="dent-inv-item">Email feature to my network introducing partner as the expert in their domain — direct exposure to PMO Control Leads who trust my editorial judgement.</div>
+          <div class="dent-inv-item">Interview spotlight — I produce, edit, and distribute; partner gets content and exposure to senior capital project owners and PMO Directors.</div>
+          <div class="dent-inv-item">Co-created content around No-Surprises Delivery — I write and produce; partner gets co-credit and distribution to both networks.</div>
+          <div class="dent-inv-item">Feature their methodology in Delivery Control System training — positioning them as the domain expert on their specialty alongside my framework.</div>
+          <div class="dent-inv-item">Joint research or case study on scope drift, governance failures, or vendor slippage — I do the research and writing; partner gets thought leadership positioning.</div>
+          <div class="dent-inv-item">Book contribution — partners who contribute a foreword or case study get legacy positioning in the published work as a domain authority.</div>
+          <div class="dent-inv-item">Audio-narrated articles and video content — ElevenLabs cloned voice (EN + FR); partners can embed or distribute. Higher production value than most practitioners offer.</div>
+          <div class="dent-inv-item">Diagnostic scorecard (already live) — co-brandable or customised for partner's audience. I handle all tech, scoring logic, and lead routing. Zero technical work for them.</div>
+          <div class="dent-inv-item">Bleriot Group Board Advisor role — live aviation infrastructure credibility (sustainable aviation fuel venture, East Africa) alongside 25+ years of historical cases in 30 countries.</div>
         </div>
       </div>
+      <div class="dent-inv-divider"></div>
+      <div class="dent-inv-col">
+        <div class="dent-inv-header">WHAT I WOULD LIKE</div>
+        <div class="dent-inv-content">
+          <div class="dent-inv-item">Distribution access — reach PMO Directors, country directors, and capital programme owners at scale through partner's established audience (newsletters, podcasts, LinkedIn communities).</div>
+          <div class="dent-inv-item">Brand association — credibility transfer through alignment with WorldCC, PMI, APM, EPC industry brands, Africa business platforms, and recognised EPC firms.</div>
+          <div class="dent-inv-item">Warm introductions to PMO Directors and country directors in cross-border EPC programmes (Europe↔Africa corridor) who are already in the partner's trusted network.</div>
+          <div class="dent-inv-item">Product bundling — complementary tools (contract management platforms, project controls software) that strengthen the Delivery Control System offer for joint clients.</div>
+          <div class="dent-inv-item">Research and benchmarking data — PMO/project failure rates, governance gap analysis, and sector data to strengthen the book and the diagnostic tool.</div>
+          <div class="dent-inv-item">Co-hosting — joint webinars and roundtables that combine both audiences. Multiplication, not addition.</div>
+          <div class="dent-inv-item">Speaker platform — conference and event slots in infrastructure, EPC, PMO, and Africa forums, accessed through partner relationships without cold pitching event organisers.</div>
+          <div class="dent-inv-item">Revenue arrangements — sponsored content, ambassador fees, or revenue share from software or professional services firms serving the same PMO Control Lead audience.</div>
+          <div class="dent-inv-item">List sharing and email blast — partner promotes Contracks content or diagnostic scorecard to their subscriber base or client list.</div>
+          <div class="dent-inv-item">Strategic introductions to their network of capital project owners and decision-makers who trust the partner's judgement in the delivery and governance space.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dent-canvas-footer">
+      <span>www.dent.global</span>
+      <span class="dent-footer-tagline">Be Brave. Have Fun. Make a Dent.</span>
+      <span style="font-size:10px;color:#aaa;">Copyright of Dent Global Ltd. All rights reserved. Not for reuse.</span>
     </div>
   </div>
 </div>
@@ -389,84 +531,93 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
   <div class="section-header">
     <div class="section-eyebrow">Dent Canvas 3 of 3</div>
     <div class="section-title">Partner Hitlist</div>
-    <div class="section-sub">The 99-partner universe mapped by category. Stars indicate warm contacts already in network.</div>
+    <div class="section-sub">The priority universe mapped by category. ★ = warm contact already in network.</div>
   </div>
-  <div class="canvas-wrap">
-    <div class="canvas-header">
-      <div class="c-num">✦</div>
-      <div><div class="c-title">Partner Hitlist — Filled</div><div class="c-sub">★ = warm contact in network · → = identified target</div></div>
+
+  <div class="dent-canvas">
+    <div class="dent-canvas-top">
+      <div class="dent-toprow">
+        <div class="dent-logo-block"><span class="dent-logo-text">Dent.</span> <span class="dent-canvas-title">Partner Hitlist</span></div>
+        <div class="dent-icp-block"><span class="dent-icp-label">ICP:</span> <span class="dent-icp-val">PMO Control Lead — Heads of PMO / PMO Directors, owner-side, cross-border capital projects</span><br><span class="dent-icp-label">Date:</span> <span class="dent-icp-val">June 2026</span></div>
+      </div>
+      <div class="dent-kpi-bar">PITCH · PUBLISH · PRODUCT · PROFILE · <strong>PARTNERSHIP</strong> <span class="dent-kpi-red">KPI METHOD</span></div>
     </div>
-    <div class="canvas-body">
-      <div class="hitlist-grid">
-        <div class="hitlist-cell">
-          <div class="hc-label">Complementary Services</div>
-          <ul>
-            <li class="hot">Nexus Project Law (Hugues de la Forge)</li>
-            <li class="hot">Interglobal (Richard Osei Owusu)</li>
-            <li class="hot">Widnell Europe (Stephane Galeote)</li>
-            <li class="hot">2besafe / Wayne Sudborn (HSSE)</li>
-            <li>Pinsent Masons / Arcadis (claims)</li>
-            <li>EOR providers for Africa</li>
-            <li>PM coaching / training firms</li>
-          </ul>
-        </div>
-        <div class="hitlist-cell">
-          <div class="hc-label">KPIs / Influencers</div>
-          <ul>
-            <li class="hot">Tim Cummins (WorldCC)</li>
-            <li class="hot">airportIR / Modalis</li>
-            <li>PMO LinkedIn thought leaders (10K–100K)</li>
-            <li>Africa business platform hosts</li>
-            <li>Infrastructure/EPC YouTube voices</li>
-            <li>Daniel Priestley / Dent Global</li>
-          </ul>
-        </div>
-        <div class="hitlist-cell">
-          <div class="hc-label">Memberships / Associations</div>
-          <ul>
-            <li class="hot">WorldCC / IACCM (member — activate)</li>
-            <li class="hot">CIArb / MCIArb (member — activate)</li>
-            <li class="hot">CIOB (member — activate)</li>
-            <li class="hot">EPC Berlin Forum (attending)</li>
-            <li>PMI / APM</li>
-            <li>Africa CEO Forum / Africa50</li>
-            <li>African Development Bank ecosystem</li>
-          </ul>
-        </div>
-        <div class="hitlist-cell">
-          <div class="hc-label">Software / Tools</div>
-          <ul>
-            <li>Icertis (contract management)</li>
-            <li>Asite (contract management)</li>
-            <li>Juro (contract management)</li>
-            <li>Oracle Primavera / ARES PRISM</li>
-            <li>Smartsheet / monday.com</li>
-            <li>Aconex / Oracle (document mgmt)</li>
-          </ul>
-        </div>
-        <div class="hitlist-cell">
-          <div class="hc-label">Media (Traditional & New)</div>
-          <ul>
-            <li class="hot">airportIR by Modalis (existing)</li>
-            <li>New Civil Engineer / ENR</li>
-            <li>Infrastructure Investor</li>
-            <li>This Is Africa / Business Day Africa</li>
-            <li>LinkedIn newsletters — project delivery</li>
-            <li>PMO / EPC podcasts</li>
-          </ul>
-        </div>
-        <div class="hitlist-cell">
-          <div class="hc-label">Experiences / Events</div>
-          <ul>
-            <li class="hot">EPC Berlin Forum (attending → speaker)</li>
-            <li>PMI World Congress</li>
-            <li>APM Conference</li>
-            <li>Gartner PPM Summit</li>
-            <li>Africa CEO Forum</li>
-            <li>Dent KPI Accelerator</li>
-          </ul>
+
+    <div class="dent-hitlist-body">
+      <div class="dent-hitlist-cell">
+        <div class="dent-hitlist-header">COMPLEMENTARY SERVICES</div>
+        <div class="dent-hitlist-content">
+          <div class="dent-hitlist-item hot">★ Nexus Project Law — Hugues de la Forge (EPC / Africa / ME)</div>
+          <div class="dent-hitlist-item hot">★ Interglobal — Richard Osei Owusu (African infrastructure PM)</div>
+          <div class="dent-hitlist-item hot">★ Widnell Europe — Stephane Galeote (QS / commercial management)</div>
+          <div class="dent-hitlist-item hot">★ 2besafe — Wayne Sudborn (HSSE / project safety)</div>
+          <div class="dent-hitlist-item">Pinsent Masons / Arcadis (claims / quantum consulting)</div>
+          <div class="dent-hitlist-item">EOR / contractor management providers for Africa</div>
+          <div class="dent-hitlist-item">PM coaching and training firms serving capital projects</div>
         </div>
       </div>
+      <div class="dent-hitlist-cell">
+        <div class="dent-hitlist-header">KPI'S / INFLUENCERS / CELEBRITY</div>
+        <div class="dent-hitlist-content">
+          <div class="dent-hitlist-item hot">★ Tim Cummins — WorldCC (global contracting authority)</div>
+          <div class="dent-hitlist-item hot">★ airportIR by Modalis (aviation infrastructure platform)</div>
+          <div class="dent-hitlist-item">Daniel Priestley — Dent Global (KPI thought leader)</div>
+          <div class="dent-hitlist-item">PMO LinkedIn thought leaders (10K–100K following)</div>
+          <div class="dent-hitlist-item">Africa business platform hosts and conveners</div>
+          <div class="dent-hitlist-item">Infrastructure and EPC YouTube / podcast voices</div>
+        </div>
+      </div>
+      <div class="dent-hitlist-cell">
+        <div class="dent-hitlist-header">MEMBERSHIPS / ASSOCIATIONS</div>
+        <div class="dent-hitlist-content">
+          <div class="dent-hitlist-item hot">★ WorldCC / IACCM — member, activate as featured practitioner</div>
+          <div class="dent-hitlist-item hot">★ CIArb — MCIArb, activate as speaker / contributor</div>
+          <div class="dent-hitlist-item hot">★ CIOB — member, activate as contributor</div>
+          <div class="dent-hitlist-item hot">★ EPC Berlin Forum — attending, target speaker slot</div>
+          <div class="dent-hitlist-item">PMI / APM — pitch practitioner content or speaker slot</div>
+          <div class="dent-hitlist-item">Africa CEO Forum / Africa50 infrastructure platform</div>
+          <div class="dent-hitlist-item">African Development Bank project ecosystem</div>
+        </div>
+      </div>
+      <div class="dent-hitlist-cell">
+        <div class="dent-hitlist-header">SOFTWARE / TOOLS</div>
+        <div class="dent-hitlist-content">
+          <div class="dent-hitlist-item">Icertis — contract management platform (ambassador model)</div>
+          <div class="dent-hitlist-item">Asite — construction contract management</div>
+          <div class="dent-hitlist-item">Juro — contract management (PMO audience overlap)</div>
+          <div class="dent-hitlist-item">Oracle Primavera / ARES PRISM — project controls</div>
+          <div class="dent-hitlist-item">Smartsheet / monday.com — PMO workflow tools</div>
+          <div class="dent-hitlist-item">Aconex / Oracle — document management at EPC scale</div>
+        </div>
+      </div>
+      <div class="dent-hitlist-cell">
+        <div class="dent-hitlist-header">MEDIA (Traditional &amp; New)</div>
+        <div class="dent-hitlist-content">
+          <div class="dent-hitlist-item hot">★ airportIR by Modalis — existing relationship, formalise</div>
+          <div class="dent-hitlist-item">New Civil Engineer / Engineering News-Record (ENR)</div>
+          <div class="dent-hitlist-item">Infrastructure Investor — capital project owner readership</div>
+          <div class="dent-hitlist-item">This Is Africa / Business Day Africa</div>
+          <div class="dent-hitlist-item">LinkedIn newsletters in project delivery / PMO space</div>
+          <div class="dent-hitlist-item">PMO and EPC-focused podcasts — guest appearance</div>
+        </div>
+      </div>
+      <div class="dent-hitlist-cell">
+        <div class="dent-hitlist-header">EXPERIENCES / EVENTS</div>
+        <div class="dent-hitlist-content">
+          <div class="dent-hitlist-item hot">★ EPC Berlin Forum — attending, upgrade to speaker</div>
+          <div class="dent-hitlist-item">PMI World Congress — submit speaker proposal</div>
+          <div class="dent-hitlist-item">APM Conference — practitioner speaker pitch</div>
+          <div class="dent-hitlist-item">Gartner Project &amp; Portfolio Management Summit</div>
+          <div class="dent-hitlist-item">Africa CEO Forum / Africa Investment Forum</div>
+          <div class="dent-hitlist-item">Dent KPI Accelerator — enrol for JV squad ecosystem</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dent-canvas-footer">
+      <span>www.dent.global</span>
+      <span class="dent-footer-tagline">Be Brave. Have Fun. Make a Dent.</span>
+      <span style="font-size:10px;color:#aaa;">Copyright of Dent Global Ltd. All rights reserved. Not for reuse.</span>
     </div>
   </div>
 </div>
