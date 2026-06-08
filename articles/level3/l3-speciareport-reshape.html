@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 5Cs of Refit &#8212; RESHAPE&#8482; Special Report &#183; Contracks Global</title>
+<meta name="description" content="How to reduce site visits, replace routine surveys, and prevent disputes in cross-border refit delivery using the 5Cs governance architecture.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0A1628;--gold:#C5A050;--dark:#1A1A1A;--grey:#6B7280;--white:#FFFFFF;--max:740px;--reshape:#6C3483;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--white);color:var(--dark);font-family:"DM Sans",-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;line-height:1.8;font-size:19px;overflow-x:hidden;padding-bottom:130px;}
+  nav{background:var(--navy);padding:16px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;}
+  .nav-brand{font-family:"DM Sans",sans-serif;font-size:13px;font-weight:700;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;}
+  .nav-right{display:flex;align-items:center;gap:20px;}
+  .nav-back{font-family:"DM Sans",sans-serif;font-size:11px;color:rgba(255,255,255,0.45);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;transition:color .2s;}
+  .nav-back:hover{color:var(--gold);}
+  .nav-cta{font-family:"DM Sans",sans-serif;font-size:11px;font-weight:500;color:var(--navy);background:var(--gold);padding:8px 16px;border-radius:3px;text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;}
+  .article-header{background:var(--navy);padding:80px 40px 60px;text-align:center;}
+  .article-meta{font-family:"DM Sans",sans-serif;font-size:11px;font-weight:500;color:var(--gold);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:24px;}
+  .article-title{font-family:"Playfair Display",Georgia,serif;font-size:clamp(26px,5vw,50px);font-weight:800;color:var(--white);line-height:1.15;max-width:820px;margin:0 auto 20px;letter-spacing:-0.02em;}
+  .article-subtitle{font-family:"DM Sans",sans-serif;font-size:18px;color:rgba(255,255,255,0.65);font-style:italic;max-width:600px;margin:0 auto 32px;line-height:1.6;font-weight:400;}
+  .article-byline{font-family:"DM Sans",sans-serif;font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.08em;}
+  .article-hero{display:block;width:100%;height:auto;}
+  .article-body{max-width:var(--max);margin:0 auto;padding:64px 24px 80px;}
+  p{margin-bottom:24px;}
+  .lead{font-size:22px;font-weight:400;line-height:1.7;color:var(--navy);margin-bottom:32px;}
+  .intro-title{font-family:"Playfair Display",serif;font-size:25px;font-weight:800;color:var(--navy);line-height:1.25;letter-spacing:-0.01em;margin-bottom:6px;}
+  .intro-by{font-family:"DM Sans",sans-serif;font-size:13px;font-weight:600;color:var(--gold);letter-spacing:0.04em;margin-bottom:38px;}
+  h2{font-family:"Playfair Display",serif;font-size:26px;font-weight:700;color:var(--navy);margin:56px 0 20px;line-height:1.25;letter-spacing:-0.01em;}
+  blockquote{border-left:4px solid var(--gold);margin:40px 0;padding:20px 28px;background:rgba(197,160,80,0.06);border-radius:0 4px 4px 0;}
+  blockquote p{font-family:"Playfair Display",serif;font-size:21px;font-weight:700;font-style:italic;color:var(--navy);line-height:1.5;margin:0;}
+  .key-line{font-family:"Playfair Display",serif;font-size:20px;font-weight:700;color:var(--navy);line-height:1.5;border-left:4px solid var(--gold);padding:16px 28px;margin:40px 0;background:rgba(197,160,80,0.08);border-radius:0 4px 4px 0;}
+  .brutal{font-size:20px;font-weight:700;font-style:italic;color:var(--navy);margin:24px 0;}
+  hr{border:none;border-top:1px solid #E4EAF3;margin:48px 0;}
+  .step{border-left:3px solid var(--navy);padding:0 0 0 24px;margin:28px 0;}
+  .step-label{font-family:"DM Sans",sans-serif;font-size:12px;font-weight:500;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;}
+  .step-title{font-family:"Playfair Display",serif;font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+  .proof-box{border-left:4px solid var(--navy);padding:20px 28px;margin:32px 0;background:#F5F4F0;border-radius:0 4px 4px 0;}
+  .proof-box strong{display:block;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:12px;}
+  .proof-box p{font-size:17px;margin-bottom:8px;}
+  .proof-box p:last-child{margin-bottom:0;}
+  .proof-box ul{margin:8px 0 8px 20px;}
+  .proof-box li{font-size:16px;line-height:1.6;margin-bottom:4px;color:#374151;}
+  .outstation{border-left:3px solid var(--reshape);padding:14px 20px;margin:20px 0;background:rgba(108,52,131,.05);border-radius:0 4px 4px 0;}
+  .outstation .ot-label{font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--reshape);margin-bottom:6px;}
+  .outstation p{font-size:16px;color:#374151;margin:0;line-height:1.65;}
+  .objection{border-bottom:1px solid #F0F0F0;padding:24px 0;}
+  .objection:last-child{border-bottom:none;}
+  .objection-q{font-style:italic;color:var(--navy);margin-bottom:10px;font-size:18px;font-weight:400;}
+  .cta-block{background:var(--navy);border-radius:8px;padding:48px 44px;margin:60px 0 0;text-align:center;}
+  .cta-block h3{font-family:"Playfair Display",serif;font-size:24px;font-weight:700;color:var(--white);margin-bottom:12px;line-height:1.3;}
+  .cta-block p{color:rgba(255,255,255,0.6);font-size:16px;margin-bottom:28px;}
+  .cta-primary{display:inline-block;background:var(--gold);color:var(--navy);font-family:"DM Sans",sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;padding:14px 28px;border-radius:3px;margin:6px;}
+  .cta-secondary{display:inline-block;border:1.5px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);font-family:"DM Sans",sans-serif;font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;padding:14px 28px;border-radius:3px;margin:6px;}
+  footer{background:var(--navy);padding:40px;text-align:center;}
+  .footer-brand{display:inline-block;font-family:"DM Sans",sans-serif;font-size:13px;font-weight:700;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;margin-bottom:14px;}
+  .footer-tagline{font-family:"Playfair Display",serif;font-size:16px;font-style:italic;color:rgba(255,255,255,0.7);margin-bottom:14px;}
+  .footer-link{font-family:"DM Sans",sans-serif;font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.08em;text-decoration:none;}
+  .exec-sum{background:#F5F4F0;border-left:4px solid var(--navy);border-radius:0 4px 4px 0;padding:28px 32px;margin:0 0 48px;font-size:17px;}
+  .exec-sum .er{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:10px 0;border-bottom:1px solid #E4EAF3;line-height:1.6;}
+  .exec-sum .er:last-child{border-bottom:none;}
+  .exec-sum .ek{font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);padding-top:3px;}
+  .exec-sum .ev{color:#374151;margin:0;}
+  .reshape-principle{background:var(--navy);color:#fff;padding:22px 32px;border-radius:4px;margin:20px 0 0;text-align:center;}
+  .reshape-principle strong{display:block;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+  .reshape-principle p{font-family:"Playfair Display",serif;font-style:italic;font-size:18px;color:rgba(255,255,255,.9);margin:0;line-height:1.5;}
+  .gov-compare{display:grid;grid-template-columns:1fr 52px 1fr;margin:40px 0;border-radius:4px;overflow:hidden;box-shadow:0 2px 12px rgba(10,22,40,.10);}
+  .gc-left{background:#F5F4F0;padding:28px 24px;border:1px solid #E4EAF3;border-right:none;}
+  .gc-arrow{background:var(--navy);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:22px;}
+  .gc-right{background:var(--navy);padding:28px 24px;}
+  .gc-label{font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px;display:block;}
+  .gc-left .gc-label{color:var(--grey);}
+  .gc-right .gc-label{color:var(--gold);}
+  .gc-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.07);font-size:15px;font-weight:500;}
+  .gc-right .gc-item{border-bottom-color:rgba(255,255,255,.09);}
+  .gc-item:last-child{border-bottom:none;}
+  .gc-left .gc-item{color:#6B7280;}
+  .gc-right .gc-item{color:rgba(255,255,255,.88);}
+  .gc-icon{font-size:13px;flex-shrink:0;width:18px;text-align:center;}
+  .scan-flow{display:flex;gap:2px;margin:32px 0;border-radius:4px;overflow:hidden;}
+  .sf-step{flex:1;background:#F5F4F0;padding:18px 12px;text-align:center;border-top:3px solid var(--reshape);}
+  .sf-num{font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--reshape);text-transform:uppercase;margin-bottom:7px;}
+  .sf-name{font-family:"Playfair Display",serif;font-size:13px;font-weight:700;color:var(--navy);line-height:1.3;}
+  .sf-desc{font-family:"DM Sans",sans-serif;font-size:11px;color:var(--grey);margin-top:5px;line-height:1.4;}
+  .data-table{width:100%;border-collapse:collapse;margin:28px 0;font-size:16px;}
+  .data-table th{background:var(--navy);color:#fff;padding:11px 16px;text-align:left;font-family:"DM Sans",sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+  .data-table td{padding:12px 16px;border-bottom:1px solid #E4EAF3;vertical-align:top;line-height:1.55;}
+  .data-table tr:last-child td{border-bottom:none;}
+  .data-table tr:nth-child(even) td{background:#FAFAF8;}
+  .data-table .td-head{font-weight:600;color:var(--navy);}
+  .bio-block{background:#F5F4F0;border-top:3px solid var(--gold);padding:24px 28px;margin:40px 0 0;border-radius:0 0 4px 4px;}
+  .bio-block strong{display:block;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+  .bio-block .bio-creds{font-family:"DM Sans",sans-serif;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+  .bio-block p{font-size:16px;color:var(--grey);margin-bottom:6px;}
+  .bio-block p:last-child{margin-bottom:0;}
+  .listen-bar{display:inline-flex;align-items:center;gap:8px;background:rgba(197,160,80,0.12);border:1px solid rgba(197,160,80,0.45);color:var(--gold);font-family:"DM Sans",sans-serif;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:11px 22px;border-radius:30px;cursor:pointer;transition:all .18s;}
+  .listen-bar:hover{background:rgba(197,160,80,0.22);}
+  .s{transition:background .3s ease,color .3s ease;border-radius:3px;}
+  .listening .read-block{opacity:.38;transition:opacity .45s ease;}
+  .listening .read-block.block-active{opacity:1;}
+  .s.read{color:#9CA3AF;}
+  .s.active{background:linear-gradient(180deg,transparent 62%,rgba(197,160,80,.40) 62%);}
+  .article-subtitle .s.active{background:linear-gradient(180deg,transparent 62%,rgba(197,160,80,.55) 62%);color:#fff;}
+  .clickable .s{cursor:pointer;}
+  .cks-player{position:fixed;bottom:0;left:0;right:0;background:rgba(8,18,34,.97);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-top:1px solid rgba(197,160,80,.18);z-index:300;box-shadow:0 -10px 44px rgba(0,0,0,.5);transform:translateY(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);}
+  .cks-player.show{transform:translateY(0);}
+  .cks-scrub{height:3px;background:rgba(255,255,255,.08);cursor:pointer;}
+  .cks-fill{height:100%;background:linear-gradient(90deg,var(--gold),#D4B470);width:0%;}
+  .cks-scrub:hover{height:5px;transition:height .15s;}
+  .cks-now{padding:9px 22px 0;display:flex;align-items:center;gap:10px;overflow:hidden;}
+  .cks-nl{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.65;flex-shrink:0;}
+  .cks-nt{font-size:12px;color:rgba(255,255,255,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;font-family:"Playfair Display",serif;font-style:italic;}
+  .cks-main{padding:13px 22px 16px;display:flex;align-items:center;gap:15px;}
+  .cks-play{width:48px;height:48px;background:var(--gold);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;box-shadow:0 4px 16px rgba(197,160,80,.38);}
+  .cks-play:hover{background:#D4B470;transform:scale(1.05);}
+  .cks-wave{display:flex;align-items:center;gap:2px;height:24px;flex-shrink:0;}
+  .cks-wb{width:2px;background:var(--gold);border-radius:2px;opacity:.22;}
+  @keyframes ckswv{0%,100%{transform:scaleY(.3);}50%{transform:scaleY(1);}}
+  .cks-player.playing .cks-wb{opacity:.8;animation:ckswv .75s ease-in-out infinite;}
+  .cks-wb:nth-child(1){height:8px;animation-delay:0s;}.cks-wb:nth-child(2){height:17px;animation-delay:.12s;}
+  .cks-wb:nth-child(3){height:23px;animation-delay:.24s;}.cks-wb:nth-child(4){height:14px;animation-delay:.18s;}
+  .cks-wb:nth-child(5){height:9px;animation-delay:.06s;}
+  .cks-info{flex:1;min-width:0;}
+  .cks-t{font-size:12.5px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .cks-st{font-size:10.5px;color:rgba(255,255,255,.42);margin-top:3px;}
+  .cks-right{display:flex;align-items:center;gap:9px;flex-shrink:0;}
+  .cks-speed{display:flex;gap:1px;background:rgba(255,255,255,.05);border-radius:6px;padding:2px;}
+  .cks-spd{background:none;border:none;color:rgba(255,255,255,.42);font-family:"DM Sans",sans-serif;font-size:9.5px;font-weight:600;padding:5px 8px;border-radius:4px;cursor:pointer;transition:all .12s;}
+  .cks-spd.on,.cks-spd:hover{background:rgba(197,160,80,.18);color:var(--gold);}
+  .cks-src{display:flex;align-items:center;gap:6px;background:rgba(197,160,80,.07);border:1px solid rgba(197,160,80,.2);border-radius:5px;padding:5px 9px;}
+  .cks-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
+  .cks-srcl{font-size:8.5px;font-weight:700;color:var(--gold);letter-spacing:.8px;}
+  .cks-stop{width:34px;height:34px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+  .cks-stop:hover{background:rgba(255,255,255,.1);}
+  @media(max-width:640px){
+    nav{padding:14px 20px;}.nav-cta{font-size:10px;padding:7px 10px;}.nav-right{gap:12px;}
+    .article-header{padding:48px 20px 40px;}.article-body{padding:40px 20px 60px;}
+    .cta-block{padding:32px 24px;}h2{font-size:22px;margin:40px 0 16px;}
+    .exec-sum .er{grid-template-columns:1fr;gap:4px;}
+    .gov-compare{grid-template-columns:1fr;}.gc-arrow{padding:14px;}
+    .scan-flow{flex-direction:column;gap:4px;}
+    .cks-info{display:none;}.cks-main{gap:11px;padding:12px 16px 15px;}.cks-now{padding:9px 16px 0;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">CONTRACKS.GLOBAL</a>
+  <div class="nav-right">
+    <a href="/library" class="nav-back">&larr; Back to library</a>
+    <a href="/reshape-assessment.html" class="nav-cta">Take the diagnostic &rarr;</a>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="article-meta">RESHAPE&#8482; Special Report &nbsp;&middot;&nbsp; The 5Cs of Refit &nbsp;&middot;&nbsp; June 2026</div>
+  <h1 class="article-title">The 5Cs of Refit</h1>
+  <p class="article-subtitle">How to reduce site visits, replace routine surveys, and prevent disputes in cross-border refit delivery.</p>
+  <button class="listen-bar" onclick="cksToggle()" style="margin-bottom:24px;">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6,4 20,12 6,20" fill="currentColor" stroke="none"/></svg>
+    <span id="cksListenLabel">Listen to this report</span>
+    <span id="cksListenTime" style="opacity:.7"></span>
+  </button>
+  <p class="article-byline" style="margin-top:22px;">Written and narrated by Serguei Poppeleer &nbsp;&middot;&nbsp; Founder &amp; Managing Director, Contracks Global &nbsp;&middot;&nbsp; MCIArb &middot; IACCM &middot; LLM Oil &amp; Gas &middot; Executive MBA</p>
+</header>
+
+<img src="/articles/level3/l3-reshape-sr.jpeg" alt="The contract was signed. The control architecture wasn&#8217;t." class="article-hero">
+
+<main class="article-body">
+
+  <p class="intro-title">The 5Cs of Refit.</p>
+  <p class="intro-by">How to reduce site visits, replace routine surveys, and prevent disputes in cross-border refit delivery. Written and narrated by Serguei Poppeleer.</p>
+
+  <div class="exec-sum">
+    <div class="er"><span class="ek">Problem</span><p class="ev">Cross-border refit and property projects fail not because contractors are incompetent, but because the governance architecture around delivery was never built. The contract gets signed. The control architecture does not.</p></div>
+    <div class="er"><span class="ek">Impact</span><p class="ev">Unverified vendor dates (2&#8211;4 week delays). Informal scope variations (uncontrolled claims). Multiple reporting streams (false progress visibility). Open decisions with no consequence (drift that becomes cost). Final accounts 30&#8211;40% above contract value.</p></div>
+    <div class="er"><span class="ek">Solution</span><p class="ev">RESHAPE&#8482; &#8212; built on The 5Cs Framework&#8482;: Contain the Scope, Command One Plan, Close Every Decision, Confirm Vendor Dates, Control Tower Cadence.</p></div>
+    <div class="er"><span class="ek">Result</span><p class="ev">Consistent delivery across distributed property portfolios without permanent site presence. Final accounts closed within contract values. Handover against written scope. No disputes. Proved across four African outstations simultaneously for a major European airline.</p></div>
+    <div class="reshape-principle">
+      <strong>Governance Designed for Distance</strong>
+      <p>RESHAPE&#8482; is built on The 5Cs Framework&#8482; &#8212; a governance architecture that holds when the site is remote, the contractor is local, and the client is in Brussels.</p>
+    </div>
+  </div>
+
+  <div class="gov-compare">
+    <div class="gc-left">
+      <span class="gc-label">The Standard Playbook</span>
+      <div class="gc-item"><span class="gc-icon">&#10005;</span>Site visits (&#8364;2,000&#8211;5,000 each)</div>
+      <div class="gc-item"><span class="gc-icon">&#10005;</span>Local surveyors producing reports</div>
+      <div class="gc-item"><span class="gc-icon">&#10005;</span>WhatsApp-managed contractors</div>
+      <div class="gc-item"><span class="gc-icon">&#10005;</span>Reactive status calls</div>
+      <div class="gc-item"><span class="gc-icon">&#10005;</span>Disputed handover</div>
+    </div>
+    <div class="gc-arrow">&#8594;</div>
+    <div class="gc-right">
+      <span class="gc-label">5Cs Governance</span>
+      <div class="gc-item"><span class="gc-icon">&#10003;</span>LiDAR scope (20 min, no travel)</div>
+      <div class="gc-item"><span class="gc-icon">&#10003;</span>One operating plan</div>
+      <div class="gc-item"><span class="gc-icon">&#10003;</span>Decision log (typically under 48hr)</div>
+      <div class="gc-item"><span class="gc-icon">&#10003;</span>Verified dates</div>
+      <div class="gc-item"><span class="gc-icon">&#10003;</span>Handover against written scope</div>
+    </div>
+  </div>
+
+  <p class="lead">The invoice arrived at week thirteen. It was 42% above the contracted amount. The contract had been signed in a Brussels boardroom on a Tuesday. Scope of works: lounge refurbishment at an African outstation. Timeline: twelve weeks. Budget: agreed, initialled, filed.</p>
+
+  <p>By week four, the contractor had started work. By week seven, the scope had quietly changed &#8212; new ceiling specification, different floor finish, additional partition walls that &#8220;made more sense on site.&#8221; Nobody sent a formal variation. The changes were communicated via WhatsApp, ratified by a thumbs-up emoji, and added to a running tab nobody was keeping.</p>
+
+  <blockquote><p>The dashboard stayed green while the project drifted.</p></blockquote>
+
+  <p>This is not an unusual story. Ask anyone who has managed distance-managed real estate delivery from a European headquarters. The geography creates distance. The distance creates gaps. The gaps &#8212; in scope, in decisions, in vendor commitments &#8212; fill themselves. Usually with cost. The instinct is to blame the contractor. Sometimes that is fair. But if you trace the overrun back to its source, you find the same thing: the governance architecture around the project was never built.</p>
+
+  <div class="key-line">The contract was signed. The control architecture wasn&#8217;t. That is where most projects fail.</div>
+
+  <p>Distributed delivery projects fail in a predictable sequence. A scope document that describes outcomes rather than measurements. A project plan that lives in a steering deck rather than in the contractor&#8217;s hands. Open decisions that nobody closes because nobody owns them. Vendor dates that are aspirational rather than verified. Status calls that report what happened last week rather than catching what is about to go wrong next week.</p>
+
+  <p>I have run projects in more than thirty countries. The pattern I have seen more often than any other is not incompetent contractors or difficult clients. It is competent people operating without the right governance architecture &#8212; and finding out too late. When you are managing delivery from a distance &#8212; when your project is in Liberia and you are in Brussels, when your contractor is in Burkina Faso and your designer is in London &#8212; every gap in governance that might take months to surface at home surfaces in weeks.</p>
+
+  <div class="key-line">Projects don&#8217;t fail. The systems around them do. Frontier markets just expose it faster.</div>
+
+  <hr>
+
+  <h2>Why the Standard Playbook Leaks Money</h2>
+
+  <p>The conventional approach to multi-country real estate delivery has three pillars: fly in for site visits, hire a local surveyor, manage contractors remotely via email and WhatsApp. It is widely used. It is also reliably expensive. Not because the tools are wrong. Because none of them solve the actual problem.</p>
+
+  <div class="step">
+    <div class="step-label">Problem 1</div>
+    <div class="step-title">The Site Visit</div>
+    <p>A site visit feels like control. You are physically present, you walk the space, you make decisions on the spot. It costs &#8364;2,000 to &#8364;5,000 in travel and time. And it solves one day&#8217;s worth of problems. You visit on a Thursday. The site behaves well. You return to Brussels on Friday. The governance vacuum reasserts itself on Monday morning. Unless the control architecture changes &#8212; the scope document, the decision log, the vendor confirmation process, the weekly rhythm &#8212; the problems that caused the visit regenerate.</p>
+    <p class="brutal" style="font-size:17px;margin:12px 0 0;">More site visits don&#8217;t fix the governance gap. They substitute for it.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Problem 2</div>
+    <div class="step-title">The Surveyor</div>
+    <p>Local surveyors produce reports. Reports go to the client. Questions come back. The cycle takes days, sometimes weeks, and creates a telephone game between the client&#8217;s requirements and the site&#8217;s reality. When the scope drifts or the contractor misses a date, the surveyor documents it. The governance problem &#8212; the actual decision that needs to be made, the consequence that needs to be enforced &#8212; still sits with the client in Brussels.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Problem 3</div>
+    <div class="step-title">The WhatsApp Thread</div>
+    <p>WhatsApp-managed contractors are not the disease. They are the symptom of a governance vacuum. When there is no structured decision log, no written scope, and no formal weekly rhythm, people default to the path of least resistance. Nobody knows which version of reality is contractual. That sentence describes the situation on most informally-managed remote projects by week six.</p>
+  </div>
+
+  <table class="data-table">
+    <thead><tr><th>Governance Failure</th><th>Typical Impact</th></tr></thead>
+    <tbody>
+      <tr><td class="td-head">Unverified vendor dates</td><td>2&#8211;4 week programme delay; contractor resequencing adds unbudgeted cost</td></tr>
+      <tr><td class="td-head">Open design decisions</td><td>Idle labour on site; rework when late approval reverses provisional work</td></tr>
+      <tr><td class="td-head">Multiple reporting streams</td><td>False progress visibility; slippage invisible until recovery is no longer cheap</td></tr>
+      <tr><td class="td-head">Informal scope variations</td><td>Uncontrolled claims exposure; final account disputes that take months to resolve</td></tr>
+      <tr><td class="td-head">No decision consequence</td><td>RAID items drift for weeks; decisions made under crisis pressure, not clarity</td></tr>
+      <tr><td class="td-head">No written acceptance criteria</td><td>Contractor and client disagree on what &#8220;done&#8221; means at handover</td></tr>
+    </tbody>
+  </table>
+
+  <p>The compounding effect is what makes these costs dangerous. A vendor delay triggers contractor resequencing. Resequencing triggers a variation. The variation reopens scope. The scope dispute delays handover. None of this was in the risk register. None of it had to happen.</p>
+
+  <hr>
+
+  <h2>The 5Cs Framework&#8482;</h2>
+
+  <blockquote><p>The framework was developed across thirty countries of project delivery and refined during three years of multi-country real estate work for a major European airline across four African outstations. It is not theoretical. It is the distillation of what actually works when the standard playbook does not.</p></blockquote>
+
+  <table class="data-table">
+    <thead><tr><th>#</th><th>Pillar</th><th>Name</th><th>What It Does</th></tr></thead>
+    <tbody>
+      <tr><td class="td-head">C1</td><td>CONTAIN</td><td>Contain the Scope</td><td>Fuzzy requirements &#8594; written scope with measurements, materials, and acceptance criteria</td></tr>
+      <tr><td class="td-head">C2</td><td>COMMAND</td><td>Command One Plan</td><td>Deck governance &#8594; one operating plan that matches how the site actually runs</td></tr>
+      <tr><td class="td-head">C3</td><td>CLOSE</td><td>Close Every Decision</td><td>RAID drift &#8594; every open item has an owner, a deadline, and a consequence</td></tr>
+      <tr><td class="td-head">C4</td><td>CONFIRM</td><td>Confirm Vendor Dates</td><td>Optimistic promises &#8594; capacity, lead times, and proof of readiness verified</td></tr>
+      <tr><td class="td-head">C5</td><td>CONTROL</td><td>Control Tower Cadence</td><td>Reactive calls &#8594; fixed weekly rhythm; slippage caught before it compounds</td></tr>
+    </tbody>
+  </table>
+
+  <div class="step">
+    <div class="step-label">C1 &#8212; Contain</div>
+    <div class="step-title">Contain the Scope</div>
+    <p>Most refit disputes do not start with a contractor who builds the wrong thing. They start with a scope document that described what was wanted without specifying what that meant. &#8220;Refurbish the lounge&#8221; is not a scope. It is an intention. A scope is: 87 square metres, ceramic floor tiles (300x300mm, colour reference RAL 7047), suspended ceiling at 2,600mm finished height, four fixed seating units to drawing reference SP-007, electrical to IEC standard 60364. Out of scope: HVAC works, structural modifications, all works outside the demised area. The difference between those two documents is the difference between a project that closes on budget and one that closes with a dispute.</p>
+    <p>The Reshape scan-to-refit approach removes the need for a site visit to produce that scope. A local contact scans the space using an iPhone with LiDAR capability &#8212; approximately twenty minutes, producing data accurate enough for most refit scopes, subject to specialist validation where structural or MEP precision is required. That data becomes a written scope document: verified measurements, a layout drawing, and a list of assumptions and constraints. The designer works from this brief remotely.</p>
+
+    <div class="scan-flow">
+      <div class="sf-step"><div class="sf-num">01</div><div class="sf-name">Scan</div><div class="sf-desc">iPhone LiDAR, ~20 min, no site visit</div></div>
+      <div class="sf-step"><div class="sf-num">02</div><div class="sf-name">Scope</div><div class="sf-desc">Written scope, measurements, criteria locked</div></div>
+      <div class="sf-step"><div class="sf-num">03</div><div class="sf-name">Design</div><div class="sf-desc">Remote designer, drawings against scope</div></div>
+      <div class="sf-step"><div class="sf-num">04</div><div class="sf-name">Confirm</div><div class="sf-desc">Capacity verified, lead times checked</div></div>
+      <div class="sf-step"><div class="sf-num">05</div><div class="sf-name">Control</div><div class="sf-desc">5Cs cadence, weekly rhythm, slippage caught</div></div>
+      <div class="sf-step"><div class="sf-num">06</div><div class="sf-name">Handover</div><div class="sf-desc">Against written scope &#8212; no claims, no disputes</div></div>
+    </div>
+
+    <div class="outstation">
+      <div class="ot-label">Major European Airline &#8212; Liberia Outstation</div>
+      <p>The Monrovia lounge scope was produced from a remote LiDAR scan and site photographs. The scope document ran to fourteen pages, specifying every material by manufacturer reference and every dimension to the nearest 10mm. The contractor had no scope ambiguity to exploit. The final account closed within the contracted amount. Decision closure time averaged under 48 hours from issue to sign-off.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-label">C2 &#8212; Command</div>
+    <div class="step-title">Command One Plan</div>
+    <p>On almost every distributed real estate project I have reviewed, there are two project plans. The first goes to steering committees &#8212; Gantt chart, RAG status, narrative summary. It looks like control. The second is the plan the contractor actually uses: in their project manager&#8217;s head, in a WhatsApp thread, or in a notebook on site. It bears little resemblance to the steering deck version. Command One Plan means collapsing those two documents into one &#8212; updated weekly, showing actual progress against actual commitments, including open decisions and overdue actions.</p>
+
+    <div class="outstation">
+      <div class="ot-label">Major European Airline &#8212; Burkina Faso Outstation</div>
+      <p>Three separate reporting streams were feeding the Brussels project office &#8212; all describing different versions of progress. The switch to one operating plan, updated every Monday and shared with all parties, removed the discrepancy. When the plan said a milestone was at risk, it was. Reporting time per project dropped from 90 minutes to under 20 minutes per week.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-label">C3 &#8212; Close</div>
+    <div class="step-title">Close Every Decision</div>
+    <p>Every distributed project accumulates open decisions. RAID logs are the standard governance tool. They almost universally fail to close them &#8212; because most RAID logs record what an item is without recording who owns it, when it must be resolved, and what happens if it is not. Close Every Decision means every open item has three attributes without exception: an owner, a deadline, and a consequence.</p>
+    <blockquote style="margin:16px 0 0;"><p>Without a consequence, a deadline is a suggestion.</p></blockquote>
+
+    <div class="outstation" style="margin-top:20px;">
+      <div class="ot-label">Major European Airline &#8212; Burundi Outstation</div>
+      <p>A materials substitution decision sat open for over ten days. During that time, the contractor ordered provisional quantities of an alternative finish. When the approved specification came through, the order had to be cancelled &#8212; costing nine days of programme. After introducing a 48-hour decision rule with automatic escalation, this category of delay was eliminated from all subsequent projects.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-label">C4 &#8212; Confirm</div>
+    <div class="step-title">Confirm Vendor Dates</div>
+    <p>&#8220;Yes, we can start Monday.&#8221; One of the most expensive sentences in distance-managed construction. Contractor date commitments made without verified capacity are aspirational. Confirm Vendor Dates is the discipline of replacing optimism with evidence: supplier capacity confirmed, lead times checked, customs clearance timelines factored in for cross-border material movements &#8212; before any date enters the programme.</p>
+
+    <div class="outstation">
+      <div class="ot-label">Major European Airline &#8212; Burkina Faso Outstation</div>
+      <p>A contractor committed to a materials delivery date for imported ceiling fixings without checking the customs clearance time from the country of origin. Actual clearance time was several weeks longer than assumed. After introducing a pre-commitment verification step &#8212; supplier lead time confirmed in writing before any date entered the programme &#8212; this category of delay did not recur across the remaining outstations.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-label">C5 &#8212; Control</div>
+    <div class="step-title">Control Tower Cadence</div>
+    <p>Most project status calls answer one question: what happened last week? A project running in this rhythm is managing the past. Control Tower Cadence manages the near future. Fixed inputs &#8212; the updated operating plan, the closed-item log, confirmed vendor dates for the next two weeks. Fixed outputs: a revised operating plan, an updated decision log, verified commitments for the coming week. Same agenda. Same format. Every week. If a vendor has not confirmed a delivery due in ten days, that surfaces in the weekly cadence and triggers a phone call &#8212; not an urgent scramble when the delivery fails to arrive.</p>
+
+    <div class="outstation">
+      <div class="ot-label">Major European Airline &#8212; Uganda Outstation</div>
+      <p>Four outstations running simultaneously across different time zones. A single 45-minute weekly cadence call replaced four separate reporting streams, two of which had been running a week out of sync. Slippage was caught around one week earlier on average. Preparation time dropped from 90 minutes per project to under 20 minutes. Zero governance-related claims across the four projects.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>Four Outstations, One Framework</h2>
+
+  <p>Between 2022 and 2025, the author served as Senior Project Manager, Real Estate &amp; Construction for a major European airline &#8212; covering the full property portfolio: long-term real estate strategy, lease negotiations, hangar and engineering facility projects, crew training centre development, and office relocations. It also covered the African outstations.</p>
+
+  <p>Liberia, Burkina Faso, Burundi, Uganda: four different countries, four different construction markets, four different supply chains, four different contractor relationships. The challenge was maintaining consistent delivery governance across all four simultaneously, from Brussels, without the budget for permanent site presence at each location.</p>
+
+  <div class="proof-box">
+    <strong>Measured outcomes across the four outstations</strong>
+    <ul>
+      <li>Final accounts closed within agreed contract values across all four projects</li>
+      <li>Zero contractual disputes on any of the four outstation projects</li>
+      <li>Decision closure time reduced from over ten days to typically under 48 hours</li>
+      <li>Supply chain slippage caught around one week earlier after switching to the weekly cadence</li>
+      <li>Reporting time reduced from 90 minutes per project per week to under 20 minutes</li>
+      <li>Site visit frequency reduced without any reduction in delivery governance quality</li>
+    </ul>
+  </div>
+
+  <div class="key-line">Four countries. Four contractor markets. Four regulatory environments. One governance architecture. The framework did not adapt to each location &#8212; it created the conditions in which each location could deliver consistently. The system travels. The chaos does not follow.</div>
+
+  <hr>
+
+  <h2>Governance Maturity &#8212; Where Does Your Operation Sit?</h2>
+
+  <table class="data-table">
+    <thead><tr><th>Level</th><th>Operating Reality</th><th>What This Looks Like on the Ground</th></tr></thead>
+    <tbody>
+      <tr><td class="td-head">Level 1</td><td>WhatsApp Delivery</td><td>No written scope. Contractor managed by message thread. All decisions informal.</td></tr>
+      <tr><td class="td-head">Level 2</td><td>Reporting Without Control</td><td>Stage gates and dashboards exist. The site runs on a completely different plan.</td></tr>
+      <tr><td class="td-head">Level 3</td><td>Multi-Plan Confusion</td><td>Steering deck, site plan, and supplier schedules are three separate documents with no reconciliation.</td></tr>
+      <tr><td class="td-head">Level 4</td><td>Verified Governance Cadence</td><td>One plan. Decision log in use. Vendor dates confirmed. Weekly rhythm established.</td></tr>
+      <tr><td class="td-head">Level 5</td><td>5Cs-Controlled Delivery</td><td>Full framework operating. Slippage caught early. Handover against written scope. No surprises.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="key-line">Most organisations are operating between Level 2 and Level 3. The gap between Level 3 and Level 5 is not tooling. It is architecture.</div>
+
+  <hr>
+
+  <h2>Three Objections, Answered</h2>
+
+  <div class="objection">
+    <p class="objection-q">&#8220;Our contractors need physical supervision.&#8221;</p>
+    <p>Physical supervision is one form of quality control. What contractors actually need is clarity: a precise scope, a plan they understand, decisions that close on time, and a weekly rhythm that surfaces problems before they compound. The 5Cs provide all of that without requiring anyone to be on site. Where physical quality inspection is genuinely required &#8212; for structural work or specialist installations &#8212; the Reshape model uses local inspection contacts for targeted, evidence-based visits at defined milestones.</p>
+  </div>
+
+  <div class="objection">
+    <p class="objection-q">&#8220;iPhone scans aren&#8217;t precise enough for refit work.&#8221;</p>
+    <p>LiDAR scanning on current iPhone hardware produces point clouds accurate enough for contractor-grade drawings across most refit categories &#8212; lounge refurbishments, office fit-outs, hospitality spaces, operational infrastructure. Where the scope involves structural modifications or detailed MEP coordination, a specialist survey is scoped separately. For the majority of refit work, the scan is faster and significantly cheaper than a traditional measured survey.</p>
+  </div>
+
+  <div class="objection">
+    <p class="objection-q">&#8220;Designers won&#8217;t work distance-managed without site visits.&#8221;</p>
+    <p>The Reshape designer network is built for this. Remote-first is how they operate, not a workaround. For clients with a preferred designer, Reshape works with them. The scan-to-brief workflow and The 5Cs Framework&#8482; apply regardless of who the designer is.</p>
+  </div>
+
+  <hr>
+
+  <h2>Assess Your Delivery Governance Exposure</h2>
+
+  <p>If this report has described a problem you recognise &#8212; distributed refit projects that drift, overruns you struggle to explain, delivery you are responsible for but cannot directly control &#8212; there are two ways to take the next step.</p>
+
+  <div class="step">
+    <div class="step-label">Option 1 &#8212; Free</div>
+    <div class="step-title">Take the Reshape Scorecard</div>
+    <p>A 20-question diagnostic covering the five governance dimensions of The 5Cs Framework&#8482;. Twelve minutes. It produces an immediate, specific picture of where your current governance architecture is strong and where the gaps are creating commercial exposure. No sales conversation required.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-label">Option 2 &#8212; Paid engagement</div>
+    <div class="step-title">Discovery Call</div>
+    <p>If you have a specific project on the table &#8212; a distributed refit in planning, a portfolio of remote properties, or a project already showing signs of drift &#8212; a discovery call is the fastest way to define the problem and scope the right engagement. 60 minutes. No obligation to proceed.</p>
+  </div>
+
+  <div class="bio-block">
+    <strong>About Serguei Poppeleer</strong>
+    <div class="bio-creds">MCIArb &middot; IACCM &middot; CIoB &middot; Brussels &middot; Lagos &middot; Nairobi</div>
+    <p>Serguei Poppeleer is the Founder and Managing Director of Contracks Global. He has managed projects across 30+ countries for clients including ENI, EnergiNet / Baltic Pipe, ArcelorMittal, a major European airline, Luminus, and Marriott.</p>
+    <p>Executive MBA, Hult &middot; LLM Oil &amp; Gas, Robert Gordon University &middot; M.Sc. Civil Engineering, Polytechnic of Mons</p>
+  </div>
+
+  <div class="cta-block">
+    <h3>The contract was signed. The control architecture wasn&#8217;t.</h3>
+    <p>The Reshape Scorecard maps your governance exposure across the 5Cs and tells you which gap to close first. Free, twelve minutes, instant result.</p>
+    <a href="/reshape-assessment.html" class="cta-primary">Take the Reshape diagnostic &rarr;</a>
+    <a href="https://calendly.com/contracks_global" class="cta-secondary">Book a Discovery Call &rarr;</a>
+  </div>
+
+</main>
+
+<footer>
+  <a href="/" class="footer-brand">CONTRACKS.GLOBAL</a>
+  <p class="footer-tagline">Governance Designed for Distance.</p>
+  <a href="/" class="footer-link">contracks.global</a>
+</footer>
+
+<div class="cks-player" id="cksPlayer">
+  <div class="cks-scrub" id="cksScrub" onclick="cksSeek(event)"><div class="cks-fill" id="cksFill"></div></div>
+  <div class="cks-now"><span class="cks-nl">Now reading</span><span class="cks-nt" id="cksNow">Press play to begin</span></div>
+  <div class="cks-main">
+    <button class="cks-play" id="cksPlay" onclick="cksToggle()"><svg id="cksIcon" width="17" height="17" viewBox="0 0 24 24" fill="#0A1628"><polygon points="6,4 20,12 6,20"/></svg></button>
+    <div class="cks-wave"><div class="cks-wb"></div><div class="cks-wb"></div><div class="cks-wb"></div><div class="cks-wb"></div><div class="cks-wb"></div></div>
+    <div class="cks-info"><div class="cks-t">The 5Cs of Refit</div><div class="cks-st" id="cksStatus">Loading&hellip;</div></div>
+    <div class="cks-right">
+      <div class="cks-speed">
+        <button class="cks-spd" onclick="cksRate(0.75)">0.75&times;</button>
+        <button class="cks-spd on" onclick="cksRate(1)">1&times;</button>
+        <button class="cks-spd" onclick="cksRate(1.25)">1.25&times;</button>
+        <button class="cks-spd" onclick="cksRate(1.5)">1.5&times;</button>
+      </div>
+      <div class="cks-src" id="cksSrc"><span class="cks-dot"></span><span class="cks-srcl" id="cksSrcL">VOICE</span></div>
+      <button class="cks-stop" onclick="cksStop()"><svg width="10" height="10" viewBox="0 0 10 10"><rect width="10" height="10" rx="1.5" fill="rgba(255,255,255,.45)"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<script>
+const ARTICLE_SLUG='reshape-special-report-1';const AUDIO_BASE='/audio';
+const SELECTOR='.article-subtitle, main h2, main p, main .key-line, main .step-title, main blockquote p, main .proof-box strong, main .brutal, main .objection-q, main .outstation p';
+const SENT_RE=/[^.!?]+[.!?]+(?:["\u2019\u2018)\]]+)?\s*|[^.!?]+$/g;
+let spans={},block=[],N=0,times=null,cur=-1,state='idle',rate=1,MODE='browser';
+function endOffsets(t){const re=new RegExp(SENT_RE.source,'g');let m,acc=0,out=[];while((m=re.exec(t))!==null){if(m[0]===''){re.lastIndex++;continue;}acc+=m[0].length;out.push(acc);}return out.length?out:[t.length];}
+function sidx(o,b){for(let i=0;i<b.length;i++)if(o<b[i])return i;return b.length-1;}
+function mkSpan(t,si){const s=document.createElement('span');s.className='s';s.dataset.si=si;s.textContent=t;return s;}
+function wrapEl(el,ctx){[...el.childNodes].forEach(c=>{if(c.nodeType===3){const txt=c.nodeValue,frag=document.createDocumentFragment();let buf='',c0=sidx(ctx.off,ctx.bounds);for(let i=0;i<txt.length;i++){const gi=sidx(ctx.off,ctx.bounds);if(gi!==c0&&buf!==''){frag.appendChild(mkSpan(buf,ctx.base+c0));buf='';c0=gi;}buf+=txt[i];ctx.off++;}if(buf!=='')frag.appendChild(mkSpan(buf,ctx.base+c0));el.replaceChild(frag,c);}else if(c.nodeType===1)wrapEl(c,ctx);});}
+function build(){document.querySelectorAll(SELECTOR).forEach(node=>{if(node.closest('.cta-block'))return;node.classList.add('read-block');const raw=node.textContent,bounds=endOffsets(raw);wrapEl(node,{off:0,bounds,base:N});for(let i=0;i<bounds.length;i++)block[N+i]=node;N+=bounds.length;});document.querySelectorAll('.s').forEach(s=>{const i=+s.dataset.si;(spans[i]=spans[i]||[]).push(s);s.onclick=()=>cksSeekSentence(i);});const w=document.querySelector('main').textContent.trim().split(/\s+/).length;document.getElementById('cksListenTime').textContent='\u00b7 '+Math.max(1,Math.round(w/150))+' min';}
+function sentText(i){return(spans[i]||[]).map(s=>s.textContent).join('');}
+function highlight(i){if(i===cur||i<0||i>=N)return;if(cur>=0&&spans[cur])spans[cur].forEach(s=>{s.classList.remove('active');s.classList.add('read');});for(let k=Math.max(0,cur);k<i;k++)spans[k]?.forEach(s=>s.classList.add('read'));cur=i;spans[i]?.forEach(s=>{s.classList.remove('read');s.classList.add('active');});document.querySelectorAll('.read-block.block-active').forEach(b=>b.classList.remove('block-active'));const blk=block[i];blk?.classList.add('block-active');document.getElementById('cksNow').textContent=sentText(i).trim().slice(0,80);if(blk){const r=blk.getBoundingClientRect(),vh=innerHeight;if(r.top<vh*0.2||r.bottom>vh-150)scrollTo({top:scrollY+r.top-vh*0.32,behavior:'smooth'});}}
+function clearAll(){document.querySelectorAll('.s.active,.s.read').forEach(s=>s.classList.remove('active','read'));document.querySelectorAll('.block-active').forEach(b=>b.classList.remove('block-active'));cur=-1;}
+let audio=null;
+function timeToSentence(t){let i=0;for(let k=0;k<times.length;k++){if(t>=times[k].start)i=k;else break;}return i;}
+function elInit(){audio=new Audio(`${AUDIO_BASE}/${ARTICLE_SLUG}.mp3`);audio.preload='metadata';audio.addEventListener('timeupdate',()=>{const t=audio.currentTime,dur=audio.duration||times.at(-1).end;if(times)highlight(Math.min(timeToSentence(t),N-1));setProgress(t/dur*100);setStatus(remain(dur-t));});audio.addEventListener('ended',finish);}
+const elEngine={play(){if(!audio)elInit();audio.playbackRate=rate;audio.play();},pause(){audio&&audio.pause();},stop(){if(audio){audio.pause();audio.currentTime=0;}},seekSentence(i){if(!audio)elInit();if(times)audio.currentTime=times[Math.min(i,times.length-1)].start;if(state==='playing')audio.play();},seekFraction(f){if(!audio)elInit();audio.currentTime=f*(audio.duration||(times?times.at(-1).end:0));if(state==='playing')audio.play();},setRate(r){if(audio)audio.playbackRate=r;}};
+let voice=null,smooth=null;
+function pickVoice(){const v=speechSynthesis.getVoices();voice=v.find(x=>x.name==='Daniel'&&x.lang==='en-GB')||v.find(x=>x.lang==='en-GB')||v.find(x=>x.lang.startsWith('en'));}
+function speakFrom(i){if(i>=N){finish();return;}highlight(i);const u=new SpeechSynthesisUtterance(sentText(i));u.rate=rate;if(voice)u.voice=voice;startSmooth(i);u.onend=()=>{if(state==='playing'){stopSmooth();speakFrom(i+1);}};u.onerror=e=>{if(e.error!=='interrupted'&&state==='playing'){stopSmooth();speakFrom(i+1);}};speechSynthesis.speak(u);}
+function len(i){return sentText(i).length;}
+function startSmooth(i){stopSmooth();let total=0,before=0;for(let k=0;k<N;k++){const l=len(k);if(k<i)before+=l;total+=l;}const dur=Math.max(800,len(i)/(14.5*rate)*1000),t0=performance.now();smooth=setInterval(()=>{const f=Math.min(1,(performance.now()-t0)/dur);setProgress((before+len(i)*f)/total*100);},120);}
+function stopSmooth(){if(smooth){clearInterval(smooth);smooth=null;}}
+const brEngine={play(){if(state==='paused')speechSynthesis.resume();else{speechSynthesis.cancel();speakFrom(cur<0?0:cur);}},pause(){speechSynthesis.pause();stopSmooth();},stop(){speechSynthesis.cancel();stopSmooth();},seekSentence(i){speechSynthesis.cancel();stopSmooth();cur=i-1;if(state==='playing')speakFrom(i);else highlight(i);},seekFraction(f){this.seekSentence(Math.floor(f*N));},setRate(){if(state==='playing'){const i=cur;speechSynthesis.cancel();stopSmooth();speakFrom(i);}}};
+const plainEngine={play(){if(!audio)elInit();audio.playbackRate=rate;audio.play();},pause(){audio&&audio.pause();},stop(){if(audio){audio.pause();audio.currentTime=0;}},seekSentence(){},seekFraction(f){if(!audio)elInit();audio.currentTime=f*(audio.duration||0);if(state==='playing')audio.play();},setRate(r){if(audio)audio.playbackRate=r;}};
+let E=brEngine;
+function cksToggle(){state==='playing'?cksPause():play();}
+function play(){if(state==='done')clearAll();if(MODE!=='plain'){document.body.classList.add('listening');if(state!=='paused'&&cur<0)highlight(0);}state='playing';setUI(true);E.play();}
+function cksPause(){state='paused';setUI(false);E.pause();setStatus('Paused');}
+function cksStop(){state='idle';setUI(false);E.stop();stopSmooth();clearAll();document.body.classList.remove('listening');setProgress(0);setStatus(label());document.getElementById('cksNow').textContent='Press play to begin';}
+function finish(){state='done';setUI(false);stopSmooth();setProgress(100);setStatus('Finished');document.getElementById('cksNow').textContent='Report complete';document.body.classList.remove('listening');}
+function cksSeekSentence(i){if(MODE==='plain')return;if(state==='idle')play();E.seekSentence(i);highlight(i);}
+function cksSeek(e){const r=e.currentTarget.getBoundingClientRect();E.seekFraction((e.clientX-r.left)/r.width);}
+function cksRate(r){rate=r;document.querySelectorAll('.cks-spd').forEach(b=>b.classList.toggle('on',parseFloat(b.textContent)===r));E.setRate(r);}
+function setProgress(p){document.getElementById('cksFill').style.width=Math.min(100,Math.max(0,p))+'%';}
+function setStatus(s){document.getElementById('cksStatus').textContent=s;}
+function remain(sec){sec=Math.max(0,Math.round(sec));const m=Math.floor(sec/60),s=sec%60;return m>0?`${m}m ${s}s left`:`${s}s left`;}
+function setUI(on){document.getElementById('cksIcon').innerHTML=on?'<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>':'<polygon points="6,4 20,12 6,20"/>';document.getElementById('cksPlayer').classList.toggle('playing',on);document.getElementById('cksListenLabel').textContent=on?'Pause':'Listen to this report';}
+function label(){return MODE==='el'?'Contracks Global Insights':MODE==='plain'?'Audio report':'Audio version coming soon';}
+function applySrc(){const l=document.getElementById('cksSrcL');l.textContent=MODE==='el'?'ELEVENLABS':MODE==='plain'?'AUDIO':'SOON';if(MODE==='el'&&times){const d=times.at(-1)?.end||0;document.getElementById('cksListenTime').textContent='\u00b7 '+Math.max(1,Math.round(d/60))+' min';}if(MODE!=='plain')document.querySelector('main').classList.add('clickable');setStatus(label());}
+window.addEventListener('DOMContentLoaded',async()=>{build();document.getElementById('cksPlayer').classList.add('show');try{const r=await fetch(`${AUDIO_BASE}/${ARTICLE_SLUG}.sentences.json`,{cache:'no-cache'});if(!r.ok)throw 0;const d=await r.json();times=d.sentences;if(!Array.isArray(times)||!times.length)throw 0;if(times.length!==N)console.warn(`Sentence mismatch: audio ${times.length} vs page ${N}`);MODE='el';E=elEngine;applySrc();return;}catch(e){}try{const h=await fetch(`${AUDIO_BASE}/${ARTICLE_SLUG}.mp3`,{headers:{Range:'bytes=0-1'},cache:'no-cache'});if(h.ok||h.status===206){MODE='plain';E=plainEngine;applySrc();return;}}catch(e){}MODE='browser';E=brEngine;pickVoice();speechSynthesis.onvoiceschanged=pickVoice;speechSynthesis.getVoices();applySrc();});
+window.addEventListener('beforeunload',()=>{if(MODE==='browser')speechSynthesis.cancel();});
+</script>
+</body>
+</html>
