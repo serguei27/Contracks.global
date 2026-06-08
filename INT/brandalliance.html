@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Alliance Starter Kit — Serguei Poppeleer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1B2A4A;
+  --navy-deep: #0F1E35;
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --gold-pale: #F5EDD6;
+  --cream: #FAF8F3;
+  --white: #ffffff;
+  --grey: #F4F5F7;
+  --text: #1B2A4A;
+  --muted: #6B7280;
+  --red: #C0392B;
+  --green: #27AE60;
+  --orange: #E67E22;
+  --blue: #1976D2;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); font-size: 14px; line-height: 1.7; }
+
+/* NAV */
+.sidenav {
+  position: fixed; left: 0; top: 0; width: 220px; height: 100vh;
+  background: var(--navy-deep); overflow-y: auto; z-index: 100;
+  display: flex; flex-direction: column;
+}
+.sidenav-brand { padding: 28px 22px 20px; border-bottom: 1px solid rgba(201,168,76,0.2); }
+.sidenav-brand .mark { color: var(--gold); font-weight: 900; font-size: 16px; letter-spacing: 3px; text-transform: uppercase; font-family: 'Playfair Display', serif; }
+.sidenav-brand .sub { color: rgba(255,255,255,0.3); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-top: 3px; }
+.sidenav-links { padding: 16px 0; flex: 1; }
+.sidenav-links a { display: block; padding: 9px 22px; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 11.5px; font-weight: 500; letter-spacing: 0.3px; border-left: 3px solid transparent; transition: all 0.2s; }
+.sidenav-links a:hover { color: var(--gold); border-left-color: var(--gold); background: rgba(201,168,76,0.08); }
+.sidenav-links .nav-section { padding: 14px 22px 5px; color: rgba(255,255,255,0.2); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
+.sidenav-action { padding: 16px; margin-top: auto; }
+.action-badge { background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.25); border-radius: 8px; padding: 12px; text-align: center; }
+.action-badge .num { color: var(--gold); font-size: 26px; font-weight: 800; display: block; }
+.action-badge .lbl { color: rgba(255,255,255,0.4); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+
+/* MAIN */
+.main { margin-left: 220px; min-height: 100vh; }
+
+/* SECTIONS */
+.section { padding: 52px 52px 40px; border-bottom: 1px solid rgba(27,42,74,0.08); }
+.section:last-child { border-bottom: none; }
+
+/* HERO */
+.hero { background: var(--navy); padding: 60px 52px; }
+.hero-eyebrow { color: var(--gold); font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
+.hero-title { font-family: 'Playfair Display', serif; color: var(--white); font-size: 38px; font-weight: 900; line-height: 1.2; margin-bottom: 16px; }
+.hero-title span { color: var(--gold); }
+.hero-sub { color: rgba(255,255,255,0.55); font-size: 14px; max-width: 560px; line-height: 1.7; margin-bottom: 32px; }
+.hero-meta { display: flex; gap: 32px; }
+.hero-stat { }
+.hero-stat .val { color: var(--gold); font-size: 22px; font-weight: 800; font-family: 'Playfair Display', serif; }
+.hero-stat .lbl { color: rgba(255,255,255,0.4); font-size: 11px; letter-spacing: 0.5px; margin-top: 2px; }
+
+/* SECTION HEADERS */
+.section-header { margin-bottom: 32px; }
+.section-eyebrow { color: var(--gold); font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+.section-title { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--navy); line-height: 1.3; }
+.section-sub { color: var(--muted); font-size: 13px; margin-top: 6px; max-width: 600px; }
+
+/* STRATEGY CARDS */
+.strategy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.strategy-card { background: var(--white); border-radius: 12px; padding: 24px; border-top: 3px solid var(--gold); box-shadow: 0 2px 16px rgba(27,42,74,0.06); }
+.strategy-card .s-label { font-size: 10px; font-weight: 700; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+.strategy-card .s-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+.strategy-card .s-text { font-size: 13px; color: #444; line-height: 1.65; }
+
+/* CANVAS PANELS */
+.canvas-wrap { background: var(--white); border-radius: 14px; box-shadow: 0 2px 20px rgba(27,42,74,0.07); overflow: hidden; margin-bottom: 32px; }
+.canvas-header { background: var(--navy); padding: 18px 26px; display: flex; align-items: center; gap: 12px; }
+.canvas-header .c-num { width: 28px; height: 28px; border-radius: 50%; background: var(--gold); color: var(--navy); font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.canvas-header .c-title { color: var(--white); font-weight: 700; font-size: 14px; letter-spacing: 0.3px; }
+.canvas-header .c-sub { color: rgba(255,255,255,0.4); font-size: 11px; margin-top: 1px; }
+.canvas-body { padding: 26px; }
+
+/* TRIANGLE CANVAS */
+.triangle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.triangle-center { background: var(--navy); border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 0; }
+.triangle-node { text-align: center; padding: 14px; }
+.triangle-node .t-label { color: var(--gold); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+.triangle-node .t-sub { color: rgba(255,255,255,0.5); font-size: 11px; }
+.triangle-node .t-divider { width: 40px; height: 1px; background: rgba(201,168,76,0.3); margin: 12px auto; }
+.triangle-sides { display: flex; flex-direction: column; gap: 14px; }
+.triangle-side { background: var(--grey); border-radius: 10px; padding: 16px 18px; border-left: 3px solid var(--gold); }
+.triangle-side .ts-label { font-size: 10px; font-weight: 700; color: var(--gold); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+.triangle-side ul { list-style: none; }
+.triangle-side ul li { font-size: 12px; color: #444; padding: 2px 0; display: flex; align-items: flex-start; gap: 7px; }
+.triangle-side ul li::before { content: '—'; color: var(--gold); flex-shrink: 0; font-size: 11px; margin-top: 1px; }
+.triangle-wealth { display: flex; flex-direction: column; gap: 10px; }
+.wealth-item { background: rgba(27,42,74,0.04); border-radius: 8px; padding: 12px 14px; border: 1px solid rgba(27,42,74,0.08); }
+.wealth-item .wi-label { font-size: 10px; font-weight: 700; color: var(--navy); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; }
+.wealth-item .wi-text { font-size: 12px; color: #555; }
+
+/* INVENTORY CANVAS */
+.inventory-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.inv-col { padding: 24px; }
+.inv-col:first-child { border-right: 1px solid #EEE; }
+.inv-col .inv-label { font-size: 11px; font-weight: 700; color: var(--navy); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--gold); }
+.inv-item { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid #F5F5F5; align-items: flex-start; }
+.inv-item:last-child { border-bottom: none; }
+.inv-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 6px; }
+.inv-item p { font-size: 12.5px; color: #333; line-height: 1.5; }
+.inv-item p strong { color: var(--navy); font-weight: 600; }
+
+/* HITLIST CANVAS */
+.hitlist-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.hitlist-cell { background: var(--grey); border-radius: 10px; padding: 18px; }
+.hitlist-cell .hc-label { font-size: 10px; font-weight: 700; color: var(--navy); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
+.hitlist-cell ul { list-style: none; }
+.hitlist-cell ul li { font-size: 12px; color: #444; padding: 4px 0; border-bottom: 1px solid rgba(27,42,74,0.06); display: flex; align-items: flex-start; gap: 7px; }
+.hitlist-cell ul li:last-child { border-bottom: none; }
+.hitlist-cell ul li::before { content: '→'; color: var(--gold); flex-shrink: 0; font-weight: 700; font-size: 11px; }
+.hitlist-cell ul li.hot { color: var(--navy); font-weight: 600; }
+.hitlist-cell ul li.hot::before { content: '★'; color: var(--gold); }
+
+/* PARTNERS */
+.partner-card { background: var(--white); border-radius: 14px; box-shadow: 0 2px 20px rgba(27,42,74,0.07); margin-bottom: 28px; overflow: hidden; }
+.partner-header { background: var(--navy); padding: 22px 28px; display: flex; justify-content: space-between; align-items: flex-start; }
+.partner-header .ph-left .ph-num { color: var(--gold); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+.partner-header .ph-left .ph-name { color: var(--white); font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; }
+.partner-header .ph-left .ph-company { color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 2px; }
+.partner-type { padding: 4px 12px; border-radius: 20px; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.partner-type.anchor { background: rgba(201,168,76,0.2); color: var(--gold); }
+.partner-type.aspirational { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.2); }
+.partner-body { padding: 28px; }
+.partner-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+.p-block { }
+.p-block .pb-label { font-size: 10px; font-weight: 700; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+.p-block p { font-size: 13px; color: #444; line-height: 1.6; }
+.p-block ul { list-style: none; }
+.p-block ul li { font-size: 12.5px; color: #444; padding: 5px 0; border-bottom: 1px solid #F5F5F5; display: flex; gap: 8px; }
+.p-block ul li:last-child { border-bottom: none; }
+.p-block ul li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+.partner-outreach { background: var(--grey); border-radius: 10px; padding: 22px; }
+.po-label { font-size: 10px; font-weight: 700; color: var(--navy); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
+.outreach-tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+.otab { padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; cursor: pointer; border: 1px solid var(--navy); color: var(--navy); background: transparent; letter-spacing: 0.5px; }
+.otab.active { background: var(--navy); color: var(--gold); }
+.outreach-content { background: var(--white); border-radius: 8px; padding: 18px; }
+.oc-subject { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+.oc-subjectline { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid #EEE; }
+.oc-body { font-size: 13px; color: #333; line-height: 1.75; white-space: pre-line; }
+.partner-note { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); border-radius: 8px; padding: 12px 16px; margin-top: 14px; font-size: 12px; color: var(--navy); }
+.partner-note strong { color: var(--gold); }
+
+/* ACTIONS */
+.actions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.action-group { background: var(--white); border-radius: 12px; padding: 22px; box-shadow: 0 2px 12px rgba(27,42,74,0.06); }
+.ag-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--gold); }
+.ag-badge { padding: 3px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.ag-badge.now { background: #FDECEA; color: var(--red); }
+.ag-badge.week { background: #FFF3E0; color: var(--orange); }
+.ag-badge.month { background: #E3F2FD; color: var(--blue); }
+.ag-badge.standing { background: var(--grey); color: var(--muted); }
+.ag-title { font-weight: 700; font-size: 13px; color: var(--navy); }
+.action-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #F5F5F5; align-items: flex-start; }
+.action-item:last-child { border-bottom: none; }
+.action-check { width: 18px; height: 18px; border-radius: 4px; border: 2px solid rgba(27,42,74,0.2); flex-shrink: 0; margin-top: 1px; }
+.action-text { font-size: 13px; color: #333; line-height: 1.5; }
+.action-text strong { color: var(--navy); font-weight: 600; }
+.action-text .tag { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: 10px; font-weight: 700; margin-left: 5px; }
+.action-text .tag.p1 { background: #FDECEA; color: var(--red); }
+.action-text .tag.p2 { background: #FFF3E0; color: var(--orange); }
+.action-text .tag.fix { background: #F3E5F5; color: #7B1FA2; }
+
+/* GAPS */
+.gaps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.gap-item { background: var(--white); border-radius: 10px; padding: 18px; border-left: 4px solid var(--red); }
+.gap-item .gi-title { font-weight: 700; font-size: 13px; color: var(--navy); margin-bottom: 6px; }
+.gap-item .gi-text { font-size: 12px; color: #555; line-height: 1.55; }
+
+/* PRIORITY SEQUENCE */
+.sequence { display: flex; gap: 0; margin-bottom: 0; }
+.seq-step { flex: 1; padding: 20px 22px; border-right: 1px solid rgba(27,42,74,0.08); position: relative; }
+.seq-step:last-child { border-right: none; }
+.seq-num { width: 28px; height: 28px; border-radius: 50%; background: var(--navy); color: var(--gold); font-weight: 800; font-size: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+.seq-step .s-timing { font-size: 10px; font-weight: 700; color: var(--gold); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; }
+.seq-step .s-name { font-weight: 700; font-size: 13px; color: var(--navy); margin-bottom: 4px; }
+.seq-step .s-action { font-size: 12px; color: #555; line-height: 1.5; }
+
+/* FOOTER */
+.doc-footer { background: var(--navy-deep); padding: 28px 52px; display: flex; justify-content: space-between; align-items: center; }
+.doc-footer .df-brand { color: var(--gold); font-weight: 900; letter-spacing: 2px; font-family: 'Playfair Display', serif; font-size: 14px; }
+.doc-footer .df-meta { color: rgba(255,255,255,0.3); font-size: 11px; }
+.doc-footer .df-tagline { color: rgba(255,255,255,0.4); font-size: 11px; font-style: italic; }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidenav">
+  <div class="sidenav-brand">
+    <div class="mark">Contracks</div>
+    <div class="sub">Brand Alliance Kit</div>
+  </div>
+  <div class="sidenav-links">
+    <div class="nav-section">Overview</div>
+    <a href="#strategy">Partnership Strategy</a>
+    <div class="nav-section">Dent Canvases</div>
+    <a href="#triangle">Partnership Triangle</a>
+    <a href="#inventory">Partnership Inventory</a>
+    <a href="#hitlist">Partner Hitlist</a>
+    <div class="nav-section">5 Partners</div>
+    <a href="#p1">① Hugues de la Forge</a>
+    <a href="#p2">② Richard Osei Owusu</a>
+    <a href="#p3">③ airportIR / Modalis</a>
+    <a href="#p4">④ WorldCC</a>
+    <a href="#p5">⑤ Tommy Larmour</a>
+    <div class="nav-section">Actions</div>
+    <a href="#actions">Action Plan</a>
+    <a href="#gaps">Standing Gaps</a>
+  </div>
+  <div class="sidenav-action">
+    <div class="action-badge">
+      <span class="num">12</span>
+      <span class="lbl">Actions to take</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- HERO -->
+<div class="hero" id="top">
+  <div class="hero-eyebrow">Dent KPI Method · Partnership Module</div>
+  <div class="hero-title">Brand Alliance<br><span>Starter Kit</span></div>
+  <div class="hero-sub">A complete partnership framework for Serguei Poppeleer — identifying the right partners, cataloguing what's on offer, and activating outreach across 5 priority relationships.</div>
+  <div class="hero-meta">
+    <div class="hero-stat"><div class="val">5</div><div class="lbl">Target Partners</div></div>
+    <div class="hero-stat"><div class="val">3</div><div class="lbl">Anchor Partners</div></div>
+    <div class="hero-stat"><div class="val">2</div><div class="lbl">Aspirational Partners</div></div>
+    <div class="hero-stat"><div class="val">€2B+</div><div class="lbl">Projects Across 30 Countries</div></div>
+  </div>
+</div>
+
+<!-- STRATEGY -->
+<div class="section" id="strategy">
+  <div class="section-header">
+    <div class="section-eyebrow">Partnership Clarity</div>
+    <div class="section-title">Partnership Strategy Summary</div>
+    <div class="section-sub">The foundation agreed with Dent — what to partner on, what to achieve, and the primary asset on the table.</div>
+  </div>
+  <div class="strategy-grid">
+    <div class="strategy-card">
+      <div class="s-label">Partnership Focus</div>
+      <div class="s-title">Content-Led Credibility & Audience Access</div>
+      <div class="s-text">Webinar and roundtable series for PMO Directors and capital programme owners. Event speaking in infrastructure, energy, aviation, real estate, and construction forums. Co-created reports, articles, and diagnostic content. Referral partnerships with firms serving capital project owners who lack a delivery control framework.</div>
+    </div>
+    <div class="strategy-card">
+      <div class="s-label">Business Goal</div>
+      <div class="s-title">Credibility, Visibility & Qualified Access</div>
+      <div class="s-text">Build credibility and visibility with senior project owners — not generic audience growth. Reach PMO Directors and country directors through trusted channels rather than cold outreach. Become the reference practitioner for owner-side delivery control on cross-border capital projects.</div>
+    </div>
+    <div class="strategy-card">
+      <div class="s-label">Primary Asset</div>
+      <div class="s-title">Expertise, Content & Live Diagnostic</div>
+      <div class="s-text">25+ years across 30 countries. Capital projects up to €2B. Named proprietary framework — the 5Cs Framework™. A live diagnostic scorecard that qualifies prospects before they reach the engagement. Audio-narrated articles, video content, Special Reports, and a book in development.</div>
+    </div>
+  </div>
+</div>
+
+<!-- TRIANGLE -->
+<div class="section" id="triangle">
+  <div class="section-header">
+    <div class="section-eyebrow">Dent Canvas 1 of 3</div>
+    <div class="section-title">Partnership Triangle</div>
+    <div class="section-sub">The rule: always bring at least 2/3 to the table. Ask for only 1/3 in return. This turns conversations from requests into opportunities.</div>
+  </div>
+  <div class="canvas-wrap">
+    <div class="canvas-header">
+      <div class="c-num">▲</div>
+      <div><div class="c-title">Partnership Triangle — Filled</div><div class="c-sub">3 Cash Drivers (what you bring) · 3 Wealth Drivers (what you seek)</div></div>
+    </div>
+    <div class="canvas-body">
+      <div class="triangle-grid">
+        <div>
+          <div class="triangle-sides">
+            <div class="triangle-side">
+              <div class="ts-label">Brand (Trust) — You Bring</div>
+              <ul>
+                <li>Serguei Poppeleer personal brand — 25+ years, 30 countries, owner-side only</li>
+                <li>MCIArb + LLM + Exec MBA — institutional credibility</li>
+                <li>Named clients: ENI, EnergiNet, ArcelorMittal, Brussels Airlines</li>
+                <li>Bleriot Group Board Advisor — live aviation/Africa reach</li>
+                <li>5Cs Framework™ — named, proprietary, defensible</li>
+              </ul>
+            </div>
+            <div class="triangle-side">
+              <div class="ts-label">Distribution (Reach) — You Bring</div>
+              <ul>
+                <li>LinkedIn — consistent publishing, Mon/Thu cadence</li>
+                <li>Founder Frontier YouTube channel</li>
+                <li>Contracks 30-country network — Europe, Gulf, Africa</li>
+                <li>airportIR published analysis — 21,000+ impressions</li>
+                <li>Zoho Campaigns email list (L2 + L3 workflows live)</li>
+              </ul>
+            </div>
+            <div class="triangle-side">
+              <div class="ts-label">Product (Value) — You Bring</div>
+              <ul>
+                <li>5Cs Framework™ — proven delivery control methodology</li>
+                <li>Live diagnostic scorecard — qualifies prospects before engagement</li>
+                <li>Special Reports (RESOLVE + RESHAPE locked; START in progress)</li>
+                <li>Article library — 18 articles live with audio narration</li>
+                <li>Book in development — legacy positioning asset</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="triangle-wealth">
+            <div class="wealth-item">
+              <div class="wi-label">Insights — You Seek</div>
+              <div class="wi-text">PMO/project failure benchmarking data · Research on governance failures and scope drift · Key customer case studies and practitioner validation</div>
+            </div>
+            <div class="wealth-item">
+              <div class="wi-label">Investments — You Seek</div>
+              <div class="wi-text">Sponsored content arrangements · Ambassador fees (Geni Savage model) from tools/software companies whose audience overlaps with PMO Control Leads</div>
+            </div>
+            <div class="wealth-item">
+              <div class="wi-label">Introductions — You Seek</div>
+              <div class="wi-text">Warm paths to PMO Directors and country directors in EPC programmes (Europe↔Africa) · Access to capital project owners in energy, aviation, real estate, infrastructure · EPC contractor network introductions</div>
+            </div>
+            <div class="wealth-item" style="background: var(--navy); border-color: transparent;">
+              <div class="wi-label" style="color: var(--gold);">The Rule</div>
+              <div class="wi-text" style="color: rgba(255,255,255,0.6);">You bring Brand + Distribution + Product (2/3). You ask for Introductions, Investments, or Insights (1/3). Never ask one partner for more than one third of the triangle.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INVENTORY -->
+<div class="section" id="inventory">
+  <div class="section-header">
+    <div class="section-eyebrow">Dent Canvas 2 of 3</div>
+    <div class="section-title">Partnership Inventory</div>
+    <div class="section-sub">A clear audit of what's on the table and what's being sought — the foundation for every partnership conversation.</div>
+  </div>
+  <div class="canvas-wrap">
+    <div class="canvas-header">
+      <div class="c-num">≡</div>
+      <div><div class="c-title">Partnership Inventory — Filled</div><div class="c-sub">What I Can Offer · What I Would Like</div></div>
+    </div>
+    <div class="canvas-body" style="padding:0;">
+      <div class="inventory-grid">
+        <div class="inv-col">
+          <div class="inv-label">What I Can Offer</div>
+          <div class="inv-item"><div class="inv-dot"></div><p><strong>Event speaking:</strong> I handle content, prep, recording — partner provides platform and audience. Speaker profile live at contracks.global/speaker.</p></div>
+          <div class="inv-item"><div class="inv-dot"></div><p><strong>Email feature:</strong> Introduce partner as the domain expert to my PMO Control Lead network — direct credibility transfer.</p></div>
+          <div class="inv-item"><div class="inv-dot"></div><p><strong>Interview spotlight:</strong> I produce, edit, distribute — partner gets content and exposure to senior project owners.</p></div>
+          <div class="inv-item"><div class="inv-dot"></div><p><strong>Co-created content:</strong> I write and produce — partner gets co-credit and distribution. No-Surprises Delivery framing.</p></div>
+          <div class="inv-item"><div class="inv-dot"></div><p><strong>Joint research / case study:</strong> I do the research — partner gets thought leadership positioning on scope drift, governance failures, vendor slippage.</p></div>
+          <div class="inv-item"><div class="inv-dot"></div><p><strong>Book contribution:</strong> Partners who contribute a foreword or case study get legacy positioning in the published work.</p></div>
+          <div class="inv-item"><div class="inv-dot"></div><p><strong>Diagnostic scorecard:</strong> Already live — can be co-branded or customised for partner's audience. I handle all tech and lead routing.</p></div>
+          <div class="inv-item"><div class="inv-dot"></div><p><strong>Audio-narrated content:</strong> ElevenLabs cloned voice, EN + FR — partners get higher production value than most practitioners offer.</p></div>
+          <div class="inv-item"><div class="inv-dot"></div><p><strong>Bleriot Group credibility:</strong> Board Advisor role — live aviation infrastructure proof case in East Africa alongside 30 countries of historical cases.</p></div>
+        </div>
+        <div class="inv-col">
+          <div class="inv-label">What I Would Like</div>
+          <div class="inv-item"><div class="inv-dot"></div><p><strong>Distribution access:</strong> Reach PMO Directors and capital programme owners at scale — larger LinkedIn followings, podcasts, newsletters, communities.</p></div>
+          <div class="inv-item"><div class="inv-dot"></div><p><strong>Brand association:</strong> WorldCC, PMI, APM, EPC industry brands, Africa platforms — credibility ladder climb through institutional alignment.</p></div>
+          <div class="inv-item"><div class="inv-dot"></div><p><strong>Warm introductions:</strong> Paths to PMO Directors and country directors in cross-border EPC programmes (Europe↔Africa corridor).</p></div>
+          <div class="inv-item"><div class="inv-dot"></div><p><strong>Product bundling:</strong> Complementary tools — contract management platforms, project controls software — to strengthen the Delivery Control System offer.</p></div>
+          <div class="inv-item"><div class="inv-dot"></div><p><strong>Research and data:</strong> PMO/project failure benchmarking data and sector research to strengthen book and diagnostic.</p></div>
+          <div class="inv-item"><div class="inv-dot"></div><p><strong>Co-hosting:</strong> Joint webinars and roundtables that combine both audiences — multiplication, not addition.</p></div>
+          <div class="inv-item"><div class="inv-dot"></div><p><strong>Speaker platform:</strong> Conference and event slots in infrastructure, EPC, PMO, and Africa forums — without cold pitching event organisers.</p></div>
+          <div class="inv-item"><div class="inv-dot"></div><p><strong>Revenue arrangements:</strong> Sponsored content, ambassador fees from software or professional services firms serving the same audience.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HITLIST -->
+<div class="section" id="hitlist">
+  <div class="section-header">
+    <div class="section-eyebrow">Dent Canvas 3 of 3</div>
+    <div class="section-title">Partner Hitlist</div>
+    <div class="section-sub">The 99-partner universe mapped by category. Stars indicate warm contacts already in network.</div>
+  </div>
+  <div class="canvas-wrap">
+    <div class="canvas-header">
+      <div class="c-num">✦</div>
+      <div><div class="c-title">Partner Hitlist — Filled</div><div class="c-sub">★ = warm contact in network · → = identified target</div></div>
+    </div>
+    <div class="canvas-body">
+      <div class="hitlist-grid">
+        <div class="hitlist-cell">
+          <div class="hc-label">Complementary Services</div>
+          <ul>
+            <li class="hot">Nexus Project Law (Hugues de la Forge)</li>
+            <li class="hot">Interglobal (Richard Osei Owusu)</li>
+            <li class="hot">Widnell Europe (Stephane Galeote)</li>
+            <li class="hot">2besafe / Wayne Sudborn (HSSE)</li>
+            <li>Pinsent Masons / Arcadis (claims)</li>
+            <li>EOR providers for Africa</li>
+            <li>PM coaching / training firms</li>
+          </ul>
+        </div>
+        <div class="hitlist-cell">
+          <div class="hc-label">KPIs / Influencers</div>
+          <ul>
+            <li class="hot">Tim Cummins (WorldCC)</li>
+            <li class="hot">airportIR / Modalis</li>
+            <li>PMO LinkedIn thought leaders (10K–100K)</li>
+            <li>Africa business platform hosts</li>
+            <li>Infrastructure/EPC YouTube voices</li>
+            <li>Daniel Priestley / Dent Global</li>
+          </ul>
+        </div>
+        <div class="hitlist-cell">
+          <div class="hc-label">Memberships / Associations</div>
+          <ul>
+            <li class="hot">WorldCC / IACCM (member — activate)</li>
+            <li class="hot">CIArb / MCIArb (member — activate)</li>
+            <li class="hot">CIOB (member — activate)</li>
+            <li class="hot">EPC Berlin Forum (attending)</li>
+            <li>PMI / APM</li>
+            <li>Africa CEO Forum / Africa50</li>
+            <li>African Development Bank ecosystem</li>
+          </ul>
+        </div>
+        <div class="hitlist-cell">
+          <div class="hc-label">Software / Tools</div>
+          <ul>
+            <li>Icertis (contract management)</li>
+            <li>Asite (contract management)</li>
+            <li>Juro (contract management)</li>
+            <li>Oracle Primavera / ARES PRISM</li>
+            <li>Smartsheet / monday.com</li>
+            <li>Aconex / Oracle (document mgmt)</li>
+          </ul>
+        </div>
+        <div class="hitlist-cell">
+          <div class="hc-label">Media (Traditional & New)</div>
+          <ul>
+            <li class="hot">airportIR by Modalis (existing)</li>
+            <li>New Civil Engineer / ENR</li>
+            <li>Infrastructure Investor</li>
+            <li>This Is Africa / Business Day Africa</li>
+            <li>LinkedIn newsletters — project delivery</li>
+            <li>PMO / EPC podcasts</li>
+          </ul>
+        </div>
+        <div class="hitlist-cell">
+          <div class="hc-label">Experiences / Events</div>
+          <ul>
+            <li class="hot">EPC Berlin Forum (attending → speaker)</li>
+            <li>PMI World Congress</li>
+            <li>APM Conference</li>
+            <li>Gartner PPM Summit</li>
+            <li>Africa CEO Forum</li>
+            <li>Dent KPI Accelerator</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PARTNERS -->
+<div class="section" id="p1">
+  <div class="section-header">
+    <div class="section-eyebrow">Brand Alliance Starter Kit · Partner 1 of 5</div>
+    <div class="section-title">5 Priority Partners</div>
+    <div class="section-sub">Corrected profiles with outreach templates. All "Sergio" references corrected to Serguei. All "Shift" references removed. Firm is Contracks Global throughout.</div>
+  </div>
+
+  <!-- PARTNER 1 -->
+  <div class="partner-card">
+    <div class="partner-header">
+      <div class="ph-left">
+        <div class="ph-num">Partner 01 · Anchor</div>
+        <div class="ph-name">Hugues de la Forge</div>
+        <div class="ph-company">Nexus Project Law · EPC Contract Law · Africa / Middle East / Europe</div>
+      </div>
+      <div class="partner-type anchor">Anchor</div>
+    </div>
+    <div class="partner-body">
+      <div class="partner-cols">
+        <div class="p-block">
+          <div class="pb-label">Why Great Partners</div>
+          <p>You both serve the same PMO Control Leads and project owners. You prevent delivery failures; he prevents legal escalation. When scope drifts and governance breaks down, projects end up in his office. When contracts are weak and commercial control is missing, they need your system. Audience overlap is near-perfect.</p>
+        </div>
+        <div class="p-block">
+          <div class="pb-label">What Drives Him</div>
+          <p>Profile as the go-to EPC legal advisor. Client quality over volume. Positioning alongside credible practitioners — not generic commercial law firms. Thought leadership that reinforces his specialist reputation in Africa and the Middle East.</p>
+        </div>
+        <div class="p-block">
+          <div class="pb-label">What You Offer</div>
+          <ul>
+            <li>Joint webinar series: "Where Contract Law Meets Delivery Control" — you handle all logistics, promotion, recording, post-event content</li>
+            <li>Co-authored piece: "The 5 Governance Failures That Trigger Legal Escalation" — you write, he adds legal lens, both networks benefit</li>
+            <li>Referral arrangement with CRM-tracked handoff protocol</li>
+            <li>Book foreword or case study — legacy positioning as EPC legal authority</li>
+          </ul>
+        </div>
+        <div class="p-block">
+          <div class="pb-label">What He Brings</div>
+          <ul>
+            <li>Boutique EPC legal credibility transfers authority to your methodology</li>
+            <li>Peer-level positioning — you appear alongside a specialist, not a generalist</li>
+            <li>His client network: capital project owners in Africa, ME, and Europe</li>
+            <li>Cross-referral: he sends delivery control gaps; you send legal distress signals</li>
+          </ul>
+        </div>
+      </div>
+      <div class="partner-outreach">
+        <div class="po-label">Outreach — Corrected</div>
+        <div class="outreach-content">
+          <div class="oc-subject">Email Subject</div>
+          <div class="oc-subjectline">Preventing the governance failures that land projects in legal escalation</div>
+          <div class="oc-body">Hugues,
+
+I've been following your work on EPC contract structures for owner-side clients across Africa and the Middle East. Your focus on preventing disputes before they escalate mirrors what I see from the delivery control side.
+
+I work with PMO Control Leads on capital projects — the people accountable for turning messy, high-stakes programmes into predictable delivery. Most of the governance failures I fix (scope drift, weak decision rights, vendor slippage) are the same ones that trigger the legal escalations you handle later.
+
+I'm building a joint webinar series: "Where Contract Law Meets Delivery Control." I'd handle all logistics, promotion, recording, and post-event content. You'd appear as the legal expert on claims prevention. Zero work for you — maximum positioning as the go-to EPC legal advisor for owner-side clients who want to avoid disputes entirely.
+
+I'm also working on a book and would value your perspective as a foreword or case study contributor — legacy positioning as the authority on EPC contract law and claims prevention.
+
+Worth a 20-minute call to explore?
+
+Serguei Poppeleer
+Contracks Global</div>
+        </div>
+        <div class="partner-note"><strong>Note:</strong> Met at Berlin EPC Forum. Contact details to be confirmed before sending. This is the first move — highest BD priority.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PARTNER 2 -->
+  <div class="partner-card" id="p2">
+    <div class="partner-header">
+      <div class="ph-left">
+        <div class="ph-num">Partner 02 · Anchor</div>
+        <div class="ph-name">Richard Osei Owusu</div>
+        <div class="ph-company">Interglobal · Owner-Side PM · West & East Africa</div>
+      </div>
+      <div class="partner-type anchor">Anchor</div>
+    </div>
+    <div class="partner-body">
+      <div class="partner-cols">
+        <div class="p-block">
+          <div class="pb-label">Why Great Partners</div>
+          <p>You both serve capital project owners executing cross-border programmes in Africa. Richard brings on-ground programme management and an established network. You bring the Delivery Control System that makes those programmes predictable. The live retainer relationship proves the model works.</p>
+        </div>
+        <div class="p-block">
+          <div class="pb-label">What Drives Him</div>
+          <p>Growing Interglobal's advisory reach. Building a credible service platform for African capital project owners. Revenue through structured partnerships. Positioning Interglobal as a serious player in African infrastructure delivery.</p>
+        </div>
+        <div class="p-block">
+          <div class="pb-label">Meeting Agenda Points</div>
+          <ul>
+            <li>Joint roundtable for capital project owners in West and East Africa — you design, he co-hosts</li>
+            <li>Co-branded diagnostic scorecard for African project owners — customised for cross-border context</li>
+            <li>Structured partnership model: you provide Delivery Control System + content; he provides on-ground delivery + client relationships; revenue share on joint engagements</li>
+          </ul>
+        </div>
+        <div class="p-block">
+          <div class="pb-label">What He Brings</div>
+          <ul>
+            <li>Established anglophone Africa network — warm introductions to capital project owners</li>
+            <li>On-ground credibility positions you as the methodology behind real delivery</li>
+            <li>Referrals from his existing client base who need delivery control</li>
+            <li>Interglobal brand association in the Africa infrastructure market</li>
+          </ul>
+        </div>
+      </div>
+      <div class="partner-note"><strong>Important:</strong> Richard is not an outreach target — a live retainer conversation is already in progress with a London meeting scheduled. The outreach templates do not apply. Use the three proposals above as meeting agenda points. The partnership framing strengthens the commercial conversation, not replaces it.</div>
+    </div>
+  </div>
+
+  <!-- PARTNER 3 -->
+  <div class="partner-card" id="p3">
+    <div class="partner-header">
+      <div class="ph-left">
+        <div class="ph-num">Partner 03 · Anchor</div>
+        <div class="ph-name">airportIR by Modalis</div>
+        <div class="ph-company">Aviation Infrastructure Intelligence · Global Subscriber Base</div>
+      </div>
+      <div class="partner-type anchor">Anchor</div>
+    </div>
+    <div class="partner-body">
+      <div class="partner-cols">
+        <div class="p-block">
+          <div class="pb-label">Why Great Partners</div>
+          <p>They serve the exact audience you need — airport owners, aviation PMOs, and infrastructure investors. You provide practitioner content on delivery control that their subscribers value. They already published your analysis on aviation infrastructure transformation (21,000+ impressions). The relationship exists — this formalises it.</p>
+        </div>
+        <div class="p-block">
+          <div class="pb-label">What Drives Them</div>
+          <p>Quality practitioner content that drives subscriber growth. Positioning as the reference platform for aviation infrastructure professionals globally. Exclusive research and diagnostic tools their audience can't get elsewhere.</p>
+        </div>
+        <div class="p-block">
+          <div class="pb-label">What You Offer</div>
+          <ul>
+            <li>Regular contributor column: "Delivery Control in Aviation Capital Programmes" — quarterly practitioner pieces, you handle all writing</li>
+            <li>Co-branded diagnostic report: "The State of Delivery Control in Aviation Infrastructure" — you design, collect, analyse, write; they distribute as exclusive research</li>
+            <li>Feature interview series — audio-narrated articles and video content they can embed</li>
+            <li>Bleriot Group Board Advisor role — live aviation infrastructure credibility in East Africa</li>
+          </ul>
+        </div>
+        <div class="p-block">
+          <div class="pb-label">What They Bring</div>
+          <ul>
+            <li>Global subscriber base of airport owners, aviation PMOs, infrastructure investors</li>
+            <li>Modalis brand association — positions you as aviation capital programme authority</li>
+            <li>Newsletter and social distribution for diagnostic scorecard</li>
+            <li>Strategic introductions to aviation capital project decision-makers</li>
+          </ul>
+        </div>
+      </div>
+      <div class="partner-outreach">
+        <div class="po-label">Outreach — Corrected</div>
+        <div class="outreach-content">
+          <div class="oc-subject">Email Subject</div>
+          <div class="oc-subjectline">Building on 21,000 impressions — aviation delivery control series</div>
+          <div class="oc-body">Dear [Named Contact],
+
+You published my analysis on aviation infrastructure transformation earlier this year — 21,000+ impressions. That response tells me your audience values practitioner content on how aviation capital programmes actually get delivered.
+
+I work with PMO Control Leads on capital projects in aviation, energy, infrastructure, and real estate. I'm also a Board Advisor for Bleriot Group — a sustainable aviation fuel venture in East Africa — so I'm living the aviation infrastructure challenges your subscribers read about.
+
+I'd like to propose three things:
+
+A regular contributor column — "Delivery Control in Aviation Capital Programmes." Quarterly practitioner pieces using anonymised real project examples. You get quality content that drives subscriber growth; I get exposure to airport owners and aviation PMOs.
+
+A co-branded diagnostic report — "The State of Delivery Control in Aviation Infrastructure." I design the diagnostic (already live), collect responses, analyse data, and write the report. You distribute to your audience and promote as exclusive research. Zero work for you.
+
+A feature interview series on aviation project governance — I produce audio-narrated articles and video content you can embed; you produce, edit, and distribute.
+
+Worth a call to explore?
+
+Serguei Poppeleer
+Contracks Global · Board Advisor, Bleriot Group</div>
+        </div>
+        <div class="partner-note"><strong>Note:</strong> Find the named editorial or partnerships contact at Modalis before sending — do not address to "airportIR team." The relationship already exists; this is a formalisation conversation.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PARTNER 4 -->
+  <div class="partner-card" id="p4">
+    <div class="partner-header">
+      <div class="ph-left">
+        <div class="ph-num">Partner 04 · Aspirational</div>
+        <div class="ph-name">WorldCC</div>
+        <div class="ph-company">World Commerce & Contracting · 80,000+ Members · Formerly IACCM</div>
+      </div>
+      <div class="partner-type aspirational">Aspirational</div>
+    </div>
+    <div class="partner-body">
+      <div class="partner-cols">
+        <div class="p-block">
+          <div class="pb-label">Why Great Partners</div>
+          <p>80,000+ commercial and contract management professionals who sit at the intersection of procurement, legal, and project delivery — exactly where delivery control failures surface. The 5Cs Framework gives their members a practical lens for preventing scope drift, governance failures, and vendor slippage before they become commercial disputes. You're already a member.</p>
+        </div>
+        <div class="p-block">
+          <div class="pb-label">What Drives Them</div>
+          <p>Practitioner thought leadership that adds member value. Credible research and diagnostic tools. Elevating the commercial function's role in project delivery outcomes. Positioning as the global authority on commercial and contract management.</p>
+        </div>
+        <div class="p-block">
+          <div class="pb-label">What You Offer</div>
+          <ul>
+            <li>Featured practitioner series: "The 5Cs Framework as a Delivery Control Lens for Commercial Managers" — 3-part content series, you handle all writing and production</li>
+            <li>Diagnostic scorecard tailored for commercial and contract professionals — already live; you handle tech, scoring, and lead routing</li>
+            <li>Speaker slot — 45-minute keynote or workshop; speaker profile already built and live</li>
+            <li>Book case study or featured practitioner chapter — legacy positioning for WorldCC</li>
+          </ul>
+        </div>
+        <div class="p-block">
+          <div class="pb-label">What They Bring</div>
+          <ul>
+            <li>80,000+ member distribution — the single largest credibility transfer available</li>
+            <li>Institutional authority — if WorldCC features your work, you're credible globally</li>
+            <li>Conference and regional event speaker platforms</li>
+            <li>Member portal and newsletter promotion for diagnostic scorecard</li>
+          </ul>
+        </div>
+      </div>
+      <div class="partner-outreach">
+        <div class="po-label">Outreach — Corrected</div>
+        <div class="outreach-content">
+          <div class="oc-subject">Email Subject</div>
+          <div class="oc-subjectline">Delivery control lens for commercial managers — practitioner series proposal</div>
+          <div class="oc-body">Dear Tim,
+
+Your 80,000+ members sit at the intersection of procurement, legal, and project delivery — exactly where delivery control failures surface. I think there's a natural content partnership here.
+
+I work with PMO Control Leads on capital projects in energy, aviation, infrastructure, and real estate — projects up to €2B across 30 countries. The governance failures I fix (scope drift, weak decision rights, vendor slippage) are the same ones that create commercial disputes and contract management challenges for your members.
+
+I'd like to propose three things:
+
+A featured practitioner series — "The 5Cs Framework as a Delivery Control Lens for Commercial Managers." A 3-part content series showing commercial and contract managers how to prevent scope drift, enforce governance cadence, and control vendor performance. You get quality practitioner content that adds member value; I get exposure to your community.
+
+A diagnostic scorecard tailored for your members — the 5Cs diagnostic tool (already live) customised for commercial and contract professionals. You'd offer it as a member resource; I'd handle all tech, scoring logic, and lead routing. Zero work for you.
+
+A speaker slot at your annual conference or regional event — 45-minute keynote or workshop on delivery control for commercial managers. My speaker profile is already built and live. I'm also writing a book and would value WorldCC as a case study contributor — legacy positioning as the institutional authority on commercial and contract management in capital projects.
+
+Worth a call?
+
+Serguei Poppeleer
+Contracks Global</div>
+        </div>
+        <div class="partner-note"><strong>Note:</strong> Named contact is Tim Cummins — already identified as a LinkedIn tagging target from the Berlin EPC Forum session. Approach after Hugues webinar is confirmed — proof of partnership activity strengthens this pitch. Activate at 30-day horizon.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PARTNER 5 -->
+  <div class="partner-card" id="p5">
+    <div class="partner-header">
+      <div class="ph-left">
+        <div class="ph-num">Partner 05 · Aspirational</div>
+        <div class="ph-name">Tommy Larmour</div>
+        <div class="ph-company">Country Contract Manager · Webuild · 50+ Countries · Infrastructure / Energy / Water</div>
+      </div>
+      <div class="partner-type aspirational">Aspirational</div>
+    </div>
+    <div class="partner-body">
+      <div class="partner-cols">
+        <div class="p-block">
+          <div class="pb-label">Why Great Partners</div>
+          <p>Webuild operates at massive scale — 50+ countries, major EPC programmes — and faces the exact delivery control challenges you solve. Tommy sits at the country level where these problems surface daily. He's a LinkedIn connection. The workshop-first approach is the right sequencing — method embedding company-wide is a longer conversation.</p>
+        </div>
+        <div class="p-block">
+          <div class="pb-label">What Drives Him</div>
+          <p>Reducing claims exposure. Improving commercial control on complex programmes. Demonstrating delivery discipline to owner clients. Internal capability building. Career positioning as someone who brings proven methodology to Webuild's operations.</p>
+        </div>
+        <div class="p-block">
+          <div class="pb-label">What You Offer</div>
+          <ul>
+            <li>Internal workshop series — 3 sessions on scope control, governance cadence, vendor management; you provide all content and materials</li>
+            <li>Case study co-creation — you document, write, and distribute; positions Tommy as internal innovator</li>
+            <li>Method partnership (longer conversation) — 5Cs Framework piloted in a specific Webuild programme</li>
+            <li>Interview spotlight — positions him as expert in commercial control for large-scale EPC</li>
+          </ul>
+        </div>
+        <div class="p-block">
+          <div class="pb-label">What They Bring</div>
+          <ul>
+            <li>Webuild brand — one of the world's largest EPC contractors endorses your methodology</li>
+            <li>Scale proof — if it works at Webuild, it works anywhere</li>
+            <li>Access to country-level commercial and PM teams across 50+ countries</li>
+            <li>Strategic introductions to Webuild's owner-side clients</li>
+          </ul>
+        </div>
+      </div>
+      <div class="partner-outreach">
+        <div class="po-label">Outreach — Corrected</div>
+        <div class="outreach-content">
+          <div class="oc-subject">Email Subject</div>
+          <div class="oc-subjectline">Delivery control for country-level commercial managers — Webuild workshop proposal</div>
+          <div class="oc-body">Tommy,
+
+Webuild operates at a scale where delivery control failures become expensive fast — scope drift, governance gaps, vendor slippage across 50+ countries and major EPC programmes.
+
+I work with PMO Control Leads on capital projects in energy, aviation, infrastructure, and real estate — projects up to €2B across 30 countries. The governance failures I fix are the same ones that create claims exposure and commercial control problems for country-level commercial managers like you.
+
+I'd like to propose an internal workshop series for your country-level commercial and PM teams — 3 workshops on scope control, governance cadence, and vendor management. You'd provide audience and logistics; I'd provide all content and follow-up resources. Zero work for you beyond coordination.
+
+I'm also interested in co-creating a case study from live delivery — documenting how the Delivery Control System reduced claims exposure on a Webuild programme. You'd provide project access; I'd write and distribute. Positions you as the internal innovator who brought proven methodology to the team.
+
+Longer term, if the workshops prove value, I'd be interested in exploring a method partnership — piloting the 5Cs Framework embedded in a specific programme. That's a longer conversation, but worth flagging.
+
+Worth a call to explore the workshop series first?
+
+Serguei Poppeleer
+Contracks Global</div>
+        </div>
+        <div class="partner-note"><strong>Note:</strong> Tommy is a LinkedIn connection but not a warm contact — no direct exchange confirmed. Email first, not WhatsApp. Tommy is internal champion level, not C-suite — the workshop-first approach is correct. Activate at 60-day horizon after WorldCC pitch is live.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRIORITY SEQUENCE -->
+<div class="section" style="padding-bottom: 0;">
+  <div class="section-header">
+    <div class="section-eyebrow">Activation Sequence</div>
+    <div class="section-title">Priority Order</div>
+  </div>
+  <div class="canvas-wrap" style="margin-bottom:0;">
+    <div class="sequence">
+      <div class="seq-step">
+        <div class="seq-num">1</div>
+        <div class="s-timing">This Week</div>
+        <div class="s-name">Hugues / Nexus</div>
+        <div class="s-action">Send corrected email. First move — highest BD priority, warmest angle from Berlin Forum.</div>
+      </div>
+      <div class="seq-step">
+        <div class="seq-num">2</div>
+        <div class="s-timing">This Week</div>
+        <div class="s-name">airportIR / Modalis</div>
+        <div class="s-action">Find named contact. Formalise the existing relationship — contributor column is the first ask.</div>
+      </div>
+      <div class="seq-step">
+        <div class="seq-num">3</div>
+        <div class="s-timing">London Meeting</div>
+        <div class="s-name">Richard / Interglobal</div>
+        <div class="s-action">Use the three proposals as meeting agenda points. Partnership framing strengthens the retainer conversion.</div>
+      </div>
+      <div class="seq-step">
+        <div class="seq-num">4</div>
+        <div class="s-timing">30-Day Horizon</div>
+        <div class="s-name">WorldCC / Tim Cummins</div>
+        <div class="s-action">Pitch after Hugues webinar is confirmed. Proof of one partnership strengthens this approach.</div>
+      </div>
+      <div class="seq-step">
+        <div class="seq-num">5</div>
+        <div class="s-timing">60-Day Horizon</div>
+        <div class="s-name">Webuild / Tommy</div>
+        <div class="s-action">Workshop proposal by email. Needs framework fully visible before approaching at this scale.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ACTIONS -->
+<div class="section" id="actions">
+  <div class="section-header">
+    <div class="section-eyebrow">What You Need to Do</div>
+    <div class="section-title">Action Plan</div>
+    <div class="section-sub">12 actions across four time horizons. Fix the errors first — then activate in sequence.</div>
+  </div>
+  <div class="actions-grid">
+    <div class="action-group">
+      <div class="ag-header">
+        <div class="ag-badge now">Do Now</div>
+        <div class="ag-title">Immediate — Before Any Outreach</div>
+      </div>
+      <div class="action-item">
+        <div class="action-check"></div>
+        <div class="action-text"><strong>Fix all outreach templates</strong> — replace "Sergio" with Serguei, remove all "(Shift)" references, confirm firm name is Contracks Global throughout. <span class="tag fix">Fix First</span></div>
+      </div>
+      <div class="action-item">
+        <div class="action-check"></div>
+        <div class="action-text"><strong>Send Hugues email</strong> — corrected version above. Confirm contact details from Berlin Forum session first. <span class="tag p1">P1</span></div>
+      </div>
+      <div class="action-item">
+        <div class="action-check"></div>
+        <div class="action-text"><strong>Find named contact at Modalis/airportIR</strong> — editorial lead or partnerships contact. Do not send to generic team address. <span class="tag p1">P1</span></div>
+      </div>
+      <div class="action-item">
+        <div class="action-check"></div>
+        <div class="action-text"><strong>Add contact details</strong> for all 5 partners in the kit — currently blank across all five pages.</div>
+      </div>
+    </div>
+    <div class="action-group">
+      <div class="ag-header">
+        <div class="ag-badge week">This Week</div>
+        <div class="ag-title">Before London Meeting</div>
+      </div>
+      <div class="action-item">
+        <div class="action-check"></div>
+        <div class="action-text"><strong>Send airportIR outreach</strong> once named contact is confirmed. Formalise the contributor column as first ask. <span class="tag p1">P1</span></div>
+      </div>
+      <div class="action-item">
+        <div class="action-check"></div>
+        <div class="action-text"><strong>Prepare Richard meeting agenda</strong> — use the three partnership proposals (roundtable, co-branded scorecard, revenue share model) as structured agenda points. <span class="tag p1">P1</span></div>
+      </div>
+      <div class="action-item">
+        <div class="action-check"></div>
+        <div class="action-text"><strong>Complete WorldCC phone talking points</strong> — the Dent document cut off mid-sentence. Complete before approaching Tim Cummins. <span class="tag p2">P2</span></div>
+      </div>
+    </div>
+    <div class="action-group">
+      <div class="ag-header">
+        <div class="ag-badge month">30-Day Horizon</div>
+        <div class="ag-title">After Hugues Webinar Confirmed</div>
+      </div>
+      <div class="action-item">
+        <div class="action-check"></div>
+        <div class="action-text"><strong>Pitch WorldCC via Tim Cummins</strong> — featured practitioner series + scorecard as member resource. One confirmed partnership strengthens this approach. <span class="tag p2">P2</span></div>
+      </div>
+      <div class="action-item">
+        <div class="action-check"></div>
+        <div class="action-text"><strong>Upgrade ScoreApp plan</strong> — responses nearly exhausted; urgent before any distribution via partnership channels drives volume.</div>
+      </div>
+      <div class="action-item">
+        <div class="action-check"></div>
+        <div class="action-text"><strong>Activate WorldCC and CIArb memberships</strong> — move from badge holder to featured contributor or speaker. Submit practitioner content or event pitch.</div>
+      </div>
+    </div>
+    <div class="action-group">
+      <div class="ag-header">
+        <div class="ag-badge standing">60-Day / Standing</div>
+        <div class="ag-title">Longer Horizon & Standing Gaps</div>
+      </div>
+      <div class="action-item">
+        <div class="action-check"></div>
+        <div class="action-text"><strong>Approach Webuild / Tommy Larmour</strong> — email only, workshop-first. Activate once framework is fully visible and WorldCC pitch is live. <span class="tag p2">P2</span></div>
+      </div>
+      <div class="action-item">
+        <div class="action-check"></div>
+        <div class="action-text"><strong>Supply Bleriot metrics</strong> — raise stage, LOI/offtake, capacity/feedstock figures needed to close the qualitative proof gap in the START report and aviation partnership pitches.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GAPS -->
+<div class="section" id="gaps">
+  <div class="section-header">
+    <div class="section-eyebrow">Known Issues</div>
+    <div class="section-title">Standing Gaps to Close</div>
+    <div class="section-sub">These are the gaps that will limit partnership conversations if not addressed before activation.</div>
+  </div>
+  <div class="gaps-grid">
+    <div class="gap-item">
+      <div class="gi-title">Contact Details Missing</div>
+      <div class="gi-text">All 5 partner pages in the Dent kit have contact info blank. Hugues and Modalis must be confirmed before any message is sent. Do not send cold.</div>
+    </div>
+    <div class="gap-item">
+      <div class="gi-title">Name & Firm Errors in Templates</div>
+      <div class="gi-text">"Sergio" and "Contracks (renaming to Shift)" appear throughout the Dent-generated outreach. Every template must be corrected before use. Fixed versions are in this document.</div>
+    </div>
+    <div class="gap-item">
+      <div class="gi-title">WorldCC Close Missing</div>
+      <div class="gi-text">The phone talking points for WorldCC were cut off mid-sentence in the Dent PDF. Complete the close before approaching Tim Cummins.</div>
+    </div>
+    <div class="gap-item">
+      <div class="gi-title">ScoreApp Capacity</div>
+      <div class="gi-text">Responses nearly exhausted. Upgrade urgently before any partnership channel drives diagnostic volume. A WorldCC or airportIR distribution would exceed current capacity immediately.</div>
+    </div>
+    <div class="gap-item">
+      <div class="gi-title">Bleriot Metrics Qualitative</div>
+      <div class="gi-text">The aviation partnership pitch and START Special Report both rely on Bleriot as proof. Without specific figures (raise stage, LOI, capacity), the proof remains qualitative — a known gap to close.</div>
+    </div>
+    <div class="gap-item">
+      <div class="gi-title">Modalis Named Contact</div>
+      <div class="gi-text">The existing relationship with airportIR/Modalis is warm but the outreach must go to a named individual — not the team generically. Find the editorial or partnerships lead before sending.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <div class="df-brand">Contracks Global</div>
+  <div class="df-tagline">The System Travels. The Chaos Does Not.</div>
+  <div class="df-meta">Brand Alliance Starter Kit · Dent KPI Method · June 2026</div>
+</div>
+
+</div><!-- end main -->
+</body>
+</html>
