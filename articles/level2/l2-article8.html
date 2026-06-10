@@ -124,7 +124,7 @@
   <p class="article-byline" style="margin-top:22px;">Written and narrated by Serguei Poppeleer &nbsp;&middot;&nbsp; Founder, Contracks Global &nbsp;&middot;&nbsp; contracks.global</p>
 </header>
 
-<img src="/article8.jpeg" alt="The four stages of a project&rsquo;s commercial life" class="article-hero">
+<img src="/articles/level2/l2-article8.jpeg" alt="The four stages of a project&rsquo;s commercial life" class="article-hero">
 
 <main class="article-body">
 
@@ -216,26 +216,17 @@
 </div>
 
 <script>
-/* ════════════════════════════════════════════════════════════
-   CONTRACKS in-page reader — Article 8
-   Three states, auto-detected on load:
-     1. <slug>.mp3 + <slug>.sentences.json → ElevenLabs voice + sentence sync
-     2. <slug>.mp3 only                    → plays audio, no highlight
-     3. neither                            → browser voice + sentence sync (fallback)
-   Set ARTICLE_SLUG to match your audio file names.
-════════════════════════════════════════════════════════════ */
 const ARTICLE_SLUG = 'l2-article8';
 const AUDIO_BASE = '/audio';
 const SELECTOR = '.article-subtitle, .article-body h2, .article-body p, .article-body .key-line, .article-body .step-title, .article-body .proof-box strong';
-const SENT_RE = /[^.!?]+[.!?]+(?:["'”’)\]]+)?\s*|[^.!?]+$/g;
+const SENT_RE = /[^.!?]+[.!?]+(?:["'"')\]]+)?\s*|[^.!?]+$/g;
 
-let spans = {};      // sentenceIndex -> [span,...]
-let block = [];      // sentenceIndex -> block element
-let N = 0;           // total sentences
-let times = null;    // [{start,end}] when synced
+let spans = {};
+let block = [];
+let N = 0;
+let times = null;
 let cur = -1, state = 'idle', rate = 1, MODE = 'browser';
 
-/* ── wrap content into sentence spans, preserving inline tags ── */
 function endOffsets(text){
   const re = new RegExp(SENT_RE.source, 'g'); let m, acc = 0; const out = [];
   while ((m = re.exec(text)) !== null){ if (m[0] === ''){ re.lastIndex++; continue; } acc += m[0].length; out.push(acc); }
@@ -277,7 +268,6 @@ function build(){
 }
 function sentText(i){ return (spans[i] || []).map(s=>s.textContent).join(''); }
 
-/* ── highlight ── */
 function highlight(i){
   if (i === cur || i < 0 || i >= N) return;
   if (cur >= 0 && spans[cur]) spans[cur].forEach(s=>{ s.classList.remove('active'); s.classList.add('read'); });
@@ -291,7 +281,6 @@ function highlight(i){
 }
 function clearAll(){ document.querySelectorAll('.s.active,.s.read').forEach(s=>s.classList.remove('active','read')); document.querySelectorAll('.block-active').forEach(b=>b.classList.remove('block-active')); cur=-1; }
 
-/* ── Engine: ElevenLabs synced ── */
 let audio=null;
 function timeToSentence(t){ let i=0; for (let k=0;k<times.length;k++){ if (t>=times[k].start) i=k; else break; } return i; }
 function elInit(){
@@ -312,7 +301,6 @@ const elEngine = {
   setRate(r){ if(audio)audio.playbackRate=r; }
 };
 
-/* ── Engine: browser fallback ── */
 let voice=null, smooth=null;
 function pickVoice(){ const v=speechSynthesis.getVoices(); voice=v.find(x=>x.name==='Daniel'&&x.lang==='en-GB')||v.find(x=>x.lang==='en-GB')||v.find(x=>x.lang.startsWith('en')); }
 function speakFrom(i){
@@ -341,18 +329,16 @@ const brEngine = {
   setRate(){ if(state==='playing'){ const i=cur; speechSynthesis.cancel(); stopSmooth(); speakFrom(i); } }
 };
 
-/* ── Engine: plain audio (mp3, no timestamps) ── */
 const plainEngine = {
   play(){ if(!audio)elInit(); audio.playbackRate=rate; audio.play(); },
   pause(){ audio&&audio.pause(); },
   stop(){ if(audio){audio.pause();audio.currentTime=0;} },
-  seekSentence(){}, // no mapping without timestamps
+  seekSentence(){},
   seekFraction(f){ if(!audio)elInit(); audio.currentTime=f*(audio.duration||0); if(state==='playing')audio.play(); },
   setRate(r){ if(audio)audio.playbackRate=r; }
 };
 let E = brEngine;
 
-/* ── controls ── */
 function cksToggle(){ state==='playing' ? cksPause() : play(); }
 function play(){
   if(state==='done') clearAll();
@@ -385,7 +371,6 @@ function applySrc(){
 window.addEventListener('DOMContentLoaded', async ()=>{
   build();
   document.getElementById('cksPlayer').classList.add('show');
-  // 1. synced?
   try{
     const r=await fetch(`${AUDIO_BASE}/${ARTICLE_SLUG}.sentences.json`,{cache:'no-cache'});
     if(!r.ok) throw 0;
@@ -394,12 +379,10 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     if(times.length!==N) console.warn(`Sentence mismatch: audio ${times.length} vs page ${N}`);
     MODE='el'; E=elEngine; applySrc(); return;
   }catch(e){}
-  // 2. mp3 only?
   try{
-    const h=await fetch(`${AUDIO_BASE}/${ARTICLE_SLUG}.mp3`,{method:'HEAD'});
-    if(h.ok){ MODE='plain'; E=plainEngine; applySrc(); return; }
+    const h=await fetch(`${AUDIO_BASE}/${ARTICLE_SLUG}.mp3`,{method:'GET',headers:{Range:'bytes=0-1'}});
+    if(h.ok||h.status===206){ MODE='plain'; E=plainEngine; applySrc(); return; }
   }catch(e){}
-  // 3. browser fallback
   MODE='browser'; E=brEngine; pickVoice(); speechSynthesis.onvoiceschanged=pickVoice; speechSynthesis.getVoices(); applySrc();
 });
 window.addEventListener('beforeunload', ()=>{ if(MODE==='browser') speechSynthesis.cancel(); });
