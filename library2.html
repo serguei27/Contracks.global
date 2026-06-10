@@ -150,9 +150,20 @@ footer .fl a{color:rgba(255,255,255,0.7);text-decoration:none;margin:0 .5rem;fon
 footer .fl a:hover{color:var(--gold);}
 footer .fc{margin-top:14px;font-size:0.74rem;color:rgba(255,255,255,0.35);}
 @media(max-width:640px){.hero,.ladder-wrap,.shelves,.arrival{padding-left:20px;padding-right:20px;}nav{padding:14px 18px;}}
+
+/* ── ACCESSIBILITY ADDITIONS ── */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:var(--gold);color:var(--navy);padding:10px 16px;font-weight:700;font-size:0.85rem;text-decoration:none;border-radius:0 0 4px 0;}
+.skip-link:focus{left:0;}
+button.shelf-head{width:100%;background:none;border:none;text-align:left;font:inherit;color:inherit;-webkit-appearance:none;appearance:none;}
+button.mrung{font:inherit;color:inherit;-webkit-appearance:none;appearance:none;}
+button.art-toggle{background:none;font:inherit;-webkit-appearance:none;appearance:none;}
+.shelf-head:focus-visible,.mrung:focus-visible,.art-toggle:focus-visible,.skip-link:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+@media(max-width:520px){.mini-ladder{display:flex;grid-template-columns:none;overflow-x:auto;gap:6px;padding-bottom:8px;scroll-snap-type:x mandatory;}.mrung{flex:0 0 92px;scroll-snap-align:start;}.mrung .mn{font-size:1.4rem;}.mrung .mnm{font-size:0.6rem;letter-spacing:0.04em;}}
+@media(prefers-reduced-motion:reduce){.mrung,.mrung:hover{transition:none;transform:none;}.shelf-body,.shelf.open .shelf-tog{transition:none;}*{scroll-behavior:auto;}}
 </style>
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to content</a>
 
 <nav>
   <a href="/" class="nav-logo">CONTRACKS<span>.</span>GLOBAL</a>
@@ -160,10 +171,13 @@ footer .fc{margin-top:14px;font-size:0.74rem;color:rgba(255,255,255,0.35);}
     <li><a href="/">Home</a></li>
     <li><a href="/control">Diagnostic</a></li>
     <li><a href="/library.html" class="active">Library</a></li>
+    <li><a href="/book.html">Book</a></li>
     <li><a href="/#contact">Contact</a></li>
     <li><a href="/control" class="nav-cta">Take the diagnostic &rarr;</a></li>
   </ul>
 </nav>
+
+<main id="main">
 
 <!-- HERO -->
 <section class="hero">
@@ -193,13 +207,13 @@ footer .fc{margin-top:14px;font-size:0.74rem;color:rgba(255,255,255,0.35);}
 <!-- TOP DIAGNOSTIC BAND -->
 <section class="diag-band">
   <div class="diag-inner">
-    <p><b>Already took the diagnostic?</b> Open your level below. <b>Not yet?</b> Take it first &mdash; it places you on the ladder in five minutes.</p>
+    <p><b>Already took the diagnostic?</b> Open your level below. <b>Not yet?</b> Start there &mdash; otherwise the library is just reading, not control.</p>
     <a class="diag-btn" href="/control">Take the diagnostic &rarr;</a>
   </div>
 </section>
 
 <!-- ARRIVAL BANNER (shown when ?level=N) -->
-<div class="arrival" id="arrival"><div class="arrival-inner" id="arrivalText"></div></div>
+<div class="arrival" id="arrival" role="status" aria-live="polite"><div class="arrival-inner" id="arrivalText"></div></div>
 
 <!-- MINI LADDER -->
 <div class="ladder-wrap">
@@ -211,13 +225,16 @@ footer .fc{margin-top:14px;font-size:0.74rem;color:rgba(255,255,255,0.35);}
 <!-- LEVEL SHELVES -->
 <div class="shelves" id="shelves"></div>
 
+</main>
+
 <footer>
   <div class="fb">CONTRACKS<span>.</span>GLOBAL</div>
-  <div class="fg">Better contracts. Better companies. Better communities.</div>
+  <div class="fg">Governance Designed for Distance.</div>
   <div class="fl">
     <a href="mailto:hello@contracks.global">hello@contracks.global</a> ·
     <a href="tel:+32466446290">+32 466 446 290</a> ·
     <a href="https://www.linkedin.com/company/contracks-global/">LinkedIn</a> ·
+    <a href="/book.html">Book</a> ·
     <a href="/glossary.html">Glossary</a> ·
     <a href="/privacy.html">Privacy</a>
   </div>
@@ -232,7 +249,7 @@ var LEVELS=[
  {n:1,name:'Reactive',tag:'The programme runs on people, not controls.',
   means:'Controls live on paper, not on the programme. Problems are discovered after they happen, and delivery depends on heroics and firefighting.',
   breaks:'Dashboards show green while the work drifts. Reporting gets mistaken for control. Nobody sees the surprise coming until it is already a crisis.',
-  report:{title:'Beyond Paperwork Governance',url:'/articles/level2/l2-specialreport-resolve.html',label:'Start here \u00b7 Core report'},
+  report:{title:'Beyond Paperwork Governance',url:'/articles/level2/l2-specialreport-resolve.html',label:'Core governance report'},
   articles:[
    {title:'Governed Is Not Controlled',url:'/articles/level5/l5-article1.html'},
    {title:'Where Projects Actually Fail',url:'/articles/level5/l5-article2.html'},
@@ -310,10 +327,10 @@ function nextStep(L){
     primary='<a class="ns-btn ns-primary" href="/control">Take the diagnostic &rarr;</a>';
     ghost='<a class="ns-btn ns-ghost" href="/articles/level2/l2-specialreport-resolve.html">Read the core report &rarr;</a>';
   } else {
-    primary='<a class="ns-btn ns-primary" href="/control-review.html">Request a Delivery Control Review &rarr;</a>';
+    primary='<a class="ns-btn ns-primary" href="/control">Request a Delivery Control Review &rarr;</a>';
     ghost = L.n===3
-      ? '<a class="ns-btn ns-ghost" href="/control-workshop.html">Install it: Workshop &rarr;</a>'
-      : '<a class="ns-btn ns-ghost" href="/control-fractional.html">Embed it: Fractional Control &rarr;</a>';
+      ? '<a class="ns-btn ns-ghost" href="/control">Install it: Workshop &rarr;</a>'
+      : '<a class="ns-btn ns-ghost" href="/control">Embed it: Fractional Control &rarr;</a>';
   }
   return '<div class="nextstep"><div class="nl">'+nx+'</div><div class="ns-btns">'+primary+ghost+'</div></div>';
 }
@@ -344,7 +361,7 @@ function articlesHTML(L){
   h+='</div>';
   if(L.articles.length>3){
     var extra=L.articles.length-3;
-    h+='<div class="art-toggle" id="atog-'+L.n+'" data-open="0" onclick="moreToggle('+L.n+')">+ '+extra+' more &darr;</div>';
+    h+='<button type="button" class="art-toggle" id="atog-'+L.n+'" data-open="0" aria-expanded="false" onclick="moreToggle('+L.n+')">+ '+extra+' more &darr;</button>';
   }
   return h;
 }
@@ -354,14 +371,14 @@ function moreToggle(n){
   var tog=document.getElementById('atog-'+n);
   var open=tog.getAttribute('data-open')==='1';
   items.forEach(function(el){el.style.display=open?'none':'flex';});
-  tog.setAttribute('data-open',open?'0':'1');
+  tog.setAttribute('data-open',open?'0':'1');tog.setAttribute('aria-expanded',open?'false':'true');
   tog.innerHTML=open?('+ '+items.length+' more \u2193'):'Show fewer \u2191';
 }
 
 // render mini ladder
 var ml=document.getElementById('miniLadder'),mh='';
 LEVELS.forEach(function(L){
-  mh+='<div class="mrung" data-n="'+L.n+'" onclick="openLevel('+L.n+',true)"><div class="mn">'+L.n+'</div><div class="mnm">'+SHORT[L.n-1]+'</div></div>';
+  mh+='<button type="button" class="mrung" data-n="'+L.n+'" onclick="openLevel('+L.n+',true)" aria-label="Open Level '+L.n+' \u2014 '+SHORT[L.n-1]+'"><div class="mn">'+L.n+'</div><div class="mnm">'+SHORT[L.n-1]+'</div></button>';
 });
 ml.innerHTML=mh;
 
@@ -369,12 +386,12 @@ ml.innerHTML=mh;
 var sc=document.getElementById('shelves'),sh='';
 LEVELS.forEach(function(L){
   sh+='<div class="shelf" id="shelf-'+L.n+'">'+
-    '<div class="shelf-head" onclick="toggle('+L.n+')">'+
+    '<button type="button" class="shelf-head" aria-expanded="false" aria-controls="shelfbody-'+L.n+'" onclick="toggle('+L.n+')">'+
       '<div class="shelf-num">'+L.n+'</div>'+
       '<div class="h-main"><div class="shelf-name">'+L.name+'</div><div class="shelf-tag">'+L.tag+'</div></div>'+
-      '<div class="shelf-tog">+</div>'+
-    '</div>'+
-    '<div class="shelf-body"><div class="shelf-inner">'+
+      '<div class="shelf-tog" aria-hidden="true">+</div>'+
+    '</button>'+
+    '<div class="shelf-body" id="shelfbody-'+L.n+'" role="region" aria-label="Level '+L.n+' '+L.name+'"><div class="shelf-inner">'+
       '<div class="sb-block"><div class="sb-lbl">What this level means</div><p>'+L.means+'</p></div>'+
       '<div class="sb-block"><div class="sb-lbl">What breaks here</div><p>'+L.breaks+'</p></div>'+
       '<div class="sb-block"><div class="sb-lbl">Recommended report</div>'+reportHTML(L)+'</div>'+
@@ -387,11 +404,13 @@ sc.innerHTML=sh;
 
 function toggle(n){
   var el=document.getElementById('shelf-'+n);
-  el.classList.toggle('open');
+  var open=el.classList.toggle('open');
+  var head=el.querySelector('.shelf-head');
+  if(head)head.setAttribute('aria-expanded',open?'true':'false');
 }
 function openLevel(n,scroll){
   var el=document.getElementById('shelf-'+n);
-  if(!el.classList.contains('open'))el.classList.add('open');
+  if(!el.classList.contains('open')){el.classList.add('open');var h=el.querySelector('.shelf-head');if(h)h.setAttribute('aria-expanded','true');}
   if(scroll)el.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
@@ -401,7 +420,7 @@ function openLevel(n,scroll){
   var lv=parseInt(q.get('level'));
   if(lv>=1&&lv<=5){
     var rung=document.querySelector('.mrung[data-n="'+lv+'"]');if(rung)rung.classList.add('current');
-    var sh=document.getElementById('shelf-'+lv);if(sh)sh.classList.add('current','open');
+    var sh=document.getElementById('shelf-'+lv);if(sh){sh.classList.add('current','open');var shh=sh.querySelector('.shelf-head');if(shh)shh.setAttribute('aria-expanded','true');}
     var a=document.getElementById('arrival');var t=document.getElementById('arrivalText');
     t.innerHTML='Your diagnostic puts you at <strong>Level '+lv+' \u2014 '+SHORT[lv-1]+'</strong>. Here\u2019s your shelf: what it means, what to read, and your next step.';
     a.classList.add('show');
@@ -411,4 +430,3 @@ function openLevel(n,scroll){
 </script>
 </body>
 </html>
-
