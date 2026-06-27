@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Delivery Control Reset | Contracks Global</title>
+<meta name="description" content="Recover control of one live programme in ten working days. Fixed scope, fixed fee. You finish with a control gap map, a top-ten risk list and a 30/60/90-day recovery plan you can take straight to SteerCo." />
+<meta property="og:title" content="The Delivery Control Reset | Contracks Global" />
+<meta property="og:description" content="Recover control of one live programme in ten working days — not six months." />
+<meta property="og:url" content="https://contracks.global/reset" />
+<meta property="og:type" content="website" />
+<link rel="canonical" href="https://contracks.global/reset" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{--navy:#0A1A33;--navy-soft:#14253F;--gold:#C9A959;--grey:#6E7783;--cream:#F5F1E7;--white:#fff;--accent:#C9A959;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;color:var(--navy);background:#fff;line-height:1.65;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.15;letter-spacing:-.01em;}
+h1 em,h2 em,h3 em{color:var(--gold);font-style:italic;}
+.container{max-width:1180px;margin:0 auto;padding:0 2rem;}
+.label{font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:inline-block;margin-bottom:1rem;}
+.label::before{content:"— ";}
+.btn{display:inline-block;padding:1.05rem 2.1rem;font-size:.98rem;font-weight:600;letter-spacing:.03em;border-radius:3px;text-decoration:none;cursor:pointer;border:none;font-family:'Inter',sans-serif;transition:transform .15s,background .2s;}
+.btn-primary{background:var(--gold);color:var(--navy)!important;box-shadow:0 8px 26px rgba(201,169,89,.25);}
+.btn-primary:hover{transform:translateY(-1px);}
+.btn-ghost{background:transparent;color:#fff!important;border:1px solid rgba(201,169,89,.5);}
+.btn-ghost:hover{border-color:var(--gold);}
+
+.site-header{background:var(--navy);padding:1.1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+.brand{color:#fff;font-weight:700;font-size:.95rem;letter-spacing:.1em;text-decoration:none;}
+.brand .dot{color:var(--gold);}
+.nav-back{color:rgba(255,255,255,.6);font-size:.8rem;text-decoration:none;}
+
+/* 1 · HERO */
+.lp-hero{position:relative;min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 2rem;border-top:3px solid var(--accent);background:linear-gradient(rgba(10,26,51,.9),rgba(10,26,51,.96)),radial-gradient(ellipse 90% 70% at 70% 35%,rgba(201,169,89,.18),transparent 60%),var(--navy);}
+.lp-hero-inner{position:relative;z-index:2;max-width:840px;}
+.speed-label{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.22em;color:var(--gold);margin-bottom:1.1rem;text-transform:uppercase;}
+.speed-promise{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.15rem,2.2vw,1.45rem);color:var(--gold);margin:0 auto 1.2rem;max-width:680px;line-height:1.3;}
+.lp-hero h1{font-size:clamp(2.4rem,5vw,3.9rem);color:#fff;margin-bottom:1.4rem;}
+.lp-hero .sub{font-size:1.18rem;color:rgba(255,255,255,.84);max-width:680px;margin:0 auto 2.3rem;line-height:1.55;font-weight:300;}
+.lp-frame{margin-top:1.4rem;font-size:.93rem;color:rgba(255,255,255,.66);max-width:640px;margin-left:auto;margin-right:auto;line-height:1.55;}
+.lp-frame strong{color:var(--gold);font-weight:600;}
+.lp-note{margin-top:1.1rem;font-size:.8rem;color:rgba(255,255,255,.5);}
+
+/* 1b · SIGNS */
+.signs{background:var(--cream);border-bottom:1px solid #E8E4DC;padding-top:3.4rem;padding-bottom:3.4rem;}
+.signs-title{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:1.6rem;max-width:760px;}
+.signs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.6rem;}
+.sign{display:flex;gap:.85rem;align-items:flex-start;}
+.sign .tick{color:var(--accent);font-weight:700;font-size:1.05rem;flex-shrink:0;line-height:1.55;}
+.sign p{color:var(--navy);font-size:1rem;line-height:1.6;font-weight:500;}
+
+/* 2 · WHAT IT DOES */
+.qualify{background:var(--white);padding:5rem 2rem;}
+.qualify-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.qualify h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin-bottom:1.1rem;}
+.qualify p{color:var(--grey);font-size:1rem;line-height:1.75;margin-bottom:1rem;}
+.qualify .pains{color:var(--navy);font-weight:500;}
+.stat{border-left:3px solid var(--gold);padding:.5rem 0 .5rem 1.1rem;margin:1.4rem 0;}
+.stat .big{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--navy);}
+.stat .truth{font-size:.97rem;color:var(--grey);line-height:1.65;margin-top:.45rem;}
+.phase-card{background:var(--cream);border:1px solid #E8E4DC;border-radius:4px;padding:1.8rem 1.7rem;}
+.phase-card .pc-label{font-size:.74rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:block;}
+.phase{display:flex;gap:1rem;padding:.9rem 0;border-top:1px solid #E3DECF;}
+.phase:first-of-type{border-top:none;padding-top:0;}
+.phase .days{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:var(--navy);flex-shrink:0;width:84px;line-height:1.3;}
+.phase .what{font-size:.95rem;color:var(--navy);line-height:1.5;}
+.phase .what b{display:block;font-weight:600;margin-bottom:.15rem;}
+.phase .what span{color:var(--grey);font-size:.9rem;}
+
+/* 3 · AUTHORITY */
+.authority-wrap{background:var(--cream);border-top:1px solid #E8E4DC;border-bottom:1px solid #E8E4DC;padding:2.8rem 2rem;}
+.authority{display:flex;align-items:center;gap:1.6rem;max-width:760px;margin:0 auto;}
+.authority-photo{width:96px;height:96px;flex-shrink:0;border-radius:50%;background:var(--navy);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.authority-photo img{width:100%;height:100%;object-fit:cover;}
+.authority-photo .monogram{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--gold);}
+.authority-name{font-size:1.02rem;font-weight:600;margin-bottom:.25rem;}
+.authority-creds{font-size:.74rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;}
+.authority-line{font-size:.94rem;color:var(--grey);line-height:1.6;}
+@media(max-width:600px){.authority{flex-direction:column;text-align:center;}}
+
+/* 4 · METHOD — the 5 Cs */
+.section-cream{background:var(--cream);}
+section{padding:5rem 2rem;}
+.section-head{max-width:760px;margin-bottom:2.6rem;}
+.section-head h2{font-size:clamp(2rem,3.6vw,2.7rem);margin-bottom:.6rem;}
+.section-head p{color:var(--grey);font-size:1rem;max-width:680px;}
+.cees-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;max-width:1180px;margin:0 auto;}
+.cee{background:#fff;padding:1.7rem 1.5rem;border-top:3px solid var(--accent);border-radius:2px;box-shadow:0 1px 3px rgba(10,26,51,.05);}
+.cee .c-badge{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--gold);display:block;margin-bottom:.4rem;}
+.cee h3{font-size:1.12rem;margin-bottom:.4rem;}
+.cee p{color:var(--grey);font-size:.9rem;line-height:1.55;}
+
+/* 4b · WHO */
+.who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;max-width:1180px;margin:0 auto;}
+.who-card{background:#fff;padding:1.9rem 1.7rem;border-top:3px solid var(--accent);border-radius:2px;box-shadow:0 1px 3px rgba(10,26,51,.05);}
+.who-card .num{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--accent);font-weight:600;display:block;margin-bottom:.4rem;}
+.who-card h3{font-size:1.2rem;margin-bottom:.4rem;}
+.who-card p{color:var(--grey);font-size:.94rem;}
+
+/* 5 · DELIVERABLES */
+.section-navy{background:var(--navy);color:#fff;}
+.section-navy h2{color:#fff;}
+.deliver{max-width:920px;margin:0 auto;}
+.deliver-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 2.4rem;margin-top:1.8rem;}
+.deliver-item{display:flex;gap:.85rem;align-items:flex-start;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.08);}
+.deliver-item .tick{color:var(--gold);font-weight:700;flex-shrink:0;line-height:1.5;}
+.deliver-item p{color:rgba(255,255,255,.85);font-size:.97rem;line-height:1.55;}
+.deliver-item p b{color:#fff;font-weight:600;}
+.deliver-price{margin-top:2.4rem;background:var(--navy-soft);border:1px solid rgba(201,169,89,.3);border-radius:4px;padding:1.6rem 1.8rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.deliver-price .dp-text{font-size:.95rem;color:rgba(255,255,255,.8);line-height:1.5;max-width:520px;}
+.deliver-price .dp-text b{color:var(--gold);font-weight:600;}
+@media(max-width:600px){.deliver-grid{grid-template-columns:1fr;}}
+
+/* 6 · PROOF */
+.case-study{background:var(--navy-soft);border:1px solid rgba(201,169,89,.25);padding:2.6rem 2.3rem;border-radius:3px;max-width:920px;margin:0 auto;}
+.case-tag{font-size:.74rem;font-weight:600;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-bottom:.9rem;}
+.case-study h3{font-size:1.8rem;color:#fff;margin-bottom:1.2rem;}
+.case-block{margin-bottom:1.1rem;}
+.case-block strong{display:block;font-family:'Inter',sans-serif;font-size:.76rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;font-weight:600;}
+.case-block p{color:rgba(255,255,255,.85);font-size:.98rem;line-height:1.7;}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.7rem;}
+.ba-col{background:rgba(255,255,255,.04);border:1px solid rgba(201,169,89,.18);border-radius:3px;padding:1.3rem 1.4rem;}
+.ba-col.after{border-color:rgba(201,169,89,.45);}
+.ba-h{display:block;font-size:.74rem;letter-spacing:.15em;text-transform:uppercase;font-weight:600;color:var(--gold);margin-bottom:.85rem;}
+.ba-col ul{list-style:none;}
+.ba-col li{color:rgba(255,255,255,.85);font-size:.95rem;line-height:1.55;padding:.3rem 0 .3rem 1.2rem;position:relative;}
+.ba-col li::before{content:"\2014";position:absolute;left:0;color:rgba(201,169,89,.5);}
+.ba-col.after li::before{content:"\2713";color:var(--gold);}
+@media(max-width:600px){.ba-grid{grid-template-columns:1fr;}}
+
+/* 6a · FAQ */
+.faq-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:1.2rem;
+  max-width:1180px;
+  margin:0 auto;
+}
+.faq-item{
+  background:#fff;
+  border-top:3px solid var(--accent);
+  border-radius:2px;
+  padding:1.6rem 1.5rem;
+  box-shadow:0 1px 3px rgba(10,26,51,.05);
+}
+.faq-item h3{
+  font-size:1.15rem;
+  margin-bottom:.55rem;
+}
+.faq-item p{
+  color:var(--grey);
+  font-size:.94rem;
+  line-height:1.65;
+}
+
+/* 6b · KILLER LINE */
+.killer{background:var(--cream);text-align:center;border-top:1px solid #E8E4DC;border-bottom:1px solid #E8E4DC;}
+.killer-lines{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:600;color:var(--navy);line-height:1.2;margin-bottom:1rem;}
+.killer-tag{font-size:1.05rem;color:var(--grey);max-width:560px;margin:0 auto;}
+
+/* 7 · FINAL CTA */
+.final-cta{background:var(--navy);text-align:center;padding:4.5rem 2rem;border-top:1px solid rgba(201,169,89,.2);}
+.final-cta h2{color:#fff;font-size:2.1rem;margin-bottom:1rem;}
+.cta-payoff{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--gold);max-width:620px;margin:0 auto 1.7rem;line-height:1.4;}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.ascend{margin-top:2.2rem;padding-top:1.8rem;border-top:1px solid rgba(255,255,255,.1);max-width:620px;margin-left:auto;margin-right:auto;}
+.ascend a{color:var(--gold);text-decoration:none;font-weight:600;font-size:.95rem;}
+.ascend a:hover{text-decoration:underline;}
+.ascend .small{display:block;margin-top:.7rem;font-size:.85rem;color:rgba(255,255,255,.55);}
+.ascend .small a{color:rgba(255,255,255,.72);font-weight:400;}
+
+footer{background:var(--navy);color:rgba(255,255,255,.6);padding:2.2rem 2rem;text-align:center;font-size:.85rem;}
+footer .gold{color:var(--gold);font-style:italic;font-family:'Cormorant Garamond',serif;}
+footer .fmeta{margin-top:.9rem;font-size:.84rem;}
+footer .fmeta a{color:rgba(255,255,255,.72);text-decoration:none;}
+footer .fmeta a:hover{color:var(--gold);}
+footer .fmeta .sep{color:rgba(255,255,255,.3);margin:0 .6rem;}
+footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
+@media(max-width:760px){.qualify-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="brand">CONTRACKS<span class="dot">.</span>GLOBAL</a>
+  <a href="/" class="nav-back">← Back to site</a>
+</header>
+
+<!-- 1 · HERO -->
+<section class="lp-hero">
+  <div class="lp-hero-inner">
+    <span class="speed-label">The Core Engagement · "We know something is wrong."</span>
+    <p class="speed-promise">Recover control of one programme — in ten days, not six months.</p>
+    <h1>When your programme is still reporting green — but control is slipping — you don't need another review. You need a <em>reset.</em></h1>
+    <p class="sub">The Delivery Control Reset takes one live, at-risk programme and gives you back control of it — scope, plan, decisions, vendor dates and cadence — in ten working days. Fixed scope. Fixed fee. One executive-ready plan at the end.</p>
+    <a href="https://calendly.com/contracks_global" class="btn btn-primary">Book a Reset scoping call →</a>
+    <p class="lp-note" style="margin-top:1rem;">Limited to two Reset engagements per month. Delivered directly by Serguei Poppeleer.</p>
+    <p class="lp-note">Prefer email? <a href="mailto:hello@contracks.global" style="color:rgba(255,255,255,.72);">hello@contracks.global</a></p>
+    <p class="lp-frame">Ten business days. <strong>Fixed scope. Fixed fee.</strong> You finish with a control gap map, a top-ten risk list and a 30/60/90-day recovery plan you can take straight to SteerCo.</p>
+    <div class="lp-note">Owner-side programmes · €10M–€2B · Europe · Africa · Gulf</div>
+  </div>
+</section>
+
+<!-- 1b · SIGNS -->
+<section class="signs">
+  <div class="container">
+    <h2 class="signs-title">You're in <em>Reset territory</em> if…</h2>
+    <div class="signs-grid">
+      <div class="sign"><span class="tick">&#10003;</span><p>The plan exists in three places — Excel, Primavera, slide decks — and none of them match.</p></div>
+      <div class="sign"><span class="tick">&#10003;</span><p>Decisions get made in side calls, and you find out after procurement has already moved.</p></div>
+      <div class="sign"><span class="tick">&#10003;</span><p>You can feel the programme slipping, but you can't yet prove where — or defend it to the board.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · WHAT IT DOES -->
+<section class="qualify">
+  <div class="qualify-grid">
+    <div>
+      <h2>Ten days to get the programme back under <em>your control.</em></h2>
+      <p>The Reset is not a report you file. It's a focused intervention on one live programme: we find where control has been lost, prove it with evidence, and hand you a plan that holds in front of execs, sites and suppliers.</p>
+      <p class="pains">Built for the Head of PMO or programme owner who knows the governance <em>looks</em> right on paper — but the site runs on WhatsApp and unverified dates, and the gap between the deck and the ground is widening.</p>
+      <div class="stat">
+        <div class="big">By the time it shows in the numbers, it's already cost you.</div>
+        <div class="truth">Control leaks quietly — a scope never contained, a decision left open, a vendor date nobody checked. Each is cheap to recover while it's still a gap, and expensive once it's hardened into an overrun or a claim.</div>
+      </div>
+    </div>
+    <div class="phase-card">
+      <span class="pc-label">The 10-day shape</span>
+      <div class="phase"><div class="days">Days 1–3</div><div class="what"><b>Lock the truth</b><span>Scope, plan and decision rights mapped against what's actually happening on site.</span></div></div>
+      <div class="phase"><div class="days">Days 4–7</div><div class="what"><b>Find the leaks</b><span>Vendor dates verified, open decisions surfaced, the top-ten risks ranked by exposure.</span></div></div>
+      <div class="phase"><div class="days">Days 8–10</div><div class="what"><b>Hand over the plan</b><span>Control gap map, 30/60/90-day recovery plan, and an executive-ready readout.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · AUTHORITY -->
+<div class="authority-wrap">
+  <div class="authority">
+    <div class="authority-photo">
+      <img src="/serguei-portrait.jpeg" alt="Serguei Poppeleer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <span class="monogram" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;">SP</span>
+    </div>
+    <div>
+      <div class="authority-name">Serguei Poppeleer · Founder, Contracks Global</div>
+      <div class="authority-creds">MCIArb · WorldCC · LLM Oil &amp; Gas · Executive MBA</div>
+      <p class="authority-line">Across 30 countries, recovering control of complex capital programmes up to €2B — embedded with the team, not advising from a distance.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 4 · METHOD -->
+<section class="section-cream">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">How it works</span>
+      <h2>Scored against the <em>5Cs Framework™.</em></h2>
+      <p>Five controls, applied in sequence. Each one removes a specific way programmes lose grip. The Reset assesses all five on your programme and shows you exactly where the control has broken.</p>
+    </div>
+    <div class="cees-grid">
+      <div class="cee"><span class="c-badge">C1</span><h3>Contain the Scope</h3><p>Turn fuzzy requirements into written scope, documented assumptions and clear acceptance criteria.</p></div>
+      <div class="cee"><span class="c-badge">C2</span><h3>Command One Plan</h3><p>One live baseline that matches site reality — not parallel plans nobody trusts.</p></div>
+      <div class="cee"><span class="c-badge">C3</span><h3>Close Every Decision</h3><p>Every open item gets an owner, a deadline and a consequence. Decisions made once.</p></div>
+      <div class="cee"><span class="c-badge">C4</span><h3>Confirm Vendor Dates</h3><p>Verified capacity and lead-time checks before a date is ever allowed into the baseline.</p></div>
+      <div class="cee"><span class="c-badge">C5</span><h3>Control Tower Cadence</h3><p>A fixed weekly rhythm that catches slippage early — so the PMO leads, not reports.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4b · WHO -->
+<section class="section-cream" style="padding-top:0;">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Who this is for</span>
+      <h2>If you're accountable for delivery — but not yet in <em>control of it.</em></h2>
+    </div>
+    <div class="who-grid">
+      <div class="who-card"><span class="num">01</span><h3>Heads of PMO with overseas execution</h3><p>Governance looks right from head office, but the site is running on a different reality — and the gap is yours to answer for.</p></div>
+      <div class="who-card"><span class="num">02</span><h3>Programme &amp; project directors</h3><p>One live programme drifting — scope creeping, decisions reopening, dates slipping — and you need it provably back under control.</p></div>
+      <div class="who-card"><span class="num">03</span><h3>Owners &amp; sponsors who inherited it</h3><p>A programme set up by someone else, in a different phase, that now has to deliver without surprises on your watch.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · DELIVERABLES -->
+<section class="section-navy">
+  <div class="container">
+    <div class="deliver">
+      <div class="section-head"><span class="label">What you walk away with</span><h2>Six outputs. One programme, back under <em>control.</em></h2></div>
+      <div class="deliver-grid">
+        <div class="deliver-item"><span class="tick">&#10003;</span><p><b>5Cs control assessment</b> — where each of the five controls holds, and where it's broken.</p></div>
+        <div class="deliver-item"><span class="tick">&#10003;</span><p><b>Scope &amp; control gap map</b> — the deck vs the ground, side by side, with the gaps named.</p></div>
+        <div class="deliver-item"><span class="tick">&#10003;</span><p><b>Decision &amp; vendor-date review</b> — open decisions closed, optimistic dates verified.</p></div>
+        <div class="deliver-item"><span class="tick">&#10003;</span><p><b>Top-ten risk list</b> — ranked by exposure, with the recoverable ones flagged.</p></div>
+        <div class="deliver-item"><span class="tick">&#10003;</span><p><b>30/60/90-day recovery plan</b> — sequenced actions you can run, with or without us.</p></div>
+        <div class="deliver-item"><span class="tick">&#10003;</span><p><b>Executive-ready readout</b> — one narrative you can take straight to SteerCo.</p></div>
+      </div>
+      <div class="deliver-price">
+        <div class="dp-text"><b>Fixed scope. Fixed fee.</b> Scoped to programme size and complexity, confirmed during the Reset scoping call. Ten business days from kickoff to readout — no open-ended advisory commitment required.</div>
+        <a href="https://calendly.com/contracks_global" class="btn btn-primary">Book a scoping call →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · PROOF -->
+<section class="section-navy" style="padding-top:0;">
+  <div class="container">
+    <div class="case-study">
+      <div class="case-tag">Energy · Italy &amp; Denmark · Cross-border pipelines</div>
+      <h3>Six months lost mid-programme — recovered within the original window.</h3>
+      <div class="case-block"><strong>Situation</strong><p>Two simultaneous cross-border gas-pipeline programmes had accumulated six months of idle time. The schedule was no longer trusted, the commercial position was exposed, and investor confidence was slipping.</p></div>
+      <div class="case-block"><strong>Intervention</strong><p>Reset the control around the work — one defensible plan, decisions closed, vendor dates verified — and built the recovery and claims strategy on top of it.</p></div>
+      <div class="case-block"><strong>Outcome</strong><p>The idle time was recovered inside the original 24-month window. A €30M acceleration plan was negotiated, critical milestones landed on time, and investor confidence was restored.</p></div>
+      <div class="ba-grid">
+        <div class="ba-col"><span class="ba-h">Before</span><ul><li>Six months of idle time</li><li>Schedule no longer trusted</li><li>Commercial position exposed</li></ul></div>
+        <div class="ba-col after"><span class="ba-h">After</span><ul><li>Recovered in the original window</li><li>€30M acceleration plan agreed</li><li>Investor confidence restored</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6a · FAQ -->
+<section class="section-cream">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Questions before you book</span>
+      <h2>What the Reset is — and what it is <em>not.</em></h2>
+      <p>Six answers for programme owners who need control fast, without launching a six-month consulting exercise.</p>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3>Can ten days really fix a drifting programme?</h3>
+        <p>Not completely — and the Reset does not pretend to. Ten days is enough to identify where control has been lost, prove the gaps with evidence, rank the recoverable risks, and produce a 30/60/90-day recovery plan. The deeper fix is the Turnaround.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What if our programme is too complex or political for a standard framework?</h3>
+        <p>The Reset is structured, not generic. The 5Cs give the assessment sequence, but the evidence comes from your live programme: scope, plan, decisions, vendor dates and cadence. The method has been used across crisis conditions, cross-border programmes and politically sensitive delivery environments.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What do you need from my team?</h3>
+        <p>Access to the core documents, the current plan, the decision log or equivalent, selected vendor dates, and a small number of focused interviews. Delivery does not stop. The Reset is designed to work around the programme, not consume it.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What if this only confirms what we already know?</h3>
+        <p>Then the value is turning what people feel into evidence leaders can act on. Many PMO teams know the programme is drifting, but cannot prove where, sequence the recovery, or defend the case to SteerCo. The Reset converts concern into an executive-ready control narrative.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What happens after the Reset?</h3>
+        <p>You can run the 30/60/90-day plan yourself, ask Contracks Global to support the Decision-Ready Programme Turnaround, or retain advisory support for cadence and control. There is no forced retainer.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is this for contractors or owners?</h3>
+        <p>The Reset is built for owner-side teams: PMO Directors, programme owners, sponsors and executives accountable for delivery. It can involve contractors and vendors, but the mandate is to restore owner-side control.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6b · KILLER LINE -->
+<section class="killer">
+  <div class="container">
+    <p class="killer-lines">A review tells you what happened.<br>A reset changes what happens next.</p>
+    <p class="killer-tag">The Reset exists to put one drifting programme back under your control — fast enough to still matter.</p>
+  </div>
+</section>
+
+<!-- 7 · FINAL CTA -->
+<section class="final-cta">
+  <h2>Which programme would you put through it <em>first?</em></h2>
+  <p class="cta-payoff">Ten days from now, you could be holding the plan instead of chasing the truth.</p>
+  <div class="cta-actions">
+    <a href="https://calendly.com/contracks_global" class="btn btn-primary">Book a Reset scoping call →</a>
+  </div>
+  <div class="ascend">
+    <a href="/turnaround">Ready to fix it, not just diagnose it? → The Decision-Ready Programme Turnaround</a>
+    <span class="small">"We're fixing it." The Reset gives you clarity; the Turnaround installs the recovery.</span>
+  </div>
+</section>
+
+<footer>
+  <div class="gold">Better contracts. Better companies. Better communities.</div>
+  <div class="fmeta">
+    <a href="mailto:hello@contracks.global">hello@contracks.global</a>
+    <span class="sep">·</span>
+    <a href="/privacy.html">Privacy Policy</a>
+  </div>
+  <div class="fcopy">© Contracks Global 2026</div>
+</footer>
+
+</body>
+</html>
