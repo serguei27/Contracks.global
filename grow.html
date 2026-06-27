@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GROW | Contracks Global</title>
+<meta name="description" content="Grow without breaking the business. Diagnose which systems won't survive the next doubling — before volume, margin or control starts to crack." />
+<meta property="og:title" content="GROW | Contracks Global" />
+<meta property="og:description" content="Grow without breaking the business." />
+<meta property="og:url" content="https://contracks.global/grow" />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{--navy:#0A1A33;--navy-soft:#14253F;--gold:#C9A959;--grey:#6E7783;--cream:#F5F1E7;--white:#fff;--accent:#B8860B;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;color:var(--navy);background:#fff;line-height:1.65;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.15;letter-spacing:-.01em;}
+h1 em,h2 em,h3 em{color:var(--gold);font-style:italic;}
+.container{max-width:1180px;margin:0 auto;padding:0 2rem;}
+.label{font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:inline-block;margin-bottom:1rem;}
+.label::before{content:"— ";}
+.btn{display:inline-block;padding:1.05rem 2.1rem;font-size:.98rem;font-weight:600;letter-spacing:.03em;border-radius:3px;text-decoration:none;cursor:pointer;border:none;font-family:'Inter',sans-serif;transition:transform .15s,background .2s;}
+.btn-primary{background:var(--gold);color:var(--navy)!important;box-shadow:0 8px 26px rgba(201,169,89,.25);}
+.btn-primary:hover{transform:translateY(-1px);}
+
+.site-header{background:var(--navy);padding:1.1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+.brand{color:#fff;font-weight:700;font-size:.95rem;letter-spacing:.1em;text-decoration:none;}
+.brand .dot{color:var(--gold);}
+.nav-back{color:rgba(255,255,255,.6);font-size:.8rem;text-decoration:none;}
+
+/* 1 · HERO */
+.lp-hero{position:relative;min-height:82vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 2rem;border-top:3px solid var(--accent);background:linear-gradient(rgba(10,26,51,.82),rgba(10,26,51,.92)),radial-gradient(ellipse 90% 70% at 70% 35%,rgba(184,134,11,.22),transparent 60%),url('/grow-hero-after.jpeg') center/cover no-repeat,var(--navy);}
+.speed-promise{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.15rem,2.2vw,1.45rem);color:var(--gold);margin:0 auto 1.2rem;max-width:680px;line-height:1.3;}
+.cta-payoff{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--gold);max-width:620px;margin:0 auto 1.7rem;line-height:1.4;}
+.qualify-img .ff{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:midFade 12s ease-in-out infinite;}
+.qualify-img .ff.f1{animation-delay:0s;}
+.qualify-img .ff.f2{animation-delay:4s;}
+.qualify-img .ff.f3{animation-delay:8s;}
+@keyframes midFade{0%{opacity:0}6%{opacity:1}30%{opacity:1}38%{opacity:0}100%{opacity:0}}
+.mid-tag{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);z-index:3;text-align:center;font-size:.74rem;font-weight:600;letter-spacing:.03em;padding:.45rem 1rem;border:1px solid rgba(255,255,255,.32);border-radius:3px;color:#fff;background:rgba(10,26,51,.62);line-height:1.3;opacity:0;}
+.mid-tag b{display:block;font-size:.54rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.15rem;}
+.mid-tag.before{animation:midTag 12s ease-in-out infinite;animation-delay:0s;}
+.mid-tag.after{animation:midTag 12s ease-in-out infinite;animation-delay:4s;}
+@keyframes midTag{0%{opacity:0}6%{opacity:1}30%{opacity:1}38%{opacity:0}100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.qualify-img .ff{animation:none;opacity:0;}.qualify-img .ff.f3{opacity:1;}.mid-tag{display:none;}}
+.lp-hero-inner{position:relative;z-index:2;max-width:840px;}
+.speed-label{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.22em;color:#D9B567;margin-bottom:1.1rem;text-transform:uppercase;}
+.lp-hero h1{font-size:clamp(2.4rem,5vw,3.9rem);color:#fff;margin-bottom:1.4rem;}
+.lp-hero .sub{font-size:1.18rem;color:rgba(255,255,255,.84);max-width:680px;margin:0 auto 2.3rem;line-height:1.55;font-weight:300;}
+.lp-frame{margin-top:1.4rem;font-size:.93rem;color:rgba(255,255,255,.66);max-width:620px;margin-left:auto;margin-right:auto;line-height:1.55;}
+.lp-frame strong{color:var(--gold);font-weight:600;}
+.lp-note{margin-top:1.1rem;font-size:.8rem;color:rgba(255,255,255,.5);}
+
+.qualify{background:var(--white);padding:5rem 2rem;}
+.qualify-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.qualify-img{aspect-ratio:3/2;border-radius:4px;border:1px solid #E8E4DC;position:relative;overflow:hidden;background:linear-gradient(135deg,#14253F,#0A1A33);display:flex;align-items:center;justify-content:center;}
+.qualify-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.qualify h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin-bottom:1.1rem;}
+.qualify p{color:var(--grey);font-size:1rem;line-height:1.75;margin-bottom:1rem;}
+.qualify .pains{color:var(--navy);font-weight:500;}
+.stat{border-left:3px solid var(--gold);padding:.5rem 0 .5rem 1.1rem;margin:1.4rem 0;}
+.stat .big{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--navy);}
+.stat .truth{font-size:.97rem;color:var(--grey);line-height:1.65;margin-top:.45rem;}
+
+.authority-wrap{background:var(--cream);border-top:1px solid #E8E4DC;border-bottom:1px solid #E8E4DC;padding:2.8rem 2rem;}
+.authority{display:flex;align-items:center;gap:1.6rem;max-width:760px;margin:0 auto;}
+.authority-photo{width:96px;height:96px;flex-shrink:0;border-radius:50%;background:var(--navy);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.authority-photo img{width:100%;height:100%;object-fit:cover;}
+.authority-photo .monogram{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--gold);}
+.authority-name{font-size:1.02rem;font-weight:600;margin-bottom:.25rem;}
+.authority-creds{font-size:.74rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;}
+.authority-line{font-size:.94rem;color:var(--grey);line-height:1.6;}
+@media(max-width:600px){.authority{flex-direction:column;text-align:center;}}
+
+.section-cream{background:var(--cream);}
+section{padding:5rem 2rem;}
+.section-head{max-width:760px;margin-bottom:2.6rem;}
+.section-head h2{font-size:clamp(2rem,3.6vw,2.7rem);margin-bottom:.6rem;}
+.who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;max-width:1180px;margin:0 auto;}
+.who-card{background:#fff;padding:1.9rem 1.7rem;border-top:3px solid var(--accent);border-radius:2px;box-shadow:0 1px 3px rgba(10,26,51,.05);}
+.who-card .num{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--accent);font-weight:600;display:block;margin-bottom:.4rem;}
+.who-card h3{font-size:1.2rem;margin-bottom:.4rem;}
+.who-card p{color:var(--grey);font-size:.94rem;}
+
+.section-navy{background:var(--navy);color:#fff;}
+.section-navy h2{color:#fff;}
+.case-study{background:var(--navy-soft);border:1px solid rgba(201,169,89,.25);padding:2.6rem 2.3rem;border-radius:3px;max-width:920px;margin:0 auto;}
+.case-tag{font-size:.74rem;font-weight:600;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-bottom:.9rem;}
+.case-study h3{font-size:1.8rem;color:#fff;margin-bottom:1.2rem;}
+.case-block{margin-bottom:1.1rem;}
+.case-block strong{display:block;font-family:'Inter',sans-serif;font-size:.76rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;font-weight:600;}
+.case-block p{color:rgba(255,255,255,.85);font-size:.98rem;line-height:1.7;}
+
+.final-cta{background:var(--navy);text-align:center;padding:4.5rem 2rem;border-top:1px solid rgba(201,169,89,.2);}
+.final-cta h2{color:#fff;font-size:2.1rem;margin-bottom:1.3rem;}
+footer{background:var(--navy);color:rgba(255,255,255,.6);padding:2.2rem 2rem;text-align:center;font-size:.85rem;}
+footer .gold{color:var(--gold);font-style:italic;font-family:'Cormorant Garamond',serif;}
+footer .fmeta{margin-top:.9rem;font-size:.84rem;}
+footer .fmeta a{color:rgba(255,255,255,.72);text-decoration:none;}
+footer .fmeta a:hover{color:var(--gold);}
+footer .fmeta .sep{color:rgba(255,255,255,.3);margin:0 .6rem;}
+footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
+@media(max-width:760px){.qualify-grid{grid-template-columns:1fr;}}
+
+.signs{background:var(--cream);border-bottom:1px solid #E8E4DC;padding-top:3.4rem;padding-bottom:3.4rem;}
+.signs-title{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:1.6rem;max-width:760px;}
+.signs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.6rem;}
+.sign{display:flex;gap:.85rem;align-items:flex-start;}
+.sign .tick{color:var(--accent);font-weight:700;font-size:1.05rem;flex-shrink:0;line-height:1.55;}
+.sign p{color:var(--navy);font-size:1rem;line-height:1.6;font-weight:500;}
+
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.7rem;}
+.ba-col{background:rgba(255,255,255,.04);border:1px solid rgba(201,169,89,.18);border-radius:3px;padding:1.3rem 1.4rem;}
+.ba-col.after{border-color:rgba(201,169,89,.45);}
+.ba-h{display:block;font-size:.74rem;letter-spacing:.15em;text-transform:uppercase;font-weight:600;color:var(--gold);margin-bottom:.85rem;}
+.ba-col ul{list-style:none;}
+.ba-col li{color:rgba(255,255,255,.85);font-size:.95rem;line-height:1.55;padding:.3rem 0 .3rem 1.2rem;position:relative;}
+.ba-col li::before{content:"\2014";position:absolute;left:0;color:rgba(201,169,89,.5);}
+.ba-col.after li::before{content:"\2713";color:var(--gold);}
+@media(max-width:600px){.ba-grid{grid-template-columns:1fr;}}
+
+.killer{background:var(--cream);text-align:center;border-top:1px solid #E8E4DC;border-bottom:1px solid #E8E4DC;}
+.killer-lines{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:600;color:var(--navy);line-height:1.2;margin-bottom:1rem;}
+.killer-tag{font-size:1.05rem;color:var(--grey);max-width:560px;margin:0 auto;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="brand">CONTRACKS<span class="dot">.</span>GLOBAL</a>
+  <a href="/" class="nav-back">← Back to site</a>
+</header>
+
+<section class="lp-hero">
+  <div class="lp-hero-inner">
+    <span class="speed-label">Grow</span>
+    <p class="speed-promise">Grow without breaking the business.</p>
+    <h1>Is growth quietly <em>breaking</em> the business?</h1>
+    <p class="sub">More projects, more markets, more people — and the systems that worked at small scale start to crack. Growth exposes them faster than anything else. Find the cracks before they cost you.</p>
+    <a href="/control-assessment.html" class="btn btn-primary">Start with the CONTROL diagnostic →</a>
+    <p class="lp-frame">Start with the 5-minute <strong>CONTROL</strong> diagnostic. If GROW isn't your biggest problem, it'll tell you. If it is, you unlock your <strong>GROW Deep Dive</strong> — exactly what breaks next, and what to reinforce first.</p>
+    <div class="lp-note">Free · 20 questions · about 4 minutes · Instant result</div>
+  </div>
+</section>
+
+<section class="signs">
+  <div class="container">
+    <h2 class="signs-title">Signs you're already in <em>GROW territory.</em></h2>
+    <div class="signs-grid">
+      <div class="sign"><span class="tick">&#10003;</span><p>Every new project still needs you personally for it to go right.</p></div>
+      <div class="sign"><span class="tick">&#10003;</span><p>Quality and margin slip as volume climbs.</p></div>
+      <div class="sign"><span class="tick">&#10003;</span><p>You're winning more work than your systems can absorb.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="qualify">
+  <div class="qualify-grid">
+    <div class="qualify-img">
+      <img class="ff f1" src="/grow-hero-before.jpeg" alt="Systems straining under volume" onerror="this.style.display='none';">
+      <img class="ff f2" src="/grow-hero-after.jpeg" alt="Systems built to scale" onerror="this.style.display='none';">
+      <img class="ff f3" src="/grow-sector.jpeg" alt="Growth the systems can carry" onerror="this.style.display='none';">
+      <span class="mid-tag before"><b>Before</b>Straining</span>
+      <span class="mid-tag after"><b>After</b>Scaling</span>
+    </div>
+    <div>
+      <h2>Scale the business — not the <em>chaos.</em></h2>
+      <p>Cut through the growth noise and diagnose where scale is straining the business in minutes — which systems won't survive the next doubling, where margin erodes as volume climbs, and what breaks first.</p>
+      <p class="pains">Built for owners, COOs and managing directors scaling across projects, markets or geographies — where what got you here won't get you there.</p>
+      <div class="stat">
+        <div class="big">Growth doesn't break businesses. Ungoverned growth does.</div>
+        <div class="truth">Every system has a scale ceiling — a process that worked at five projects and fails at fifteen, a margin that held in one market and erodes across three. Each is cheap to reinforce before the next push, expensive after.</div>
+      </div>
+      <p>Scored against the 5Cs Framework — the same system used to scale delivery across 30 countries and portfolios up to €2B. You get a clear read on what will break next, and what to reinforce first.</p>
+    </div>
+  </div>
+</section>
+
+<div class="authority-wrap">
+  <div class="authority">
+    <div class="authority-photo">
+      <img src="/serguei-portrait.jpeg" alt="Serguei Poppeleer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <span class="monogram" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;">SP</span>
+    </div>
+    <div>
+      <div class="authority-name">Serguei Poppeleer · Founder, Contracks Global</div>
+      <div class="authority-creds">MCIArb · WorldCC · LLM Oil &amp; Gas · Executive MBA</div>
+      <p class="authority-line">Across 30 countries, scaling delivery on capital programmes up to €2B.</p>
+    </div>
+  </div>
+</div>
+
+<section class="section-cream">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Who this is for</span>
+      <h2>If you're scaling faster than your systems <em>can hold.</em></h2>
+    </div>
+    <div class="who-grid">
+      <div class="who-card"><span class="num">01</span><h3>Owners scaling beyond themselves</h3><p>A business that works because you're in every key decision — and can't grow until it doesn't.</p></div>
+      <div class="who-card"><span class="num">02</span><h3>COOs &amp; MDs adding volume</h3><p>More projects, more markets, more headcount — on systems built for a smaller company.</p></div>
+      <div class="who-card"><span class="num">03</span><h3>Backed companies under a growth mandate</h3><p>Board or investor pressure to scale fast, without breaking the delivery that earned the backing.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-navy">
+  <div class="container">
+    <div class="section-head"><span class="label">Proof</span><h2>Proof from the field.</h2></div>
+    <div class="case-study">
+      <div class="case-tag">Oil &amp; Gas · West Africa · $2.7B portfolio</div>
+      <h3>A $2.7B oil &amp; gas services portfolio, scaled without breaking delivery.</h3>
+      <div class="case-block"><strong>Situation</strong><p>A fast-growing logistics and services operation across West Africa — scaling volume and geography on systems that were straining under the load.</p></div>
+      <div class="case-block"><strong>Intervention</strong><p>Re-engineered the delivery and commercial systems to carry the larger portfolio — standardising what could repeat, governing what couldn't, so growth didn't outrun control.</p></div>
+      <div class="case-block"><strong>Outcome</strong><p>The portfolio scaled without the usual collapse in margin or control. Growth the systems could actually carry — not growth the business had to survive.</p></div>
+      <div class="ba-grid">
+        <div class="ba-col"><span class="ba-h">Before</span><ul><li>Systems straining under volume</li><li>Margin eroding as it scaled</li><li>Control held by key people</li></ul></div>
+        <div class="ba-col after"><span class="ba-h">After</span><ul><li>Systems built to repeat</li><li>Margin protected at scale</li><li>Control that travels without heroes</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="killer">
+  <div class="container">
+    <p class="killer-lines">Growth is the easy part.<br>Surviving it is the discipline.</p>
+    <p class="killer-tag">GROW exists to make sure the business that scales is still the one worth having.</p>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2>If you doubled next year, what would break <em>first?</em></h2>
+  <p class="cta-payoff">The cheapest time to fix a system is before the next doubling.</p>
+  <a href="/control-assessment.html" class="btn btn-primary">Start with the CONTROL diagnostic →</a>
+</section>
+
+<footer>
+  <div class="gold">Better contracts. Better companies. Better communities.</div>
+  <div class="fmeta">
+    <a href="mailto:hello@contracks.global">hello@contracks.global</a>
+    <span class="sep">·</span>
+    <a href="/privacy.html">Privacy Policy</a>
+  </div>
+  <div class="fcopy">© Contracks Global 2026</div>
+</footer>
+
+</body>
+</html>
