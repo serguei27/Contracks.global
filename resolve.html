@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RESOLVE | Contracks Global</title>
+<meta name="description" content="Recover control before the work becomes a claim. Find where margin is leaking, which commitments are slipping and which disputes are forming — while they're still recoverable." />
+<meta property="og:title" content="RESOLVE | Contracks Global" />
+<meta property="og:description" content="Recover control before the work becomes a claim." />
+<meta property="og:url" content="https://contracks.global/resolve" />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{--navy:#0A1A33;--navy-soft:#14253F;--gold:#C9A959;--grey:#6E7783;--cream:#F5F1E7;--white:#fff;--accent:#C97A4A;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;color:var(--navy);background:#fff;line-height:1.65;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.15;letter-spacing:-.01em;}
+h1 em,h2 em,h3 em{color:var(--gold);font-style:italic;}
+.container{max-width:1180px;margin:0 auto;padding:0 2rem;}
+.label{font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:inline-block;margin-bottom:1rem;}
+.label::before{content:"— ";}
+.btn{display:inline-block;padding:1.05rem 2.1rem;font-size:.98rem;font-weight:600;letter-spacing:.03em;border-radius:3px;text-decoration:none;cursor:pointer;border:none;font-family:'Inter',sans-serif;transition:transform .15s,background .2s;}
+.btn-primary{background:var(--gold);color:var(--navy)!important;box-shadow:0 8px 26px rgba(201,169,89,.25);}
+.btn-primary:hover{transform:translateY(-1px);}
+
+.site-header{background:var(--navy);padding:1.1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+.brand{color:#fff;font-weight:700;font-size:.95rem;letter-spacing:.1em;text-decoration:none;}
+.brand .dot{color:var(--gold);}
+.nav-back{color:rgba(255,255,255,.6);font-size:.8rem;text-decoration:none;}
+
+.lp-hero{position:relative;min-height:82vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 2rem;border-top:3px solid var(--accent);background:linear-gradient(rgba(10,26,51,.82),rgba(10,26,51,.92)),radial-gradient(ellipse 90% 70% at 70% 35%,rgba(201,122,74,.22),transparent 60%),url('/resolve-hero.jpeg') center/cover no-repeat,var(--navy);}
+.lp-hero-inner{position:relative;z-index:2;max-width:840px;}
+.speed-label{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.22em;color:#E0A07A;margin-bottom:1.1rem;text-transform:uppercase;}
+.speed-promise{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.15rem,2.2vw,1.45rem);color:var(--gold);margin:0 auto 1.2rem;max-width:680px;line-height:1.3;}
+.lp-hero h1{font-size:clamp(2.4rem,5vw,3.9rem);color:#fff;margin-bottom:1.4rem;}
+.lp-hero .sub{font-size:1.18rem;color:rgba(255,255,255,.84);max-width:680px;margin:0 auto 2.3rem;line-height:1.55;font-weight:300;}
+.lp-frame{margin-top:1.4rem;font-size:.93rem;color:rgba(255,255,255,.66);max-width:620px;margin-left:auto;margin-right:auto;line-height:1.55;}
+.lp-frame strong{color:var(--gold);font-weight:600;}
+.lp-note{margin-top:1.1rem;font-size:.8rem;color:rgba(255,255,255,.5);}
+.cta-payoff{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--gold);max-width:620px;margin:0 auto 1.7rem;line-height:1.4;}
+
+.signs{background:var(--cream);border-bottom:1px solid #E8E4DC;padding-top:3.4rem;padding-bottom:3.4rem;}
+.signs-title{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:1.6rem;max-width:760px;}
+.signs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.6rem;}
+.sign{display:flex;gap:.85rem;align-items:flex-start;}
+.sign .tick{color:var(--accent);font-weight:700;font-size:1.05rem;flex-shrink:0;line-height:1.55;}
+.sign p{color:var(--navy);font-size:1rem;line-height:1.6;font-weight:500;}
+
+.qualify{background:var(--white);padding:5rem 2rem;}
+.qualify-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.qualify-img{aspect-ratio:1.6;border-radius:4px;border:1px solid #E8E4DC;position:relative;overflow:hidden;background:linear-gradient(135deg,#0E1D33,#0A1A33);display:flex;align-items:center;justify-content:center;}
+.qualify-img img{width:100%;height:100%;object-fit:contain;display:block;}
+.mid-cap{margin-top:.7rem;font-size:.82rem;color:var(--grey);line-height:1.5;text-align:center;}
+.mid-cap b{color:var(--navy);font-weight:600;}
+.qualify h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin-bottom:1.1rem;}
+.qualify p{color:var(--grey);font-size:1rem;line-height:1.75;margin-bottom:1rem;}
+.qualify .pains{color:var(--navy);font-weight:500;}
+.stat{border-left:3px solid var(--gold);padding:.5rem 0 .5rem 1.1rem;margin:1.4rem 0;}
+.stat .big{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--navy);}
+.stat .truth{font-size:.97rem;color:var(--grey);line-height:1.65;margin-top:.45rem;}
+.qualify-img .ff{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;animation:midFade 13.5s ease-in-out infinite;}
+.qualify-img .ff.f1{animation-delay:0s;}
+.qualify-img .ff.f2{animation-delay:4.5s;}
+.qualify-img .ff.f3{animation-delay:9s;}
+@keyframes midFade{0%{opacity:0}4%{opacity:1}29%{opacity:1}33%{opacity:0}100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.qualify-img .ff{animation:none;opacity:0;}.qualify-img .ff.f3{opacity:1;}}
+
+.authority-wrap{background:var(--cream);border-top:1px solid #E8E4DC;border-bottom:1px solid #E8E4DC;padding:2.8rem 2rem;}
+.authority{display:flex;align-items:center;gap:1.6rem;max-width:760px;margin:0 auto;}
+.authority-photo{width:96px;height:96px;flex-shrink:0;border-radius:50%;background:var(--navy);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.authority-photo img{width:100%;height:100%;object-fit:cover;}
+.authority-photo .monogram{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--gold);}
+.authority-name{font-size:1.02rem;font-weight:600;margin-bottom:.25rem;}
+.authority-creds{font-size:.74rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;}
+.authority-line{font-size:.94rem;color:var(--grey);line-height:1.6;}
+@media(max-width:600px){.authority{flex-direction:column;text-align:center;}}
+
+.section-cream{background:var(--cream);}
+section{padding:5rem 2rem;}
+.section-head{max-width:760px;margin-bottom:2.6rem;}
+.section-head h2{font-size:clamp(2rem,3.6vw,2.7rem);margin-bottom:.6rem;}
+.who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;max-width:1180px;margin:0 auto;}
+.who-card{background:#fff;padding:1.9rem 1.7rem;border-top:3px solid var(--accent);border-radius:2px;box-shadow:0 1px 3px rgba(10,26,51,.05);}
+.who-card .num{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--accent);font-weight:600;display:block;margin-bottom:.4rem;}
+.who-card h3{font-size:1.2rem;margin-bottom:.4rem;}
+.who-card p{color:var(--grey);font-size:.94rem;}
+
+.section-navy{background:var(--navy);color:#fff;}
+.section-navy h2{color:#fff;}
+.case-study{background:var(--navy-soft);border:1px solid rgba(201,169,89,.25);padding:2.6rem 2.3rem;border-radius:3px;max-width:920px;margin:0 auto;}
+.case-tag{font-size:.74rem;font-weight:600;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-bottom:.9rem;}
+.case-study h3{font-size:1.8rem;color:#fff;margin-bottom:1.2rem;}
+.case-block{margin-bottom:1.1rem;}
+.case-block strong{display:block;font-family:'Inter',sans-serif;font-size:.76rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;font-weight:600;}
+.case-block p{color:rgba(255,255,255,.85);font-size:.98rem;line-height:1.7;}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.7rem;}
+.ba-col{background:rgba(255,255,255,.04);border:1px solid rgba(201,169,89,.18);border-radius:3px;padding:1.3rem 1.4rem;}
+.ba-col.after{border-color:rgba(201,169,89,.45);}
+.ba-h{display:block;font-size:.74rem;letter-spacing:.15em;text-transform:uppercase;font-weight:600;color:var(--gold);margin-bottom:.85rem;}
+.ba-col ul{list-style:none;}
+.ba-col li{color:rgba(255,255,255,.85);font-size:.95rem;line-height:1.55;padding:.3rem 0 .3rem 1.2rem;position:relative;}
+.ba-col li::before{content:"\2014";position:absolute;left:0;color:rgba(201,169,89,.5);}
+.ba-col.after li::before{content:"\2713";color:var(--gold);}
+@media(max-width:600px){.ba-grid{grid-template-columns:1fr;}}
+
+.killer{background:var(--cream);text-align:center;border-top:1px solid #E8E4DC;border-bottom:1px solid #E8E4DC;}
+.killer-lines{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:600;color:var(--navy);line-height:1.2;margin-bottom:1rem;}
+.killer-tag{font-size:1.05rem;color:var(--grey);max-width:560px;margin:0 auto;}
+
+.final-cta{background:var(--navy);text-align:center;padding:4.5rem 2rem;border-top:1px solid rgba(201,169,89,.2);}
+.final-cta h2{color:#fff;font-size:2.1rem;margin-bottom:1.3rem;}
+footer{background:var(--navy);color:rgba(255,255,255,.6);padding:2.2rem 2rem;text-align:center;font-size:.85rem;}
+footer .gold{color:var(--gold);font-style:italic;font-family:'Cormorant Garamond',serif;}
+footer .fmeta{margin-top:.9rem;font-size:.84rem;}
+footer .fmeta a{color:rgba(255,255,255,.72);text-decoration:none;}
+footer .fmeta a:hover{color:var(--gold);}
+footer .fmeta .sep{color:rgba(255,255,255,.3);margin:0 .6rem;}
+footer .fcopy{margin-top:.85rem;font-size:.78rem;color:rgba(255,255,255,.4);}
+@media(max-width:760px){.qualify-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="brand">CONTRACKS<span class="dot">.</span>GLOBAL</a>
+  <a href="/" class="nav-back">← Back to site</a>
+</header>
+
+<section class="lp-hero">
+  <div class="lp-hero-inner">
+    <span class="speed-label">Resolve</span>
+    <p class="speed-promise">Recover control before the work becomes a claim.</p>
+    <h1>Where is your project quietly losing <em>money?</em></h1>
+    <p class="sub">Claims building, margin slipping, a contract that's turned adversarial — by the time it's visible, it's already cost you. Find the leaks while they're still recoverable.</p>
+    <a href="/control-assessment.html" class="btn btn-primary">Start with the CONTROL diagnostic →</a>
+    <p class="lp-frame">Start with the 5-minute <strong>CONTROL</strong> diagnostic. If RESOLVE isn't your biggest problem, it'll tell you. If it is, you unlock your <strong>RESOLVE Deep Dive</strong> — exactly where the money's leaking, and what to do first.</p>
+    <div class="lp-note">Free · 20 questions · about 4 minutes · Instant result</div>
+  </div>
+</section>
+
+<section class="signs">
+  <div class="container">
+    <h2 class="signs-title">Signs you're already in <em>RESOLVE territory.</em></h2>
+    <div class="signs-grid">
+      <div class="sign"><span class="tick">&#10003;</span><p>Scope has changed more than once — but no one has priced the changes yet.</p></div>
+      <div class="sign"><span class="tick">&#10003;</span><p>You hear about slipped vendor dates after they've already slipped.</p></div>
+      <div class="sign"><span class="tick">&#10003;</span><p>The counterparty has gone quiet — letters, not conversations.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="qualify">
+  <div class="qualify-grid">
+    <div>
+      <div class="qualify-img">
+        <img class="ff f1" src="/resolve-delayed.jpeg" alt="Delayed project — 8 weeks behind, 14% over budget, 37 open decisions, confidence low" onerror="this.style.display='none';">
+        <img class="ff f2" src="/resolve-resolved.jpeg" alt="Resolved project — 2 weeks early, 10% under budget, 0 critical decisions, confidence high" onerror="this.style.display='none';">
+        <img class="ff f3" src="/resolve-split.jpeg" alt="Same project, two systems — delayed and over budget versus early and under" onerror="this.style.display='none';">
+      </div>
+      <p class="mid-cap"><b>Same scope. Same contractors. Same budget.</b> The only variable is the control around the work.</p>
+    </div>
+    <div>
+      <h2>Find the leaks before they harden into <em>losses.</em></h2>
+      <p>Cut through the noise and diagnose your project in minutes — where margin is leaking, which commitments are slipping, and which disputes are forming while everyone's still being polite.</p>
+      <p class="pains">Built for project directors, commercial managers and owners on live projects where claims are building, procurement is slipping, and the commercials have started working against you.</p>
+      <div class="stat">
+        <div class="big">By the time it's a claim, it's already a loss.</div>
+        <div class="truth">Margin leaks quietly — a scope change never priced, a vendor date that slipped, a decision left open. Each one is recoverable while it's still a gap. Most are only found once they've hardened into a dispute or an overrun.</div>
+      </div>
+      <p>Scored against the 5Cs Framework — the system used to recover stalled contracts and leaking margin on projects up to €2B across 30 countries. You get clear, actionable feedback on exactly where the money is going, and what to do about it.</p>
+    </div>
+  </div>
+</section>
+
+<div class="authority-wrap">
+  <div class="authority">
+    <div class="authority-photo">
+      <img src="/serguei-portrait.jpeg" alt="Serguei Poppeleer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <span class="monogram" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;">SP</span>
+    </div>
+    <div>
+      <div class="authority-name">Serguei Poppeleer · Founder, Contracks Global</div>
+      <div class="authority-creds">MCIArb · WorldCC · LLM Oil &amp; Gas · Executive MBA</div>
+      <p class="authority-line">Across 30 countries, recovering stalled contracts, claims and leaking margin on complex projects up to €2B.</p>
+    </div>
+  </div>
+</div>
+
+<section class="section-cream">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Who this is for</span>
+      <h2>If something is <em>leaking.</em></h2>
+    </div>
+    <div class="who-grid">
+      <div class="who-card"><span class="num">01</span><h3>Project directors with stalled contracts</h3><p>Negotiations gone positional. Schedules slipping. Lawyers writing letters while the project bleeds.</p></div>
+      <div class="who-card"><span class="num">02</span><h3>Procurement &amp; commercial leaders</h3><p>Margin leaking through subcontractor agreements that worked once and don't anymore. You can see it. You can't yet stop it.</p></div>
+      <div class="who-card"><span class="num">03</span><h3>Owners, COOs &amp; sponsors who inherited a mess</h3><p>Commercial setups built by someone else, in a different phase of the business, signed before you arrived.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-navy">
+  <div class="container">
+    <div class="section-head"><span class="label">Proof</span><h2>Proof from the field.</h2></div>
+    <div class="case-study">
+      <div class="case-tag">Energy · Belgium · €400M EPC</div>
+      <h3>Major energy infrastructure — power plant FIDIC reset.</h3>
+      <div class="case-block"><strong>Situation</strong><p>A €400M EPC negotiation stalled. The commercial position had hardened on both sides under mounting time pressure, and the working relationship was eroding. Multiple amendments had made the original commercial mechanism almost unreadable.</p></div>
+      <div class="case-block"><strong>Intervention</strong><p>Brought in to reset the commercial position under pressure. Reframed the dispute away from positions and back toward project value.</p></div>
+      <div class="case-block"><strong>Outcome</strong><p>Stalled negotiation unlocked. Commercial integrity preserved. The relationship survived the dispute — the harder of the two outcomes.</p></div>
+      <div class="ba-grid">
+        <div class="ba-col"><span class="ba-h">Before</span><ul><li>Positions hardened on both sides</li><li>Mechanism buried under amendments</li><li>Relationship eroding</li></ul></div>
+        <div class="ba-col after"><span class="ba-h">After</span><ul><li>Dispute reframed to project value</li><li>Negotiation unlocked</li><li>Relationship preserved</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="killer">
+  <div class="container">
+    <p class="killer-lines">A claim is just a leak<br>you found too late.</p>
+    <p class="killer-tag">RESOLVE finds it while it's still a conversation — not a dispute.</p>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2>If this became a claim next month, would it <em>surprise you?</em></h2>
+  <p class="cta-payoff">The best time to fix a contract is before it becomes a case.</p>
+  <a href="/control-assessment.html" class="btn btn-primary">Start with the CONTROL diagnostic →</a>
+</section>
+
+<footer>
+  <div class="gold">Better contracts. Better companies. Better communities.</div>
+  <div class="fmeta">
+    <a href="mailto:hello@contracks.global">hello@contracks.global</a>
+    <span class="sep">·</span>
+    <a href="/privacy.html">Privacy Policy</a>
+  </div>
+  <div class="fcopy">© Contracks Global 2026</div>
+</footer>
+
+</body>
+</html>
