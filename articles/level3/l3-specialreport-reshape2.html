@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>try{var _q=window.location.search;if(_q.indexOf('lock')>-1&&_q.indexOf('unlock')<0){localStorage.removeItem('cks_gate_reshape');}if(localStorage.getItem('cks_gate_reshape')!=='unlocked'){document.documentElement.classList.add('gate-locked');}}catch(e){document.documentElement.classList.add('gate-locked');}</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The 5Cs of Refit &#8212; RESHAPE&#8482; Special Report &#183; Contracks Global</title>
@@ -144,6 +145,52 @@
     .scan-flow{flex-direction:column;gap:4px;}
     .cks-info{display:none;}.cks-main{gap:11px;padding:12px 16px 15px;}.cks-now{padding:9px 16px 0;}
   }
+
+  /* ===== FULL-PAGE GATE (no article visible until registered) ===== */
+  html.gate-locked nav,
+  html.gate-locked .article-header,
+  html.gate-locked .article-hero,
+  html.gate-locked main.article-body,
+  html.gate-locked footer,
+  html.gate-locked .cks-player{display:none !important;}
+  html.gate-locked body{padding-bottom:0;}
+  #gate{display:none;}
+  html.gate-locked #gate{display:flex;}
+  #gate{min-height:100vh;background:#0A1628;align-items:stretch;}
+  .gate-grid{display:grid;grid-template-columns:1.05fr 0.95fr;width:100%;min-height:100vh;}
+  .gate-why{background:#0A1628;color:#fff;padding:64px 56px;display:flex;flex-direction:column;justify-content:center;}
+  .gate-why .gw-brand{font-family:"DM Sans",sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:40px;}
+  .gate-why .ge{font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+  .gate-why h1{font-family:"Playfair Display",serif;font-size:38px;font-weight:800;color:#fff;line-height:1.12;letter-spacing:-0.02em;margin:0 0 18px;max-width:16ch;}
+  .gate-why .gw-lede{font-family:"DM Sans",sans-serif;font-size:16px;line-height:1.65;color:rgba(255,255,255,.72);margin-bottom:28px;max-width:46ch;}
+  .gate-why ul{list-style:none;margin:0;padding:0;max-width:46ch;}
+  .gate-why li{position:relative;padding:9px 0 9px 28px;font-family:"DM Sans",sans-serif;font-size:14.5px;line-height:1.5;color:rgba(255,255,255,.88);border-top:1px solid rgba(255,255,255,.09);}
+  .gate-why li:first-child{border-top:none;}
+  .gate-why li::before{content:"\2713";position:absolute;left:0;top:9px;color:var(--gold);font-weight:700;}
+  .gate-form-wrap{background:#fff;padding:64px 56px;display:flex;flex-direction:column;justify-content:center;}
+  .gate-form{width:100%;max-width:400px;margin:0 auto;}
+  .gate-form h2{font-family:"Playfair Display",serif;font-size:24px;font-weight:700;color:var(--navy);margin:0 0 6px;}
+  .gate-form .gf-sub{font-family:"DM Sans",sans-serif;font-size:13px;color:#6B7280;margin-bottom:26px;line-height:1.5;}
+  .gate-field{margin-bottom:14px;}
+  .gate-field label{display:block;font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin-bottom:5px;}
+  .gate-field input,.gate-field select{width:100%;padding:12px 13px;font-family:"DM Sans",sans-serif;font-size:15px;color:var(--navy);background:#fff;border:1px solid #D8D5CE;border-radius:5px;outline:none;transition:border-color .15s;}
+  .gate-field input:focus,.gate-field select:focus{border-color:var(--gold);}
+  .gate-consent{display:flex;gap:9px;align-items:flex-start;margin:10px 0 20px;}
+  .gate-consent input{margin-top:3px;flex-shrink:0;width:15px;height:15px;accent-color:var(--gold);}
+  .gate-consent label{font-family:"DM Sans",sans-serif;font-size:12px;line-height:1.5;color:#6B7280;}
+  .gate-submit{width:100%;background:var(--gold);color:var(--navy);font-family:"DM Sans",sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:none;padding:16px;border-radius:5px;cursor:pointer;transition:background .15s;}
+  .gate-submit:hover{background:#D4B470;}
+  .gate-submit:disabled{opacity:.6;cursor:default;}
+  .gate-reassure{font-family:"DM Sans",sans-serif;text-align:center;font-size:11.5px;color:#9CA3AF;margin-top:16px;line-height:1.5;}
+  .gate-reassure a{color:var(--gold);text-decoration:none;}
+  /* ===== UNLOCKED BAR ===== */
+  #unlockedBar{display:none;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;background:#F5F4F0;border-bottom:1px solid #E4EAF3;padding:14px 24px;text-align:center;}
+  html:not(.gate-locked) #unlockedBar{display:flex;}
+  .ub-text{font-family:"DM Sans",sans-serif;font-size:13px;font-weight:600;color:var(--navy);}
+  .ub-text span{color:var(--gold);}
+  .ub-dl{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;font-family:"DM Sans",sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:10px 20px;border-radius:4px;transition:background .15s;}
+  .ub-dl:hover{background:#13203a;}
+  @media(max-width:760px){.gate-grid{grid-template-columns:1fr;}.gate-why,.gate-form-wrap{padding:40px 26px;}.gate-why h1{font-size:30px;}}
 </style>
 </head>
 <body>
@@ -152,7 +199,7 @@
   <a href="/" class="nav-brand">CONTRACKS.GLOBAL</a>
   <div class="nav-right">
     <a href="/library" class="nav-back">&larr; Back to library</a>
-    <a href="/reshape-assessment.html" class="nav-cta">Take the diagnostic &rarr;</a>
+    <a href="/control-assessment.html" class="nav-cta">Take the diagnostic &rarr;</a>
   </div>
 </nav>
 
@@ -165,10 +212,78 @@
     <span id="cksListenLabel">Listen to this report</span>
     <span id="cksListenTime" style="opacity:.7"></span>
   </button>
-  <p class="article-byline" style="margin-top:22px;">Written and narrated by Serguei Poppeleer &nbsp;&middot;&nbsp; Founder &amp; Managing Director, Contracks Global &nbsp;&middot;&nbsp; MCIArb &middot; IACCM &middot; LLM Oil &amp; Gas &middot; Executive MBA</p>
+  <p class="article-byline" style="margin-top:22px;">Written and narrated by Serguei Poppeleer &nbsp;&middot;&nbsp; Founder &amp; Managing Director, Contracks Global &nbsp;&middot;&nbsp; MCIArb &middot; WorldCC &middot; LLM Oil &amp; Gas &middot; Executive MBA</p>
 </header>
 
+<div id="unlockedBar">
+  <span class="ub-text">Report unlocked &#8212; <span>read below, listen, or download the PDF.</span></span>
+  <a class="ub-dl" id="ubDownload" href="/articles/level3/Special%20Report%20Reshape%20Special%20Report%205Cs%20of%20Refit%20(EN).pdf" download>
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+    Download the PDF
+  </a>
+</div>
 <img src="/articles/level3/l3-reshape-sr.jpeg" alt="The contract was signed. The control architecture wasn&#8217;t." class="article-hero">
+
+<div id="gate">
+  <div class="gate-grid">
+    <div class="gate-why">
+      <div class="gw-brand">CONTRACKS.GLOBAL</div>
+      <div class="ge">RESHAPE&#8482; Special Report &middot; Free</div>
+      <h1>The 5Cs of Refit</h1>
+      <p class="gw-lede">Most cross-border refit projects drift not because contractors fail, but because the governance architecture was never built. This report shows the 5Cs method that delivers consistent refit across distributed portfolios &#8212; without permanent site presence.</p>
+      <ul>
+        <li>The 5Cs Framework&#8482; &#8212; the five enforceable mechanisms in full</li>
+        <li>Four African outstation field cases: Liberia, Burkina Faso, Burundi, Uganda</li>
+        <li>The scan-to-refit workflow &#8212; six steps, no site visit</li>
+        <li>The Governance Maturity ladder &#8212; locate your operation</li>
+        <li>Full narrated audio + the complete PDF, emailed to you</li>
+      </ul>
+    </div>
+    <div class="gate-form-wrap">
+      <div class="gate-form">
+        <h2>Read the full report</h2>
+        <p class="gf-sub">Free. Enter your details to unlock the report on screen &#8212; we&rsquo;ll also email you the link and the PDF so you can return anytime.</p>
+        <form name="reshape-report-gate" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="gateForm">
+          <input type="hidden" name="form-name" value="reshape-report-gate">
+          <input type="hidden" name="report" value="RESHAPE - The 5Cs of Refit">
+          <input type="hidden" name="article_url" value="https://contracks.global/articles/level3/l3-specialreport-reshape.html?unlock=reshape">
+          <input type="hidden" name="pdf_url" value="https://contracks.global/articles/level3/Special%20Report%20Reshape%20Special%20Report%205Cs%20of%20Refit%20(EN).pdf">
+          <p hidden><label>Leave blank: <input name="bot-field"></label></p>
+          <div class="gate-field">
+            <label for="g-first">First name</label>
+            <input id="g-first" name="firstname" type="text" autocomplete="given-name" required>
+          </div>
+          <div class="gate-field">
+            <label for="g-email">Work email</label>
+            <input id="g-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="gate-field">
+            <label for="g-company">Company</label>
+            <input id="g-company" name="company" type="text" autocomplete="organization" required>
+          </div>
+          <div class="gate-field">
+            <label for="g-role">Your role</label>
+            <select id="g-role" name="role" required>
+              <option value="" disabled selected>Select&hellip;</option>
+              <option>PMO / Project Controls</option>
+              <option>Project / Programme Director</option>
+              <option>Commercial / Contracts</option>
+              <option>Operations / Delivery</option>
+              <option>Executive / C-suite</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="gate-consent">
+            <input id="g-consent" name="consent" type="checkbox" required>
+            <label for="g-consent">Email me the report and occasional field notes on delivery governance. I can unsubscribe anytime.</label>
+          </div>
+          <button class="gate-submit" type="submit" id="gateSubmit">Unlock &amp; email me the report &rarr;</button>
+          <p class="gate-reassure">No spam. Your details are held under our <a href="/privacy.html" target="_blank" rel="noopener">privacy policy</a>.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <main class="article-body">
 
@@ -410,7 +525,7 @@
 
   <div class="step">
     <div class="step-label">Option 1 &#8212; Free</div>
-    <div class="step-title">Take the Reshape Scorecard</div>
+    <div class="step-title">Take the CONTROL diagnostic</div>
     <p>A 20-question diagnostic covering the five governance dimensions of The 5Cs Framework&#8482;. Twelve minutes. It produces an immediate, specific picture of where your current governance architecture is strong and where the gaps are creating commercial exposure. No sales conversation required.</p>
   </div>
 
@@ -422,15 +537,15 @@
 
   <div class="bio-block">
     <strong>About Serguei Poppeleer</strong>
-    <div class="bio-creds">MCIArb &middot; IACCM &middot; CIoB &middot; Brussels &middot; Lagos &middot; Nairobi</div>
+    <div class="bio-creds">MCIArb &middot; WorldCC &middot; CIoB &middot; Brussels &middot; Lagos &middot; Nairobi</div>
     <p>Serguei Poppeleer is the Founder and Managing Director of Contracks Global. He has managed projects across 30+ countries for clients including ENI, EnergiNet / Baltic Pipe, ArcelorMittal, a major European airline, Luminus, and Marriott.</p>
     <p>Executive MBA, Hult &middot; LLM Oil &amp; Gas, Robert Gordon University &middot; M.Sc. Civil Engineering, Polytechnic of Mons</p>
   </div>
 
   <div class="cta-block">
     <h3>The contract was signed. The control architecture wasn&#8217;t.</h3>
-    <p>The Reshape Scorecard maps your governance exposure across the 5Cs and tells you which gap to close first. Free, twelve minutes, instant result.</p>
-    <a href="/reshape-assessment.html" class="cta-primary">Take the Reshape diagnostic &rarr;</a>
+    <p>The CONTROL diagnostic maps your governance exposure across the 5Cs and tells you which gap to close first. Free, twelve minutes, instant result.</p>
+    <a href="/control-assessment.html" class="cta-primary">Take the CONTROL diagnostic &rarr;</a>
     <a href="https://calendly.com/contracks_global" class="cta-secondary">Book a Discovery Call &rarr;</a>
   </div>
 
@@ -488,11 +603,11 @@ function stopSmooth(){if(smooth){clearInterval(smooth);smooth=null;}}
 const brEngine={play(){if(state==='paused')speechSynthesis.resume();else{speechSynthesis.cancel();speakFrom(cur<0?0:cur);}},pause(){speechSynthesis.pause();stopSmooth();},stop(){speechSynthesis.cancel();stopSmooth();},seekSentence(i){speechSynthesis.cancel();stopSmooth();cur=i-1;if(state==='playing')speakFrom(i);else highlight(i);},seekFraction(f){this.seekSentence(Math.floor(f*N));},setRate(){if(state==='playing'){const i=cur;speechSynthesis.cancel();stopSmooth();speakFrom(i);}}};
 const plainEngine={play(){if(!audio)elInit();audio.playbackRate=rate;audio.play();},pause(){audio&&audio.pause();},stop(){if(audio){audio.pause();audio.currentTime=0;}},seekSentence(){},seekFraction(f){if(!audio)elInit();audio.currentTime=f*(audio.duration||0);if(state==='playing')audio.play();},setRate(r){if(audio)audio.playbackRate=r;}};
 let E=brEngine;
-function cksToggle(){state==='playing'?cksPause():play();}
+function cksToggle(){if(document.documentElement.classList.contains('gate-locked')){flashGate();return;}if(state!=='playing'){track('audio_play',{report:'reshape'});}state==='playing'?cksPause():play();}
 function play(){if(state==='done')clearAll();if(MODE!=='plain'){document.body.classList.add('listening');if(state!=='paused'&&cur<0)highlight(0);}state='playing';setUI(true);E.play();}
 function cksPause(){state='paused';setUI(false);E.pause();setStatus('Paused');}
 function cksStop(){state='idle';setUI(false);E.stop();stopSmooth();clearAll();document.body.classList.remove('listening');setProgress(0);setStatus(label());document.getElementById('cksNow').textContent='Press play to begin';}
-function finish(){state='done';setUI(false);stopSmooth();setProgress(100);setStatus('Finished');document.getElementById('cksNow').textContent='Report complete';document.body.classList.remove('listening');}
+function finish(){state='done';setUI(false);stopSmooth();setProgress(100);setStatus('Finished');document.getElementById('cksNow').textContent='Report complete';document.body.classList.remove('listening');if(window.track)track('read_complete',{report:'reshape',via:'audio'});}
 function cksSeekSentence(i){if(MODE==='plain')return;if(state==='idle')play();E.seekSentence(i);highlight(i);}
 function cksSeek(e){const r=e.currentTarget.getBoundingClientRect();E.seekFraction((e.clientX-r.left)/r.width);}
 function cksRate(r){rate=r;document.querySelectorAll('.cks-spd').forEach(b=>b.classList.toggle('on',parseFloat(b.textContent)===r));E.setRate(r);}
@@ -502,8 +617,55 @@ function remain(sec){sec=Math.max(0,Math.round(sec));const m=Math.floor(sec/60),
 function setUI(on){document.getElementById('cksIcon').innerHTML=on?'<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>':'<polygon points="6,4 20,12 6,20"/>';document.getElementById('cksPlayer').classList.toggle('playing',on);document.getElementById('cksListenLabel').textContent=on?'Pause':'Listen to this report';}
 function label(){return MODE==='el'?'Contracks Global Insights':MODE==='plain'?'Audio report':'Audio version coming soon';}
 function applySrc(){const l=document.getElementById('cksSrcL');l.textContent=MODE==='el'?'ELEVENLABS':MODE==='plain'?'AUDIO':'SOON';if(MODE==='el'&&times){const d=times.at(-1)?.end||0;document.getElementById('cksListenTime').textContent='\u00b7 '+Math.max(1,Math.round(d/60))+' min';}if(MODE!=='plain')document.querySelector('main').classList.add('clickable');setStatus(label());}
-window.addEventListener('DOMContentLoaded',async()=>{build();document.getElementById('cksPlayer').classList.add('show');try{const r=await fetch(`${AUDIO_BASE}/${ARTICLE_SLUG}.sentences.json`,{cache:'no-cache'});if(!r.ok)throw 0;const d=await r.json();times=d.sentences;if(!Array.isArray(times)||!times.length)throw 0;if(times.length!==N)console.warn(`Sentence mismatch: audio ${times.length} vs page ${N}`);MODE='el';E=elEngine;applySrc();return;}catch(e){}try{const h=await fetch(`${AUDIO_BASE}/${ARTICLE_SLUG}.mp3`,{headers:{Range:'bytes=0-1'},cache:'no-cache'});if(h.ok||h.status===206){MODE='plain';E=plainEngine;applySrc();return;}}catch(e){}MODE='browser';E=brEngine;pickVoice();speechSynthesis.onvoiceschanged=pickVoice;speechSynthesis.getVoices();applySrc();});
+window.addEventListener('DOMContentLoaded',async()=>{build();if(!document.documentElement.classList.contains('gate-locked')){document.getElementById('cksPlayer').classList.add('show');}try{const r=await fetch(`${AUDIO_BASE}/${ARTICLE_SLUG}.sentences.json`,{cache:'no-cache'});if(!r.ok)throw 0;const d=await r.json();times=d.sentences;if(!Array.isArray(times)||!times.length)throw 0;if(times.length!==N)console.warn(`Sentence mismatch: audio ${times.length} vs page ${N}`);MODE='el';E=elEngine;applySrc();return;}catch(e){}try{const h=await fetch(`${AUDIO_BASE}/${ARTICLE_SLUG}.mp3`,{headers:{Range:'bytes=0-1'},cache:'no-cache'});if(h.ok||h.status===206){MODE='plain';E=plainEngine;applySrc();return;}}catch(e){}MODE='browser';E=brEngine;pickVoice();speechSynthesis.onvoiceschanged=pickVoice;speechSynthesis.getVoices();applySrc();});
 window.addEventListener('beforeunload',()=>{if(MODE==='browser')speechSynthesis.cancel();});
+</script>
+
+<script>
+(function(){
+  var REPORT='reshape';
+  function track(ev,props){props=props||{};try{if(window.plausible){window.plausible(ev,{props:props});return;}}catch(e){}try{window.dataLayer=window.dataLayer||[];window.dataLayer.push(Object.assign({event:ev},props));}catch(e){}}
+  window.track=track;
+  window.flashGate=function(){var g=document.getElementById('gate');if(!g)return;g.scrollIntoView({behavior:'smooth',block:'start'});};
+  function unlock(silent){
+    try{localStorage.setItem('cks_gate_'+REPORT,'unlocked');}catch(e){}
+    document.documentElement.classList.remove('gate-locked');
+    var g=document.getElementById('gate');if(g)g.style.display='none';
+    var p=document.getElementById('cksPlayer');if(p)p.classList.add('show');
+    if(typeof cksDetect==='function'){try{cksDetect();}catch(e){}}
+    if(!silent)track('report_unlocked',{report:REPORT,lang:'en'});
+    initScroll();
+  }
+  var fired={};
+  function initScroll(){
+    var main=document.querySelector('main.article-body');if(!main)return;
+    function onScroll(){
+      var total=main.offsetHeight-window.innerHeight;if(total<=0)return;
+      var pct=Math.min(100,Math.max(0,((window.scrollY+window.innerHeight)-main.offsetTop)/main.offsetHeight*100));
+      [25,50,75,100].forEach(function(m){if(pct>=m&&!fired[m]){fired[m]=true;track('scroll_'+m,{report:REPORT});if(m===100)track('read_complete',{report:REPORT,via:'scroll'});}});
+    }
+    window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  }
+  var dl=document.getElementById('ubDownload');if(dl)dl.addEventListener('click',function(){track('pdf_download',{report:REPORT});});
+  var form=document.getElementById('gateForm');
+  if(form){form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var btn=document.getElementById('gateSubmit');if(btn){btn.disabled=true;btn.textContent='Unlocking\u2026';}
+    var data=new FormData(form);var body=new URLSearchParams(data).toString();
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
+      .then(function(){unlock(false);window.scrollTo({top:0,behavior:'smooth'});})
+      .catch(function(){unlock(false);window.scrollTo({top:0,behavior:'smooth'});});
+  });}
+  if(!document.documentElement.classList.contains('gate-locked')){
+    if(document.readyState!=='loading')initScroll();else window.addEventListener('DOMContentLoaded',initScroll);
+  }
+  try{
+    var qp=new URLSearchParams(window.location.search);
+    if(qp.get('unlock')===REPORT && document.documentElement.classList.contains('gate-locked')){
+      unlock(true);track('report_unlocked',{report:REPORT,lang:'en',via:'email_link'});
+    }
+  }catch(e){}
+})();
 </script>
 </body>
 </html>
