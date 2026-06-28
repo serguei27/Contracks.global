@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem('cks_gate_resolve')!=='unlocked'){document.documentElement.classList.add('gate-locked');}}catch(e){document.documentElement.classList.add('gate-locked');}</script>
+<script>try{var _q=window.location.search;if(_q.indexOf('lock')>-1&&_q.indexOf('unlock')<0){localStorage.removeItem('cks_gate_resolve');}if(localStorage.getItem('cks_gate_resolve')!=='unlocked'){document.documentElement.classList.add('gate-locked');}}catch(e){document.documentElement.classList.add('gate-locked');}</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Beyond Paperwork Governance &#8212; RESOLVE&#8482; Special Report &#183; Contracks Global</title>
@@ -215,9 +215,6 @@
   </button>
   <p class="article-byline" style="margin-top:22px;">Written and narrated by Serguei Poppeleer &nbsp;&middot;&nbsp; Founder &amp; Managing Director, Contracks Global &nbsp;&middot;&nbsp; MCIArb &middot; WorldCC &middot; LLM Oil &amp; Gas &middot; Executive MBA</p>
 </header>
-
-<img src="/articles/level2/l2-resolve-sr.jpeg" alt="Cross-border project controls &#8212; beyond paperwork governance" class="article-hero">
-
 <div id="unlockedBar">
   <span class="ub-text">Report unlocked &#8212; <span>read below, listen, or download the PDF.</span></span>
   <a class="ub-dl" id="ubDownload" href="/articles/level2/Special%20Report%201%20EN%20Resolve%20Special%20Report%20-%20Beyond%20Paperwork%20Governance.pdf" download>
@@ -225,6 +222,9 @@
     Download the PDF
   </a>
 </div>
+<img src="/articles/level2/l2-resolve-sr.jpeg" alt="Cross-border project controls &#8212; beyond paperwork governance" class="article-hero">
+
+
 
 <div id="gate">
   <div class="gate-grid">
@@ -714,6 +714,7 @@ window.addEventListener('beforeunload',()=>{if(MODE==='browser')speechSynthesis.
     document.documentElement.classList.remove('gate-locked');
     var g=document.getElementById('gate');if(g)g.style.display='none';
     var p=document.getElementById('cksPlayer');if(p)p.classList.add('show');
+    if(typeof cksDetect==='function'){try{cksDetect();}catch(e){}}
     if(!silent)track('report_unlocked',{report:REPORT,lang:'en'});
     initScroll();
   }
