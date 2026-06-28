@@ -145,31 +145,37 @@
     .exec-sum .er{grid-template-columns:1fr;gap:4px;}
     .worlds{grid-template-columns:1fr;}
     .gov-compare{grid-template-columns:1fr;}.gc-arrow{padding:14px;}
-  /* ===== GATE ===== */
-  html.gate-locked body{overflow:hidden;}
-  html.gate-locked main{filter:blur(7px);-webkit-filter:blur(7px);pointer-events:none;user-select:none;}
+    .cks-info{display:none;}.cks-main{gap:11px;padding:12px 16px 15px;}.cks-now{padding:9px 16px 0;}
+  }
+  /* ===== GATE (two-column, no blur) ===== */
+  html.gate-locked main.article-body{display:none;}
   html.gate-locked .cks-player{display:none !important;}
   #gate{display:none;}
-  html.gate-locked #gate{display:flex;}
-  #gate{position:fixed;inset:0;z-index:400;align-items:flex-start;justify-content:center;padding:32px 18px;overflow-y:auto;background:rgba(10,22,40,.80);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);}
-  .gate-card{background:#fff;border-radius:10px;max-width:470px;width:100%;padding:36px 34px 30px;box-shadow:0 30px 80px rgba(0,0,0,.5);border-top:4px solid var(--gold);margin:auto;}
-  .gate-eyebrow{font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
-  .gate-title{font-family:"Playfair Display",serif;font-size:25px;font-weight:800;color:var(--navy);line-height:1.18;letter-spacing:-0.01em;margin-bottom:10px;}
-  .gate-lede{font-size:15px;line-height:1.6;color:#4B5563;margin-bottom:20px;}
-  .gate-inside{list-style:none;margin:0 0 24px;padding:18px 20px;background:#F5F4F0;border-radius:6px;}
-  .gate-inside li{position:relative;padding:5px 0 5px 24px;font-size:14px;line-height:1.5;color:#374151;}
-  .gate-inside li::before{content:"\2713";position:absolute;left:0;top:5px;color:var(--gold);font-weight:700;}
+  html.gate-locked #gate{display:block;}
+  .gate-wrap{max-width:1000px;margin:0 auto;padding:56px 24px 72px;}
+  .gate-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:0;border:1px solid #E4EAF3;border-radius:10px;overflow:hidden;box-shadow:0 10px 40px rgba(10,22,40,.08);}
+  .gate-why{background:#0A1628;color:#fff;padding:44px 40px;}
+  .gate-why .ge{font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+  .gate-why h2{font-family:"Playfair Display",serif;font-size:27px;font-weight:800;color:#fff;line-height:1.18;letter-spacing:-0.01em;margin:0 0 14px;}
+  .gate-why .gw-lede{font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.65;color:rgba(255,255,255,.72);margin-bottom:22px;}
+  .gate-why ul{list-style:none;margin:0;padding:0;}
+  .gate-why li{position:relative;padding:8px 0 8px 26px;font-family:"DM Sans",sans-serif;font-size:14px;line-height:1.5;color:rgba(255,255,255,.85);border-top:1px solid rgba(255,255,255,.09);}
+  .gate-why li:first-child{border-top:none;}
+  .gate-why li::before{content:"\2713";position:absolute;left:0;top:8px;color:var(--gold);font-weight:700;}
+  .gate-form{background:#fff;padding:44px 40px;}
+  .gate-form h3{font-family:"Playfair Display",serif;font-size:20px;font-weight:700;color:var(--navy);margin:0 0 6px;}
+  .gate-form .gf-sub{font-family:"DM Sans",sans-serif;font-size:13px;color:#6B7280;margin-bottom:22px;}
   .gate-field{margin-bottom:13px;}
   .gate-field label{display:block;font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin-bottom:5px;}
-  .gate-field input,.gate-field select{width:100%;padding:11px 13px;font-family:"DM Sans",sans-serif;font-size:15px;color:var(--navy);background:#fff;border:1px solid #D8D5CE;border-radius:5px;outline:none;transition:border-color .15s;}
+  .gate-field input,.gate-field select{width:100%;padding:12px 13px;font-family:"DM Sans",sans-serif;font-size:15px;color:var(--navy);background:#fff;border:1px solid #D8D5CE;border-radius:5px;outline:none;transition:border-color .15s;}
   .gate-field input:focus,.gate-field select:focus{border-color:var(--gold);}
-  .gate-consent{display:flex;gap:9px;align-items:flex-start;margin:6px 0 18px;}
+  .gate-consent{display:flex;gap:9px;align-items:flex-start;margin:8px 0 18px;}
   .gate-consent input{margin-top:3px;flex-shrink:0;width:15px;height:15px;accent-color:var(--gold);}
-  .gate-consent label{font-size:12px;line-height:1.5;color:#6B7280;}
+  .gate-consent label{font-family:"DM Sans",sans-serif;font-size:12px;line-height:1.5;color:#6B7280;}
   .gate-submit{width:100%;background:var(--gold);color:var(--navy);font-family:"DM Sans",sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:none;padding:15px;border-radius:5px;cursor:pointer;transition:background .15s;}
   .gate-submit:hover{background:#D4B470;}
   .gate-submit:disabled{opacity:.6;cursor:default;}
-  .gate-reassure{text-align:center;font-size:11.5px;color:#9CA3AF;margin-top:14px;line-height:1.5;}
+  .gate-reassure{font-family:"DM Sans",sans-serif;text-align:center;font-size:11.5px;color:#9CA3AF;margin-top:14px;line-height:1.5;}
   .gate-reassure a{color:var(--gold);text-decoration:none;}
   /* ===== UNLOCKED BAR ===== */
   #unlockedBar{display:none;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;background:#F5F4F0;border-bottom:1px solid #E4EAF3;padding:14px 24px;text-align:center;}
@@ -178,7 +184,7 @@
   .ub-text span{color:var(--gold);}
   .ub-dl{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;font-family:"DM Sans",sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:10px 20px;border-radius:4px;transition:background .15s;}
   .ub-dl:hover{background:#13203a;}
-  @media(max-width:640px){.gate-card{padding:28px 22px 24px;}.gate-title{font-size:21px;}}
+  @media(max-width:760px){.gate-grid{grid-template-columns:1fr;}.gate-why,.gate-form{padding:34px 26px;}.gate-wrap{padding:36px 18px 56px;}}
 </style>
 </head>
 <body>
@@ -214,52 +220,62 @@
 </div>
 
 <div id="gate">
-  <div class="gate-card">
-    <div class="gate-eyebrow">RESOLVE&#8482; Special Report &middot; Free</div>
-    <h2 class="gate-title">Beyond Paperwork Governance</h2>
-    <p class="gate-lede">Why most project controls look solid on paper and collapse on site &#8212; and the 5Cs method that holds when reality pushes back. Read it here, listen to the narration, or download the PDF.</p>
-    <ul class="gate-inside">
-      <li>The 5Cs Framework&#8482; &#8212; the five enforceable mechanisms in full</li>
-      <li>Four field cases: Equatorial Guinea, Baltic Pipe, Qatar Metro, Port Harcourt</li>
-      <li>The PMO Control Maturity ladder &#8212; locate your own function</li>
-      <li>The five shifts that move governance from paper to control</li>
-      <li>Full narrated audio + the complete PDF to keep and share</li>
-    </ul>
-    <form name="resolve-report-gate" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="gateForm">
-      <input type="hidden" name="form-name" value="resolve-report-gate">
-      <input type="hidden" name="report" value="RESOLVE - Beyond Paperwork Governance">
-      <p hidden><label>Leave blank: <input name="bot-field"></label></p>
-      <div class="gate-field">
-        <label for="g-first">First name</label>
-        <input id="g-first" name="firstname" type="text" autocomplete="given-name" required>
+  <div class="gate-wrap">
+    <div class="gate-grid">
+      <div class="gate-why">
+        <div class="ge">RESOLVE&#8482; Special Report &middot; Free</div>
+        <h2>Why this report matters</h2>
+        <p class="gw-lede">Most owner-side governance looks solid in a deck and still fails on the ground. This report shows why &#8212; and gives you the 5Cs method that holds when reality pushes back. Read it here, listen to the narration, or download the PDF to keep and share.</p>
+        <ul>
+          <li>The 5Cs Framework&#8482; &#8212; the five enforceable mechanisms in full</li>
+          <li>Four field cases: Equatorial Guinea, Baltic Pipe, Qatar Metro, Port Harcourt</li>
+          <li>The PMO Control Maturity ladder &#8212; locate your own function</li>
+          <li>The five shifts that move governance from paper to control</li>
+          <li>Full narrated audio + the complete PDF</li>
+        </ul>
       </div>
-      <div class="gate-field">
-        <label for="g-email">Work email</label>
-        <input id="g-email" name="email" type="email" autocomplete="email" required>
+      <div class="gate-form">
+        <h3>Get the full report</h3>
+        <p class="gf-sub">Free. Enter your details to unlock the report, the audio, and the PDF.</p>
+        <form name="resolve-report-gate" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="gateForm">
+          <input type="hidden" name="form-name" value="resolve-report-gate">
+          <input type="hidden" name="report" value="RESOLVE - Beyond Paperwork Governance">
+          <input type="hidden" name="article_url" value="https://contracks.global/articles/level2/l2-specialreport-resolve.html?unlock=resolve">
+          <input type="hidden" name="pdf_url" value="https://contracks.global/articles/level2/Special%20Report%201%20EN%20Resolve%20Special%20Report%20-%20Beyond%20Paperwork%20Governance.pdf">
+          <p hidden><label>Leave blank: <input name="bot-field"></label></p>
+          <div class="gate-field">
+            <label for="g-first">First name</label>
+            <input id="g-first" name="firstname" type="text" autocomplete="given-name" required>
+          </div>
+          <div class="gate-field">
+            <label for="g-email">Work email</label>
+            <input id="g-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="gate-field">
+            <label for="g-company">Company</label>
+            <input id="g-company" name="company" type="text" autocomplete="organization" required>
+          </div>
+          <div class="gate-field">
+            <label for="g-role">Your role</label>
+            <select id="g-role" name="role" required>
+              <option value="" disabled selected>Select&hellip;</option>
+              <option>PMO / Project Controls</option>
+              <option>Project / Programme Director</option>
+              <option>Commercial / Contracts</option>
+              <option>Operations / Delivery</option>
+              <option>Executive / C-suite</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="gate-consent">
+            <input id="g-consent" name="consent" type="checkbox" required>
+            <label for="g-consent">Send me the report and occasional field notes on delivery governance. I can unsubscribe anytime.</label>
+          </div>
+          <button class="gate-submit" type="submit" id="gateSubmit">Unlock the report &rarr;</button>
+          <p class="gate-reassure">No spam. Your details are held under our <a href="/privacy.html" target="_blank" rel="noopener">privacy policy</a>.</p>
+        </form>
       </div>
-      <div class="gate-field">
-        <label for="g-company">Company</label>
-        <input id="g-company" name="company" type="text" autocomplete="organization" required>
-      </div>
-      <div class="gate-field">
-        <label for="g-role">Your role</label>
-        <select id="g-role" name="role" required>
-          <option value="" disabled selected>Select&hellip;</option>
-          <option>PMO / Project Controls</option>
-          <option>Project / Programme Director</option>
-          <option>Commercial / Contracts</option>
-          <option>Operations / Delivery</option>
-          <option>Executive / C-suite</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="gate-consent">
-        <input id="g-consent" name="consent" type="checkbox" required>
-        <label for="g-consent">Send me the report and occasional field notes on delivery governance. I can unsubscribe anytime.</label>
-      </div>
-      <button class="gate-submit" type="submit" id="gateSubmit">Unlock the report &rarr;</button>
-      <p class="gate-reassure">No spam. Your details are held under our <a href="/privacy.html" target="_blank" rel="noopener">privacy policy</a>.</p>
-    </form>
+    </div>
   </div>
 </div>
 
@@ -683,12 +699,12 @@ window.addEventListener('beforeunload',()=>{if(MODE==='browser')speechSynthesis.
   window.track=track;
   window.flashGate=function(){
     var g=document.getElementById('gate');if(!g)return;
-    var c=g.querySelector('.gate-card');if(!c)return;
-    c.animate?c.animate([{transform:'scale(1)'},{transform:'scale(1.03)'},{transform:'scale(1)'}],{duration:280}):0;
+    g.scrollIntoView({behavior:'smooth',block:'start'});
   };
   function unlock(silent){
     try{localStorage.setItem('cks_gate_resolve','unlocked');}catch(e){}
     document.documentElement.classList.remove('gate-locked');
+    var g=document.getElementById('gate');if(g)g.style.display='none';
     var p=document.getElementById('cksPlayer');if(p)p.classList.add('show');
     if(!silent)track('report_unlocked',{report:REPORT,lang:'en'});
     initScroll();
@@ -729,6 +745,14 @@ window.addEventListener('beforeunload',()=>{if(MODE==='browser')speechSynthesis.
     if(document.readyState!=='loading')initScroll();
     else window.addEventListener('DOMContentLoaded',initScroll);
   }
+  /* email-back: ?unlock=resolve token bypasses the gate on return */
+  try{
+    var qp=new URLSearchParams(window.location.search);
+    if(qp.get('unlock')==='resolve' && document.documentElement.classList.contains('gate-locked')){
+      unlock(true);
+      track('report_unlocked',{report:REPORT,lang:'en',via:'email_link'});
+    }
+  }catch(e){}
 })();
 </script>
 </body>
