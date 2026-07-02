@@ -100,6 +100,36 @@
   .floor-band b{color:#fff;font-weight:600;}
   .floor-band .near{color:var(--green);font-weight:600;}
 
+  /* Card-by-card worksheet */
+  .band{margin:30px 0 14px;padding:9px 16px;border-left:3px solid var(--gold);background:rgba(197,160,80,0.06);border-radius:0 6px 6px 0;}
+  .band .bt{font-family:'Playfair Display',serif;font-weight:700;font-size:1.02rem;color:var(--gold);}
+  .band .bd{font-size:0.8rem;color:rgba(255,255,255,0.55);font-weight:300;margin-top:2px;}
+  .band.b-tick{border-left-color:var(--gold-l);}
+  .band.b-short{border-left-color:var(--orange);}
+  .band.b-build{border-left-color:#E8786B;}
+  .cardws{background:var(--navy2);border:1px solid var(--line);border-radius:8px;padding:18px 20px;margin-bottom:12px;}
+  .cardhd{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.06);}
+  .cardhd .cn{font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:700;color:#fff;}
+  .cardhd .meta{font-size:0.76rem;color:rgba(255,255,255,0.5);}
+  .cardhd .meta b{color:var(--gold-l);font-weight:600;}
+  .cardhd .cst{margin-left:auto;font-size:0.68rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:4px 10px;border-radius:20px;}
+  .cst.s-done{background:rgba(134,194,138,0.15);color:var(--green);border:1px solid rgba(134,194,138,0.4);}
+  .cst.s-tick{background:rgba(197,160,80,0.15);color:var(--gold);border:1px solid rgba(197,160,80,0.5);}
+  .cst.s-short{background:rgba(224,123,57,0.14);color:var(--orange);border:1px solid rgba(224,123,57,0.4);}
+  .cst.s-build{background:rgba(192,57,43,0.14);color:#E8786B;border:1px solid rgba(192,57,43,0.4);}
+  .ms{display:flex;align-items:flex-start;gap:12px;padding:7px 0;font-size:0.88rem;color:rgba(255,255,255,0.82);}
+  .ms + .ms{border-top:1px solid rgba(255,255,255,0.04);}
+  .ms .mtxt{flex:1;}
+  .ms .mtxt small{display:block;color:rgba(255,255,255,0.45);font-size:0.76rem;margin-top:1px;}
+  .mark{flex-shrink:0;width:66px;text-align:center;font-size:0.64rem;font-weight:700;letter-spacing:0.06em;padding:3px 0;border-radius:4px;margin-top:1px;}
+  .m-done{background:rgba(134,194,138,0.16);color:var(--green);}
+  .m-tick{background:rgba(197,160,80,0.18);color:var(--gold);}
+  .m-open{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.4);}
+  .m-verify{background:rgba(224,123,57,0.16);color:var(--orange);}
+  .keyrow{display:flex;flex-wrap:wrap;gap:16px;margin:6px 0 4px;font-size:0.78rem;color:rgba(255,255,255,0.6);}
+  .keyrow span{display:inline-flex;align-items:center;gap:7px;}
+  .keyrow .mark{width:56px;}
+
   footer{max-width:1180px;margin:60px auto 0;padding:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:0.78rem;color:rgba(255,255,255,0.4);}
   footer .gold{color:var(--gold);}
 
@@ -251,9 +281,162 @@
   </div>
 </section>
 
-<!-- ============ 02 · 5P ASSET MATRIX ============ -->
+<!-- ============ 02 · THE 14 CARDS — EVERY MILESTONE ============ -->
 <section>
-  <div class="sec-label"><span class="n">02</span>The 5P Asset Matrix</div>
+  <div class="sec-label"><span class="n">02</span>The 14 cards — every milestone</div>
+  <div class="sec-sub">The full tickable worksheet. Every GSD asset, its title, what it needs to complete, where it stands, and each milestone with its status. Grouped by action, not Dent's order — work top to bottom. After Bands A + B you go from 4 → 10 logged complete without building anything.</div>
+
+  <div class="keyrow">
+    <span><span class="mark m-done">DONE</span> logged</span>
+    <span><span class="mark m-tick">TICK</span> work done — log it now</span>
+    <span><span class="mark m-verify">VERIFY</span> confirm a number first</span>
+    <span><span class="mark m-open">OPEN</span> genuine gap</span>
+  </div>
+
+  <!-- BAND A -->
+  <div class="band"><div class="bt">Band A · Complete — push the extra tick</div><div class="bd">Already over the line. One free tick each takes them to full.</div></div>
+
+  <div class="cardws">
+    <div class="cardhd"><span class="cn">1 · Value Canvas</span><span class="meta">needs <b>3</b> · at <b>3/4</b></span><span class="cst s-done">Complete → 4/4</span></div>
+    <div class="ms"><span class="mark m-done">DONE</span><div class="mtxt">Sharpened my ICP language</div></div>
+    <div class="ms"><span class="mark m-done">DONE</span><div class="mtxt">Tested my PRIZE statement</div></div>
+    <div class="ms"><span class="mark m-done">DONE</span><div class="mtxt">Published Value Canvas content</div></div>
+    <div class="ms"><span class="mark m-tick">TICK</span><div class="mtxt">Built a visual framework<small>5Cs + Control Ladder are exactly this</small></div></div>
+  </div>
+
+  <div class="cardws">
+    <div class="cardhd"><span class="cn">2 · Social Pitch</span><span class="meta">needs <b>3</b> · at <b>3/5</b></span><span class="cst s-done">Complete</span></div>
+    <div class="ms"><span class="mark m-done">DONE</span><div class="mtxt">Saved my Social Pitch script</div></div>
+    <div class="ms"><span class="mark m-done">DONE</span><div class="mtxt">Created a daily visual reminder</div></div>
+    <div class="ms"><span class="mark m-done">DONE</span><div class="mtxt">Shared it with my team</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Delivered it to an audience<small>ticks the moment you next present live</small></div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Sparked curiosity in 3+ people</div></div>
+  </div>
+
+  <div class="cardws">
+    <div class="cardhd"><span class="cn">3 · Special Report</span><span class="meta">needs <b>3</b> · at <b>3/5</b></span><span class="cst s-done">Complete → 4–5/5</span></div>
+    <div class="ms"><span class="mark m-done">DONE</span><div class="mtxt">Offered it as a lead magnet</div></div>
+    <div class="ms"><span class="mark m-done">DONE</span><div class="mtxt">Sent it to prime a prospect</div></div>
+    <div class="ms"><span class="mark m-done">DONE</span><div class="mtxt">Repurposed it into social content</div></div>
+    <div class="ms"><span class="mark m-tick">TICK</span><div class="mtxt">Ran a campaign around it<small>newsletter / email send counts</small></div></div>
+    <div class="ms"><span class="mark m-tick">TICK</span><div class="mtxt">Shared it directly in a meeting<small>Richard</small></div></div>
+  </div>
+
+  <div class="cardws">
+    <div class="cardhd"><span class="cn">4 · Expert Speaker</span><span class="meta">needs <b>2</b> · at <b>2/4</b></span><span class="cst s-done">Complete → 4/4</span></div>
+    <div class="ms"><span class="mark m-done">DONE</span><div class="mtxt">Built my Speaker One-Sheet</div></div>
+    <div class="ms"><span class="mark m-done">DONE</span><div class="mtxt">Sent 5+ speaker pitches</div></div>
+    <div class="ms"><span class="mark m-tick">TICK</span><div class="mtxt">Got feedback from 3+ bookers<small>from past events</small></div></div>
+    <div class="ms"><span class="mark m-tick">TICK</span><div class="mtxt">Booked my first speaking spot<small>AFRAA · Kigali · Brussels · Nairobi</small></div></div>
+  </div>
+
+  <!-- BAND B -->
+  <div class="band b-tick"><div class="bt">Band B · Tick to close today</div><div class="bd">Shows 0 in Dent, done in reality. Ticks complete the card outright.</div></div>
+
+  <div class="cardws">
+    <div class="cardhd"><span class="cn">5 · Award Winner</span><span class="meta">needs <b>3</b> · at <b>0/5</b></span><span class="cst s-tick">Tick → 4/5 complete</span></div>
+    <div class="ms"><span class="mark m-tick">TICK</span><div class="mtxt">Collected customer impact data<small>proof-case numbers exist</small></div></div>
+    <div class="ms"><span class="mark m-tick">TICK</span><div class="mtxt">Built the case study<small>EG · Doha · Brussels Airlines · Denys</small></div></div>
+    <div class="ms"><span class="mark m-tick">TICK</span><div class="mtxt">Used it as proof in a sale<small>sent to prospects</small></div></div>
+    <div class="ms"><span class="mark m-tick">TICK</span><div class="mtxt">Published it publicly<small>live on site</small></div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Submitted it for an award<small>the only real gap</small></div></div>
+  </div>
+
+  <div class="cardws">
+    <div class="cardhd"><span class="cn">6 · Product for Clients</span><span class="meta">needs <b>1</b> · at <b>0/6</b></span><span class="cst s-tick">Tick → 1/6 complete</span></div>
+    <div class="ms"><span class="mark m-tick">TICK</span><div class="mtxt">Got a customer on the waitlist<small>book waitlist is live</small></div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Took a deposit pre-build</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Learned to pivot the concept</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Sold at 50%+ margin</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Added an MRR product<small>CONTROL Tower retainer once sold</small></div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Formed an affiliate partnership</div></div>
+  </div>
+
+  <div class="cardws">
+    <div class="cardhd"><span class="cn">7 · Core Product</span><span class="meta">needs <b>3</b> · at <b>2/5</b></span><span class="cst s-tick">Tick → 3/5 complete</span></div>
+    <div class="ms"><span class="mark m-done">DONE</span><div class="mtxt">Built a pitch deck for my offer</div></div>
+    <div class="ms"><span class="mark m-tick">TICK</span><div class="mtxt">Tested it in 3+ real meetings<small>Richard · Hugues · JJ Morin · Bleriot</small></div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Validated the upgrade with clients</div></div>
+    <div class="ms"><span class="mark m-done">DONE</span><div class="mtxt">Rebuilt my brochure or website</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Closed a deal with the new offer</div></div>
+  </div>
+
+  <!-- BAND C -->
+  <div class="band b-short"><div class="bt">Band C · One step short</div><div class="bd">Close after a tick plus one confirmation or one more action.</div></div>
+
+  <div class="cardws">
+    <div class="cardhd"><span class="cn">8 · Scorecard Funnel</span><span class="meta">needs <b>3</b> · at <b>2/5</b></span><span class="cst s-short">Verify to close</span></div>
+    <div class="ms"><span class="mark m-verify">VERIFY</span><div class="mtxt">Got 10+ scorecard completions<small>check ScoreApp — if 10+, closes at 3/5</small></div></div>
+    <div class="ms"><span class="mark m-done">DONE</span><div class="mtxt">Had 3+ result conversations</div></div>
+    <div class="ms"><span class="mark m-done">DONE</span><div class="mtxt">Updated my Value Canvas from insights</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Booked a meeting from the funnel</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Closed a deal from the funnel</div></div>
+  </div>
+
+  <div class="cardws">
+    <div class="cardhd"><span class="cn">9 · Brand Alliance</span><span class="meta">needs <b>3</b> · at <b>0/5</b></span><span class="cst s-short">Tick → 2/5, one call short</span></div>
+    <div class="ms"><span class="mark m-tick">TICK</span><div class="mtxt">Built my Brand Alliance Starter Kit<small>Hitlist + Inventory + RAPPORT — all three exist</small></div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Sent 5+ RAPPORT outreaches<small>Andy sent, Hugues pending — not 5 yet</small></div></div>
+    <div class="ms"><span class="mark m-tick">TICK</span><div class="mtxt">Had 1–3 partner exploratory calls<small>Richard · JJ Morin</small></div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Refined my kit from learnings</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Landed a brand alliance</div></div>
+  </div>
+
+  <div class="cardws">
+    <div class="cardhd"><span class="cn">10 · Brand Pitch</span><span class="meta">needs <b>3</b> · at <b>0/5</b></span><span class="cst s-short">Soft 2 — weakest wins</span></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Printed values on physical swag</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Shared my manifesto with my team<small>solo — thin</small></div></div>
+    <div class="ms"><span class="mark m-tick">TICK</span><div class="mtxt">Shared my values with a client<small>in pitches — defensible</small></div></div>
+    <div class="ms"><span class="mark m-tick">TICK</span><div class="mtxt">Made a values-led decision<small>"automate last" stance — defensible</small></div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Used values in a people decision</div></div>
+  </div>
+
+  <!-- BAND D -->
+  <div class="band b-build"><div class="bt">Band D · Genuine build — the video cluster + talk</div><div class="bd">Real work, not logging. Sits behind the September gate by design.</div></div>
+
+  <div class="cardws">
+    <div class="cardhd"><span class="cn">11 · Mission Pitch</span><span class="meta">needs <b>2</b> · at <b>0/4</b></span><span class="cst s-build">Build</span></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Published my OMV video</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Sent it to a key contact</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Added OMV to onboarding</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Linked OMV in email signature</div></div>
+  </div>
+
+  <div class="cardws">
+    <div class="cardhd"><span class="cn">12 · Signature Pitch</span><span class="meta">needs <b>2</b> · at <b>0/4</b></span><span class="cst s-build">Build</span></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Published my Signature Pitch video</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Used it in a proposal or deck</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Used it in onboarding or hiring</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Used CAPSTONE in a podcast or talk</div></div>
+  </div>
+
+  <div class="cardws">
+    <div class="cardhd"><span class="cn">13 · Signature Presentation</span><span class="meta">needs <b>3</b> · at <b>0/5</b></span><span class="cst s-build">Build</span></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Wrote the full content and notes</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Recorded and self-reviewed</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Got peer feedback via Loom</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Built the complete slide deck</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Booked the first delivery date</div></div>
+  </div>
+
+  <div class="cardws">
+    <div class="cardhd"><span class="cn">14 · Video Influence</span><span class="meta">needs <b>3</b> · at <b>0/5</b></span><span class="cst s-build">Build · post-Sept</span></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Published a content video</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Published a CTA video</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Built a reusable tech setup</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Generated a lead from video</div></div>
+    <div class="ms"><span class="mark m-open">OPEN</span><div class="mtxt">Ran a paid video test</div></div>
+  </div>
+
+  <div class="floor-band" style="margin-top:22px;">
+    <strong>Tally</strong>
+    4 logged complete → <b>10 complete</b> after Bands A + B <span class="near">(11 if ScoreApp clears 10)</span>. Genuine build = Band D + the book.
+  </div>
+</section>
+
+<!-- ============ 03 · 5P ASSET MATRIX ============ -->
+<section>
+  <div class="sec-label"><span class="n">03</span>The 5P Asset Matrix</div>
   <div class="sec-sub">Every Dent KPI, broken into concrete assets, against the two peers. Green build-next cells are closed. Productise — your entry-zero KPI — is effectively complete; the open ground has shifted to Publish (the book) and Partnership (the engine).</div>
 
   <div class="tbl-scroll">
@@ -309,9 +492,9 @@
   </div>
 </section>
 
-<!-- ============ 03 · HOMEPAGE SECTION MATRIX ============ -->
+<!-- ============ 04 · HOMEPAGE SECTION MATRIX ============ -->
 <section>
-  <div class="sec-label"><span class="n">03</span>Homepage, Section by Section</div>
+  <div class="sec-label"><span class="n">04</span>Homepage, Section by Section</div>
   <div class="sec-sub">The same comparison down the landing page. Most of the old ✕ rows closed. What remains: a payoff/outcomes section, more named testimonials, the founder bio, an FAQ, and the book.</div>
 
   <div class="tbl-scroll">
@@ -348,9 +531,9 @@
   </div>
 </section>
 
-<!-- ============ 04 · PROJECTS & CO COMPARATOR ============ -->
+<!-- ============ 05 · PROJECTS & CO COMPARATOR ============ -->
 <section>
-  <div class="sec-label"><span class="n">04</span>Comparator: Projects &amp; Co</div>
+  <div class="sec-label"><span class="n">05</span>Comparator: Projects &amp; Co</div>
   <div class="sec-sub">Founded by <strong style="color:#fff;">Antonio Nieto-Rodriguez</strong> — former global Chairman of PMI, Thinkers50 Award winner, the most-published project-management author in Harvard Business Review, creator of the Project Economy® and Hierarchy of Purpose®, new HBR book in 2026. This is not a peer benchmark like WORKWELL or Mandarin. He is the giant of the broad project space. Read this as calibration and boundary-setting, not a catch-up list.</div>
 
   <div class="tbl-scroll">
