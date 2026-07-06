@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>No-Surprises Delivery — Pre-Read Scorecard · Contracks Global</title>
+<meta name="description" content="Your reaction to the No-Surprises Delivery pre-read. Ten questions. Ten minutes. Your input is crucial to completing the book.">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#F8F6F2;color:#0A1628;min-height:100vh;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:#0A1628;border-bottom:3px solid #C5A050;position:sticky;top:0;z-index:100;}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:#fff;text-decoration:none;}
+.nav-logo span{color:#C5A050;}
+.nav-back{font-size:.82rem;color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s;}
+.nav-back:hover{color:#C5A050;}
+.screen{display:none;}.screen.active{display:block;}
+
+.wrap{max-width:680px;margin:0 auto;padding:56px 28px 96px;}
+.eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#C5A050;margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.eyebrow::before{content:'';display:block;width:30px;height:1px;background:#C5A050;}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:900;line-height:1.12;letter-spacing:-.02em;margin-bottom:18px;}
+h1 em{font-style:normal;color:#C5A050;}
+.lead{font-size:1.02rem;color:#555;line-height:1.75;font-weight:300;margin-bottom:14px;}
+.lead strong{color:#0A1628;font-weight:600;}
+.note-box{background:#FDF6E8;border:1px solid #E8D9B0;border-left:4px solid #C5A050;border-radius:4px;padding:18px 22px;margin:26px 0 40px;font-size:.9rem;color:#6b5a2e;line-height:1.65;}
+
+.qcard{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:26px 26px 24px;margin-bottom:16px;box-shadow:0 1px 6px rgba(10,22,40,.05);}
+.qtag{font-size:.64rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#C5A050;margin-bottom:8px;}
+.qtext{font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:700;line-height:1.35;color:#0A1628;margin-bottom:18px;}
+.qtext .req{color:#C0392B;font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:600;vertical-align:super;margin-left:2px;}
+
+/* rating pills */
+.rate{display:flex;gap:8px;margin-bottom:6px;}
+.rpill{flex:1;background:#fff;border:1.5px solid #E8E4DC;border-radius:6px;padding:14px 0;text-align:center;font-size:1rem;font-weight:600;color:#888;cursor:pointer;transition:all .16s;}
+.rpill:hover{border-color:#C5A050;background:#FDF6E8;}
+.rpill.sel{border-color:#C5A050;background:#C5A050;color:#fff;box-shadow:0 3px 10px rgba(197,160,80,.28);}
+.rscale{display:flex;justify-content:space-between;font-size:.7rem;color:#aaa;padding:0 2px;}
+
+/* text areas */
+.qta{width:100%;border:1.5px solid #E8E4DC;border-radius:6px;padding:14px 16px;font-family:'DM Sans',sans-serif;font-size:.92rem;color:#0A1628;resize:vertical;min-height:80px;outline:none;transition:border-color .18s;line-height:1.5;}
+.qta:focus{border-color:#C5A050;}
+.qin{width:100%;border:1.5px solid #E8E4DC;border-radius:6px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:.92rem;color:#0A1628;outline:none;transition:border-color .18s;}
+.qin:focus{border-color:#C5A050;}
+
+/* keystone card */
+.qcard.key{border:2px solid #C5A050;background:#FDF6E8;}
+.qcard.key .qtag{color:#8B6914;}
+
+.sec-label{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#aaa;margin:34px 0 14px;padding-bottom:8px;border-bottom:1px solid #E8E4DC;}
+
+.who-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:560px){.who-row{grid-template-columns:1fr;}}
+
+.submit{width:100%;background:#0A1628;color:#fff;border:none;padding:18px;border-radius:5px;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.02em;cursor:pointer;transition:background .2s;margin-top:26px;}
+.submit:hover{background:#112240;}
+.submit:disabled{opacity:.4;cursor:not-allowed;}
+.subnote{font-size:.76rem;color:#aaa;text-align:center;margin-top:12px;font-style:italic;line-height:1.6;}
+
+/* thank you */
+.ty{text-align:center;padding:64px 28px;max-width:600px;margin:0 auto;}
+.ty-circle{width:120px;height:120px;border-radius:50%;border:3px solid #C5A050;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 24px;}
+.ty-score{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:#C5A050;line-height:1;}
+.ty-den{font-size:.7rem;color:#aaa;letter-spacing:.1em;text-transform:uppercase;margin-top:4px;}
+.ty h2{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;margin-bottom:14px;color:#0A1628;}
+.ty p{font-size:.98rem;color:#555;line-height:1.75;margin-bottom:16px;}
+.ty-band{display:inline-block;padding:6px 18px;border-radius:20px;font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px;background:rgba(197,160,80,.12);color:#8B6914;border:1px solid rgba(197,160,80,.4);}
+.ty-btns{display:flex;flex-direction:column;gap:12px;max-width:360px;margin:28px auto 0;}
+.ty-primary{background:#C5A050;color:#0A1628;padding:15px;border-radius:4px;font-weight:700;font-size:.92rem;text-decoration:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;}
+.ty-primary:hover{background:#D4B470;}
+.ty-secondary{background:transparent;color:#0A1628;border:1.5px solid #E8E4DC;padding:14px;border-radius:4px;font-weight:600;font-size:.9rem;text-decoration:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.ty-secondary:hover{border-color:#0A1628;}
+
+footer{text-align:center;padding:28px 40px;border-top:1px solid #E8E4DC;background:#F8F7F4;}
+.fmani{font-family:'Playfair Display',serif;font-size:.86rem;color:#aaa;font-style:italic;margin-bottom:6px;}
+.fcon{font-size:.75rem;color:#bbb;}.fcon a{color:#C5A050;text-decoration:none;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="https://contracks.global" class="nav-logo">CONTRACKS<span>.</span>GLOBAL</a>
+  <a href="book-preread.html" class="nav-back">← Back to the book</a>
+</nav>
+
+<!-- QUESTIONNAIRE -->
+<div id="screen-form" class="screen active">
+  <div class="wrap">
+    <div class="eyebrow">No-Surprises Delivery · Pre-Read Scorecard</div>
+    <h1>You've read it. Now tell me <em>where I'm wrong.</em></h1>
+    <p class="lead">This is a test-read, not a proofread. <strong>Ignore grammar, typos and commas</strong> — I don't need them fixed. I need to know whether the book creates a real outcome for someone who has run the projects.</p>
+    <p class="lead">Ten questions. About ten minutes. <strong>Your feedback is gold — your input is crucial to completing this book.</strong></p>
+
+    <div class="note-box">Quick guide: the rating questions take seconds — tap a number. The written answers are where the value is. A blunt line is worth more than a polite paragraph. Only your email and the final question are required; answer as much of the rest as you can.</div>
+
+    <div class="sec-label">Part 1 · The quick read — rate 1 (low) to 5 (high)</div>
+    <div id="ratings"></div>
+
+    <div class="sec-label">Part 2 · The written answers — where the gold is</div>
+    <div id="opens"></div>
+
+    <div class="sec-label">Part 3 · You</div>
+    <div class="qcard">
+      <div class="who-row">
+        <div>
+          <div class="qtag">Your name</div>
+          <input class="qin" id="uname" type="text" placeholder="Name">
+        </div>
+        <div>
+          <div class="qtag">Your email <span style="color:#C0392B;">*</span></div>
+          <input class="qin" id="uemail" type="email" placeholder="Email" required>
+        </div>
+      </div>
+      <div style="margin-top:14px;">
+        <div class="qtag">Your role / context (optional)</div>
+        <input class="qin" id="urole" type="text" placeholder="e.g. PMO Director, energy programmes, Europe–Africa">
+      </div>
+    </div>
+
+    <button class="submit" id="submitBtn" onclick="submitScorecard()">Send my feedback →</button>
+    <p class="subnote">Opens your email client with everything filled in — just hit send. You can also download a copy as a PDF.</p>
+  </div>
+</div>
+
+<!-- THANK YOU -->
+<div id="screen-ty" class="screen">
+  <div class="ty">
+    <div class="ty-circle">
+      <div class="ty-score" id="tyScore">—</div>
+      <div class="ty-den" id="tyDen">Your read</div>
+    </div>
+    <div class="ty-band" id="tyBand"></div>
+    <h2 id="tyHead">Thank you — this is exactly what the book needs.</h2>
+    <p id="tyBody">Your reaction has been prepared as an email to Serguei. If it didn't open automatically, use the button below. Feedback like yours is what turns a good draft into a finished book.</p>
+    <div class="ty-btns">
+      <button class="ty-primary" id="tyMail">Send it now (open email) →</button>
+      <button class="ty-secondary" onclick="downloadPDF()">Download my responses (PDF)</button>
+      <a class="ty-secondary" href="5c-preread.html">Back to the book</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="fmani">Better contracts. Better business. Better society.</div>
+  <div class="fcon"><a href="mailto:hello@contracks.global">hello@contracks.global</a> · +32 466 446 290</div>
+</footer>
+
+<script>
+"use strict";
+
+// Rating questions (1-5) — mapped to the test-read dimensions
+const RATINGS = [
+  {tag:"Problem",       t:"The book names a real, important problem — one you recognise from your own projects."},
+  {tag:"Insight",       t:"The core idea felt genuinely original, or framed in a way you had not seen before."},
+  {tag:"Memory",        t:"Three months from now, you will still remember the central model."},
+  {tag:"Evidence",      t:"The claims felt credible and well-supported — you rarely wanted more proof."},
+  {tag:"Action",        t:"You could apply part of this framework on a live project within 12 months."},
+  {tag:"Recommendation",t:"You would recommend it to another leader responsible for major programmes."},
+  {tag:"Attention",     t:"It held your attention — you rarely felt like stopping."}
+];
+
+// Open questions — the qualitative gold
+const OPENS = [
+  {tag:"The promise",     t:"In one line — what promise does this book make?", ph:"The single promise, as you'd say it to a colleague..."},
+  {tag:"What sticks",     t:"Which idea, model, or phrase will you still remember in three months?", ph:"The Control Tower, the Control Ladder, the five... or something else."},
+  {tag:"Where you stalled", t:"Where did you nearly stop reading, or want stronger proof?", ph:"Chapter, section, or moment — be specific if you can."},
+  {tag:"Differentiation", t:"Against other delivery, governance or transformation books, what makes this different — or what still feels too familiar?", ph:"What's genuinely new here, and what isn't."},
+  {tag:"Change one thing",t:"If you could change only one thing before publication, what would it be — and why?", ph:"Force a priority: the single most important change."}
+];
+
+// The keystone — required
+const KEY = {tag:"The question that matters most", t:"What would stop you buying five copies of this book for your leadership team?", ph:"The single biggest obstacle — credibility, originality, practicality, evidence, positioning, relevance..."};
+
+const rState = new Array(RATINGS.length).fill(null);
+
+// Build ratings
+const rc = document.getElementById('ratings');
+RATINGS.forEach((q,qi)=>{
+  const card=document.createElement('div');card.className='qcard';
+  let pills='';
+  for(let n=1;n<=5;n++) pills+=`<div class="rpill" data-q="${qi}" data-n="${n}" onclick="rate(${qi},${n},this)">${n}</div>`;
+  card.innerHTML=`<div class="qtag">${q.tag}</div><div class="qtext">${q.t}</div>
+    <div class="rate">${pills}</div>
+    <div class="rscale"><span>Not at all</span><span>Completely</span></div>`;
+  rc.appendChild(card);
+});
+
+// Build opens
+const oc = document.getElementById('opens');
+OPENS.forEach((q,qi)=>{
+  const card=document.createElement('div');card.className='qcard';
+  card.innerHTML=`<div class="qtag">${q.tag}</div><div class="qtext">${q.t}</div>
+    <textarea class="qta" id="open${qi}" placeholder="${q.ph}"></textarea>`;
+  oc.appendChild(card);
+});
+// Keystone last
+const kcard=document.createElement('div');kcard.className='qcard key';
+kcard.innerHTML=`<div class="qtag">${KEY.tag}</div><div class="qtext">${KEY.t}<span class="req">required</span></div>
+  <textarea class="qta" id="keyAnswer" placeholder="${KEY.ph}"></textarea>`;
+oc.appendChild(kcard);
+
+function rate(qi,n,el){
+  rState[qi]=n;
+  document.querySelectorAll('.rpill[data-q="'+qi+'"]').forEach(p=>p.classList.remove('sel'));
+  el.classList.add('sel');
+}
+
+function ratedCount(){return rState.filter(x=>x!==null).length;}
+function avgScore(){
+  const done=rState.filter(x=>x!==null);
+  if(!done.length) return null;
+  return done.reduce((a,b)=>a+b,0)/done.length;
+}
+function band(avg){
+  if(avg===null) return {lbl:"Reader response",col:"#8B6914"};
+  if(avg>=4.2) return {lbl:"Strong — ready to move",col:"#2D6A4F"};
+  if(avg>=3.2) return {lbl:"Promising — with gaps to close",col:"#E07B39"};
+  return {lbl:"Needs work before it lands",col:"#C0392B"};
+}
+
+let COMPILED = {subject:"",body:""};
+
+function compile(){
+  const name=document.getElementById('uname').value.trim()||"(no name)";
+  const email=document.getElementById('uemail').value.trim();
+  const role=document.getElementById('urole').value.trim()||"(not given)";
+  const avg=avgScore();
+  const avgTxt=avg!==null?avg.toFixed(1)+"/5":"n/a";
+  let lines=[];
+  lines.push("NO-SURPRISES DELIVERY — PRE-READ SCORECARD");
+  lines.push("Reader: "+name+"  |  "+email);
+  lines.push("Role/context: "+role);
+  lines.push("Overall read: "+avgTxt+"  ("+band(avg).lbl+")");
+  lines.push("");
+  lines.push("— RATINGS (1 low / 5 high) —");
+  RATINGS.forEach((q,i)=>lines.push((i+1)+". "+q.tag+": "+(rState[i]!==null?rState[i]+"/5":"—")));
+  lines.push("");
+  lines.push("— WRITTEN ANSWERS —");
+  OPENS.forEach((q,i)=>{
+    const v=document.getElementById('open'+i).value.trim();
+    lines.push(q.tag+": "+(v||"—"));
+  });
+  const key=document.getElementById('keyAnswer').value.trim();
+  lines.push("");
+  lines.push("FIVE-COPIES BLOCKER: "+(key||"—"));
+  const body=lines.join("\n");
+  const subject="Pre-Read Scorecard — "+name+" — "+avgTxt;
+  COMPILED={subject:subject,body:body,name:name,avg:avg,avgTxt:avgTxt};
+  return COMPILED;
+}
+
+function submitScorecard(){
+  const email=document.getElementById('uemail').value.trim();
+  const key=document.getElementById('keyAnswer').value.trim();
+  if(!email){alert("Please add your email so Serguei can follow up.");document.getElementById('uemail').focus();return;}
+  if(!key){alert("The last question is the one that matters most — please answer it before sending.");document.getElementById('keyAnswer').focus();return;}
+  const c=compile();
+  // Fire the mailto
+  openMail(c);
+  // Show thank-you
+  const avg=c.avg, b=band(avg);
+  document.getElementById('tyScore').textContent = avg!==null? avg.toFixed(1) : "✓";
+  document.getElementById('tyDen').textContent = avg!==null? "out of 5" : "received";
+  const tb=document.getElementById('tyBand');tb.textContent=b.lbl;
+  tb.style.background=b.col+"1e";tb.style.color=b.col;tb.style.borderColor=b.col+"55";
+  document.getElementById('tyMail').onclick=function(){openMail(c);};
+  document.getElementById('screen-form').classList.remove('active');
+  document.getElementById('screen-ty').classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function openMail(c){
+  const href="mailto:hello@contracks.global?subject="+encodeURIComponent(c.subject)+"&body="+encodeURIComponent(c.body);
+  const a=document.createElement('a');a.href=href;a.style.display='none';document.body.appendChild(a);a.click();document.body.removeChild(a);
+}
+
+function downloadPDF(){
+  if(!window.jspdf){alert("PDF library not loaded — you can still send by email.");return;}
+  const c=COMPILED.body?COMPILED:compile();
+  const {jsPDF}=window.jspdf;
+  const doc=new jsPDF({unit:'mm',format:'a4'});
+  const W=210,M=16,UW=W-M*2;
+  const NAVY=[10,22,40],GOLD=[197,160,80],GREY=[90,90,90];
+  const clean=t=>String(t||'').replace(/[\u2014\u2013]/g,'-').replace(/[\u201C\u201D]/g,'"').replace(/[\u2018\u2019]/g,"'").replace(/[^\x00-\x7F]/g,'');
+  // header
+  doc.setFillColor(...NAVY);doc.rect(0,0,W,32,'F');
+  doc.setFillColor(...GOLD);doc.rect(0,32,W,1,'F');
+  doc.setFont('helvetica','bold');doc.setFontSize(13);doc.setTextColor(255,255,255);
+  doc.text('No-Surprises Delivery',M,15);
+  doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(197,160,80);
+  doc.text('Pre-Read Scorecard',M,22);
+  doc.setTextColor(180,180,180);doc.setFontSize(7.5);
+  doc.text(new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}),W-M,15,{align:'right'});
+  let y=44;
+  doc.setFont('helvetica','normal');doc.setFontSize(9.5);doc.setTextColor(...GREY);
+  const lines=doc.splitTextToSize(clean(COMPILED.body||compile().body),UW);
+  lines.forEach(ln=>{
+    if(y>280){doc.addPage();y=20;}
+    doc.text(ln,M,y);y+=5;
+  });
+  const fn='NSD-Scorecard-'+(clean(COMPILED.name||'reader').replace(/\s+/g,'')||'reader')+'.pdf';
+  doc.save(fn);
+}
+</script>
+</body>
+</html>
