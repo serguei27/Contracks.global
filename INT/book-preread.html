@@ -1205,9 +1205,12 @@ footer a { color: #C5A050; text-decoration: none; font-size: 0.78rem; }
 (function () {
   "use strict";
 
-  // ── OPTIONAL: capture registrations on static hosting (GitHub Pages, etc.) ──
-  // Leave blank to just unlock access. To collect names/emails, paste a
-  // Formspree/Getform/Basin endpoint here, e.g. "https://formspree.io/f/xxxxxxx".
+  // ════════════════════════════════════════════════════════════════════
+  //  EMAIL NOTIFICATION ENDPOINT  —  paste your Formspree URL between the
+  //  quotes so every registration is emailed to hello@contracks.global.
+  //  Create a free form at https://formspree.io  ->  it gives you a URL
+  //  like "https://formspree.io/f/abcdwxyz".  Leave blank = unlock only.
+  // ════════════════════════════════════════════════════════════════════
   var CAPTURE_ENDPOINT = "";
 
   var form    = document.getElementById('waitlistForm');
@@ -1235,7 +1238,10 @@ footer a { color: #C5A050; text-decoration: none; font-size: 0.78rem; }
     if (btn) { btn.disabled = true; btn.textContent = 'Unlocking access…'; }
 
     if (CAPTURE_ENDPOINT) {
-      var body = new URLSearchParams(new FormData(form)).toString();
+      var fd = new FormData(form);
+      fd.append('_subject', 'New pre-read registration — ' + ((first&&first.value.trim())||'') + ' ' + ((last&&last.value.trim())||''));
+      if (email && email.value) fd.append('_replyto', email.value.trim());
+      var body = new URLSearchParams(fd).toString();
       fetch(CAPTURE_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },
