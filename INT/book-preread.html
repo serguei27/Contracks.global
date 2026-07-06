@@ -1143,16 +1143,9 @@ footer a { color: #C5A050; text-decoration: none; font-size: 0.78rem; }
 
     <form
       class="waitlist-form"
-      name="book-preread"
-      method="POST"
-      action="?success=true"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
       id="waitlistForm"
+      onsubmit="return false;"
     >
-      <input type="hidden" name="form-name" value="book-preread">
-      <input type="hidden" name="bot-field" style="display:none">
-
       <p class="form-instr">Fields marked <span aria-hidden="true">*</span> are required. Your details are used only for the pre-read &mdash; see our <a href="/privacy.html">privacy note</a>.</p>
 
       <div class="form-row">
@@ -1175,7 +1168,7 @@ footer a { color: #C5A050; text-decoration: none; font-size: 0.78rem; }
         <option value="founder">Founder / Business Owner</option>
         <option value="other">Other</option>
       </select>
-      <button type="submit" class="waitlist-submit">Register &amp; get access →</button>
+      <button type="button" id="regBtn" class="waitlist-submit">Register &amp; get access →</button>
       <p class="waitlist-note">A private pre-read. No spam, no newsletters. I may follow up once to hear your thoughts.</p>
     </form>
 
@@ -1209,15 +1202,55 @@ footer a { color: #C5A050; text-decoration: none; font-size: 0.78rem; }
 </footer>
 
 <script>
-  const form = document.getElementById('waitlistForm');
-  const success = document.getElementById('successState');
+(function () {
+  "use strict";
 
-  // Access is revealed only after the registration is submitted and Netlify
-  // redirects back to ?success=true — capturing the reader before unlocking.
-  if (window.location.search.includes('success=true')) {
+  // ── OPTIONAL: capture registrations on static hosting (GitHub Pages, etc.) ──
+  // Leave blank to just unlock access. To collect names/emails, paste a
+  // Formspree/Getform/Basin endpoint here, e.g. "https://formspree.io/f/xxxxxxx".
+  var CAPTURE_ENDPOINT = "";
+
+  var form    = document.getElementById('waitlistForm');
+  var success = document.getElementById('successState');
+  var btn     = document.getElementById('regBtn');
+
+  function revealAccess() {
     if (form) form.style.display = 'none';
-    if (success) { success.style.display = 'block'; success.focus(); }
+    if (success) {
+      success.style.display = 'block';
+      try { success.focus(); } catch (e) {}
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   }
+
+  function register() {
+    var email = document.getElementById('wl-email');
+    var first = document.getElementById('wl-first');
+    var last  = document.getElementById('wl-last');
+    // minimal validation — don't block access on anything else
+    if (first && !first.value.trim()) { first.focus(); return; }
+    if (last  && !last.value.trim())  { last.focus();  return; }
+    if (email && !email.checkValidity()) { email.reportValidity ? email.reportValidity() : email.focus(); return; }
+
+    if (btn) { btn.disabled = true; btn.textContent = 'Unlocking access…'; }
+
+    if (CAPTURE_ENDPOINT) {
+      var body = new URLSearchParams(new FormData(form)).toString();
+      fetch(CAPTURE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },
+        body: body
+      }).catch(function () {}).finally(revealAccess);
+    } else {
+      revealAccess();
+    }
+  }
+
+  if (btn) btn.addEventListener('click', register);
+
+  // Deep-link fallback: ?success=true also unlocks.
+  if (window.location.search.indexOf('success=true') !== -1) revealAccess();
+})();
 </script>
 
 </body>
