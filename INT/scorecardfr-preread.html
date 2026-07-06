@@ -122,7 +122,7 @@ footer{text-align:center;padding:28px 40px;border-top:1px solid #E8E4DC;backgrou
     </div>
 
     <button class="submit" id="submitBtn" onclick="submitScorecard()">Envoyer mes retours →</button>
-    <p class="subnote">Ouvre votre messagerie avec tout le contenu prérempli — il ne reste qu’à envoyer. Vous pouvez aussi télécharger une copie en PDF.</p>
+    <p class="subnote">Vos réponses sont envoyées directement à Serguei — sans fenêtre e-mail. Vous pouvez aussi télécharger une copie en PDF.</p>
   </div>
 </div>
 
@@ -135,9 +135,9 @@ footer{text-align:center;padding:28px 40px;border-top:1px solid #E8E4DC;backgrou
     </div>
     <div class="ty-band" id="tyBand"></div>
     <h2 id="tyHead">Merci — c’est exactement ce dont le livre a besoin.</h2>
-    <p id="tyBody">Votre réaction a été préparée sous forme d’e-mail à Serguei. Si elle ne s’est pas ouverte automatiquement, utilisez le bouton ci-dessous. Des retours comme les vôtres transforment un bon manuscrit en livre achevé.</p>
+    <p id="tyBody">Votre réaction a été envoyée à Serguei. Merci — des retours comme les vôtres transforment un bon manuscrit en livre achevé. Utilisez le bouton ci-dessous seulement pour renvoyer.</p>
     <div class="ty-btns">
-      <button class="ty-primary" id="tyMail">Envoyer maintenant — ouvrir l’e-mail →</button>
+      <button class="ty-primary" id="tyMail">Renvoyer mes réponses →</button>
       <button class="ty-secondary" onclick="downloadPDF()">Télécharger mes réponses (PDF)</button>
       <a class="ty-secondary" href="5cfr-preread.html">Retour au livre</a>
     </div>
@@ -151,6 +151,30 @@ footer{text-align:center;padding:28px 40px;border-top:1px solid #E8E4DC;backgrou
 
 <script>
 "use strict";
+
+// ════════════════════════════════════════════════════════════════════
+//  EMAIL ENDPOINT — paste your Formspree URL so results are emailed
+//  straight to hello@contracks.global (no email-client window).
+//  Free form at https://formspree.io  ->  "https://formspree.io/f/abcdwxyz".
+//  Leave blank = falls back to opening the mail client.
+// ════════════════════════════════════════════════════════════════════
+const FORM_ENDPOINT = "";
+
+function sendResults(c){
+  const email=(document.getElementById('uemail')||{}).value||"";
+  if(FORM_ENDPOINT){
+    const p=new URLSearchParams();
+    p.append('name', c.name||'');
+    p.append('email', email.trim());
+    p.append('_replyto', email.trim());
+    p.append('_subject', c.subject||'Pre-Read Scorecard');
+    p.append('average', c.avgTxt||'');
+    p.append('message', c.body||'');
+    return fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded','Accept':'application/json'},body:p.toString()})
+      .catch(function(){ openMail(c); });
+  }
+  openMail(c); // fallback until the endpoint is set
+}
 
 // Rating questions (1-5) — mapped to the test-read dimensions
 const RATINGS = [
@@ -259,15 +283,15 @@ function submitScorecard(){
   if(!email){alert("Ajoutez votre e-mail afin que Serguei puisse vous recontacter.");document.getElementById('uemail').focus();return;}
   if(!key){alert("La dernière question est la plus importante — merci d’y répondre avant l’envoi.");document.getElementById('keyAnswer').focus();return;}
   const c=compile();
-  // Fire the mailto
-  openMail(c);
+  // Send results straight to hello@contracks.global
+  sendResults(c);
   // Show thank-you
   const avg=c.avg, b=band(avg);
   document.getElementById('tyScore').textContent = avg!==null? avg.toFixed(1) : "✓";
   document.getElementById('tyDen').textContent = avg!==null? "sur 5" : "reçu";
   const tb=document.getElementById('tyBand');tb.textContent=b.lbl;
   tb.style.background=b.col+"1e";tb.style.color=b.col;tb.style.borderColor=b.col+"55";
-  document.getElementById('tyMail').onclick=function(){openMail(c);};
+  document.getElementById('tyMail').onclick=function(){sendResults(c);};
   document.getElementById('screen-form').classList.remove('active');
   document.getElementById('screen-ty').classList.add('active');
   window.scrollTo(0,0);
@@ -308,3 +332,4 @@ function downloadPDF(){
 </script>
 </body>
 </html>
+
