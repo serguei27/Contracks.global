@@ -82,6 +82,13 @@ footer{text-align:center;padding:28px 40px;border-top:1px solid #E8E4DC;backgrou
 </style>
 </head>
 <body>
+<!-- Netlify Forms: static declaration so submissions are captured & emailed (like the CONTROL report). -->
+<form name="preread-scorecard-en" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="preread-scorecard-en">
+  <input type="text" name="bot-field">
+  <input type="text" name="name"><input type="email" name="email"><input type="text" name="role">
+  <input type="text" name="average"><input type="text" name="subject"><textarea name="results"></textarea>
+</form>
 <nav>
   <a href="https://contracks.global" class="nav-logo">CONTRACKS<span>.</span>GLOBAL</a>
   <a href="book-preread.html" class="nav-back">← Back to the book</a>
@@ -153,27 +160,26 @@ footer{text-align:center;padding:28px 40px;border-top:1px solid #E8E4DC;backgrou
 "use strict";
 
 // ════════════════════════════════════════════════════════════════════
-//  EMAIL ENDPOINT — paste your Formspree URL so results are emailed
-//  straight to hello@contracks.global (no email-client window).
-//  Free form at https://formspree.io  ->  "https://formspree.io/f/abcdwxyz".
-//  Leave blank = falls back to opening the mail client.
+//  Results post straight to Netlify Forms (captured + emailed to
+//  hello@contracks.global via your existing Zoho pipeline). No mailto,
+//  no Gmail window. Enable notifications for form "preread-scorecard-en"
+//  in Netlify: Site settings -> Forms -> Form notifications.
 // ════════════════════════════════════════════════════════════════════
-const FORM_ENDPOINT = "";
+var NETLIFY_FORM = "preread-scorecard-en";
 
 function sendResults(c){
-  const email=(document.getElementById('uemail')||{}).value||"";
-  if(FORM_ENDPOINT){
-    const p=new URLSearchParams();
-    p.append('name', c.name||'');
-    p.append('email', email.trim());
-    p.append('_replyto', email.trim());
-    p.append('_subject', c.subject||'Pre-Read Scorecard');
-    p.append('average', c.avgTxt||'');
-    p.append('message', c.body||'');
-    return fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded','Accept':'application/json'},body:p.toString()})
-      .catch(function(){ openMail(c); });
-  }
-  openMail(c); // fallback until the endpoint is set
+  var email=(document.getElementById("uemail")||{}).value||"";
+  var role=(document.getElementById("urole")||{}).value||"";
+  var p=new URLSearchParams();
+  p.append("form-name", NETLIFY_FORM);
+  p.append("name", c.name||"");
+  p.append("email", (email||"").trim());
+  p.append("role", (role||"").trim());
+  p.append("average", c.avgTxt||"");
+  p.append("subject", c.subject||"");
+  p.append("results", c.body||"");
+  return fetch("/", {method:"POST", headers:{"Content-Type":"application/x-www-form-urlencoded"}, body:p.toString()})
+    .catch(function(){});
 }
 
 // Rating questions (1-5) — mapped to the test-read dimensions
@@ -297,10 +303,6 @@ function submitScorecard(){
   window.scrollTo(0,0);
 }
 
-function openMail(c){
-  const href="mailto:hello@contracks.global?subject="+encodeURIComponent(c.subject)+"&body="+encodeURIComponent(c.body);
-  const a=document.createElement('a');a.href=href;a.style.display='none';document.body.appendChild(a);a.click();document.body.removeChild(a);
-}
 
 function downloadPDF(){
   if(!window.jspdf){alert("PDF library not loaded — you can still send by email.");return;}
