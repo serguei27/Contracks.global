@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>No-Surprises Delivery — Questionnaire de pré-lecture · Contracks Global</title>
+<meta name="description" content="Votre réaction à la pré-lecture de No-Surprises Delivery. Dix questions. Dix minutes. Votre contribution est essentielle pour achever le livre.">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#F8F6F2;color:#0A1628;min-height:100vh;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:#0A1628;border-bottom:3px solid #C5A050;position:sticky;top:0;z-index:100;}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:#fff;text-decoration:none;}
+.nav-logo span{color:#C5A050;}
+.nav-back{font-size:.82rem;color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s;}
+.nav-back:hover{color:#C5A050;}
+.screen{display:none;}.screen.active{display:block;}
+
+.wrap{max-width:680px;margin:0 auto;padding:56px 28px 96px;}
+.eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#C5A050;margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.eyebrow::before{content:'';display:block;width:30px;height:1px;background:#C5A050;}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:900;line-height:1.12;letter-spacing:-.02em;margin-bottom:18px;}
+h1 em{font-style:normal;color:#C5A050;}
+.lead{font-size:1.02rem;color:#555;line-height:1.75;font-weight:300;margin-bottom:14px;}
+.lead strong{color:#0A1628;font-weight:600;}
+.note-box{background:#FDF6E8;border:1px solid #E8D9B0;border-left:4px solid #C5A050;border-radius:4px;padding:18px 22px;margin:26px 0 40px;font-size:.9rem;color:#6b5a2e;line-height:1.65;}
+
+.qcard{background:#fff;border:1px solid #E8E4DC;border-radius:8px;padding:26px 26px 24px;margin-bottom:16px;box-shadow:0 1px 6px rgba(10,22,40,.05);}
+.qtag{font-size:.64rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#C5A050;margin-bottom:8px;}
+.qtext{font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:700;line-height:1.35;color:#0A1628;margin-bottom:18px;}
+.qtext .req{color:#C0392B;font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:600;vertical-align:super;margin-left:2px;}
+
+/* rating pills */
+.rate{display:flex;gap:8px;margin-bottom:6px;}
+.rpill{flex:1;background:#fff;border:1.5px solid #E8E4DC;border-radius:6px;padding:14px 0;text-align:center;font-size:1rem;font-weight:600;color:#888;cursor:pointer;transition:all .16s;}
+.rpill:hover{border-color:#C5A050;background:#FDF6E8;}
+.rpill.sel{border-color:#C5A050;background:#C5A050;color:#fff;box-shadow:0 3px 10px rgba(197,160,80,.28);}
+.rscale{display:flex;justify-content:space-between;font-size:.7rem;color:#aaa;padding:0 2px;}
+
+/* text areas */
+.qta{width:100%;border:1.5px solid #E8E4DC;border-radius:6px;padding:14px 16px;font-family:'DM Sans',sans-serif;font-size:.92rem;color:#0A1628;resize:vertical;min-height:80px;outline:none;transition:border-color .18s;line-height:1.5;}
+.qta:focus{border-color:#C5A050;}
+.qin{width:100%;border:1.5px solid #E8E4DC;border-radius:6px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:.92rem;color:#0A1628;outline:none;transition:border-color .18s;}
+.qin:focus{border-color:#C5A050;}
+
+/* keystone card */
+.qcard.key{border:2px solid #C5A050;background:#FDF6E8;}
+.qcard.key .qtag{color:#8B6914;}
+
+.sec-label{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#aaa;margin:34px 0 14px;padding-bottom:8px;border-bottom:1px solid #E8E4DC;}
+
+.who-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:560px){.who-row{grid-template-columns:1fr;}}
+
+.submit{width:100%;background:#0A1628;color:#fff;border:none;padding:18px;border-radius:5px;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.02em;cursor:pointer;transition:background .2s;margin-top:26px;}
+.submit:hover{background:#112240;}
+.submit:disabled{opacity:.4;cursor:not-allowed;}
+.subnote{font-size:.76rem;color:#aaa;text-align:center;margin-top:12px;font-style:italic;line-height:1.6;}
+
+/* thank you */
+.ty{text-align:center;padding:64px 28px;max-width:600px;margin:0 auto;}
+.ty-circle{width:120px;height:120px;border-radius:50%;border:3px solid #C5A050;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 24px;}
+.ty-score{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:#C5A050;line-height:1;}
+.ty-den{font-size:.7rem;color:#aaa;letter-spacing:.1em;text-transform:uppercase;margin-top:4px;}
+.ty h2{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;margin-bottom:14px;color:#0A1628;}
+.ty p{font-size:.98rem;color:#555;line-height:1.75;margin-bottom:16px;}
+.ty-band{display:inline-block;padding:6px 18px;border-radius:20px;font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px;background:rgba(197,160,80,.12);color:#8B6914;border:1px solid rgba(197,160,80,.4);}
+.ty-btns{display:flex;flex-direction:column;gap:12px;max-width:360px;margin:28px auto 0;}
+.ty-primary{background:#C5A050;color:#0A1628;padding:15px;border-radius:4px;font-weight:700;font-size:.92rem;text-decoration:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;}
+.ty-primary:hover{background:#D4B470;}
+.ty-secondary{background:transparent;color:#0A1628;border:1.5px solid #E8E4DC;padding:14px;border-radius:4px;font-weight:600;font-size:.9rem;text-decoration:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.ty-secondary:hover{border-color:#0A1628;}
+
+footer{text-align:center;padding:28px 40px;border-top:1px solid #E8E4DC;background:#F8F7F4;}
+.fmani{font-family:'Playfair Display',serif;font-size:.86rem;color:#aaa;font-style:italic;margin-bottom:6px;}
+.fcon{font-size:.75rem;color:#bbb;}.fcon a{color:#C5A050;text-decoration:none;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="https://contracks.global" class="nav-logo">CONTRACKS<span>.</span>GLOBAL</a>
+  <a href="bookfr-preread.html" class="nav-back">← Retour au livre</a>
+</nav>
+
+<!-- QUESTIONNAIRE -->
+<div id="screen-form" class="screen active">
+  <div class="wrap">
+    <div class="eyebrow">No-Surprises Delivery · Questionnaire de pré-lecture</div>
+    <h1>Vous l’avez lu. Dites-moi maintenant <em>là où je me trompe.</em></h1>
+    <p class="lead">Ceci est une lecture-test, pas une correction. <strong>Ignorez la grammaire, les fautes et la ponctuation</strong> — je n’ai pas besoin qu’on les corrige ici. J’ai besoin de savoir si le livre produit un vrai effet chez quelqu’un qui a déjà piloté des projets.</p>
+    <p class="lead">Dix questions. Environ dix minutes. <strong>Vos retours valent de l’or — votre contribution est essentielle pour achever ce livre.</strong></p>
+
+    <div class="note-box">Mode d’emploi : les questions notées prennent quelques secondes — choisissez un chiffre. La vraie valeur se trouve dans les réponses écrites. Une phrase franche vaut mieux qu’un paragraphe poli. Seuls votre e-mail et la dernière question sont obligatoires ; répondez au reste autant que possible.</div>
+
+    <div class="sec-label">Partie 1 · L’aperçu rapide — notez de 1 (faible) à 5 (élevé)</div>
+    <div id="ratings"></div>
+
+    <div class="sec-label">Partie 2 · Les réponses écrites — là où est l’or</div>
+    <div id="opens"></div>
+
+    <div class="sec-label">Partie 3 · Vous</div>
+    <div class="qcard">
+      <div class="who-row">
+        <div>
+          <div class="qtag">Votre nom</div>
+          <input class="qin" id="uname" type="text" placeholder="Nom">
+        </div>
+        <div>
+          <div class="qtag">Votre e-mail <span style="color:#C0392B;">*</span></div>
+          <input class="qin" id="uemail" type="email" placeholder="E-mail" required>
+        </div>
+      </div>
+      <div style="margin-top:14px;">
+        <div class="qtag">Votre fonction / contexte (facultatif)</div>
+        <input class="qin" id="urole" type="text" placeholder="ex. Directeur PMO, programmes énergie, Europe–Afrique">
+      </div>
+    </div>
+
+    <button class="submit" id="submitBtn" onclick="submitScorecard()">Envoyer mes retours →</button>
+    <p class="subnote">Ouvre votre messagerie avec tout le contenu prérempli — il ne reste qu’à envoyer. Vous pouvez aussi télécharger une copie en PDF.</p>
+  </div>
+</div>
+
+<!-- THANK YOU -->
+<div id="screen-ty" class="screen">
+  <div class="ty">
+    <div class="ty-circle">
+      <div class="ty-score" id="tyScore">—</div>
+      <div class="ty-den" id="tyDen">Votre lecture</div>
+    </div>
+    <div class="ty-band" id="tyBand"></div>
+    <h2 id="tyHead">Merci — c’est exactement ce dont le livre a besoin.</h2>
+    <p id="tyBody">Votre réaction a été préparée sous forme d’e-mail à Serguei. Si elle ne s’est pas ouverte automatiquement, utilisez le bouton ci-dessous. Des retours comme les vôtres transforment un bon manuscrit en livre achevé.</p>
+    <div class="ty-btns">
+      <button class="ty-primary" id="tyMail">Envoyer maintenant — ouvrir l’e-mail →</button>
+      <button class="ty-secondary" onclick="downloadPDF()">Télécharger mes réponses (PDF)</button>
+      <a class="ty-secondary" href="5cfr-preread.html">Retour au livre</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="fmani">Better contracts. Better business. Better society.</div>
+  <div class="fcon"><a href="mailto:hello@contracks.global">hello@contracks.global</a> · +32 466 446 290</div>
+</footer>
+
+<script>
+"use strict";
+
+// Rating questions (1-5) — mapped to the test-read dimensions
+const RATINGS = [
+  {tag:"Problème",       t:"Le livre nomme un problème réel et important — que vous reconnaissez dans vos propres projets."},
+  {tag:"Idée neuve",     t:"L’idée centrale vous a paru réellement originale, ou présentée d’une façon que vous n’aviez pas vue."},
+  {tag:"Mémoire",        t:"Dans trois mois, vous vous souviendrez encore du modèle central."},
+  {tag:"Preuve",         t:"Les affirmations vous ont paru crédibles et étayées — vous avez rarement voulu plus de preuves."},
+  {tag:"Action",         t:"Vous pourriez appliquer une partie de ce cadre à un projet en cours dans les 12 prochains mois."},
+  {tag:"Recommandation", t:"Vous le recommanderiez à un autre responsable de grands programmes."},
+  {tag:"Attention",      t:"Il a retenu votre attention — vous avez rarement eu envie de vous arrêter."}
+];
+
+// Open questions — the qualitative gold
+const OPENS = [
+  {tag:"La promesse",     t:"En une phrase — quelle promesse ce livre fait-il ?", ph:"La promesse unique, comme vous la formuleriez à un collègue..."},
+  {tag:"Ce qui reste",    t:"Quelle idée, quel modèle ou quelle phrase retiendrez-vous encore dans trois mois ?", ph:"La tour de contrôle, l’échelle de contrôle, les cinq C... ou autre chose."},
+  {tag:"Où ça bloque",    t:"Où avez-vous failli arrêter de lire, ou voulu une preuve plus solide ?", ph:"Chapitre, section ou moment — soyez précis si possible."},
+  {tag:"Différenciation", t:"Face aux autres livres sur la livraison, la gouvernance ou la transformation, qu’est-ce qui distingue celui-ci — ou qui reste trop familier ?", ph:"Ce qui est vraiment nouveau ici, et ce qui ne l’est pas."},
+  {tag:"Changer une chose",t:"Si vous ne pouviez changer qu’une seule chose avant publication, laquelle serait-ce — et pourquoi ?", ph:"Forcez une priorité : le changement le plus important."}
+];
+
+// The keystone — required
+const KEY = {tag:"La question qui compte le plus", t:"Qu’est-ce qui vous empêcherait d’acheter cinq exemplaires de ce livre pour votre équipe de direction ?", ph:"Le principal obstacle — crédibilité, originalité, applicabilité, preuves, positionnement, pertinence..."};
+
+const rState = new Array(RATINGS.length).fill(null);
+
+// Build ratings
+const rc = document.getElementById('ratings');
+RATINGS.forEach((q,qi)=>{
+  const card=document.createElement('div');card.className='qcard';
+  let pills='';
+  for(let n=1;n<=5;n++) pills+=`<div class="rpill" data-q="${qi}" data-n="${n}" onclick="rate(${qi},${n},this)">${n}</div>`;
+  card.innerHTML=`<div class="qtag">${q.tag}</div><div class="qtext">${q.t}</div>
+    <div class="rate">${pills}</div>
+    <div class="rscale"><span>Pas du tout</span><span>Tout à fait</span></div>`;
+  rc.appendChild(card);
+});
+
+// Build opens
+const oc = document.getElementById('opens');
+OPENS.forEach((q,qi)=>{
+  const card=document.createElement('div');card.className='qcard';
+  card.innerHTML=`<div class="qtag">${q.tag}</div><div class="qtext">${q.t}</div>
+    <textarea class="qta" id="open${qi}" placeholder="${q.ph}"></textarea>`;
+  oc.appendChild(card);
+});
+// Keystone last
+const kcard=document.createElement('div');kcard.className='qcard key';
+kcard.innerHTML=`<div class="qtag">${KEY.tag}</div><div class="qtext">${KEY.t}<span class="req">obligatoire</span></div>
+  <textarea class="qta" id="keyAnswer" placeholder="${KEY.ph}"></textarea>`;
+oc.appendChild(kcard);
+
+function rate(qi,n,el){
+  rState[qi]=n;
+  document.querySelectorAll('.rpill[data-q="'+qi+'"]').forEach(p=>p.classList.remove('sel'));
+  el.classList.add('sel');
+}
+
+function ratedCount(){return rState.filter(x=>x!==null).length;}
+function avgScore(){
+  const done=rState.filter(x=>x!==null);
+  if(!done.length) return null;
+  return done.reduce((a,b)=>a+b,0)/done.length;
+}
+function band(avg){
+  if(avg===null) return {lbl:"Réponse du lecteur",col:"#8B6914"};
+  if(avg>=4.2) return {lbl:"Solide — prêt à avancer",col:"#2D6A4F"};
+  if(avg>=3.2) return {lbl:"Prometteur — des écarts à combler",col:"#E07B39"};
+  return {lbl:"À retravailler avant qu’il ne convainque",col:"#C0392B"};
+}
+
+let COMPILED = {subject:"",body:""};
+
+function compile(){
+  const name=document.getElementById('uname').value.trim()||"(no name)";
+  const email=document.getElementById('uemail').value.trim();
+  const role=document.getElementById('urole').value.trim()||"(not given)";
+  const avg=avgScore();
+  const avgTxt=avg!==null?avg.toFixed(1)+"/5":"n/a";
+  let lines=[];
+  lines.push("NO-SURPRISES DELIVERY — QUESTIONNAIRE DE PRÉ-LECTURE");
+  lines.push("Lecteur : "+name+"  |  "+email);
+  lines.push("Fonction/contexte : "+role);
+  lines.push("Lecture globale : "+avgTxt+"  ("+band(avg).lbl+")");
+  lines.push("");
+  lines.push("— NOTES (1 faible / 5 élevé) —");
+  RATINGS.forEach((q,i)=>lines.push((i+1)+". "+q.tag+": "+(rState[i]!==null?rState[i]+"/5":"—")));
+  lines.push("");
+  lines.push("— RÉPONSES ÉCRITES —");
+  OPENS.forEach((q,i)=>{
+    const v=document.getElementById('open'+i).value.trim();
+    lines.push(q.tag+": "+(v||"—"));
+  });
+  const key=document.getElementById('keyAnswer').value.trim();
+  lines.push("");
+  lines.push("FREIN AUX CINQ EXEMPLAIRES : "+(key||"—"));
+  const body=lines.join("\n");
+  const subject="Questionnaire de pré-lecture — "+name+" — "+avgTxt;
+  COMPILED={subject:subject,body:body,name:name,avg:avg,avgTxt:avgTxt};
+  return COMPILED;
+}
+
+function submitScorecard(){
+  const email=document.getElementById('uemail').value.trim();
+  const key=document.getElementById('keyAnswer').value.trim();
+  if(!email){alert("Ajoutez votre e-mail afin que Serguei puisse vous recontacter.");document.getElementById('uemail').focus();return;}
+  if(!key){alert("La dernière question est la plus importante — merci d’y répondre avant l’envoi.");document.getElementById('keyAnswer').focus();return;}
+  const c=compile();
+  // Fire the mailto
+  openMail(c);
+  // Show thank-you
+  const avg=c.avg, b=band(avg);
+  document.getElementById('tyScore').textContent = avg!==null? avg.toFixed(1) : "✓";
+  document.getElementById('tyDen').textContent = avg!==null? "sur 5" : "reçu";
+  const tb=document.getElementById('tyBand');tb.textContent=b.lbl;
+  tb.style.background=b.col+"1e";tb.style.color=b.col;tb.style.borderColor=b.col+"55";
+  document.getElementById('tyMail').onclick=function(){openMail(c);};
+  document.getElementById('screen-form').classList.remove('active');
+  document.getElementById('screen-ty').classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function openMail(c){
+  const href="mailto:hello@contracks.global?subject="+encodeURIComponent(c.subject)+"&body="+encodeURIComponent(c.body);
+  const a=document.createElement('a');a.href=href;a.style.display='none';document.body.appendChild(a);a.click();document.body.removeChild(a);
+}
+
+function downloadPDF(){
+  if(!window.jspdf){alert("PDF library not loaded — you can still send by email.");return;}
+  const c=COMPILED.body?COMPILED:compile();
+  const {jsPDF}=window.jspdf;
+  const doc=new jsPDF({unit:'mm',format:'a4'});
+  const W=210,M=16,UW=W-M*2;
+  const NAVY=[10,22,40],GOLD=[197,160,80],GREY=[90,90,90];
+  const clean=t=>String(t||'').replace(/[\u2014\u2013]/g,'-').replace(/[\u201C\u201D]/g,'"').replace(/[\u2018\u2019]/g,"'").replace(/[^\x00-\x7F]/g,'');
+  // header
+  doc.setFillColor(...NAVY);doc.rect(0,0,W,32,'F');
+  doc.setFillColor(...GOLD);doc.rect(0,32,W,1,'F');
+  doc.setFont('helvetica','bold');doc.setFontSize(13);doc.setTextColor(255,255,255);
+  doc.text('No-Surprises Delivery',M,15);
+  doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(197,160,80);
+  doc.text('Questionnaire de pré-lecture',M,22);
+  doc.setTextColor(180,180,180);doc.setFontSize(7.5);
+  doc.text(new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}),W-M,15,{align:'right'});
+  let y=44;
+  doc.setFont('helvetica','normal');doc.setFontSize(9.5);doc.setTextColor(...GREY);
+  const lines=doc.splitTextToSize(clean(COMPILED.body||compile().body),UW);
+  lines.forEach(ln=>{
+    if(y>280){doc.addPage();y=20;}
+    doc.text(ln,M,y);y+=5;
+  });
+  const fn='NSD-Questionnaire-'+(clean(COMPILED.name||'lecteur').replace(/\s+/g,'')||'lecteur')+'.pdf';
+  doc.save(fn);
+}
+</script>
+</body>
+</html>
