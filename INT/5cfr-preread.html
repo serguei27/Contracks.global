@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>No-Surprises Delivery — Lire &amp; écouter · Édition pré-lecture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#14243D;--navy2:#1c3350;--gold:#BF9930;--cream:#F8F2E4;--ink:#20262E;--mute:#5A6472;--line:#e7ddc8;}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:"DM Sans",system-ui,sans-serif;color:var(--ink);background:var(--cream);}
+.badge{position:fixed;top:0;right:0;z-index:60;background:var(--gold);color:#1a1300;font-weight:700;font-size:11px;letter-spacing:.06em;padding:6px 12px;border-bottom-left-radius:10px;}
+header.topbar{position:sticky;top:0;z-index:50;background:var(--navy);color:#fff;display:flex;align-items:center;gap:14px;padding:12px 18px;box-shadow:0 2px 10px rgba(0,0,0,.15);}
+.brand{font-family:"Playfair Display",serif;font-weight:700;font-size:18px;letter-spacing:.01em;}
+.brand small{display:block;font-family:"DM Sans",sans-serif;font-weight:500;font-size:10px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;margin-top:2px;}
+.controls{margin-left:auto;display:flex;align-items:center;gap:8px;}
+.toggle{display:inline-flex;border:1px solid rgba(255,255,255,.35);border-radius:999px;overflow:hidden;}
+.toggle button{background:transparent;color:#fff;border:0;padding:8px 16px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;}
+.toggle button.active{background:var(--gold);color:#1a1300;}
+.audiobar{display:none;align-items:center;gap:10px;}
+.audiobar.show{display:inline-flex;}
+.audiobar button{background:var(--gold);color:#1a1300;border:0;border-radius:999px;width:34px;height:34px;font-size:14px;cursor:pointer;font-weight:700;}
+.audiobar .lbl{font-size:12px;color:#dfe6f0;min-width:120px;}
+.wrap{display:grid;grid-template-columns:300px 1fr;gap:0;max-width:1200px;margin:0 auto;}
+nav.toc{border-right:1px solid var(--line);padding:26px 18px 60px;height:calc(100vh - 60px);position:sticky;top:60px;overflow:auto;background:#fbf6ea;}
+nav.toc h3{font-family:"DM Sans";font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin:0 0 12px;}
+nav.toc a{display:block;text-decoration:none;color:var(--ink);padding:5px 8px;border-radius:7px;font-size:13.5px;line-height:1.35;}
+nav.toc a:hover{background:#f0e7d2;}
+nav.toc a.active{background:var(--navy);color:#fff;}
+.toc-part{font-family:"Playfair Display",serif;font-weight:700;color:var(--navy);margin-top:16px;font-size:13px;text-transform:none;}
+.toc-chapter{padding-left:14px;}
+.toc-section{color:var(--mute);font-style:italic;}
+main{padding:44px clamp(20px,5vw,72px) 120px;max-width:820px;}
+.cover{border-bottom:2px solid var(--gold);padding-bottom:30px;margin-bottom:20px;}
+.cover .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+.cover h1{font-family:"Playfair Display",serif;font-weight:800;font-size:clamp(30px,6vw,50px);line-height:1.05;color:var(--navy);margin:12px 0 10px;}
+.cover p.sub{font-size:15px;color:var(--mute);font-style:italic;max-width:60ch;margin:0;}
+.cover .by{margin-top:16px;font-weight:700;color:var(--navy);font-size:14px;letter-spacing:.02em;}
+.partdiv{margin:64px 0 8px;text-align:center;}
+.partdiv span{font-family:"Playfair Display",serif;font-weight:700;color:var(--navy);font-size:22px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;display:inline-block;width:100%;}
+section.chap{margin-top:40px;scroll-margin-top:76px;}
+.kick{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+.ctitle{font-family:"Playfair Display",serif;font-weight:700;color:var(--navy);font-size:clamp(22px,4vw,30px);line-height:1.12;margin:6px 0 14px;}
+.para{font-size:17px;line-height:1.72;margin:0 0 15px;}
+li.bullet{margin-left:22px;list-style:disc;}
+.s{transition:background .15s;}
+.s.spoken{background:rgba(191,153,48,.18);}
+.s.current{background:var(--gold);color:#1a1300;border-radius:3px;box-shadow:0 0 0 2px rgba(191,153,48,.4);}
+.tocbtn{display:none;}
+@media(max-width:880px){
+ .wrap{grid-template-columns:1fr;}
+ nav.toc{position:fixed;left:0;top:60px;width:84%;max-width:340px;height:calc(100vh - 60px);transform:translateX(-105%);transition:transform .25s;z-index:45;box-shadow:6px 0 24px rgba(0,0,0,.2);}
+ nav.toc.open{transform:none;}
+ .tocbtn{display:inline-flex;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:7px 10px;font-size:13px;cursor:pointer;}
+ .audiobar .lbl{display:none;}
+}
+</style>
+</head>
+<body>
+<div class="badge">ÉDITION PRÉ-LECTURE</div>
+<header class="topbar">
+  <button class="tocbtn" id="tocbtn" aria-label="Sommaire">☰ Sommaire</button>
+  <div class="brand">No-Surprises Delivery<small>Le manuel de terrain des 5C</small></div>
+  <div class="controls">
+    <div class="toggle" role="tablist">
+      <button id="btnRead" class="active">Lire</button>
+      <button id="btnListen">Écouter</button>
+    </div>
+    <div class="audiobar" id="audiobar">
+      <button id="playpause" title="Lecture / pause">▶</button>
+      <button id="stopbtn" title="Arrêter">■</button>
+      <span class="lbl" id="nowplaying">Prêt à écouter</span>
+    </div>
+  </div>
+</header>
+<div class="wrap">
+  <nav class="toc" id="toc">
+    <h3>Sommaire</h3>
+    <a class="toc-section" href="#s1" data-target="s1">Note de l’auteur</a>
+<a class="toc-section" href="#s2" data-target="s2">Introduction</a>
+<a class="toc-part" href="#s3" data-target="s3">Partie I · La dérive</a>
+<a class="toc-chapter" href="#s4" data-target="s4">1. Les projets n’échouent pas. Les systèmes autour d’eux, si.</a>
+<a class="toc-chapter" href="#s5" data-target="s5">2. Le coût de la dérive</a>
+<a class="toc-chapter" href="#s6" data-target="s6">3. Gouverné n’est pas contrôlé</a>
+<a class="toc-chapter" href="#s7" data-target="s7">4. Pourquoi les tableaux de bord mentent</a>
+  </nav>
+  <main id="main">
+    <div class="cover">
+      <div class="k">Édition pré-lecture · Confidentiel</div>
+      <h1>No-Surprises Delivery</h1>
+      <p class="sub">Comment le Delivery Control System™ garde les programmes sous contrôle quand la réalité cesse de suivre le plan.</p>
+      <div class="by">Serguei Poppeleer · Contracks Global</div>
+    </div>
+    <section class="chap" id="s1"><h2 class="ctitle">Note de l’auteur</h2>
+<p class="para">Pourquoi ce livre existe</p>
+<p class="para">Les idées de ce livre ne sont pas nées d’un seul projet.</p>
+<p class="para">Elles sont le fruit d’une carrière passée à livrer des programmes dans l’aviation, les infrastructures, l’énergie et l’immobilier — de petites opérations chiffrées en centaines de milliers d’euros à des programmes chiffrés en milliards — nourrie par des recherches de troisième cycle sur l’analyse des retards, la causalité et le contrôle de projet.</p>
+<p class="para">Pendant l’essentiel de cette période, on m’appelait rarement quand un projet se portait bien.</p>
+<p class="para">On m’appelait quand il était déjà en difficulté.</p>
+<p class="para">Un mois, j’étais sur un chantier en Afrique centrale. Une semaine plus tard, dans un avion pour le Maroc, pour redresser un programme en retard. Puis au Qatar, pour appuyer une réclamation majeure. Puis au Luxembourg, pour débloquer un projet à l’arrêt parce que les parties se parlaient par avocats interposés au lieu de se parler directement.</p>
+<p class="para">Des secteurs différents. Des pays différents. Des contrats différents. Le même schéma.</p>
+<p class="para">Ce qui me frappait, c’était la rareté avec laquelle la cause profonde changeait. Un périmètre que personne ne possédait. Un engagement que personne n’avait vérifié. Une décision que personne n’avait close. Un risque que tout le monde connaissait mais que personne ne maîtrisait.</p>
+<p class="para">Les projets échouent rarement à cause d’un événement dramatique. Ils échouent parce que le contrôle se perd progressivement — à travers des dizaines de petites décisions, hypothèses, retards et désalignements que personne ne voit clairement jusqu’à ce que les conséquences deviennent impossibles à ignorer.</p>
+<p class="para">Après assez de redressements, j’ai compris que je résolvais rarement un problème de projet. Je résolvais le même problème de système, déguisé différemment.</p>
+<p class="para">Mes recherches aboutissaient à la même conclusion. Deux mémoires de troisième cycle — l’un sur la naissance des réclamations pour retard et perturbation dans les contrats de construction, l’autre sur l’écart entre la réalité d’un planning et son reporting dans l’analyse du chemin critique et la jurisprudence — posaient la même question : pourquoi la gouvernance échoue-t-elle si souvent à détecter la dérive avant que le redressement ne devienne coûteux ?</p>
+<p class="para">La conclusion collait à ce que j’avais déjà vu sur le terrain. Les projets ne perdent pas le contrôle à cause d’événements isolés. Ils le perdent parce que les systèmes qui les entourent ne sont pas conçus pour tenir.</p>
+<p class="para">Au fil des ans, je me suis assis de tous les côtés de la table. L’entrepreneur qui cherche à être payé. Le client qui cherche à maîtriser le coût et la livraison. Le fondateur qui cherche à bâtir quelque chose qui dure. Les équipes commerciales et juridiques qui cherchent à protéger la valeur sans arrêter la marche.</p>
+<p class="para">L’écart entre ce qui est livré et ce qui avait été promis existe partout. Chaque entrepreneur le sait. Chaque promoteur l’a ressenti. Chaque fondateur finit par le découvrir.</p>
+<p class="para">Ce n’est pas un problème de secteur. Ce n’est pas un problème de géographie. C’est un problème de système.</p>
+<p class="para">Les 5C n’ont pas été conçus. Ils ont été découverts — reconstruits et affinés sur des programmes déjà en difficulté, dans des environnements où l’échec coûtait cher et où les méthodes standard avaient déjà échoué.</p>
+<p class="para">Le schéma qui a émergé était constant. Quand le système complet était en place, la livraison tenait. Quand une discipline manquait, le programme dérivait. Cette constance est ce qui a transformé l’expérience de terrain en cadre.</p>
+<p class="para">Mais la raison d’être de ce livre n’est pas le cadre. C’est ce qui se passe quand le cadre est absent.</p>
+<p class="para">Chaque programme qui dérive retarde quelque chose qui compte. Un passager qui attend l’ouverture d’un aéroport. Un patient qui attend un hôpital. Une communauté qui attend une électricité fiable.</p>
+<p class="para">La livraison ne concerne jamais que les projets. Elle concerne la valeur qui atteint ceux qu’elle était censée servir. Le coût d’une mauvaise livraison ne se mesure pas qu’en dépassements. Il se mesure à ce qui n’arrive pas.</p>
+<p class="para">Voilà pourquoi ce livre existe. Voilà pourquoi le contrôle de la livraison compte. Et voilà pourquoi une si grande part de ma vie professionnelle est allée à bâtir un système qui tient.</p>
+<p class="para">Le cadre des 5C™ — Contenir, Commander, Clore, Confirmer et Contrôler — est le résultat de ce travail : la synthèse de la recherche, de l’expérience de terrain et des leçons durement apprises dans plus de trente pays, là où la théorie rencontrait la réalité et où les excuses s’épuisaient vite.</p>
+<p class="para">Ce livre est l’aboutissement d’une longue enquête sur une seule question : pourquoi les systèmes de livraison perdent-ils le contrôle — et que faut-il pour en bâtir un qui ne le perd pas ?</p>
+<p class="para">Si vous portez la responsabilité de livrer, vous connaissez déjà cette sensation. Le rapport est au vert. Le terrain dit le contraire. Le programme avance, mais quelque chose ne semble pas sous contrôle.</p>
+<p class="para">Ce livre a été écrit pour ce moment-là. Les pages qui suivent sont la réponse que j’aurais aimé qu’on me tende au départ.</p>
+<p class="para">Serguei Poppeleer<br>Fondateur, Contracks Global<br>Bruxelles, Belgique<br>2026</p>
+<section class="chap" id="s2"><h2 class="ctitle">Introduction</h2>
+<p class="para">Vous avez choisi The Delivery Control System comme livre : une méthode pratique pour verrouiller le périmètre, maîtriser les fournisseurs et stopper la dérive des projets transfrontaliers.</p>
+<p class="para">Vous lisez ces lignes parce que vous êtes responsable de la livraison, pas de la « gestion de projet ».</p>
+<p class="para">Vous êtes côté maître d’ouvrage — responsable PMO, directeur PMO, référent du contrôle de portefeuille — et vous portez le risque quand un projet transfrontalier dérive. L’Europe d’un côté, l’Afrique de l’autre. Fuseaux horaires différents, conditions d’exploitation différentes, chaînes d’approvisionnement différentes, définitions de « prêt » différentes. Plusieurs fournisseurs. Des équipes internes aux intérêts contradictoires. Un comité de pilotage qui veut de la certitude, pas de la nuance.</p>
+<p class="para">La complexité ne vous fait pas peur. C’est l’exposition qui vous fait peur : une gouvernance sur le papier, aucun contrôle réel en pratique. Dès qu’une livraison glisse, tous les regards se tournent vers le PMO. Si vous ne pouvez pas montrer une seule vérité opérationnelle partagée — périmètre, plan, décisions, engagements fournisseurs, cadence — alors vous ne contrôlez pas la livraison. Vous la racontez.</p>
+<p class="para">Voici le cadrage qui compte : les projets n’échouent pas. Les systèmes autour d’eux, si. Les marchés frontières ne créent pas l’échec ; ils le révèlent plus vite. Un périmètre faible est puni immédiatement. Une décision molle se transforme en semaines de retard. Des promesses fournisseurs non vérifiées deviennent des navires ratés, des équipes désœuvrées et du fret précipité. Des hypothèses de conformité deviennent des blocages en douane, des problèmes de visa et des arrêts de chantier.</p>
+<p class="para">Vous n’avez pas besoin de plus de modèles. Vous avez besoin d’un système de contrôle qui tient là où la réalité est plus dure et où les excuses s’épuisent plus vite.</p>
+<p class="para">Ce livre s’adresse au responsable PMO qui en a fini avec le théâtre du PMO.</p>
+<p class="para">Vous connaissez ce théâtre : des jalons cochés parce que la date est arrivée, non parce que la préparation existe. Des registres RAID qui gonflent parce que personne ne possède les décisions qu’ils contiennent. Des présentations de statut qui semblent cohérentes tandis que le chantier tourne sur WhatsApp, des tableaux blancs et des « on trouvera bien ». Les achats obtiennent un engagement, le fournisseur « promet », puis l’histoire change à chaque appel.</p>
+<p class="para">Le résultat est prévisible. Le périmètre devient un débat. Le plan devient cosmétique. Les fournisseurs dérivent. Et vous passez votre semaine à courir au lieu de contrôler.</p>
+<p class="para">The Delivery Control System est l’alternative.</p>
+<p class="para">C’est une méthode en cinq volets pour verrouiller le périmètre, maîtriser les fournisseurs et stopper la dérive des projets transfrontaliers. Ce n’est pas une réorganisation du PMO. C’est un système d’exploitation que vous pouvez faire tourner sur un portefeuille en cours.</p>
+<p class="para">Alors, qu’est-ce qui est réellement cassé ?</p>
+<p class="para">Voici la réalité : la plupart des organisations ont des morceaux de contrôle, mais pas un système de contrôle de bout en bout.</p>
+<p class="para">Elles ont des modèles, des check-lists, des jalons et des cycles de reporting. Elles n’ont pas de chaîne reliée allant des exigences → aux termes du contrat → au plan opérationnel → au flux de décisions → aux engagements fournisseurs → à l’application hebdomadaire.</p>
+<p class="para">C’est dans cette rupture que vit la dérive.</p>
+<p class="para">Quand les exigences sont floues, les contrats deviennent vagues. Quand les contrats sont vagues, les engagements fournisseurs sont mous. Quand les engagements sont mous, le planning est une fiction. Quand le planning est une fiction, la gouvernance se transforme en récit. Et parce que le système n’est pas relié, l’organisation ne peut pas corriger tôt. Elle ne fait que réagir tard.</p>
+<p class="para">L’exécution transfrontalière rend cette réaction tardive coûteuse.</p>
+<p class="para">Un conteneur rate un départ et le délai bondit de plusieurs semaines. La douane et la documentation se moquent de votre e-mail d’escalade. Un site isolé ne peut pas « juste ajouter de la main-d’œuvre » parce que les visas tardent ou que l’hébergement est plein. Une fenêtre de mise en service est ratée et vous voilà face à des contraintes saisonnières, des fenêtres d’arrêt ou des approbations réglementaires. Le coût de la dérive n’est pas que financier — c’est la crédibilité.</p>
+<p class="para">Ce livre est conçu pour prévenir cette dérive, pas pour l’expliquer après coup.</p>
+<p class="para">Vous voulez une « livraison sans surprise ». Voici pourquoi la plupart des responsables PMO n’y parviennent pas, même compétents.</p>
+<p class="para">Premièrement, le périmètre n’est pas verrouillé.</p>
+<p class="para">On démarre à partir d’une présentation, de notes de lancement et d’un vague sentiment d’accord. Chacun croit être d’accord jusqu’à ce que le devis fournisseur arrive, que les contraintes du site deviennent réelles, ou que l’ingénierie trouve un problème d’interface. Alors la même phrase est interprétée de trois façons différentes, sur trois régions et deux fonctions. La réunion de pilotage hebdomadaire devient « était-ce dans le périmètre ? » au lieu de « sommes-nous dans les temps ? ».</p>
+<p class="para">Deuxièmement, le plan officiel n’est pas le vrai plan.</p>
+<p class="para">Le planning maître et les jalons sont mis à jour pour la gouvernance. Pendant ce temps, l’exécution avance sur des priorités informelles : contraintes de site, problèmes d’accès, approbations manquantes, plans en retard, la seule personne clé en déplacement, la grue indisponible avant la semaine prochaine. Dès la deuxième semaine, le projet s’est scindé en deux réalités : celle qu’on rapporte et celle qu’on vit.</p>
+<p class="para">Troisièmement, les décisions ne se closent pas.</p>
+<p class="para">Les organisations traitent les décisions comme des discussions. Les points ouverts stagnent dans les registres RAID sans propriétaire unique, sans date de décision et sans conséquence. Tout le monde reste « aligné » pendant que le travail reste bloqué. Puis une petite question sans réponse devient un retard d’achat, une boucle de reconception, un défaut qualité ou une réception contestée. À ce stade, vous ne contrôlez plus. Vous éteignez des incendies.</p>
+<p class="para">Quatrièmement, les dates fournisseurs ne sont pas vérifiées.</p>
+<p class="para">Les engagements fournisseurs sont acceptés parce que les achats « ont eu la date » et que le fournisseur « a promis ». Mais personne ne vérifie la préparation en dessous : plans gelés, matériaux commandés, sous-traitants réservés, approbations faites, inspections planifiées, interfaces convenues, logistique comprise. La date n’est donc pas un engagement ; c’est un espoir. Quand elle glisse, l’explication change à chaque appel.</p>
+<p class="para">Cinquièmement, la cadence n’est pas applicable.</p>
+<p class="para">Des réunions ont lieu. Des points sont partagés. Mais il n’y a pas de coupe d’entrée fixe, pas de sorties standard, pas de boucle de suivi. Le glissement se découvre donc tard, pas tôt. L’organisation apprend les problèmes quand ils sont déjà coûteux.</p>
+<p class="para">La méthode The Delivery Control System corrige ces cinq points de rupture dans l’ordre qui rend le contrôle possible.</p>
+<p class="para">Ce n’est pas de la théorie. C’est un ensemble de mécanismes.</p>
+<p class="para">Vous bâtirez un périmètre écrit unique qui empêche la dérive de se cacher derrière l’interprétation. Vous ferez tourner un seul vrai plan, calé sur la réalité du terrain, pas sur celle des diapositives. Vous forcerez les décisions à se clore avant qu’elles ne deviennent des retards. Vous reconstruirez les engagements fournisseurs autour de preuves de préparation, pas d’optimisme. Et vous installerez un rythme de contrôle hebdomadaire qui produit les mêmes sorties à chaque fois — pour piloter la livraison, pas la regarder se dérouler.</p>
+<p class="para">La bonne métaphore de ce système est simple : une tour de contrôle.</p>
+<p class="para">Une tour de contrôle ne « motive » pas les avions à atterrir. Elle établit une vérité partagée, des passations disciplinées et des décisions rapides quand les conditions changent. Elle se moque de ce que quelqu’un « ressent » comme statut. Elle se soucie de ce qui est vérifié.</p>
+<p class="para">The Delivery Control System est votre tour de contrôle pour la livraison transfrontalière.</p>
+<p class="para">Voici comment la méthode fonctionne.</p>
+<p class="para">Nous commençons par Verrouiller le périmètre. Vous créerez un document de périmètre écrit unique, qui comprend :</p>
+<li class="para bullet">Ce qui est dans le périmètre, en langage clair</li>
+<li class="para bullet">Les hypothèses qui doivent être vraies pour que la livraison réussisse (accès au site, utilités, permis, apports du client, plans fournisseurs, approbations)</li>
+<li class="para bullet">Des critères de réception testables (ce que « terminé » signifie à la remise)</li>
+<li class="para bullet">Les exclusions explicites (pour cesser de négocier des souvenirs)</li>
+<li class="para bullet">Les interfaces et passations (qui fournit quoi, pour quand, dans quel format)</li>
+<p class="para">Le résultat n’est pas une « meilleure documentation ». Le résultat, c’est l’applicabilité. Quand un changement apparaît — et il apparaîtra — vous pouvez le classer, le chiffrer et le trancher au lieu d’en débattre.</p>
+<p class="para">Puis nous passons à Faire tourner un seul vrai plan. Vous remplacerez la « gouvernance en diapositives » par un plan opérationnel d’une page que le site et les fournisseurs peuvent réellement suivre. Il capte :</p>
+<li class="para bullet">Les 6 à 12 prochaines semaines de travail, dans l’ordre d’exécution</li>
+<li class="para bullet">Les vraies contraintes (plans, approbations, accès, logistique, inspections)</li>
+<li class="para bullet">Les passations entre équipes internes et fournisseurs</li>
+<li class="para bullet">La définition de « prêt » pour chaque activité critique</li>
+<p class="para">Le résultat, c’est un alignement sur la façon dont le travail se fera, pas sur l’allure du planning.</p>
+<p class="para">Vient ensuite Forcer les décisions rapidement. Vous mettrez en place une discipline de décision :</p>
+<li class="para bullet">Un propriétaire de décision nommé par décision</li>
+<li class="para bullet">Une date de décision liée à la réalité du planning</li>
+<li class="para bullet">Des conséquences claires en cas de non-décision (ce qui glissera, sera re-cadré, sera escaladé)</li>
+<li class="para bullet">Un journal de décisions hebdomadaire qui clôt les points, au lieu de seulement les enregistrer</li>
+<p class="para">Le résultat, c’est que le projet cesse d’être bloqué par une ambiguïté polie.</p>
+<p class="para">Puis vient Des dates fournisseurs qui tiennent. Vous cesserez d’accepter des dates pour n’accepter que des engagements vérifiés. Vous exigerez des preuves de préparation telles que :</p>
+<li class="para bullet">Confirmation de capacité et plan de ressources</li>
+<li class="para bullet">Délais des matériaux critiques et des sous-traitants</li>
+<li class="para bullet">État des plans et des approbations</li>
+<li class="para bullet">Plans d’inspection et d’essais</li>
+<li class="para bullet">Plan logistique (incoterms, mode d’expédition, documentation douanière, risque d’itinéraire, stratégie de tampon)</li>
+<li class="para bullet">Confirmations de préparation du site (accès, permis, grues, aire de stockage, énergie, hébergement)</li>
+<p class="para">Le résultat, c’est que le glissement fournisseur devient visible tôt, tant que vous avez encore des options.</p>
+<p class="para">Enfin, La cadence de la tour de contrôle. Vous ferez tourner un rythme hebdomadaire fixe, avec entrées et sorties standard. Même jour, même format, même coupe de données. La réunion n’est pas là pour raconter un statut ; elle est là pour contrôler. Les sorties standard comprennent :</p>
+<li class="para bullet">Les décisions prises (avec propriétaire et date)</li>
+<li class="para bullet">Les actions assignées (avec propriétaire et échéance)</li>
+<li class="para bullet">Les dates ré-engagées (avec preuves, pas des promesses)</li>
+<li class="para bullet">Les risques escaladés (avec le soutien requis et la conséquence)</li>
+<li class="para bullet">Une seule vérité opérationnelle à jour (périmètre, plan, engagements)</li>
+<p class="para">Le résultat est simple : moins de surprises, une correction plus rapide, et un portefeuille qui se tient.</p>
+<p class="para">Voilà la promesse : des contrôles qui collent à la réalité, et une livraison sans surprise.</p>
+<p class="para">Si vous menez des projets entre l’Europe et l’Afrique (ou tout environnement où la distance, la logistique et la conformité punissent la faiblesse), vous n’avez pas le luxe du « meilleur effort ». Il vous faut un système qui fonctionne quand le conteneur est en retard, quand le permis traîne, quand le fournisseur change son histoire, et quand le comité de pilotage veut des réponses.</p>
+<p class="para">Ce livre vous donne ce système.</p>
+<p class="para">Lisez-le comme un manuel de terrain. Utilisez-le sur un projet en cours. N’attendez pas la prochaine remise à plat du programme ou la prochaine initiative PMO. Commencez par un projet, installez les cinq disciplines, et observez ce qui change : moins de disputes sur le périmètre, moins de fausses dates, moins de décisions ouvertes, et une cadence hebdomadaire qui contrôle réellement la livraison.</p>
+<p class="para">Commençons.</p>
+<div class="partdiv" id="s3"><span>Partie I · La dérive</span></div>
+<section class="chap" id="s4"><div class="kick">Chapitre 1</div><h2 class="ctitle">Les projets n’échouent pas. Les systèmes autour d’eux, si.</h2>
+<p class="para">La route d’accès était au vert.</p>
+<p class="para">Sur le planning maître, elle était terminée — validée, condition préalable au terrassement prévu la semaine suivante. Dans la présentation de pilotage, elle était au vert depuis un mois.</p>
+<p class="para">La route existait. C’était là le piège.</p>
+<p class="para">Elle n’avait pas été entièrement construite pour supporter ce qui venait ensuite. L’entrepreneur avait rencontré un sol meuble, réorganisé ses tâches et posé une piste de transport provisoire sur du remblai non compacté pour continuer d’avancer — sans mode opératoire, sans drainage, sans étude de charge. Un 4x4 pouvait la parcourir, et tous ceux qui l’inspectaient roulaient en 4x4. Sur le terrain, la route était donc « là », et personne qui l’empruntait n’avait de raison de lever la main. Elle n’était pas là pour les porte-chars, les toupies à béton ou les corps de métier qui devaient atteindre l’autre bout du site.</p>
+<p class="para">Puis le premier véhicule chargé s’est engagé, et la plateforme a cédé sur le remblai meuble en dessous. Six semaines de marge avaient disparu, et le rattrapage a coûté plus cher que la route elle-même.</p>
+<p class="para">Cela n’a pas fait surface dans un rapport. Cela a fait surface dans une pièce — une revue mensuelle de direction, où quelqu’un a signalé un événement susceptible de retarder les opérations, et toutes les têtes se sont tournées vers le même endroit. Le directeur des opérations a posé la seule question qui comptait : comment ne l’avons-nous pas su ?</p>
+<p class="para">Personne n’avait menti. L’entrepreneur avait construit une route et rapporté une route. Le maître d’œuvre avait relayé le planning. L’instance de gouvernance s’était réunie à l’heure. Chaque partie rapportait honnêtement depuis son point de vue — et personne ne possédait la réconciliation entre « au vert » et « utilisable par le corps de métier suivant ». C’est cette réconciliation qui a échoué. Pas une personne.</p>
+<p class="para">Voilà ce qui mérite qu’on s’y arrête. La dérive n’a pas commencé quand la route a cédé. Elle a commencé plus tôt — à l’instant où le plan et le site ont cessé d’être la même chose, sans qu’aucun mécanisme n’existe pour les forcer à se rejoindre. Le glissement n’était pas l’échec. C’était le symptôme qui remontait. L’échec avait été conçu des semaines plus tôt, et il est resté invisible parce que tout ce qui devait le révéler fonctionnait exactement comme prévu.</p>
+<p class="para">C’est la vérité inconfortable sous la plupart des dépassements. Le projet n’a pas échoué parce que quelqu’un était incompétent. Il a échoué parce que le système autour du travail ne pouvait pas se voir dériver.</p>
+<p class="para">Les projets n’échouent pas. Les systèmes autour d’eux, si.</p>
+<p class="para">Une fois que vous voyez cela, chaque dépassement change de visage.</p>
+<p class="para">J’ai piloté la livraison dans plus de trente pays — énergie, aviation, infrastructures, immobilier. Le schéma que j’ai vu plus que tout autre, ce ne sont pas de mauvais entrepreneurs ou des clients difficiles. Ce sont des gens compétents opérant dans un système qui rapporte au lieu de contrôler, et qui l’apprennent trop tard.</p>
+<p class="para">Sur un autre programme, trois engagements fournisseurs figuraient au planning comme confirmés. Aucun n’avait été vérifié. L’acier de structure d’un fournisseur dormait depuis onze jours dans un port européen, et personne côté client n’avait vérifié. La date était au vert parce que quelqu’un l’avait saisie — pas parce que quelqu’un l’avait éprouvée.</p>
+<p class="para">Projet différent. Même forme. Un contrôle qui avait l’air d’un contrôle et n’en était pas un.</p>
+<p class="para">Voici la phrase que défend le reste de ce livre : la distance entre le reporting et le contrôle est le lieu où naissent les réclamations. Tout au vert sur le rapport, tout au rouge sur le terrain — et l’écart entre les deux est exactement l’espace où vit le coût, qui grossit en silence jusqu’à ce qu’on vous le remette avec un avocat attaché.</p>
+<p class="para">Quand je dis le système autour du travail, je ne parle pas de l’équipe, des outils ou de la méthodologie. Vous avez presque certainement les trois. Je parle de l’architecture qui les relie — le périmètre au plan, le plan aux décisions, les décisions aux engagements fournisseurs, les engagements au rythme hebdomadaire qui attrape un glissement tant qu’il est encore bon marché.</p>
+<p class="para">Quand cette architecture est câblée, un problème sur le site change, dès le vendredi, un chiffre que quelqu’un surveille. Quand elle ne l’est pas, le même problème se cache dans un rapport au vert jusqu’à devenir une réclamation. La plupart des organisations ont les pièces. Très peu les ont reliées. Et la dérive ne vit pas à l’intérieur d’une pièce — elle vit dans les interstices entre elles, précisément là où personne ne regarde.</p>
+<p class="para">Rien de tout cela n’est propre aux marchés frontières. Un système faible échoue partout. La distance ne fait que l’exposer plus tôt — chaque faiblesse qui mettrait des mois à surgir chez soi apparaît en quelques semaines. La route au vert et non construite. L’acier confirmé et immobilisé dans un port. Les marchés frontières ne créent pas l’échec — ils le révèlent plus vite, et ils le facturent plus cher.</p>
+<p class="para">Voilà pourquoi ce livre est écrit depuis les endroits où les systèmes cassent en premier. Ce qui tient là tient partout.</p>
+<p class="para">Soyons donc clairs sur ce qu’est ce livre, et sur ce qu’il n’est pas.</p>
+<p class="para">Ce n’est pas une refonte de méthodologie. Vous ne manquez pas de méthodologie — vous avez le PMBOK, les jalons, les registres RAID, les instances de gouvernance, les liasses de reporting. Gardez tout cela. Ce livre ne vous demande pas de remplacer votre gouvernance. Il vous demande de la rendre applicable.</p>
+<p class="para">Car l’échec n’a jamais été une absence de gouvernance. Chaque projet qui a dérivé avait un cadre de gouvernance. La plupart en avaient un bon. C’est le problème que personne ne nomme : une gouvernance qui existe sur le papier et ne change pas ce qui se passe sur le site n’est pas du contrôle. C’est de la documentation. Les contrôles ne sont pas un miroir tendu au travail. Ils sont censés être un mécanisme qui le change.</p>
+<p class="para">Le reste de ce livre transforme le second en le premier — cinq contrôles qui rendent la gouvernance applicable, pour qu’un glissement bouge un chiffre tant que vous pouvez encore agir, et qu’un projet ne puisse plus dériver six semaines avant que quiconque de responsable ne le sache.</p>
+<p class="para">Mais avant de bâtir les contrôles, vous devez voir la dérive clairement — comment elle commence, ce qu’elle coûte, et pourquoi elle reste invisible jusqu’à l’arrivée de la facture.</p>
+<p class="para">Elle commence en silence. Elle commence toujours en silence.</p>
+<section class="chap" id="s5"><div class="kick">Chapitre 2</div><h2 class="ctitle">Le coût de la dérive</h2>
+<p class="para">Le programme a dépassé de huit mois et de trente pour cent de budget. Quand le chiffre a fini par atterrir devant le conseil, tout le monde dans la pièce a regardé la même personne : le PMO.</p>
+<p class="para">Ce n’était ni un regard juste, ni un regard injuste. Le PMO avait rapporté au vert la majeure partie du programme. Les présentations étaient impeccables. L’instance de gouvernance s’était réunie chaque mois. Et le projet avait huit mois de retard.</p>
+<p class="para">Voici ce que le conseil ne pouvait pas voir, parce que personne ne le pouvait. Le dépassement ne s’est pas produit le mois où il a fait surface. Il s’est produit dans les cent semaines silencieuses d’avant, chacune perdant quelques jours que personne n’a signalés, jusqu’à ce que les jours deviennent des mois et les mois un chiffre avec un avocat attaché.</p>
+<p class="para">C’est la première chose à comprendre sur la dérive. Elle n’est jamais spectaculaire. C’est exactement le piège.</p>
+<p class="para">Un programme n’échoue pas en un seul instant visible que vous auriez pu attraper. Il glisse sous le seuil qui déclenche l’alarme — une semaine ici, une décision reportée là, une date fournisseur qui tient « à peu près » — et chaque glissement est individuellement raisonnable, individuellement défendable, individuellement trop petit pour être escaladé. Personne n’est négligent. Tout le monde est occupé. Et le coût s’accumule dans l’ombre.</p>
+<p class="para">Un glissement d’une semaine que personne ne signale devient un trimestre de réordonnancement que personne n’a chiffré. Six mois de dérive cumulée font surface en une réclamation chiffrée en millions — que personne ne possède, parce qu’au moment où elle est devenue visible, il était déjà trop tard pour la posséder.</p>
+<p class="para">Regardez-la s’assembler une fois et vous ne l’oublierez jamais. Une livraison de transformateur glisse de cinq jours — récupérable, tout le monde en convient, pas de quoi escalader. Mais ces cinq jours poussent l’installation dans une fenêtre de mise en service qui percute une inspection réglementaire réservée des mois à l’avance. L’inspection ne bougera pas, donc la séquence doit bouger — et à la fin du trimestre, un glissement de cinq jours que personne n’a signalé est devenu des semaines de réordonnancement, des équipes désœuvrées et un ordre de modification en litige. Personne ne l’a choisi. Il s’est assemblé tout seul, à partir de petits retards raisonnables.</p>
+<p class="para">Si cela ressemble à votre programme, ce n’est pas parce que votre programme est inhabituel. C’est parce qu’il est normal. L’équipe de Bent Flyvbjerg à Oxford a bâti la plus grande base de données du genre — plus de seize mille grands projets dans 136 pays. Seuls 8,5 pour cent sont arrivés dans les délais et le budget. Ajoutez les bénéfices qu’ils devaient produire, et le chiffre tombe à 0,5 pour cent — environ un projet sur deux cents. Il appelle cela la Loi d’airain des mégaprojets : au-dessus du budget, au-dessus du délai, encore et encore. Ce ne sont pas de petits chantiers menés par des amateurs. Ce sont de grands programmes, menés par des gens compétents avec des dispositifs de gouvernance complets — et neuf sur dix dérivent.</p>
+<p class="para">La leçon n’est pas que les gens sont mauvais en livraison. La leçon est que les systèmes sur lesquels la plupart des organisations s’appuient ne peuvent pas attraper la dérive tant qu’elle est encore bon marché à corriger.</p>
+<p class="para">La raison est structurelle. La dérive est un problème en temps réel rapporté par un instrument en différé. Le glissement se produit sur le site, maintenant. Le rapport arrive chaque mois, en retard. Le temps qu’un glissement d’une semaine ait voyagé du terrain, à travers la mise à jour de l’entrepreneur, dans le planning maître, sur la présentation, puis autour de la table du comité de pilotage, il n’a plus une semaine. Il a un mois — et il a eu un mois pour se reproduire.</p>
+<p class="para">L’instrument est en retard pour une raison structurelle. Il l’est aussi pour une raison humaine. La première personne à voir un glissement est rarement celle qui le remonte, et signaler tôt a un coût : levez la main trop vite et vous possédez le problème, vous attirez le blâme, vous ouvrez la réclamation. Le signal qui pourrait arrêter la dérive reste donc là où il est né, sur le site, pendant que chacun attend de voir s’il se résorbe tout seul.</p>
+<p class="para">Certains contrats tentent de forcer les choses, en exigeant une alerte précoce dès qu’un retard est prévisible. Mais une clause ne peut pas vaincre l’incitation qui la sous-tend. Quand faire remonter un problème tôt paraît plus dangereux que le cacher, le problème reste caché jusqu’à ce qu’il soit indéniable — c’est-à-dire jusqu’à ce qu’il soit coûteux.</p>
+<p class="para">Le tableau de bord passe donc à l’orange non pas quand le problème commence, mais quand le problème est déjà coûteux. L’orange n’est pas un avertissement. L’orange est un reçu.</p>
+<p class="para">Et le reçu arrive tard pour une raison qui aggrave les dégâts : le rattrapage a une horloge. Tôt dans un programme, un glissement est bon marché à absorber — il y a de la marge devant, les séquences peuvent être retravaillées, les fournisseurs replanifiés. Passé la moitié, cette marge a largement disparu, parce que le retard que vous ne voyez que maintenant a été enclenché dans la première moitié, quand il était encore récupérable et encore invisible. Quand la dérive est assez spectaculaire pour paraître sur un rapport mensuel, vous êtes en général dans la portion du programme où le rattrapage est le plus dur et coûte le plus cher.</p>
+<p class="para">L’instinct, quand la facture arrive, est d’ajouter. Ajouter un cycle de reporting plus serré. Ajouter une instance de plus. Ajouter un plan de rattrapage, une cellule de crise, un nouveau tableau de bord. Plus de visibilité. Et cela ressemble à du contrôle, parce que c’est de l’activité.</p>
+<p class="para">Mais on ne peut pas rapporter plus vite que la dérive. Un instrument en différé plus rapide reste un instrument en différé — il vous dit un peu plus tôt que l’argent est parti. L’organisation qui répond à la dérive par plus de reporting finit dans une boucle : dérive, surprise, blâme, plus de reporting, dérive. Le PMO travaille plus dur chaque trimestre et fait de moins en moins confiance à ses propres chiffres. La finance cesse de croire la prévision. Et les projets continuent de déraper, parce que rien dans la boucle ne change ce qui se passe sur le site la semaine prochaine.</p>
+<p class="para">Voilà le vrai coût de la dérive. Pas seulement les huit mois et les trente pour cent — ce ne sont que la ligne comptable. Le coût plus profond est ce qu’elle fait à la personne responsable de la livraison : elle transforme un professionnel compétent en narrateur d’un déclin qu’il voit venir et ne peut pas arrêter.</p>
+<p class="para">Il n’a pas à en être ainsi. Mais pour y remédier, vous devez d’abord voir pourquoi toute cette gouvernance n’a pas attrapé la dérive du tout.</p>
+<p class="para">Vous aviez la gouvernance depuis le début. Vous n’aviez simplement jamais le contrôle.</p>
+<section class="chap" id="s6"><div class="kick">Chapitre 3</div><h2 class="ctitle">Gouverné n’est pas contrôlé</h2>
+<p class="para">« Un mauvais système battra une bonne personne à tous les coups. » — W. Edwards Deming</p>
+<p class="para">Le programme a passé son jalon dans les temps. Chaque document requis était présent. Énoncé du périmètre : déposé. Registre des risques : à jour. Planning : référencé. Signatures : recueillies. La revue de jalon a duré quarante minutes, et le programme a été autorisé à poursuivre.</p>
+<p class="para">Il n’aurait pas dû l’être.</p>
+<p class="para">L’énoncé du périmètre décrivait des résultats, pas des mesures. Le registre des risques listait des risques que personne ne possédait. Le planning était référencé sur des dates qu’aucun fournisseur n’avait vérifiées. Chaque document existait. Aucun n’était vrai. Le jalon avait vérifié la conformité au processus. Il n’avait pas vérifié la préparation à livrer. La paperasse était impeccable. La réalité, non.</p>
+<p class="para">Six semaines plus tard, le programme était en difficulté, et tout le monde était surpris, parce qu’il avait passé son jalon.</p>
+<p class="para">C’est la peur silencieuse de tout responsable PMO honnête. Non pas d’être pris à en faire trop peu — ils en font énormément. La peur, c’est que tout cela ne soit que de la paperasse. Que les présentations, les registres, les instances et les jalons soient un appareillage élaboré produisant le sentiment du contrôle sans le fait du contrôle. Que lorsqu’un site ou un fournisseur fait sauter le plan, rien de tout cela ne tienne — et que l’exposition retombe sur la personne dont le nom figure sur la gouvernance.</p>
+<p class="para">C’est une peur raisonnable, parce qu’elle est généralement fondée.</p>
+<p class="para">Voici la distinction sur laquelle tout le livre repose.</p>
+<p class="para">La gouvernance existe avant que la livraison ne commence. C’est le cadre qu’une organisation met en place pour définir l’autorité, la responsabilité et la surveillance — qui peut approuver un investissement, qui signe les contrats, quelles politiques s’appliquent, quels documents doivent exister, comment les décisions s’escaladent et comment la performance est rapportée. Elle crée cohérence, responsabilité et ordre. Ce qu’elle ne fait pas, c’est déplacer un fournisseur, clore une décision ou redresser un programme.</p>
+<p class="para">Le contrôle commence quand l’exécution commence. C’est l’ensemble des mécanismes opérationnels qui comparent en continu la réalité à l’intention et changent ce qui se passe ensuite — un engagement, une décision, une passation, un résultat.</p>
+<p class="para">La gouvernance est le registre de ce qui devrait arriver. Le contrôle est le mécanisme qui change ce qui arrive. Ce ne sont pas la même chose, et en avoir beaucoup de la première ne dit rien sur le fait d’avoir un peu du second.</p>
+<p class="para">Un jalon qui confirme que les documents existent enregistre la préparation. Il ne la prouve pas. Un jalon qui refuse de s’ouvrir tant que la date d’un fournisseur n’a pas été vérifiée contre une capacité réelle, lui, la prouve — et c’est du contrôle. Un registre RAID qui consigne les points ouverts, c’est de la gouvernance. Une discipline qui force chaque point vers un propriétaire, une date et une conséquence, c’est du contrôle. Les deux peuvent sembler identiques sur un tableau de bord. Ils ne se comportent en rien pareil quand un programme passe sous pression.</p>
+<p class="para">Voici donc un test que vous pouvez faire passer à n’importe quel contrôle de votre dispositif. Posez une seule question : est-ce que cela change une décision, un fournisseur ou une passation la semaine prochaine ? Si cela change ce que quelqu’un fait — clôt une décision, déplace un fournisseur, répare une passation — c’est du contrôle. Si cela ne fait qu’enregistrer ce qui s’est déjà produit, habillé d’un modèle, c’est un artefact. La plupart des dispositifs de gouvernance sont surtout des artefacts. De magnifiques artefacts bien tenus — et l’entretien se confond avec le commandement.</p>
+<p class="para">Un contrôle n’est pas un miroir. C’est une intervention. Un miroir qui signale qu’un programme est en feu a parfaitement fait son travail et n’a rien sauvé.</p>
+<p class="para">Quand la dérive fait surface, le réflexe est d’ajouter de la gouvernance — un jalon de plus, un rapport de plus, une instance de plus. Mais si votre gouvernance est artefact plutôt que mécanisme, en avoir davantage n’achète pas plus de contrôle. Cela achète plus à entretenir, plus de réunions à tenir, plus de documents à garder impeccables pendant que le projet dérive dessous. Vous êtes plus occupé, et vous êtes blâmé. Plus de gouvernance sur une base d’artefacts n’est pas de la sécurité. C’est un théâtre plus lourd.</p>
+<p class="para">Chaque projet qui a échoué avait un cadre de gouvernance. La plupart en avaient un bon. C’est le problème que personne ne nomme : un bon cadre qui ne mord pas n’est pas une protection. C’est un costume très convaincant.</p>
+<p class="para">Le changement que ce livre propose ne va pas de moins de gouvernance à plus. Il va de la gouvernance au contrôle — de celui qui tient le registre à celui qui change le résultat. Vous gardez vos jalons, vos registres, vos instances. Vous faites en sorte que chacun serve à quelque chose. Le PMO cesse d’être la fonction qui documente la dérive pour devenir la fonction qui l’arrête.</p>
+<p class="para">Et l’endroit le plus clair pour voir l’écart entre gouvernance et contrôle — là où il se cache à la vue de tous, dans une couleur que tout le monde croit et que personne ne devrait croire — c’est le tableau de bord.</p>
+<p class="para">Ce vert vous ment. Voici comment.</p>
+<section class="chap" id="s7"><div class="kick">Chapitre 4</div><h2 class="ctitle">Pourquoi les tableaux de bord mentent</h2>
+<p class="para">Vert ne veut pas dire bon. Vert veut dire rapporté.</p>
+<p class="para">Chaque dépassement dans lequel je suis entré était au vert jusqu’à peu avant qu’il ne le soit plus. Le tableau de bord est l’objet le plus digne de confiance de la gouvernance de programme et le plus discrètement malhonnête — non parce que quelqu’un ment, mais à cause de ce qu’est un tableau de bord et de la façon dont la couleur y arrive.</p>
+<p class="para">Un statut est une affirmation sur le passé. Le temps qu’un chantier affiche vert sur la présentation du vendredi, ce vert décrit un instant déjà révolu — la mise à jour donnée par un responsable le mercredi, sur un travail fait la semaine d’avant, filtrée par ce qu’il croyait et ce qu’il était prêt à mettre par écrit. La réalité a avancé pendant que la couleur prenait. Le tableau de bord n’est pas une fenêtre sur le programme. C’est une photographie du programme, prise il y a un moment, retouchée par la personne qui avait besoin qu’elle paraisse correcte.</p>
+<p class="para">Le décalage est donc structurel. Le site tourne en temps réel. Le rapport tourne en différé. Et dans l’écart entre les deux, une case verte peut décrire un chantier arrêté depuis trois semaines — c’est exactement ainsi qu’un programme dérive un mois durant derrière un mur de vert, puis fait surface d’un coup, en une surprise qui n’a jamais été soudaine.</p>
+<p class="para">Le problème plus profond est ce dont la plupart des statuts sont faits. Demandez « sommes-nous dans les temps ? » et vous obtenez une histoire — une phrase confiante de quelqu’un qui veut être dans les temps, ne veut pas être celui qui a tiré la sonnette, et n’en est honnêtement pas sûr. « Dans les temps » est un ressenti déguisé en fait.</p>
+<p class="para">Alors remplacez la question. Ne demandez pas si un chantier est dans les temps. Demandez ce qui devrait être vrai pour qu’il le soit — puis demandez la preuve que ça l’est. Le plan est-il gelé ? Montrez-le-moi. Le matériau est-il commandé ? Montrez-moi la commande. L’inspection est-elle réservée ? Montrez-moi la date. Un statut construit à partir de faits vérifiables ne peut pas être vert à moins que les faits ne le soient. Un statut construit à partir de la confiance est vert dès que la personne l’est — c’est-à-dire jusqu’à la semaine où, catastrophiquement, il ne l’est plus.</p>
+<p class="para">La plupart des tableaux de bord rapportent des indicateurs retardés : ce qui a été achevé, ce qui a été dépensé, ce qui a glissé. Par définition, ils vous parlent d’un problème après qu’il s’est produit. Les signaux qui vous alerteraient tôt — une décision sans propriétaire, un fournisseur qui se tait, une définition de « prêt » à laquelle personne ne sait répondre — arrivent rarement sur la présentation, parce que ce n’est pas du « statut ». C’est la texture d’un programme sur le point de glisser, et elle est invisible à un instrument conçu pour compter des choses terminées. Les tableaux de bord n’échouent pas parce qu’ils sont inexacts. Ils échouent parce qu’ils répondent aux questions d’hier.</p>
+<p class="para">Nous bâtirons plus tard le rythme qui fait remonter ces signaux précoces, quand nous arriverons à la tour de contrôle. Pour l’instant, le point est plus étroit et plus net : la couleur sur votre présentation est un indicateur retardé revêtu de l’autorité d’un flux en direct.</p>
+<p class="para">Voilà pourquoi les équipes appellent à l’aide trop tard. Non parce qu’elles ne surveillent pas — elles surveillent en permanence. Elles surveillent le mauvais instrument. Le tableau de bord reste vert, les responsables restent confiants, les instances restent calmes, et le premier signe sans ambiguïté que quelque chose ne va pas est le signe qui coûte le plus cher : le navire raté, la réception contestée, la réclamation. Le temps que l’instrument passe à l’orange, la décision qui aurait pu prévenir le coût est déjà à des semaines dans le passé.</p>
+<p class="para">Le temps que le tableau de bord passe à l’orange, l’argent est déjà parti.</p>
+<p class="para">Nous avons donc nommé la dérive, chiffré son coût, séparé la gouvernance du contrôle et retiré son autorité à la couleur que tout le monde croit. Voilà le diagnostic, et il se réduit à une seule phrase : la distance entre le reporting et le contrôle est le lieu où naissent les réclamations.</p>
+<p class="para">Le reste de ce livre referme cette distance.</p>
+<p class="para">Il la referme avec cinq contrôles — cinq endroits où un programme commence silencieusement à échouer, et un mécanisme pour chacun qui rend la gouvernance applicable au lieu de décorative. Ils commencent là où commence tout projet, et là où commence toujours la première dérive.</p>
+<p class="para">Ils commencent par le périmètre.</p>
+  </main>
+</div>
+<script>
+(function(){
+  "use strict";
+  // ---- sentence-wrap paragraphs for highlighting ----
+  var paras=document.querySelectorAll('.para');
+  paras.forEach(function(p){
+    if(p.tagName==='LI'){ /* keep bullets as single unit */ 
+      var txtL=p.textContent; p.innerHTML='<span class="s">'+txtL+'</span>'; return;
+    }
+    var txt=p.textContent;
+    // split into sentences, keeping delimiters (handles . ! ? … and French « »)
+    var parts=txt.match(/[^.!?…]+[.!?…]+["»”)]?\s*|[^.!?…]+$/g)||[txt];
+    p.innerHTML=parts.map(function(s){return '<span class="s">'+s+'</span>';}).join('');
+  });
+  var spans=Array.prototype.slice.call(document.querySelectorAll('.s'));
+
+  // ---- TOC active state on scroll ----
+  var links=Array.prototype.slice.call(document.querySelectorAll('nav.toc a'));
+  var targets=links.map(function(a){return document.getElementById(a.dataset.target);});
+  function onScroll(){
+    var y=window.scrollY+90, idx=0;
+    for(var i=0;i<targets.length;i++){ if(targets[i] && targets[i].offsetTop<=y) idx=i; }
+    links.forEach(function(a,i){a.classList.toggle('active',i===idx);});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  // ---- mobile TOC ----
+  var toc=document.getElementById('toc'), tb=document.getElementById('tocbtn');
+  if(tb){tb.addEventListener('click',function(){toc.classList.toggle('open');});}
+  links.forEach(function(a){a.addEventListener('click',function(){toc.classList.remove('open');});});
+
+  // ---- Read / Listen toggle ----
+  var btnRead=document.getElementById('btnRead'), btnListen=document.getElementById('btnListen');
+  var audiobar=document.getElementById('audiobar');
+  var reading=false, idx=0, paused=false;
+  function setMode(listen){
+    reading=listen;
+    btnListen.classList.toggle('active',listen);
+    btnRead.classList.toggle('active',!listen);
+    audiobar.classList.toggle('show',listen);
+    if(!listen) stop();
+  }
+  btnRead.addEventListener('click',function(){setMode(false);});
+  btnListen.addEventListener('click',function(){setMode(true);});
+
+  // ---- French voice selection ----
+  var synth=window.speechSynthesis, voice=null;
+  function pickVoice(){
+    var vs=synth.getVoices()||[];
+    // prefer named French voices, then any fr-*
+    var pref=/(FR|France|French|français|Thomas|Am[eé]lie|Audrey|Marie|Virginie|Hortense)/i;
+    voice=vs.find(function(v){return v.lang && v.lang.toLowerCase().indexOf('fr')===0 && pref.test(v.name);})
+       || vs.find(function(v){return v.lang && v.lang.toLowerCase().indexOf('fr')===0;})
+       || null;
+  }
+  pickVoice();
+  if(synth.onvoiceschanged!==undefined) synth.onvoiceschanged=pickVoice;
+
+  var np=document.getElementById('nowplaying');
+  var pp=document.getElementById('playpause');
+  var sb=document.getElementById('stopbtn');
+
+  function clearMarks(){spans.forEach(function(s){s.classList.remove('current','spoken');});}
+  function highlight(i){
+    spans.forEach(function(s,j){s.classList.toggle('spoken',j<i);s.classList.toggle('current',j===i);});
+    var el=spans[i]; if(el){var r=el.getBoundingClientRect();
+      if(r.top<80||r.bottom>window.innerHeight-60) el.scrollIntoView({block:'center',behavior:'smooth'});}
+  }
+  function speakFrom(i){
+    if(i>=spans.length){finish();return;}
+    idx=i; highlight(i);
+    var u=new SpeechSynthesisUtterance(spans[i].textContent);
+    u.lang='fr-FR'; if(voice) u.voice=voice; u.rate=0.98; u.pitch=1.0;
+    u.onend=function(){ if(!paused){ speakFrom(idx+1);} };
+    np.textContent='Lecture… '+(i+1)+' / '+spans.length;
+    synth.speak(u);
+  }
+  function play(){
+    if(!spans.length) return;
+    paused=false; pp.textContent='❚❚';
+    synth.cancel(); speakFrom(idx<spans.length?idx:0);
+  }
+  function pause(){ paused=true; pp.textContent='▶'; synth.cancel(); }
+  function stop(){ paused=false; idx=0; pp.textContent='▶'; synth.cancel(); clearMarks(); np.textContent='Prêt à écouter'; }
+  function finish(){ paused=false; pp.textContent='▶'; np.textContent='Terminé'; }
+  pp.addEventListener('click',function(){ if(paused|| !synth.speaking){play();} else {pause();} });
+  sb.addEventListener('click',stop);
+  // click a sentence to start there (in listen mode)
+  spans.forEach(function(s,i){s.addEventListener('click',function(){ if(reading){ idx=i; play(); } });});
+  window.addEventListener('beforeunload',function(){synth.cancel();});
+})();
+</script>
+</body>
+</html>
